@@ -28,6 +28,7 @@ export default function Dashboard() {
 
       <div className="flex flex-wrap justify-center gap-4 pt-10">
         {modules.map((mod) => (
+          
           <button
             key={mod.name}
             onClick={() => navigate(mod.path)}
@@ -35,7 +36,17 @@ export default function Dashboard() {
           >
             {mod.name} Module
           </button>
+          
         ))}
+        <div className="pt-6">
+  <button
+    onClick={() => navigate("/report")}
+    className="bg-yellow-500 hover:bg-yellow-600 text-black text-lg font-bold py-3 px-8 rounded-xl shadow hover:scale-105 transition"
+  >
+    📋 Create Report
+  </button>
+</div>
+
       </div>
     </div>
   );

@@ -13,6 +13,8 @@ import CloudBackupIntegration from "./CloudBackupIntegration";
 import HistorySystem from "./HistorySystem";
 import Navbar from "./Navbar";
 import AuthPage from "./AuthPage";
+import ReportForm from "./ReportForm";
+
 
 import {
   SignedIn,
@@ -52,6 +54,12 @@ function AppContent() {
         <Route path="/export" element={<ExportModule />} />
         <Route path="/cloud" element={<CloudBackupIntegration />} />
         <Route path="/history" element={<HistorySystem />} />
+        import ReportForm from "./ReportForm";
+
+...
+
+<Route path="/report" element={<ReportForm />} />
+
       </Routes>
     </>
   );
