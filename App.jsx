@@ -1,5 +1,6 @@
+// App.jsx
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import LandingPage from "./LandingPage";
 import Dashboard from "./Dashboard";
@@ -11,6 +12,13 @@ import ExportModule from "./ExportModule";
 import CloudBackupIntegration from "./CloudBackupIntegration";
 import HistorySystem from "./HistorySystem";
 import Navbar from "./Navbar";
+import AuthPage from "./AuthPage";
+
+import {
+  SignedIn,
+  SignedOut,
+  RedirectToSignIn,
+} from "@clerk/clerk-react";
 
 function AppContent() {
   const location = useLocation();
@@ -18,10 +26,25 @@ function AppContent() {
 
   return (
     <>
-      {!isLanding && <Navbar />} {/* Εμφανίζει το Navbar μόνο αν ΔΕΝ είσαι στην αρχική */}
+      {!isLanding && <Navbar />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/sign-in" element={<AuthPage />} />
+        <Route path="/sign-up" element={<AuthPage />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <>
+              <SignedIn>
+                <Dashboard />
+              </SignedIn>
+              <SignedOut>
+                <RedirectToSignIn />
+              </SignedOut>
+            </>
+          }
+        />
         <Route path="/training" element={<StrengthModule />} />
         <Route path="/cardio" element={<CardioModule />} />
         <Route path="/nutrition" element={<NutritionModule />} />
@@ -34,10 +57,4 @@ function AppContent() {
   );
 }
 
-export default function App() {
-  return (
-    <Router>
-      <AppContent />
-    </Router>
-  );
-}
+export default AppContent;
