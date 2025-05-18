@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
 
 export default function ReportForm() {
   const [formData, setFormData] = useState({
@@ -25,7 +26,12 @@ export default function ReportForm() {
   };
 
   return (
-    <div className="p-6 max-w-2xl mx-auto bg-gray-900 text-white rounded shadow">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="p-6 max-w-2xl mx-auto bg-gray-900 text-white rounded shadow"
+    >
       <Helmet>
         <title>Create Weekly Report | Health's Spot</title>
         <meta
@@ -44,7 +50,7 @@ export default function ReportForm() {
           })}
         </script>
       </Helmet>
-      <h2 className="text-2xl font-bold mb-6">📋 Create Weekly Report</h2> //
+      <h2 className="text-2xl font-bold mb-6">📋 Create Weekly Report</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           name="sleep"
@@ -106,13 +112,15 @@ export default function ReportForm() {
           className="w-full p-2 rounded bg-gray-800"
         />
 
-        <button
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           type="submit"
           className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded font-bold"
         >
           Save Report
-        </button>
+        </motion.button>
       </form>
-    </div>
+    </motion.div>
   );
 }
