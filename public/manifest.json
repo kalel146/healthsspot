@@ -1,0 +1,21 @@
+{
+  "name": "Health's Spot",
+  "short_name": "HealthSpot",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#f97316",
+  "description": "The Ultimate Dashboard for Strength, Cardio & Recovery.",
+  "icons": [
+    {
+      "src": "/logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
