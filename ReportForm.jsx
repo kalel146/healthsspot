@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 
 export default function ReportForm() {
   const [formData, setFormData] = useState({
@@ -25,6 +26,24 @@ export default function ReportForm() {
 
   return (
     <div className="p-6 max-w-2xl mx-auto bg-gray-900 text-white rounded shadow">
+      <Helmet>
+        <title>Create Weekly Report | Health's Spot</title>
+        <meta
+          name="description"
+          content="Track sleep, energy, pain, BMR, VO2max, macros and personal notes with the weekly report form of Health's Spot."
+        />
+        <link rel="canonical" href="https://healthsspot.vercel.app/report" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Create Weekly Report | Health's Spot",
+            "description":
+              "Track weekly metrics like sleep, energy, pain, BMR, VO2max, macros and notes at Health's Spot.",
+            "url": "https://healthsspot.vercel.app/report"
+          })}
+        </script>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-6">📋 Create Weekly Report</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
