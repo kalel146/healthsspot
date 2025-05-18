@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@clerk/clerk-react": "^5.31.4",
+    "@supabase/supabase-js": "^2.49.4",
     "framer-motion": "^12.12.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
