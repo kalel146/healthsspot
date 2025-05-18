@@ -23,6 +23,7 @@ export default function ReportForm() {
   });
 
   const [theme, setTheme] = useState("dark");
+  const [syncStatus, setSyncStatus] = useState("idle"); // idle | local | syncing | synced | error
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -44,19 +45,20 @@ export default function ReportForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSyncStatus("local");
     localStorage.setItem("customReport", JSON.stringify(formData));
-    alert("📋 Report saved locally!");
 
     if (user) {
+      setSyncStatus("syncing");
       const { error } = await supabase.from("reports").insert({
         user_id: user.id,
         ...formData
       });
       if (error) {
         console.error("Supabase error:", error);
-        alert("❌ Failed to sync to cloud.");
+        setSyncStatus("error");
       } else {
-        alert("☁️ Synced to Supabase successfully!");
+        setSyncStatus("synced");
       }
     } else {
       console.warn("No user signed in. Skipping Supabase sync.");
@@ -70,6 +72,21 @@ export default function ReportForm() {
   const inputStyles = theme === "dark"
     ? "bg-gray-800 text-white"
     : "bg-gray-200 text-black";
+
+  const renderStatus = () => {
+    switch (syncStatus) {
+      case "local":
+        return "🟢 Saved locally";
+      case "syncing":
+        return "🔄 Syncing...";
+      case "synced":
+        return "☁️ Synced to cloud";
+      case "error":
+        return "❌ Sync failed";
+      default:
+        return null;
+    }
+  };
 
   return (
     <motion.div
@@ -105,6 +122,12 @@ export default function ReportForm() {
           Toggle {theme === "dark" ? "Light" : "Dark"} Mode
         </button>
       </div>
+
+      {syncStatus !== "idle" && (
+        <div className="mb-4 text-sm font-medium">
+          {renderStatus()}
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
