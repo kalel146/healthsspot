@@ -28,6 +28,17 @@ export default function ReportForm() {
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) setTheme(savedTheme);
+
+    // Auto-fill values
+    const lastBmr = localStorage.getItem("lastBMR");
+    const last1RM = localStorage.getItem("last1RM");
+    const lastVO2 = localStorage.getItem("lastVO2");
+    setFormData((prev) => ({
+      ...prev,
+      bmr: lastBmr || "",
+      oneRM: last1RM || "",
+      vo2max: lastVO2 || ""
+    }));
   }, []);
 
   useEffect(() => {
@@ -47,6 +58,11 @@ export default function ReportForm() {
     e.preventDefault();
     setSyncStatus("local");
     localStorage.setItem("customReport", JSON.stringify(formData));
+
+    // Save key values for future auto-fill
+    localStorage.setItem("lastBMR", formData.bmr);
+    localStorage.setItem("last1RM", formData.oneRM);
+    localStorage.setItem("lastVO2", formData.vo2max);
 
     if (user) {
       setSyncStatus("syncing");
