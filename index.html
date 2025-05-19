@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="manifest" href="/manifest.json" />
-  <link rel="canonical" href="https://healthsspot.vercel.app/">
-
-<meta name="theme-color" content="#f97316" />
-<meta name="description" content="Health's Spot: Το απόλυτο dashboard για strength, cardio & recovery.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f97316" />
+  <meta name="description" content="Health's Spot: Το απόλυτο dashboard για strength, cardio & recovery.">
+  <link rel="canonical" href="https://healthsspot.vercel.app/">
+  <link rel="manifest" href="/manifest.json" />
   <title>Health's Spot</title>
+
+  <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- Optional styling backup -->
   <style>
+    html, body, #root {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
     body {
       background-color: #000;
+      color: white;
+      font-family: system-ui, sans-serif;
     }
   </style>
 </head>
 <body>
-  <!-- React renders everything inside this div -->
+  <!-- React mounts the app here -->
   <div id="root"></div>
 
   <!-- Vite entry point -->

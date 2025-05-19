@@ -112,7 +112,7 @@ export default function ReportForm() {
       className={`p-6 max-w-2xl mx-auto rounded shadow ${baseStyles}`}
     >
       <Helmet>
-        <title>Create Weekly Report | Health's Spot</title>
+        <title>{user?.firstName ? `Report for ${user.firstName}` : "Create Weekly Report"} | Health's Spot</title>
         <meta
           name="description"
           content="Track sleep, energy, pain, BMR, VO2max, macros and personal notes with the weekly report form of Health's Spot."
@@ -122,7 +122,7 @@ export default function ReportForm() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "Create Weekly Report | Health's Spot",
+            "name": user?.firstName ? `Report for ${user.firstName}` : "Create Weekly Report | Health's Spot",
             "description":
               "Track weekly metrics like sleep, energy, pain, BMR, VO2max, macros and notes at Health's Spot.",
             "url": "https://healthsspot.vercel.app/report"
@@ -149,6 +149,7 @@ export default function ReportForm() {
         <input
           name="sleep"
           type="number"
+          autoComplete="off"
           placeholder="Sleep Quality (1-10)"
           value={formData.sleep}
           onChange={handleChange}
@@ -157,6 +158,7 @@ export default function ReportForm() {
         <input
           name="energy"
           type="number"
+          autoComplete="off"
           placeholder="Energy Level (1-10)"
           value={formData.energy}
           onChange={handleChange}
@@ -165,6 +167,7 @@ export default function ReportForm() {
         <input
           name="pain"
           type="number"
+          autoComplete="off"
           placeholder="Pain Level (0-10)"
           value={formData.pain}
           onChange={handleChange}
@@ -172,6 +175,7 @@ export default function ReportForm() {
         />
         <textarea
           name="notes"
+          autoComplete="off"
           placeholder="Additional Notes"
           value={formData.notes}
           onChange={handleChange}
@@ -179,6 +183,7 @@ export default function ReportForm() {
         />
         <input
           name="bmr"
+          autoComplete="off"
           placeholder="BMR (auto or manual)"
           value={formData.bmr}
           onChange={handleChange}
@@ -186,6 +191,7 @@ export default function ReportForm() {
         />
         <input
           name="oneRM"
+          autoComplete="off"
           placeholder="1RM (auto or manual)"
           value={formData.oneRM}
           onChange={handleChange}
@@ -193,6 +199,7 @@ export default function ReportForm() {
         />
         <input
           name="vo2max"
+          autoComplete="off"
           placeholder="VO2max (auto or manual)"
           value={formData.vo2max}
           onChange={handleChange}
@@ -200,6 +207,7 @@ export default function ReportForm() {
         />
         <input
           name="macros"
+          autoComplete="off"
           placeholder="Macros (P/C/F)"
           value={formData.macros}
           onChange={handleChange}
@@ -210,9 +218,10 @@ export default function ReportForm() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           type="submit"
+          disabled={syncStatus === "syncing"}
           className="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded font-bold"
         >
-          Save Report
+          {syncStatus === "syncing" ? "⏳ Saving..." : "Save Report"}
         </motion.button>
       </form>
     </motion.div>

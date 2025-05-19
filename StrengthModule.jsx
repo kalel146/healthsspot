@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useTheme } from "./ThemeContext";
 
 export default function StrengthModule() {
   const [weight, setWeight] = useState(0);
@@ -14,6 +16,8 @@ export default function StrengthModule() {
     mood: 3,
   });
   const [recoveryScore, setRecoveryScore] = useState(null);
+
+  const { theme } = useTheme();
 
   const calculateOneRM = () => {
     const result = weight * (36 / (37 - reps));
@@ -31,7 +35,13 @@ export default function StrengthModule() {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen px-6 py-10 space-y-10">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5 }}
+      className={`min-h-screen px-6 py-10 space-y-10 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}
+    >
       <h1 className="text-3xl font-bold text-yellow-400 text-center">Strength Lab</h1>
 
       {/* Brzycki 1RM */}
@@ -111,6 +121,6 @@ export default function StrengthModule() {
         </button>
         {recoveryScore && <p>Recovery Score: {recoveryScore}</p>}
       </section>
-    </div>
+    </motion.div>
   );
 }

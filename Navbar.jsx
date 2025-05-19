@@ -1,41 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useTheme } from "./ThemeContext";
 
 export default function Navbar() {
-  return (
-    <nav
-      style={{
-        backgroundColor: "#111",
-        color: "white",
-        padding: "1rem 2rem",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        borderBottom: "2px solid #333",
-        position: "sticky",
-        top: 0,
-        zIndex: 999,
-      }}
-    >
-      <div style={{ fontWeight: "bold", fontSize: "1.5rem", color: "#f97316" }}>
-        Health's Spot
-      </div>
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
 
-      <div style={{ display: "flex", gap: "2rem" }}>
-        <Link to="/dashboard" style={linkStyle}>Dashboard</Link>
-        <Link to="/training" style={linkStyle}>Strength</Link>
-        <Link to="/cardio" style={linkStyle}>Cardio</Link>
-        <Link to="/nutrition" style={linkStyle}>Nutrition</Link>
-        <Link to="/recovery" style={linkStyle}>Recovery</Link>
-        <Link to="/export" style={linkStyle}>Export</Link>
-      </div>
-    </nav>
+  // Κρύψε το Navbar στη landing σελίδα
+  if (location.pathname === "/") return null;
+
+  return (
+    <div className={`w-full px-4 py-3 flex justify-between items-center border-b ${theme === "dark" ? "bg-black text-white border-gray-700" : "bg-white text-black border-gray-200"}`}>
+      <button
+        onClick={() => navigate("/")}
+        className="text-2xl font-bold text-yellow-400 hover:text-yellow-300 transition"
+      >
+        Health's Spot 🧀
+      </button>
+
+      <button
+        onClick={toggleTheme}
+        className="bg-yellow-500 text-black px-3 py-1 rounded font-semibold hover:bg-yellow-600"
+      >
+        {theme === "dark" ? "Light" : "Dark"} Mode
+      </button>
+    </div>
   );
 }
-
-const linkStyle = {
-  color: "white",
-  textDecoration: "none",
-  fontWeight: "bold",
-  fontSize: "1rem",
-};

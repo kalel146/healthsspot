@@ -1,6 +1,7 @@
-// App.jsx
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { ThemeProvider } from "./ThemeContext";
+import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 
 import LandingPage from "./LandingPage";
 import Dashboard from "./Dashboard";
@@ -14,13 +15,6 @@ import HistorySystem from "./HistorySystem";
 import Navbar from "./Navbar";
 import AuthPage from "./AuthPage";
 import ReportForm from "./ReportForm";
-
-
-import {
-  SignedIn,
-  SignedOut,
-  RedirectToSignIn,
-} from "@clerk/clerk-react";
 
 function AppContent() {
   const location = useLocation();
@@ -47,6 +41,7 @@ function AppContent() {
             </>
           }
         />
+
         <Route path="/training" element={<StrengthModule />} />
         <Route path="/cardio" element={<CardioModule />} />
         <Route path="/nutrition" element={<NutritionModule />} />
@@ -54,15 +49,18 @@ function AppContent() {
         <Route path="/export" element={<ExportModule />} />
         <Route path="/cloud" element={<CloudBackupIntegration />} />
         <Route path="/history" element={<HistorySystem />} />
-        import ReportForm from "./ReportForm";
-
-...
-
-<Route path="/report" element={<ReportForm />} />
-
+        <Route path="/report" element={<ReportForm />} />
       </Routes>
     </>
   );
 }
 
-export default AppContent;
+export default function App() {
+  return (
+    <Router>
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
+    </Router>
+  );
+}
