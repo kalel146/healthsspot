@@ -17,7 +17,7 @@ export default function StrengthModule() {
   });
   const [recoveryScore, setRecoveryScore] = useState(null);
 
-  const { theme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   const calculateOneRM = () => {
     const result = weight * (36 / (37 - reps));
@@ -42,7 +42,15 @@ export default function StrengthModule() {
       transition={{ duration: 0.5 }}
       className={`min-h-screen px-6 py-10 space-y-10 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}
     >
-      <h1 className="text-3xl font-bold text-yellow-400 text-center">Strength Lab</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold text-yellow-400">Strength Lab</h1>
+        <button
+          onClick={toggleTheme}
+          className="text-sm text-yellow-400 underline hover:text-yellow-300"
+        >
+          Switch to {theme === "dark" ? "Light" : "Dark"} Mode
+        </button>
+      </div>
 
       {/* Brzycki 1RM */}
       <section className="space-y-4">

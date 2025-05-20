@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useTheme } from "./ThemeContext";
 import { motion } from "framer-motion";
+import { useTheme } from "./ThemeContext";
 
 export default function CardioModule() {
   const [mets, setMets] = useState(1);
@@ -11,7 +11,7 @@ export default function CardioModule() {
   const [testType, setTestType] = useState("Cooper");
   const [distance, setDistance] = useState(2400);
   const [vo2max, setVo2max] = useState(null);
-const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   const calculateKcal = () => {
     const vo2 = mets * 3.5 * weight; // mL/min
@@ -30,16 +30,21 @@ const { theme, toggleTheme } = useTheme();
 
   return (
     <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  exit={{ opacity: 0, y: -20 }}
-  transition={{ duration: 0.5 }}
->
-    <div className="bg-black text-white min-h-screen px-6 py-10 space-y-10">
-      <h1 className="text-3xl font-bold text-yellow-400 text-center">Cardio Lab</h1>
-<button onClick={toggleTheme}>
-  Switch to {theme === "dark" ? "Light" : "Dark"} Mode
-</button>
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5 }}
+      className={`min-h-screen px-6 py-10 space-y-10 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}
+    >
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold text-yellow-400">Cardio Lab</h1>
+        <button
+          onClick={toggleTheme}
+          className="px-3 py-1 rounded bg-yellow-500 text-black hover:bg-yellow-600 font-semibold"
+        >
+          {theme === "dark" ? "Light" : "Dark"} Mode
+        </button>
+      </div>
 
       {/* METs to kcal */}
       <section className="space-y-4">
@@ -110,8 +115,6 @@ const { theme, toggleTheme } = useTheme();
 
         {vo2max && <p>VO2max: {vo2max} mL/kg/min</p>}
       </section>
-    </div>
     </motion.div>
-
   );
 }

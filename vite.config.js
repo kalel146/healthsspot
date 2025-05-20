@@ -13,7 +13,7 @@ export default defineConfig({
         start_url: "/",
         display: "standalone",
         background_color: "#000000",
-        theme_color: "#f97316",
+        theme_color: "#000000", // Πιο ουδέτερο για dark/light theme
         icons: [
           {
             src: "/logo-192.png",
