@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTheme } from "./ThemeContext";
 import { motion } from "framer-motion";
 import logo from "./assets/logo.png";
-import AdvancedMetrics from "./components/AdvancedMetrics"; // ΝΕΟ COMPONENT
+import AdvancedMetrics from "./components/AdvancedMetrics";
 
 const modules = [
   { name: "Strength", path: "/training" },
@@ -30,8 +30,9 @@ export default function Dashboard() {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
       className={`min-h-screen px-4 md:px-8 py-10 flex flex-col items-center space-y-10 transition-all duration-300 ${
-        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
-      }`}
+  theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+}`}
+
     >
       {/* Sticky Top Bar */}
       <div className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-3 border-b border-gray-700 bg-black shadow-md">
@@ -106,7 +107,7 @@ export default function Dashboard() {
 function Card({ label, value, theme }) {
   return (
     <div
-      className={`p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center ${
+      className={`p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center {
         theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-100 text-black"
       }`}
     >

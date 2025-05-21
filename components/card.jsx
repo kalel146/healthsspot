@@ -18,7 +18,10 @@ export default function Card({ label, value }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.4 }}
-      className={`p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center ${baseCard}`}
+      className={`p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center ${
+  theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-100 text-black"
+}`}
+
     >
       <div className={`text-sm ${labelStyle}`}>{label}</div>
       <div className="text-xl font-bold mt-1">{value}</div>

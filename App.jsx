@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { ThemeProvider } from "./ThemeContext";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 
 import LandingPage from "./LandingPage";
@@ -58,9 +57,7 @@ function AppContent() {
 export default function App() {
   return (
     <Router>
-      <ThemeProvider>
         <AppContent />
-      </ThemeProvider>
     </Router>
   );
 }

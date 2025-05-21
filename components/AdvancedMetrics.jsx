@@ -37,6 +37,8 @@ export default function AdvancedMetrics() {
   const [stressData, setStressData] = useState([]);
 
   useEffect(() => {
+    if (!user) return;
+    console.log("Clerk ID:", user?.id);
     const fetchMetrics = async () => {
       if (!user) return;
       const { data, error } = await supabase
