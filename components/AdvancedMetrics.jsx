@@ -59,7 +59,11 @@ export default function AdvancedMetrics() {
       },
     ]);
 
-    if (error) return console.error("Insert error:", error);
+    if (error) {
+      console.error("Insert error:", error);
+      alert("❌ Error inserting metrics. Check console.");
+      return;
+    }
     alert("✅ Metrics inserted!");
     setForm(Object.fromEntries(Object.keys(form).map((k) => [k, ""])));
   };
@@ -192,7 +196,7 @@ export default function AdvancedMetrics() {
               value={form[field]}
               onChange={handleChange}
               placeholder={field.replace(/_/g, ' ')}
-              className="px-3 py-2 rounded bg-gray-100 dark:bg-gray-800 text-sm text-black dark:text-white"
+              className={`px-3 py-2 rounded text-sm ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'} border border-gray-400`}
             />
           ))}
         </div>
