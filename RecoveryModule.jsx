@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTheme } from "./ThemeContext";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 export default function RecoveryModule() {
   const [inputs, setInputs] = useState({
@@ -39,18 +40,25 @@ export default function RecoveryModule() {
         theme === "dark" ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
-      <h1 className="text-3xl font-bold text-yellow-400 text-center">
-        Recovery Station
-      </h1>
+      <Helmet>
+        <title>Recovery Module | Health's Spot</title>
+        <meta
+          name="description"
+          content="Αξιολόγηση Ανάρρωσης με ερωτηματολόγιο και υπολογισμό score στο Health's Spot."
+        />
+      </Helmet>
 
-      <button
-        onClick={toggleTheme}
-        className="mb-6 text-sm underline hover:text-yellow-400"
-      >
-        Switch to {theme === "dark" ? "Light" : "Dark"} Mode
-      </button>
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold text-yellow-400">Recovery Station</h1>
+        <button
+          onClick={toggleTheme}
+          className="text-sm px-3 py-1 rounded bg-yellow-500 text-black hover:bg-yellow-600 font-semibold"
+        >
+          {theme === "dark" ? "☀ Light" : "🌙 Dark"}
+        </button>
+      </div>
 
-      <section className="space-y-6">
+      <div className="max-w-xl mx-auto space-y-6">
         <h2 className="text-xl font-semibold">Self-Report Ερωτηματολόγιο</h2>
         {Object.entries(inputs).map(([key, val]) => (
           <div key={key} className="space-y-2">
@@ -83,7 +91,7 @@ export default function RecoveryModule() {
             Recovery Score: <span className="font-bold">{score}</span>
           </p>
         )}
-      </section>
+      </div>
     </motion.div>
   );
 }

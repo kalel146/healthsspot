@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f97316" />
-  <meta name="description" content="Health's Spot: Το απόλυτο dashboard για strength, cardio & recovery.">
-  <link rel="canonical" href="https://healthsspot.vercel.app/">
-  <link rel="manifest" href="/manifest.json" />
-  <title>Health's Spot</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Health's Spot: Το απόλυτο dashboard για strength, cardio & recovery." />
+    <meta name="theme-color" content="#f97316" />
+    <meta name="keywords" content="health, fitness, strength, cardio, recovery, app, tracker" />
+    <meta name="author" content="Health's Spot" />
 
-  <!-- Tailwind CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Health's Spot" />
+    <meta property="og:description" content="Το απόλυτο dashboard για strength, cardio & recovery." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://healthsspot.vercel.app/" />
+    <meta property="og:image" content="/logo-512.png" />
 
-  <!-- Optional styling backup -->
-  <style>
-    html, body, #root {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-    body {
-      background-color: #000;
-      color: white;
-      font-family: system-ui, sans-serif;
-    }
-  </style>
-</head>
-<body>
-  <!-- React mounts the app here -->
-  <div id="root"></div>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Health's Spot" />
+    <meta name="twitter:description" content="Dashboard για strength, cardio & recovery." />
+    <meta name="twitter:image" content="/logo-512.png" />
 
-  <!-- Vite entry point -->
-  <script type="module" src="/main.jsx"></script>
-</body>
+    <link rel="icon" href="/logo-192.png" type="image/png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="canonical" href="https://healthsspot.vercel.app/" />
+    <title>Health's Spot</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <style>
+      html,
+      body,
+      #root {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #000;
+        color: white;
+        font-family: system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/main.jsx"></script>
+  </body>
 </html>

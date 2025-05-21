@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTheme } from "./ThemeContext";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 export default function NutritionModule() {
   const [weight, setWeight] = useState(70);
@@ -45,96 +46,107 @@ export default function NutritionModule() {
         theme === "dark" ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
-      <h1 className="text-3xl font-bold text-yellow-400 text-center">
-        Nutrition Lab
-      </h1>
+      <Helmet>
+        <title>Nutrition Module | Health's Spot</title>
+        <meta
+          name="description"
+          content="Υπολόγισε BMR, TDEE και διατροφικούς στόχους στο Health's Spot Nutrition Module."
+        />
+        <link rel="canonical" href="https://healthsspot.vercel.app/nutrition" />
+      </Helmet>
 
-      <button
-        onClick={toggleTheme}
-        className="mb-6 text-sm underline hover:text-yellow-400"
-      >
-        Switch to {theme === "dark" ? "Light" : "Dark"} Mode
-      </button>
+      <div className="max-w-xl mx-auto space-y-6">
+        <div className="flex justify-between items-center">
+          <h1 className="text-3xl font-bold text-yellow-400">Nutrition Lab</h1>
+          <button
+            onClick={toggleTheme}
+            className="text-2xl hover:text-yellow-400 transition"
+            title="Switch theme"
+          >
+            {theme === "dark" ? "☀" : "🌙"}
+          </button>
+        </div>
 
-      {/* BMR / TDEE */}
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Υπολογισμός BMR / TDEE</h2>
-        <input
-          type="number"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-          placeholder="Βάρος (kg)"
-          className={inputStyle}
-        />
-        <input
-          type="number"
-          value={height}
-          onChange={(e) => setHeight(e.target.value)}
-          placeholder="Ύψος (cm)"
-          className={inputStyle}
-        />
-        <input
-          type="number"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-          placeholder="Ηλικία"
-          className={inputStyle}
-        />
-        <select
-          value={gender}
-          onChange={(e) => setGender(e.target.value)}
-          className={inputStyle}
-        >
-          <option value="male">Άνδρας</option>
-          <option value="female">Γυναίκα</option>
-        </select>
-        <select
-          value={activity}
-          onChange={(e) => setActivity(Number(e.target.value))}
-          className={inputStyle}
-        >
-          <option value={1.2}>Καθιστική ζωή</option>
-          <option value={1.375}>Ελαφριά δραστηριότητα</option>
-          <option value={1.55}>Μέτρια δραστηριότητα</option>
-          <option value={1.725}>Έντονη δραστηριότητα</option>
-          <option value={1.9}>Πολύ έντονη δραστηριότητα</option>
-        </select>
-        <button
-          onClick={calculateNutrition}
-          className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded"
-        >
-          Υπολόγισε
-        </button>
-        {bmr && tdee && (
-          <p>
-            <strong>BMR:</strong> {bmr} kcal | <strong>TDEE:</strong> {tdee} kcal
-          </p>
-        )}
-      </section>
+        {/* BMR / TDEE */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold">Υπολογισμός BMR / TDEE</h2>
+          <input
+            type="number"
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
+            placeholder="Βάρος (kg)"
+            className={inputStyle}
+          />
+          <input
+            type="number"
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+            placeholder="Ύψος (cm)"
+            className={inputStyle}
+          />
+          <input
+            type="number"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            placeholder="Ηλικία"
+            className={inputStyle}
+          />
+          <select
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            className={inputStyle}
+          >
+            <option value="male">Άνδρας</option>
+            <option value="female">Γυναίκα</option>
+          </select>
+          <select
+            value={activity}
+            onChange={(e) => setActivity(Number(e.target.value))}
+            className={inputStyle}
+          >
+            <option value={1.2}>Καθιστική ζωή</option>
+            <option value={1.375}>Ελαφριά δραστηριότητα</option>
+            <option value={1.55}>Μέτρια δραστηριότητα</option>
+            <option value={1.725}>Έντονη δραστηριότητα</option>
+            <option value={1.9}>Πολύ έντονη δραστηριότητα</option>
+          </select>
+          <button
+            onClick={calculateNutrition}
+            className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded font-semibold"
+          >
+            Υπολόγισε
+          </button>
+          {bmr && tdee && (
+            <p>
+              <strong>BMR:</strong> {bmr} kcal | <strong>TDEE:</strong> {tdee} kcal
+            </p>
+          )}
+        </section>
 
-      {/* Macros */}
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Διατροφικοί Στόχοι (Macros)</h2>
-        <label>Πρωτεΐνη (g/kg):</label>
-        <input
-          type="number"
-          value={protein}
-          onChange={(e) => setProtein(e.target.value)}
-          className={inputStyle}
-        />
-        <label>Λίπος (g/kg):</label>
-        <input
-          type="number"
-          value={fat}
-          onChange={(e) => setFat(e.target.value)}
-          className={inputStyle}
-        />
-        {carbs && (
-          <p>
-            Πρωτεΐνη: {protein * weight}g | Λίπος: {fat * weight}g | Υδατάνθρακες: {carbs}g
-          </p>
-        )}
-      </section>
+        {/* Macros */}
+        <section className="space-y-4">
+          <h2 className="text-xl font-semibold">Διατροφικοί Στόχοι (Macros)</h2>
+          <label className="block text-sm font-medium">Πρωτεΐνη (g/kg):</label>
+          <input
+            type="number"
+            value={protein}
+            onChange={(e) => setProtein(e.target.value)}
+            className={inputStyle}
+          />
+          <label className="block text-sm font-medium">Λίπος (g/kg):</label>
+          <input
+            type="number"
+            value={fat}
+            onChange={(e) => setFat(e.target.value)}
+            className={inputStyle}
+          />
+          {carbs && (
+            <p>
+              Πρωτεΐνη: {protein * weight}g | Λίπος: {fat * weight}g | Υδατάνθρακες: {carbs}g
+            </p>
+          )}
+        </section>
+      </div>
     </motion.div>
   );
 }
