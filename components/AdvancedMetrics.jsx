@@ -15,6 +15,7 @@ import {
 } from "recharts";
 import { useTheme } from "../ThemeContext";
 import { createClient } from "@supabase/supabase-js";
+import { useUser } from "@clerk/clerk-react";
 
 const supabase = createClient(
   "https://lfhnlalktlcjyhelblci.supabase.co",
@@ -28,6 +29,8 @@ export default function AdvancedMetrics() {
   const chartBg = theme === "dark" ? "#1f2937" : "#f3f4f6";
   const cardBg = theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black";
 
+  const { user } = useUser();
+
   const [bmrData, setBmrData] = useState([]);
   const [vo2Data, setVo2Data] = useState([]);
   const [macroData, setMacroData] = useState([]);
@@ -35,10 +38,11 @@ export default function AdvancedMetrics() {
 
   useEffect(() => {
     const fetchMetrics = async () => {
+      if (!user) return;
       const { data, error } = await supabase
         .from("metrics")
         .select("*")
-        .eq("user_id", "Giannis")
+        .eq("user_id", user.id)
         .order("week");
       if (error) {
         console.error("Supabase error:", error);
@@ -66,7 +70,7 @@ export default function AdvancedMetrics() {
     };
 
     fetchMetrics();
-  }, []);
+  }, [user]);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-10">
