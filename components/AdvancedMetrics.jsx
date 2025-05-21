@@ -50,13 +50,13 @@ export default function AdvancedMetrics() {
           { name: "Fat", value: data.at(-1).fat },
         ]);
         setStressData([
-          { day: "Mon", level: data.at(-1).stress_mon },
-          { day: "Tue", level: data.at(-1).stress_tue },
-          { day: "Wed", level: data.at(-1).stress_wed },
-          { day: "Thu", level: data.at(-1).stress_thu },
-          { day: "Fri", level: data.at(-1).stress_fri },
-          { day: "Sat", level: data.at(-1).stress_sat },
-          { day: "Sun", level: data.at(-1).stress_sun },
+          { day: "Mon", level: data.at(-1).stress_monday },
+          { day: "Tue", level: data.at(-1).stress_tuesday },
+          { day: "Wed", level: data.at(-1).stress_wednesday },
+          { day: "Thu", level: data.at(-1).stress_thursday },
+          { day: "Fri", level: data.at(-1).stress_friday },
+          { day: "Sat", level: data.at(-1).stress_saturday },
+          { day: "Sun", level: data.at(-1).stress_sunday },
         ]);
       }
     };
