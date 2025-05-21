@@ -60,7 +60,7 @@ export default function Dashboard() {
           onClick={toggleTheme}
           className="text-sm px-3 py-1 rounded bg-yellow-500 text-black hover:bg-yellow-600 font-semibold"
         >
-          {theme === "dark" ? "☀ Light Mode" : "🌙 Dark Mode"}
+          {theme === "dark" ? "☀️ Light Mode" : "🌛 Dark Mode"}
         </button>
       </div>
 

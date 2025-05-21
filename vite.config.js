@@ -11,7 +11,7 @@ export default defineConfig({
       manifest: {
         name: "Health's Spot",
         short_name: "HealthSpot",
-        start_url: "/",
+        start_url: "/", // αυτό ήδη είναι σωστό
         display: "standalone",
         background_color: "#000000",
         theme_color: "#f97316",
@@ -28,14 +28,14 @@ export default defineConfig({
           },
         ],
       },
+      devOptions: {
+        navigateFallback: '/', // ✅ αυτό κάνει fix το F5 σε dashboard στο localhost
+      }
     }),
   ],
-    resolve: {
+  resolve: {
     alias: {
       '@': path.resolve(__dirname, './'),
     },
-  },
-  server: {
-    historyApiFallback: true,
   },
 });
