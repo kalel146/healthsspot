@@ -35,7 +35,11 @@ export default function AdvancedMetrics() {
 
   useEffect(() => {
     const fetchMetrics = async () => {
-      const { data, error } = await supabase.from("metrics").select("*").order("week");
+      const { data, error } = await supabase
+        .from("metrics")
+        .select("*")
+        .eq("user_id", "Giannis")
+        .order("week");
       if (error) {
         console.error("Supabase error:", error);
         return;
