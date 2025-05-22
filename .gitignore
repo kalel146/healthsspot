@@ -1,0 +1,54 @@
+# ⛔ Node modules
+node_modules/
+
+# 📦 Build output
+dist/
+build/
+
+# 📂 Logs & system files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.DS_Store
+Thumbs.db
+
+# 🧠 Vite cache
+.vite/
+
+# 🔌 Supabase (local dev)
+.supabase/
+
+# ⚙️ Env vars
+.env
+.env.local
+.env.*.local
+
+# 🖥️ VS Code
+.vscode/
+
+# 📸 PWA generated
+*.webmanifest
+manifest.webmanifest
+workbox-*.js
+service-worker.js
+
+# 🧪 Test coverage
+coverage/
+
+# 💥 Output from PDF or screenshots
+*.pdf
+screenshots/
+
+# 💾 Clerk/SDK output or cached sessions
+.clerk/
+
+# 🧱 JetBrains IDEs
+.idea/
+
+# ⚙️ Misc
+*.log
+*.sqlite
+*.bak
