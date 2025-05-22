@@ -5,14 +5,15 @@ import { motion } from "framer-motion";
 import logo from "./assets/logo.png";
 import AdvancedMetrics from "./components/AdvancedMetrics";
 import Particles from "react-tsparticles";
+import { tsParticles } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 
 const modules = [
-  { name: "Strength", path: "/training" },
-  { name: "Cardio", path: "/cardio" },
-  { name: "Nutrition", path: "/nutrition" },
-  { name: "Recovery", path: "/recovery" },
-  { name: "Export", path: "/export" },
+  { icon: "🏋️", name: "Strength", path: "/training", color: "bg-purple-600" },
+  { icon: "🏃", name: "Cardio", path: "/cardio", color: "bg-red-500" },
+  { icon: "🍎", name: "Nutrition", path: "/nutrition", color: "bg-green-500" },
+  { icon: "😌", name: "Recovery", path: "/recovery", color: "bg-blue-500" },
+  { icon: "📤", name: "Export", path: "/export", color: "bg-orange-500" },
 ];
 
 export default function Dashboard() {
@@ -25,8 +26,8 @@ export default function Dashboard() {
     }
   }, []);
 
-  const particlesInit = async (main) => {
-    await loadFull(main);
+  const particlesInit = async (engine) => {
+    await loadFull(engine);
   };
 
   return (
@@ -42,53 +43,31 @@ export default function Dashboard() {
       }`}
     >
       {/* Particle FX */}
-      <Particles
-        className="absolute inset-0 z-0"
-        init={particlesInit}
-        options={{
-          fullScreen: false,
-          background: {
-            color: {
-              value: "transparent",
+      <div className="absolute inset-0 -z-10">
+        <Particles
+          id="tsparticles"
+          init={particlesInit}
+          options={{
+            fullScreen: false,
+            background: { color: { value: "transparent" } },
+            fpsLimit: 60,
+            interactivity: {
+              detectsOn: "canvas",
+              events: { onHover: { enable: true, mode: "repulse" }, resize: true },
+              modes: { repulse: { distance: 50, duration: 0.4 } },
             },
-          },
-          fpsLimit: 60,
-          interactivity: {
-            detectsOn: "canvas",
-            events: {
-              onHover: { enable: true, mode: "repulse" },
-              resize: true,
+            particles: {
+              number: { value: 120, density: { enable: true, area: 900 } },
+              color: { value: ["#00f6ff", "#f0f0f0", "#f97316"] },
+              shape: { type: "circle" },
+              opacity: { value: 0.6, random: true, anim: { enable: true, speed: 0.4, opacity_min: 0.1, sync: false } },
+              size: { value: { min: 2, max: 4 }, anim: { enable: true, speed: 1, size_min: 0.3 } },
+              move: { enable: true, speed: 0.3, direction: "none", random: true, outModes: "out" },
             },
-            modes: {
-              repulse: { distance: 50, duration: 0.4 },
-            },
-          },
-          particles: {
-            number: { value: 80, density: { enable: true, area: 800 } },
-            color: { value: ["#00f6ff", "#f0f0f0", "#f97316"] },
-            shape: {
-              type: "circle",
-            },
-            opacity: {
-              value: 0.6,
-              random: true,
-              anim: { enable: true, speed: 0.4, opacity_min: 0.1, sync: false },
-            },
-            size: {
-              value: { min: 1.5, max: 3 },
-              anim: { enable: true, speed: 1, size_min: 0.3 },
-            },
-            move: {
-              enable: true,
-              speed: 0.2,
-              direction: "none",
-              random: true,
-              outModes: "out",
-            },
-          },
-          detectRetina: true,
-        }}
-      />
+            detectRetina: true,
+          }}
+        />
+      </div>
 
       {/* Top Bar */}
       <motion.div
@@ -102,7 +81,7 @@ export default function Dashboard() {
           <span className="text-yellow-400 font-bold text-lg drop-shadow-md">Health's Spot</span>
         </div>
 
-        <div className="text-white text-md md:text-lg font-bold italic">Welcome, Giannis</div>
+        <div className="text-white text-2xl font-bold italic">Welcome, Giannis</div>
 
         <motion.button
           whileTap={{ scale: 0.95 }}
@@ -113,22 +92,24 @@ export default function Dashboard() {
         </motion.button>
       </motion.div>
 
-      {/* Bottom Bar */}
+      {/* Side Bar */}
       <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ x: -50, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-        className="fixed bottom-0 left-0 w-full z-40 flex justify-center gap-2 px-4 py-2 bg-black/40 backdrop-blur-md shadow-inner"
+        className="fixed top-20 left-0 h-auto z-50 flex flex-col gap-4 px-3 py-4 bg-black/60 backdrop-blur-md shadow-xl rounded-r-2xl"
       >
         {modules.map((mod) => (
           <motion.button
             key={mod.name}
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            whileHover={{ scale: 1.1, backgroundColor: "#1f2937" }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
             onClick={() => navigate(mod.path)}
-            className="text-sm font-medium px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 text-white shadow"
+            className={`group flex items-center justify-start gap-4 text-xl font-bold px-6 py-5 rounded-2xl text-white shadow-lg hover:shadow-2xl backdrop-blur-lg transition-all duration-300 ${mod.color}`}
           >
-            {mod.name}
+            <span className="text-4xl drop-shadow-sm group-hover:rotate-3 transition-transform duration-200">{mod.icon}</span>
+            <span className="text-xl tracking-wide group-hover:scale-105 transition-transform duration-200">{mod.name}</span>
           </motion.button>
         ))}
       </motion.div>
@@ -185,12 +166,12 @@ function Card({ label, value, theme }) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center ${
+      className={`p-10 rounded-2xl shadow-xl flex flex-col items-center justify-center text-center text-xl font-semibold ${
         theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-100 text-black"
       }`}
     >
-      <div className="text-sm text-gray-400 dark:text-gray-300">{label}</div>
-      <div className="text-xl font-bold mt-1">{value}</div>
+      <div className="text-lg text-gray-400 dark:text-gray-300 font-medium">{label}</div>
+      <div className="text-3xl font-extrabold mt-2">{value}</div>
     </motion.div>
   );
 }
