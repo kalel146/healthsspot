@@ -25,62 +25,122 @@ const supabase = createClient(
 const COLORS = ["#3b82f6", "#10b981", "#facc15", "#f97316"];
 
 export default function AdvancedMetrics() {
-  
+  const [showOnboarding, setShowOnboarding] = useState(true);
 
-  
-
-  
+  const dismissOnboarding = () => {
+    setShowOnboarding(false);
+  };
   const { theme } = useTheme();
   const chartBg = theme === "dark" ? "#1f2937" : "#f3f4f6";
   const cardBg = theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black";
-
   const { user } = useUser();
+
+  const [form, setForm] = useState({
+    week: 1,
+    bmr: 0,
+    vo2max: 0,
+    protein: 0,
+    carbs: 0,
+    fat: 0,
+    stress_monday: 0,
+    stress_tuesday: 0,
+    stress_wednesday: 0,
+    stress_thursday: 0,
+    stress_friday: 0,
+    stress_saturday: 0,
+    stress_sunday: 0,
+  });
 
   const [bmrData, setBmrData] = useState([]);
   const [vo2Data, setVo2Data] = useState([]);
   const [macroData, setMacroData] = useState([]);
   const [stressData, setStressData] = useState([]);
 
+  const fetchMetrics = async () => {
+    if (!user) return;
+    const { data, error } = await supabase
+      .from("metrics")
+      .select("*")
+      .eq("user_id", user.id)
+      .order("week");
+
+    if (error) {
+      console.error("Supabase error:", error);
+      return;
+    }
+
+    if (data && data.length > 0) {
+      setBmrData(data.map((row) => ({ week: `Week ${row.week ?? '?'}`, BMR: row.bmr ?? 0 })));
+      setVo2Data(data.map((row) => ({ week: `Week ${row.week ?? '?'}`, VO2max: row.vo2max ?? 0 })));
+
+        setMacroData([
+  { name: "Protein", value: data.at(-1).protein ?? 0 },
+  { name: "Carbs", value: data.at(-1).carbs ?? 0 },
+  { name: "Fat", value: data.at(-1).fat ?? 0 },
+]);
+      setStressData([
+  { day: "Mon", level: data.at(-1).stress_monday ?? 0 },
+  { day: "Tue", level: data.at(-1).stress_tuesday ?? 0 },
+  { day: "Wed", level: data.at(-1).stress_wednesday ?? 0 },
+  { day: "Thu", level: data.at(-1).stress_thursday ?? 0 },
+  { day: "Fri", level: data.at(-1).stress_friday ?? 0 },
+  { day: "Sat", level: data.at(-1).stress_saturday ?? 0 },
+  { day: "Sun", level: data.at(-1).stress_sunday ?? 0 },
+]);
+    }
+  };
+
   useEffect(() => {
     if (!user) return;
-    console.log("Clerk ID:", user?.id);
-    const fetchMetrics = async () => {
-      if (!user) return;
-      const { data, error } = await supabase
-        .from("metrics")
-        .select("*")
-        .eq("user_id", user.id)
-        .order("week");
-      if (error) {
-        console.error("Supabase error:", error);
-        return;
-      }
-
-      if (data && data.length > 0) {
-        setBmrData(data.map(row => ({ week: `Week ${row.week}`, BMR: row.bmr })));
-        setVo2Data(data.map(row => ({ week: `Week ${row.week}`, VO2max: row.vo2max })));
-        setMacroData([
-          { name: "Protein", value: data.at(-1).protein },
-          { name: "Carbs", value: data.at(-1).carbs },
-          { name: "Fat", value: data.at(-1).fat },
-        ]);
-        setStressData([
-          { day: "Mon", level: data.at(-1).stress_monday },
-          { day: "Tue", level: data.at(-1).stress_tuesday },
-          { day: "Wed", level: data.at(-1).stress_wednesday },
-          { day: "Thu", level: data.at(-1).stress_thursday },
-          { day: "Fri", level: data.at(-1).stress_friday },
-          { day: "Sat", level: data.at(-1).stress_saturday },
-          { day: "Sun", level: data.at(-1).stress_sunday },
-        ]);
-      }
-    };
-
     fetchMetrics();
   }, [user]);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: Number(value) }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!user) return;
+    const { error } = await supabase.from("metrics").insert([
+      {
+        user_id: user.id,
+        ...form,
+      },
+    ]);
+    if (error) {
+      if (error.code === '42501' || error.message.includes("permission denied")) {
+        alert("🔒 Δεν επιτρέπεται η καταγραφή. Ίσως είναι ενεργό το RLS ή δεν έχεις τα δικαιώματα.");
+      } else {
+        alert("❌ Error inserting metrics. Check console.");
+      }
+      console.error("Insert error:", error);
+      return;
+    }
+    alert("✅ Metrics inserted!");
+    fetchMetrics();
+  };
+
   return (
     <div className="space-y-10">
+      {showOnboarding && (
+        <div className={`p-6 rounded-xl shadow ${cardBg} border-l-4 border-yellow-400 animate-fade-in`}>
+          <h3 className="text-xl font-bold mb-2 text-yellow-400">👋 Καλώς ήρθες στο Health's Spot!</h3>
+          <ul className="list-disc list-inside space-y-1 text-sm">
+            <li>➕ Πρόσθεσε μετρήσεις για BMR, VO₂max, macros και stress.</li>
+            <li>📊 Δες εβδομαδιαία εξέλιξη στα γραφήματα.</li>
+            <li>🔐 Τα δεδομένα σου είναι ορατά μόνο σε εσένα.</li>
+          </ul>
+          <p className="text-sm mt-4">👉 Ξεκίνα πατώντας το κουμπί <strong>➕ Submit Metrics</strong> παρακάτω.</p>
+          <button
+            onClick={dismissOnboarding}
+            className="mt-4 px-4 py-2 bg-yellow-500 text-black font-bold rounded hover:bg-yellow-600"
+          >
+            ✅ Got it
+          </button>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-10">
         {/* BMR Line Chart */}
         <div className={`p-4 rounded-xl shadow ${cardBg}`}>
@@ -89,7 +149,7 @@ export default function AdvancedMetrics() {
             <LineChart data={bmrData} style={{ backgroundColor: chartBg }}>
               <XAxis dataKey="week" stroke={theme === "dark" ? "#fff" : "#000"} />
               <YAxis stroke={theme === "dark" ? "#fff" : "#000"} />
-              <Tooltip contentStyle={{ backgroundColor: chartBg, color: theme === "dark" ? "#fff" : "#000" }} />
+              <Tooltip contentStyle={{ backgroundColor: chartBg }} />
               <Legend />
               <Line type="monotone" dataKey="BMR" stroke="#facc15" strokeWidth={3} />
             </LineChart>
@@ -103,7 +163,7 @@ export default function AdvancedMetrics() {
             <LineChart data={vo2Data} style={{ backgroundColor: chartBg }}>
               <XAxis dataKey="week" stroke={theme === "dark" ? "#fff" : "#000"} />
               <YAxis stroke={theme === "dark" ? "#fff" : "#000"} />
-              <Tooltip contentStyle={{ backgroundColor: chartBg, color: theme === "dark" ? "#fff" : "#000" }} />
+              <Tooltip contentStyle={{ backgroundColor: chartBg }} />
               <Legend />
               <Line type="monotone" dataKey="VO2max" stroke="#34d399" strokeWidth={3} />
             </LineChart>
@@ -128,7 +188,7 @@ export default function AdvancedMetrics() {
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip contentStyle={{ backgroundColor: chartBg, color: theme === "dark" ? "#fff" : "#000" }} />
+              <Tooltip contentStyle={{ backgroundColor: chartBg }} />
               <Legend />
             </PieChart>
           </ResponsiveContainer>
@@ -141,7 +201,7 @@ export default function AdvancedMetrics() {
             <BarChart data={stressData} style={{ backgroundColor: chartBg }}>
               <XAxis dataKey="day" stroke={theme === "dark" ? "#fff" : "#000"} />
               <YAxis stroke={theme === "dark" ? "#fff" : "#000"} />
-              <Tooltip contentStyle={{ backgroundColor: chartBg, color: theme === "dark" ? "#fff" : "#000" }} />
+              <Tooltip contentStyle={{ backgroundColor: chartBg }} />
               <Legend />
               <Bar dataKey="level" fill="#f87171" />
             </BarChart>
@@ -149,6 +209,29 @@ export default function AdvancedMetrics() {
         </div>
       </div>
 
-      </div>
+      <form onSubmit={handleSubmit} className="col-span-full p-6 mt-10 rounded-xl shadow border border-gray-500 space-y-4">
+        <h3 className="text-lg font-bold text-yellow-400">🆕 Add New Metrics</h3>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+  {Object.keys(form).map((field) => (
+    <div key={field} className="flex flex-col">
+      <label htmlFor={field} className="text-xs text-gray-400 dark:text-gray-300 mb-1 capitalize">
+        {field.replace(/_/g, " ")}
+      </label>
+      <input
+        id={field}
+        name={field}
+        value={form[field]}
+        onChange={handleInputChange}
+        placeholder={field.replace(/_/g, " ")}
+        className={`px-3 py-2 rounded text-sm ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"} border border-gray-400`}
+      />
+    </div>
+  ))}
+</div>
+        <button type="submit" className="mt-4 px-4 py-2 bg-yellow-500 text-black font-bold rounded hover:bg-yellow-600">
+          ➕ Submit Metrics
+        </button>
+      </form>
+    </div>
   );
 }
