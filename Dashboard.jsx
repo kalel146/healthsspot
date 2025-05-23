@@ -18,7 +18,7 @@ const modules = [
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (window.location.pathname === "/dashboard") {
@@ -43,7 +43,7 @@ export default function Dashboard() {
       }`}
     >
       {/* Particle FX */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
+      <div className="absolute inset-0 -z-10">
         <Particles
           id="tsparticles"
           init={particlesInit}
@@ -69,65 +69,27 @@ export default function Dashboard() {
         />
       </div>
 
-      {/* Top Bar */}
+      {/* Top Bar with Global Modules */}
       <motion.div
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
-        className="fixed top-0 left-0 w-full z-50 flex flex-wrap items-center justify-between px-4 py-3 border-b border-gray-700 bg-black/40 backdrop-blur-md shadow-lg"
+        className="fixed top-0 left-0 w-full z-50 flex flex-wrap justify-center md:justify-center items-center gap-4 px-4 py-3 border-b border-gray-700 bg-black/40 backdrop-blur-md shadow-lg"
       >
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}> 
-          <img src={logo} alt="logo" className="w-6 h-6 rounded shadow-sm hover:scale-110 transition duration-300" />
-          <span className="text-yellow-400 font-bold text-lg drop-shadow-md">Health's Spot</span>
-        </div>
-
-        <div className="text-white text-2xl font-bold italic w-full text-center md:w-auto">Welcome, Giannis</div>
-
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          onClick={toggleTheme}
-          className="text-sm px-3 py-1 rounded bg-yellow-500 text-black hover:bg-yellow-600 font-semibold shadow"
-        >
-          {theme === "dark" ? "☀️ Light Mode" : "🌛 Dark Mode"}
-        </motion.button>
-      </motion.div>
-
-      {/* Side Modules */}
-      <motion.div
-        initial={{ x: -50, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-        className="hidden md:flex fixed top-24 left-0 h-auto z-40 flex-col gap-4 px-3 py-4 bg-black/60 backdrop-blur-md shadow-xl rounded-r-2xl"
-      >
-        {modules.map((mod) => (
-          <motion.button
-            key={mod.name}
-            whileHover={{ scale: 1.1, backgroundColor: "#1f2937" }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            onClick={() => navigate(mod.path)}
-            className={`group flex items-center justify-start gap-4 text-xl font-bold px-6 py-5 rounded-2xl text-white shadow-lg hover:shadow-2xl backdrop-blur-lg transition-all duration-300 ${mod.color}`}
-          >
-            <span className="text-4xl drop-shadow-sm group-hover:rotate-3 transition-transform duration-200">{mod.icon}</span>
-            <span className="text-xl tracking-wide group-hover:scale-105 transition-transform duration-200">{mod.name}</span>
-          </motion.button>
-        ))}
-      </motion.div>
-
-      {/* Bottom Nav for Mobile */}
-      <div className="md:hidden fixed bottom-0 left-0 w-full bg-black/80 backdrop-blur-sm z-50 flex justify-around px-2 py-2 border-t border-gray-700">
         {modules.map((mod) => (
           <button
             key={mod.name}
             onClick={() => navigate(mod.path)}
-            className="flex flex-col items-center text-sm text-white hover:scale-110 transition-all"
+            className="flex items-center gap-2 text-xl font-semibold text-white hover:scale-105 transition-transform px-3 py-1 rounded-lg bg-black/30 hover:bg-black/50"
+            title={mod.name}
           >
             <span className="text-2xl">{mod.icon}</span>
+            <span className="hidden sm:inline-block text-base">{mod.name}</span>
           </button>
         ))}
-      </div>
+      </motion.div>
 
-      <div className="pt-24 w-full flex flex-col items-center space-y-10 relative z-10 max-w-screen-xl">
+      <div className="pt-24 w-full flex flex-col items-center space-y-10 relative z-10">
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -141,7 +103,7 @@ export default function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl"
         >
           <Card label="BMR / TDEE" value="2400 kcal" theme={theme} />
           <Card label="1RM (Brzycki)" value="145 kg" theme={theme} />
@@ -155,7 +117,7 @@ export default function Dashboard() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-full"
+          className="w-full max-w-6xl"
         >
           <AdvancedMetrics />
         </motion.div>

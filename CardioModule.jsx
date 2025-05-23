@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { useTheme } from "./ThemeContext";
+import { Sparkles, HeartPulse, Flame, Ruler } from "lucide-react";
 
 export default function CardioModule() {
   const [mets, setMets] = useState(1);
@@ -15,7 +16,7 @@ export default function CardioModule() {
   const { theme, toggleTheme } = useTheme();
 
   const calculateKcal = () => {
-    const vo2 = mets * 3.5 * weight; // mL/min
+    const vo2 = mets * 3.5 * weight;
     const kcalPerMin = (vo2 * 5) / 1000;
     const total = kcalPerMin * duration;
     setKcal({ vo2: vo2.toFixed(1), total: total.toFixed(1) });
@@ -29,15 +30,34 @@ export default function CardioModule() {
     setVo2max(result.toFixed(1));
   };
 
-  const inputClass = `p-2 rounded w-full ${theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-200 text-black"}`;
+  const inputClass = `p-3 rounded-xl shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all duration-300 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"}`;
+  const sectionClass = "space-y-4 max-w-xl mx-auto p-6 bg-opacity-70 rounded-2xl shadow-lg";
+
+  const SectionHeader = ({ icon, color, children }) => (
+    <h2 className={`text-2xl font-semibold flex items-center gap-2 text-${color}-500`}>{icon} {children}</h2>
+  );
+
+  const LabeledInput = ({ id, label, value, onChange, placeholder }) => (
+    <div>
+      <label htmlFor={id} className="block text-sm font-medium">{label}</label>
+      <input
+        id={id}
+        type="number"
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className={inputClass}
+      />
+    </div>
+  );
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
-      className={`min-h-screen px-6 py-10 space-y-10 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`min-h-screen px-4 sm:px-8 py-12 space-y-14 transition-colors duration-300 ${theme === "dark" ? "bg-gradient-to-br from-black via-gray-900 to-black text-white" : "bg-gradient-to-br from-white via-gray-100 to-white text-black"}`}
     >
       <Helmet>
         <title>Cardio Module | Health's Spot</title>
@@ -47,42 +67,42 @@ export default function CardioModule() {
       </Helmet>
 
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl sm:text-3xl font-bold text-yellow-400">Cardio Lab</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-yellow-400 flex items-center gap-2">
+          <HeartPulse className="w-6 h-6 animate-pulse" /> Cardio Lab
+        </h1>
         <button
           onClick={toggleTheme}
-          className="px-3 py-1 rounded bg-yellow-500 text-black hover:bg-yellow-600 font-semibold"
+          className="px-3 py-2 rounded-xl shadow font-semibold bg-yellow-400 text-black hover:bg-yellow-500 transition"
           title="Εναλλαγή Θέματος"
         >
           {theme === "dark" ? "☀" : "🌙"}
         </button>
       </div>
 
-      {/* METs to kcal */}
-      <section className="space-y-4 max-w-xl mx-auto">
-        <h2 className="text-xl font-semibold">Υπολογισμός kcal μέσω METs ➝ VO2 ➝ kcal</h2>
+      <motion.section className={sectionClass} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
+        <SectionHeader icon={<Flame className="w-5 h-5" />} color="green">
+          Υπολογισμός kcal (MET ➝ VO2 ➝ kcal)
+        </SectionHeader>
 
-        <label htmlFor="mets" className="block text-sm font-medium">METs</label>
-        <input id="mets" type="number" value={mets} onChange={(e) => setMets(e.target.value)} className={inputClass} />
+        <LabeledInput id="mets" label="METs" value={mets} onChange={(e) => setMets(e.target.value)} />
+        <LabeledInput id="weight" label="Βάρος (kg)" value={weight} onChange={(e) => setWeight(e.target.value)} />
+        <LabeledInput id="duration" label="Διάρκεια (λεπτά)" value={duration} onChange={(e) => setDuration(e.target.value)} />
 
-        <label htmlFor="weight" className="block text-sm font-medium">Βάρος (kg)</label>
-        <input id="weight" type="number" value={weight} onChange={(e) => setWeight(e.target.value)} className={inputClass} />
-
-        <label htmlFor="duration" className="block text-sm font-medium">Διάρκεια (λεπτά)</label>
-        <input id="duration" type="number" value={duration} onChange={(e) => setDuration(e.target.value)} className={inputClass} />
-
-        <button onClick={calculateKcal} className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded">
+        <button onClick={calculateKcal} className="bg-green-600 hover:bg-green-700 px-5 py-2 mt-2 rounded-xl text-white shadow">
           Υπολόγισε kcal
         </button>
-        {kcal && (
-          <p>
-            VO2: {kcal.vo2} mL/min | kcal: {kcal.total} kcal συνολικά
-          </p>
-        )}
-      </section>
 
-      {/* VO2max Tests */}
-      <section className="space-y-4 max-w-xl mx-auto">
-        <h2 className="text-xl font-semibold">VO2max Test</h2>
+        {kcal && (
+          <motion.p className="font-medium text-sm mt-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            VO2: <strong>{kcal.vo2}</strong> mL/min | kcal: <strong>{kcal.total}</strong> kcal συνολικά
+          </motion.p>
+        )}
+      </motion.section>
+
+      <motion.section className={sectionClass} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
+        <SectionHeader icon={<Ruler className="w-5 h-5" />} color="blue">
+          VO2max Test (Cooper)
+        </SectionHeader>
 
         <label htmlFor="vo2test" className="block text-sm font-medium">Επιλογή Τεστ VO2max</label>
         <select
@@ -97,25 +117,25 @@ export default function CardioModule() {
         </select>
 
         {testType === "Cooper" && (
-          <>
-            <label htmlFor="cooper-distance" className="block text-sm font-medium">Απόσταση σε μέτρα (12 λεπτά)</label>
-            <input
-              id="cooper-distance"
-              type="number"
-              value={distance}
-              onChange={(e) => setDistance(e.target.value)}
-              placeholder="π.χ. 2400"
-              className={inputClass}
-            />
-          </>
+          <LabeledInput
+            id="cooper-distance"
+            label="Απόσταση σε μέτρα (12 λεπτά)"
+            value={distance}
+            onChange={(e) => setDistance(e.target.value)}
+            placeholder="π.χ. 2400"
+          />
         )}
 
-        <button onClick={calculateVO2max} className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">
+        <button onClick={calculateVO2max} className="bg-blue-600 hover:bg-blue-700 px-5 py-2 mt-2 rounded-xl text-white shadow">
           Υπολόγισε VO2max
         </button>
 
-        {vo2max && <p>VO2max: {vo2max} mL/kg/min</p>}
-      </section>
+        {vo2max && (
+          <motion.p className="font-medium text-sm mt-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            VO2max: <strong>{vo2max}</strong> mL/kg/min
+          </motion.p>
+        )}
+      </motion.section>
     </motion.div>
   );
 }
