@@ -43,7 +43,7 @@ export default function Dashboard() {
       }`}
     >
       {/* Particle FX */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none">
         <Particles
           id="tsparticles"
           init={particlesInit}
@@ -74,14 +74,14 @@ export default function Dashboard() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
-        className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 py-3 border-b border-gray-700 bg-black/40 backdrop-blur-md shadow-lg"
+        className="fixed top-0 left-0 w-full z-50 flex flex-wrap items-center justify-between px-4 py-3 border-b border-gray-700 bg-black/40 backdrop-blur-md shadow-lg"
       >
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}> 
           <img src={logo} alt="logo" className="w-6 h-6 rounded shadow-sm hover:scale-110 transition duration-300" />
           <span className="text-yellow-400 font-bold text-lg drop-shadow-md">Health's Spot</span>
         </div>
 
-        <div className="text-white text-2xl font-bold italic">Welcome, Giannis</div>
+        <div className="text-white text-2xl font-bold italic w-full text-center md:w-auto">Welcome, Giannis</div>
 
         <motion.button
           whileTap={{ scale: 0.95 }}
@@ -92,12 +92,12 @@ export default function Dashboard() {
         </motion.button>
       </motion.div>
 
-      {/* Side Bar */}
+      {/* Side Modules */}
       <motion.div
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-        className="fixed top-20 left-0 h-auto z-50 flex flex-col gap-4 px-3 py-4 bg-black/60 backdrop-blur-md shadow-xl rounded-r-2xl"
+        className="hidden md:flex fixed top-24 left-0 h-auto z-40 flex-col gap-4 px-3 py-4 bg-black/60 backdrop-blur-md shadow-xl rounded-r-2xl"
       >
         {modules.map((mod) => (
           <motion.button
@@ -114,7 +114,20 @@ export default function Dashboard() {
         ))}
       </motion.div>
 
-      <div className="pt-24 w-full flex flex-col items-center space-y-10 relative z-10">
+      {/* Bottom Nav for Mobile */}
+      <div className="md:hidden fixed bottom-0 left-0 w-full bg-black/80 backdrop-blur-sm z-50 flex justify-around px-2 py-2 border-t border-gray-700">
+        {modules.map((mod) => (
+          <button
+            key={mod.name}
+            onClick={() => navigate(mod.path)}
+            className="flex flex-col items-center text-sm text-white hover:scale-110 transition-all"
+          >
+            <span className="text-2xl">{mod.icon}</span>
+          </button>
+        ))}
+      </div>
+
+      <div className="pt-24 w-full flex flex-col items-center space-y-10 relative z-10 max-w-screen-xl">
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -128,7 +141,7 @@ export default function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
         >
           <Card label="BMR / TDEE" value="2400 kcal" theme={theme} />
           <Card label="1RM (Brzycki)" value="145 kg" theme={theme} />
@@ -142,7 +155,7 @@ export default function Dashboard() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-full max-w-6xl"
+          className="w-full"
         >
           <AdvancedMetrics />
         </motion.div>
