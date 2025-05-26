@@ -1,6 +1,7 @@
 import React from "react";
 import { useUser } from "@clerk/clerk-react";
 import { motion } from "framer-motion";
+import AdminIntakeLogs from "./AdminIntakeLogs";
 
 export default function AdminPanel() {
   const { user } = useUser();
@@ -32,12 +33,13 @@ export default function AdminPanel() {
         </section>
 
         {/* Logs Section */}
-        <section>
-          <h2 className="text-xl font-semibold mb-2">📊 Usage Logs</h2>
-          <div className="p-4 bg-gray-800 rounded shadow">
-            <p className="text-sm text-gray-400">[Mock Data] Log data loading...</p>
-          </div>
-        </section>
+<section>
+  <h2 className="text-xl font-semibold mb-2">📊 Usage Logs</h2>
+  <div className="p-4 bg-gray-800 rounded shadow overflow-auto">
+    <AdminIntakeLogs />
+  </div>
+</section>
+
 
         {/* Errors Section */}
         <section>
