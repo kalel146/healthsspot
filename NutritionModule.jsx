@@ -442,6 +442,82 @@ const getDayMacroSummary = (dayKey, customMeals, foodDB, userFoods) => {
   return total;
 };
   
+const saveMealsToSupabase = async () => {
+  const { data: user } = await getUser();
+  if (!user) return;
+
+  const entries = Object.entries(customMeals).map(([key, meal_name]) => {
+    const [day, meal_type] = key.split("-");
+    return {
+      user_id: user.id,
+      day,
+      meal_type,
+      meal_name,
+    };
+  });
+
+  await supabase
+    .from("meals")
+    .delete()
+    .eq("user_id", user.id); // καθαρίζει τα παλιά
+
+  const { error } = await supabase.from("meals").insert(entries);
+  if (error) console.error("❌ Error saving meals:", error);
+  else console.log("✅ Meals saved successfully!");
+};
+
+const loadMealsFromSupabase = async () => {
+  const { data: user } = await getUser();
+  if (!user) return;
+
+  const { data, error } = await supabase
+    .from("meals")
+    .select("*")
+    .eq("user_id", user.id);
+
+  if (error) {
+    console.error("❌ Error loading meals:", error);
+    return;
+  }
+
+  const restored = {};
+  data.forEach(({ day, meal_type, meal_name }) => {
+    restored[`${day}-${meal_type}`] = meal_name;
+  });
+
+  setCustomMeals(restored);
+};
+
+const savePlanToSupabase = async () => {
+  const { user } = useUser();
+  const { data, error } = await supabase
+    .from("meal_plans")
+    .insert([{ user_id: user.id, plan_data: customMeals }]);
+
+  if (error) {
+    console.error("❌ Σφάλμα αποθήκευσης:", error.message);
+  } else {
+    alert("✅ Το πλάνο αποθηκεύτηκε!");
+  }
+};
+
+const loadPlanFromSupabase = async () => {
+  const { user } = useUser();
+  const { data, error } = await supabase
+    .from("meal_plans")
+    .select("plan_data")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .single();
+
+  if (error) {
+    console.error("❌ Σφάλμα φόρτωσης:", error.message);
+  } else if (data) {
+    setCustomMeals(data.plan_data);
+  }
+};
+
   return (
      <SignedIn>
     <motion.div
@@ -951,6 +1027,20 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
 );
   })()}
 </section>
+
+<div className="flex gap-4 mt-4">
+  <button onClick={saveMealsToSupabase} className="bg-green-500 px-3 py-1 rounded text-white text-sm">
+    ☁️ Αποθήκευση στο Cloud
+  </button>
+  <button onClick={loadMealsFromSupabase} className="bg-blue-500 px-3 py-1 rounded text-white text-sm">
+    🔄 Φόρτωση από Cloud
+  </button>
+</div>
+
+<div className="flex gap-4 justify-end mt-4">
+  <button onClick={savePlanToSupabase} className="bg-green-600 text-white px-4 py-2 rounded">💾 Αποθήκευση</button>
+  <button onClick={loadPlanFromSupabase} className="bg-blue-600 text-white px-4 py-2 rounded">☁️ Φόρτωση</button>
+</div>
 
         
 <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
