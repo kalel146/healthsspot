@@ -421,6 +421,26 @@ function generateWeeklyMealPlan({ kcal, protein, fat, carbs, preference, foodDB 
   setWeeklyPlan(plan); // αποθήκευση σε state
 };
 
+const getDayMacroSummary = (dayKey, customMeals, foodDB, userFoods) => {
+  const mealNames = Object.entries(customMeals)
+    .filter(([key]) => key.startsWith(dayKey))
+    .map(([_, value]) => value);
+
+  const allFoods = [...foodDB, ...userFoods];
+
+  let total = { protein: 0, fat: 0, carbs: 0 };
+
+  mealNames.forEach((meal) => {
+    const food = allFoods.find((f) => f.name === meal);
+    if (food) {
+      total.protein += food.protein;
+      total.fat += food.fat;
+      total.carbs += food.carbs;
+    }
+  });
+
+  return total;
+};
   
   return (
      <SignedIn>
@@ -592,6 +612,37 @@ function generateWeeklyMealPlan({ kcal, protein, fat, carbs, preference, foodDB 
 </button>
  </section>
 
+<section className="mt-10 p-4 rounded bg-blue-50 dark:bg-gray-900">
+  <h2 className="text-xl font-semibold text-blue-700 dark:text-blue-300 mb-4">👀 Προεπισκόπηση Πλάνου</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {daysOrder.map((day) => (
+      <div key={day} className="p-3 rounded border border-blue-300 dark:border-gray-700 bg-white dark:bg-gray-800">
+        <h3 className="text-md font-bold text-blue-600 dark:text-blue-200 mb-2">📅 {day}</h3>
+        {["breakfast", "lunch", "snack", "dinner"].map((meal) => {
+          const mealKey = `${day}-${meal}`;
+          const mealName = customMeals[mealKey];
+          const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
+
+          return (
+            <div key={meal} className="text-sm mb-2">
+              <p className="font-medium">{meal === "breakfast" ? "🍽️ Πρωινό" :
+                meal === "lunch" ? "🥗 Μεσημεριανό" :
+                meal === "snack" ? "🥚 Σνακ" :
+                "🍝 Βραδινό"}</p>
+              <p className="ml-2 text-gray-700 dark:text-gray-300">{mealName || "—"}</p>
+              {food && (
+                <p className="ml-2 text-xs text-gray-500">
+                  {food.protein}g P / {food.fat}g F / {food.carbs}g C
+                </p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    ))}
+  </div>
+</section>
+
         
         <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
           <h2 className="text-2xl font-semibold mb-4">AI Προτάσεις <span className='bg-yellow-300 text-black text-xs font-semibold px-2 py-0.5 ml-2 rounded'>← εδώ θα μπει το alert block</span></h2>
@@ -746,6 +797,19 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-breakfast`]: e.target
 >
   🔁 Αντικατάσταση
 </button>
+{(() => {
+  const mealKey = `${day}-breakfast`;
+  const mealName = customMeals[mealKey];
+  const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
+
+  if (!food) return null;
+
+  return (
+    <div className="mt-2 p-2 rounded bg-yellow-100 dark:bg-gray-800 text-xs text-gray-800 dark:text-gray-100">
+      <p>📊 Μακροθρεπτικά: {food.protein}g P / {food.fat}g F / {food.carbs}g C</p>
+    </div>
+  );
+})()}
             </li>
             <li className="break-words leading-tight">🥗 Μεσημεριανό:
               <input
@@ -759,6 +823,19 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-lunch`]: e.target.val
 >
   🔁 Αντικατάσταση
 </button>
+{(() => {
+  const mealKey = `${day}-lunch`;
+  const mealName = customMeals[mealKey];
+  const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
+
+  if (!food) return null;
+
+  return (
+    <div className="mt-2 p-2 rounded bg-yellow-100 dark:bg-gray-800 text-xs text-gray-800 dark:text-gray-100">
+      <p>📊 Μακροθρεπτικά: {food.protein}g P / {food.fat}g F / {food.carbs}g C</p>
+    </div>
+  );
+})()}
             </li>
             <li className="break-words leading-tight">🥚 Σνακ:
               <input
@@ -772,6 +849,19 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-snack`]: e.target.val
 >
   🔁 Αντικατάσταση
 </button>
+{(() => {
+  const mealKey = `${day}-snack`; 
+  const mealName = customMeals[mealKey];
+  const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
+
+  if (!food) return null;
+
+  return (
+    <div className="mt-2 p-2 rounded bg-yellow-100 dark:bg-gray-800 text-xs text-gray-800 dark:text-gray-100">
+      <p>📊 Μακροθρεπτικά: {food.protein}g P / {food.fat}g F / {food.carbs}g C</p>
+    </div>
+  );
+})()}
             </li>
             <li className="break-words leading-tight">🍝 Βραδινό:
               <input
@@ -785,10 +875,45 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
 >
   🔁 Αντικατάσταση
 </button>
+{(() => {
+  const mealKey = `${day}-dinner`;
+  const mealName = customMeals[mealKey];
+  const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
 
+  if (!food) return null;
+
+  return (
+    <div className="mt-2 p-2 rounded bg-yellow-100 dark:bg-gray-800 text-xs text-gray-800 dark:text-gray-100">
+      <p>📊 Μακροθρεπτικά: {food.protein}g P / {food.fat}g F / {food.carbs}g C</p>
+    </div>
+  );
+})()}
   
             </li>
           </ul>
+          {(() => {
+  const dayKey = day;
+  const summary = getDayMacroSummary(dayKey, customMeals, foodDB, userFoods); 
+  const targetProtein = protein * weight;
+  const targetFat = fat * weight;
+  const targetCarbs = carbs;
+  const diff = {
+    protein: summary.protein - targetProtein,
+    fat: summary.fat - targetFat,
+    carbs: summary.carbs - targetCarbs
+  };
+
+  return (
+    <div className="text-xs mt-3 p-3 rounded bg-yellow-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 space-y-1">
+      <p>📦 Ημέρα: {summary.protein}g P / {summary.fat}g F / {summary.carbs}g C</p>
+      <p>🎯 Στόχος: {targetProtein}g P / {targetFat}g F / {targetCarbs}g C</p>
+      <p className="text-yellow-700 dark:text-yellow-300">
+        ✏️ Διαφορά: {diff.protein.toFixed(1)} P / {diff.fat.toFixed(1)} F / {diff.carbs.toFixed(1)} C
+      </p>
+    </div>
+  );
+})()}
+
         </div>
       </SortableItem>
     ))}
