@@ -300,6 +300,14 @@ const totalMealMacros = () => {
 }, [userFoods]);
 
 const generateMealPlanFromTargets = () => {
+  if (preference === "lowcarb") {
+  filtered = filtered.filter((item) => item.carbs < 15);
+} else if (preference === "vegetarian") {
+  filtered = filtered.filter((item) =>
+    !["κοτόπουλο", "ψάρι", "μοσχάρι", "αυγό"].some(meat => item.name.toLowerCase().includes(meat))
+  );
+}
+
   const target = {
     protein: protein * weight,
     fat: fat * weight,
@@ -356,6 +364,61 @@ const getTotalMacrosFromPlan = () => {
     }
   });
   return Math.round(totalKcal);
+};
+
+function generateWeeklyMealPlan({ kcal, protein, fat, carbs, preference, foodDB }) {
+  const days = ["Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο", "Κυριακή"];
+
+  const splitPerMeal = (val) => Math.round(val / 4); // 4 γεύματα: πρωινό, μεσημεριανό, σνακ, βραδινό
+
+  const macroPerMeal = {
+    protein: splitPerMeal(protein),
+    fat: splitPerMeal(fat),
+    carbs: splitPerMeal(carbs),
+  };
+
+  const filterByPreference = (item) => {
+    if (preference === "vegetarian") return item.tags?.includes("vegetarian");
+    if (preference === "lowcarb") return item.carbs < 15;
+    return true;
+  };
+
+  const validFoods = foodDB.filter(filterByPreference);
+
+  const getMeal = () => {
+    const options = validFoods.filter(
+      (f) =>
+        Math.abs(f.protein - macroPerMeal.protein) <= 5 &&
+        Math.abs(f.fat - macroPerMeal.fat) <= 5 &&
+        Math.abs(f.carbs - macroPerMeal.carbs) <= 10
+    );
+    return options[Math.floor(Math.random() * options.length)];
+  };
+
+  const weekPlan = {};
+  days.forEach((day) => {
+    weekPlan[day] = {
+      breakfast: getMeal(),
+      lunch: getMeal(),
+      snack: getMeal(),
+      dinner: getMeal(),
+    };
+  });
+
+  return weekPlan;
+}
+
+  const handleGenerateAIPlan = () => {
+  const plan = generateWeeklyMealPlan({
+    kcal,
+    protein,
+    fat,
+    carbs,
+    preference,
+    foodDB,
+  });
+
+  setWeeklyPlan(plan); // αποθήκευση σε state
 };
 
   
@@ -511,8 +574,25 @@ const getTotalMacrosFromPlan = () => {
               </>
             )}
           </div>
-        </section>
+          <select
+  value={preference}
+  onChange={(e) => setPreference(e.target.value)}
+  className="p-2 rounded border"
+>
+  <option value="default">Κανονική</option>
+  <option value="lowcarb">Χαμηλή σε Υδατ.</option>
+  <option value="vegetarian">Χορτοφαγική</option>
+</select>
 
+          <button
+  onClick={handleGenerateAIPlan}
+  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+>
+  🤖 Δημιούργησε AI Πλάνο
+</button>
+ </section>
+
+        
         <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
           <h2 className="text-2xl font-semibold mb-4">AI Προτάσεις <span className='bg-yellow-300 text-black text-xs font-semibold px-2 py-0.5 ml-2 rounded'>← εδώ θα μπει το alert block</span></h2>
           <div className="space-y-4 text-sm">
@@ -730,16 +810,20 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
       carbs: actual.carbs - target.carbs
     };
 
-    return (
-  <div className="space-y-2 text-sm">
-    <p>🎯 Στόχος: {target.protein}g πρωτεΐνη, {target.fat}g λίπος, {target.carbs}g υδατάνθρακες</p>
-    <p>📦 Πλάνο: {actual.protein}g P / {actual.fat}g F / {actual.carbs}g C</p>
-    <p className="text-yellow-700 dark:text-yellow-300">✏️ Διαφορά: {delta.protein.toFixed(1)} P / {delta.fat.toFixed(1)} F / {delta.carbs.toFixed(1)} C</p>
+   return (
+  <>
+    <div className="text-sm space-y-2">
+      <p>🎯 Στόχος: {target.protein}g πρωτεΐνη, {target.fat}g λίπος, {target.carbs}g υδατάνθρακες</p>
+      <p>📦 Πλάνο: {actual.protein}g P / {actual.fat}g F / {actual.carbs}g C</p>
+      <p className="text-yellow-700 dark:text-yellow-300">
+        ✏️ Διαφορά: {delta.protein.toFixed(1)} P / {delta.fat.toFixed(1)} F / {delta.carbs.toFixed(1)} C
+      </p>
+    </div>
     <p className="text-yellow-700 dark:text-yellow-300">
       🔥 Θερμίδες από το πλάνο: {getTotalKcalFromPlan(customMeals, foodDB, userFoods)} kcal
     </p>
-  </div>
-    );
+  </>
+);
   })()}
 </section>
 
@@ -890,17 +974,18 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
 </div>
 
     
-    <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
-      <thead className="bg-gray-200 dark:bg-gray-700">
-        <tr>
-          <th className="p-2">Τρόφιμο</th>
-          <th className="p-2">Πρωτεΐνη</th>
-          <th className="p-2">Λίπος</th>
-          <th className="p-2">Υδατ.</th>
-<th className="p-2">Ενέργεια</th>
-        </tr>
-      </thead>
-      <tbody>
+   <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
+  <thead className="bg-gray-200 dark:bg-gray-700">
+    <tr>
+      <th className="p-2">Τρόφιμο</th>
+      <th className="p-2">Πρωτεΐνη</th>
+      <th className="p-2">Λίπος</th>
+      <th className="p-2">Υδατ.</th>
+      <th className="p-2">Ενέργεια</th>
+      <th className="p-2">Ενέργειες</th>
+    </tr>
+  </thead>
+  <tbody>
 
         {userFoods.map((item, i) => (
   <tr key={`u-${i}`} className="text-center border-t dark:border-gray-700 bg-yellow-50 dark:bg-gray-800">
@@ -925,70 +1010,71 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
   </tr>
 ))}
 
-        {foodDB
-          .filter((item) => item.name.toLowerCase().includes(foodSearch.toLowerCase()))
-          .map((item, i) => (
-            <tr key={i} className="text-center border-t dark:border-gray-700">
-              <td className="p-2">{item.name}</td>
-              <td className="p-2">{item.protein}g</td>
-              <td className="p-2">{item.fat}g</td>
-              <td className="p-2">{item.carbs}g</td>
-<td className="p-2">
-  <div className="flex gap-1 justify-center">
-  <button
-    className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
-    onClick={() => {
-      const mealName = item.name;
-      const newMeals = { ...customMeals };
-      const mealKey = `${selectedDay}-${selectedMealType}`;
-      newMeals[mealKey] = mealName;
-      setCustomMeals(newMeals);
-    }}
-  >
-    ➕ Στο Πλάνο
-  </button>
-  <button
-    className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
-    onClick={() => {
-      const newName = prompt("✏️ Νέο όνομα:", item.name);
-      const newProtein = prompt("Πρωτεΐνη (g):", item.protein);
-      const newFat = prompt("Λίπος (g):", item.fat);
-      const newCarbs = prompt("Υδατάνθρακες (g):", item.carbs);
-      if (!newName || isNaN(newProtein) || isNaN(newFat) || isNaN(newCarbs)) return;
-      const updatedFoods = [...userFoods];
-      updatedFoods[i] = {
-        name: newName,
-        protein: parseFloat(newProtein),
-        fat: parseFloat(newFat),
-        carbs: parseFloat(newCarbs)
-      };
-      setUserFoods(updatedFoods);
-    }}
-  >
-    ✏️
-  </button>
-  <button
-    className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-    onClick={() => {
-      if (window.confirm("❌ Να διαγραφεί αυτή η τροφή;")) {
-        const updated = userFoods.filter((_, index) => index !== i);
-        setUserFoods(updated);
-      }
-    }}
-  >
-    🗑️
-  </button>
-</div>
+         {foodDB
+      .filter((item) => item.name.toLowerCase().includes(foodSearch.toLowerCase()))
+      .map((item, i) => (
+        <tr key={i} className="text-center border-t dark:border-gray-700">
+          <td className="p-2">{item.name}</td>
+          <td className="p-2">{item.protein}g</td>
+          <td className="p-2">{item.fat}g</td>
+          <td className="p-2">{item.carbs}g</td>
+          <td className="p-2">
+            {4 * item.protein + 9 * item.fat + 4 * item.carbs} kcal
+          </td>
+          <td className="p-2">
+            <div className="flex gap-1 justify-center">
+              <button
+                className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
+                onClick={() => {
+                  const mealName = item.name;
+                  const newMeals = { ...customMeals };
+                  const mealKey = `${selectedDay}-${selectedMealType}`;
+                  newMeals[mealKey] = mealName;
+                  setCustomMeals(newMeals);
+                }}
+              >
+                ➕ Στο Πλάνο
+              </button>
+              <button
+                className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+                onClick={() => {
+                  const newName = prompt("✏️ Νέο όνομα:", item.name);
+                  const newProtein = prompt("Πρωτεΐνη (g):", item.protein);
+                  const newFat = prompt("Λίπος (g):", item.fat);
+                  const newCarbs = prompt("Υδατάνθρακες (g):", item.carbs);
+                  if (!newName || isNaN(newProtein) || isNaN(newFat) || isNaN(newCarbs)) return;
+                  const updatedFoods = [...userFoods];
+                  updatedFoods[i] = {
+                    name: newName,
+                    protein: parseFloat(newProtein),
+                    fat: parseFloat(newFat),
+                    carbs: parseFloat(newCarbs)
+                  };
+                  setUserFoods(updatedFoods);
+                }}
+              >
+                ✏️
+                <button
+  className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+  onClick={() => {
+    const updatedFoods = [...userFoods];
+    updatedFoods.splice(i, 1);
+    setUserFoods(updatedFoods);
+  }}
+>
+  🗑️
+</button>
 
-</td>
-            </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
+              </button>
+            </div>
+          </td>
+        </tr>
+      ))}
+  </tbody>
+</table>
+    </div>
 </section>
-
 </motion.div>
-     </SignedIn>
-  );
+</SignedIn>
+);
 }
