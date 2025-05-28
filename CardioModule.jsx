@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { useTheme } from "./ThemeContext";
-import { Sparkles, HeartPulse, Flame, Ruler } from "lucide-react";
+import { Sparkles, HeartPulse, Flame, Ruler, LineChart, FileText } from "lucide-react";
+import { supabase } from "./supabaseClient";
+import { LineChart as Chart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from "recharts";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 export default function CardioModule() {
   const [mets, setMets] = useState(1);
@@ -15,19 +19,78 @@ export default function CardioModule() {
   const [vo2max, setVo2max] = useState(null);
   const { theme, toggleTheme } = useTheme();
 
-  const calculateKcal = () => {
+  const [history, setHistory] = useState([]);
+  const chartRef = useRef(null);
+
+  const fetchHistory = async () => {
+    const { data, error } = await supabase
+      .from("cardio_logs")
+      .select("created_at, vo2, kcal")
+      .order("created_at", { ascending: true });
+
+    if (data) {
+      setHistory(
+        data.map((entry) => ({
+          date: new Date(entry.created_at).toLocaleDateString("el-GR"),
+          VO2: entry.vo2 ? Number(entry.vo2) : null,
+          kcal: entry.kcal ? Number(entry.kcal) : null,
+        }))
+      );
+    }
+  };
+
+  useEffect(() => {
+    fetchHistory();
+  }, []);
+
+  const calculateKcal = async () => {
     const vo2 = mets * 3.5 * weight;
     const kcalPerMin = (vo2 * 5) / 1000;
     const total = kcalPerMin * duration;
-    setKcal({ vo2: vo2.toFixed(1), total: total.toFixed(1) });
+    const result = { vo2: vo2.toFixed(1), total: total.toFixed(1) };
+    setKcal(result);
+
+    await supabase.from("cardio_logs").insert({
+      type: "kcal",
+      mets,
+      weight,
+      duration,
+      vo2: result.vo2,
+      kcal: result.total,
+      created_at: new Date().toISOString()
+    });
+
+    fetchHistory();
   };
 
-  const calculateVO2max = () => {
+  const calculateVO2max = async () => {
     let result = 0;
     if (testType === "Cooper") {
       result = (distance - 504.9) / 44.73;
     }
-    setVo2max(result.toFixed(1));
+    const fixed = result.toFixed(1);
+    setVo2max(fixed);
+
+    await supabase.from("cardio_logs").insert({
+      type: "vo2max",
+      test_type: testType,
+      value: fixed,
+      distance,
+      created_at: new Date().toISOString()
+    });
+
+    fetchHistory();
+  };
+
+  const handleExportPDF = async () => {
+    const element = chartRef.current;
+    if (!element) return;
+
+    const canvas = await html2canvas(element);
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF();
+    pdf.addImage(imgData, "PNG", 10, 10, 190, 0);
+    pdf.save("cardio_report.pdf");
   };
 
   const inputClass = `p-3 rounded-xl shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all duration-300 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"}`;
@@ -50,6 +113,7 @@ export default function CardioModule() {
       />
     </div>
   );
+
 
   return (
     <motion.div
@@ -136,6 +200,25 @@ export default function CardioModule() {
           </motion.p>
         )}
       </motion.section>
+
+
+      <motion.section className="max-w-4xl mx-auto p-6 rounded-xl shadow-xl bg-white dark:bg-gray-900" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+        <SectionHeader icon={<LineChart className="w-5 h-5" />} color="yellow">
+          Ιστορικό VO2max και kcal
+        </SectionHeader>
+        <ResponsiveContainer width="100%" height={300}>
+          <Chart data={history} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="VO2" stroke="#3b82f6" name="VO2max (mL/kg/min)" />
+            <Line type="monotone" dataKey="kcal" stroke="#10b981" name="kcal (συνολικά)" />
+          </Chart>
+        </ResponsiveContainer>
+      </motion.section>
+      
     </motion.div>
   );
 }

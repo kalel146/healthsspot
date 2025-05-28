@@ -54,3 +54,4 @@ screenshots/
 *.bak
 
 *storybook.log
+.env

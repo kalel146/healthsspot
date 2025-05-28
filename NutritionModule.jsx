@@ -1042,7 +1042,62 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
   <button onClick={loadPlanFromSupabase} className="bg-blue-600 text-white px-4 py-2 rounded">☁️ Φόρτωση</button>
 </div>
 
-        
+   <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
+  <h2 className="text-2xl font-semibold mb-4">👁️ Προεπισκόπηση Εβδομαδιαίου Πλάνου</h2>
+  <div className="space-y-4 text-sm">
+    {daysOrder.map((day) => (
+      <div key={day} className="p-4 border border-yellow-300 rounded">
+        <h3 className="font-bold text-yellow-600 dark:text-yellow-300 mb-2">📅 {day}</h3>
+        <ul className="space-y-1">
+          {['breakfast', 'lunch', 'snack', 'dinner'].map((mealType) => {
+            const mealName = customMeals[`${day}-${mealType}`] || "-";
+            return (
+              <li key={`${day}-${mealType}`} className="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-1">
+                <span className="capitalize">
+                  {mealType === "breakfast" && "🍽️ Πρωινό:"}
+                  {mealType === "lunch" && "🥗 Μεσημεριανό:"}
+                  {mealType === "snack" && "🥚 Σνακ:"}
+                  {mealType === "dinner" && "🍝 Βραδινό:"}
+                </span>
+                <span className="text-right font-medium text-gray-700 dark:text-gray-200">{mealName}</span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+     <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
+  <h2 className="text-2xl font-semibold mb-4">📊 Σύνολο Πλάνου</h2>
+  {(() => {
+    const total = daysOrder.reduce((acc, day) => {
+      ['breakfast', 'lunch', 'snack', 'dinner'].forEach(meal => {
+        const mealName = customMeals[`${day}-${meal}`];
+        const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
+        if (food) {
+          acc.protein += food.protein;
+          acc.fat += food.fat;
+          acc.carbs += food.carbs;
+        }
+      });
+      return acc;
+    }, { protein: 0, fat: 0, carbs: 0 });
+
+    const totalKcal = total.protein * 4 + total.carbs * 4 + total.fat * 9;
+
+    return (
+      <div className="text-sm space-y-2 bg-yellow-50 dark:bg-gray-800 p-4 rounded">
+        <p>🍽️ Πρωτεΐνη: {total.protein.toFixed(1)}g</p>
+        <p>🥑 Λίπος: {total.fat.toFixed(1)}g</p>
+        <p>🥔 Υδατάνθρακες: {total.carbs.toFixed(1)}g</p>
+        <p className="font-bold">🔥 Θερμίδες: {totalKcal.toFixed(0)} kcal</p>
+      </div>
+    );
+  })()}
+</section>
+
 <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
   <h2 className="text-2xl font-semibold mb-4">📤 Export σε PDF</h2>
   <button
