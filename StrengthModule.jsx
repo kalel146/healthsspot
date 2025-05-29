@@ -227,7 +227,7 @@ const recoveryChartData = recoveryLogs.map(entry => ({
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      className={`min-h-screen px-4 py-10 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}
+      className={`min-h-screen px-4 py-10 flex justify-center items-start ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}`}
     >
       <Helmet>
         <title>Strength Training | Health's Spot</title>
@@ -235,8 +235,7 @@ const recoveryChartData = recoveryLogs.map(entry => ({
         <link rel="canonical" href="https://healthsspot.vercel.app/training" />
       </Helmet>
 
-      <div className="max-w-2xl mx-auto space-y-10">
-      </div>
+      <div className="w-full max-w-screen-sm space-y-6">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-yellow-400">Strength Lab</h1>
           <button
@@ -280,7 +279,7 @@ const recoveryChartData = recoveryLogs.map(entry => ({
 </button>
 
         <motion.section
-          className="space-y-4 border border-yellow-500 p-5 rounded-xl"
+          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
           variants={sectionVariants}
           initial="hidden"
           animate="visible"
@@ -318,7 +317,7 @@ const recoveryChartData = recoveryLogs.map(entry => ({
         </motion.section>
 
         <motion.section
-          className="space-y-4 border border-purple-500 p-5 rounded-xl"
+         className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
           variants={sectionVariants}
           initial="hidden"
           animate="visible"
@@ -356,7 +355,7 @@ const recoveryChartData = recoveryLogs.map(entry => ({
         </motion.section>
 
         <motion.section
-          className="space-y-4 border border-blue-500 p-5 rounded-xl"
+         className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
           variants={sectionVariants}
           initial="hidden"
           animate="visible"
@@ -395,7 +394,7 @@ const recoveryChartData = recoveryLogs.map(entry => ({
           )}
         </motion.section>
          <motion.section
-        className="space-y-4 border border-cyan-500 p-5 rounded-xl"
+        className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
         variants={sectionVariants}
         initial="hidden"
         animate="visible"
@@ -418,7 +417,7 @@ const recoveryChartData = recoveryLogs.map(entry => ({
       </motion.section>
 
 <motion.section
-  className="space-y-4 border border-green-500 p-5 rounded-xl"
+ className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
   variants={sectionVariants}
   initial="hidden"
   animate="visible"
@@ -439,6 +438,7 @@ const recoveryChartData = recoveryLogs.map(entry => ({
     </ResponsiveContainer>
   )}
 </motion.section>
-    </motion.div>
+      </div>
+</motion.div>
   );
 }
