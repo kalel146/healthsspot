@@ -2,24 +2,25 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { useTheme } from "./ThemeContext";
-import { Sparkles, HeartPulse, Flame, Ruler, LineChart, FileText } from "lucide-react";
+import { Sparkles, HeartPulse, Flame, Ruler, LineChart, FileText, Bot } from "lucide-react";
 import { supabase } from "./supabaseClient";
 import { LineChart as Chart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from "recharts";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { Download } from "lucide-react";
 
 export default function CardioModule() {
   const [mets, setMets] = useState(1);
   const [weight, setWeight] = useState(70);
   const [duration, setDuration] = useState(30);
   const [kcal, setKcal] = useState(null);
-
+  const [activity, setActivity] = useState("Τρέξιμο");
   const [testType, setTestType] = useState("Cooper");
   const [distance, setDistance] = useState(2400);
   const [vo2max, setVo2max] = useState(null);
   const { theme, toggleTheme } = useTheme();
-
   const [history, setHistory] = useState([]);
+  const [advice, setAdvice] = useState("");
   const chartRef = useRef(null);
 
   const fetchHistory = async () => {
@@ -29,13 +30,30 @@ export default function CardioModule() {
       .order("created_at", { ascending: true });
 
     if (data) {
-      setHistory(
-        data.map((entry) => ({
-          date: new Date(entry.created_at).toLocaleDateString("el-GR"),
-          VO2: entry.vo2 ? Number(entry.vo2) : null,
-          kcal: entry.kcal ? Number(entry.kcal) : null,
-        }))
-      );
+      const formatted = data.map((entry) => ({
+        date: new Date(entry.created_at).toLocaleDateString("el-GR"),
+        VO2: entry.vo2 ? Number(entry.vo2) : null,
+        kcal: entry.kcal ? Number(entry.kcal) : null,
+      }));
+      setHistory(formatted);
+      generateAdvice(formatted);
+    }
+  };
+
+  const generateAdvice = (data) => {
+    const last3 = data.slice(-3).filter(d => d.VO2);
+    if (last3.length < 2) {
+      setAdvice("⚠️ Δεν υπάρχουν αρκετά δεδομένα για αξιολόγηση προόδου.");
+      return;
+    }
+
+    const trend = last3[last3.length - 1].VO2 - last3[0].VO2;
+    if (trend > 1.5) {
+      setAdvice("🚀 Η VO2max σου βελτιώνεται! Συνέχισε έτσι και προσπάθησε να διατηρείς σταθερή συχνότητα.");
+    } else if (trend < -1.5) {
+      setAdvice("📉 Η VO2max έχει πέσει. Ξεκουράσου επαρκώς, δες τη διατροφή σου και μείωσε το training load.");
+    } else {
+      setAdvice("📊 Η VO2max παραμένει σταθερή. Ίσως είναι ώρα να ανεβάσεις την ένταση ή διάρκεια.");
     }
   };
 
@@ -114,6 +132,23 @@ export default function CardioModule() {
     </div>
   );
 
+  const handleExportCSV = () => {
+  const rows = [
+    ["Ημερομηνία", "VO2max", "kcal"]
+  ];
+  history.forEach(entry => {
+    rows.push([entry.date, entry.VO2 ?? "", entry.kcal ?? ""]);
+  });
+  const csvContent = rows.map(e => e.join(",")).join("\n");
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.setAttribute("download", "cardio_report.csv");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 
   return (
     <motion.div
@@ -151,6 +186,7 @@ export default function CardioModule() {
         <LabeledInput id="mets" label="METs" value={mets} onChange={(e) => setMets(e.target.value)} />
         <LabeledInput id="weight" label="Βάρος (kg)" value={weight} onChange={(e) => setWeight(e.target.value)} />
         <LabeledInput id="duration" label="Διάρκεια (λεπτά)" value={duration} onChange={(e) => setDuration(e.target.value)} />
+        <LabeledInput id="duration" label="Διάρκεια (λεπτά)" value={duration} onChange={(e) => setDuration(e.target.value)} />
 
         <button onClick={calculateKcal} className="bg-green-600 hover:bg-green-700 px-5 py-2 mt-2 rounded-xl text-white shadow">
           Υπολόγισε kcal
@@ -167,6 +203,20 @@ export default function CardioModule() {
         <SectionHeader icon={<Ruler className="w-5 h-5" />} color="blue">
           VO2max Test (Cooper)
         </SectionHeader>
+
+<label htmlFor="activity" className="block text-sm font-medium">Τύπος Δραστηριότητας</label>
+      <select
+        id="activity"
+        value={activity}
+        onChange={(e) => setActivity(e.target.value)}
+        className={inputClass}
+      >
+        <option>Τρέξιμο</option>
+        <option>Ποδήλατο</option>
+        <option>Κολύμβηση</option>
+        <option>HIIT</option>
+        <option>Άλλο</option>
+      </select>
 
         <label htmlFor="vo2test" className="block text-sm font-medium">Επιλογή Τεστ VO2max</label>
         <select
@@ -201,23 +251,28 @@ export default function CardioModule() {
         )}
       </motion.section>
 
-
-      <motion.section className="max-w-4xl mx-auto p-6 rounded-xl shadow-xl bg-white dark:bg-gray-900" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-        <SectionHeader icon={<LineChart className="w-5 h-5" />} color="yellow">
-          Ιστορικό VO2max και kcal
-        </SectionHeader>
-        <ResponsiveContainer width="100%" height={300}>
-          <Chart data={history} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="VO2" stroke="#3b82f6" name="VO2max (mL/kg/min)" />
-            <Line type="monotone" dataKey="kcal" stroke="#10b981" name="kcal (συνολικά)" />
-          </Chart>
-        </ResponsiveContainer>
-      </motion.section>
+<motion.section className="max-w-4xl mx-auto p-6 rounded-xl shadow-xl bg-white dark:bg-gray-900" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+  <SectionHeader icon={<LineChart className="w-5 h-5" />} color="yellow">
+    Ιστορικό VO2max και kcal
+  </SectionHeader>
+  <ResponsiveContainer width="100%" height={300}>
+    <Chart data={history} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="date" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Line type="monotone" dataKey="VO2" stroke="#3b82f6" name="VO2max (mL/kg/min)" />
+      <Line type="monotone" dataKey="kcal" stroke="#10b981" name="kcal (συνολικά)" />
+    </Chart>
+  </ResponsiveContainer>
+  <button
+    onClick={handleExportCSV}
+    className="mt-4 flex items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700"
+  >
+    <Download className="w-4 h-4" /> Export CSV
+  </button>
+</motion.section>
       
     </motion.div>
   );

@@ -37,9 +37,12 @@ export default function StrengthModule() {
   const [rpeError, setRpeError] = useState("");
   const [stressData, setStressData] = useState({ sleep: 3, energy: 3, pain: 3, mood: 3 });
   const [recoveryScore, setRecoveryScore] = useState(null);
-  const { theme, toggleTheme } = useTheme();
   const [logData, setLogData] = useState([]);
-  
+  const { theme, toggleTheme } = useTheme();
+  const [recoveryLogs, setRecoveryLogs] = useState([]);
+  const [aiSuggestions, setAiSuggestions] = useState("");
+  const [autoAdaptiveMessage, setAutoAdaptiveMessage] = useState("");
+
   useEffect(() => {
     try {
       const saved = localStorage.getItem("strengthModuleData");
@@ -74,17 +77,50 @@ export default function StrengthModule() {
     fetchLogs();
   }, [oneRM]);
 
+  useEffect(() => {
+    const fetchRecoveryLogs = async () => {
+      const { data: recoveryLogs, error: recoveryError } = await supabase
+        .from("strength_logs")
+        .select("timestamp, recoveryScore")
+        .eq("type", "Recovery")
+        .order("timestamp", { ascending: true });
+      if (!recoveryError && recoveryLogs) setRecoveryLogs(recoveryLogs);
+    };
+    fetchRecoveryLogs();
+  }, [oneRM, recoveryScore]);
+
+     useEffect(() => {
+    if (oneRM && rpe && rir) {
+      const intensity = parseFloat(oneRM) * (1 - parseInt(rir) * 0.03);
+      let suggestion =
+        `💡 Πρόταση: Φόρτωσε περίπου ${intensity.toFixed(1)} kg για ${10 - parseInt(rir)} επαναλήψεις (RPE ${rpe}, RIR ${rir}).`;
+      const weeklyIncrement = 0.02;
+      const nextWeek = parseFloat(oneRM) * (1 + weeklyIncrement);
+      setAutoAdaptiveMessage(`📈 Εβδομαδιαία αύξηση στόχου: Δοκίμασε ~${nextWeek.toFixed(1)} kg την επόμενη εβδομάδα.`);
+
+      if (recoveryScore && recoveryScore < 3) {
+        suggestion += " 🧘‍♂️ Πρόσεξε την αποκατάσταση — ίσως είναι μέρα για deload ή active recovery.";
+      } else if (recoveryScore && recoveryScore >= 4.5) {
+        suggestion += " 🚀 Είσαι σε top φόρμα — ώρα για νέα PRs!";
+      }
+
+      setAiSuggestions(suggestion);
+    } else {
+      setAiSuggestions("");
+      setAutoAdaptiveMessage("");
+    }
+  }, [oneRM, rpe, rir, recoveryScore]);
+
   const logToSupabase = async (type, data) => {
     const { error } = await supabase.from("strength_logs").insert([{ type, ...data, timestamp: new Date().toISOString() }]);
     if (error) console.error("Supabase logging error:", error);
   };
 
-
   const calculateOneRM = () => {
     const w = parseFloat(weight);
     const r = parseInt(reps);
     if (isNaN(w) || isNaN(r) || w <= 0 || r < 1 || r > 10) {
-      setError("⚠ Συμπλήρωσε σωστά το βάρος (> 0) και τις επαναλήψεις (1-10).”");
+      setError("⚠ Συμπλήρωσε σωστά το βάρος (> 0) και τις επαναλήψεις (1-10).");
       setOneRM(null);
       return;
     }
@@ -167,7 +203,12 @@ export default function StrengthModule() {
     doc.save("strength_report.pdf");
   };
 
-   const chartData = logData.map(entry => ({
+const recoveryChartData = recoveryLogs.map(entry => ({
+    name: new Date(entry.timestamp).toLocaleDateString("el-GR"),
+    recoveryScore: parseFloat(entry.recoveryScore)
+  }));
+
+  const chartData = logData.map(entry => ({
     name: new Date(entry.timestamp).toLocaleDateString("el-GR"),
     oneRM: parseFloat(entry.oneRM)
   }));
@@ -195,6 +236,7 @@ export default function StrengthModule() {
       </Helmet>
 
       <div className="max-w-2xl mx-auto space-y-10">
+      </div>
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-bold text-yellow-400">Strength Lab</h1>
           <button
@@ -219,7 +261,23 @@ export default function StrengthModule() {
             📑 Εξαγωγή CSV
           </button>
         </div>
-    
+    <button
+  onClick={() => {
+    setWeight(0);
+    setReps(1);
+    setRpe("7");
+    setRir("3");
+    setStressData({ sleep: 3, energy: 3, pain: 3, mood: 3 });
+    setOneRM(null);
+    setRecoveryScore(null);
+    setAiSuggestions("");
+    setAutoAdaptiveMessage("");
+    localStorage.removeItem("strengthModuleData");
+  }}
+  className="px-4 py-2 rounded bg-gray-500 text-white font-semibold hover:bg-gray-600"
+>
+  ♻ Reset
+</button>
 
         <motion.section
           className="space-y-4 border border-yellow-500 p-5 rounded-xl"
@@ -243,7 +301,13 @@ export default function StrengthModule() {
             placeholder="Επαναλήψεις (1-10)"
             className="p-2 rounded w-full bg-gray-100 dark:bg-gray-800 dark:text-white"
           />
-          <button
+          {aiSuggestions && (
+  <p className="text-green-500 font-semibold mt-2">{aiSuggestions}</p>
+)}
+{autoAdaptiveMessage && (
+  <p className="text-cyan-400 font-semibold">{autoAdaptiveMessage}</p>
+)}
+           <button
             onClick={calculateOneRM}
             className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-white font-semibold"
           >
@@ -330,15 +394,38 @@ export default function StrengthModule() {
             </p>
           )}
         </motion.section>
-        <motion.section
+         <motion.section
+        className="space-y-4 border border-cyan-500 p-5 rounded-xl"
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <h2 className="text-xl font-semibold text-cyan-400">Ιστορικό Recovery Score</h2>
+        {recoveryChartData.length === 0 ? (
+          <p className="text-gray-400">Δεν υπάρχουν δεδομένα ακόμα.</p>
+        ) : (
+          <ResponsiveContainer width="100%" height={250}>
+            <LineChart data={recoveryChartData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis domain={["auto", "auto"]} />
+              <Tooltip />
+              <Line type="monotone" dataKey="recoveryScore" stroke="#06B6D4" strokeWidth={3} />
+            </LineChart>
+          </ResponsiveContainer>
+        )}
+      </motion.section>
+
+<motion.section
   className="space-y-4 border border-green-500 p-5 rounded-xl"
   variants={sectionVariants}
   initial="hidden"
   animate="visible"
-  transition={{ duration: 0.5, delay: 0.3 }}
+  transition={{ duration: 0.5, delay: 0.6 }}
 >
   <h2 className="text-xl font-semibold text-green-400">Ιστορικό 1RM</h2>
-  {logData.length === 0 ? (
+  {chartData.length === 0 ? (
     <p className="text-gray-400">Δεν υπάρχουν δεδομένα ακόμα.</p>
   ) : (
     <ResponsiveContainer width="100%" height={250}>
@@ -347,12 +434,11 @@ export default function StrengthModule() {
         <XAxis dataKey="name" />
         <YAxis domain={["auto", "auto"]} />
         <Tooltip />
-        <Line type="monotone" dataKey="oneRM" stroke="#34D399" strokeWidth={3} />
+        <Line type="monotone" dataKey="oneRM" stroke="#22C55E" strokeWidth={3} />
       </LineChart>
     </ResponsiveContainer>
   )}
 </motion.section>
-      </div>
     </motion.div>
   );
 }

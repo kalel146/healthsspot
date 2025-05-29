@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
-
+import CardioDraggableHistory from "./CardioDraggableHistory";
 import LandingPage from "./LandingPage";
 import Dashboard from "./Dashboard";
 import StrengthModule from "./StrengthModule";
@@ -41,6 +41,7 @@ function AppContent() {
           }
         />
 
+        <Route path="/cardio-history" element={<CardioDraggableHistory />} />
         <Route path="/training" element={<StrengthModule />} />
         <Route path="/cardio" element={<CardioModule />} />
         <Route path="/nutrition" element={<NutritionModule />} />
