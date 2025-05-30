@@ -30,7 +30,6 @@ const sectionVariants = {
 export default function StrengthModule() {
   const [weight, setWeight] = useState(0);
   const [reps, setReps] = useState(1);
-  const [oneRM, setOneRM] = useState(null);
   const [error, setError] = useState("");
   const [rpe, setRpe] = useState("7");
   const [rir, setRir] = useState("3");
@@ -42,6 +41,105 @@ export default function StrengthModule() {
   const [recoveryLogs, setRecoveryLogs] = useState([]);
   const [aiSuggestions, setAiSuggestions] = useState("");
   const [autoAdaptiveMessage, setAutoAdaptiveMessage] = useState("");
+  const [prMessage, setPrMessage] = useState("");
+  const [coachAdvice, setCoachAdvice] = useState("");
+  const [cyclePlan, setCyclePlan] = useState("");
+  const [notifications, setNotifications] = useState([]);
+  const [cycleType, setCycleType] = useState("Linear");
+  const [cycleOutput, setCycleOutput] = useState("");
+  const [oneRM, setOneRM] = useState("");
+
+  const generateCycleTemplate = () => {
+if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
+      setCycleOutput("🔁 Επίλεξε τύπο κύκλου και υπολόγισε 1RM πρώτα.");
+      return;
+    }
+
+    const w = parseFloat(oneRM);
+    let output = `📊 ${cycleType} Periodization (4 εβδομάδες):\n`;
+
+    const plans = {
+      Linear: [0.7, 0.75, 0.8, 0.85],
+      Undulating: [0.75, 0.8, 0.7, 0.85],
+      Deload: [0.6, 0.65, 0.6, 0.5],
+    };
+
+    plans[cycleType].forEach((pct, i) => {
+      output += `\nΕβδομάδα ${i + 1}:\n- Squat 3x5 @ ${(w * pct).toFixed(1)}kg\n- Bench 3x8 @ ${(w * (pct - 0.05)).toFixed(1)}kg\n- Deadlift 2x5 @ ${(w * (pct + 0.05)).toFixed(1)}kg\n`;
+    });
+
+    setCycleOutput(output);
+  };
+
+  const pushNotification = (text) => {
+    setNotifications(prev => [...prev, { id: Date.now(), text }]);
+  };
+
+  useEffect(() => {
+    if (prMessage) pushNotification("🎯 Νέο PR! Καταγράφηκε επιτυχώς.");
+    if (recoveryScore && recoveryScore < 2.5) pushNotification("🛑 Πολύ χαμηλό Recovery — Deload προτείνεται.");
+  }, [prMessage, recoveryScore]);
+
+  const dismissNotification = (id) => {
+    setNotifications(notifications.filter(n => n.id !== id));
+  };
+
+   useEffect(() => {
+  if (logData.length >= 3) {
+    const lastThree = logData.slice(-3).map(e => parseFloat(e.oneRM));
+    const allEqual = lastThree.every(val => val === lastThree[0]);
+    const allDecreasing = lastThree[0] > lastThree[1] && lastThree[1] > lastThree[2];
+    if (allEqual) pushNotification("⚠ Στασιμότητα 1RM σε 3 σερί sessions – Δοκίμασε μεταβλητότητα φορτίου.");
+    if (allDecreasing) pushNotification("🔻 Πτώση σε 1RM για 3 sessions – Επανεξέτασε το πρόγραμμα και recovery.");
+  }
+
+  if (recoveryLogs.length >= 4) {
+    const lowRecovery = recoveryLogs.slice(-4).every(e => parseFloat(e.recoveryScore) < 2.5);
+    if (lowRecovery) pushNotification("🧘‍♂️ Recovery Score <2.5 για 4 ημέρες – Deload + active recovery προτείνεται.");
+  }
+}, [logData, recoveryLogs]);
+
+  const generateCoachAdvice = () => {
+    let advice = "🧠 AI Coach: ";
+    if (!oneRM || !recoveryScore) {
+      advice += "Συμπλήρωσε πρώτα 1RM και Recovery για να λάβεις προτάσεις.";
+    } else {
+      if (recoveryScore < 3) {
+        advice += "Χαμηλό recovery. Προτείνεται ελαφρύς κύκλος με RPE 6-7 και υψηλότερο RIR.";
+      } else if (recoveryScore >= 4.5) {
+        advice += "Υψηλό recovery. Μπορείς να προχωρήσεις με κύκλο PR ή αύξηση φορτίου +5%.";
+      } else {
+        advice += "Μέτρια κατάσταση. Διατήρησε το φορτίο σταθερό και παρακολούθησε RPE/Recovery.";
+      }
+    }
+    setCoachAdvice(advice);
+  };
+
+  const generateCyclePlan = () => {
+    if (!oneRM || !recoveryScore) {
+      setCyclePlan("🔁 Συμπλήρωσε 1RM και Recovery για να δημιουργηθεί πρόγραμμα.");
+      return;
+    }
+
+    let weekType = "Σταθερός Κύκλος";
+    if (recoveryScore < 3) {
+      weekType = "Deload Εβδομάδα";
+    } else if (prMessage) {
+      weekType = "Overload Εβδομάδα";
+    }
+
+    const w = parseFloat(oneRM);
+    const plan = `📅 ${weekType}
+
+- Δευτέρα: Squat 4x6 @ ${(w * 0.75).toFixed(1)} kg (RPE 7)
+- Τετάρτη: Bench Press 3x8 @ ${(w * 0.7).toFixed(1)} kg (RPE 7)
+- Παρασκευή: Deadlift 3x5 @ ${(w * 0.8).toFixed(1)} kg (RPE 8)
+- Κυριακή: Pull & Core 4x10 @ bodyweight ή light
+
+🎯 Προσαρμοσμένο βάσει τελευταίου 1RM και Recovery Score.`;
+
+    setCyclePlan(plan);
+  };
 
   useEffect(() => {
     try {
@@ -105,11 +203,19 @@ export default function StrengthModule() {
       }
 
       setAiSuggestions(suggestion);
+
+      const maxPrevious = Math.max(...logData.map(entry => parseFloat(entry.oneRM || 0)));
+      if (logData.length > 0 && parseFloat(oneRM) > maxPrevious) {
+        setPrMessage("🎉 Νέο PR καταγράφηκε! Συγχαρητήρια!");
+      } else {
+        setPrMessage("");
+      }
     } else {
       setAiSuggestions("");
       setAutoAdaptiveMessage("");
+      setPrMessage("");
     }
-  }, [oneRM, rpe, rir, recoveryScore]);
+  }, [oneRM, rpe, rir, recoveryScore, logData]);
 
   const logToSupabase = async (type, data) => {
     const { error } = await supabase.from("strength_logs").insert([{ type, ...data, timestamp: new Date().toISOString() }]);
@@ -152,6 +258,50 @@ export default function StrengthModule() {
     setRecoveryScore(final);
     logToSupabase("Recovery", { ...stressData, recoveryScore: final });
   };
+
+  const exportAllLogsToPDF = () => {
+  const doc = new jsPDF();
+  doc.setFontSize(16);
+  doc.text("Health's Spot - Όλα τα Strength Logs", 20, 20);
+
+  autoTable(doc, {
+    startY: 30,
+    head: [["Ημερομηνία", "Τύπος", "1RM", "Recovery", "Weight", "Reps"]],
+    body: allLogs.map(log => [
+      new Date(log.timestamp).toLocaleString("el-GR"),
+      log.type || "",
+      log.oneRM || "",
+      log.recoveryScore || "",
+      log.weight || "",
+      log.reps || "",
+    ]),
+  });
+
+  doc.save("strength_logs.pdf");
+};
+
+    const exportAllLogsToCSV = () => {
+  const headers = ["Ημερομηνία", "Τύπος", "1RM", "Recovery", "Weight", "Reps"];
+  const rows = allLogs.map(log => [
+    new Date(log.timestamp).toLocaleString("el-GR"),
+    log.type || "",
+    log.oneRM || "",
+    log.recoveryScore || "",
+    log.weight || "",
+    log.reps || "",
+  ]);
+
+  const csvContent = "data:text/csv;charset=utf-8," +
+    [headers, ...rows].map(e => e.join(",")).join("\n");
+
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", "strength_logs.csv");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
   const exportToCSV = () => {
     const rows = [
@@ -218,6 +368,44 @@ const recoveryChartData = recoveryLogs.map(entry => ({
     energy: "Ενέργεια",
     pain: "Μυϊκός Πόνος",
     mood: "Διάθεση",
+  };
+
+  const [allLogs, setAllLogs] = useState([]);
+
+useEffect(() => {
+  const fetchAllLogs = async () => {
+    const { data, error } = await supabase
+      .from("strength_logs")
+      .select("*")
+      .order("timestamp", { ascending: true });
+    if (!error && data) setAllLogs(data);
+  };
+  fetchAllLogs();
+}, []);
+
+ const exportCycleToPDF = () => {
+    const doc = new jsPDF();
+    doc.setFontSize(14);
+    doc.text("Cycle Generator Pro", 14, 20);
+    doc.setFontSize(10);
+    doc.text(cycleOutput, 14, 30);
+    doc.save("cycle_plan.pdf");
+  };
+
+  const exportCycleToCSV = () => {
+    const rows = cycleOutput
+      .split("\n")
+      .filter((line) => line.trim() !== "")
+      .map((line) => [line]);
+
+    let csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(",")).join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "cycle_plan.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -293,7 +481,10 @@ const recoveryChartData = recoveryLogs.map(entry => ({
             placeholder="Βάρος (kg)"
             className="p-2 rounded w-full bg-gray-100 dark:bg-gray-800 dark:text-white"
           />
-          <input
+          {prMessage && (
+  <p className="text-green-400 font-bold">{prMessage}</p>
+)}
+         <input
             type="number"
             value={reps}
             onChange={(e) => setReps(e.target.value)}
@@ -315,6 +506,25 @@ const recoveryChartData = recoveryLogs.map(entry => ({
           {error && <p className="text-red-500 font-semibold">{error}</p>}
           {oneRM && <p className="text-lg font-bold">1RM: {oneRM} kg</p>}
         </motion.section>
+
+<motion.section
+  className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
+  variants={sectionVariants}
+  initial="hidden"
+  animate="visible"
+  transition={{ duration: 0.5, delay: 1 }}
+>
+  <h2 className="text-xl font-semibold text-pink-400">🔁 Πρόγραμμα Εβδομάδας</h2>
+  <button
+    onClick={generateCyclePlan}
+    className="bg-pink-500 hover:bg-pink-600 text-black font-semibold px-4 py-2 rounded mb-2"
+  >
+    Δημιουργία Κύκλου
+  </button>
+  {cyclePlan && (
+    <pre className="mt-2 text-pink-200 whitespace-pre-wrap font-mono">{cyclePlan}</pre>
+  )}
+</motion.section>
 
         <motion.section
          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
@@ -353,6 +563,67 @@ const recoveryChartData = recoveryLogs.map(entry => ({
           </div>
           {rpeError && <p className="text-red-500 font-semibold">{rpeError}</p>}
         </motion.section>
+
+          <motion.section
+        className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        <h2 className="text-xl font-semibold text-pink-300">📈 Cycle Generator Pro</h2>
+
+        <div className="mb-3">
+          <label className="block mb-1 font-medium">Καταχώρησε 1RM:</label>
+          <input
+            type="number"
+            value={oneRM}
+            onChange={(e) => setOneRM(e.target.value)}
+            className="w-full p-2 rounded bg-gray-100 dark:bg-gray-800 dark:text-white"
+            placeholder="π.χ. 100"
+          />
+        </div>
+
+        <div className="mb-3">
+          <label className="block mb-1 font-medium">Επίλεξε Τύπο Κύκλου:</label>
+          <select
+            value={cycleType}
+            onChange={(e) => setCycleType(e.target.value)}
+            className="w-full p-2 rounded bg-gray-100 dark:bg-gray-800 dark:text-white"
+          >
+            <option value="Linear">Linear</option>
+            <option value="Undulating">Undulating</option>
+            <option value="Deload">Deload</option>
+          </select>
+        </div>
+
+        <button
+          onClick={generateCycleTemplate}
+          className="bg-pink-500 hover:bg-pink-600 text-black font-semibold px-4 py-2 rounded mb-2"
+        >
+          Δημιουργία 4-Εβδομαδιαίου Κύκλου
+        </button>
+
+        {cycleOutput && (
+          <>
+            <pre className="mt-2 text-pink-200 whitespace-pre-wrap font-mono">{cycleOutput}</pre>
+            <div className="mt-4 flex space-x-2">
+              <button
+                onClick={exportCycleToPDF}
+                className="px-4 py-2 rounded bg-fuchsia-600 text-white font-semibold hover:bg-fuchsia-700"
+              >
+                Export σε PDF
+              </button>
+              <button
+                onClick={exportCycleToCSV}
+                className="px-4 py-2 rounded bg-indigo-600 text-white font-semibold hover:bg-indigo-700"
+              >
+                Export σε CSV
+              </button>
+            </div>
+          </>
+        )}
+      </motion.section>
 
         <motion.section
          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
@@ -393,6 +664,7 @@ const recoveryChartData = recoveryLogs.map(entry => ({
             </p>
           )}
         </motion.section>
+
          <motion.section
         className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
         variants={sectionVariants}
@@ -416,6 +688,37 @@ const recoveryChartData = recoveryLogs.map(entry => ({
         )}
       </motion.section>
 
+        <motion.section
+  className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
+  variants={sectionVariants}
+  initial="hidden"
+  animate="visible"
+  transition={{ duration: 0.5, delay: 0.8 }}
+>
+  <h2 className="text-xl font-semibold text-amber-400">🧠 AI Coach</h2>
+  <button
+    onClick={generateCoachAdvice}
+    className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-4 py-2 rounded mb-2"
+  >
+    Προπονητική Συμβουλή
+  </button>
+  {coachAdvice && (
+    <p className="mt-2 text-amber-300 font-medium">{coachAdvice}</p>
+  )}
+</motion.section>
+
+   {allLogs.length > 0 && (
+     <div className="flex justify-end space-x-3">
+  <button onClick={exportAllLogsToPDF} className="px-4 py-2 rounded bg-fuchsia-600 text-white font-semibold hover:bg-fuchsia-700">
+    🧾 Export Όλων (PDF)
+  </button>
+  <button onClick={exportAllLogsToCSV} className="px-4 py-2 rounded bg-indigo-600 text-white font-semibold hover:bg-indigo-700">
+    📂 Export Όλων (CSV)
+  </button>
+</div>
+  )}
+
+
 <motion.section
  className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
   variants={sectionVariants}
@@ -438,7 +741,20 @@ const recoveryChartData = recoveryLogs.map(entry => ({
     </ResponsiveContainer>
   )}
 </motion.section>
+      {notifications.length > 0 && (
+        <div className="fixed top-2 right-2 space-y-2 z-50">
+          {notifications.map((note) => (
+            <div key={note.id} className="bg-yellow-200 border border-yellow-400 text-yellow-900 px-4 py-2 rounded shadow">
+              <div className="flex justify-between items-center">
+                <span>{note.text}</span>
+                <button onClick={() => dismissNotification(note.id)} className="ml-2 text-sm text-yellow-800">✖</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
       </div>
-</motion.div>
+        </motion.div>
   );
 }
+

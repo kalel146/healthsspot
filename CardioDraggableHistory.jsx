@@ -7,6 +7,8 @@ import {
 } from "@dnd-kit/sortable";
 import SortableCard from "./SortableCard";
 import { fetchCardioLogs } from "./fetchCardioLogs";
+import CardioHistoryGraph from "./CardioHistoryGraph";
+import { exportCardioToCSV } from "./exportCardioToCSV";
 
 export default function CardioDraggableHistory() {
   const [items, setItems] = useState([]);
@@ -45,6 +47,30 @@ export default function CardioDraggableHistory() {
           <option value="Ποδήλατο">Ποδήλατο</option>
         </select>
       </div>
+      <div className="flex justify-end mt-4">
+  <button
+    onClick={() => exportCardioToCSV(items)}
+    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+  >
+    📥 Εξαγωγή CSV
+  </button>
+</div>
+
+<div className="flex justify-end mb-4">
+  <select
+    value={activityFilter}
+    onChange={(e) => setActivityFilter(e.target.value)}
+    className="p-2 rounded bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+  >
+    <option value="Όλα">Όλα</option>
+    <option value="Τρέξιμο">Τρέξιμο</option>
+    <option value="Περπάτημα">Περπάτημα</option>
+    <option value="Κολύμβηση">Κολύμβηση</option>
+    <option value="Ποδήλατο">Ποδήλατο</option>
+  </select>
+</div>
+
+<CardioHistoryGraph activityFilter={activityFilter} />
 
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext items={items} strategy={verticalListSortingStrategy}>

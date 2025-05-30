@@ -22,8 +22,9 @@ export default function CardioModule() {
   const [history, setHistory] = useState([]);
   const [advice, setAdvice] = useState("");
   const chartRef = useRef(null);
-
-  const fetchHistory = async () => {
+const activities = ["Τρέξιμο", "Ποδήλατο", "Κολύμβηση", "HIIT", "Άλλο"];
+  
+const fetchHistory = async () => {
     const { data, error } = await supabase
       .from("cardio_logs")
       .select("created_at, vo2, kcal")
@@ -75,6 +76,7 @@ export default function CardioModule() {
       duration,
       vo2: result.vo2,
       kcal: result.total,
+      activity,
       created_at: new Date().toISOString()
     });
 
@@ -94,6 +96,7 @@ export default function CardioModule() {
       test_type: testType,
       value: fixed,
       distance,
+      activity,
       created_at: new Date().toISOString()
     });
 
@@ -133,22 +136,27 @@ export default function CardioModule() {
   );
 
   const handleExportCSV = () => {
-  const rows = [
-    ["Ημερομηνία", "VO2max", "kcal"]
-  ];
-  history.forEach(entry => {
-    rows.push([entry.date, entry.VO2 ?? "", entry.kcal ?? ""]);
-  });
-  const csvContent = rows.map(e => e.join(",")).join("\n");
-  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.setAttribute("download", "cardio_report.csv");
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+    const rows = [
+      ["Ημερομηνία", "VO2max", "kcal"]
+    ];
 
+    const filtered = history.filter(entry => {
+      if (activity === "Όλα") return true;
+      return entry.activity === activity;
+    });
+
+    filtered.forEach(entry => {
+      rows.push([entry.date, entry.VO2 ?? "", entry.kcal ?? ""]);
+    });
+    const csvContent = rows.map(e => e.join(",")).join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.setAttribute("download", "cardio_report.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <motion.div
@@ -186,7 +194,6 @@ export default function CardioModule() {
         <LabeledInput id="mets" label="METs" value={mets} onChange={(e) => setMets(e.target.value)} />
         <LabeledInput id="weight" label="Βάρος (kg)" value={weight} onChange={(e) => setWeight(e.target.value)} />
         <LabeledInput id="duration" label="Διάρκεια (λεπτά)" value={duration} onChange={(e) => setDuration(e.target.value)} />
-        <LabeledInput id="duration" label="Διάρκεια (λεπτά)" value={duration} onChange={(e) => setDuration(e.target.value)} />
 
         <button onClick={calculateKcal} className="bg-green-600 hover:bg-green-700 px-5 py-2 mt-2 rounded-xl text-white shadow">
           Υπολόγισε kcal
@@ -204,19 +211,25 @@ export default function CardioModule() {
           VO2max Test (Cooper)
         </SectionHeader>
 
-<label htmlFor="activity" className="block text-sm font-medium">Τύπος Δραστηριότητας</label>
-      <select
-        id="activity"
-        value={activity}
-        onChange={(e) => setActivity(e.target.value)}
-        className={inputClass}
+       <div className="space-y-1">
+  <span className="text-sm font-medium block">Τύπος Δραστηριότητας</span>
+  <div className="flex flex-wrap gap-2">
+    {activities.map((act) => (
+      <button
+        key={act}
+        onClick={() => setActivity(act)}
+        className={`px-4 py-2 rounded-full font-medium border ${
+          activity === act
+            ? "bg-yellow-400 text-black border-yellow-500"
+            : "bg-gray-200 dark:bg-gray-700 text-black dark:text-white border-gray-400"
+        }`}
       >
-        <option>Τρέξιμο</option>
-        <option>Ποδήλατο</option>
-        <option>Κολύμβηση</option>
-        <option>HIIT</option>
-        <option>Άλλο</option>
-      </select>
+        {act}
+      </button>
+    ))}
+  </div>
+</div>
+
 
         <label htmlFor="vo2test" className="block text-sm font-medium">Επιλογή Τεστ VO2max</label>
         <select
@@ -251,29 +264,38 @@ export default function CardioModule() {
         )}
       </motion.section>
 
-<motion.section className="max-w-4xl mx-auto p-6 rounded-xl shadow-xl bg-white dark:bg-gray-900" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-  <SectionHeader icon={<LineChart className="w-5 h-5" />} color="yellow">
-    Ιστορικό VO2max και kcal
-  </SectionHeader>
-  <ResponsiveContainer width="100%" height={300}>
-    <Chart data={history} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="date" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line type="monotone" dataKey="VO2" stroke="#3b82f6" name="VO2max (mL/kg/min)" />
-      <Line type="monotone" dataKey="kcal" stroke="#10b981" name="kcal (συνολικά)" />
-    </Chart>
-  </ResponsiveContainer>
-  <button
-    onClick={handleExportCSV}
-    className="mt-4 flex items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700"
-  >
-    <Download className="w-4 h-4" /> Export CSV
-  </button>
-</motion.section>
-      
+      <motion.section className="max-w-4xl mx-auto p-6 rounded-xl shadow-xl bg-white dark:bg-gray-900" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+        <SectionHeader icon={<LineChart className="w-5 h-5" />} color="yellow">
+          Ιστορικό VO2max και kcal
+        </SectionHeader>
+        <ResponsiveContainer width="100%" height={300}>
+          <Chart data={history} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="VO2" stroke="#3b82f6" name="VO2max (mL/kg/min)" />
+            <Line type="monotone" dataKey="kcal" stroke="#10b981" name="kcal (συνολικά)" />
+          </Chart>
+        </ResponsiveContainer>
+
+         {advice && (
+          <motion.div className="mt-6 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 p-4 rounded-xl shadow-inner" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <p className="text-sm font-medium flex items-center gap-2">
+              <Bot className="w-4 h-4" /> {advice}
+            </p>
+          </motion.div>
+        )}
+
+        <button
+          onClick={handleExportCSV}
+          className="mt-4 flex items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700"
+        >
+          <Download className="w-4 h-4" /> Export CSV
+        </button>
+      </motion.section>
+
     </motion.div>
   );
 }
