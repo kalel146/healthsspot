@@ -8,6 +8,7 @@ import { LineChart as Chart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, C
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { Download } from "lucide-react";
+import CardioInsights from "./CardioInsights";
 
 export default function CardioModule() {
   const [mets, setMets] = useState(1);
@@ -295,6 +296,8 @@ const fetchHistory = async () => {
           <Download className="w-4 h-4" /> Export CSV
         </button>
       </motion.section>
+     
+      <CardioInsights activity={activity} history={history} />
 
     </motion.div>
   );

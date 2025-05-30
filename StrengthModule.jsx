@@ -369,6 +369,30 @@ const recoveryChartData = recoveryLogs.map(entry => ({
     mood: "Διάθεση",
   };
 
+  const combinedChartData = logData.map((entry, index) => {
+  const avgOneRM = logData.slice(0, index + 1).reduce((acc, val) => acc + parseFloat(val.oneRM), 0) / (index + 1);
+  const recoveryEntry = recoveryLogs.find(r => new Date(r.timestamp).toLocaleDateString("el-GR") === new Date(entry.timestamp).toLocaleDateString("el-GR"));
+  return {
+    name: new Date(entry.timestamp).toLocaleDateString("el-GR"),
+    PR: parseFloat(entry.oneRM),
+    Avg: parseFloat(avgOneRM.toFixed(1)),
+    Recovery: recoveryEntry ? parseFloat(recoveryEntry.recoveryScore) : null
+  };
+});
+
+const lastWeekData = combinedChartData.slice(-3);
+const avgLastWeek = lastWeekData.reduce((acc, val) => acc + val.PR, 0) / lastWeekData.length;
+const recoveryTrend = lastWeekData.map(d => d.Recovery).filter(Boolean);
+
+let adaptationSuggestion = "";
+if (recoveryTrend.length === 3 && recoveryTrend.every(score => score > 70)) {
+  adaptationSuggestion = `💡 Είσαι σε καλή κατάσταση! Πρότεινε αύξηση ~2.5% στο φορτίο την επόμενη εβδομάδα (δηλ. ${Math.round(avgLastWeek * 1.025)} kg).`;
+} else if (recoveryTrend.length === 3 && recoveryTrend.every(score => score < 50)) {
+  adaptationSuggestion = "⚠️ Χαμηλή αποκατάσταση τις τελευταίες μέρες. Πρότεινε σταθεροποίηση ή ελαφρύ deload πριν συνεχίσεις.";
+} else {
+  adaptationSuggestion = "📊 Παρακολούθησε την πορεία και αναπροσάρμοσε εβδομαδιαία βάσει δεδομένων.";
+}
+
   const [allLogs, setAllLogs] = useState([]);
 
 useEffect(() => {
@@ -396,6 +420,17 @@ useEffect(() => {
       .split("\n")
       .filter((line) => line.trim() !== "")
       .map((line) => [line]);
+
+const combinedChartData = logData.map((entry, index) => {
+  const avgOneRM = logData.slice(0, index + 1).reduce((acc, val) => acc + parseFloat(val.oneRM), 0) / (index + 1);
+  const recoveryEntry = recoveryLogs.find(r => new Date(r.timestamp).toLocaleDateString("el-GR") === new Date(entry.timestamp).toLocaleDateString("el-GR"));
+  return {
+    name: new Date(entry.timestamp).toLocaleDateString("el-GR"),
+    PR: parseFloat(entry.oneRM),
+    Avg: parseFloat(avgOneRM.toFixed(1)),
+    Recovery: recoveryEntry ? parseFloat(recoveryEntry.recoveryScore) : null
+  };
+});
 
     let csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(",")).join("\n");
     const encodedUri = encodeURI(csvContent);
@@ -505,6 +540,32 @@ useEffect(() => {
           {error && <p className="text-red-500 font-semibold">{error}</p>}
           {oneRM && <p className="text-lg font-bold">1RM: {oneRM} kg</p>}
         </motion.section>
+
+<motion.section
+  className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
+  variants={sectionVariants}
+  initial="hidden"
+  animate="visible"
+  transition={{ duration: 0.5, delay: 0.9 }}
+>
+  <h2 className="text-xl font-semibold text-emerald-400">📊 Strength Comparison Chart</h2>
+  {combinedChartData.length === 0 ? (
+    <p className="text-gray-400">Δεν υπάρχουν δεδομένα ακόμα.</p>
+  ) : (
+    <ResponsiveContainer width="100%" height={280}>
+      <LineChart data={combinedChartData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis domain={['auto', 'auto']} />
+        <Tooltip />
+        <Line type="monotone" dataKey="PR" stroke="#FACC15" strokeWidth={2} name="1RM PR" />
+        <Line type="monotone" dataKey="Avg" stroke="#34D399" strokeWidth={2} name="Μέσος 1RM" />
+        <Line type="monotone" dataKey="Recovery" stroke="#60A5FA" strokeWidth={2} name="Recovery" />
+      </LineChart>
+    </ResponsiveContainer>
+  )}
+  <p className="mt-4 text-sm text-amber-400 font-medium">{adaptationSuggestion}</p>
+</motion.section>
 
 <motion.section
   className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
