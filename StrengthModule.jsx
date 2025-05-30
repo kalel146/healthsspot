@@ -5,10 +5,9 @@ import { useTheme } from "./ThemeContext";
 import { Info } from "lucide-react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
-import { createClient } from "@supabase/supabase-js";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
+import { supabase } from "./supabaseClient";
 
-const supabase = createClient("https://your-project.supabase.co", "your-anon-key");
 
 const pageVariants = {
   initial: { opacity: 0, y: 50, scale: 0.95 },

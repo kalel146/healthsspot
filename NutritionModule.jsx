@@ -7,10 +7,9 @@ import { DndContext, closestCenter } from "@dnd-kit/core";
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { createClient } from "@supabase/supabase-js";
 import { useUser, SignedIn } from "@clerk/clerk-react";
+import { supabase } from "./supabaseClient";
 
-const supabase = createClient("https://lfhnlalktlcjyhelblci.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxmaG5sYWxrdGxjanloZWxibGNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc4NDI4MjEsImV4cCI6MjA2MzQxODgyMX0.qxOxqg2ObJBUJF5vKcQclIHgJa_1wYGrmWtxSU4Amvg");
 
 function SortableItem({ id, children }) {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
