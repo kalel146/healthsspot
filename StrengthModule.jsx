@@ -885,77 +885,122 @@ const combinedChartData = logData.map((entry, index) => {
   </button>
 </div>
   )}
-       <ExportButtons logData={logData} />
- 
-<motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.4 }}
->
-  <StrengthForm onNewEntry={handleNewStrengthEntry} />
-</motion.div>
+      <ExportButtons logData={logData} />
 
-{!logData ? (
-  <p>Φορτώνει δεδομένα...</p>
-) : (
-     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-    >
-      {logData && logData.length > 0 ? (
-        <>
-          <StrengthChart data={logData} prValue={maxOneRM} />
-          {prMessage && <p className="text-green-400 font-medium mt-2">{prMessage}</p>}
-        </>
-      ) : (
-        <p className="text-gray-400">Δεν υπάρχουν δεδομένα για εμφάνιση.</p>
-      )}
-    </motion.div>
-)}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <StrengthForm onNewEntry={handleNewStrengthEntry} />
+        </motion.div>
 
+        {!logData ? (
+          <p>Φορτώνει δεδομένα...</p>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            {logData && logData.length > 0 ? (
+              <>
+                <StrengthChart data={logData} prValue={maxOneRM} />
+                {prMessage && <p className="text-green-400 font-medium mt-2">{prMessage}</p>}
+              </>
+            ) : (
+              <p className="text-gray-400">Δεν υπάρχουν δεδομένα για εμφάνιση.</p>
+            )}
+          </motion.div>
+        )}
 
-<motion.section
- className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-  variants={sectionVariants}
-  initial="hidden"
-  animate="visible"
-  transition={{ duration: 0.5, delay: 0.6 }}
->
-  <h2 className="text-xl font-semibold text-green-400">Ιστορικό 1RM</h2>
-  {chartData.length === 0 ? (
-    <p className="text-gray-400">Δεν υπάρχουν δεδομένα ακόμα.</p>
-  ) : (
-    <ResponsiveContainer width="100%" height={250}>
-      <LineChart data={chartData}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis domain={["auto", "auto"]} />
-        <Tooltip />
-        <Line type="monotone" dataKey="oneRM" stroke="#22C55E" strokeWidth={3} />
-      </LineChart>
-    </ResponsiveContainer>
-  )}
-</motion.section>
-      {notifications.length > 0 && (
-        <div className="fixed top-2 right-2 space-y-2 z-50">
-          {notifications.map((note) => (
-            <div key={note.id} className="bg-yellow-200 border border-yellow-400 text-yellow-900 px-4 py-2 rounded shadow">
-              <div className="flex justify-between items-center">
-                <span>{note.text}</span>
-                <button onClick={() => dismissNotification(note.id)} className="ml-2 text-sm text-yellow-800">✖</button>
+        <motion.section
+          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <h2 className="text-xl font-semibold text-green-400">Ιστορικό 1RM</h2>
+          {chartData.length === 0 ? (
+            <p className="text-gray-400">Δεν υπάρχουν δεδομένα ακόμα.</p>
+          ) : (
+            <ResponsiveContainer width="100%" height={250}>
+              <LineChart data={chartData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis domain={["auto", "auto"]} />
+                <Tooltip />
+                <Line type="monotone" dataKey="oneRM" stroke="#22C55E" strokeWidth={3} />
+              </LineChart>
+            </ResponsiveContainer>
+          )}
+        </motion.section>
+
+        <motion.section
+          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.5, delay: 0.7 }}
+        >
+          <h2 className="text-xl font-semibold text-sky-300">📈 Εξέλιξη 1RM</h2>
+          <p className="text-gray-400">
+            {logData.length === 0 ? "Δεν υπάρχουν δεδομένα ακόμα." : `Τελευταίο PR: ${maxOneRM} kg`}
+          </p>
+        </motion.section>
+
+        <motion.section
+          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
+          <h2 className="text-xl font-semibold text-indigo-300">📅 Προγραμματισμός Κύκλου Προπόνησης</h2>
+          <p className="text-white mt-2">📘 Τρέχων Τύπος Εβδομάδας: {userCycleMode}</p>
+          <p className="text-white">📈 PR της εβδομάδας: {maxOneRM || '--'} kg</p>
+          <p className="text-white">💓 Μέσο Recovery: {recoveryScore || '--'}/5</p>
+        </motion.section>
+
+        <motion.section
+          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.5, delay: 0.9 }}
+        >
+          <h2 className="text-xl font-semibold text-emerald-300">🧪 Recovery Score</h2>
+          <p className="text-white text-lg font-bold">{recoveryScore}</p>
+        </motion.section>
+
+        <motion.section
+          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.5, delay: 1.0 }}
+        >
+          <h2 className="text-xl font-semibold text-pink-300">🧠 AI Coach</h2>
+          {coachAdvice ? (
+            <p className="text-white mt-2">{coachAdvice}</p>
+          ) : (
+            <p className="text-gray-400">Δεν υπάρχουν συμβουλές ακόμη.</p>
+          )}
+        </motion.section>
+
+        {notifications.length > 0 && (
+          <div className="fixed top-2 right-2 space-y-2 z-50">
+            {notifications.map((note) => (
+              <div key={note.id} className="bg-yellow-200 border border-yellow-400 text-yellow-900 px-4 py-2 rounded shadow">
+                <div className="flex justify-between items-center">
+                  <span>{note.text}</span>
+                  <button onClick={() => dismissNotification(note.id)} className="ml-2 text-sm text-yellow-800">✖</button>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
-      <ExportButtons />
-        <StrengthForm />
-        <StrengthChart />
-        <CycleGenerator />
-        <RecoveryTracker />
-        <AiCoach />
-        <Notifications />
+            ))}
+          </div>
+        )}
       </div>
     </motion.div>
   );
