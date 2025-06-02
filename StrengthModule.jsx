@@ -7,6 +7,13 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import { supabase } from "./supabaseClient";
+import StrengthForm from "./StrengthForm";
+import StrengthChart from "./StrengthChart";
+import RecoveryTracker from "./RecoveryTracker";
+import CycleGenerator from "./CycleGenerator";
+import AiCoach from "./AiCoach";
+import Notifications from "./Notifications";
+import ExportButtons from "./ExportButtons";
 
 
 const pageVariants = {
@@ -46,15 +53,21 @@ export default function StrengthModule() {
   const [notifications, setNotifications] = useState([]);
   const [cycleType, setCycleType] = useState("Linear");
   const [cycleOutput, setCycleOutput] = useState("");
-  const [oneRM, setOneRM] = useState("");
+  const [userCycleMode, setUserCycleMode] = useState("Auto"); // ή "PR", "Deload"
+
+const maxOneRM = Math.max(...logData.map(entry => parseFloat(entry.oneRM || 0))); // Retained original declaration
+const pr = logData.length > 0
+  ? logData.reduce((max, entry) => Math.max(max, parseFloat(entry.maxOneRM || 0)), 0)
+  : 0;
+
 
   const generateCycleTemplate = () => {
-if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
+if (!cycleType || isNaN(parseFloat(maxOneRM)) || parseFloat(maxOneRM) <= 0) {
       setCycleOutput("🔁 Επίλεξε τύπο κύκλου και υπολόγισε 1RM πρώτα.");
       return;
     }
 
-    const w = parseFloat(oneRM);
+    const w = parseFloat(maxOneRM);
     let output = `📊 ${cycleType} Periodization (4 εβδομάδες):\n`;
 
     const plans = {
@@ -75,9 +88,53 @@ if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
   };
 
   useEffect(() => {
+  const fetchData = async () => {
+    const {
+      data: { session },
+      error: sessionError,
+    } = await supabase.auth.getSession();
+
+    if (!session) {
+  console.warn("⛔ No active session. Skipping fetch.");
+  return;
+}
+
+
+    const user = session.user;
+    console.log("👤 user:", user);
+
+    const { data, error } = await supabase
+      .from("strength_logs")
+      .select("date, maxOneRM")
+      .eq("user_id", user.id)
+      .order("date", { ascending: true });
+
+    if (error) {
+      console.error("❌ Error fetching strength data:", error);
+    } else {
+      console.log("📊 logData:", data);
+      setLogData(data);
+
+      const pr = data.reduce((max, entry) => Math.max(max, parseFloat(entry.maxOneRM || 0)), 0);
+      setMaxOneRM(pr);
+
+      const latest = parseFloat(data[data.length - 1]?.maxOneRM || 0);
+      if (data.length > 0 && latest === pr && latest !== 0) {
+        setPrMessage("🎉 Νέο PR καταγράφηκε! Συγχαρητήρια!");
+      } else {
+        setPrMessage("");
+      }
+    }
+  };
+
+  fetchData();
+}, []);
+
+
+  useEffect(() => {
     if (prMessage) pushNotification("🎯 Νέο PR! Καταγράφηκε επιτυχώς.");
     if (recoveryScore && recoveryScore < 2.5) pushNotification("🛑 Πολύ χαμηλό Recovery — Deload προτείνεται.");
-  }, [prMessage, recoveryScore]);
+  }, [maxOneRM, prMessage, recoveryScore]);
 
   const dismissNotification = (id) => {
     setNotifications(notifications.filter(n => n.id !== id));
@@ -85,7 +142,7 @@ if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
 
    useEffect(() => {
   if (logData.length >= 3) {
-    const lastThree = logData.slice(-3).map(e => parseFloat(e.oneRM));
+    const lastThree = logData.slice(-3).map(e => parseFloat(e.maxOneRM));
     const allEqual = lastThree.every(val => val === lastThree[0]);
     const allDecreasing = lastThree[0] > lastThree[1] && lastThree[1] > lastThree[2];
     if (allEqual) pushNotification("⚠ Στασιμότητα 1RM σε 3 σερί sessions – Δοκίμασε μεταβλητότητα φορτίου.");
@@ -100,7 +157,7 @@ if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
 
   const generateCoachAdvice = () => {
     let advice = "🧠 AI Coach: ";
-    if (!oneRM || !recoveryScore) {
+    if (!maxOneRM || !recoveryScore) {
       advice += "Συμπλήρωσε πρώτα 1RM και Recovery για να λάβεις προτάσεις.";
     } else {
       if (recoveryScore < 3) {
@@ -115,19 +172,23 @@ if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
   };
 
   const generateCyclePlan = () => {
-    if (!oneRM || !recoveryScore) {
+    if (!maxOneRM || !recoveryScore) {
       setCyclePlan("🔁 Συμπλήρωσε 1RM και Recovery για να δημιουργηθεί πρόγραμμα.");
       return;
     }
 
     let weekType = "Σταθερός Κύκλος";
-    if (recoveryScore < 3) {
-      weekType = "Deload Εβδομάδα";
-    } else if (prMessage) {
-      weekType = "Overload Εβδομάδα";
-    }
+if (userCycleMode === "PR") {
+  weekType = "Overload Εβδομάδα";
+} else if (userCycleMode === "Deload") {
+  weekType = "Deload Εβδομάδα";
+} else if (recoveryScore < 3) {
+  weekType = "Deload Εβδομάδα";
+} else if (prMessage) {
+  weekType = "Overload Εβδομάδα";
+}
 
-    const w = parseFloat(oneRM);
+    const w = parseFloat(maxOneRM);
     const plan = `📅 ${weekType}
 
 - Δευτέρα: Squat 4x6 @ ${(w * 0.75).toFixed(1)} kg (RPE 7)
@@ -161,38 +222,42 @@ if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
       "strengthModuleData",
       JSON.stringify({ weight, reps, rpe, rir, stressData })
     );
-  }, [weight, reps, rpe, rir, stressData]);
+  }, [weight, maxOneRM, reps, rpe, rir, stressData]);
 
-  useEffect(() => {
-    const fetchLogs = async () => {
-      const { data, error } = await supabase
-        .from("strength_logs")
-        .select("timestamp, oneRM")
-        .order("timestamp", { ascending: true });
-      if (!error && data) setLogData(data);
-    };
-    fetchLogs();
-  }, [oneRM]);
+ useEffect(() => {
+  const fetchLogs = async () => {
+    const { data, error } = await supabase
+      .from("strength_logs")
+      .select("date, maxOneRM")
+      .order("timestamp", { ascending: true });
 
-  useEffect(() => {
-    const fetchRecoveryLogs = async () => {
-      const { data: recoveryLogs, error: recoveryError } = await supabase
-        .from("strength_logs")
-        .select("timestamp, recoveryScore")
-        .eq("type", "Recovery")
-        .order("timestamp", { ascending: true });
-      if (!recoveryError && recoveryLogs) setRecoveryLogs(recoveryLogs);
-    };
-    fetchRecoveryLogs();
-  }, [oneRM, recoveryScore]);
+    if (!error && data) setLogData(data);
+  };
+
+  fetchLogs();
+}, []); // ✅ Χωρίς το [oneRM]
+
+
+ useEffect(() => {
+  const fetchRecoveryLogs = async () => {
+    const { data: recoveryLogs, error: recoveryError } = await supabase
+      .from("strength_logs")
+      .select("timestamp, recoveryScore")
+      .eq("type", "Recovery")
+      .order("timestamp", { ascending: true });
+    if (!recoveryError && recoveryLogs) setRecoveryLogs(recoveryLogs);
+  };
+  fetchRecoveryLogs();
+}, [recoveryScore]); // ✅ Εφόσον το recoveryScore υπάρχει, αυτό είναι οκ.
+
 
      useEffect(() => {
-    if (oneRM && rpe && rir) {
-      const intensity = parseFloat(oneRM) * (1 - parseInt(rir) * 0.03);
+    if (maxOneRM && rpe && rir) {
+      const intensity = parseFloat(maxOneRM) * (1 - parseInt(rir) * 0.03);
       let suggestion =
         `💡 Πρόταση: Φόρτωσε περίπου ${intensity.toFixed(1)} kg για ${10 - parseInt(rir)} επαναλήψεις (RPE ${rpe}, RIR ${rir}).`;
       const weeklyIncrement = 0.02;
-      const nextWeek = parseFloat(oneRM) * (1 + weeklyIncrement);
+      const nextWeek = parseFloat(maxOneRM) * (1 + weeklyIncrement);
       setAutoAdaptiveMessage(`📈 Εβδομαδιαία αύξηση στόχου: Δοκίμασε ~${nextWeek.toFixed(1)} kg την επόμενη εβδομάδα.`);
 
       if (recoveryScore && recoveryScore < 3) {
@@ -203,8 +268,8 @@ if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
 
       setAiSuggestions(suggestion);
 
-      const maxPrevious = Math.max(...logData.map(entry => parseFloat(entry.oneRM || 0)));
-      if (logData.length > 0 && parseFloat(oneRM) > maxPrevious) {
+      const maxPrevious = Math.max(...logData.map(entry => parseFloat(entry.maxOneRM || 0)));
+      if (logData.length > 0 && parseFloat(maxOneRM) > maxPrevious) {
         setPrMessage("🎉 Νέο PR καταγράφηκε! Συγχαρητήρια!");
       } else {
         setPrMessage("");
@@ -214,7 +279,16 @@ if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
       setAutoAdaptiveMessage("");
       setPrMessage("");
     }
-  }, [oneRM, rpe, rir, recoveryScore, logData]);
+  }, [rpe, maxOneRM, rir, recoveryScore, logData]);
+
+  const exportCoachAdviceToPDF = () => {
+  const doc = new jsPDF();
+  doc.setFontSize(16);
+  doc.text("AI Coach Συμβουλή", 20, 20);
+  doc.setFontSize(12);
+  doc.text(coachAdvice || "Δεν υπάρχει συμβουλή αυτή τη στιγμή.", 20, 30);
+  doc.save("ai_coach_advice.pdf");
+};
 
   const logToSupabase = async (type, data) => {
     const { error } = await supabase.from("strength_logs").insert([{ type, ...data, timestamp: new Date().toISOString() }]);
@@ -233,7 +307,7 @@ if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
     const result = w * (36 / (37 - r));
     const final = result.toFixed(1);
     setOneRM(final);
-    logToSupabase("1RM", { weight: w, reps: r, oneRM: final });
+    logToSupabase("1RM", { weight: w, reps: r, maxOneRM: final });
   };
 
   const handleRpeRirChange = (value, type) => {
@@ -306,7 +380,7 @@ if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
     const rows = [
       ["Weight", `${weight} kg`],
       ["Reps", reps],
-      ["1RM", oneRM || "Not calculated"],
+      ["1RM", maxOneRM || "Not calculated"],
       ["RPE", rpe],
       ["RIR", rir],
       ["Sleep", stressData.sleep],
@@ -338,7 +412,7 @@ if (!cycleType || isNaN(parseFloat(oneRM)) || parseFloat(oneRM) <= 0) {
       body: [
         ["Weight", `${weight} kg`],
         ["Reps", `${reps}`],
-        ["1RM", oneRM ? `${oneRM} kg` : "Not calculated"],
+        ["1RM", maxOneRM ? `${maxOneRM} kg` : "Not calculated"],
         ["RPE", rpe],
         ["RIR", rir],
         ["Sleep", stressData.sleep],
@@ -359,7 +433,7 @@ const recoveryChartData = recoveryLogs.map(entry => ({
 
   const chartData = logData.map(entry => ({
     name: new Date(entry.timestamp).toLocaleDateString("el-GR"),
-    oneRM: parseFloat(entry.oneRM)
+    maxOneRM: parseFloat(entry.maxOneRM)
   }));
 
   const stressLabels = {
@@ -370,11 +444,11 @@ const recoveryChartData = recoveryLogs.map(entry => ({
   };
 
   const combinedChartData = logData.map((entry, index) => {
-  const avgOneRM = logData.slice(0, index + 1).reduce((acc, val) => acc + parseFloat(val.oneRM), 0) / (index + 1);
+  const avgOneRM = logData.slice(0, index + 1).reduce((acc, val) => acc + parseFloat(val.maxOneRM), 0) / (index + 1);
   const recoveryEntry = recoveryLogs.find(r => new Date(r.timestamp).toLocaleDateString("el-GR") === new Date(entry.timestamp).toLocaleDateString("el-GR"));
   return {
     name: new Date(entry.timestamp).toLocaleDateString("el-GR"),
-    PR: parseFloat(entry.oneRM),
+    PR: parseFloat(entry.maxOneRM),
     Avg: parseFloat(avgOneRM.toFixed(1)),
     Recovery: recoveryEntry ? parseFloat(recoveryEntry.recoveryScore) : null
   };
@@ -400,7 +474,7 @@ useEffect(() => {
     const { data, error } = await supabase
       .from("strength_logs")
       .select("*")
-      .order("timestamp", { ascending: true });
+      .order("date", { ascending: true })
     if (!error && data) setAllLogs(data);
   };
   fetchAllLogs();
@@ -422,13 +496,15 @@ useEffect(() => {
       .map((line) => [line]);
 
 const combinedChartData = logData.map((entry, index) => {
-  const avgOneRM = logData.slice(0, index + 1).reduce((acc, val) => acc + parseFloat(val.oneRM), 0) / (index + 1);
+  const avgOneRM = logData.slice(0, index + 1).reduce((acc, val) => acc + parseFloat(val.maxOneRM), 0) / (index + 1);
   const recoveryEntry = recoveryLogs.find(r => new Date(r.timestamp).toLocaleDateString("el-GR") === new Date(entry.timestamp).toLocaleDateString("el-GR"));
+  const isPR = parseFloat(entry.maxOneRM) > Math.max(...logData.slice(0, index).map(e => parseFloat(e.maxOneRM || 0)));
   return {
     name: new Date(entry.timestamp).toLocaleDateString("el-GR"),
-    PR: parseFloat(entry.oneRM),
+    PR: parseFloat(entry.maxOneRM),
     Avg: parseFloat(avgOneRM.toFixed(1)),
-    Recovery: recoveryEntry ? parseFloat(recoveryEntry.recoveryScore) : null
+    Recovery: recoveryEntry ? parseFloat(recoveryEntry.recoveryScore) : null,
+    Icon: isPR ? "🎯" : ""
   };
 });
 
@@ -440,6 +516,11 @@ const combinedChartData = logData.map((entry, index) => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handleNewStrengthEntry = (entry) => {
+    console.log("Νέα καταχώρηση:", entry);
+    setLogData((prev) => [...prev, entry]);
   };
 
   return (
@@ -538,7 +619,8 @@ const combinedChartData = logData.map((entry, index) => {
             Υπολόγισε 1RM
           </button>
           {error && <p className="text-red-500 font-semibold">{error}</p>}
-          {oneRM && <p className="text-lg font-bold">1RM: {oneRM} kg</p>}
+          {maxOneRM && <p className="text-lg font-bold">1RM: {maxOneRM} kg</p>
+}
         </motion.section>
 
 <motion.section
@@ -637,7 +719,7 @@ const combinedChartData = logData.map((entry, index) => {
           <label className="block mb-1 font-medium">Καταχώρησε 1RM:</label>
           <input
             type="number"
-            value={oneRM}
+            value={maxOneRM}
             onChange={(e) => setOneRM(e.target.value)}
             className="w-full p-2 rounded bg-gray-100 dark:bg-gray-800 dark:text-white"
             placeholder="π.χ. 100"
@@ -756,6 +838,18 @@ const combinedChartData = logData.map((entry, index) => {
   transition={{ duration: 0.5, delay: 0.8 }}
 >
   <h2 className="text-xl font-semibold text-amber-400">🧠 AI Coach</h2>
+          <div className="mb-4">
+  <label className="block font-medium text-sm mb-1">🎛 Επιλογή Mode:</label>
+  <select
+    value={userCycleMode}
+    onChange={(e) => setUserCycleMode(e.target.value)}
+    className="p-2 rounded w-full bg-gray-100 dark:bg-gray-800 dark:text-white"
+  >
+    <option value="Auto">🤖 Auto Mode</option>
+    <option value="PR">🏋 PR Week</option>
+    <option value="Deload">🧘 Deload Week</option>
+  </select>
+</div>
   <button
     onClick={generateCoachAdvice}
     className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-4 py-2 rounded mb-2"
@@ -767,6 +861,20 @@ const combinedChartData = logData.map((entry, index) => {
   )}
 </motion.section>
 
+<RecoveryTracker recoveryData={logData} />
+
+{coachAdvice && (
+  <div className="mt-2 flex space-x-2">
+    <button
+      onClick={exportCoachAdviceToPDF}
+      className="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-3 py-1 rounded"
+    >
+      📤 Export Coach σε PDF
+    </button>
+    <p className="text-amber-300 font-medium">{coachAdvice}</p>
+  </div>
+)}
+
    {allLogs.length > 0 && (
      <div className="flex justify-end space-x-3">
   <button onClick={exportAllLogsToPDF} className="px-4 py-2 rounded bg-fuchsia-600 text-white font-semibold hover:bg-fuchsia-700">
@@ -777,6 +885,34 @@ const combinedChartData = logData.map((entry, index) => {
   </button>
 </div>
   )}
+       <ExportButtons logData={logData} />
+ 
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.4 }}
+>
+  <StrengthForm onNewEntry={handleNewStrengthEntry} />
+</motion.div>
+
+{!logData ? (
+  <p>Φορτώνει δεδομένα...</p>
+) : (
+     <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      {logData && logData.length > 0 ? (
+        <>
+          <StrengthChart data={logData} prValue={maxOneRM} />
+          {prMessage && <p className="text-green-400 font-medium mt-2">{prMessage}</p>}
+        </>
+      ) : (
+        <p className="text-gray-400">Δεν υπάρχουν δεδομένα για εμφάνιση.</p>
+      )}
+    </motion.div>
+)}
 
 
 <motion.section
@@ -813,8 +949,14 @@ const combinedChartData = logData.map((entry, index) => {
           ))}
         </div>
       )}
+      <ExportButtons />
+        <StrengthForm />
+        <StrengthChart />
+        <CycleGenerator />
+        <RecoveryTracker />
+        <AiCoach />
+        <Notifications />
       </div>
-        </motion.div>
+    </motion.div>
   );
 }
-
