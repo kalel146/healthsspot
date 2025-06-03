@@ -25,6 +25,7 @@ export default function CardioInsights({ activity, history }) {
   const [activityAverages, setActivityAverages] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [highlightedMaxDate, setHighlightedMaxDate] = useState(null);
+  const [weeklyDelta, setWeeklyDelta] = useState(null);
 
   const getWeek = (dateStr) => {
     const date = new Date(dateStr);
@@ -106,8 +107,13 @@ export default function CardioInsights({ activity, history }) {
         }
       }
 
-      if (summary.length > 2) {
+       if (summary.length > 2) {
         const latest = summary.at(-1);
+        const previous = summary.at(-2);
+        setWeeklyDelta({
+          deltaVO2: latest.avgVO2 - previous.avgVO2,
+          deltaKcal: latest.totalKcal - previous.totalKcal
+        });
         if (latest.avgVO2 > 45) {
           feedback.push("🚀 Είσαι σε elite επίπεδο VO2max. Σκέψου να δοκιμάσεις προγράμματα με intervals και tapering.");
         } else if (latest.avgVO2 < 30) {
@@ -221,6 +227,53 @@ return (
           Επαναφορά Ημερομηνίας
         </button>
       </div>
+      
+          <div className="p-6 max-w-4xl mx-auto">
+      {weeklyDelta && (
+        <div className="flex justify-center mb-4">
+          <div className="flex items-center space-x-2 bg-blue-100 dark:bg-blue-800 text-blue-900 dark:text-white px-4 py-2 rounded-xl shadow-md">
+            <TrendingUp className="w-5 h-5" />
+            <p className="text-sm font-medium">
+              Εβδομαδιαία Μεταβολή — VO2max: {weeklyDelta.deltaVO2.toFixed(1)} | kcal: {weeklyDelta.deltaKcal.toFixed(0)}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {aiFeedback.length > 0 && (
+        <div className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 p-4 rounded-xl shadow-inner space-y-2">
+          <button
+            onClick={() => setShowFeedback(!showFeedback)}
+            className="text-sm font-semibold underline flex items-center gap-1 text-purple-700 dark:text-purple-200 mb-2"
+          >
+            {showFeedback ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />} {showFeedback ? "Απόκρυψη" : "Εμφάνιση"} AI Feedback
+          </button>
+          {showFeedback && aiFeedback.map((line, i) => (
+            <p key={i}><Sparkles className="w-4 h-4 inline-block mr-1" /> {line}</p>
+          ))}
+        </div>
+      )}
+
+      {insights && (
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow mt-6">
+          <h2 className="text-lg font-semibold mb-2">📊 Εβδομαδιαίο Γράφημα VO2max & kcal</h2>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={insights.summary} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="week" />
+              <YAxis yAxisId="left" label={{ value: "VO2max", angle: -90, position: "insideLeft" }} />
+              <YAxis yAxisId="right" orientation="right" label={{ value: "kcal", angle: 90, position: "insideRight" }} />
+              <Tooltip />
+              <Legend />
+              <Line yAxisId="left" type="monotone" dataKey="avgVO2" stroke="#6366f1" name="Μέσο VO2max" />
+              <Line yAxisId="right" type="monotone" dataKey="totalKcal" stroke="#10b981" name="Σύνολο kcal" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+
+    </div>
+
         <div className="space-y-4">
           <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
             <h2 className="text-lg font-semibold mb-2">📆 Ημερολογιακή Εμφάνιση</h2>
@@ -229,18 +282,6 @@ return (
               onClickDay={(value) => setSelectedDate(value)}
               className="rounded-xl"
             />
-             <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={insights.summary}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="week" />
-                <YAxis yAxisId="left" label={{ value: "VO2max", angle: -90, position: "insideLeft" }} />
-                <YAxis yAxisId="right" orientation="right" label={{ value: "kcal", angle: 90, position: "insideRight" }} />
-                <Tooltip />
-                <Legend />
-                <Line yAxisId="left" type="monotone" dataKey="avgVO2" stroke="#8884d8" name="Μέσο VO2max" />
-                <Line yAxisId="right" type="monotone" dataKey="totalKcal" stroke="#82ca9d" name="Συνολικά kcal" />
-              </LineChart>
-            </ResponsiveContainer>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
@@ -252,20 +293,6 @@ return (
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={insights.summary} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="week" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="avgVO2" stroke="#6366f1" name="VO2avg" />
-                <Line type="monotone" dataKey="totalKcal" stroke="#10b981" name="Σύνολο kcal" />
-              </LineChart>
-            </ResponsiveContainer>
           </div>
 
            {activityAverages.length > 1 && (

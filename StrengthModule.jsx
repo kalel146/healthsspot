@@ -83,10 +83,6 @@ if (!cycleType || isNaN(parseFloat(maxOneRM)) || parseFloat(maxOneRM) <= 0) {
     setCycleOutput(output);
   };
 
-  const pushNotification = (text) => {
-    setNotifications(prev => [...prev, { id: Date.now(), text }]);
-  };
-
   useEffect(() => {
   const fetchData = async () => {
     const {
@@ -99,8 +95,7 @@ if (!cycleType || isNaN(parseFloat(maxOneRM)) || parseFloat(maxOneRM) <= 0) {
   return;
 }
 
-
-    const user = session.user;
+   const user = session.user;
     console.log("👤 user:", user);
 
     const { data, error } = await supabase
@@ -135,10 +130,6 @@ if (!cycleType || isNaN(parseFloat(maxOneRM)) || parseFloat(maxOneRM) <= 0) {
     if (prMessage) pushNotification("🎯 Νέο PR! Καταγράφηκε επιτυχώς.");
     if (recoveryScore && recoveryScore < 2.5) pushNotification("🛑 Πολύ χαμηλό Recovery — Deload προτείνεται.");
   }, [maxOneRM, prMessage, recoveryScore]);
-
-  const dismissNotification = (id) => {
-    setNotifications(notifications.filter(n => n.id !== id));
-  };
 
    useEffect(() => {
   if (logData.length >= 3) {
@@ -224,19 +215,39 @@ if (userCycleMode === "PR") {
     );
   }, [weight, maxOneRM, reps, rpe, rir, stressData]);
 
- useEffect(() => {
-  const fetchLogs = async () => {
-    const { data, error } = await supabase
-      .from("strength_logs")
-      .select("date, maxOneRM")
-      .order("timestamp", { ascending: true });
-
-    if (!error && data) setLogData(data);
+ const pushNotification = (text) => {
+    setNotifications(prev => [...prev, { id: Date.now(), text }]);
   };
 
-  fetchLogs();
-}, []); // ✅ Χωρίς το [oneRM]
+  const dismissNotification = (id) => {
+    setNotifications(notifications.filter(n => n.id !== id));
+  };
 
+  useEffect(() => {
+    const fetchLogs = async () => {
+      const { data, error } = await supabase
+        .from("strength_logs")
+        .select("date, maxOneRM")
+        .order("date", { ascending: true });
+
+      if (error || !data) return;
+
+      setLogData(data);
+
+      const max = Math.max(...data.map(entry => parseFloat(entry.maxOneRM || 0)));
+      setMaxOneRM(max);
+
+      const latest = parseFloat(data[data.length - 1]?.maxOneRM || 0);
+      if (latest === max && latest !== 0) {
+        setPrMessage("🎉 Νέο PR!");
+        pushNotification("🎯 Νέο PR! Καταγράφηκε επιτυχώς.");
+      } else {
+        setPrMessage("");
+      }
+    };
+
+    fetchLogs();
+  }, []);
 
  useEffect(() => {
   const fetchRecoveryLogs = async () => {
@@ -320,16 +331,29 @@ if (userCycleMode === "PR") {
     }
   };
 
-  const calculateRecovery = () => {
+   const calculateRecovery = async () => {
     const score = (
       parseInt(stressData.sleep) +
       parseInt(stressData.energy) +
-      (6 - parseInt(stressData.pain)) +
-      parseInt(stressData.mood)
+      parseInt(stressData.mood) +
+      (6 - parseInt(stressData.pain))
     ) / 4;
-    const final = score.toFixed(1);
-    setRecoveryScore(final);
-    logToSupabase("Recovery", { ...stressData, recoveryScore: final });
+
+    const finalScore = parseFloat(score.toFixed(1));
+    setRecoveryScore(finalScore);
+
+    const { error } = await supabase.from("strength_logs").insert([
+      {
+        type: "Recovery",
+        ...stressData,
+        recoveryScore: finalScore,
+        timestamp: new Date().toISOString()
+      }
+    ]);
+
+    if (!error) {
+      pushNotification(`✅ Recovery Score καταχωρήθηκε: ${finalScore}`);
+    }
   };
 
   const exportAllLogsToPDF = () => {
@@ -431,10 +455,12 @@ const recoveryChartData = recoveryLogs.map(entry => ({
     recoveryScore: parseFloat(entry.recoveryScore)
   }));
 
-  const chartData = logData.map(entry => ({
-    name: new Date(entry.timestamp).toLocaleDateString("el-GR"),
-    maxOneRM: parseFloat(entry.maxOneRM)
+   const chartData = logData.map(entry => ({
+    name: new Date(entry.date).toLocaleDateString("el-GR"),
+    oneRM: parseFloat(entry.maxOneRM),
+    date: new Date(entry.date).toLocaleDateString("el-GR")
   }));
+
 
   const stressLabels = {
     sleep: "Ύπνος",
@@ -767,45 +793,36 @@ const combinedChartData = logData.map((entry, index) => {
         )}
       </motion.section>
 
-        <motion.section
-         className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
+       <motion.section
+          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-xl font-semibold text-blue-400 flex items-center gap-2">
-            Self-Report Recovery
-            <Info className="w-4 h-4 text-blue-300" title="Recovery Score: Συνδυασμός ύπνου, ενέργειας, πόνου και διάθεσης (1-5). Όσο πιο ψηλό, τόσο καλύτερη η ανάκαμψη." />
-          </h2>
-          {Object.keys(stressData).map((key) => (
-            <div key={key} className="space-y-1">
-              <label className="block font-medium">{stressLabels[key]}</label>
+          <h2 className="text-xl font-semibold text-blue-400">🧘 Recovery Score</h2>
+          {["sleep", "energy", "mood", "pain"].map((key) => (
+            <div key={key}>
+              <label className="block font-medium capitalize">{key}</label>
               <input
                 type="range"
                 min="1"
                 max="5"
                 value={stressData[key]}
-                onChange={(e) =>
-                  setStressData({ ...stressData, [key]: e.target.value })
-                }
-                className="w-full accent-blue-500"
+                onChange={(e) => setStressData({ ...stressData, [key]: e.target.value })}
+                className="w-full"
               />
-              <div className="text-sm text-gray-400">Τρέχουσα τιμή: {stressData[key]}</div>
+              <p className="text-sm text-gray-400">Τρέχουσα τιμή: {stressData[key]}</p>
             </div>
           ))}
           <button
             onClick={calculateRecovery}
-            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white font-semibold"
+            className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded"
           >
             Υπολόγισε Recovery Score
           </button>
-          {recoveryScore && (
-            <p className="mt-2 text-lg font-bold text-blue-400">
-              Recovery Score: {recoveryScore}
-            </p>
-          )}
+          {recoveryScore && <p className="mt-2 text-blue-300 font-medium">Recovery Score: {recoveryScore}</p>}
         </motion.section>
+
 
          <motion.section
         className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
@@ -885,7 +902,11 @@ const combinedChartData = logData.map((entry, index) => {
   </button>
 </div>
   )}
-      <ExportButtons logData={logData} />
+       <motion.div className="min-h-screen px-4 py-10 flex justify-center items-start">
+      <div className="w-full max-w-screen-sm space-y-6">
+        <ExportButtons logData={logData} />
+        </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -898,44 +919,24 @@ const combinedChartData = logData.map((entry, index) => {
         {!logData ? (
           <p>Φορτώνει δεδομένα...</p>
         ) : (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            {logData && logData.length > 0 ? (
-              <>
-                <StrengthChart data={logData} prValue={maxOneRM} />
-                {prMessage && <p className="text-green-400 font-medium mt-2">{prMessage}</p>}
-              </>
-            ) : (
-              <p className="text-gray-400">Δεν υπάρχουν δεδομένα για εμφάνιση.</p>
-            )}
-          </motion.div>
-        )}
 
-        <motion.section
+          <motion.section
           className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-xl font-semibold text-green-400">Ιστορικό 1RM</h2>
-          {chartData.length === 0 ? (
-            <p className="text-gray-400">Δεν υπάρχουν δεδομένα ακόμα.</p>
+          <h2 className="text-xl font-semibold text-green-400">📈 Εξέλιξη 1RM</h2>
+          {logData && logData.length > 0 ? (
+            <div>
+              <StrengthChart data={chartData} prValue={maxOneRM} />
+              {prMessage && <p className="text-green-400 font-medium mt-2">{prMessage}</p>}
+            </div>
           ) : (
-            <ResponsiveContainer width="100%" height={250}>
-              <LineChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis domain={["auto", "auto"]} />
-                <Tooltip />
-                <Line type="monotone" dataKey="oneRM" stroke="#22C55E" strokeWidth={3} />
-              </LineChart>
-            </ResponsiveContainer>
+            <p className="text-gray-400">Δεν υπάρχουν δεδομένα για εμφάνιση.</p>
           )}
         </motion.section>
+        )}
 
         <motion.section
           className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"

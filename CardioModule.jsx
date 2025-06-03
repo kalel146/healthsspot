@@ -39,7 +39,6 @@ const fetchHistory = async () => {
       }));
       setHistory(formatted);
       generateAdvice(formatted);
-    }
   };
 
   const generateAdvice = (data) => {
@@ -56,6 +55,33 @@ const fetchHistory = async () => {
       setAdvice("📉 Η VO2max έχει πέσει. Ξεκουράσου επαρκώς, δες τη διατροφή σου και μείωσε το training load.");
     } else {
       setAdvice("📊 Η VO2max παραμένει σταθερή. Ίσως είναι ώρα να ανεβάσεις την ένταση ή διάρκεια.");
+    }
+  };
+  
+    // Extra AI Σύγκριση εβδομάδων
+    const weekMap = {};
+    data.forEach((entry) => {
+      const week = new Date(entry.date).toLocaleDateString("el-GR", { week: "numeric", year: "numeric" });
+      if (!weekMap[week]) weekMap[week] = { vo2Sum: 0, kcalSum: 0, count: 0 };
+      if (entry.VO2) weekMap[week].vo2Sum += entry.VO2;
+      if (entry.kcal) weekMap[week].kcalSum += entry.kcal;
+      weekMap[week].count++;
+    });
+
+    const sortedWeeks = Object.entries(weekMap)
+      .map(([week, stats]) => ({
+        week,
+        avgVO2: stats.vo2Sum / stats.count,
+        totalKcal: stats.kcalSum
+      }))
+      .sort((a, b) => a.week.localeCompare(b.week));
+
+    if (sortedWeeks.length >= 2) {
+      const last = sortedWeeks[sortedWeeks.length - 1];
+      const prev = sortedWeeks[sortedWeeks.length - 2];
+      const deltaVO2 = last.avgVO2 - prev.avgVO2;
+      const deltaKcal = last.totalKcal - prev.totalKcal;
+      setAdvice((prevAdvice) => `${prevAdvice}\n📈 Σύγκριση Εβδομάδων → VO2max: ${deltaVO2.toFixed(1)}, kcal: ${deltaKcal.toFixed(0)}`);
     }
   };
 
@@ -265,12 +291,29 @@ const fetchHistory = async () => {
         )}
       </motion.section>
 
-      <motion.section className="max-w-4xl mx-auto p-6 rounded-xl shadow-xl bg-white dark:bg-gray-900" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+        <motion.section className="max-w-4xl mx-auto p-6 rounded-xl shadow-xl bg-white dark:bg-gray-900" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
         <SectionHeader icon={<LineChart className="w-5 h-5" />} color="yellow">
           Ιστορικό VO2max και kcal
         </SectionHeader>
+
+        <div className="flex flex-wrap gap-2 mb-4">
+          {activities.map((act) => (
+            <button
+              key={act}
+              onClick={() => setActivity(act)}
+              className={`px-4 py-1 rounded-full text-sm font-medium border transition-all duration-200 ${
+                activity === act
+                  ? "bg-yellow-400 text-black border-yellow-600"
+                  : "bg-gray-200 dark:bg-gray-700 text-black dark:text-white border-gray-400"
+              }`}
+            >
+              {act}
+            </button>
+          ))}
+        </div>
+
         <ResponsiveContainer width="100%" height={300}>
-          <Chart data={history} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+          <Chart data={history.filter(h => activity === "Όλα" || h.activity === activity)} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
             <YAxis />
