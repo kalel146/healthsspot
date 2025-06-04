@@ -920,7 +920,7 @@ const combinedChartData = logData.map((entry, index) => {
           <p>Φορτώνει δεδομένα...</p>
         ) : (
 
-          <motion.section
+           <motion.section
           className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
           initial="hidden"
           animate="visible"
@@ -931,6 +931,12 @@ const combinedChartData = logData.map((entry, index) => {
             <div>
               <StrengthChart data={chartData} prValue={maxOneRM} />
               {prMessage && <p className="text-green-400 font-medium mt-2">{prMessage}</p>}
+              {vo2Extremes && (
+                <ul className="text-sm text-gray-400 mt-3 list-disc ml-5">
+                  <li>📈 Peak 1RM: {vo2Extremes.peak.oneRM} kg ({vo2Extremes.peak.date})</li>
+                  <li>📉 Χαμηλότερο 1RM: {vo2Extremes.dip.oneRM} kg ({vo2Extremes.dip.date})</li>
+                </ul>
+              )}
             </div>
           ) : (
             <p className="text-gray-400">Δεν υπάρχουν δεδομένα για εμφάνιση.</p>

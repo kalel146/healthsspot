@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef, useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { useTheme } from "./ThemeContext";
@@ -10,7 +10,8 @@ import html2canvas from "html2canvas";
 import { Download } from "lucide-react";
 import CardioInsights from "./CardioInsights";
 
-export default function CardioModule() {
+export default function CardioModule({ cardioHistory }) {
+   const [weeklyData, setWeeklyData] = useState([]);
   const [mets, setMets] = useState(1);
   const [weight, setWeight] = useState(70);
   const [duration, setDuration] = useState(30);
@@ -24,7 +25,82 @@ export default function CardioModule() {
   const [advice, setAdvice] = useState("");
   const chartRef = useRef(null);
 const activities = ["Τρέξιμο", "Ποδήλατο", "Κολύμβηση", "HIIT", "Άλλο"];
-  
+  const [filterDate, setFilterDate] = useState("");
+const [weekFilter, setWeekFilter] = useState(null);
+  const [selectedWeek, setSelectedWeek] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+  const vo2Extremes = useMemo(() => {
+    if (!cardioHistory || cardioHistory.length === 0) return null;
+    return cardioHistory
+      .filter((entry) => entry.type === "vo2max" && entry.value)
+      .reduce(
+        (acc, cur) => {
+          if (!acc.peak || cur.value > acc.peak.value) {
+            acc.peak = { value: cur.value, date: cur.created_at.split("T")[0] };
+          }
+          if (!acc.dip || cur.value < acc.dip.value) {
+            acc.dip = { value: cur.value, date: cur.created_at.split("T")[0] };
+          }
+          return acc;
+        },
+        { peak: null, dip: null }
+      );
+  }, [cardioHistory]);
+
+   useEffect(() => {
+    if (!cardioHistory || cardioHistory.length === 0) return;
+
+    const grouped = {};
+    cardioHistory.forEach(entry => {
+      if (entry.type === "vo2max" && entry.value) {
+        const date = new Date(entry.created_at);
+        const week = `${date.getFullYear()}-W${Math.ceil(date.getDate() / 7)}`;
+        if (!grouped[week]) grouped[week] = [];
+        grouped[week].push(entry.value);
+      }
+    });
+
+    const weeklyStats = Object.entries(grouped).map(([week, values]) => {
+      const vo2Values = values.map(v => v.value);
+      const max = Math.max(...vo2Values);
+      const min = Math.min(...vo2Values);
+      const avg = vo2Values.reduce((a, b) => a + b, 0) / vo2Values.length;
+      const range = max - min;
+      let feedback = "";
+
+      if (range > 15 && avg < 40) {
+        feedback = "⚠ Υψηλή διακύμανση και χαμηλό VO2max — ενδείξεις κόπωσης ή κακής προσαρμογής.";
+      } else if (range < 5 && avg < 35) {
+        feedback = "📉 Σταθερά χαμηλό VO2max — πιθανή υπερκόπωση ή ανάγκη για ενεργητική αποκατάσταση.";
+      } else if (avg >= 50 && range <= 10) {
+        feedback = "🏆 Σταθερά υψηλές επιδόσεις — εξαιρετική φυσική κατάσταση!";
+      } else if (range > 10) {
+        feedback = "⚠ Μεγάλη διακύμανση — σταθεροποίησε τις εντάσεις των προπονήσεων.";
+      } else {
+        feedback = "✅ Καλή ισορροπία — συνέχισε έτσι.";
+      }
+
+      return {
+        week,
+        max,
+        min,
+        range,
+        avg: avg.toFixed(1),
+        feedback,
+        dates: values.map(v => v.date)
+      };
+    });
+    setWeeklyData(weeklyStats);
+  }, [cardioHistory]);
+
+  const filteredData = useMemo(() => {
+    return weeklyData.filter(entry => {
+      const matchesWeek = selectedWeek ? entry.week === selectedWeek : true;
+      const matchesDate = selectedDate ? entry.dates.includes(selectedDate) : true;
+      return matchesWeek && matchesDate;
+    });
+  }, [weeklyData, selectedWeek, selectedDate]);
+
 const fetchHistory = async () => {
     const { data, error } = await supabase
       .from("cardio_logs")
@@ -57,8 +133,8 @@ const fetchHistory = async () => {
       setAdvice("📊 Η VO2max παραμένει σταθερή. Ίσως είναι ώρα να ανεβάσεις την ένταση ή διάρκεια.");
     }
   };
-  
-    // Extra AI Σύγκριση εβδομάδων
+
+   // Extra AI Σύγκριση εβδομάδων
     const weekMap = {};
     data.forEach((entry) => {
       const week = new Date(entry.date).toLocaleDateString("el-GR", { week: "numeric", year: "numeric" });
@@ -324,13 +400,123 @@ const fetchHistory = async () => {
           </Chart>
         </ResponsiveContainer>
 
-         {advice && (
+        
+        {advice && (
           <motion.div className="mt-6 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 p-4 rounded-xl shadow-inner" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <p className="text-sm font-medium flex items-center gap-2">
-              <Bot className="w-4 h-4" /> {advice}
+              <Bot className="w-4 h-4" /> {advice.split("\n")[0]}
             </p>
           </motion.div>
         )}
+
+        {advice.includes("Σύγκριση Εβδομάδων") && (
+          <motion.div className="mt-4 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 p-4 rounded-xl shadow-inner" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <p className="text-sm font-medium flex items-center gap-2">
+              <LineChart className="w-4 h-4" /> {advice.split("\n")[1]}
+            </p>
+          </motion.div>
+        )}
+
+          <div className="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <label className="text-sm font-medium">📅 Φίλτρο ανά ημερομηνία:</label>
+            <input
+              type="date"
+              value={filterDate}
+              onChange={(e) => setFilterDate(e.target.value)}
+              className="p-2 rounded bg-white dark:bg-gray-700 border dark:border-gray-600"
+            />
+          </div>
+
+          <div className="flex items-center gap-2 overflow-x-auto">
+            {[...Array(6)].map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setWeekFilter(i + 20)}
+                className={`px-3 py-1 rounded text-sm font-medium shadow-md whitespace-nowrap ${
+                  weekFilter === i + 20 ? "bg-indigo-600 text-white" : "bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+                }`}
+              >
+                Εβδομάδα {i + 20}
+              </button>
+            ))}
+          </div>
+        </div>
+
+      <div className="flex flex-col md:flex-row gap-4 mb-4">
+        <div>
+          <label className="block text-sm font-medium mb-1">Επιλογή Εβδομάδας:</label>
+          <select
+            value={selectedWeek}
+            onChange={(e) => setSelectedWeek(e.target.value)}
+            className="p-2 rounded border dark:bg-gray-700 dark:text-white"
+          >
+            <option value="">Όλες</option>
+            {weeklyData.map((w) => (
+              <option key={w.week} value={w.week}>{w.week}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Επιλογή Ημερομηνίας:</label>
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+            className="p-2 rounded border dark:bg-gray-700 dark:text-white"
+          />
+        </div>
+      </div>
+
+ {vo2Extremes?.peak && vo2Extremes?.dip ? (
+  <motion.div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow">
+    <h2 className="text-lg font-semibold mb-2 text-indigo-500">📉 Διακύμανση VO2max</h2>
+    <ul className="list-disc ml-5 space-y-1 text-sm">
+      <li>📈 Peak επίδοση: {vo2Extremes.peak.value.toFixed(1)} mL/kg/min ({vo2Extremes.peak.date})</li>
+      <li>📉 Χαμηλότερη τιμή: {vo2Extremes.dip.value.toFixed(1)} mL/kg/min ({vo2Extremes.dip.date})</li>
+      <li>
+        💡 Συμβουλή: {vo2Extremes.peak.value - vo2Extremes.dip.value > 10
+          ? "Η διακύμανση είναι μεγάλη — σταθεροποίησε την ένταση των προπονήσεων."
+          : "Καλή σταθερότητα στην απόδοσή σου — συνέχισε έτσι."}
+      </li>
+    </ul>
+  </motion.div>
+) : (
+  <div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow text-sm italic text-gray-500">
+    Δεν υπάρχουν επαρκή δεδομένα για διακύμανση VO2max.
+  </div>
+)}
+
+  {filteredData.length > 0 && (
+        <motion.div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow">
+          <h3 className="text-md font-semibold text-blue-500 mb-2">📊 Εβδομαδιαίο Εύρος Διακύμανσης</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={filteredData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="week" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="range" stroke="#6366f1" name="Εύρος VO2max" />
+              <Line type="monotone" dataKey="max" stroke="#10b981" name="Μέγιστο VO2max" />
+              <Line type="monotone" dataKey="min" stroke="#f87171" name="Ελάχιστο VO2max" />
+            </LineChart>
+          </ResponsiveContainer>
+        </motion.div>
+      )}
+
+      {filteredData.length > 0 && (
+        <motion.div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow">
+          <h3 className="text-md font-semibold text-purple-500 mb-2">🤖 Εβδομαδιαία AI Ανάλυση</h3>
+          <ul className="list-disc ml-5 space-y-2 text-sm">
+            {filteredData.map((entry) => (
+              <li key={entry.week}>
+                <strong>{entry.week}:</strong> {entry.feedback}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      )}
 
         <button
           onClick={handleExportCSV}
