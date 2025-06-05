@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTheme } from "./ThemeContext";
 
+const quotes = [
+  "🍕\"Rest day. The most powerful day. Enjoy life to the fullest.\"🍷",
+  "🥩\"Strength is earned, not given.\"🔥",
+  "🛌\"Recovery is when the body speaks.\"🧘",
+  "🥊\"Fall Down Seven Times, Stand Up Eight.\"🥇",
+];
+
 export default function LandingPage() {
   const navigate = useNavigate();
   const [showQuote, setShowQuote] = useState(false);
+  const [quote, setQuote] = useState(quotes[0]);
   const { theme, toggleTheme } = useTheme();
+
+  useEffect(() => {
+    if (showQuote) {
+      const random = quotes[Math.floor(Math.random() * quotes.length)];
+      setQuote(random);
+    }
+  }, [showQuote]);
 
   const handleOnClick = () => {
     navigate("/dashboard");
@@ -20,8 +35,23 @@ export default function LandingPage() {
     setShowQuote(false);
   };
 
+  const handleExit = () => {
+  try {
+    window.close();
+    setTimeout(() => {
+      if (!window.closed) {
+        alert("❌ Δεν υποστηρίζεται το κλείσιμο σε αυτό το περιβάλλον. Κλείσε το tab χειροκίνητα 🙃");
+      }
+    }, 300);
+  } catch (err) {
+    alert("❌ Δεν υποστηρίζεται το κλείσιμο σε αυτό το περιβάλλον. Κλείσε το tab χειροκίνητα 🙃");
+  }
+};
+
   const handlePWAInstall = () => {
-    alert("\ud83d\udcf2 \u0393\u03b9\u03b1 \u03b5\u03b3\u03ba\u03b1\u03c4\u03ac\u03c3\u03c4\u03b1\u03c3\u03b7 \u03c4\u03b7\u03c2 \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae\u03c2, \u03c0\u03ac\u03c4\u03b1 \u03c4\u03bf \u22ee \u03c3\u03c4\u03bf browser \u03ba\u03b1\u03b9 \u03b4\u03b9\u03ac\u03bb\u03b5\u03be\u03b5 ' \u03a0\u03c1\u03bf\u03c3\u03b8\u03ae\u03ba\u03b7 \u03c3\u03c4\u03b7\u03bd \u03b1\u03c1\u03c7\u03b9\u03ba\u03ae \u03bf\u03b8\u03cc\u03bd\u03b7'.");
+    alert(
+      "\ud83d\udcf2 Για εγκατάσταση της εφαρμογής, πάτα το ⋮ στο browser και διάλεξε 'Προσθήκη στην αρχική οθόνη'."
+    );
   };
 
   return (
@@ -35,29 +65,33 @@ export default function LandingPage() {
       }`}
     >
       {!showQuote && (
-        <img
+        <motion.img
+          initial={{ scale: 0.95 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5 }}
           src="/logo.jpg"
           alt="Health's Spot Logo"
           style={{ width: "800px" }}
-          className="max-w-full cursor-pointer"
+          className="max-w-full cursor-pointer hover:scale-105 transition-transform duration-300"
           onClick={handleReturnHome}
         />
       )}
 
       {!showQuote && (
-        <>
-          <h1
-            className="text-6xl font-extrabold text-transparent bg-clip-text drop-shadow-lg"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, #facc15, #f97316, #dc2626, #7f1d1d)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            BEAST MODE
-          </h1>
-        </>
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-6xl font-extrabold text-transparent bg-clip-text drop-shadow-lg"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #facc15, #f97316, #dc2626, #7f1d1d)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          BEAST MODE
+        </motion.h1>
       )}
 
       {!showQuote ? (
@@ -94,17 +128,28 @@ export default function LandingPage() {
           </div>
         </>
       ) : (
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
           className="flex flex-col items-center justify-center h-screen w-screen bg-black text-white"
-          onClick={handleReturnHome}
         >
-          <p className="text-3xl font-bold italic px-6 text-center">
-            🍕"Rest day. The most powerful day. Enjoy life to the fullest."🍷
-          </p>
-          <button className="mt-8 text-sm text-yellow-400 underline">
-            💪 Return to Home
-          </button>
-        </div>
+          <p className="text-3xl font-bold italic px-6 text-center">{quote}</p>
+          <div className="mt-8 flex flex-col space-y-3">
+            <button
+              onClick={handleReturnHome}
+              className="text-sm text-yellow-400 underline"
+            >
+              💪 Return to Home
+            </button>
+            <button
+              onClick={handleExit}
+              className="text-sm text-red-400 underline"
+            >
+              🚪 Exit App
+            </button>
+          </div>
+        </motion.div>
       )}
     </motion.div>
   );

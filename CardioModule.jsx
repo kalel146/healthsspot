@@ -9,6 +9,8 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { Download } from "lucide-react";
 import CardioInsights from "./CardioInsights";
+import { TrendingUp } from "lucide-react";
+import { utils, writeFile } from "xlsx";
 
 export default function CardioModule({ cardioHistory }) {
    const [weeklyData, setWeeklyData] = useState([]);
@@ -29,6 +31,7 @@ const activities = ["Τρέξιμο", "Ποδήλατο", "Κολύμβηση", 
 const [weekFilter, setWeekFilter] = useState(null);
   const [selectedWeek, setSelectedWeek] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
+    const [weeklyDelta, setWeeklyDelta] = useState(null);
   const vo2Extremes = useMemo(() => {
     if (!cardioHistory || cardioHistory.length === 0) return null;
     return cardioHistory
@@ -91,6 +94,16 @@ const [weekFilter, setWeekFilter] = useState(null);
       };
     });
     setWeeklyData(weeklyStats);
+
+    // Calculate delta between last 2 weeks
+    if (weeklyStats.length >= 2) {
+      const last = weeklyStats[weeklyStats.length - 1];
+      const prev = weeklyStats[weeklyStats.length - 2];
+      setWeeklyDelta({
+        deltaVO2: parseFloat(last.avg) - parseFloat(prev.avg),
+        deltaRange: last.range - prev.range
+      });
+    }
   }, [cardioHistory]);
 
   const filteredData = useMemo(() => {
@@ -100,6 +113,21 @@ const [weekFilter, setWeekFilter] = useState(null);
       return matchesWeek && matchesDate;
     });
   }, [weeklyData, selectedWeek, selectedDate]);
+
+  const exportToExcel = () => {
+    const dataToExport = filteredData.map(({ week, max, min, range, avg, feedback }) => ({
+      Εβδομάδα: week,
+      Μέγιστο: max,
+      Ελάχιστο: min,
+      Εύρος: range,
+      ΜέσοςΌρος: avg,
+      Feedback: feedback
+    }));
+    const worksheet = utils.json_to_sheet(dataToExport);
+    const workbook = utils.book_new();
+    utils.book_append_sheet(workbook, worksheet, "VO2 Insights");
+    writeFile(workbook, "VO2max_Weekly_Insights.xlsx");
+  };
 
 const fetchHistory = async () => {
     const { data, error } = await supabase
@@ -443,6 +471,17 @@ const fetchHistory = async () => {
           </div>
         </div>
 
+      {weeklyDelta && (
+        <motion.div className="flex justify-center mb-4">
+          <div className="flex items-center space-x-2 bg-blue-100 dark:bg-blue-800 text-blue-900 dark:text-white px-4 py-2 rounded-xl shadow-md">
+            <TrendingUp className="w-5 h-5" />
+            <p className="text-sm font-medium">
+              Εβδομαδιαία Μεταβολή — VO2max: {weeklyDelta.deltaVO2.toFixed(1)} | Εύρος: {weeklyDelta.deltaRange.toFixed(1)}
+            </p>
+          </div>
+        </motion.div>
+      )}
+
       <div className="flex flex-col md:flex-row gap-4 mb-4">
         <div>
           <label className="block text-sm font-medium mb-1">Επιλογή Εβδομάδας:</label>
@@ -465,6 +504,14 @@ const fetchHistory = async () => {
             onChange={(e) => setSelectedDate(e.target.value)}
             className="p-2 rounded border dark:bg-gray-700 dark:text-white"
           />
+        </div>
+        <div className="flex items-end">
+          <button
+            onClick={exportToExcel}
+            className="flex items-center gap-1 px-3 py-2 rounded bg-green-600 text-white hover:bg-green-700 shadow"
+          >
+            <Download className="w-4 h-4" /> Export CSV
+          </button>
         </div>
       </div>
 

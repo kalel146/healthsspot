@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { useTheme } from "./ThemeContext";
@@ -219,9 +219,9 @@ if (userCycleMode === "PR") {
     setNotifications(prev => [...prev, { id: Date.now(), text }]);
   };
 
-  const dismissNotification = (id) => {
-    setNotifications(notifications.filter(n => n.id !== id));
-  };
+ const dismissNotification = useCallback((id) => {
+    setNotifications(notifications => notifications.filter(n => n.id !== id));
+  }, []);
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -544,10 +544,23 @@ const combinedChartData = logData.map((entry, index) => {
     document.body.removeChild(link);
   };
 
-  const handleNewStrengthEntry = (entry) => {
-    console.log("Νέα καταχώρηση:", entry);
+ const handleNewStrengthEntry = async (entry) => {
+  const { error } = await supabase.from("strength_logs").insert([
+    {
+      ...entry,
+      type: "Strength",
+      timestamp: new Date().toISOString(),
+    },
+  ]);
+
+  if (!error) {
     setLogData((prev) => [...prev, entry]);
-  };
+    pushNotification("💪 Νέα strength καταχώρηση αποθηκεύτηκε!");
+  } else {
+    pushNotification("❌ Σφάλμα κατά την αποθήκευση!");
+    console.error(error);
+  }
+};
 
   return (
     <motion.div
