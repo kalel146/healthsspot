@@ -7,9 +7,8 @@ import { supabase } from "./supabaseClient";
 import { LineChart as Chart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from "recharts";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import { Download } from "lucide-react";
 import CardioInsights from "./CardioInsights";
-import { TrendingUp } from "lucide-react";
+import { TrendingUp, Download, CalendarDays, AlertTriangle } from "lucide-react";
 import { utils, writeFile } from "xlsx";
 
 export default function CardioModule({ cardioHistory }) {
@@ -32,6 +31,19 @@ const [weekFilter, setWeekFilter] = useState(null);
   const [selectedWeek, setSelectedWeek] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
     const [weeklyDelta, setWeeklyDelta] = useState(null);
+     const getColorClass = (severity) => {
+    switch (severity) {
+      case "high":
+        return "text-red-500";
+      case "medium":
+        return "text-yellow-500";
+      case "excellent":
+        return "text-green-500";
+      default:
+        return "text-gray-800 dark:text-white";
+    }
+  };
+
   const vo2Extremes = useMemo(() => {
     if (!cardioHistory || cardioHistory.length === 0) return null;
     return cardioHistory
@@ -50,7 +62,7 @@ const [weekFilter, setWeekFilter] = useState(null);
       );
   }, [cardioHistory]);
 
-   useEffect(() => {
+    useEffect(() => {
     if (!cardioHistory || cardioHistory.length === 0) return;
 
     const grouped = {};
@@ -59,28 +71,34 @@ const [weekFilter, setWeekFilter] = useState(null);
         const date = new Date(entry.created_at);
         const week = `${date.getFullYear()}-W${Math.ceil(date.getDate() / 7)}`;
         if (!grouped[week]) grouped[week] = [];
-        grouped[week].push(entry.value);
+        grouped[week].push({ value: entry.value, date: entry.created_at.split("T")[0] });
       }
     });
 
-    const weeklyStats = Object.entries(grouped).map(([week, values]) => {
+    const weeklyStats = Object.entries(grouped).map(([week, values], index, array) => {
       const vo2Values = values.map(v => v.value);
       const max = Math.max(...vo2Values);
       const min = Math.min(...vo2Values);
       const avg = vo2Values.reduce((a, b) => a + b, 0) / vo2Values.length;
       const range = max - min;
       let feedback = "";
+      let severity = "normal";
 
       if (range > 15 && avg < 40) {
         feedback = "⚠ Υψηλή διακύμανση και χαμηλό VO2max — ενδείξεις κόπωσης ή κακής προσαρμογής.";
+        severity = "high";
       } else if (range < 5 && avg < 35) {
         feedback = "📉 Σταθερά χαμηλό VO2max — πιθανή υπερκόπωση ή ανάγκη για ενεργητική αποκατάσταση.";
+        severity = "medium";
       } else if (avg >= 50 && range <= 10) {
         feedback = "🏆 Σταθερά υψηλές επιδόσεις — εξαιρετική φυσική κατάσταση!";
+        severity = "excellent";
       } else if (range > 10) {
         feedback = "⚠ Μεγάλη διακύμανση — σταθεροποίησε τις εντάσεις των προπονήσεων.";
+        severity = "medium";
       } else {
         feedback = "✅ Καλή ισορροπία — συνέχισε έτσι.";
+        severity = "normal";
       }
 
       return {
@@ -90,12 +108,13 @@ const [weekFilter, setWeekFilter] = useState(null);
         range,
         avg: avg.toFixed(1),
         feedback,
+        severity,
         dates: values.map(v => v.date)
       };
     });
+
     setWeeklyData(weeklyStats);
 
-    // Calculate delta between last 2 weeks
     if (weeklyStats.length >= 2) {
       const last = weeklyStats[weeklyStats.length - 1];
       const prev = weeklyStats[weeklyStats.length - 2];
@@ -105,6 +124,7 @@ const [weekFilter, setWeekFilter] = useState(null);
       });
     }
   }, [cardioHistory]);
+
 
   const filteredData = useMemo(() => {
     return weeklyData.filter(entry => {
@@ -288,15 +308,36 @@ const fetchHistory = async () => {
     link.click();
     document.body.removeChild(link);
   };
+  
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -30 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`min-h-screen px-4 sm:px-8 py-12 space-y-14 transition-colors duration-300 ${theme === "dark" ? "bg-gradient-to-br from-black via-gray-900 to-black text-white" : "bg-gradient-to-br from-white via-gray-100 to-white text-black"}`}
-    >
+   <motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -30 }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  className={`min-h-screen px-4 sm:px-8 py-12 space-y-14 transition-colors duration-300 ${
+    theme === "dark"
+      ? "bg-gradient-to-br from-black via-gray-900 to-black text-white"
+      : "bg-gradient-to-br from-white via-gray-100 to-white text-black"
+  }`}
+>
+  <h1 className="text-2xl font-bold mb-4 text-yellow-500 flex items-center gap-2">
+    Cardio Module — Advanced Insights
+  </h1>
+  <CardioInsights history={history} activity={activity} />
+
+      {weeklyDelta && (
+        <motion.div className="flex justify-center mb-4">
+          <div className="flex items-center space-x-2 bg-blue-100 dark:bg-blue-800 text-blue-900 dark:text-white px-4 py-2 rounded-xl shadow-md">
+            <TrendingUp className="w-5 h-5" />
+            <p className="text-sm font-medium">
+              Εβδομαδιαία Μεταβολή — VO2max: {weeklyDelta.deltaVO2.toFixed(1)} | Εύρος: {weeklyDelta.deltaRange.toFixed(1)}
+            </p>
+          </div>
+        </motion.div>
+      )}
+
       <Helmet>
         <title>Cardio Module | Health's Spot</title>
         <meta name="description" content="Υπολόγισε METs, VO2max και θερμίδες στο Cardio Lab του Health’s Spot." />
@@ -471,15 +512,56 @@ const fetchHistory = async () => {
           </div>
         </div>
 
-      {weeklyDelta && (
-        <motion.div className="flex justify-center mb-4">
-          <div className="flex items-center space-x-2 bg-blue-100 dark:bg-blue-800 text-blue-900 dark:text-white px-4 py-2 rounded-xl shadow-md">
-            <TrendingUp className="w-5 h-5" />
-            <p className="text-sm font-medium">
-              Εβδομαδιαία Μεταβολή — VO2max: {weeklyDelta.deltaVO2.toFixed(1)} | Εύρος: {weeklyDelta.deltaRange.toFixed(1)}
-            </p>
-          </div>
+      <div className="flex flex-col md:flex-row gap-4 mb-4">
+        <div>
+          <label className="block text-sm font-medium mb-1">Επιλογή Εβδομάδας:</label>
+          <select
+            value={selectedWeek}
+            onChange={(e) => setSelectedWeek(e.target.value)}
+            className="p-2 rounded border dark:bg-gray-700 dark:text-white"
+          >
+            <option value="">Όλες</option>
+            {weeklyData.map((w) => (
+              <option key={w.week} value={w.week}>{w.week}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Επιλογή Ημερομηνίας:</label>
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+            className="p-2 rounded border dark:bg-gray-700 dark:text-white"
+          />
+        </div>
+        <div className="flex items-end">
+          <button
+            onClick={exportToExcel}
+            className="flex items-center gap-1 px-3 py-2 rounded bg-green-600 text-white hover:bg-green-700 shadow"
+          >
+            <Download className="w-4 h-4" /> Export CSV
+          </button>
+        </div>
+      </div>
+
+{vo2Extremes?.peak && vo2Extremes?.dip ? (
+        <motion.div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow">
+          <h2 className="text-lg font-semibold mb-2 text-indigo-500">📉 Διακύμανση VO2max</h2>
+          <ul className="list-disc ml-5 space-y-1 text-sm">
+            <li>📈 Peak επίδοση: {vo2Extremes.peak.value.toFixed(1)} mL/kg/min ({vo2Extremes.peak.date})</li>
+            <li>📉 Χαμηλότερη τιμή: {vo2Extremes.dip.value.toFixed(1)} mL/kg/min ({vo2Extremes.dip.date})</li>
+            <li>
+              💡 Συμβουλή: {vo2Extremes.peak.value - vo2Extremes.dip.value > 10
+                ? "Η διακύμανση είναι μεγάλη — σταθεροποίησε την ένταση των προπονήσεων."
+                : "Καλή σταθερότητα στην απόδοσή σου — συνέχισε έτσι."}
+            </li>
+          </ul>
         </motion.div>
+      ) : (
+        <div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow text-sm italic text-gray-500">
+          Δεν υπάρχουν επαρκή δεδομένα για διακύμανση VO2max.
+        </div>
       )}
 
       <div className="flex flex-col md:flex-row gap-4 mb-4">
@@ -515,49 +597,43 @@ const fetchHistory = async () => {
         </div>
       </div>
 
- {vo2Extremes?.peak && vo2Extremes?.dip ? (
-  <motion.div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow">
-    <h2 className="text-lg font-semibold mb-2 text-indigo-500">📉 Διακύμανση VO2max</h2>
-    <ul className="list-disc ml-5 space-y-1 text-sm">
-      <li>📈 Peak επίδοση: {vo2Extremes.peak.value.toFixed(1)} mL/kg/min ({vo2Extremes.peak.date})</li>
-      <li>📉 Χαμηλότερη τιμή: {vo2Extremes.dip.value.toFixed(1)} mL/kg/min ({vo2Extremes.dip.date})</li>
-      <li>
-        💡 Συμβουλή: {vo2Extremes.peak.value - vo2Extremes.dip.value > 10
-          ? "Η διακύμανση είναι μεγάλη — σταθεροποίησε την ένταση των προπονήσεων."
-          : "Καλή σταθερότητα στην απόδοσή σου — συνέχισε έτσι."}
-      </li>
-    </ul>
-  </motion.div>
-) : (
-  <div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow text-sm italic text-gray-500">
-    Δεν υπάρχουν επαρκή δεδομένα για διακύμανση VO2max.
-  </div>
-)}
-
-  {filteredData.length > 0 && (
-        <motion.div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow">
-          <h3 className="text-md font-semibold text-blue-500 mb-2">📊 Εβδομαδιαίο Εύρος Διακύμανσης</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={filteredData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="week" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line type="monotone" dataKey="range" stroke="#6366f1" name="Εύρος VO2max" />
-              <Line type="monotone" dataKey="max" stroke="#10b981" name="Μέγιστο VO2max" />
-              <Line type="monotone" dataKey="min" stroke="#f87171" name="Ελάχιστο VO2max" />
-            </LineChart>
-          </ResponsiveContainer>
-        </motion.div>
+      {filteredData.length > 0 ? (
+        <ResponsiveContainer width="100%" height={300}>
+          <LineChart data={filteredData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="week" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="avg" stroke="#10b981" name="Μέσος Όρος" />
+            <Line type="monotone" dataKey="max" stroke="#f59e0b" name="Μέγιστο" />
+            <Line type="monotone" dataKey="min" stroke="#ef4444" name="Ελάχιστο" />
+          </LineChart>
+        </ResponsiveContainer>
+      ) : (
+        <div className="text-center text-sm text-gray-500 py-12">
+          Δεν υπάρχουν δεδομένα για την επιλεγμένη εβδομάδα ή ημερομηνία.
+        </div>
       )}
 
-      {filteredData.length > 0 && (
+      <div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow">
+        <h2 className="text-lg font-semibold mb-2 text-purple-500 flex gap-2 items-center">
+          <Sparkles className="w-5 h-5" /> Συνοπτικά Insights
+        </h2>
+        <ul className="list-disc ml-6 text-sm space-y-1">
+          <li>📈 Συνολικός μέσος VO2max: {weeklyData.length > 0 ? (weeklyData.reduce((acc, d) => acc + parseFloat(d.avg), 0) / weeklyData.length).toFixed(1) : "-"}</li>
+          <li>🔍 Πιο σταθερή εβδομάδα: {weeklyData.reduce((acc, w) => (w.range < acc.range ? w : acc), weeklyData[0] || {}).week || "-"}</li>
+          <li>⚠ Εντονότερη πτώση: {vo2Extremes ? `${vo2Extremes.dip.value.toFixed(1)} mL/kg/min (${vo2Extremes.dip.date})` : "-"}</li>
+          <li>🏔 Peak VO2max: {vo2Extremes ? `${vo2Extremes.peak.value.toFixed(1)} mL/kg/min (${vo2Extremes.peak.date})` : "-"}</li>
+        </ul>
+      </div>
+
+       {filteredData.length > 0 && (
         <motion.div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow">
           <h3 className="text-md font-semibold text-purple-500 mb-2">🤖 Εβδομαδιαία AI Ανάλυση</h3>
           <ul className="list-disc ml-5 space-y-2 text-sm">
             {filteredData.map((entry) => (
-              <li key={entry.week}>
+              <li key={entry.week} className={getColorClass(entry.severity)}>
                 <strong>{entry.week}:</strong> {entry.feedback}
               </li>
             ))}
