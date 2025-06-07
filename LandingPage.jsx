@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "./ThemeContext";
@@ -30,7 +30,11 @@ export default function LandingPage() {
   const [quote, setQuote] = useState(quotes[0]);
   const [fadeOut, setFadeOut] = useState(false);
   const [shake, setShake] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [volume, setVolume] = useState(1);
   const { theme } = useTheme();
+  const ambientRef = useRef(null);
+  const [ambientStarted, setAmbientStarted] = useState(false);
 
   useEffect(() => {
     if (showQuote) {
@@ -39,8 +43,48 @@ export default function LandingPage() {
     }
   }, [showQuote]);
 
+  useEffect(() => {
+    const ambient = ambientRef.current;
+    if (!ambient) return;
+
+    ambient.loop = true;
+    ambient.volume = 0;
+    ambient.muted = isMuted;
+
+    const startPlayback = () => {
+      ambient.play()
+        .then(() => {
+          setAmbientStarted(true);
+          let fade = setInterval(() => {
+            if (ambient.volume < volume && !isMuted) {
+              ambient.volume = Math.min(ambient.volume + 0.01, volume);
+            } else {
+              clearInterval(fade);
+            }
+          }, 200);
+        })
+        .catch((e) => {
+          console.warn("Ambient autoplay failed:", e);
+        });
+    };
+
+    const userInteractionHandler = () => {
+      startPlayback();
+      window.removeEventListener("click", userInteractionHandler);
+    };
+
+    window.addEventListener("click", userInteractionHandler);
+
+    return () => {
+      ambient.pause();
+      window.removeEventListener("click", userInteractionHandler);
+    };
+  }, [volume, isMuted]);
+
   const handleOnClick = () => {
     const sound = new Audio("/beast-on.mp3");
+    sound.volume = volume;
+    sound.muted = isMuted;
     setFadeOut(true);
     setShake(true);
     sound.play()
@@ -53,10 +97,17 @@ export default function LandingPage() {
         console.error("Audio play failed:", e);
         navigate("/dashboard");
       });
+
+    if (ambientRef.current) {
+      ambientRef.current.currentTime = 0;
+      ambientRef.current.play().catch(() => {});
+    }
   };
 
   const handleOffClick = () => {
     const sound = new Audio("/beast-off.mp3");
+    sound.volume = volume;
+    sound.muted = isMuted;
     sound.play().catch((e) => console.error("Audio play failed:", e));
     setShowQuote(true);
   };
@@ -65,6 +116,10 @@ export default function LandingPage() {
     setShowQuote(false);
     setFadeOut(false);
     setShake(false);
+    if (ambientRef.current) {
+      ambientRef.current.currentTime = 0;
+      ambientRef.current.play().catch(() => {});
+    }
   };
 
   const handleInstall = () => {
@@ -80,7 +135,6 @@ export default function LandingPage() {
         transition={{ duration: 1.5 }}
         className={`relative flex flex-col items-center justify-center min-h-screen space-y-8 px-4 text-center bg-black text-white overflow-hidden ${shake ? "animate-shake" : ""}`}
       >
-        {/* SVG-style animated flame background */}
         <div className="absolute inset-0 z-0">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <radialGradient id="gradFlame" cx="50%" cy="50%" r="50%">
@@ -91,6 +145,8 @@ export default function LandingPage() {
             <circle cx="50" cy="50" r="50" fill="url(#gradFlame)" className="animate-pulse" />
           </svg>
         </div>
+
+        <audio ref={ambientRef} src="/ambient-loop.mp3" style={{ display: "none" }} />
 
         {!showQuote && (
           <motion.div
@@ -143,11 +199,33 @@ export default function LandingPage() {
                 OFF
               </button>
             </div>
+
+            <div className="flex items-center space-x-4">
+              <label className="text-sm text-gray-300">
+                🔊 Volume:
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value={volume}
+                  onChange={(e) => setVolume(parseFloat(e.target.value))}
+                  className="ml-2 w-32"
+                />
+              </label>
+              <button
+                onClick={() => setIsMuted((prev) => !prev)}
+                className="text-sm text-white underline"
+              >
+                {isMuted ? "🔇 Ήχος Off" : "🔊 Ήχος On"}
+              </button>
+            </div>
+
             <button
               onClick={handleInstall}
-              className="text-base font-extrabold bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 bg-clip-text text-transparent px-4 py-2 rounded-lg tracking-wide animate-flame shadow-md hover:scale-105 transition"
+              className="text-2xl font-extrabold bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 bg-clip-text text-transparent px-6 py-2 rounded-lg tracking-wider shadow-lg hover:scale-105 transition animate-shake-slight"
             >
-              📲 Εγκατάσταση App
+              📲 INSTALL APP
             </button>
           </div>
         ) : (
