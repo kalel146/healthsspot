@@ -10,6 +10,8 @@ import html2canvas from "html2canvas";
 import CardioInsights from "./CardioInsights";
 import { TrendingUp, Download, CalendarDays, AlertTriangle } from "lucide-react";
 import { utils, writeFile } from "xlsx";
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 export default function CardioModule({ cardioHistory }) {
    const [weeklyData, setWeeklyData] = useState([]);
@@ -31,6 +33,29 @@ const [weekFilter, setWeekFilter] = useState(null);
   const [selectedWeek, setSelectedWeek] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
     const [weeklyDelta, setWeeklyDelta] = useState(null);
+      const [calendarDate, setCalendarDate] = useState(new Date());
+  const [expandedWeeks, setExpandedWeeks] = useState([]);
+
+   const toggleWeek = (week) => {
+    setExpandedWeeks(prev =>
+      prev.includes(week) ? prev.filter(w => w !== week) : [...prev, week]
+    );
+  };
+       const aiForecast = useMemo(() => {
+    if (weeklyData.length < 2) return null;
+    const lastTwo = weeklyData.slice(-2);
+    const [prev, current] = lastTwo;
+    const drop = parseFloat(current.avg) < parseFloat(prev.avg) && current.range > prev.range;
+
+    if (drop && parseFloat(current.avg) < 40) {
+      return "📉 Πτώση απόδοσης και αυξημένη διακύμανση — μείωσε την ένταση και δώσε έμφαση στην αποκατάσταση την επόμενη εβδομάδα.";
+    } else if (parseFloat(current.avg) > parseFloat(prev.avg) && current.range < prev.range) {
+      return "📈 Ανοδική τάση και σταθεροποίηση — μπορείς να προχωρήσεις σε πιο απαιτητικά sessions την επόμενη εβδομάδα.";
+    } else {
+      return "🔄 Οι επιδόσεις παραμένουν σταθερές — διατήρησε το ίδιο προπονητικό πλάνο για άλλη μία εβδομάδα.";
+    }
+  }, [weeklyData]);
+
      const getColorClass = (severity) => {
     switch (severity) {
       case "high":
@@ -326,6 +351,34 @@ const fetchHistory = async () => {
     Cardio Module — Advanced Insights
   </h1>
   <CardioInsights history={history} activity={activity} />
+
+    <div className="mb-6">
+        <Calendar
+          onChange={(date) => {
+            const iso = date.toISOString().split("T")[0];
+            setCalendarDate(date);
+            setSelectedDate(iso);
+          }}
+          value={calendarDate}
+          tileClassName={({ date }) => {
+            const iso = date.toISOString().split("T")[0];
+            const entry = weeklyData.find(week => week.dates.includes(iso));
+            if (entry) {
+              switch (entry.severity) {
+                case "high":
+                  return "bg-red-200";
+                case "medium":
+                  return "bg-yellow-200";
+                case "excellent":
+                  return "bg-green-200";
+                default:
+                  return "bg-blue-100";
+              }
+            }
+            return null;
+          }}
+        />
+      </div>
 
       {weeklyDelta && (
         <motion.div className="flex justify-center mb-4">
@@ -631,13 +684,42 @@ const fetchHistory = async () => {
        {filteredData.length > 0 && (
         <motion.div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow">
           <h3 className="text-md font-semibold text-purple-500 mb-2">🤖 Εβδομαδιαία AI Ανάλυση</h3>
-          <ul className="list-disc ml-5 space-y-2 text-sm">
+          <ul className="space-y-2 text-sm">
             {filteredData.map((entry) => (
-              <li key={entry.week} className={getColorClass(entry.severity)}>
-                <strong>{entry.week}:</strong> {entry.feedback}
+              <li key={entry.week} className="border rounded-lg overflow-hidden">
+                <button
+                  onClick={() => toggleWeek(entry.week)}
+                  className={`w-full text-left px-4 py-2 font-semibold flex justify-between items-center ${getColorClass(entry.severity)}`}
+                >
+                  <span>{entry.week}</span>
+                  {expandedWeeks.includes(entry.week) ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </button>
+                {expandedWeeks.includes(entry.week) && (
+                  <div className="px-4 pb-4">
+                    <p>{entry.feedback}</p>
+                  </div>
+                )}
               </li>
             ))}
           </ul>
+        </motion.div>
+      )}
+
+      <motion.div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow">
+        <h2 className="text-lg font-semibold mb-2 text-indigo-500">📊 Εβδομαδιαία Στατιστικά VO2max</h2>
+        <ul className="list-disc ml-5 space-y-1 text-sm">
+          {weeklyData.map((entry) => (
+            <li key={entry.week} className={getColorClass(entry.severity)}>
+              <strong>{entry.week}:</strong> Μέγιστο: {entry.max} mL/kg/min, Ελάχιστο: {entry.min} mL/kg/min, Μέσος Όρος: {entry.avg} mL/kg/min
+            </li>
+          ))}
+        </ul>
+ </motion.div>
+
+  {aiForecast && (
+        <motion.div className="mt-6 bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-white px-6 py-4 rounded-xl shadow">
+          <h3 className="text-md font-semibold mb-2">🔮 AI Forecast</h3>
+          <p className="text-sm">{aiForecast}</p>
         </motion.div>
       )}
 

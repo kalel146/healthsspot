@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useTheme } from "./ThemeContext";
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { useUser, SignedIn } from "@clerk/clerk-react";
 import { supabase } from "./supabaseClient";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
+import { useUser, SignedIn } from "@clerk/clerk-react";
+import { useTheme } from "./ThemeContext";
 
 
 function SortableItem({ id, children }) {
@@ -34,10 +34,11 @@ export default function NutritionModule() {
     { name: "Γιαούρτι 2% (100g)", protein: 10, fat: 2, carbs: 4 },
     { name: "Φακές (μαγειρεμένες)", protein: 9, fat: 0.4, carbs: 20 },
     { name: "Τοφού", protein: 8, fat: 4.8, carbs: 1.9 },
-    { name: "Σολομός (100g)", protein: 20, fat: 13, carbs: 0 },
+    { name: "Σολωμός (100g)", protein: 20, fat: 13, carbs: 0 },
     { name: "Ψωμί ολικής (φέτα)", protein: 4, fat: 1, carbs: 12 },
     { name: "Αμύγδαλα (10τμχ)", protein: 2.5, fat: 5.5, carbs: 2 }
   ];
+
   useEffect(() => {
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (systemPrefersDark && theme !== 'dark') toggleTheme();

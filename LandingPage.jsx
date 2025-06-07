@@ -34,7 +34,41 @@ export default function LandingPage() {
   const [volume, setVolume] = useState(1);
   const { theme } = useTheme();
   const ambientRef = useRef(null);
-  const [ambientStarted, setAmbientStarted] = useState(false);
+
+  useEffect(() => {
+    const ambient = ambientRef.current;
+    if (!ambient) return;
+
+    ambient.loop = true;
+    ambient.muted = isMuted;
+    ambient.volume = volume;
+
+    const tryPlay = () => {
+      const playPromise = ambient.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            if (!isMuted && volume < 1) {
+              let v = 0;
+              ambient.volume = v;
+              const fadeInterval = setInterval(() => {
+                if (v < volume) {
+                  v += 0.05;
+                  ambient.volume = Math.min(v, volume);
+                } else {
+                  clearInterval(fadeInterval);
+                }
+              }, 100);
+            }
+          })
+          .catch((e) => {
+            console.warn("Ambient playback failed:", e);
+          });
+      }
+    };
+
+    tryPlay();
+  }, [volume, isMuted]);
 
   useEffect(() => {
     if (showQuote) {
@@ -42,44 +76,6 @@ export default function LandingPage() {
       setQuote(random);
     }
   }, [showQuote]);
-
-  useEffect(() => {
-    const ambient = ambientRef.current;
-    if (!ambient) return;
-
-    ambient.loop = true;
-    ambient.volume = 0;
-    ambient.muted = isMuted;
-
-    const startPlayback = () => {
-      ambient.play()
-        .then(() => {
-          setAmbientStarted(true);
-          let fade = setInterval(() => {
-            if (ambient.volume < volume && !isMuted) {
-              ambient.volume = Math.min(ambient.volume + 0.01, volume);
-            } else {
-              clearInterval(fade);
-            }
-          }, 200);
-        })
-        .catch((e) => {
-          console.warn("Ambient autoplay failed:", e);
-        });
-    };
-
-    const userInteractionHandler = () => {
-      startPlayback();
-      window.removeEventListener("click", userInteractionHandler);
-    };
-
-    window.addEventListener("click", userInteractionHandler);
-
-    return () => {
-      ambient.pause();
-      window.removeEventListener("click", userInteractionHandler);
-    };
-  }, [volume, isMuted]);
 
   const handleOnClick = () => {
     const sound = new Audio("/beast-on.mp3");
