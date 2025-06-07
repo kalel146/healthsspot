@@ -11,7 +11,7 @@ export default defineConfig({
       manifest: {
         name: "Health's Spot",
         short_name: "HealthSpot",
-        start_url: "/", // αυτό ήδη είναι σωστό
+        start_url: "/",
         display: "standalone",
         background_color: "#000000",
         theme_color: "#f97316",
@@ -29,8 +29,11 @@ export default defineConfig({
         ],
       },
       devOptions: {
-        navigateFallback: '/', // ✅ αυτό κάνει fix το F5 σε dashboard στο localhost
-      }
+        navigateFallback: '/', 
+      },
+      workbox: {
+        maximumFileSizeToCacheInBytes: 5000000 // ✅ 5MB όριο (λύση στο πρόβλημα)
+      },
     }),
   ],
   resolve: {
