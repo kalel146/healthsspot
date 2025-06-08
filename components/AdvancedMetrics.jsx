@@ -124,23 +124,7 @@ export default function AdvancedMetrics() {
 
   return (
     <div className="space-y-10">
-      {showOnboarding && (
-        <div className={`p-6 rounded-xl shadow ${cardBg} border-l-4 border-yellow-400 animate-fade-in`}>
-          <h3 className="text-xl font-bold mb-2 text-yellow-400">👋 Καλώς ήρθες στο Health's Spot!</h3>
-          <ul className="list-disc list-inside space-y-1 text-sm">
-            <li>➕ Πρόσθεσε μετρήσεις για BMR, VO₂max, macros και stress.</li>
-            <li>📊 Δες εβδομαδιαία εξέλιξη στα γραφήματα.</li>
-            <li>🔐 Τα δεδομένα σου είναι ορατά μόνο σε εσένα.</li>
-          </ul>
-          <p className="text-sm mt-4">👉 Ξεκίνα πατώντας το κουμπί <strong>➕ Submit Metrics</strong> παρακάτω.</p>
-          <button
-            onClick={dismissOnboarding}
-            className="mt-4 px-4 py-2 bg-yellow-500 text-black font-bold rounded hover:bg-yellow-600"
-          >
-            ✅ Got it
-          </button>
-        </div>
-      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-10">
         {/* BMR Line Chart */}
         <div className={`p-4 rounded-xl shadow ${cardBg}`}>

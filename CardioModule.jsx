@@ -48,12 +48,35 @@ const [weekFilter, setWeekFilter] = useState(null);
     const drop = parseFloat(current.avg) < parseFloat(prev.avg) && current.range > prev.range;
 
     if (drop && parseFloat(current.avg) < 40) {
-      return "📉 Πτώση απόδοσης και αυξημένη διακύμανση — μείωσε την ένταση και δώσε έμφαση στην αποκατάσταση την επόμενη εβδομάδα.";
+      return {
+        message: "📉 Πτώση απόδοσης και αυξημένη διακύμανση — μείωσε την ένταση και δώσε έμφαση στην αποκατάσταση την επόμενη εβδομάδα.",
+        plan: ["2x προπονήσεις χαμηλής έντασης", "1x active recovery session"]
+      };
     } else if (parseFloat(current.avg) > parseFloat(prev.avg) && current.range < prev.range) {
-      return "📈 Ανοδική τάση και σταθεροποίηση — μπορείς να προχωρήσεις σε πιο απαιτητικά sessions την επόμενη εβδομάδα.";
+      return {
+        message: "📈 Ανοδική τάση και σταθεροποίηση — μπορείς να προχωρήσεις σε πιο απαιτητικά sessions την επόμενη εβδομάδα.",
+        plan: ["1x threshold run", "1x HIIT session"]
+      };
     } else {
-      return "🔄 Οι επιδόσεις παραμένουν σταθερές — διατήρησε το ίδιο προπονητικό πλάνο για άλλη μία εβδομάδα.";
+      return {
+        message: "🔄 Οι επιδόσεις παραμένουν σταθερές — διατήρησε το ίδιο προπονητικό πλάνο για άλλη μία εβδομάδα.",
+        plan: ["2x steady-state runs"]
+      };
     }
+  }, [weeklyData]);
+
+    const regressionForecast = useMemo(() => {
+    if (weeklyData.length < 3) return [];
+    const x = weeklyData.map((_, i) => i);
+    const y = weeklyData.map(entry => parseFloat(entry.avg));
+    const n = x.length;
+    const xMean = x.reduce((a, b) => a + b) / n;
+    const yMean = y.reduce((a, b) => a + b) / n;
+    const numerator = x.reduce((acc, xi, i) => acc + (xi - xMean) * (y[i] - yMean), 0);
+    const denominator = x.reduce((acc, xi) => acc + Math.pow(xi - xMean, 2), 0);
+    const slope = numerator / denominator;
+    const intercept = yMean - slope * xMean;
+    return x.map(xi => ({ week: weeklyData[xi].week, forecast: slope * xi + intercept }));
   }, [weeklyData]);
 
      const getColorClass = (severity) => {
@@ -127,14 +150,15 @@ const [weekFilter, setWeekFilter] = useState(null);
       }
 
       return {
-        week,
+          week,
         max,
         min,
         range,
         avg: avg.toFixed(1),
         feedback,
         severity,
-        dates: values.map(v => v.date)
+        dates: values.map(v => v.date),
+        sessions: cardioHistory.filter(log => log.created_at.includes(week.slice(0, 4)) && log.type !== 'vo2max')
       };
     });
 
@@ -336,48 +360,40 @@ const fetchHistory = async () => {
   
 
   return (
-   <motion.div
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  exit={{ opacity: 0, y: -30 }}
-  transition={{ duration: 0.6, ease: "easeOut" }}
-  className={`min-h-screen px-4 sm:px-8 py-12 space-y-14 transition-colors duration-300 ${
-    theme === "dark"
-      ? "bg-gradient-to-br from-black via-gray-900 to-black text-white"
-      : "bg-gradient-to-br from-white via-gray-100 to-white text-black"
-  }`}
->
-  <h1 className="text-2xl font-bold mb-4 text-yellow-500 flex items-center gap-2">
-    Cardio Module — Advanced Insights
-  </h1>
-  <CardioInsights history={history} activity={activity} />
+    <motion.div className="p-6 max-w-5xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4 text-yellow-500 text-center">Cardio Module — Advanced Insights</h1>
+      <CardioInsights history={cardioHistory} activity={"Όλα"} />
 
-    <div className="mb-6">
-        <Calendar
-          onChange={(date) => {
-            const iso = date.toISOString().split("T")[0];
-            setCalendarDate(date);
-            setSelectedDate(iso);
-          }}
-          value={calendarDate}
-          tileClassName={({ date }) => {
-            const iso = date.toISOString().split("T")[0];
-            const entry = weeklyData.find(week => week.dates.includes(iso));
-            if (entry) {
-              switch (entry.severity) {
-                case "high":
-                  return "bg-red-200";
-                case "medium":
-                  return "bg-yellow-200";
-                case "excellent":
-                  return "bg-green-200";
-                default:
-                  return "bg-blue-100";
+      <div className="relative z-30 mt-8 flex justify-center">
+        <div className="w-fit">
+          <h3 className="text-md font-semibold text-purple-600 mb-2 text-center">🗓 Ημερολογιακή Επισκόπηση</h3>
+          <Calendar
+            onChange={(date) => {
+              const iso = date.toISOString().split("T")[0];
+              setCalendarDate(date);
+              setSelectedDate(iso);
+            }}
+            value={calendarDate}
+            tileClassName={({ date }) => {
+              const iso = date.toISOString().split("T")[0];
+              const entry = weeklyData.find(week => week.dates.includes(iso));
+              if (entry) {
+                switch (entry.severity) {
+                  case "high":
+                    return "bg-red-200";
+                  case "medium":
+                    return "bg-yellow-200";
+                  case "excellent":
+                    return "bg-green-200";
+                  default:
+                    return "bg-blue-100";
+                }
               }
-            }
-            return null;
-          }}
-        />
+              return null;
+            }}
+            className="rounded-lg shadow border border-gray-300"
+          />
+        </div>
       </div>
 
       {weeklyDelta && (
@@ -650,23 +666,28 @@ const fetchHistory = async () => {
         </div>
       </div>
 
-      {filteredData.length > 0 ? (
-        <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={filteredData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="week" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="avg" stroke="#10b981" name="Μέσος Όρος" />
-            <Line type="monotone" dataKey="max" stroke="#f59e0b" name="Μέγιστο" />
-            <Line type="monotone" dataKey="min" stroke="#ef4444" name="Ελάχιστο" />
-          </LineChart>
-        </ResponsiveContainer>
-      ) : (
+      {filteredData.length > 0 && regressionForecast.length > 0 && (
+        <div className="mt-6">
+          <h3 className="text-md font-semibold text-blue-500 mb-2">📈 Προβλεπόμενη Τάση VO2max</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={filteredData.map((entry, i) => ({
+              ...entry,
+              forecast: regressionForecast[i]?.forecast || null
+            }))}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="week" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="avg" stroke="#10b981" name="Μέσος Όρος" />
+              <Line type="monotone" dataKey="forecast" stroke="#6366f1" strokeDasharray="5 5" name="Πρόβλεψη" />
+            </LineChart>
+          </ResponsiveContainer>
+     
         <div className="text-center text-sm text-gray-500 py-12">
           Δεν υπάρχουν δεδομένα για την επιλεγμένη εβδομάδα ή ημερομηνία.
         </div>
+                </div>
       )}
 
       <div className="mt-6 bg-white dark:bg-zinc-800 p-4 rounded-xl shadow">
@@ -695,8 +716,13 @@ const fetchHistory = async () => {
                   {expandedWeeks.includes(entry.week) ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                 </button>
                 {expandedWeeks.includes(entry.week) && (
-                  <div className="px-4 pb-4">
+                  <div className="px-4 pb-4 space-y-2">
                     <p>{entry.feedback}</p>
+                    <ul className="list-disc ml-5 text-xs">
+                      {entry.sessions.map((s, i) => (
+                        <li key={i}>{s.created_at.split("T")[0]} — {s.type} — {s.value}</li>
+                      ))}
+                    </ul>
                   </div>
                 )}
               </li>
@@ -717,9 +743,17 @@ const fetchHistory = async () => {
  </motion.div>
 
   {aiForecast && (
-        <motion.div className="mt-6 bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-white px-6 py-4 rounded-xl shadow">
-          <h3 className="text-md font-semibold mb-2">🔮 AI Forecast</h3>
-          <p className="text-sm">{aiForecast}</p>
+        <motion.div className="mt-6 bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-white px-6 py-4 rounded-xl shadow space-y-3">
+          <h3 className="text-md font-semibold">🔮 AI Forecast</h3>
+          <p className="text-sm">{aiForecast.message}</p>
+          <div>
+            <h4 className="text-sm font-semibold mb-1">📋 Προτεινόμενο Πλάνο Προπόνησης:</h4>
+            <ul className="list-disc ml-5 text-sm space-y-1">
+              {aiForecast.plan.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </div>
         </motion.div>
       )}
 
