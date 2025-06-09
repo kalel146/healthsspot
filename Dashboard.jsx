@@ -43,7 +43,7 @@ export default function Dashboard() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ type: "spring", stiffness: 80, damping: 20 }}
-      className={`min-h-screen px-2 md:px-8 py-6 flex flex-col md:flex-row items-start gap-8 transition-colors duration-500 ease-in-out relative overflow-visible ${theme === "dark" ? "bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white" : "bg-gradient-to-br from-white via-slate-100 to-gray-200 text-black"}`}
+      className={`min-h-screen px-2 md:px-4 py-6 flex flex-col items-start gap-8 transition-colors duration-500 ease-in-out relative overflow-visible ${theme === "dark" ? "bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white" : "bg-gradient-to-br from-white via-slate-100 to-gray-200 text-black"}`}
     >
       {/* Particle FX */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -73,11 +73,11 @@ export default function Dashboard() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 w-full max-w-6xl flex flex-col mx-auto">
+      <div className="flex-1 w-full max-w-7xl flex flex-col mx-auto">
         <div className="flex w-full justify-between items-start px-2 md:px-4">
           <div className="text-left space-y-1">
             <h1 className="text-2xl font-bold text-yellow-400 drop-shadow-sm">
-              It's ON, {user?.firstName || "φίλε"}, 💯%
+              It's ON, {user?.firstName || "Athlete"}, 💯%
             </h1>
           </div>
           <div className="text-right">
@@ -94,7 +94,8 @@ export default function Dashboard() {
             className={`mt-4 p-3 text-xs rounded-lg shadow-lg border border-yellow-400 max-w-md z-50 relative ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}
           >
             <h3 className="text-sm font-bold text-yellow-400 mb-1">💡 Tip</h3>
-            <p className="text-xs">➕ Πρόσθεσε μετρήσεις BMR, VO₂max, macros, stress. 🚀 Δες εβδομαδιαία εξέλιξη στα γραφήματα. 🧐 Τα δεδομένα σου είναι ορατά μόνο σε εσένα.</p>
+            <p className="text-xs">➕ Πρόσθεσε μετρήσεις BMR, VO₂max, macros, stress. 🚀 Δες εβδομαδιαία εξέλιξη στα γραφήματα. 🦖 Τα δεδομένα σου είναι ορατά μόνο σε εσένα.
+            </p>
             <div className="flex gap-3 mt-3">
               <button
                 onClick={handleGotIt}
@@ -106,7 +107,7 @@ export default function Dashboard() {
                 onClick={handleHideForever}
                 className="bg-gray-700 hover:bg-gray-600 text-white text-xs font-semibold px-2 py-1 rounded z-50"
               >
-                🚫 Don't show this again
+                ❌ Don't show this again
               </button>
             </div>
           </motion.div>
@@ -121,9 +122,9 @@ export default function Dashboard() {
           FITNESS MENU
         </motion.h2>
 
-        <div className="flex flex-col lg:flex-row gap-4 mt-4 justify-between">
+        <div className="flex flex-col lg:flex-row gap-4 mt-4 justify-between items-stretch">
           <div className="flex-1 flex flex-col gap-3">
-            <AdvancedMetrics compact smallCharts />
+            <AdvancedMetrics compact smallCharts className="w-full" />
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -154,7 +155,7 @@ function Card({ label, value, theme }) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`px-2 py-1 rounded-lg shadow-md flex flex-col items-center justify-center text-center text-xs font-semibold space-y-1 border border-yellow-400/20 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-100 text-black"}`}
+      className={`w-full px-2 py-1 rounded-lg shadow-md flex flex-col items-center justify-center text-center text-xs font-semibold space-y-1 border border-yellow-400/20 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-100 text-black"}`}
     >
       <div className="text-[10px] text-gray-400 dark:text-gray-300 font-medium tracking-wide">{label}</div>
       <div className="text-sm font-bold mt-1 tracking-tight text-yellow-300">{value}</div>

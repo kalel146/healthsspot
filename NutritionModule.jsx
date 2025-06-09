@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { useUser, SignedIn } from "@clerk/clerk-react";
 import { useTheme } from "./ThemeContext";
-
+import defaultMeals from './defaultMeals.json';
 
 function SortableItem({ id, children }) {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
@@ -26,6 +26,10 @@ function SortableItem({ id, children }) {
 
 export default function NutritionModule() {
   const [foodSearch, setFoodSearch] = useState("");
+  const allFoods = [...foodDB, ...defaultMeals, ...userFoods];
+  const filteredFoods = allFoods.filter((item) =>
+    item.name.toLowerCase().includes(foodSearch.toLowerCase())
+  );
   const foodDB = [
     { name: "Αβγό", protein: 6, fat: 5, carbs: 0.5 },
     { name: "Κοτόπουλο (100g)", protein: 31, fat: 3.6, carbs: 0 },
