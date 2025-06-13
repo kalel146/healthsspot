@@ -1,0 +1,132 @@
+{
+  "title": "Powerlifting Phase 1",
+  "level": "Intermediate",
+  "goal": "Increase Maximum Strength (Squat, Bench, Deadlift)",
+  "duration": "6 Weeks",
+  "accessTier": "Silver",
+  "daysPerWeek": 3,
+  "description": "Foundational strength-building plan using the 5x5 method. Designed for lifters aiming to improve raw strength in core compound lifts.",
+  "weeklySplit": [
+    {
+      "day": "Day 1 - Squat Focus",
+      "exercises": [
+        {
+          "name": "Back Squat",
+          "sets": 5,
+          "reps": 5,
+          "intensity": "80% 1RM"
+        },
+        {
+          "name": "Front Squat",
+          "sets": 3,
+          "reps": 6,
+          "intensity": "70% 1RM"
+        },
+        {
+          "name": "Leg Curl",
+          "sets": 3,
+          "reps": 10
+        }
+      ]
+    },
+    {
+      "day": "Day 2 - Bench Focus",
+      "exercises": [
+        {
+          "name": "Barbell Bench Press",
+          "sets": 5,
+          "reps": 5,
+          "intensity": "80% 1RM"
+        },
+        {
+          "name": "Incline Dumbbell Press",
+          "sets": 3,
+          "reps": 10
+        },
+        {
+          "name": "Triceps Pushdown",
+          "sets": 4,
+          "reps": 12
+        }
+      ]
+    },
+    {
+      "day": "Day 3 - Deadlift Focus",
+      "exercises": [
+        {
+          "name": "Deadlift",
+          "sets": 5,
+          "reps": 5,
+          "intensity": "80% 1RM"
+        },
+        {
+          "name": "Barbell Row",
+          "sets": 3,
+          "reps": 8
+        },
+        {
+          "name": "Pull-Ups",
+          "sets": 3,
+          "reps": "AMRAP"
+        }
+      ]
+    }
+  ],
+  "notes": "Deload on Week 4 (70% of all loads). Retest 1RM at Week 7.",
+  "resources": [
+    {
+      "type": "Video",
+      "title": "Understanding the 5x5 Method",
+      "url": "https://example.com/5x5-method"
+    },
+    {
+      "type": "Article",
+      "title": "Nutrition for Strength Training",
+      "url": "https://example.com/nutrition-strength"
+    }
+  ],
+  "communitySupport": {
+    "forumLink": "https://example.com/forum/powerlifting-phase-1",
+    "weeklyQnA": true
+  },
+  "progressTracking": {
+    "1RMCalculator": true,
+    "weeklyCheckIns": true,
+    "progressPhotos": true
+  },
+  "equipmentNeeded": [
+    "Barbell",
+    "Squat Rack",
+    "Bench",
+    "Weights",
+    "Pull-Up Bar"
+  ],
+  "safetyGuidelines": [
+    "Always warm up before lifting.",
+    "Use a spotter for heavy lifts.",
+    "Maintain proper form to prevent injury."
+  ],
+  "tags": [
+    "Powerlifting",
+    "Strength Training",
+    "5x5 Method",
+    "Intermediate"
+  ],
+  "feedback": {
+    "userRatings": [],
+    "comments": []
+  },
+  "metadata": {
+    "createdBy": "John Doe",
+    "createdOn": "2023-10-01"
+  },
+  "version": "1.0",
+  "lastUpdated": "2023-10-01",
+  "author": {
+    "name": "John Doe",
+    "credentials": "Certified Strength and Conditioning Specialist",
+    "contact": {
+      "email": "john@example.com"
+    }
+  }
+}

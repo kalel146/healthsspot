@@ -1,0 +1,39 @@
+{
+  "title": "Mobility Stretching Flow",
+  "level": "All Levels",
+  "goal": "Improve Flexibility, Range of Motion & Recovery",
+  "duration": "2 Weeks",
+  "accessTier": "Free",
+  "daysPerWeek": 3,
+  "description": "Gentle but effective stretching and mobility routine to increase flexibility and joint health. Ideal for recovery days or active rest.",
+  "weeklySplit": [
+    {
+      "day": "Day 1 - Full Body Stretch",
+      "exercises": [
+        { "name": "Neck Circles", "sets": 2, "reps": "10 each side" },
+        { "name": "Shoulder Rolls", "sets": 2, "reps": "15" },
+        { "name": "Cat-Cow Stretch", "sets": 3, "reps": "10" },
+        { "name": "Child’s Pose", "sets": 2, "reps": "30 sec hold" }
+      ]
+    },
+    {
+      "day": "Day 2 - Lower Body Mobility",
+      "exercises": [
+        { "name": "Hamstring Stretch", "sets": 2, "reps": "30 sec each leg" },
+        { "name": "Hip Flexor Lunge", "sets": 2, "reps": "20 sec each side" },
+        { "name": "Glute Bridge Hold", "sets": 3, "reps": "30 sec" },
+        { "name": "Butterfly Stretch", "sets": 2, "reps": "30 sec" }
+      ]
+    },
+    {
+      "day": "Day 3 - Dynamic Flow",
+      "exercises": [
+        { "name": "World's Greatest Stretch", "sets": 2, "reps": "5 each side" },
+        { "name": "Arm Swings", "sets": 2, "reps": "15" },
+        { "name": "Leg Swings", "sets": 2, "reps": "15 each leg" },
+        { "name": "Downward Dog to Cobra", "sets": 2, "reps": "8" }
+      ]
+    }
+  ],
+  "notes": "Use this program on recovery days or post-training to improve long-term joint health. Combine with breathwork for added benefits."
+}

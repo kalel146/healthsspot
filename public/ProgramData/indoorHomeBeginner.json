@@ -1,0 +1,48 @@
+{
+  "title": "Home Bodyweight Starter",
+  "level": "Beginner",
+  "goal": "General Fitness & Mobility",
+  "duration": "4 Weeks",
+  "accessTier": "Free",
+  "daysPerWeek": 4,
+  "description": "A full-body bodyweight plan designed for beginners training at home with zero equipment. Focuses on mobility, core strength, and light conditioning.",
+  "weeklySplit": [
+    {
+      "day": "Day 1 - Full Body Mobility",
+      "exercises": [
+        { "name": "Cat-Cow Stretch", "sets": 2, "reps": 10 },
+        { "name": "World's Greatest Stretch", "sets": 2, "reps": 5 },
+        { "name": "Wall Angels", "sets": 2, "reps": 10 },
+        { "name": "Bird-Dogs", "sets": 2, "reps": 12 }
+      ]
+    },
+    {
+      "day": "Day 2 - Core Stability",
+      "exercises": [
+        { "name": "Plank Hold", "sets": 3, "reps": "30 sec" },
+        { "name": "Dead Bug", "sets": 3, "reps": 10 },
+        { "name": "Glute Bridge", "sets": 3, "reps": 12 },
+        { "name": "Side Plank", "sets": 2, "reps": "30 sec/side" }
+      ]
+    },
+    {
+      "day": "Day 3 - Cardio & Coordination",
+      "exercises": [
+        { "name": "Jumping Jacks", "sets": 3, "reps": "45 sec" },
+        { "name": "High Knees", "sets": 3, "reps": "30 sec" },
+        { "name": "Mountain Climbers", "sets": 3, "reps": "30 sec" },
+        { "name": "Shadow Boxing", "sets": 3, "reps": "1 min" }
+      ]
+    },
+    {
+      "day": "Day 4 - Recovery & Stretch",
+      "exercises": [
+        { "name": "Foam Roll Quads", "sets": 2, "reps": "1 min" },
+        { "name": "Hamstring Stretch", "sets": 2, "reps": "30 sec/leg" },
+        { "name": "Child’s Pose", "sets": 2, "reps": "1 min" },
+        { "name": "Breath Work", "sets": 1, "reps": "5 min" }
+      ]
+    }
+  ],
+  "notes": "Repeat this cycle weekly. Feel free to modify rest time based on your fitness level. Designed for no equipment."
+}

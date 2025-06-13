@@ -5,6 +5,7 @@ import logo from "./assets/logo.png";
 
 const modules = [
   { icon: "🔥", name: "FIT MENU", path: "/dashboard" },
+  { icon: "📚", name: "Training", path: "/programs" }, // ✅ ΝΕΟ
   { icon: "🏋️", name: "Power", path: "/training" },
   { icon: "🏊", name: "Cardio", path: "/cardio" },
   { icon: "🍎", name: "Nutrition", path: "/nutrition" },

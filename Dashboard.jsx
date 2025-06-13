@@ -72,28 +72,30 @@ export default function Dashboard() {
         />
       </div>
 
-      {/* Main Content */}
-      <div className="flex-1 w-full max-w-7xl flex flex-col mx-auto">
-        <div className="flex w-full justify-between items-start px-2 md:px-4">
+     {/* Main Content */}
+      <div className="flex-1 w-full max-w-7xl flex flex-col mx-auto items-center">
+<div className="flex w-full justify-between items-start px-4 md:px-10 lg:px-20 xl:px-32 2xl:px-40 max-w-6xl">
           <div className="text-left space-y-1">
             <h1 className="text-2xl font-bold text-yellow-400 drop-shadow-sm">
               It's ON, {user?.firstName || "Athlete"}, 💯%
             </h1>
           </div>
           <div className="text-right">
-            <span className="text-yellow-400 font-bold text-lg animate-flame">🥇 PLACE</span>
+            <span className="text-yellow-400 font-bold text-lg animate-flame">🥇 PLACE
+            </span>
           </div>
         </div>
 
-        {showTip && (
+         {showTip && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.5 }}
-            className={`mt-4 p-3 text-xs rounded-lg shadow-lg border border-yellow-400 max-w-md z-50 relative ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}
+            className={`mt-4 p-3 text-xs rounded-lg shadow-lg border border-yellow-400 max-w-md z-50 relative self-center ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}
           >
-            <h3 className="text-sm font-bold text-yellow-400 mb-1">💡 Tip</h3>
+            <h3 className="text-sm font-bold text-yellow-400 mb-1">💡 Tip
+            </h3>
             <p className="text-xs">➕ Πρόσθεσε μετρήσεις BMR, VO₂max, macros, stress. 🚀 Δες εβδομαδιαία εξέλιξη στα γραφήματα. 🦖 Τα δεδομένα σου είναι ορατά μόνο σε εσένα.
             </p>
             <div className="flex gap-3 mt-3">
@@ -122,8 +124,8 @@ export default function Dashboard() {
           FITNESS MENU
         </motion.h2>
 
-        <div className="flex flex-col lg:flex-row gap-4 mt-4 justify-between items-stretch">
-          <div className="flex-1 flex flex-col gap-3">
+<div className="flex flex-col lg:flex-row gap-4 mt-4 justify-center items-start">
+<div className="flex flex-col gap-3 lg:ml-auto w-[180px]">
             <AdvancedMetrics compact smallCharts className="w-full" />
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -135,8 +137,9 @@ export default function Dashboard() {
             </motion.button>
           </div>
 
-          <div className="w-full lg:w-1/4 grid grid-cols-1 gap-2 items-start self-start">
-            <Card label="BMR / TDEE" value="2400 kcal" theme={theme} />
+ <div className="flex flex-col lg:flex-row gap-4 mt-4 justify-between items-stretch">
+          <div className="flex flex-col gap-6 w-full lg:w-1/3">
+                <Card label="BMR / TDEE" value="2400 kcal" theme={theme} />
             <Card label="1RM (Brzycki)" value="145 kg" theme={theme} />
             <Card label="VO2max" value="52 ml/kg/min" theme={theme} />
             <Card label="Stress / Recovery" value="Moderate" theme={theme} />
@@ -145,6 +148,8 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+            </div>
+
     </motion.div>
   );
 }
@@ -155,10 +160,16 @@ function Card({ label, value, theme }) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`w-full px-2 py-1 rounded-lg shadow-md flex flex-col items-center justify-center text-center text-xs font-semibold space-y-1 border border-yellow-400/20 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-100 text-black"}`}
+      className={`h-[110px] w-[180px] px-3 py-4 rounded-lg shadow-md flex flex-col items-center justify-center text-center text-xs font-semibold space-y-1 border border-yellow-400/20
+        ${theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-100 text-black"}`}
     >
-      <div className="text-[10px] text-gray-400 dark:text-gray-300 font-medium tracking-wide">{label}</div>
-      <div className="text-sm font-bold mt-1 tracking-tight text-yellow-300">{value}</div>
+      <div className="text-[11px] text-center leading-tight text-gray-300 dark:text-gray-200 font-medium break-words">
+        {label}
+      </div>
+<div className="text-[11px] font-bold tracking-tight text-yellow-300 break-words leading-snug text-center">
+        {value}
+      </div>
     </motion.div>
   );
 }
+

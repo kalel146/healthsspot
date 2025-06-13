@@ -1,0 +1,39 @@
+{
+  "title": "Track & Field Sprint Prep",
+  "level": "Athlete",
+  "goal": "Speed, Acceleration & Power Development",
+  "duration": "3 Weeks",
+  "accessTier": "Silver",
+  "daysPerWeek": 3,
+  "description": "A sprint-focused program designed for explosive field athletes and runners. Emphasizes technique, plyometrics, and short-distance power output.",
+  "weeklySplit": [
+    {
+      "day": "Day 1 - Sprint Mechanics & Acceleration",
+      "exercises": [
+        { "name": "A-Skips", "sets": 3, "reps": "20m" },
+        { "name": "Wall Drills (High Knee Hold)", "sets": 3, "reps": 6 },
+        { "name": "Sprint Starts", "sets": 5, "reps": "10m" },
+        { "name": "Broad Jump", "sets": 4, "reps": 3 }
+      ]
+    },
+    {
+      "day": "Day 2 - Plyometric Power",
+      "exercises": [
+        { "name": "Bounding", "sets": 3, "reps": "30m" },
+        { "name": "Depth Jumps", "sets": 3, "reps": 5 },
+        { "name": "Lateral Hops", "sets": 3, "reps": 12 },
+        { "name": "Sled Pushes", "sets": 4, "reps": "15m" }
+      ]
+    },
+    {
+      "day": "Day 3 - Sprint Repeats",
+      "exercises": [
+        { "name": "Sprint 3x30m", "sets": 1, "reps": "3 rounds" },
+        { "name": "Sprint 3x60m", "sets": 1, "reps": "3 rounds" },
+        { "name": "Sprint 2x100m", "sets": 1, "reps": "2 rounds" },
+        { "name": "Walking Recovery", "sets": "-", "reps": "3 min between sprints" }
+      ]
+    }
+  ],
+  "notes": "Focus on full recovery between sprint sets. Quality over quantity. Ideal for pre-season prep or speed phase."
+}

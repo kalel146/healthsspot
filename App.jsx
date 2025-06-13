@@ -14,6 +14,8 @@ import HistorySystem from "./HistorySystem";
 import Navbar from "./Navbar";
 import AuthPage from "./AuthPage";
 import ReportForm from "./ReportForm";
+import ProgramVault from "./TrainingHub/Components/ProgramVault";
+import PricingPage from "./TrainingHub/Components/PricingPage";
 
 function AppContent() {
   const location = useLocation();
@@ -40,8 +42,9 @@ function AppContent() {
             </>
           }
         />
-
-        <Route path="/cardio-history" element={<CardioDraggableHistory />} />
+<Route path="/pricing" element={<PricingPage />} />
+<Route path="/programs" element={<ProgramVault userTier="Free" />} />
+      <Route path="/cardio-history" element={<CardioDraggableHistory />} />
         <Route path="/training" element={<StrengthModule />} />
         <Route path="/cardio" element={<CardioModule />} />
         <Route path="/nutrition" element={<NutritionModule />} />

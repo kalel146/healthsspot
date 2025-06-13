@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
@@ -25,12 +25,46 @@ function SortableItem({ id, children }) {
 }
 
 export default function NutritionModule() {
+  const { theme, toggleTheme } = useTheme();
+  const { user } = useUser();
+
+  const [weeklyPlan, setWeeklyPlan] = useState({});
   const [foodSearch, setFoodSearch] = useState("");
-  const allFoods = [...foodDB, ...defaultMeals, ...userFoods];
-  const filteredFoods = allFoods.filter((item) =>
-    item.name.toLowerCase().includes(foodSearch.toLowerCase())
-  );
-  const foodDB = [
+  const [weight, setWeight] = useState(70);
+  const [height, setHeight] = useState(175);
+  const [age, setAge] = useState(25);
+  const [gender, setGender] = useState("male");
+  const [activity, setActivity] = useState(1.55);
+  const [bmr, setBmr] = useState(null);
+  const [tdee, setTdee] = useState(null);
+  const [protein, setProtein] = useState(() => parseFloat(localStorage.getItem("protein")) || 2);
+  const [fat, setFat] = useState(() => parseFloat(localStorage.getItem("fat")) || 1);
+  const [carbs, setCarbs] = useState(() => {
+    const saved = localStorage.getItem("carbs");
+    return saved ? parseFloat(saved) : null;
+  });
+  const [intakeHistory, setIntakeHistory] = useState([]);
+  const [preference, setPreference] = useState(() => localStorage.getItem("preference") || "default");
+  const [daysOrder, setDaysOrder] = useState(() => {
+    const saved = localStorage.getItem("daysOrder");
+    return saved ? JSON.parse(saved) : [
+      'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο', 'Κυριακή'
+    ];
+  });
+  const [customMeals, setCustomMeals] = useState(() => {
+    const saved = localStorage.getItem("customMeals");
+    return saved ? JSON.parse(saved) : {};
+  });
+const [selectedFood, setSelectedFood] = useState({ name: "", protein: 0, fat: 0, carbs: 0 });
+  const [selectedName, setSelectedName] = useState("");
+  const [selectedDay, setSelectedDay] = useState(daysOrder[0]);
+  const [selectedMealType, setSelectedMealType] = useState("snack");
+  const [userFoods, setUserFoods] = useState(() => {
+    const saved = localStorage.getItem("userFoods");
+    return saved ? JSON.parse(saved) : [];
+  });
+  
+ const foodDB = useMemo(() => [
     { name: "Αβγό", protein: 6, fat: 5, carbs: 0.5 },
     { name: "Κοτόπουλο (100g)", protein: 31, fat: 3.6, carbs: 0 },
     { name: "Ρύζι (100g μαγειρεμένο)", protein: 2.7, fat: 0.3, carbs: 28 },
@@ -41,35 +75,69 @@ export default function NutritionModule() {
     { name: "Σολωμός (100g)", protein: 20, fat: 13, carbs: 0 },
     { name: "Ψωμί ολικής (φέτα)", protein: 4, fat: 1, carbs: 12 },
     { name: "Αμύγδαλα (10τμχ)", protein: 2.5, fat: 5.5, carbs: 2 }
-  ];
+  ], []);
+
+  const allFoods = useMemo(() => [...foodDB, ...defaultMeals, ...userFoods], [foodDB, defaultMeals, userFoods]);
+
+  const filteredFoods = useMemo(() => allFoods.filter((item) =>
+    item.name.toLowerCase().includes(foodSearch.toLowerCase())
+  ), [foodSearch, allFoods]);
+
+ const exampleMealName = "Κοτόπουλο (100g)";
+  const meal = useMemo(() => allFoods.find(m => m.name === exampleMealName), [allFoods]);
+  console.log('🎯 Sample meal:', meal);
+const food = useMemo(() => allFoods.find(f => f.name === exampleMealName), [allFoods]);
+  const mealExists = useMemo(() => allFoods.some(m => m.name === selectedName), [allFoods, selectedName]);
+const proteinNames = useMemo(() => allFoods.map(f => f.protein), [allFoods]);
+const customFiltered = useMemo(() => allFoods.filter(f => f.category === 'custom'), [allFoods]);
+const isIncluded = useMemo(() => allFoods.some(f => f.name === selectedFood.name), [allFoods, selectedFood]);
+
+  useEffect(() => {
+  localStorage.setItem("userFoods", JSON.stringify(userFoods));
+}, [userFoods]);
+
+useEffect(() => {
+    localStorage.setItem("protein", protein);
+  }, [protein]);
+
+  useEffect(() => {
+    localStorage.setItem("fat", fat);
+  }, [fat]);
+
+  useEffect(() => {
+    if (carbs !== null) {
+      localStorage.setItem("carbs", carbs);
+    }
+  }, [carbs]);
+
+  useEffect(() => {
+    localStorage.setItem("preference", preference);
+  }, [preference]);
+
+  useEffect(() => {
+    localStorage.setItem("daysOrder", JSON.stringify(daysOrder));
+  }, [daysOrder]);
+
+  useEffect(() => {
+    localStorage.setItem("customMeals", JSON.stringify(customMeals));
+  }, [customMeals]);
+
+  useEffect(() => {
+    localStorage.setItem("userFoods", JSON.stringify(userFoods));
+  }, [userFoods]);
+
+
+useEffect(() => {
+    const names = allFoods.map(f => f.name);
+    console.log('✅ Available Foods:', names.slice(0, 5));
+  }, [allFoods]);
 
   useEffect(() => {
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (systemPrefersDark && theme !== 'dark') toggleTheme();
     if (!systemPrefersDark && theme === 'dark') toggleTheme();
   }, []);
-    const [intakeHistory, setIntakeHistory] = useState([]);
-  const { user } = useUser();
-  const [weight, setWeight] = useState(70);
-  const [height, setHeight] = useState(175);
-  const [age, setAge] = useState(25);
-  const [gender, setGender] = useState("male");
-  const [activity, setActivity] = useState(1.55);
-  const [bmr, setBmr] = useState(null);
-  const [tdee, setTdee] = useState(null);
-const [protein, setProtein] = useState(() =>
-  parseFloat(localStorage.getItem("protein")) || 2
-);
-const [fat, setFat] = useState(() =>
-  parseFloat(localStorage.getItem("fat")) || 1
-);
-const [carbs, setCarbs] = useState(() => {
-  const saved = localStorage.getItem("carbs");
-  return saved ? parseFloat(saved) : null;
-});
-  const { theme, toggleTheme } = useTheme();
-
-
+ 
   const getProteinLabel = (value) => {
     if (value < 1.2) return "Χαμηλή πρόσληψη πρωτεΐνης (π.χ. καθιστικοί ενήλικες)";
     if (value < 2) return "Μέτρια πρόσληψη πρωτεΐνης (π.χ. fitness / υγιεινή διατροφή)";
@@ -111,55 +179,6 @@ const [carbs, setCarbs] = useState(() => {
     { name: "Carbs", value: carbs ? parseFloat(carbs) : 0 }
   ];
 
-const [preference, setPreference] = useState(() =>
-  localStorage.getItem("preference") || "default"
-);
-const [daysOrder, setDaysOrder] = useState(() => {
-  const saved = localStorage.getItem("daysOrder");
-  return saved ? JSON.parse(saved) : [
-    'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο', 'Κυριακή'
-  ];
-});
- const [customMeals, setCustomMeals] = useState(() => {
-  const saved = localStorage.getItem("customMeals");
-  return saved ? JSON.parse(saved) : {};
-});
- const [selectedDay, setSelectedDay] = useState(daysOrder[0]);
-const [selectedMealType, setSelectedMealType] = useState("snack");
-
-React.useEffect(() => {
-  localStorage.setItem("protein", protein);
-}, [protein]);
-
-React.useEffect(() => {
-  localStorage.setItem("fat", fat);
-}, [fat]);
-
-React.useEffect(() => {
-  localStorage.setItem("preference", preference);
-}, [preference]);
-
-React.useEffect(() => {
-  localStorage.setItem("daysOrder", JSON.stringify(daysOrder));
-}, [daysOrder]);
-
-React.useEffect(() => {
-  if (carbs !== null) {
-    localStorage.setItem("carbs", carbs);
-  }
-}, [carbs]);
-  
-React.useEffect(() => {
-  localStorage.setItem("customMeals", JSON.stringify(customMeals));
-}, [customMeals]);
-
-  useEffect(() => {
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (systemPrefersDark && theme !== 'dark') toggleTheme();
-  if (!systemPrefersDark && theme === 'dark') toggleTheme();
-}, []);
-
-  
  useEffect(() => {
      if (!tdee || !protein || !fat || !carbs || !user?.id) return;
     const syncToSupabase = async () => {
@@ -292,16 +311,6 @@ const totalMealMacros = () => {
     alert("❌ Δεν βρέθηκαν ισοδύναμες επιλογές (με userFoods συμπεριλαμβανομένα).");
   }
 };
-
-
-  const [userFoods, setUserFoods] = useState(() => {
-  const saved = localStorage.getItem("userFoods");
-  return saved ? JSON.parse(saved) : [];
-});
-
-  useEffect(() => {
-  localStorage.setItem("userFoods", JSON.stringify(userFoods));
-}, [userFoods]);
 
 const generateMealPlanFromTargets = () => {
   if (preference === "lowcarb") {
@@ -523,78 +532,93 @@ const loadPlanFromSupabase = async () => {
 };
 
   return (
-     <SignedIn>
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
-      className={`min-h-screen px-6 py-10 space-y-10 transition-colors duration-500 ${
-        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
-      }`}
-    >
-      <Helmet>
-        <title>Nutrition Module | Health's Spot</title>
-        <meta
-          name="description"
-          content="Υπολόγισε BMR, TDEE και διατροφικούς στόχους στο Health's Spot Nutrition Module."
-        />
-        <link rel="canonical" href="https://healthsspot.vercel.app/nutrition" />
-      </Helmet>
-
-      <div className="max-w-xl mx-auto space-y-10">
-        <div className="flex gap-4 items-center">
-          <label className="text-sm font-medium">🎛️ Προτιμήσεις:</label>
-          <select value={preference} onChange={(e) => setPreference(e.target.value)} className={`p-2 rounded w-full border text-sm ${theme === "dark" ? "bg-gray-800 text-white border-gray-700" : "bg-white text-black border-gray-300"}`} >
-            <option value="default">Κανονικό</option>
-            <option value="vegetarian">Vegetarian</option>
-            <option value="lowcarb">Χαμηλοί Υδατάνθρακες</option>
-          </select>
-        </div>
-        <div className="flex justify-between items-center">
-  <button
-    onClick={() => {
-      if (window.confirm("Θες σίγουρα να κάνεις επαναφορά όλων;")) {
-        setProtein(2);
-        setFat(1);
-        setPreference("default");
-        setDaysOrder([
-          'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο', 'Κυριακή'
-        ]);
-        setCarbs(null);
-        setWeight(70);
-        setHeight(175);
-        setAge(25);
-        setGender("male");
-        setActivity(1.55);
-        setBmr(null);
-        setTdee(null);
-
-        const inputs = document.querySelectorAll("input");
-        inputs.forEach(input => input.value = "");
-
-        localStorage.removeItem("protein");
-        localStorage.removeItem("fat");
-        localStorage.removeItem("preference");
-        localStorage.removeItem("daysOrder");
-        localStorage.removeItem("carbs");
-      }
-    }}
-    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded text-sm font-medium"
+    <SignedIn>
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.5 }}
+    className={`min-h-screen px-6 py-10 space-y-10 transition-colors duration-500 ${
+      theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+    }`}
   >
-    🔁 Επαναφορά Όλων
-  </button>
-          <h1 className="text-4xl font-extrabold tracking-tight text-yellow-400 drop-shadow">
-            Nutrition Lab
-          </h1>
-          <button
-            onClick={toggleTheme}
-            className="text-2xl hover:text-yellow-400 transition"
-            title="Switch theme"
-          >
-            {theme === "dark" ? "☀" : "🌙"}
-          </button>
-        </div>
+    <Helmet>
+      <title>Nutrition Module | Health's Spot</title>
+      <meta
+        name="description"
+        content="Υπολόγισε BMR, TDEE και διατροφικούς στόχους στο Health's Spot Nutrition Module."
+      />
+      <link rel="canonical" href="https://healthsspot.vercel.app/nutrition" />
+    </Helmet>
+
+    <div className="max-w-xl mx-auto space-y-10">
+      <div className="flex gap-4 items-center">
+        <label className="text-sm font-medium">🎛️ Προτιμήσεις:</label>
+        <select
+          value={preference}
+          onChange={(e) => setPreference(e.target.value)}
+          className={`p-2 rounded w-full border text-sm ${
+            theme === "dark"
+              ? "bg-gray-800 text-white border-gray-700"
+              : "bg-white text-black border-gray-300"
+          }`}
+        >
+          <option value="default">Κανονικό</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="lowcarb">Χαμηλοί Υδατάνθρακες</option>
+        </select>
+      </div>
+
+      <div className="flex justify-between items-center">
+        <button
+          onClick={() => {
+            if (window.confirm("Θες σίγουρα να κάνεις επαναφορά όλων;")) {
+              setProtein(2);
+              setFat(1);
+              setPreference("default");
+              setDaysOrder([
+                "Δευτέρα",
+                "Τρίτη",
+                "Τετάρτη",
+                "Πέμπτη",
+                "Παρασκευή",
+                "Σάββατο",
+                "Κυριακή",
+              ]);
+              setCarbs(null);
+              setWeight(70);
+              setHeight(175);
+              setAge(25);
+              setGender("male");
+              setActivity(1.55);
+              setBmr(null);
+              setTdee(null);
+
+              const inputs = document.querySelectorAll("input");
+              inputs.forEach((input) => (input.value = ""));
+
+              localStorage.removeItem("protein");
+              localStorage.removeItem("fat");
+              localStorage.removeItem("preference");
+              localStorage.removeItem("daysOrder");
+              localStorage.removeItem("carbs");
+            }
+          }}
+          className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded text-sm font-medium"
+        >
+          🔁 Επαναφορά Όλων
+        </button>
+        <h1 className="text-4xl font-extrabold tracking-tight text-yellow-400 drop-shadow">
+          Nutrition Lab
+        </h1>
+        <button
+          onClick={toggleTheme}
+          className="text-2xl hover:text-yellow-400 transition"
+          title="Switch theme"
+        >
+          {theme === "dark" ? "☀" : "🌙"}
+        </button>
+      </div>
 
         <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
           <h2 className="text-2xl font-semibold mb-4">Υπολογισμός BMR / TDEE</h2>
@@ -701,8 +725,7 @@ const loadPlanFromSupabase = async () => {
         {["breakfast", "lunch", "snack", "dinner"].map((meal) => {
           const mealKey = `${day}-${meal}`;
           const mealName = customMeals[mealKey];
-          const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
-
+const food = mealName && allFoods.find(f => f.name === mealName);
           return (
             <div key={meal} className="text-sm mb-2">
               <p className="font-medium">{meal === "breakfast" ? "🍽️ Πρωινό" :
@@ -880,7 +903,7 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-breakfast`]: e.target
 {(() => {
   const mealKey = `${day}-breakfast`;
   const mealName = customMeals[mealKey];
-  const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
+const food = mealName && allFoods.find(f => f.name === mealName);
 
   if (!food) return null;
 
@@ -906,7 +929,7 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-lunch`]: e.target.val
 {(() => {
   const mealKey = `${day}-lunch`;
   const mealName = customMeals[mealKey];
-  const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
+const food = mealName && allFoods.find(f => f.name === mealName);
 
   if (!food) return null;
 
@@ -932,7 +955,7 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-snack`]: e.target.val
 {(() => {
   const mealKey = `${day}-snack`; 
   const mealName = customMeals[mealKey];
-  const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
+const food = mealName && allFoods.find(f => f.name === mealName);
 
   if (!food) return null;
 
@@ -958,7 +981,7 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
 {(() => {
   const mealKey = `${day}-dinner`;
   const mealName = customMeals[mealKey];
-  const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
+const food = mealName && allFoods.find(f => f.name === mealName);
 
   if (!food) return null;
 
@@ -971,9 +994,9 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
   
             </li>
           </ul>
-          {(() => {
+         {(() => {
   const dayKey = day;
-  const summary = getDayMacroSummary(dayKey, customMeals, foodDB, userFoods); 
+const summary = getDayMacroSummary(dayKey, customMeals, foodDB, userFoods);
   const targetProtein = protein * weight;
   const targetFat = fat * weight;
   const targetCarbs = carbs;
@@ -982,6 +1005,7 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
     fat: summary.fat - targetFat,
     carbs: summary.carbs - targetCarbs
   };
+
 
   return (
     <div className="text-xs mt-3 p-3 rounded bg-yellow-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 space-y-1">
@@ -1079,7 +1103,7 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
     const total = daysOrder.reduce((acc, day) => {
       ['breakfast', 'lunch', 'snack', 'dinner'].forEach(meal => {
         const mealName = customMeals[`${day}-${meal}`];
-        const food = [...foodDB, ...userFoods].find(f => f.name === mealName);
+const food = allFoods.find(f => f.name === mealName);
         if (food) {
           acc.protein += food.protein;
           acc.fat += food.fat;
@@ -1284,9 +1308,7 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
   </tr>
 ))}
 
-         {foodDB
-      .filter((item) => item.name.toLowerCase().includes(foodSearch.toLowerCase()))
-      .map((item, i) => (
+           {filteredFoods.map((item, i) => (
         <tr key={i} className="text-center border-t dark:border-gray-700">
           <td className="p-2">{item.name}</td>
           <td className="p-2">{item.protein}g</td>
@@ -1296,52 +1318,53 @@ onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.va
             {4 * item.protein + 9 * item.fat + 4 * item.carbs} kcal
           </td>
           <td className="p-2">
-            <div className="flex gap-1 justify-center">
-              <button
-                className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
-                onClick={() => {
-                  const mealName = item.name;
-                  const newMeals = { ...customMeals };
-                  const mealKey = `${selectedDay}-${selectedMealType}`;
-                  newMeals[mealKey] = mealName;
-                  setCustomMeals(newMeals);
-                }}
-              >
-                ➕ Στο Πλάνο
-              </button>
-              <button
-                className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
-                onClick={() => {
-                  const newName = prompt("✏️ Νέο όνομα:", item.name);
-                  const newProtein = prompt("Πρωτεΐνη (g):", item.protein);
-                  const newFat = prompt("Λίπος (g):", item.fat);
-                  const newCarbs = prompt("Υδατάνθρακες (g):", item.carbs);
-                  if (!newName || isNaN(newProtein) || isNaN(newFat) || isNaN(newCarbs)) return;
-                  const updatedFoods = [...userFoods];
-                  updatedFoods[i] = {
-                    name: newName,
-                    protein: parseFloat(newProtein),
-                    fat: parseFloat(newFat),
-                    carbs: parseFloat(newCarbs)
-                  };
-                  setUserFoods(updatedFoods);
-                }}
-              >
-                ✏️
-                <button
-  className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-  onClick={() => {
-    const updatedFoods = [...userFoods];
-    updatedFoods.splice(i, 1);
-    setUserFoods(updatedFoods);
-  }}
->
-  🗑️
-</button>
+  <div className="flex gap-1 justify-center">
+    <button
+      className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
+      onClick={() => {
+        const mealName = item.name;
+        const newMeals = { ...customMeals };
+        const mealKey = `${selectedDay}-${selectedMealType}`;
+        newMeals[mealKey] = mealName;
+        setCustomMeals(newMeals);
+      }}
+    >
+      ➕ Στο Πλάνο
+    </button>
 
-              </button>
-            </div>
-          </td>
+    <button
+      className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+      onClick={() => {
+        const newName = prompt("✏️ Νέο όνομα:", item.name);
+        const newProtein = prompt("Πρωτεΐνη (g):", item.protein);
+        const newFat = prompt("Λίπος (g):", item.fat);
+        const newCarbs = prompt("Υδατάνθρακες (g):", item.carbs);
+        if (!newName || isNaN(newProtein) || isNaN(newFat) || isNaN(newCarbs)) return;
+        const updatedFoods = [...userFoods];
+        updatedFoods[i] = {
+          name: newName,
+          protein: parseFloat(newProtein),
+          fat: parseFloat(newFat),
+          carbs: parseFloat(newCarbs)
+        };
+        setUserFoods(updatedFoods);
+      }}
+    >
+      ✏️
+    </button>
+
+    <button
+      className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+      onClick={() => {
+        const updatedFoods = [...userFoods];
+        updatedFoods.splice(i, 1);
+        setUserFoods(updatedFoods);
+      }}
+    >
+      🗑️
+    </button>
+  </div>
+</td>
         </tr>
       ))}
   </tbody>
