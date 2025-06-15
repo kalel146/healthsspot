@@ -10,6 +10,15 @@ import { Helmet } from "react-helmet";
 import { useUser, SignedIn } from "@clerk/clerk-react";
 import { useTheme } from "./ThemeContext";
 import defaultMeals from './defaultMeals.json';
+import CollapsibleSection from "./CollapsibleSection";
+import MacroSlider from "./MacroSlider";
+import MacroPieChart from "./MacroPieChart";
+import PreferenceSelector from "./PreferenceSelector";
+import PlanDayCard from "./PlanDayCard";
+import { Tabs, Tab } from "./TabsComponent";
+import TabsCompo from "./TabsCompo";
+import MacroComparisonChart from "./MacroComparisonChart";
+import MacroBarChart from "./MacroBarChart";
 
 function SortableItem({ id, children }) {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
@@ -27,7 +36,7 @@ function SortableItem({ id, children }) {
 export default function NutritionModule() {
   const { theme, toggleTheme } = useTheme();
   const { user } = useUser();
-
+  const [simpleView, setSimpleView] = useState(false);
   const [weeklyPlan, setWeeklyPlan] = useState({});
   const [foodSearch, setFoodSearch] = useState("");
   const [weight, setWeight] = useState(70);
@@ -531,6 +540,133 @@ const loadPlanFromSupabase = async () => {
   }
 };
 
+const exportToPDF = async () => {
+  const html2canvas = (await import("html2canvas")).default;
+  const jsPDF = (await import("jspdf")).default;
+
+  const target = document.body;
+  const canvas = await html2canvas(target);
+  const imgData = canvas.toDataURL("image/png");
+
+  const pdf = new jsPDF("p", "mm", "a4");
+  const width = pdf.internal.pageSize.getWidth();
+  const height = (canvas.height * width) / canvas.width;
+
+  pdf.addImage(imgData, "PNG", 0, 0, width, height);
+
+  const today = new Date().toLocaleDateString("el-GR").replaceAll("/", "-");
+  pdf.save(`nutrition-plan-${today}.pdf`);
+};
+
+const exportToCSV = () => {
+  const days = ['Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο', 'Κυριακή'];
+
+  const rows = days.map(day => {
+    const breakfast = customMeals[`${day}-breakfast`] || "";
+    const lunch = customMeals[`${day}-lunch`] || "";
+    const snack = customMeals[`${day}-snack`] || "";
+    const dinner = customMeals[`${day}-dinner`] || "";
+    return [day, breakfast, lunch, snack, dinner].join(",");
+  });
+
+  const csvContent = ["Ημέρα,Πρωινό,Μεσημεριανό,Σνακ,Βραδινό", ...rows].join("\n");
+
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", "meal-plan.csv");
+  link.click();
+};
+
+const sharePlan = async () => {
+  const days = ['Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο', 'Κυριακή'];
+
+  const rows = days.map(day => {
+    const breakfast = customMeals[`${day}-breakfast`] || "-";
+    const lunch = customMeals[`${day}-lunch`] || "-";
+    const snack = customMeals[`${day}-snack`] || "-";
+    const dinner = customMeals[`${day}-dinner`] || "-";
+    return `${day}:\n🍽️ Πρωινό: ${breakfast}\n🥗 Μεσημεριανό: ${lunch}\n🥚 Σνακ: ${snack}\n🍝 Βραδινό: ${dinner}\n`;
+  }).join("\n");
+
+  try {
+    await navigator.clipboard.writeText(rows);
+    alert("📋 Το πλάνο αντιγράφηκε στο πρόχειρο!");
+  } catch (err) {
+    alert("❌ Σφάλμα κατά την αντιγραφή.");
+  }
+};
+
+const addCustomFood = () => {
+  const name = document.getElementById("nf")?.value?.trim();
+  const protein = parseFloat(document.getElementById("np")?.value);
+  const fat = parseFloat(document.getElementById("nfat")?.value);
+  const carbs = parseFloat(document.getElementById("nc")?.value);
+
+  if (!name || isNaN(protein) || isNaN(fat) || isNaN(carbs)) {
+    alert("❌ Παρακαλώ συμπλήρωσε όλα τα πεδία σωστά.");
+    return;
+  }
+
+  const newFood = { name, protein, fat, carbs };
+  setUserFoods(prev => [...prev, newFood]);
+
+  // Reset fields
+  document.getElementById("nf").value = "";
+  document.getElementById("np").value = "";
+  document.getElementById("nfat").value = "";
+  document.getElementById("nc").value = "";
+};
+
+const totalMacros = {
+  protein: 0,
+  fat: 0,
+  carbs: 0,
+};
+
+Object.values(customMeals).forEach((mealName) => {
+  const foodItem = allFoods.find((f) => f.name === mealName);
+  if (foodItem) {
+    totalMacros.protein += parseFloat(foodItem.protein);
+    totalMacros.fat += parseFloat(foodItem.fat);
+    totalMacros.carbs += parseFloat(foodItem.carbs);
+  }
+});
+
+const macroBarData = [
+  {
+    label: "Πρωτεΐνη",
+    "Στόχος": protein * weight,
+    "Πλάνο": totalMacros.protein,
+  },
+  {
+    label: "Λίπος",
+    "Στόχος": fat * weight,
+    "Πλάνο": totalMacros.fat,
+  },
+  {
+    label: "Υδατ.",
+    "Στόχος": carbs,
+    "Πλάνο": totalMacros.carbs,
+  },
+];
+
+const macroComparisonData = [
+  {
+    label: "Στόχος",
+    protein: protein * weight,
+    fat: fat * weight,
+    carbs: parseFloat(carbs),
+  },
+  {
+    label: "Πλάνο",
+    protein: totalMacros.protein,
+    fat: totalMacros.fat,
+    carbs: totalMacros.carbs,
+  },
+];
+
   return (
     <SignedIn>
   <motion.div
@@ -551,9 +687,22 @@ const loadPlanFromSupabase = async () => {
       <link rel="canonical" href="https://healthsspot.vercel.app/nutrition" />
     </Helmet>
 
+    <div className="sticky top-0 z-50 bg-inherit py-4">
+      <h1 className="text-4xl font-extrabold tracking-tight text-yellow-400 drop-shadow text-center">
+        🧪 Nutrition Lab
+      </h1>
+      <div className="text-center mt-2">
+        <button onClick={() => setSimpleView(!simpleView)} className="bg-yellow-300 hover:bg-yellow-400 text-black text-sm font-medium px-3 py-1 rounded">
+          {simpleView ? "💡 Προηγμένη Έκδοση" : "✨ Απλοποιημένη Έκδοση"}
+        </button>
+      </div>
+    </div>
+
     <div className="max-w-xl mx-auto space-y-10">
       <div className="flex gap-4 items-center">
-        <label className="text-sm font-medium">🎛️ Προτιμήσεις:</label>
+        <label className="text-sm font-medium">🎛️ Προτιμήσεις:
+          <span className="ml-1 text-xs text-gray-500" title="Ορίζει το διατροφικό μοτίβο π.χ. vegetarian ή χαμηλό σε υδατάνθρακες">ℹ️</span>
+        </label>
         <select
           value={preference}
           onChange={(e) => setPreference(e.target.value)}
@@ -608,210 +757,206 @@ const loadPlanFromSupabase = async () => {
         >
           🔁 Επαναφορά Όλων
         </button>
-        <h1 className="text-4xl font-extrabold tracking-tight text-yellow-400 drop-shadow">
-          Nutrition Lab
-        </h1>
+
         <button
           onClick={toggleTheme}
           className="text-2xl hover:text-yellow-400 transition"
-          title="Switch theme"
+          title="Αλλαγή Θέματος"
         >
           {theme === "dark" ? "☀" : "🌙"}
         </button>
       </div>
 
-        <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-          <h2 className="text-2xl font-semibold mb-4">Υπολογισμός BMR / TDEE</h2>
-          <div className="space-y-4">
-            <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} placeholder="Βάρος (kg)" className={`p-2 rounded ${inputStyle}`} />
-            <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} placeholder="Ύψος (cm)" className={`p-2 rounded ${inputStyle}`} />
-            <input type="number" value={age} onChange={(e) => setAge(e.target.value)} placeholder="Ηλικία" className={`p-2 rounded ${inputStyle}`} />
-            <select value={gender} onChange={(e) => setGender(e.target.value)} className={`p-2 rounded ${inputStyle}`}>
-              <option value="male">Άνδρας</option>
-              <option value="female">Γυναίκα</option>
-            </select>
-            <select value={activity} onChange={(e) => setActivity(Number(e.target.value))} className={`p-2 rounded ${inputStyle}`}>
-              <option value={1.2}>Καθιστική ζωή</option>
-              <option value={1.375}>Ελαφριά δραστηριότητα</option>
-              <option value={1.55}>Μέτρια δραστηριότητα</option>
-              <option value={1.725}>Έντονη δραστηριότητα</option>
-              <option value={1.9}>Πολύ έντονη δραστηριότητα</option>
-            </select>
-            <button onClick={calculateNutrition} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold">
-              Υπολόγισε
-            </button>
-            {bmr && tdee && (
-              <p className="mt-2">
-                <strong>BMR:</strong> {bmr} kcal | <strong>TDEE:</strong> {tdee} kcal
-              </p>
-            )}
-          </div>
-        </section>
+      <details open className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"} rounded p-4`}>
+        <summary className="text-2xl font-semibold cursor-pointer">🧮 Υπολογισμός BMR / TDEE</summary>
+        <div className="space-y-4 mt-4">
+          <label className="block text-sm">⚖️ Βάρος (kg)</label>
+          <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} placeholder="π.χ. 70" className={`p-2 rounded ${inputStyle}`} />
 
-        <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-          <h2 className="text-2xl font-semibold mb-4">Διατροφικοί Στόχοι (Macros)</h2>
-          <div className="space-y-6">
-            <div className="flex gap-4">
-  <button
-    onClick={generateMealPlanFromTargets}
-    className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold"
-  >
-    🧠 Αυτόματο Εβδομαδιαίο Πλάνο
-  </button>
+          <label className="block text-sm">📏 Ύψος (cm)</label>
+          <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} placeholder="π.χ. 175" className={`p-2 rounded ${inputStyle}`} />
+
+          <label className="block text-sm">🎂 Ηλικία</label>
+          <input type="number" value={age} onChange={(e) => setAge(e.target.value)} placeholder="π.χ. 25" className={`p-2 rounded ${inputStyle}`} />
+
+          <label className="block text-sm">👤 Φύλο</label>
+          <select value={gender} onChange={(e) => setGender(e.target.value)} className={`p-2 rounded ${inputStyle}`}>
+            <option value="male">Άνδρας</option>
+            <option value="female">Γυναίκα</option>
+          </select>
+
+          <label className="block text-sm">🏃‍♂️ Επίπεδο δραστηριότητας</label>
+          <select value={activity} onChange={(e) => setActivity(Number(e.target.value))} className={`p-2 rounded ${inputStyle}`}>
+            <option value={1.2}>Καθιστική ζωή</option>
+            <option value={1.375}>Ελαφριά δραστηριότητα</option>
+            <option value={1.55}>Μέτρια δραστηριότητα</option>
+            <option value={1.725}>Έντονη δραστηριότητα</option>
+            <option value={1.9}>Πολύ έντονη δραστηριότητα</option>
+          </select>
+
+          <button onClick={calculateNutrition} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold">
+            🔍 Υπολόγισε
+          </button>
+          {bmr && tdee && (
+            <p className="mt-2">
+              <strong>BMR:</strong> {bmr} kcal | <strong>TDEE:</strong> {tdee} kcal
+            </p>
+          )}
+        </div>
+      </details>
+    </div>
+
+   <div className="sticky top-0 z-50 bg-inherit py-4">
+  <h1 className="text-4xl font-extrabold tracking-tight text-yellow-400 drop-shadow text-center">
+    🧪 Nutrition Lab
+  </h1>
+  <div className="text-center mt-2">
+    <button
+      onClick={() => setSimpleView(!simpleView)}
+      className="bg-yellow-300 hover:bg-yellow-400 text-black text-sm font-medium px-3 py-1 rounded"
+    >
+      {simpleView ? "💡 Προηγμένη Έκδοση" : "✨ Απλοποιημένη Έκδοση"}
+    </button>
+  </div>
 </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-1">Πρωτεΐνη (g/kg): {protein}</label>
-              <input type="range" min="0.5" max="3" step="0.1" value={protein} onChange={(e) => setProtein(parseFloat(e.target.value))} className="w-full" />
-              <p className="text-xs text-gray-600 italic mt-1">{getProteinLabel(protein)}</p>
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">Λίπος (g/kg): {fat}</label>
-              <input type="range" min="0.3" max="2" step="0.1" value={fat} onChange={(e) => setFat(parseFloat(e.target.value))} className="w-full" />
-              <p className="text-xs text-gray-600 italic mt-1">{getFatLabel(fat)}</p>
-            </div>
-            {carbs && (
-              <>
-                <p className="mt-2">
-                  Πρωτεΐνη: {protein * weight}g | Λίπος: {fat * weight}g | Υδατάνθρακες: {carbs}g
-                </p>
-                <div className="w-full h-64 mt-4">
-                  <ResponsiveContainer>
-                    <PieChart>
-                      <Pie
-                        data={pieData}
-                        dataKey="value"
-                        nameKey="name"
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={80}
-                        label
-                      >
-                        {pieData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                      </Pie>
-                      <Tooltip />
-                    </PieChart>
-                  </ResponsiveContainer>
-                </div>
-              </>
-            )}
-          </div>
-          <select
-  value={preference}
-  onChange={(e) => setPreference(e.target.value)}
-  className="p-2 rounded border"
->
-  <option value="default">Κανονική</option>
-  <option value="lowcarb">Χαμηλή σε Υδατ.</option>
-  <option value="vegetarian">Χορτοφαγική</option>
-</select>
+<TabsCompo activeTab="🥗 Γεύματα" tabs={["📊 AI Προτάσεις", "🥗 Γεύματα", "📈 Σύγκριση"]} />
 
-          <button
-  onClick={handleGenerateAIPlan}
-  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
->
-  🤖 Δημιούργησε AI Πλάνο
-</button>
- </section>
+<CollapsibleSection title="🥗 Διατροφικοί Στόχοι (Macros)">
+  <div className="space-y-6">
 
-<section className="mt-10 p-4 rounded bg-blue-50 dark:bg-gray-900">
-  <h2 className="text-xl font-semibold text-blue-700 dark:text-blue-300 mb-4">👀 Προεπισκόπηση Πλάνου</h2>
+    <div className="flex gap-4 items-center">
+      <button
+        onClick={generateMealPlanFromTargets}
+        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold"
+        aria-label="Αυτόματη Δημιουργία Πλάνου"
+      >
+        🧠 Αυτόματο Εβδομαδιαίο Πλάνο
+      </button>
+      <span className="text-xs text-gray-500" title="Χρησιμοποιεί τις τιμές macros και στόχους για να δημιουργήσει εβδομαδιαίο πρόγραμμα γευμάτων">
+        ⓘ
+      </span>
+    </div>
+
+    <MacroSlider
+      label="Πρωτεΐνη (g/kg)"
+      value={protein}
+      setValue={setProtein}
+      min={0.5}
+      max={3}
+      step={0.1}
+      tooltip="Πόσα γραμμάρια πρωτεΐνης ανά κιλό βάρους."
+      labelFunction={getProteinLabel}
+    />
+
+    <MacroSlider
+      label="Λίπος (g/kg)"
+      value={fat}
+      setValue={setFat}
+      min={0.3}
+      max={2}
+      step={0.1}
+      tooltip="Πόσα γραμμάρια λίπους ανά κιλό βάρους."
+      labelFunction={getFatLabel}
+    />
+
+    {carbs && (
+      <>
+        <p>
+          Πρωτεΐνη: {protein * weight}g | Λίπος: {fat * weight}g | Υδατάνθρακες: {carbs}g
+        </p>
+        <MacroPieChart pieData={pieData} colors={COLORS} />
+      </>
+    )}
+
+    <PreferenceSelector
+      value={preference}
+      onChange={setPreference}
+      tooltip="Επιλογή διατροφικής προτίμησης (π.χ. χορτοφαγική, χαμηλών υδατανθράκων)"
+    />
+
+    <button
+      onClick={handleGenerateAIPlan}
+      className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      aria-label="Δημιουργία AI πλάνου"
+    >
+      🤖 Δημιούργησε AI Πλάνο
+    </button>
+  </div>
+</CollapsibleSection>
+
+<CollapsibleSection title="👀 Προεπισκόπηση Πλάνου">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
     {daysOrder.map((day) => (
-      <div key={day} className="p-3 rounded border border-blue-300 dark:border-gray-700 bg-white dark:bg-gray-800">
-        <h3 className="text-md font-bold text-blue-600 dark:text-blue-200 mb-2">📅 {day}</h3>
-        {["breakfast", "lunch", "snack", "dinner"].map((meal) => {
-          const mealKey = `${day}-${meal}`;
-          const mealName = customMeals[mealKey];
-const food = mealName && allFoods.find(f => f.name === mealName);
-          return (
-            <div key={meal} className="text-sm mb-2">
-              <p className="font-medium">{meal === "breakfast" ? "🍽️ Πρωινό" :
-                meal === "lunch" ? "🥗 Μεσημεριανό" :
-                meal === "snack" ? "🥚 Σνακ" :
-                "🍝 Βραδινό"}</p>
-              <p className="ml-2 text-gray-700 dark:text-gray-300">{mealName || "—"}</p>
-              {food && (
-                <p className="ml-2 text-xs text-gray-500">
-                  {food.protein}g P / {food.fat}g F / {food.carbs}g C
-                </p>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      <PlanDayCard key={day} day={day} customMeals={customMeals} allFoods={allFoods} />
     ))}
   </div>
-</section>
+</CollapsibleSection>
 
-        
-        <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-          <h2 className="text-2xl font-semibold mb-4">AI Προτάσεις <span className='bg-yellow-300 text-black text-xs font-semibold px-2 py-0.5 ml-2 rounded'>← εδώ θα μπει το alert block</span></h2>
-          <div className="space-y-4 text-sm">
-            {tdee && (
-              <>
-                <p>
-                  ⚡ <strong>Συνολικές θερμίδες:</strong> {tdee} kcal. 
-                  Προσαρμόστε ανάλογα με τον στόχο σας (μείωση, διατήρηση, αύξηση βάρους).
-                </p>
-                <p>
-                  🍗 <strong>Πρωτεΐνη:</strong> {(protein * weight).toFixed(0)}g —
-                  {protein >= 2 ? " ιδανική για ανάπτυξη μυϊκής μάζας." : protein >= 1.2 ? " επαρκής για υγιή λειτουργία και διατήρηση." : " χαμηλή, ίσως χρειάζεται ενίσχυση."}
-                </p>
-                <p>
-                  🧈 <strong>Λίπος:</strong> {(fat * weight).toFixed(0)}g —
-                  {fat >= 1.2 ? " πιθανή υπέρβαση λίπους." : fat >= 0.6 ? " εντός φυσιολογικών ορίων." : " πολύ χαμηλό, πρόσεχε για ορμονική υγεία."}
-                </p>
-                <p>
-                  🍞 <strong>Υδατάνθρακες:</strong> {carbs}g — βασική πηγή ενέργειας. Προσάρμοσε ανάλογα με ένταση/όγκο προπόνησης.
-                </p>
-              </>
-            )}
-          </div>
-        </section>
+<CollapsibleSection title="📊 AI Προτάσεις">
+  {tdee && (
+    <div className="space-y-4 text-sm">
+      <p>⚡ <strong>Συνολικές θερμίδες:</strong> {tdee} kcal</p>
+      <p>🍗 <strong>Πρωτεΐνη:</strong> {(protein * weight).toFixed(0)}g — {protein >= 2 ? "υψηλή, ιδανική για μυϊκή ανάπτυξη." : "φυσιολογική ή χαμηλή."}</p>
+      <p>🧈 <strong>Λίπος:</strong> {(fat * weight).toFixed(0)}g — {fat < 0.6 ? "χαμηλό, πρόσεξε." : "ok."}</p>
+      <p>🍞 <strong>Υδατάνθρακες:</strong> {carbs}g — ανάλογα με στόχο/προπόνηση.</p>
+    </div>
+  )}
+</CollapsibleSection>
 
-        <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-          <h2 className="text-2xl font-semibold mb-4">Προτάσεις Ανά Στόχο</h2>
-          <div className="space-y-3 text-sm">
-            {tdee && (
-              <>
-                <p>🎯 <strong>Cut (Απώλεια Λίπους):</strong> Προτεινόμενο έλλειμμα ~15-25% → {(tdee * 0.75).toFixed(0)} kcal. Μείωσε υδατάνθρακες κυρίως, κράτησε πρωτεΐνη ψηλά για μυϊκή διατήρηση.</p>
-                <p>⚖️ <strong>Maintain (Σταθερό Βάρος):</strong> Κράτησε πρόσληψη στο TDEE → {tdee} kcal. Ισορροπία macros, ευελιξία για lifestyle/απόδοση.</p>
-                <p>💪 <strong>Bulk (Μυϊκή Ανάπτυξη):</strong> Προτεινόμενο surplus ~10-15% → {(tdee * 1.15).toFixed(0)} kcal. Αύξησε υδατάνθρακες κυρίως, μέτρια αύξηση λίπους.</p>
-              </>
-            )}
-          </div>
-        </section>
+<CollapsibleSection title="📈 Προτάσεις Ανά Στόχο">
+  {tdee && (
+    <div className="space-y-3 text-sm">
+      <p>🎯 <strong>Cut:</strong> ~15-25% έλλειμμα → {(tdee * 0.75).toFixed(0)} kcal</p>
+      <p>⚖️ <strong>Maintain:</strong> TDEE → {tdee} kcal</p>
+      <p>💪 <strong>Bulk:</strong> ~10-15% surplus → {(tdee * 1.15).toFixed(0)} kcal</p>
+    </div>
+  )}
+</CollapsibleSection>
 
-        <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-          <h2 className="text-2xl font-semibold mb-4">AI Meal Plan Προτάσεις</h2>
-          <div className="mt-4 p-4 rounded bg-white dark:bg-gray-800 border border-yellow-400 text-sm text-yellow-800 dark:text-yellow-200 space-y-2">
-  {protein * weight < 120 && (
-    <p>⚠️ Η πρόσληψη πρωτεΐνης είναι χαμηλή. Ενίσχυσε την για μυϊκή διατήρηση.</p>
-  )}
-  {fat * weight > 100 && (
-    <p>⚠️ Η πρόσληψη λίπους φαίνεται υψηλή. Έλεγξε τα ποιοτικά χαρακτηριστικά των λιπαρών.</p>
-  )}
-  {carbs && carbs < 150 && (
-    <p>⚠️ Οι υδατάνθρακες είναι πολύ χαμηλοί. Μπορεί να επηρεάσει την απόδοση ή διάθεση.</p>
-  )}
+   <div className="sticky top-0 z-50 bg-inherit py-4">
+  <h1 className="text-4xl font-extrabold tracking-tight text-yellow-400 drop-shadow text-center">
+    🧪 Nutrition Lab
+  </h1>
+  <div className="text-center mt-2">
+    <button
+      onClick={() => setSimpleView(!simpleView)}
+      className="bg-yellow-300 hover:bg-yellow-400 text-black text-sm font-medium px-3 py-1 rounded"
+    >
+      {simpleView ? "💡 Προηγμένη Έκδοση" : "✨ Απλοποιημένη Έκδοση"}
+    </button>
+  </div>
 </div>
 
-          <div className="space-y-3 text-sm">
-            {carbs && protein && fat && (
-              <>
-                <p>🍽️ <strong>Πρωινό:</strong> Βρώμη με γάλα/φυτικό ρόφημα, 1 μπανάνα, 20g φυστικοβούτυρο — πηγή υδατανθράκων, λιπαρών & πρωτεΐνης.</p>
-                <p>🥗 <strong>Μεσημεριανό:</strong> Κοτόπουλο/τοφού με ρύζι & λαχανικά — ισορροπία macros με έμφαση σε πρωτεΐνη & ενέργεια.</p>
-                <p>🥚 <strong>Σνακ:</strong> Γιαούρτι ή αυγά με φρούτο — χαμηλό σε υδατάνθρακες, υψηλό σε πρωτεΐνη.</p>
-                <p>🍝 <strong>Βραδινό:</strong> Ψάρι ή φακές με πατάτες/κους κους — μέτρια υδατάνθρακες, υψηλή βιοδιαθεσιμότητα.</p>
-                <p className="italic text-xs text-gray-500">💡 Οι επιλογές είναι ενδεικτικές και προσαρμόζονται δυναμικά με βάση τα macros.</p>
-              </>
-            )}
-          </div>
-          <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-  <h2 className="text-2xl font-semibold mb-4">📆 Καταγραφή Πρόσληψης & Σύγκριση με Στόχους</h2>
+<TabsCompo activeTab="📊 AI Προτάσεις" tabs={["📊 AI Προτάσεις", "🥗 Γεύματα", "📈 Σύγκριση"]} />
+
+<CollapsibleSection title="📊 AI Meal Plan Προτάσεις">
+  <div className="mt-4 p-4 rounded bg-white dark:bg-gray-800 border border-yellow-400 text-sm text-yellow-800 dark:text-yellow-200 space-y-2">
+    {protein * weight < 120 && (
+      <p>⚠️ Η πρόσληψη πρωτεΐνης είναι χαμηλή. Ενίσχυσε την για μυϊκή διατήρηση.</p>
+    )}
+    {fat * weight > 100 && (
+      <p>⚠️ Η πρόσληψη λίπους φαίνεται υψηλή. Έλεγξε τα ποιοτικά χαρακτηριστικά των λιπαρών.</p>
+    )}
+    {carbs && carbs < 150 && (
+      <p>⚠️ Οι υδατάνθρακες είναι πολύ χαμηλοί. Μπορεί να επηρεάσει την απόδοση ή διάθεση.</p>
+    )}
+  </div>
+
+  <div className="space-y-3 text-sm">
+    {carbs && protein && fat && (
+      <>
+        <p>🍽️ <strong>Πρωινό:</strong> Βρώμη με γάλα/φυτικό ρόφημα, 1 μπανάνα, 20g φυστικοβούτυρο — πηγή υδατανθράκων, λιπαρών & πρωτεΐνης.</p>
+        <p>🥗 <strong>Μεσημεριανό:</strong> Κοτόπουλο/τοφού με ρύζι & λαχανικά — ισορροπία macros με έμφαση σε πρωτεΐνη & ενέργεια.</p>
+        <p>🥚 <strong>Σνακ:</strong> Γιαούρτι ή αυγά με φρούτο — χαμηλό σε υδατάνθρακες, υψηλό σε πρωτεΐνη.</p>
+        <p>🍝 <strong>Βραδινό:</strong> Ψάρι ή φακές με πατάτες/κους κους — μέτρια υδατάνθρακες, υψηλή βιοδιαθεσιμότητα.</p>
+        <p className="italic text-xs text-gray-500">💡 Οι επιλογές είναι ενδεικτικές και προσαρμόζονται δυναμικά με βάση τα macros.</p>
+      </>
+    )}
+  </div>
+</CollapsibleSection>
+
+<CollapsibleSection title="📆 Καταγραφή Πρόσληψης & Σύγκριση με Στόχους">
   {tdee && (
     <div className="space-y-4">
       <div>
@@ -832,546 +977,425 @@ const food = mealName && allFoods.find(f => f.name === mealName);
         <input type="text" placeholder="πρωτεΐνη/λίπος/υδατάνθρακες σε g" className={inputStyle} />
       </div>
       <div className="mt-4 p-4 rounded bg-white dark:bg-gray-800 border border-yellow-300 text-sm text-yellow-800 dark:text-yellow-200">
-  {(() => {
-    const targetProtein = protein * weight;
-    const targetFat = fat * weight;
-    const targetCarbs = parseFloat(carbs);
-    const actuals = { protein: 0, fat: 0, carbs: 0 };
-    const inputs = document.querySelector("input[placeholder='πρωτεΐνη/λίπος/υδατάνθρακες σε g']")?.value.split("/");
-    if (inputs?.length === 3) {
-      actuals.protein = parseFloat(inputs[0]) || 0;
-      actuals.fat = parseFloat(inputs[1]) || 0;
-      actuals.carbs = parseFloat(inputs[2]) || 0;
-    }
-    const deltas = {
-      protein: ((actuals.protein - targetProtein) / targetProtein) * 100,
-      fat: ((actuals.fat - targetFat) / targetFat) * 100,
-      carbs: ((actuals.carbs - targetCarbs) / targetCarbs) * 100,
-    };
-    return (
-      <>
-        {Math.abs(deltas.protein) > 10 && (
-          <p>⚠️ Πρωτεΐνη: {deltas.protein.toFixed(1)}% απόκλιση από τον στόχο.</p>
-        )}
-        {Math.abs(deltas.fat) > 10 && (
-          <p>⚠️ Λίπος: {deltas.fat.toFixed(1)}% απόκλιση από τον στόχο.</p>
-        )}
-        {Math.abs(deltas.carbs) > 10 && (
-          <p>⚠️ Υδατάνθρακες: {deltas.carbs.toFixed(1)}% απόκλιση από τον στόχο.</p>
-        )}
-      </>
-    );
-  })()}
-</div>
+        {(() => {
+          const targetProtein = protein * weight;
+          const targetFat = fat * weight;
+          const targetCarbs = parseFloat(carbs);
+          const actuals = { protein: 0, fat: 0, carbs: 0 };
+          const inputs = document.querySelector("input[placeholder='πρωτεΐνη/λίπος/υδατάνθρακες σε g']")?.value.split("/");
+          if (inputs?.length === 3) {
+            actuals.protein = parseFloat(inputs[0]) || 0;
+            actuals.fat = parseFloat(inputs[1]) || 0;
+            actuals.carbs = parseFloat(inputs[2]) || 0;
+          }
+          const deltas = {
+            protein: ((actuals.protein - targetProtein) / targetProtein) * 100,
+            fat: ((actuals.fat - targetFat) / targetFat) * 100,
+            carbs: ((actuals.carbs - targetCarbs) / targetCarbs) * 100,
+          };
+          return (
+            <>
+              {Math.abs(deltas.protein) > 10 && (
+                <p>⚠️ Πρωτεΐνη: {deltas.protein.toFixed(1)}% απόκλιση από τον στόχο.</p>
+              )}
+              {Math.abs(deltas.fat) > 10 && (
+                <p>⚠️ Λίπος: {deltas.fat.toFixed(1)}% απόκλιση από τον στόχο.</p>
+              )}
+              {Math.abs(deltas.carbs) > 10 && (
+                <p>⚠️ Υδατάνθρακες: {deltas.carbs.toFixed(1)}% απόκλιση από τον στόχο.</p>
+              )}
+            </>
+          );
+        })()}
+      </div>
     </div>
   )}
-</section>
+</CollapsibleSection>
 
-        </section>
-
-        
-              <DndContext
-  collisionDetection={closestCenter}
-  onDragEnd={({ active, over }) => {
-    if (active.id !== over?.id) {
-      setDaysOrder((items) => {
-        const oldIndex = items.indexOf(active.id);
-        const newIndex = items.indexOf(over.id);
-        return arrayMove(items, oldIndex, newIndex);
-      });
-    }
-  }}
->
-  <SortableContext items={daysOrder} strategy={verticalListSortingStrategy}>
-    {daysOrder.map((day) => (
-      <SortableItem key={day} id={day}>
-        <div className="border border-yellow-300 rounded p-3">
-          <p className="font-bold text-yellow-500">📅 {day}</p>
-          <ul className="list-disc list-inside space-y-1 mt-2">
-            <li className="break-words leading-tight">🍽️ Πρωινό:
-              <input
-                className={`w-full p-2 rounded text-sm border ${theme === "dark" ? "bg-gray-800 text-white border-gray-700" : "bg-white text-black border-gray-300"}`}
-value={customMeals[`${day}-breakfast`] || getRandomMeal("breakfast")}
-onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-breakfast`]: e.target.value })}
-              />
-              <button
-  className="ml-2 text-xs bg-blue-500 text-white px-2 py-1 rounded mt-2"
-  onClick={() => handleReplacement(day, "breakfast")}
->
-  🔁 Αντικατάσταση
-</button>
-{(() => {
-  const mealKey = `${day}-breakfast`;
-  const mealName = customMeals[mealKey];
-const food = mealName && allFoods.find(f => f.name === mealName);
-
-  if (!food) return null;
-
-  return (
-    <div className="mt-2 p-2 rounded bg-yellow-100 dark:bg-gray-800 text-xs text-gray-800 dark:text-gray-100">
-      <p>📊 Μακροθρεπτικά: {food.protein}g P / {food.fat}g F / {food.carbs}g C</p>
-    </div>
-  );
-})()}
-            </li>
-            <li className="break-words leading-tight">🥗 Μεσημεριανό:
-              <input
-               className={`w-full p-2 rounded text-sm border ${theme === "dark" ? "bg-gray-800 text-white border-gray-700" : "bg-white text-black border-gray-300"}`}
-value={customMeals[`${day}-lunch`] || getRandomMeal("lunch")}
-onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-lunch`]: e.target.value })}
-              />
-               <button
-  className="ml-2 text-xs bg-blue-500 text-white px-2 py-1 rounded mt-2"
-  onClick={() => handleReplacement(day, "lunch")}
->
-  🔁 Αντικατάσταση
-</button>
-{(() => {
-  const mealKey = `${day}-lunch`;
-  const mealName = customMeals[mealKey];
-const food = mealName && allFoods.find(f => f.name === mealName);
-
-  if (!food) return null;
-
-  return (
-    <div className="mt-2 p-2 rounded bg-yellow-100 dark:bg-gray-800 text-xs text-gray-800 dark:text-gray-100">
-      <p>📊 Μακροθρεπτικά: {food.protein}g P / {food.fat}g F / {food.carbs}g C</p>
-    </div>
-  );
-})()}
-            </li>
-            <li className="break-words leading-tight">🥚 Σνακ:
-              <input
-                className={`w-full p-2 rounded text-sm border ${theme === "dark" ? "bg-gray-800 text-white border-gray-700" : "bg-white text-black border-gray-300"}`}
-value={customMeals[`${day}-snack`] || getRandomMeal("snack")}
-onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-snack`]: e.target.value })}
-              />
-              <button
-  className="ml-2 text-xs bg-blue-500 text-white px-2 py-1 rounded mt-2"
-  onClick={() => handleReplacement(day, "snack")}
->
-  🔁 Αντικατάσταση
-</button>
-{(() => {
-  const mealKey = `${day}-snack`; 
-  const mealName = customMeals[mealKey];
-const food = mealName && allFoods.find(f => f.name === mealName);
-
-  if (!food) return null;
-
-  return (
-    <div className="mt-2 p-2 rounded bg-yellow-100 dark:bg-gray-800 text-xs text-gray-800 dark:text-gray-100">
-      <p>📊 Μακροθρεπτικά: {food.protein}g P / {food.fat}g F / {food.carbs}g C</p>
-    </div>
-  );
-})()}
-            </li>
-            <li className="break-words leading-tight">🍝 Βραδινό:
-              <input
-               className={`w-full p-2 rounded text-sm border ${theme === "dark" ? "bg-gray-800 text-white border-gray-700" : "bg-white text-black border-gray-300"}`}
-value={customMeals[`${day}-dinner`] || getRandomMeal("dinner")}
-onChange={(e) => setCustomMeals({ ...customMeals, [`${day}-dinner`]: e.target.value })}
-              />
-               <button
-  className="ml-2 text-xs bg-blue-500 text-white px-2 py-1 rounded mt-2"
-  onClick={() => handleReplacement(day, "dinner")}
->
-  🔁 Αντικατάσταση
-</button>
-{(() => {
-  const mealKey = `${day}-dinner`;
-  const mealName = customMeals[mealKey];
-const food = mealName && allFoods.find(f => f.name === mealName);
-
-  if (!food) return null;
-
-  return (
-    <div className="mt-2 p-2 rounded bg-yellow-100 dark:bg-gray-800 text-xs text-gray-800 dark:text-gray-100">
-      <p>📊 Μακροθρεπτικά: {food.protein}g P / {food.fat}g F / {food.carbs}g C</p>
-    </div>
-  );
-})()}
-  
-            </li>
-          </ul>
-         {(() => {
-  const dayKey = day;
-const summary = getDayMacroSummary(dayKey, customMeals, foodDB, userFoods);
-  const targetProtein = protein * weight;
-  const targetFat = fat * weight;
-  const targetCarbs = carbs;
-  const diff = {
-    protein: summary.protein - targetProtein,
-    fat: summary.fat - targetFat,
-    carbs: summary.carbs - targetCarbs
-  };
-
-
-  return (
-    <div className="text-xs mt-3 p-3 rounded bg-yellow-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 space-y-1">
-      <p>📦 Ημέρα: {summary.protein}g P / {summary.fat}g F / {summary.carbs}g C</p>
-      <p>🎯 Στόχος: {targetProtein}g P / {targetFat}g F / {targetCarbs}g C</p>
-      <p className="text-yellow-700 dark:text-yellow-300">
-        ✏️ Διαφορά: {diff.protein.toFixed(1)} P / {diff.fat.toFixed(1)} F / {diff.carbs.toFixed(1)} C
-      </p>
-    </div>
-  );
-})()}
-
-        </div>
-      </SortableItem>
-    ))}
-  </SortableContext>
-</DndContext>
-
-<section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-  <h2 className="text-2xl font-semibold mb-4">📊 Σύνολο Μακροθρεπτικών από Πλάνο</h2>
-  {(() => {
-    const target = {
-      protein: protein * weight,
-      fat: fat * weight,
-      carbs: parseFloat(carbs)
-    };
-    const actual = getTotalMacrosFromPlan();
-    const delta = {
-      protein: actual.protein - target.protein,
-      fat: actual.fat - target.fat,
-      carbs: actual.carbs - target.carbs
-    };
-
-   return (
-  <>
-    <div className="text-sm space-y-2">
-      <p>🎯 Στόχος: {target.protein}g πρωτεΐνη, {target.fat}g λίπος, {target.carbs}g υδατάνθρακες</p>
-      <p>📦 Πλάνο: {actual.protein}g P / {actual.fat}g F / {actual.carbs}g C</p>
-      <p className="text-yellow-700 dark:text-yellow-300">
-        ✏️ Διαφορά: {delta.protein.toFixed(1)} P / {delta.fat.toFixed(1)} F / {delta.carbs.toFixed(1)} C
-      </p>
-    </div>
-    <p className="text-yellow-700 dark:text-yellow-300">
-      🔥 Θερμίδες από το πλάνο: {getTotalKcalFromPlan(customMeals, foodDB, userFoods)} kcal
-    </p>
-  </>
-);
-  })()}
-</section>
-
-<div className="flex gap-4 mt-4">
-  <button onClick={saveMealsToSupabase} className="bg-green-500 px-3 py-1 rounded text-white text-sm">
-    ☁️ Αποθήκευση στο Cloud
-  </button>
-  <button onClick={loadMealsFromSupabase} className="bg-blue-500 px-3 py-1 rounded text-white text-sm">
-    🔄 Φόρτωση από Cloud
-  </button>
-</div>
-
-<div className="flex gap-4 justify-end mt-4">
-  <button onClick={savePlanToSupabase} className="bg-green-600 text-white px-4 py-2 rounded">💾 Αποθήκευση</button>
-  <button onClick={loadPlanFromSupabase} className="bg-blue-600 text-white px-4 py-2 rounded">☁️ Φόρτωση</button>
-</div>
-
-   <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-  <h2 className="text-2xl font-semibold mb-4">👁️ Προεπισκόπηση Εβδομαδιαίου Πλάνου</h2>
-  <div className="space-y-4 text-sm">
-    {daysOrder.map((day) => (
-      <div key={day} className="p-4 border border-yellow-300 rounded">
-        <h3 className="font-bold text-yellow-600 dark:text-yellow-300 mb-2">📅 {day}</h3>
-        <ul className="space-y-1">
-          {['breakfast', 'lunch', 'snack', 'dinner'].map((mealType) => {
-            const mealName = customMeals[`${day}-${mealType}`] || "-";
-            return (
-              <li key={`${day}-${mealType}`} className="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-1">
-                <span className="capitalize">
-                  {mealType === "breakfast" && "🍽️ Πρωινό:"}
-                  {mealType === "lunch" && "🥗 Μεσημεριανό:"}
-                  {mealType === "snack" && "🥚 Σνακ:"}
-                  {mealType === "dinner" && "🍝 Βραδινό:"}
-                </span>
-                <span className="text-right font-medium text-gray-700 dark:text-gray-200">{mealName}</span>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    ))}
-  </div>
-</section>
-
-     <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-  <h2 className="text-2xl font-semibold mb-4">📊 Σύνολο Πλάνου</h2>
-  {(() => {
-    const total = daysOrder.reduce((acc, day) => {
-      ['breakfast', 'lunch', 'snack', 'dinner'].forEach(meal => {
-        const mealName = customMeals[`${day}-${meal}`];
-const food = allFoods.find(f => f.name === mealName);
-        if (food) {
-          acc.protein += food.protein;
-          acc.fat += food.fat;
-          acc.carbs += food.carbs;
-        }
-      });
-      return acc;
-    }, { protein: 0, fat: 0, carbs: 0 });
-
-    const totalKcal = total.protein * 4 + total.carbs * 4 + total.fat * 9;
-
-    return (
-      <div className="text-sm space-y-2 bg-yellow-50 dark:bg-gray-800 p-4 rounded">
-        <p>🍽️ Πρωτεΐνη: {total.protein.toFixed(1)}g</p>
-        <p>🥑 Λίπος: {total.fat.toFixed(1)}g</p>
-        <p>🥔 Υδατάνθρακες: {total.carbs.toFixed(1)}g</p>
-        <p className="font-bold">🔥 Θερμίδες: {totalKcal.toFixed(0)} kcal</p>
-      </div>
-    );
-  })()}
-</section>
-
-<section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-  <h2 className="text-2xl font-semibold mb-4">📤 Export σε PDF</h2>
-  <button
-    onClick={() => {
-      import("html2canvas").then(({ default: html2canvas }) => {
-        import("jspdf").then(({ default: jsPDF }) => {
-          const target = document.body;
-          html2canvas(target).then((canvas) => {
-            const imgData = canvas.toDataURL("image/png");
-            const pdf = new jsPDF("p", "mm", "a4");
-            const width = pdf.internal.pageSize.getWidth();
-            const height = (canvas.height * width) / canvas.width;
-            pdf.addImage(imgData, "PNG", 0, 0, width, height);
-            const today = new Date().toLocaleDateString("el-GR").replaceAll("/", "-");
-            pdf.save(`nutrition-plan-${today}.pdf`);
-          });
+              <CollapsibleSection title="🥗 Προγραμματισμός Γευμάτων ανά Ημέρα">
+  <DndContext
+    collisionDetection={closestCenter}
+    onDragEnd={({ active, over }) => {
+      if (active.id !== over?.id) {
+        setDaysOrder((items) => {
+          const oldIndex = items.indexOf(active.id);
+          const newIndex = items.indexOf(over.id);
+          return arrayMove(items, oldIndex, newIndex);
         });
-      });
-    }}
-    className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded"
-  >
-    📥 Κατέβασε ως PDF
-  </button>
-</section>
-
-<section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-  <h2 className="text-2xl font-semibold mb-4">📤 Export σε CSV</h2>
-  <button
-    onClick={() => {
-      const days = ['Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο', 'Κυριακή'];
-      const rows = daysOrder.map(day => {
-  const breakfast = customMeals[`${day}-breakfast`] || "";
-  const lunch = customMeals[`${day}-lunch`] || "";
-  const snack = customMeals[`${day}-snack`] || "";
-  const dinner = customMeals[`${day}-dinner`] || "";
-  return [day, breakfast, lunch, snack, dinner].join(",");
-});
-      const csvContent = ["Ημέρα,Πρωινό,Μεσημεριανό,Σνακ,Βραδινό", ...rows].join("\n");
-
-      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.setAttribute("href", url);
-      link.setAttribute("download", "meal-plan.csv");
-      link.click();
-    }}
-    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
-  >
-    📤 Κατέβασε ως CSV
-  </button>
-</section>
-
-</div>
-{intakeHistory.length > 0 && (
-  <section className="max-w-xl mx-auto bg-yellow-100 dark:bg-gray-900 p-4 rounded-xl shadow space-y-4">
-    <h2 className="text-xl font-bold text-yellow-600 dark:text-yellow-400">📈 Ιστορικό Θερμίδων</h2>
-    <ResponsiveContainer width="100%" height={250}>
-      <LineChart data={intakeHistory} margin={{ top: 10, right: 20, bottom: 10, left: 0 }}>
-        <XAxis dataKey="date" stroke="#888" tick={{ fontSize: 12 }} />
-        <YAxis stroke="#888" tick={{ fontSize: 12 }} />
-        <Tooltip formatter={(value) => `${value} kcal`} />
-        <Line type="monotone" dataKey="kcal" stroke="#facc15" strokeWidth={2} dot={{ r: 4 }} />
-      </LineChart>
-    </ResponsiveContainer>
-  </section>
-)}
-      <section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-  <h2 className="text-2xl font-semibold mb-4">🔗 Κοινοποίηση Πλάνου</h2>
-  <p className="text-sm text-gray-600 dark:text-gray-300">
-    Μοιράσου το πλάνο σου με άλλους ή στείλε το στον πελάτη σου.
-  </p>
-  <button
-    onClick={() => {
-      const url = window.location.href;
-      if (navigator.share) {
-        navigator.share({ title: "Nutrition Plan", url });
-      } else {
-        window.open(
-          `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(url)}&size=150x150`,
-          "_blank"
-        );
       }
     }}
-    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
   >
-    📤 Κοινοποίησε Πλάνο
-  </button>
-</section>
-      
-<section className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"}`}>
-  <h2 className="text-2xl font-semibold mb-4">🍽️ Τροφές & Μακροθρεπτικά</h2>
-  <div className="space-y-4">
-    <input
-      type="text"
-      placeholder="Αναζήτησε τρόφιμο..."
-      className={`p-2 w-full rounded ${inputStyle}`}
-      onChange={(e) => setFoodSearch(e.target.value)}
-    />
-    <div className="grid grid-cols-5 gap-2 text-xs mb-4">
-  <input placeholder="Όνομα" className={inputStyle} id="nf" />
-  <input placeholder="P" className={inputStyle} id="np" type="number" />
-  <input placeholder="F" className={inputStyle} id="nfat" type="number" />
-  <input placeholder="C" className={inputStyle} id="nc" type="number" />
-  <button
-    className="bg-green-500 text-white px-2 py-1 rounded"
-    onClick={() => {
-      const name = document.getElementById("nf").value;
-      const protein = parseFloat(document.getElementById("np").value);
-      const fat = parseFloat(document.getElementById("nfat").value);
-      const carbs = parseFloat(document.getElementById("nc").value);
-      if (!name || isNaN(protein) || isNaN(fat) || isNaN(carbs)) return;
-      setUserFoods([...userFoods, { name, protein, fat, carbs }]);
-      document.getElementById("nf").value = "";
-      document.getElementById("np").value = "";
-      document.getElementById("nfat").value = "";
-      document.getElementById("nc").value = "";
-    }}
-  >
-    ➕ Προσθήκη
-  </button>
-</div>
+    <SortableContext items={daysOrder} strategy={verticalListSortingStrategy}>
+      {daysOrder.map((day) => (
+        <SortableItem key={day} id={day}>
+          <div className="border border-yellow-300 rounded p-3 mt-2">
+            <p className="font-bold text-yellow-500">📅 {day}</p>
+            <ul className="list-disc list-inside space-y-1 mt-2">
+              {["breakfast", "lunch", "snack", "dinner"].map((mealType) => {
+                const emoji =
+                  mealType === "breakfast"
+                    ? "🍽️"
+                    : mealType === "lunch"
+                    ? "🥗"
+                    : mealType === "snack"
+                    ? "🥚"
+                    : "🍝";
+                const mealKey = `${day}-${mealType}`;
+                const mealName = customMeals[mealKey] || getRandomMeal(mealType);
+                const food = allFoods.find((f) => f.name === mealName);
 
-<div className="flex gap-2 mb-4">
-  <select
-    value={selectedDay}
-    onChange={(e) => setSelectedDay(e.target.value)}
-    className={`p-2 rounded ${inputStyle}`}
-  >
-    {daysOrder.map((day) => (
-      <option key={day} value={day}>{day}</option>
-    ))}
-  </select>
+                return (
+                  <li key={mealKey} className="break-words leading-tight">
+                    {emoji} {mealType.charAt(0).toUpperCase() + mealType.slice(1)}:
+                    <input
+                      title="Εισαγωγή ή τροποποίηση γεύματος"
+                      className={`w-full p-2 rounded text-sm border mt-1 ${theme === "dark"
+                        ? "bg-gray-800 text-white border-gray-700"
+                        : "bg-white text-black border-gray-300"
+                        }`}
+                      value={mealName}
+                      onChange={(e) =>
+                        setCustomMeals({ ...customMeals, [mealKey]: e.target.value })
+                      }
+                    />
+                    <button
+                      className="ml-2 text-xs bg-blue-500 text-white px-2 py-1 rounded mt-2"
+                      title="Αυτόματη αντικατάσταση από βάση"
+                      onClick={() => handleReplacement(day, mealType)}
+                    >
+                      🔁 Αντικατάσταση
+                    </button>
+                    {food && (
+                      <div className="mt-2 p-2 rounded bg-yellow-100 dark:bg-gray-800 text-xs text-gray-800 dark:text-gray-100">
+                        <p>
+                          📊 Μακροθρεπτικά: {food.protein}g P / {food.fat}g F / {food.carbs}g C
+                        </p>
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
 
-  <select
-    value={selectedMealType}
-    onChange={(e) => setSelectedMealType(e.target.value)}
-    className={`p-2 rounded ${inputStyle}`}
-  >
-    <option value="breakfast">Πρωινό</option>
-    <option value="lunch">Μεσημεριανό</option>
-    <option value="snack">Σνακ</option>
-    <option value="dinner">Βραδινό</option>
-  </select>
-</div>
+            {/* Σύγκριση στόχων vs actual per ημέρα */}
+            {(() => {
+              const summary = getDayMacroSummary(day, customMeals, foodDB, userFoods);
+              const targetProtein = protein * weight;
+              const targetFat = fat * weight;
+              const targetCarbs = carbs;
+              const diff = {
+                protein: summary.protein - targetProtein,
+                fat: summary.fat - targetFat,
+                carbs: summary.carbs - targetCarbs,
+              };
 
-    
-   <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
-  <thead className="bg-gray-200 dark:bg-gray-700">
-    <tr>
-      <th className="p-2">Τρόφιμο</th>
-      <th className="p-2">Πρωτεΐνη</th>
-      <th className="p-2">Λίπος</th>
-      <th className="p-2">Υδατ.</th>
-      <th className="p-2">Ενέργεια</th>
-      <th className="p-2">Ενέργειες</th>
-    </tr>
-  </thead>
-  <tbody>
-
-        {userFoods.map((item, i) => (
-  <tr key={`u-${i}`} className="text-center border-t dark:border-gray-700 bg-yellow-50 dark:bg-gray-800">
-    <td className="p-2">{item.name}</td>
-    <td className="p-2">{item.protein}g</td>
-    <td className="p-2">{item.fat}g</td>
-    <td className="p-2">{item.carbs}g</td>
-    <td className="p-2">
-      <button
-  className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
-  onClick={() => {
-    const mealName = item.name;
-    const newMeals = { ...customMeals };
-    const mealKey = `${selectedDay}-${selectedMealType}`;
-    newMeals[mealKey] = mealName;
-    setCustomMeals(newMeals);
-  }}
->
-  ➕ Στο Πλάνο
-</button>
-    </td>
-  </tr>
-))}
-
-           {filteredFoods.map((item, i) => (
-        <tr key={i} className="text-center border-t dark:border-gray-700">
-          <td className="p-2">{item.name}</td>
-          <td className="p-2">{item.protein}g</td>
-          <td className="p-2">{item.fat}g</td>
-          <td className="p-2">{item.carbs}g</td>
-          <td className="p-2">
-            {4 * item.protein + 9 * item.fat + 4 * item.carbs} kcal
-          </td>
-          <td className="p-2">
-  <div className="flex gap-1 justify-center">
-    <button
-      className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
-      onClick={() => {
-        const mealName = item.name;
-        const newMeals = { ...customMeals };
-        const mealKey = `${selectedDay}-${selectedMealType}`;
-        newMeals[mealKey] = mealName;
-        setCustomMeals(newMeals);
-      }}
-    >
-      ➕ Στο Πλάνο
-    </button>
-
-    <button
-      className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
-      onClick={() => {
-        const newName = prompt("✏️ Νέο όνομα:", item.name);
-        const newProtein = prompt("Πρωτεΐνη (g):", item.protein);
-        const newFat = prompt("Λίπος (g):", item.fat);
-        const newCarbs = prompt("Υδατάνθρακες (g):", item.carbs);
-        if (!newName || isNaN(newProtein) || isNaN(newFat) || isNaN(newCarbs)) return;
-        const updatedFoods = [...userFoods];
-        updatedFoods[i] = {
-          name: newName,
-          protein: parseFloat(newProtein),
-          fat: parseFloat(newFat),
-          carbs: parseFloat(newCarbs)
-        };
-        setUserFoods(updatedFoods);
-      }}
-    >
-      ✏️
-    </button>
-
-    <button
-      className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-      onClick={() => {
-        const updatedFoods = [...userFoods];
-        updatedFoods.splice(i, 1);
-        setUserFoods(updatedFoods);
-      }}
-    >
-      🗑️
-    </button>
-  </div>
-</td>
-        </tr>
+              return (
+                <div className="text-xs mt-3 p-3 rounded bg-yellow-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 space-y-1">
+                  <p>📦 Ημέρα: {summary.protein}g P / {summary.fat}g F / {summary.carbs}g C</p>
+                  <p>🎯 Στόχος: {targetProtein}g P / {targetFat}g F / {targetCarbs}g C</p>
+                  <p className="text-yellow-700 dark:text-yellow-300">
+                    ✏️ Διαφορά: {diff.protein.toFixed(1)} P / {diff.fat.toFixed(1)} F / {diff.carbs.toFixed(1)} C
+                  </p>
+                </div>
+              );
+            })()}
+          </div>
+        </SortableItem>
       ))}
-  </tbody>
-</table>
+    </SortableContext>
+  </DndContext>
+</CollapsibleSection>
+
+<Tabs defaultTab="Σύνολο">
+  <Tab label="📊 Σύνολο">
+    <CollapsibleSection title="📊 Σύνολο Μακροθρεπτικών από Πλάνο">
+      {(() => {
+        const target = {
+          protein: protein * weight,
+          fat: fat * weight,
+          carbs: parseFloat(carbs)
+        };
+        const actual = getTotalMacrosFromPlan();
+        const delta = {
+          protein: actual.protein - target.protein,
+          fat: actual.fat - target.fat,
+          carbs: actual.carbs - target.carbs
+        };
+
+        return (
+          <>
+            <div className="text-sm space-y-2">
+              <p>🎯 Στόχος: {target.protein}g πρωτεΐνη, {target.fat}g λίπος, {target.carbs}g υδατάνθρακες</p>
+              <p>📦 Πλάνο: {actual.protein}g P / {actual.fat}g F / {actual.carbs}g C</p>
+              <p className="text-yellow-700 dark:text-yellow-300">
+                ✏️ Διαφορά: {delta.protein.toFixed(1)} P / {delta.fat.toFixed(1)} F / {delta.carbs.toFixed(1)} C
+              </p>
+            </div>
+            <p className="text-yellow-700 dark:text-yellow-300">
+              🔥 Θερμίδες από το πλάνο: {getTotalKcalFromPlan(customMeals, foodDB, userFoods)} kcal
+            </p>
+          </>
+        );
+      })()}
+    </CollapsibleSection>
+
+    <div className="flex flex-wrap gap-4 mt-4 sticky top-0 z-10 bg-opacity-80 backdrop-blur border-b py-2 px-2">
+      <button onClick={saveMealsToSupabase} className="bg-green-500 px-3 py-1 rounded text-white text-sm" title="Αποθήκευση των γευμάτων στο cloud">
+        ☁️ Αποθήκευση στο Cloud
+      </button>
+      <button onClick={loadMealsFromSupabase} className="bg-blue-500 px-3 py-1 rounded text-white text-sm" title="Φόρτωση γευμάτων από το cloud">
+        🔄 Φόρτωση από Cloud
+      </button>
+      <button onClick={savePlanToSupabase} className="bg-green-600 text-white px-4 py-2 rounded ml-auto" title="Αποθήκευση πλάνου στον server">
+        💾 Αποθήκευση
+      </button>
+      <button onClick={loadPlanFromSupabase} className="bg-blue-600 text-white px-4 py-2 rounded" title="Φόρτωση πλάνου από τον server">
+        ☁️ Φόρτωση
+      </button>
     </div>
-</section>
-</motion.div>
+
+    <CollapsibleSection title="👁️ Προεπισκόπηση Εβδομαδιαίου Πλάνου">
+      <div className="space-y-4 text-sm">
+        {daysOrder.map((day) => (
+          <div key={day} className="p-4 border border-yellow-300 rounded">
+            <h3 className="font-bold text-yellow-600 dark:text-yellow-300 mb-2">📅 {day}</h3>
+            <ul className="space-y-1">
+              {['breakfast', 'lunch', 'snack', 'dinner'].map((mealType) => {
+                const mealName = customMeals[`${day}-${mealType}`] || "-";
+                return (
+                  <li key={`${day}-${mealType}`} className="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-1">
+                    <span className="capitalize">
+                      {mealType === "breakfast" && "🍽️ Πρωινό:"}
+                      {mealType === "lunch" && "🥗 Μεσημεριανό:"}
+                      {mealType === "snack" && "🥚 Σνακ:"}
+                      {mealType === "dinner" && "🍝 Βραδινό:"}
+                    </span>
+                    <span className="text-right font-medium text-gray-700 dark:text-gray-200">{mealName}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </CollapsibleSection>
+
+    <CollapsibleSection title="📊 Σύνολο Πλάνου (ανά εβδομάδα)">
+      {(() => {
+        const total = daysOrder.reduce((acc, day) => {
+          ['breakfast', 'lunch', 'snack', 'dinner'].forEach(meal => {
+            const mealName = customMeals[`${day}-${meal}`];
+            const food = allFoods.find(f => f.name === mealName);
+            if (food) {
+              acc.protein += food.protein;
+              acc.fat += food.fat;
+              acc.carbs += food.carbs;
+            }
+          });
+          return acc;
+        }, { protein: 0, fat: 0, carbs: 0 });
+
+        const totalKcal = total.protein * 4 + total.carbs * 4 + total.fat * 9;
+
+        return (
+          <div className="text-sm space-y-2 bg-yellow-50 dark:bg-gray-800 p-4 rounded">
+            <p>🍽️ Πρωτεΐνη: {total.protein.toFixed(1)}g</p>
+            <p>🥑 Λίπος: {total.fat.toFixed(1)}g</p>
+            <p>🥔 Υδατάνθρακες: {total.carbs.toFixed(1)}g</p>
+            <p className="font-bold">🔥 Θερμίδες: {totalKcal.toFixed(0)} kcal</p>
+          </div>
+        );
+      })()}
+    </CollapsibleSection>
+  </Tab>
+</Tabs>
+
+ <Tab label="📤 Εξαγωγή">
+    <CollapsibleSection title="📥 Κατέβασε ως PDF">
+      <button onClick={exportToPDF} className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">
+        📄 Αποθήκευση σε PDF
+      </button>
+    </CollapsibleSection>
+
+    <CollapsibleSection title="📤 Κατέβασε ως CSV">
+      <button onClick={exportToCSV} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+        📑 Εξαγωγή σε CSV
+      </button>
+    </CollapsibleSection>
+
+    {intakeHistory.length > 0 && (
+      <CollapsibleSection title="📈 Ιστορικό Θερμίδων">
+        <ResponsiveContainer width="100%" height={250}>
+          <LineChart data={intakeHistory} margin={{ top: 10, right: 20, bottom: 10, left: 0 }}>
+            <XAxis dataKey="date" stroke="#888" tick={{ fontSize: 12 }} />
+            <YAxis stroke="#888" tick={{ fontSize: 12 }} />
+            <Tooltip formatter={(value) => `${value} kcal`} />
+            <Line type="monotone" dataKey="kcal" stroke="#facc15" strokeWidth={2} dot={{ r: 4 }} />
+          </LineChart>
+        </ResponsiveContainer>
+      </CollapsibleSection>
+    )}
+
+      <TabsCompo activeTab="🥗 Γεύματα" tabs={["📊 AI Προτάσεις", "🥗 Γεύματα", "📈 Σύγκριση"]} />
+
+    <CollapsibleSection title="🔗 Κοινοποίηση Πλάνου">
+      <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Μοιράσου το πλάνο σου με άλλους ή στείλε το στον πελάτη σου.</p>
+      <button onClick={sharePlan} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+        📤 Κοινοποίησε Πλάνο
+      </button>
+    </CollapsibleSection>
+  </Tab>
+
+  <Tab label="🥫 Τρόφιμα">
+    <CollapsibleSection title="🍽️ Προσθήκη Τροφίμων">
+      <input type="text" placeholder="Αναζήτησε τρόφιμο..." className={`p-2 w-full rounded ${inputStyle}`} onChange={(e) => setFoodSearch(e.target.value)} />
+      <div className="grid grid-cols-5 gap-2 text-xs mb-4 mt-2">
+        <input placeholder="Όνομα" className={inputStyle} id="nf" />
+        <input placeholder="P" className={inputStyle} id="np" type="number" />
+        <input placeholder="F" className={inputStyle} id="nfat" type="number" />
+        <input placeholder="C" className={inputStyle} id="nc" type="number" />
+        <button className="bg-green-500 text-white px-2 py-1 rounded" onClick={addCustomFood}>
+          ➕ Προσθήκη
+        </button>
+      </div>
+    </CollapsibleSection>
+
+    <CollapsibleSection title="🗓️ Αντιστοίχιση Γευμάτων">
+      <div className="flex gap-2 mb-4">
+        <select value={selectedDay} onChange={(e) => setSelectedDay(e.target.value)} className={`p-2 rounded ${inputStyle}`}>
+          {daysOrder.map((day) => (
+            <option key={day} value={day}>{day}</option>
+          ))}
+        </select>
+
+        <select value={selectedMealType} onChange={(e) => setSelectedMealType(e.target.value)} className={`p-2 rounded ${inputStyle}`}>
+          <option value="breakfast">Πρωινό</option>
+          <option value="lunch">Μεσημεριανό</option>
+          <option value="snack">Σνακ</option>
+          <option value="dinner">Βραδινό</option>
+        </select>
+      </div>
+    </CollapsibleSection>
+  </Tab>
+
+   <Tabs defaultTab="🥫 Τρόφιμα">
+  <Tab label="🥫 Τρόφιμα">
+    <CollapsibleSection title="📦 Λίστα Τροφίμων (user + default)">
+      <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
+        <thead className="bg-gray-200 dark:bg-gray-700 sticky top-0 z-10">
+          <tr>
+            <th className="p-2">Τρόφιμο</th>
+            <th className="p-2">Πρωτεΐνη</th>
+            <th className="p-2">Λίπος</th>
+            <th className="p-2">Υδατ.</th>
+            <th className="p-2">Ενέργεια</th>
+            <th className="p-2">Ενέργειες</th>
+          </tr>
+        </thead>
+        <tbody>
+          {userFoods.map((item, i) => (
+            <tr key={`u-${i}`} className="text-center border-t dark:border-gray-700 bg-yellow-50 dark:bg-gray-800">
+              <td className="p-2">{item.name}</td>
+              <td className="p-2">{item.protein}g</td>
+              <td className="p-2">{item.fat}g</td>
+              <td className="p-2">{item.carbs}g</td>
+              <td className="p-2">{4 * item.protein + 9 * item.fat + 4 * item.carbs} kcal</td>
+              <td className="p-2">
+                <div className="flex gap-1 justify-center">
+                  <button
+                    className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
+                    title="Προσθήκη στο Πλάνο"
+                    onClick={() => {
+                      const mealName = item.name;
+                      const newMeals = { ...customMeals };
+                      const mealKey = `${selectedDay}-${selectedMealType}`;
+                      newMeals[mealKey] = mealName;
+                      setCustomMeals(newMeals);
+                    }}
+                  >
+                    ➕ Στο Πλάνο
+                  </button>
+                  <button
+                    className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+                    title="Επεξεργασία Τροφίμου"
+                    onClick={() => {
+                      const newName = prompt("✏️ Νέο όνομα:", item.name);
+                      const newProtein = prompt("Πρωτεΐνη (g):", item.protein);
+                      const newFat = prompt("Λίπος (g):", item.fat);
+                      const newCarbs = prompt("Υδατάνθρακες (g):", item.carbs);
+                      if (!newName || isNaN(newProtein) || isNaN(newFat) || isNaN(newCarbs)) return;
+                      const updatedFoods = [...userFoods];
+                      updatedFoods[i] = {
+                        name: newName,
+                        protein: parseFloat(newProtein),
+                        fat: parseFloat(newFat),
+                        carbs: parseFloat(newCarbs)
+                      };
+                      setUserFoods(updatedFoods);
+                    }}
+                  >
+                    ✏️
+                  </button>
+                  <button
+                    className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                    title="Διαγραφή Τροφίμου"
+                    onClick={() => {
+                      const updatedFoods = [...userFoods];
+                      updatedFoods.splice(i, 1);
+                      setUserFoods(updatedFoods);
+                    }}
+                  >
+                    🗑️
+                  </button>
+                </div>
+              </td>
+            </tr>
+          ))}
+
+          {filteredFoods.map((item, i) => (
+            <tr key={i} className="text-center border-t dark:border-gray-700">
+              <td className="p-2">{item.name}</td>
+              <td className="p-2">{item.protein}g</td>
+              <td className="p-2">{item.fat}g</td>
+              <td className="p-2">{item.carbs}g</td>
+              <td className="p-2">{4 * item.protein + 9 * item.fat + 4 * item.carbs} kcal</td>
+              <td className="p-2">
+                <button
+                  className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
+                  title="Προσθήκη στο Πλάνο"
+                  onClick={() => {
+                    const mealName = item.name;
+                    const newMeals = { ...customMeals };
+                    const mealKey = `${selectedDay}-${selectedMealType}`;
+                    newMeals[mealKey] = mealName;
+                    setCustomMeals(newMeals);
+                  }}
+                >
+                  ➕ Στο Πλάνο
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </CollapsibleSection>
+  </Tab>
+</Tabs>
+<CollapsibleSection title="📊 Σύγκριση Μακροθρεπτικών">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <MacroComparisonChart
+      data={macroComparisonData}
+      colors={COLORS}
+      tooltipFormatter={(value) => `${value}g`}
+    />
+    <MacroBarChart
+      data={macroBarData}
+      colors={COLORS}
+      tooltipFormatter={(value) => `${value}g`}
+    />
+  </div>
+      </CollapsibleSection>
+      </motion.div>
 </SignedIn>
 );
 }
