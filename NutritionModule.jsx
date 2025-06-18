@@ -25,9 +25,16 @@ function SortableItem({ id, children }) {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    marginBottom: "0.25rem"
   };
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+    <div
+      ref={setNodeRef}
+      style={style}
+      className="bg-white dark:bg-zinc-800 shadow-sm p-2 rounded text-sm"
+      {...attributes}
+      {...listeners}
+    >
       {children}
     </div>
   );
@@ -64,7 +71,7 @@ export default function NutritionModule() {
     const saved = localStorage.getItem("customMeals");
     return saved ? JSON.parse(saved) : {};
   });
-const [selectedFood, setSelectedFood] = useState({ name: "", protein: 0, fat: 0, carbs: 0 });
+  const [selectedFood, setSelectedFood] = useState({ name: "", protein: 0, fat: 0, carbs: 0 });
   const [selectedName, setSelectedName] = useState("");
   const [selectedDay, setSelectedDay] = useState(daysOrder[0]);
   const [selectedMealType, setSelectedMealType] = useState("snack");
@@ -72,8 +79,8 @@ const [selectedFood, setSelectedFood] = useState({ name: "", protein: 0, fat: 0,
     const saved = localStorage.getItem("userFoods");
     return saved ? JSON.parse(saved) : [];
   });
-  
- const foodDB = useMemo(() => [
+
+  const foodDB = useMemo(() => [
     { name: "Αβγό", protein: 6, fat: 5, carbs: 0.5 },
     { name: "Κοτόπουλο (100g)", protein: 31, fat: 3.6, carbs: 0 },
     { name: "Ρύζι (100g μαγειρεμένο)", protein: 2.7, fat: 0.3, carbs: 28 },
@@ -88,18 +95,19 @@ const [selectedFood, setSelectedFood] = useState({ name: "", protein: 0, fat: 0,
 
   const allFoods = useMemo(() => [...foodDB, ...defaultMeals, ...userFoods], [foodDB, defaultMeals, userFoods]);
 
-  const filteredFoods = useMemo(() => allFoods.filter((item) =>
-    item.name.toLowerCase().includes(foodSearch.toLowerCase())
-  ), [foodSearch, allFoods]);
+  const filteredFoods = useMemo(() =>
+    allFoods.filter((item) =>
+      item.name.toLowerCase().includes(foodSearch.toLowerCase())
+    ), [foodSearch, allFoods]
+  );
 
- const exampleMealName = "Κοτόπουλο (100g)";
+  const exampleMealName = "Κοτόπουλο (100g)";
   const meal = useMemo(() => allFoods.find(m => m.name === exampleMealName), [allFoods]);
-  console.log('🎯 Sample meal:', meal);
-const food = useMemo(() => allFoods.find(f => f.name === exampleMealName), [allFoods]);
+  const food = useMemo(() => allFoods.find(f => f.name === exampleMealName), [allFoods]);
   const mealExists = useMemo(() => allFoods.some(m => m.name === selectedName), [allFoods, selectedName]);
-const proteinNames = useMemo(() => allFoods.map(f => f.protein), [allFoods]);
-const customFiltered = useMemo(() => allFoods.filter(f => f.category === 'custom'), [allFoods]);
-const isIncluded = useMemo(() => allFoods.some(f => f.name === selectedFood.name), [allFoods, selectedFood]);
+  const proteinNames = useMemo(() => allFoods.map(f => f.protein), [allFoods]);
+  const customFiltered = useMemo(() => allFoods.filter(f => f.category === 'custom'), [allFoods]);
+  const isIncluded = useMemo(() => allFoods.some(f => f.name === selectedFood.name), [allFoods, selectedFood]);
 
   useEffect(() => {
   localStorage.setItem("userFoods", JSON.stringify(userFoods));
@@ -767,44 +775,56 @@ const macroComparisonData = [
         </button>
       </div>
 
-      <details open className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"} rounded p-4`}>
-        <summary className="text-2xl font-semibold cursor-pointer">🧮 Υπολογισμός BMR / TDEE</summary>
-        <div className="space-y-4 mt-4">
-          <label className="block text-sm">⚖️ Βάρος (kg)</label>
-          <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} placeholder="π.χ. 70" className={`p-2 rounded ${inputStyle}`} />
-
-          <label className="block text-sm">📏 Ύψος (cm)</label>
-          <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} placeholder="π.χ. 175" className={`p-2 rounded ${inputStyle}`} />
-
-          <label className="block text-sm">🎂 Ηλικία</label>
-          <input type="number" value={age} onChange={(e) => setAge(e.target.value)} placeholder="π.χ. 25" className={`p-2 rounded ${inputStyle}`} />
-
-          <label className="block text-sm">👤 Φύλο</label>
-          <select value={gender} onChange={(e) => setGender(e.target.value)} className={`p-2 rounded ${inputStyle}`}>
-            <option value="male">Άνδρας</option>
-            <option value="female">Γυναίκα</option>
-          </select>
-
-          <label className="block text-sm">🏃‍♂️ Επίπεδο δραστηριότητας</label>
-          <select value={activity} onChange={(e) => setActivity(Number(e.target.value))} className={`p-2 rounded ${inputStyle}`}>
-            <option value={1.2}>Καθιστική ζωή</option>
-            <option value={1.375}>Ελαφριά δραστηριότητα</option>
-            <option value={1.55}>Μέτρια δραστηριότητα</option>
-            <option value={1.725}>Έντονη δραστηριότητα</option>
-            <option value={1.9}>Πολύ έντονη δραστηριότητα</option>
-          </select>
-
-          <button onClick={calculateNutrition} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold">
-            🔍 Υπολόγισε
-          </button>
-          {bmr && tdee && (
-            <p className="mt-2">
-              <strong>BMR:</strong> {bmr} kcal | <strong>TDEE:</strong> {tdee} kcal
-            </p>
-          )}
-        </div>
-      </details>
+      <details open className={`${sectionStyle} ${theme === "dark" ? "bg-gray-900" : "bg-yellow-100"} rounded-xl p-4 shadow-md transition-all`}> 
+  <summary className="text-xl sm:text-2xl font-semibold cursor-pointer">🧮 Υπολογισμός BMR / TDEE</summary>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 text-sm">
+    <div>
+      <label className="block mb-1 font-medium">⚖️ Βάρος (kg)</label>
+      <input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} placeholder="π.χ. 70" className={`w-full p-2 rounded border ${inputStyle}`} />
     </div>
+
+    <div>
+      <label className="block mb-1 font-medium">📏 Ύψος (cm)</label>
+      <input type="number" value={height} onChange={(e) => setHeight(e.target.value)} placeholder="π.χ. 175" className={`w-full p-2 rounded border ${inputStyle}`} />
+    </div>
+
+    <div>
+      <label className="block mb-1 font-medium">🎂 Ηλικία</label>
+      <input type="number" value={age} onChange={(e) => setAge(e.target.value)} placeholder="π.χ. 25" className={`w-full p-2 rounded border ${inputStyle}`} />
+    </div>
+
+    <div>
+      <label className="block mb-1 font-medium">👤 Φύλο</label>
+      <select value={gender} onChange={(e) => setGender(e.target.value)} className={`w-full p-2 rounded border ${inputStyle}`}>
+        <option value="male">Άνδρας</option>
+        <option value="female">Γυναίκα</option>
+      </select>
+    </div>
+
+    <div className="sm:col-span-2">
+      <label className="block mb-1 font-medium">🏃‍♂️ Επίπεδο δραστηριότητας</label>
+      <select value={activity} onChange={(e) => setActivity(Number(e.target.value))} className={`w-full p-2 rounded border ${inputStyle}`}>
+        <option value={1.2}>Καθιστική ζωή</option>
+        <option value={1.375}>Ελαφριά δραστηριότητα</option>
+        <option value={1.55}>Μέτρια δραστηριότητα</option>
+        <option value={1.725}>Έντονη δραστηριότητα</option>
+        <option value={1.9}>Πολύ έντονη δραστηριότητα</option>
+      </select>
+    </div>
+
+    <div className="sm:col-span-2 flex flex-wrap gap-4 items-center mt-2">
+      <button onClick={calculateNutrition} className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold shadow-sm">
+        🔍 Υπολόγισε
+      </button>
+      {bmr && tdee && (
+        <p className="mt-2 text-sm">
+          <strong>BMR:</strong> {bmr} kcal | <strong>TDEE:</strong> {tdee} kcal
+        </p>
+      )}
+    </div>
+  </div>
+</details>
+</div>
 
    <div className="sticky top-0 z-50 bg-inherit py-4">
   <h1 className="text-4xl font-extrabold tracking-tight text-yellow-400 drop-shadow text-center">
@@ -869,20 +889,20 @@ const macroComparisonData = [
       </>
     )}
 
-    <PreferenceSelector
-      value={preference}
-      onChange={setPreference}
-      tooltip="Επιλογή διατροφικής προτίμησης (π.χ. χορτοφαγική, χαμηλών υδατανθράκων)"
-    />
+  <PreferenceSelector
+    value={preference}
+    onChange={setPreference}
+    tooltip="Επιλογή διατροφικής προτίμησης (π.χ. χορτοφαγική, χαμηλών υδατανθράκων)"
+  />
 
-    <button
-      onClick={handleGenerateAIPlan}
-      className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-      aria-label="Δημιουργία AI πλάνου"
-    >
-      🤖 Δημιούργησε AI Πλάνο
-    </button>
-  </div>
+  <button
+    onClick={handleGenerateAIPlan}
+    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+    aria-label="Δημιουργία AI πλάνου"
+  >
+    🤖 Δημιούργησε AI Πλάνο
+  </button>
+</div>
 </CollapsibleSection>
 
 <CollapsibleSection title="👀 Προεπισκόπηση Πλάνου">

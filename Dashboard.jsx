@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "./ThemeContext";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useUser } from "@clerk/clerk-react";
 import logo from "./assets/logo.png";
 import AdvancedMetrics from "./components/AdvancedMetrics";
@@ -23,7 +23,16 @@ function useIsPWA() {
 
 function MobileDashboard({ user }) {
   const [activeTab, setActiveTab] = useState("dashboard");
-  const tabs = ["dashboard", "metrics", "insights", "settings"];
+  const [userLevel, setUserLevel] = useState("basic"); // mock level, change as needed
+
+  const tabs = [
+    { key: "dashboard", icon: userLevel === "basic" ? "🏠" : "🔥", label: "Home", badge: 0 },
+    { key: "metrics", icon: userLevel === "basic" ? "📊" : "🧬", label: "Metrics", badge: 3 },
+    ...(userLevel !== "basic"
+      ? [{ key: "insights", icon: "🧠", label: "Insights", badge: 0 }]
+      : []),
+    { key: "settings", icon: "⚙️", label: "Settings", badge: 1 },
+  ];
 
   const tabVariants = {
     initial: { opacity: 0, x: 50 },
@@ -31,14 +40,14 @@ function MobileDashboard({ user }) {
     exit: { opacity: 0, x: -50 },
   };
 
-   const tabIndex = tabs.indexOf(activeTab);
+  const tabIndex = tabs.findIndex((t) => t.key === activeTab);
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => {
-      if (tabIndex < tabs.length - 1) setActiveTab(tabs[tabIndex + 1]);
+      if (tabIndex < tabs.length - 1) setActiveTab(tabs[tabIndex + 1].key);
     },
     onSwipedRight: () => {
-      if (tabIndex > 0) setActiveTab(tabs[tabIndex - 1]);
+      if (tabIndex > 0) setActiveTab(tabs[tabIndex - 1].key);
     },
     trackTouch: true,
     trackMouse: true,
@@ -49,9 +58,9 @@ function MobileDashboard({ user }) {
       case "dashboard":
         return <motion.div key="dashboard" variants={tabVariants} initial="initial" animate="animate" exit="exit">🏠 Dashboard view</motion.div>;
       case "metrics":
-        return <motion.div key="metrics" variants={tabVariants} initial="initial" animate="animate" exit="exit">🧪 Metrics view</motion.div>;
+        return <motion.div key="metrics" variants={tabVariants} initial="initial" animate="animate" exit="exit">📊 Metrics view</motion.div>;
       case "insights":
-        return <motion.div key="insights" variants={tabVariants} initial="initial" animate="animate" exit="exit">📊 Insights view</motion.div>;
+        return <motion.div key="insights" variants={tabVariants} initial="initial" animate="animate" exit="exit">📈 Insights view</motion.div>;
       case "settings":
         return <motion.div key="settings" variants={tabVariants} initial="initial" animate="animate" exit="exit">⚙️ Settings view</motion.div>;
       default:
@@ -59,10 +68,9 @@ function MobileDashboard({ user }) {
     }
   };
 
-
-   return (
+  return (
     <div className="min-h-screen flex flex-col justify-between bg-gradient-to-br from-zinc-800 via-zinc-900 to-black text-white">
-      <div className="p-6 text-center text-sm">
+      <div className="p-6 text-center text-sm" {...swipeHandlers}>
         <h1 className="text-xl font-bold mb-2">📱 Mobile App Mode</h1>
         <p className="mb-4">Welcome to the installed version of <strong>Health's Spot</strong>!</p>
         <AnimatePresence mode="wait">
@@ -70,20 +78,20 @@ function MobileDashboard({ user }) {
         </AnimatePresence>
       </div>
 
-      <nav className="flex justify-around items-center border-t border-zinc-700 p-2 bg-zinc-900">
+      <nav className="fixed bottom-3 left-1/2 -translate-x-1/2 bg-zinc-900/80 backdrop-blur-xl rounded-full px-4 py-2 shadow-xl flex justify-between w-[90%] max-w-sm z-50">
         {tabs.map((tab) => (
           <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`flex flex-col items-center text-xs transition-colors duration-300 ${activeTab === tab ? "text-yellow-400" : "text-white"}`}
+            key={tab.key}
+            onClick={() => setActiveTab(tab.key)}
+            className={`relative flex flex-col items-center px-3 py-1 text-xs transition duration-300 ${activeTab === tab.key ? "text-yellow-400 scale-110" : "text-white"}`}
           >
-             <span className="text-lg">
-              {tab === "dashboard" && "🏠"}
-              {tab === "metrics" && "🧪"}
-              {tab === "insights" && "📊"}
-              {tab === "settings" && "⚙️"}
-            </span>
-            <span>{tab.charAt(0).toUpperCase() + tab.slice(1)}</span>
+            <span className="text-lg">{tab.icon}</span>
+            {tab.badge > 0 && (
+              <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-[10px] rounded-full px-1.5">
+                {tab.badge}
+              </span>
+            )}
+            <span className="text-[10px] mt-0.5">{tab.label}</span>
           </button>
         ))}
       </nav>
@@ -181,8 +189,7 @@ export default function Dashboard() {
             className={`mt-4 p-3 text-xs rounded-lg shadow-lg border border-yellow-400 max-w-md z-50 relative self-center ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}
           >
             <h3 className="text-sm font-bold text-yellow-400 mb-1">💡 Tip</h3>
-            <p className="text-xs">➕ Πρόσθεσε μετρήσεις BMR, VO₂max, macros, stress. 🚀 Δες εβδομαδιαία εξέλιξη στα γραφήματα. 🦖 Τα δεδομένα σου είναι ορατά μόνο σε εσένα.
-            </p>
+            <p className="text-xs">➕ Πρόσθεσε μετρήσεις BMR, VO₂max, macros, stress. 🚀 Δες εβδομαδιαία εξέλιξη στα γραφήματα. 🦖 Τα δεδομένα σου είναι ορατά μόνο σε εσένα.</p>
             <div className="flex gap-3 mt-3">
               <button onClick={handleGotIt} className="bg-yellow-500 hover:bg-yellow-600 text-black text-xs font-bold px-2 py-1 rounded z-50">
                 ✅ Thanks
