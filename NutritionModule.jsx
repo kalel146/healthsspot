@@ -1098,27 +1098,36 @@ const macroComparisonData = [
             </ul>
 
             {/* Σύγκριση στόχων vs actual per ημέρα */}
-            {(() => {
-              const summary = getDayMacroSummary(day, customMeals, foodDB, userFoods);
-              const targetProtein = protein * weight;
-              const targetFat = fat * weight;
-              const targetCarbs = carbs;
-              const diff = {
-                protein: summary.protein - targetProtein,
-                fat: summary.fat - targetFat,
-                carbs: summary.carbs - targetCarbs,
-              };
+           <CollapsibleSection title="📊 Σύνολο Μακροθρεπτικών από Πλάνο">
+  {(() => {
+    const target = {
+      protein: protein * weight,
+      fat: fat * weight,
+      carbs: parseFloat(carbs)
+    };
+    const actual = getTotalMacrosFromPlan();
+    const delta = {
+      protein: actual.protein - target.protein,
+      fat: actual.fat - target.fat,
+      carbs: actual.carbs - target.carbs
+    };
 
-              return (
-                <div className="text-xs mt-3 p-3 rounded bg-yellow-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 space-y-1">
-                  <p>📦 Ημέρα: {summary.protein}g P / {summary.fat}g F / {summary.carbs}g C</p>
-                  <p>🎯 Στόχος: {targetProtein}g P / {targetFat}g F / {targetCarbs}g C</p>
-                  <p className="text-yellow-700 dark:text-yellow-300">
-                    ✏️ Διαφορά: {diff.protein.toFixed(1)} P / {diff.fat.toFixed(1)} F / {diff.carbs.toFixed(1)} C
-                  </p>
-                </div>
-              );
-            })()}
+    return (
+      <>
+        <div className="text-sm space-y-2">
+          <p>🎯 Στόχος: {target.protein}g πρωτεΐνη, {target.fat}g λίπος, {target.carbs}g υδατάνθρακες</p>
+          <p>📦 Πλάνο: {actual.protein}g P / {actual.fat}g F / {actual.carbs}g C</p>
+          <p className="text-yellow-700 dark:text-yellow-300">
+            ✏️ Διαφορά: {delta.protein.toFixed(1)} P / {delta.fat.toFixed(1)} F / {delta.carbs.toFixed(1)} C
+          </p>
+        </div>
+        <p className="text-yellow-700 dark:text-yellow-300">
+          🔥 Θερμίδες από το πλάνο: {getTotalKcalFromPlan(customMeals, foodDB, userFoods)} kcal
+        </p>
+      </>
+    );
+  })()}
+</CollapsibleSection>
           </div>
         </SortableItem>
       ))}
@@ -1230,41 +1239,35 @@ const macroComparisonData = [
   </Tab>
 </Tabs>
 
- <Tab label="📤 Εξαγωγή">
-    <CollapsibleSection title="📥 Κατέβασε ως PDF">
-      <button onClick={exportToPDF} className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">
-        📄 Αποθήκευση σε PDF
-      </button>
-    </CollapsibleSection>
 
-    <CollapsibleSection title="📤 Κατέβασε ως CSV">
-      <button onClick={exportToCSV} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
-        📑 Εξαγωγή σε CSV
-      </button>
-    </CollapsibleSection>
+<CollapsibleSection title="📤 Κατέβασε Πλάνο">
+  <div className="flex flex-wrap gap-2 mt-2 text-sm">
+    <button onClick={exportToPDF} className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">
+      📄 PDF
+    </button>
+    <button onClick={exportToCSV} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+      📑 CSV
+    </button>
+    <button onClick={sharePlan} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+      📤 Κοινοποίηση
+    </button>
+  </div>
+</CollapsibleSection>
 
-    {intakeHistory.length > 0 && (
-      <CollapsibleSection title="📈 Ιστορικό Θερμίδων">
-        <ResponsiveContainer width="100%" height={250}>
-          <LineChart data={intakeHistory} margin={{ top: 10, right: 20, bottom: 10, left: 0 }}>
-            <XAxis dataKey="date" stroke="#888" tick={{ fontSize: 12 }} />
-            <YAxis stroke="#888" tick={{ fontSize: 12 }} />
-            <Tooltip formatter={(value) => `${value} kcal`} />
-            <Line type="monotone" dataKey="kcal" stroke="#facc15" strokeWidth={2} dot={{ r: 4 }} />
-          </LineChart>
-        </ResponsiveContainer>
-      </CollapsibleSection>
-    )}
-
-      <TabsCompo activeTab="🥗 Γεύματα" tabs={["📊 AI Προτάσεις", "🥗 Γεύματα", "📈 Σύγκριση"]} />
-
-    <CollapsibleSection title="🔗 Κοινοποίηση Πλάνου">
-      <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Μοιράσου το πλάνο σου με άλλους ή στείλε το στον πελάτη σου.</p>
-      <button onClick={sharePlan} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-        📤 Κοινοποίησε Πλάνο
-      </button>
-    </CollapsibleSection>
-  </Tab>
+{intakeHistory.length > 0 && (
+  <CollapsibleSection title="📈 Ιστορικό Θερμίδων">
+    <ResponsiveContainer width="100%" height={250}>
+      <LineChart data={intakeHistory} margin={{ top: 10, right: 20, bottom: 10, left: 0 }}>
+        <XAxis dataKey="date" stroke="#888" tick={{ fontSize: 12 }} />
+        <YAxis stroke="#888" tick={{ fontSize: 12 }} />
+        <Tooltip formatter={(value) => `${value} kcal`} />
+        <Line type="monotone" dataKey="kcal" stroke="#facc15" strokeWidth={2} dot={{ r: 4 }} />
+      </LineChart>
+    </ResponsiveContainer>
+  </CollapsibleSection>
+)}
+ 
+     <TabsCompo activeTab="🥗 Γεύματα" tabs={["📊 AI Προτάσεις", "🥗 Γεύματα", "📈 Σύγκριση"]} />
 
   <Tab label="🥫 Τρόφιμα">
     <CollapsibleSection title="🍽️ Προσθήκη Τροφίμων">

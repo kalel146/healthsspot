@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "./ThemeContext";
 import logo from "./assets/logo.png";
@@ -20,8 +20,14 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const [minimized, setMinimized] = useState(false);
+  const [canRender, setCanRender] = useState(false);
 
-  if (location.pathname === "/") return null;
+  useEffect(() => {
+    // avoid hydration/rendering conflicts on initial HMR load
+    setCanRender(true);
+  }, []);
+
+  if (!canRender || typeof window === "undefined" || location.pathname === "/") return null;
 
   return (
     <>

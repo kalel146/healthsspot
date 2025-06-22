@@ -5,10 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useUser } from "@clerk/clerk-react";
 import logo from "./assets/logo.png";
 import AdvancedMetrics from "./components/AdvancedMetrics";
-import Particles from "react-tsparticles";
+import { useSwipeable } from "react-swipeable";
 import { tsParticles } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
-import { useSwipeable } from "react-swipeable";
+import Particles from "react-tsparticles";
+
 
 function useIsPWA() {
   const [isPWA, setIsPWA] = useState(false);
@@ -21,9 +22,35 @@ function useIsPWA() {
   return isPWA;
 }
 
+function UpgradeModal({ onClose }) {
+  return (
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        className="bg-zinc-900 text-white rounded-xl p-6 w-[90%] max-w-sm shadow-2xl"
+      >
+        <h2 className="text-xl font-bold mb-2 text-yellow-400">🚀 Upgrade Required</h2>
+        <p className="text-sm mb-4">Αυτό το feature είναι διαθέσιμο μόνο για PRO ή ELITE μέλη. Αναβάθμισε για να αποκτήσεις πλήρη πρόσβαση.</p>
+        <div className="flex justify-end gap-2">
+          <button onClick={onClose} className="px-3 py-1 text-sm rounded bg-gray-700 hover:bg-gray-600">Άκυρο</button>
+          <button onClick={() => window.open("/upgrade", "_self")} className="px-4 py-1 text-sm rounded bg-yellow-500 text-black font-semibold hover:bg-yellow-400">Αναβάθμιση</button>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
 function MobileDashboard({ user }) {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [userLevel, setUserLevel] = useState("basic"); // mock level, change as needed
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+
+    useEffect(() => {
+    const level = user?.publicMetadata?.userLevel || "basic";
+    setUserLevel(level);
+  }, [user]);
 
   const tabs = [
     { key: "dashboard", icon: userLevel === "basic" ? "🏠" : "🔥", label: "Home", badge: 0 },
@@ -60,7 +87,9 @@ function MobileDashboard({ user }) {
       case "metrics":
         return <motion.div key="metrics" variants={tabVariants} initial="initial" animate="animate" exit="exit">📊 Metrics view</motion.div>;
       case "insights":
-        return <motion.div key="insights" variants={tabVariants} initial="initial" animate="animate" exit="exit">📈 Insights view</motion.div>;
+        return userLevel === "basic"
+          ? setShowUpgradeModal(true)
+          : <motion.div key="insights" variants={tabVariants} initial="initial" animate="animate" exit="exit">📈 Insights view</motion.div>;
       case "settings":
         return <motion.div key="settings" variants={tabVariants} initial="initial" animate="animate" exit="exit">⚙️ Settings view</motion.div>;
       default:
@@ -78,11 +107,19 @@ function MobileDashboard({ user }) {
         </AnimatePresence>
       </div>
 
+      {showUpgradeModal && <UpgradeModal onClose={() => setShowUpgradeModal(false)} />}
+
       <nav className="fixed bottom-3 left-1/2 -translate-x-1/2 bg-zinc-900/80 backdrop-blur-xl rounded-full px-4 py-2 shadow-xl flex justify-between w-[90%] max-w-sm z-50">
         {tabs.map((tab) => (
           <button
             key={tab.key}
-            onClick={() => setActiveTab(tab.key)}
+            onClick={() => {
+              if (tab.key === "insights" && userLevel === "basic") {
+                setShowUpgradeModal(true);
+              } else {
+                setActiveTab(tab.key);
+              }
+            }}
             className={`relative flex flex-col items-center px-3 py-1 text-xs transition duration-300 ${activeTab === tab.key ? "text-yellow-400 scale-110" : "text-white"}`}
           >
             <span className="text-lg">{tab.icon}</span>
@@ -102,35 +139,74 @@ function MobileDashboard({ user }) {
 export default function Dashboard() {
   const navigate = useNavigate();
   const { theme } = useTheme();
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
   const isPWA = useIsPWA();
-
-  const [showTip, setShowTip] = useState(() => {
+ 
+    const [showTip, setShowTip] = useState(() => {
     return localStorage.getItem("hideDashboardTip") !== "true";
   });
+  const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
+  
+  const particlesInit = async (engine) => {
+    await loadFull(engine);
+  };
+
+  const handleGotIt = () => setShowTip(false);
+  const handleHideForever = () => {
+    localStorage.setItem("hideDashboardTip", "true");
+    setShowTip(false);
+  };
 
   useEffect(() => {
     if (window.location.pathname === "/dashboard") {
       window.history.replaceState(null, "", "/dashboard");
     }
   }, []);
-
-  const particlesInit = async (engine) => {
-    await loadFull(engine);
-  };
-
-  const handleGotIt = () => {
-    setShowTip(false);
-  };
-
-  const handleHideForever = () => {
-    localStorage.setItem("hideDashboardTip", "true");
-    setShowTip(false);
-  };
-
+  
   if (isPWA) {
     return <MobileDashboard user={user} />;
   }
+
+  if (!isLoaded) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-100 text-gray-800">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+    if (!user) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="text-center">
+          <img src={logo} alt="Health's Spot Logo" className="w-24 h-24 mb-4" />
+          <h1 className="text-2xl font-bold mb-2">Welcome to Health's Spot</h1>
+          <p className="text-gray-600">Please log in to access your dashboard.</p>
+          <button onClick={() => navigate("/sign-in")} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+            Log In
+          </button>
+        </div>
+      </div>
+    );
+  }
+ const isAdmin = user?.emailAddresses?.[0]?.emailAddress === "giannis@admin.dev";
+  const userLevel = "admin"; // 🔥 Full access always
+
+  // Default Welcome Screen for basic users
+  if (userLevel === "basic") {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-50 text-gray-800">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold mb-4">👋 Welcome, {user.firstName || "User"}!</h1>
+          <p className="text-lg">Είσαι έτοιμος να εξερευνήσεις το Health’s Spot. Αναβάθμισε για πλήρη πρόσβαση ή ξεκίνα με βασικές δυνατότητες.</p>
+          <div className="mt-6 space-x-4">
+            <button onClick={() => navigate("/programs")} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Δες τα Προγράμματα</button>
+            <button onClick={() => navigate("/upgrade")} className="px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-300">Αναβάθμιση</button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
   return (
     <motion.div
@@ -140,6 +216,15 @@ export default function Dashboard() {
       transition={{ type: "spring", stiffness: 80, damping: 20 }}
       className={`min-h-screen px-2 md:px-4 py-6 flex flex-col items-start gap-8 transition-colors duration-500 ease-in-out relative overflow-visible ${theme === "dark" ? "bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white" : "bg-gradient-to-br from-white via-slate-100 to-gray-200 text-black"}`}
     >
+         <div className="text-center mx-auto">
+        <h1 className="text-3xl font-bold text-yellow-400 drop-shadow mb-4">🎉 Welcome to your Dashboard</h1>
+        <p className="text-gray-500 dark:text-gray-300">Here comes your premium view.</p>
+      </div>
+ {/* Όλοι βλέπουν το dashboard, αλλά οι μη-admin παίρνουν το upgrade prompt */}
+      {(user?.publicMetadata?.userLevel === "basic" && !isAdmin) && (
+        <UpgradeModal onClose={() => setShowUpgradePrompt(false)} />
+      )}
+   
       {/* Particle FX */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <Particles
@@ -237,7 +322,6 @@ export default function Dashboard() {
       </div>
     </motion.div>
   );
-}
 
 function Card({ label, value, theme }) {
   return (
@@ -253,6 +337,7 @@ function Card({ label, value, theme }) {
       <div className="text-[11px] font-bold tracking-tight text-yellow-300 break-words leading-snug text-center">
         {value}
       </div>
-    </motion.div>
+       </motion.div>
   );
+}
 }

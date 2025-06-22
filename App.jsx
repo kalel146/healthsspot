@@ -1,4 +1,4 @@
-import React from "react";
+// App.jsx
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 import CardioDraggableHistory from "./CardioDraggableHistory";
@@ -16,10 +16,27 @@ import AuthPage from "./AuthPage";
 import ReportForm from "./ReportForm";
 import ProgramVault from "./TrainingHub/Components/ProgramVault";
 import PricingPage from "./TrainingHub/Components/PricingPage";
+import Onboarding from "./Onboarding";
+import { useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 
 function AppContent() {
+  const { user, isLoaded } = useUser();
+  const navigate = useNavigate();
   const location = useLocation();
-  const isLanding = location.pathname === "/";
+  const isLanding = location.pathname === "/" || location.pathname === "/sign-in" || location.pathname === "/sign-up";
+
+  useEffect(() => {
+    console.log("User is:", user);
+    console.log("Onboarded?", user?.unsafeMetadata?.isOnboarded);
+  }, [user]);
+
+  useEffect(() => {
+    if (isLoaded && user && user?.unsafeMetadata?.isOnboarded !== true && location.pathname !== "/onboarding") {
+      navigate("/onboarding");
+    }
+  }, [user, isLoaded, location.pathname]);
 
   return (
     <>
@@ -42,9 +59,10 @@ function AppContent() {
             </>
           }
         />
-<Route path="/pricing" element={<PricingPage />} />
-<Route path="/programs" element={<ProgramVault userTier="Free" />} />
-      <Route path="/cardio-history" element={<CardioDraggableHistory />} />
+        <Route path="/onboarding" element={<Onboarding />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/programs" element={<ProgramVault userTier="Free" />} />
+        <Route path="/cardio-history" element={<CardioDraggableHistory />} />
         <Route path="/training" element={<StrengthModule />} />
         <Route path="/cardio" element={<CardioModule />} />
         <Route path="/nutrition" element={<NutritionModule />} />
@@ -61,7 +79,7 @@ function AppContent() {
 export default function App() {
   return (
     <Router>
-        <AppContent />
+      <AppContent />
     </Router>
   );
 }

@@ -1,7 +1,12 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react-swc";
 import { VitePWA } from "vite-plugin-pwa";
-import path from 'path';
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Για __dirname σε ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [
@@ -29,10 +34,10 @@ export default defineConfig({
         ],
       },
       devOptions: {
-        navigateFallback: '/', 
+        navigateFallback: '/',
       },
       workbox: {
-        maximumFileSizeToCacheInBytes: 5000000 // ✅ 5MB όριο (λύση στο πρόβλημα)
+        maximumFileSizeToCacheInBytes: 5000000,
       },
     }),
   ],
@@ -40,5 +45,14 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './'),
     },
+  },
+  server: {
+    port: 5173,
+    strictPort: true,
+    fs: {
+      strict: false,
+    },
+    // για routing που σπάει σε refresh
+    historyApiFallback: true,
   },
 });
