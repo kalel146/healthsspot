@@ -19,13 +19,15 @@ import PricingPage from "./TrainingHub/Components/PricingPage";
 import Onboarding from "./Onboarding";
 import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Layout from "./Layout";
 
 function AppContent() {
   const { user, isLoaded } = useUser();
   const navigate = useNavigate();
   const location = useLocation();
   const isLanding = location.pathname === "/" || location.pathname === "/sign-in" || location.pathname === "/sign-up";
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 1024);
 
   useEffect(() => {
     console.log("User is:", user);
@@ -38,41 +40,36 @@ function AppContent() {
     }
   }, [user, isLoaded, location.pathname]);
 
-  return (
-    <>
-      {!isLanding && <Navbar />}
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/sign-in" element={<AuthPage />} />
-        <Route path="/sign-up" element={<AuthPage />} />
+   useEffect(() => {
+    const handleResize = () => {
+      setSidebarOpen(window.innerWidth >= 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-        <Route
-          path="/dashboard"
-          element={
-            <>
-              <SignedIn>
-                <Dashboard />
-              </SignedIn>
-              <SignedOut>
-                <RedirectToSignIn />
-              </SignedOut>
-            </>
-          }
-        />
-        <Route path="/onboarding" element={<Onboarding />} />
-        <Route path="/pricing" element={<PricingPage />} />
-        <Route path="/programs" element={<ProgramVault userTier="Free" />} />
-        <Route path="/cardio-history" element={<CardioDraggableHistory />} />
-        <Route path="/training" element={<StrengthModule />} />
-        <Route path="/cardio" element={<CardioModule />} />
-        <Route path="/nutrition" element={<NutritionModule />} />
-        <Route path="/recovery" element={<RecoveryModule />} />
-        <Route path="/export" element={<ExportModule />} />
-        <Route path="/cloud" element={<CloudBackupIntegration />} />
-        <Route path="/history" element={<HistorySystem />} />
-        <Route path="/report" element={<ReportForm />} />
-      </Routes>
-    </>
+  return (
+      <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/sign-in" element={<AuthPage />} />
+      <Route path="/sign-up" element={<AuthPage />} />
+      <Route path="/onboarding" element={<Onboarding />} />
+
+      <Route path="/" element={<Layout isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />}>
+        <Route path="dashboard" element={<SignedIn><Dashboard /></SignedIn>} />
+        <Route path="pricing" element={<PricingPage />} />
+        <Route path="programs" element={<ProgramVault userTier="Free" />} />
+        <Route path="cardio-history" element={<CardioDraggableHistory />} />
+        <Route path="training" element={<StrengthModule />} />
+        <Route path="cardio" element={<CardioModule />} />
+        <Route path="nutrition" element={<NutritionModule />} />
+        <Route path="recovery" element={<RecoveryModule />} />
+        <Route path="export" element={<ExportModule />} />
+        <Route path="cloud" element={<CloudBackupIntegration />} />
+        <Route path="history" element={<HistorySystem />} />
+        <Route path="report" element={<ReportForm />} />
+      </Route>
+    </Routes>
   );
 }
 

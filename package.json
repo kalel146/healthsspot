@@ -17,8 +17,8 @@
     "react": "^19.1.0",
     "react-calendar": "^6.0.0",
     "react-dom": "^19.1.0",
+    "react-head": "^3.4.2",
     "react-helmet": "^6.1.0",
-    "react-helmet-async": "^2.0.5",
     "react-hot-toast": "^2.5.2",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.2",
@@ -35,6 +35,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "vercel-build": "npm install --legacy-peer-deps && vite build",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",

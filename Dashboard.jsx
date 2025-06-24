@@ -9,7 +9,7 @@ import { useSwipeable } from "react-swipeable";
 import { tsParticles } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 import Particles from "react-tsparticles";
-
+import { Title, Meta } from 'react-head';
 
 function useIsPWA() {
   const [isPWA, setIsPWA] = useState(false);
@@ -137,6 +137,7 @@ function MobileDashboard({ user }) {
 }
 
 export default function Dashboard() {
+
   const navigate = useNavigate();
   const { theme } = useTheme();
   const { user, isLoaded } = useUser();
@@ -156,6 +157,22 @@ export default function Dashboard() {
     localStorage.setItem("hideDashboardTip", "true");
     setShowTip(false);
   };
+
+
+ useEffect(() => {
+  document.title = "Health's Spot | Dashboard";
+
+  const meta = document.createElement("meta");
+  meta.name = "description";
+  meta.content = "Welcome to your health dashboard with metrics, insights and progress.";
+
+  document.head.appendChild(meta);
+
+  return () => {
+    document.head.removeChild(meta); // καθαρίζει όταν φεύγεις από τη σελίδα
+  };
+}, []);
+
 
   useEffect(() => {
     if (window.location.pathname === "/dashboard") {

@@ -14,85 +14,108 @@ const modules = [
   { icon: "📄", name: "Export", path: "/export" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ isOpen, onClose }) {
   const location = useLocation();
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
-  const [minimized, setMinimized] = useState(false);
   const [canRender, setCanRender] = useState(false);
 
-  useEffect(() => {
-    // avoid hydration/rendering conflicts on initial HMR load
-    setCanRender(true);
-  }, []);
+  // keep the drawer open/closed in sync with parent prop
+  useEffect(() => setOpen(isOpen), [isOpen]);
+  useEffect(() => setCanRender(true), []);
 
   if (!canRender || typeof window === "undefined" || location.pathname === "/") return null;
 
+  const drawerClasses = open
+    ? `flex flex-col fixed top-0 left-0 z-50 w-64 max-w-[75%] h-screen p-4 pt-20 space-y-4 shadow-2xl
+        ${theme === "dark" ? "bg-gray-900/95 backdrop-blur-md" : "bg-white/90 backdrop-blur-md"}`
+    : "hidden";
+
   return (
     <>
-      {/* Toggle Button for Mobile */}
+      {/* ☰ Toggle Button (mobile + tablets) */}
       <button
-        className="fixed top-4 left-4 z-[60] p-2 rounded bg-yellow-500 text-black md:hidden shadow"
-        onClick={() => setOpen(!open)}
+        className="fixed top-4 left-4 z-[60] p-2 rounded bg-yellow-500 text-black lg:hidden shadow-md"
+        onClick={() => {
+          setOpen(!open);
+          if (onClose) onClose(!open);
+        }}
       >
         {open ? <HiX size={24} /> : <HiMenu size={24} />}
       </button>
 
-      {/* Backdrop on Mobile */}
+      {/* Dark backdrop when drawer open (mobile) */}
       {open && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-40 z-40 md:hidden"
-          onClick={() => setOpen(false)}
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+          onClick={() => {
+            setOpen(false);
+            if (onClose) onClose(false);
+          }}
         />
       )}
 
-      {/* Sidebar */}
+      {/* Sidebar (desktop & mobile drawer) */}
       <div
-        className={`fixed top-0 left-0 h-screen z-50 flex flex-col items-center py-4 border-r shadow-md transition-all duration-300
-        ${theme === "dark" ? "bg-black text-white border-gray-700" : "bg-white text-black border-gray-200"}
-        ${open ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static md:flex md:flex-col
-        ${minimized ? "w-16 px-2" : "w-48 px-4"}`}
+        className={`hidden lg:flex flex-col fixed top-0 left-0 w-64 h-screen z-40 p-4 pt-6 shadow-2xl
+        ${theme === "dark" ? "bg-gray-900/95" : "bg-white/90"} backdrop-blur-md`}
       >
-        {/* Logo & Minimize */}
         <div
+          className="flex items-center gap-2 mb-6 cursor-pointer"
           onClick={() => navigate("/")}
-          className={`flex items-center gap-2 cursor-pointer mb-6 ${minimized ? "justify-center" : "justify-start"}`}
         >
-          <img src={logo} alt="logo" className="w-8 h-8 rounded" />
-          {!minimized && <span className="text-yellow-400 font-bold text-lg">Health's Spot</span>}
+          <img src={logo} alt="logo" className="w-10 h-10 rounded" />
+          <span className="text-yellow-400 font-bold text-lg">Health's Spot</span>
         </div>
-
-        {/* Toggle Minimize */}
-        <button
-          onClick={() => setMinimized(!minimized)}
-          className="mb-6 text-xs text-yellow-400 hover:text-yellow-300"
-        >
-          {minimized ? "➡️" : "⬅️"}
-        </button>
-
-        {/* Modules */}
-        <div className="flex flex-col gap-3 w-full">
-          {modules.map((mod) => (
-            <button
-              key={mod.name}
-              onClick={() => {
-                navigate(mod.path);
-                setOpen(false);
-              }}
-              className="flex items-center gap-2 text-sm font-medium px-3 py-2 rounded bg-gray-800 hover:bg-gray-700 text-white shadow w-full text-left"
-            >
-              <span className="text-lg text-center w-full">{mod.icon}</span>
-              {!minimized && <span>{mod.name}</span>}
-            </button>
-          ))}
-        </div>
+        {modules.map((mod) => (
+          <button
+            key={mod.name}
+            onClick={() => navigate(mod.path)}
+            className="flex items-center gap-2 text-base font-medium px-3 py-2 mb-2 rounded bg-gray-800 text-white hover:bg-gray-700 shadow"
+          >
+            <span className="text-lg">{mod.icon}</span>
+            <span>{mod.name}</span>
+          </button>
+        ))}
 
         <button
           onClick={toggleTheme}
-          className={`mt-auto text-sm px-3 py-2 rounded bg-yellow-500 text-black hover:bg-yellow-600 font-semibold w-full ${minimized ? "text-center text-xs" : ""}`}
+          className="mt-auto text-sm px-3 py-2 rounded bg-yellow-500 text-black hover:bg-yellow-600 font-semibold"
         >
-          {minimized ? (theme === "dark" ? "☀" : "🌙") : theme === "dark" ? "☀ Light Mode" : "🌙 Dark Mode"}
+          {theme === "dark" ? "☀ Light Mode" : "🌙 Dark Mode"}
+        </button>
+      </div>
+
+      {/* Drawer (mobile only) */}
+      <div className={drawerClasses}>
+        <div
+          className="flex items-center gap-2 mb-6 cursor-pointer"
+          onClick={() => navigate("/")}
+        >
+          <img src={logo} alt="logo" className="w-10 h-10 rounded" />
+          <span className="text-yellow-400 font-bold text-lg">Health's Spot</span>
+        </div>
+        {modules.map((mod) => (
+          <button
+            key={mod.name}
+            onClick={() => {
+              navigate(mod.path);
+              setOpen(false);
+              if (onClose) onClose(false);
+            }}
+            className="flex items-center gap-2 text-base font-medium px-3 py-2 mb-2 rounded bg-gray-800 text-white hover:bg-gray-700 shadow"
+          >
+            <span className="text-lg">{mod.icon}</span>
+            <span>{mod.name}</span>
+          </button>
+        ))}
+
+        <button
+          onClick={toggleTheme}
+          className="mt-auto text-sm px-3 py-2 rounded bg-yellow-500 text-black hover:bg-yellow-600 font-semibold"
+        >
+          {theme === "dark" ? "☀ Light Mode" : "🌙 Dark Mode"}
         </button>
       </div>
     </>
