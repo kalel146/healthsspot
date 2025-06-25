@@ -12,34 +12,35 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: "autoUpdate",
-      manifest: {
-        name: "Health's Spot",
-        short_name: "HealthSpot",
-        start_url: "/",
-        display: "standalone",
-        background_color: "#000000",
-        theme_color: "#f97316",
-        icons: [
-          {
-            src: "/logo-192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "/logo-512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-        ],
+  registerType: "autoUpdate",
+  manifest: {
+    name: "Health's Spot",
+    short_name: "HealthSpot",
+    start_url: "/",
+    display: "standalone",
+    background_color: "#000000",
+    theme_color: "#f97316",
+    icons: [
+      {
+        src: "/logo-192.png",
+        sizes: "192x192",
+        type: "image/png",
       },
-      devOptions: {
-        navigateFallback: '/',
+      {
+        src: "/logo-512.png",
+        sizes: "512x512",
+        type: "image/png",
       },
-      workbox: {
-        maximumFileSizeToCacheInBytes: 5000000,
-      },
-    }),
+    ],
+  },
+  devOptions: {
+    enabled: false, // ✅ απαραίτητο για production build στο Vercel
+    navigateFallback: '/',
+  },
+  workbox: {
+    maximumFileSizeToCacheInBytes: 5000000,
+  },
+}),
   ],
   resolve: {
     alias: {
