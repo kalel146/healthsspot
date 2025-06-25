@@ -10,10 +10,18 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [
-    react(),
+    // ⬇⬇  fastRefresh false σε production  ⬇⬇
+    react({
+      fastRefresh: process.env.NODE_ENV !== 'production'
+    }),
+
     VitePWA({
-  registerType: "autoUpdate",
-  manifest: {
+      registerType: 'autoUpdate',
+      devOptions: {
+        enabled: false,      // ΠΟΤΕ enabled στο build!
+        navigateFallback: '/',
+      },
+      manifest: {
     name: "Health's Spot",
     short_name: "HealthSpot",
     start_url: "/",
@@ -33,12 +41,9 @@ export default defineConfig({
       },
     ],
   },
-  devOptions: {
-    enabled: false, // ✅ απαραίτητο για production build στο Vercel
-    navigateFallback: '/',
-  },
-  workbox: {
-    maximumFileSizeToCacheInBytes: 5000000,
+
+        workbox: { maximumFileSizeToCacheInBytes: 5_000_000,
+
   },
 }),
   ],
