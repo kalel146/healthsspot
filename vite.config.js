@@ -7,16 +7,17 @@ import { fileURLToPath } from "url";
 // Για __dirname σε ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const isVercel = process.env.VERCEL === "1";
+
 
 export default defineConfig({
   plugins: [
-    // ⬇⬇  fastRefresh false σε production  ⬇⬇
     react({
-      fastRefresh: process.env.NODE_ENV !== 'production'
+      fastRefresh: !isVercel,
     }),
 
-    VitePWA({
-      registerType: 'autoUpdate',
+   VitePWA({
+            registerType: "autoUpdate",
       devOptions: {
         enabled: false,      // ΠΟΤΕ enabled στο build!
         navigateFallback: '/',
