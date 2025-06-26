@@ -1,78 +1,102 @@
 // App.jsx
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
-import CardioDraggableHistory from "./CardioDraggableHistory";
-import LandingPage from "./LandingPage";
-import Dashboard from "./Dashboard";
-import StrengthModule from "./StrengthModule";
-import CardioModule from "./CardioModule";
-import NutritionModule from "./NutritionModule";
-import RecoveryModule from "./RecoveryModule";
-import ExportModule from "./ExportModule";
-import CloudBackupIntegration from "./CloudBackupIntegration";
-import HistorySystem from "./HistorySystem";
-import Navbar from "./Navbar";
-import AuthPage from "./AuthPage";
-import ReportForm from "./ReportForm";
-import ProgramVault from "./TrainingHub/Components/ProgramVault";
-import PricingPage from "./TrainingHub/Components/PricingPage";
-import Onboarding from "./Onboarding";
-import { useUser } from "@clerk/clerk-react";
-import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { SignedIn, SignedOut, RedirectToSignIn, useUser } from "@clerk/clerk-react";
+
+// Pages / modules
+import LandingPage               from "./LandingPage";
+import Dashboard                 from "./Dashboard";
+import Onboarding                from "./Onboarding";
+import PricingPage               from "./TrainingHub/Components/PricingPage";
+import ProgramVault             from "./TrainingHub/Components/ProgramVault";
+import StrengthModule            from "./StrengthModule";
+import CardioModule              from "./CardioModule";
+import NutritionModule           from "./NutritionModule";
+import RecoveryModule            from "./RecoveryModule";
+import ExportModule              from "./ExportModule";
+import CloudBackupIntegration    from "./CloudBackupIntegration";
+import HistorySystem             from "./HistorySystem";
+import CardioDraggableHistory    from "./CardioDraggableHistory";
+import ReportForm                from "./ReportForm";
+import AuthPage                  from "./AuthPage";
+
+// Shell
 import Layout from "./Layout";
 
 function AppContent() {
+  // Clerk
   const { user, isLoaded } = useUser();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const isLanding = location.pathname === "/" || location.pathname === "/sign-in" || location.pathname === "/sign-up";
+
+  // Router helpers
+  const navigate   = useNavigate();
+  const location   = useLocation();
+
+  // Sidebar state (auto-expand ≥ lg)
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 1024);
-
   useEffect(() => {
-    console.log("User is:", user);
-    console.log("Onboarded?", user?.unsafeMetadata?.isOnboarded);
-  }, [user]);
-
-  useEffect(() => {
-    if (isLoaded && user && user?.unsafeMetadata?.isOnboarded !== true && location.pathname !== "/onboarding") {
-      navigate("/onboarding");
-    }
-  }, [user, isLoaded, location.pathname]);
-
-   useEffect(() => {
-    const handleResize = () => {
-      setSidebarOpen(window.innerWidth >= 1024);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const onResize = () => setSidebarOpen(window.innerWidth >= 1024);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // Onboarding guard
+  useEffect(() => {
+    if (
+      isLoaded &&
+      user &&
+      user.unsafeMetadata?.isOnboarded !== true &&
+      location.pathname !== "/onboarding"
+    ) {
+      navigate("/onboarding");
+    }
+  }, [isLoaded, user, location.pathname]);
+
+  // --- ROUTES ------------------------------------------------------------
   return (
-      <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/sign-in" element={<AuthPage />} />
-      <Route path="/sign-up" element={<AuthPage />} />
+    <Routes>
+      {/* Public auth screens – χωρίς Layout / Navbar */}
+      <Route path="/sign-in"  element={<AuthPage />} />
+      <Route path="/sign-up"  element={<AuthPage />} />
       <Route path="/onboarding" element={<Onboarding />} />
 
-      <Route path="/" element={<Layout isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />}>
-        <Route path="dashboard" element={<SignedIn><Dashboard /></SignedIn>} />
-        <Route path="pricing" element={<PricingPage />} />
-        <Route path="programs" element={<ProgramVault userTier="Free" />} />
-        <Route path="cardio-history" element={<CardioDraggableHistory />} />
-        <Route path="training" element={<StrengthModule />} />
-        <Route path="cardio" element={<CardioModule />} />
-        <Route path="nutrition" element={<NutritionModule />} />
-        <Route path="recovery" element={<RecoveryModule />} />
-        <Route path="export" element={<ExportModule />} />
-        <Route path="cloud" element={<CloudBackupIntegration />} />
-        <Route path="history" element={<HistorySystem />} />
-        <Route path="report" element={<ReportForm />} />
+      {/* Όλα τα υπόλοιπα περνάνε από το Layout */}
+      <Route element={<Layout isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />}>
+        {/* "/" => LandingPage (χωρίς sidebar σε mobile, thanks to Layout) */}
+        <Route index element={<LandingPage />} />
+
+        {/* Dashboard προστατεύεται από Clerk */}
+        <Route
+          path="dashboard"
+          element={
+            <>
+              <SignedIn>
+                <Dashboard />
+              </SignedIn>
+              <SignedOut>
+                <RedirectToSignIn />
+              </SignedOut>
+            </>
+          }
+        />
+
+        {/* Υπόλοιπα modules */}
+        <Route path="pricing"          element={<PricingPage />} />
+        <Route path="programs"         element={<ProgramVault userTier="Free" />} />
+        <Route path="training"         element={<StrengthModule />} />
+        <Route path="cardio"           element={<CardioModule />} />
+        <Route path="cardio-history"   element={<CardioDraggableHistory />} />
+        <Route path="nutrition"        element={<NutritionModule />} />
+        <Route path="recovery"         element={<RecoveryModule />} />
+        <Route path="export"           element={<ExportModule />} />
+        <Route path="cloud"            element={<CloudBackupIntegration />} />
+        <Route path="history"          element={<HistorySystem />} />
+        <Route path="report"           element={<ReportForm />} />
       </Route>
     </Routes>
   );
 }
 
+// --- APP ROOT ------------------------------------------------------------
 export default function App() {
   return (
     <Router>

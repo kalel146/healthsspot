@@ -21,7 +21,6 @@ export default function Navbar({ isOpen, onClose }) {
   const [open, setOpen] = useState(false);
   const [canRender, setCanRender] = useState(false);
 
-  // keep the drawer open/closed in sync with parent prop
   useEffect(() => setOpen(isOpen), [isOpen]);
   useEffect(() => setCanRender(true), []);
 
@@ -56,7 +55,7 @@ export default function Navbar({ isOpen, onClose }) {
         />
       )}
 
-      {/* Sidebar (desktop & mobile drawer) */}
+      {/* Sidebar (desktop) */}
       <div
         className={`hidden lg:flex flex-col fixed top-0 left-0 w-64 h-screen z-40 p-4 pt-6 shadow-2xl
         ${theme === "dark" ? "bg-gray-900/95" : "bg-white/90"} backdrop-blur-md`}
@@ -66,16 +65,20 @@ export default function Navbar({ isOpen, onClose }) {
           onClick={() => navigate("/")}
         >
           <img src={logo} alt="logo" className="w-10 h-10 rounded" />
-          <span className="text-yellow-400 font-bold text-lg">Health's Spot</span>
+          <span className="text-yellow-400 font-bold text-lg whitespace-nowrap">Health's Spot</span>
         </div>
-        {modules.map((mod) => (
+         {modules.map((mod) => (
           <button
             key={mod.name}
-            onClick={() => navigate(mod.path)}
+            onClick={() => {
+              navigate(mod.path);
+              setOpen(false);
+              if (onClose) onClose(false);
+            }}
             className="flex items-center gap-2 text-base font-medium px-3 py-2 mb-2 rounded bg-gray-800 text-white hover:bg-gray-700 shadow"
           >
             <span className="text-lg">{mod.icon}</span>
-            <span>{mod.name}</span>
+            <span className="whitespace-nowrap">{mod.name}</span>
           </button>
         ))}
 
@@ -94,7 +97,7 @@ export default function Navbar({ isOpen, onClose }) {
           onClick={() => navigate("/")}
         >
           <img src={logo} alt="logo" className="w-10 h-10 rounded" />
-          <span className="text-yellow-400 font-bold text-lg">Health's Spot</span>
+          <span className="text-yellow-400 font-bold text-lg whitespace-nowrap">Health's Spot</span>
         </div>
         {modules.map((mod) => (
           <button
@@ -107,7 +110,7 @@ export default function Navbar({ isOpen, onClose }) {
             className="flex items-center gap-2 text-base font-medium px-3 py-2 mb-2 rounded bg-gray-800 text-white hover:bg-gray-700 shadow"
           >
             <span className="text-lg">{mod.icon}</span>
-            <span>{mod.name}</span>
+            <span className="whitespace-nowrap">{mod.name}</span>
           </button>
         ))}
 
