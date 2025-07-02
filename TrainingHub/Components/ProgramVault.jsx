@@ -7,6 +7,7 @@ import SubcategoryButtonLoader from "./SubcategoryButtonLoader";
 import HoverPreviewEnhancer from "./HoverPreviewEnhancer";
 import { useLocation, useNavigate } from "react-router-dom";
 
+/* -------------------- helpers -------------------- */
 const useTierFilter = (defaultTier = "Free") => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,12 +20,47 @@ const useTierFilter = (defaultTier = "Free") => {
   return { tier, setTier };
 };
 
+
+// Mock AI hook – fallback if API fails
+const useAIPromptGenerator = () => {
+  const [descriptions, setDescriptions] = useState({});
+  const generateDescription = async (subcategory) => {
+    if (descriptions[subcategory]) return;
+
+    try {
+      const response = await fetch("/api/generate-description", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subcategory }),
+      });
+
+      if (!response.ok) throw new Error("API Failed");
+
+      const result = await response.json();
+      setDescriptions((prev) => ({ ...prev, [subcategory]: result }));
+    } catch (error) {
+      console.error("AI Error (fallback activated)", error);
+      // Fallback with mock
+      setDescriptions((prev) => ({
+        ...prev,
+        [subcategory]: {
+          text: `💡 Το πρόγραμμα "${subcategory}" ενισχύει φυσική κατάσταση με έμφαση σε τεχνική, πρόοδο και συνέπεια.`,
+          tier: "Silver",
+        },
+      }));
+    }
+  };
+  return { descriptions, generateDescription };
+};
+
+
+/* -------------------- static data -------------------- */
 const programFiles = [
   "gymPowerlifting.json",
   "indoorHomeBeginner.json",
   "outdoorTrackAndField.json",
   "athletismBasketball.json",
-  "mobilityStretching.json"
+  "mobilityStretching.json",
 ];
 
 const categoryMap = {
@@ -43,6 +79,7 @@ const aiDescriptions = {
   Stretching: "Διατάσεις για βελτίωση εύρους κίνησης και πρόληψη τραυματισμών."
 };
 
+/* -------------------- main component -------------------- */
 export default function ProgramVault() {
   const [programs, setPrograms] = useState([]);
   const [filteredCategory, setFilteredCategory] = useState("All");
@@ -50,36 +87,31 @@ export default function ProgramVault() {
   const { theme } = useTheme();
   const { tier, setTier } = useTierFilter();
   const [selectedSub, setSelectedSub] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const { descriptions, generateDescription } = useAIPromptGenerator();
 
+  /* ---------- fetch programs ---------- */
   useEffect(() => {
-    Promise.all(
-      programFiles.map((file) =>
-        fetch(`/ProgramData/${file}`).then((res) => res.json())
-      )
-    )
-      .then((data) => {
-        setPrograms(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error loading programs:", error);
-        setLoading(false);
-      });
+    Promise.all(programFiles.map((f) => fetch(`/ProgramData/${f}`).then((r) => r.json())))
+      .then((data) => setPrograms(data))
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, []);
 
+  /* ---------- derived ---------- */
   const categories = ["All", "Gym", "Indoor", "Outdoor", "Athletism", "Mobility"];
+  const filteredPrograms = filteredCategory === "All" ? programs : programs.filter((_, i) => categoryMap[filteredCategory]?.includes(programFiles[i]));
 
-  const filteredPrograms =
-    filteredCategory === "All"
-      ? programs
-      : programs.filter((_, index) =>
-          categoryMap[filteredCategory]?.includes(programFiles[index])
-        );
-
-   const handleSubClick = (sub) => {
+  /* ---------- handlers ---------- */
+  const handleSubClick = (sub) => {
     setSelectedSub(sub);
+    generateDescription(sub);
   };
 
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+
+  /* ---------- render ---------- */
   return (
     <div
       className={`py-2 px-1 sm:px-2 min-h-screen transition-colors duration-300 text-[11px] sm:text-[12px] ${
@@ -154,15 +186,35 @@ export default function ProgramVault() {
         ))}
       </div>
 
+      {/* selected description card */}
       {selectedSub && (
-        <div className="mb-4 p-2 rounded border shadow max-w-md mx-auto bg-white dark:bg-zinc-800">
+        <div className="mb-3 p-2 rounded border shadow max-w-md mx-auto bg-white dark:bg-zinc-800">
           <h2 className="text-xs font-semibold mb-1">🔍 {selectedSub}</h2>
-          <p className="text-[10px] text-zinc-600 dark:text-zinc-300">
-            {aiDescriptions[selectedSub] || "Περιγραφή υπό κατασκευή για αυτή την υποενότητα..."}
-          </p>
+          <p className="text-[10px] text-zinc-600 dark:text-zinc-300 mb-1">{descriptions[selectedSub]?.text || "Φόρτωση περιγραφής..."}</p>
+          {descriptions[selectedSub]?.tier && (
+            <p className="text-[10px] italic text-zinc-500 dark:text-zinc-400">🎯 Προτεινόμενο Tier: {descriptions[selectedSub].tier}</p>
+          )}
+          <button onClick={openModal} className="mt-1 text-[10px] px-2 py-0.5 rounded bg-indigo-600 text-white hover:bg-indigo-700">💡 Προτεινόμενο πρόγραμμα</button>
         </div>
       )}
 
+      {/* modal */}
+      {showModal && selectedSub && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-zinc-900 rounded p-4 w-[90%] max-w-md shadow-xl relative">
+            <button onClick={closeModal} className="absolute top-2 right-2 text-xl leading-none">×</button>
+            <img src={`/StyledProgramImages/${selectedSub}.jpg`} alt={selectedSub} className="w-full h-32 object-cover rounded mb-2" onError={(e) => { e.target.onerror = null; e.target.src = "/placeholder.jpg"; }} />
+            <h3 className="text-sm font-bold mb-1">{selectedSub}</h3>
+            <p className="text-[10px] mb-2">{descriptions[selectedSub]?.text || "Φόρτωση περιγραφής..."}</p>
+            {descriptions[selectedSub]?.tier && <p className="text-[10px] mb-2">🎖️ Συνιστώμενο Tier: <b>{descriptions[selectedSub].tier}</b></p>}
+            {descriptions[selectedSub]?.tier && (
+              tier === descriptions[selectedSub].tier ? <p className="text-[10px] text-green-600">Έχεις ήδη το κατάλληλο tier!</p> : <p className="text-[10px] text-red-600">Αναβάθμισε σε <b>{descriptions[selectedSub].tier}</b> για πλήρη πρόσβαση.</p>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* program cards filtered */}
       <div className="space-y-4 px-2">
         {categories.map((cat) => {
           const subs = categoryMap[cat]?.filter?.((e) => !e.includes(".json")) || [];

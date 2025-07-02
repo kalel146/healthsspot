@@ -54,5 +54,8 @@ export default defineConfig({
     strictPort: true,
     fs: { strict: false },
     historyApiFallback: true,
+    proxy: {
+      "/api": "http://localhost:3001"
+    }
   },
 });

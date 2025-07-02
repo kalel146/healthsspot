@@ -20,16 +20,16 @@ export default function Navbar({ isOpen, onClose }) {
   const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const [canRender, setCanRender] = useState(false);
+  
 
   useEffect(() => setOpen(isOpen), [isOpen]);
   useEffect(() => setCanRender(true), []);
 
   if (!canRender || typeof window === "undefined" || location.pathname === "/") return null;
 
-  const drawerClasses = open
-    ? `flex flex-col fixed top-0 left-0 z-50 w-64 max-w-[75%] h-screen p-4 pt-20 space-y-4 shadow-2xl
-        ${theme === "dark" ? "bg-gray-900/95 backdrop-blur-md" : "bg-white/90 backdrop-blur-md"}`
-    : "hidden";
+  const drawerClasses = `fixed top-0 left-0 z-50 w-64 max-w-[75%] h-screen p-4 pt-20 space-y-4 shadow-2xl overflow-y-auto transform transition-transform duration-300 ease-in-out
+  ${theme === "dark" ? "bg-gray-900/95 backdrop-blur-md" : "bg-white/90 backdrop-blur-md"}
+  ${open ? "translate-x-0" : "-translate-x-full"} lg:hidden`;
 
   return (
     <>
@@ -57,7 +57,7 @@ export default function Navbar({ isOpen, onClose }) {
 
       {/* Sidebar (desktop) */}
       <div
-        className={`hidden lg:flex flex-col fixed top-0 left-0 w-64 h-screen z-40 p-4 pt-6 shadow-2xl
+        className={`hidden lg:flex flex-col fixed top-0 left-0 w-64 h-screen z-40 p-4 pt-6 shadow-2xl overflow-y-auto
         ${theme === "dark" ? "bg-gray-900/95" : "bg-white/90"} backdrop-blur-md`}
       >
         <div
@@ -77,7 +77,7 @@ export default function Navbar({ isOpen, onClose }) {
             }}
             className="flex items-center gap-2 text-base font-medium px-3 py-2 mb-2 rounded bg-gray-800 text-white hover:bg-gray-700 shadow"
           >
-            <span className="text-lg">{mod.icon}</span>
+            <span className="text-lg whitespace-nowrap">{mod.icon}</span>
             <span className="whitespace-nowrap">{mod.name}</span>
           </button>
         ))}
@@ -109,7 +109,7 @@ export default function Navbar({ isOpen, onClose }) {
             }}
             className="flex items-center gap-2 text-base font-medium px-3 py-2 mb-2 rounded bg-gray-800 text-white hover:bg-gray-700 shadow"
           >
-            <span className="text-lg">{mod.icon}</span>
+            <span className="text-lg whitespace-nowrap">{mod.icon}</span>
             <span className="whitespace-nowrap">{mod.name}</span>
           </button>
         ))}
