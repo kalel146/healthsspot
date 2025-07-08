@@ -1,6 +1,8 @@
 {
+    "filename": "gymPowerlifting.json",
   "title": "Powerlifting Phase 1",
   "level": "Intermediate",
+    "category": "gym",
   "goal": "Increase Maximum Strength (Squat, Bench, Deadlift)",
   "duration": "6 Weeks",
   "accessTier": "Silver",

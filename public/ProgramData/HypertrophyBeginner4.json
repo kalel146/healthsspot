@@ -1,0 +1,78 @@
+{
+  "filename": "HypertrophyBeginner4.json",
+   "title": "Hypertrophy Beginner - Phase 4",
+  "accessTier": "Free",
+  "category": "gym",
+  "duration": "5 εβδομάδες",
+  "level": "beginner",
+  "duration_weeks": 8,
+  "description": "Progression to advanced split structures: antagonist pairing, time under tension, high-volume with controlled variation.",
+  "schedule": [
+    {
+      "day": "Monday",
+      "type": "Push (Chest + Triceps)",
+      "exercises": [
+        { "name": "Incline Barbell Press", "sets": 4, "reps": "8-10", "gif": "/gifs/inclinepress.gif", "tips": "Controlled descent, full contraction." },
+        { "name": "Flat Dumbbell Press", "sets": 3, "reps": "10", "gif": "/gifs/flatdbpress.gif", "tips": "Neutral grip for shoulder comfort." },
+        { "name": "Dips (Assisted if needed)", "sets": 2, "reps": "Max", "gif": "/gifs/dips.gif", "tips": "Chest forward, elbows back." },
+        { "name": "Overhead Cable Extension", "sets": 3, "reps": "12-15", "gif": "/gifs/overheadcabletriceps.gif", "tips": "Keep elbows locked in place." }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "type": "Pull (Back + Biceps)",
+      "exercises": [
+        { "name": "Deadlifts", "sets": 4, "reps": "5", "gif": "/gifs/deadlift.gif", "tips": "Flat back, bar close to body." },
+        { "name": "Lat Pulldown (Wide)", "sets": 3, "reps": "10", "gif": "/gifs/latpulldown.gif", "tips": "Pull elbows down, not back." },
+        { "name": "EZ Bar Curl", "sets": 3, "reps": "12", "gif": "/gifs/ezcurl.gif", "tips": "Slow eccentric, full extension." },
+        { "name": "Reverse Fly (Cable or Dumbbell)", "sets": 2, "reps": "15", "gif": "/gifs/reversefly.gif", "tips": "Control, squeeze scapulae." }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "type": "Rest or Mobility/Cardio",
+      "notes": "Optional active recovery: 20-30min brisk walk or mobility work."
+    },
+    {
+      "day": "Thursday",
+      "type": "Legs (Quads + Glutes Focus)",
+      "exercises": [
+        { "name": "Front Squats", "sets": 4, "reps": "8", "gif": "/gifs/frontsquat.gif", "tips": "Elbows high, upright torso." },
+        { "name": "Bulgarian Split Squats", "sets": 3, "reps": "10/leg", "gif": "/gifs/bulgariansquat.gif", "tips": "Knee tracking, slow tempo." },
+        { "name": "Leg Press", "sets": 3, "reps": "12", "gif": "/gifs/legpress.gif", "tips": "Full ROM, knees aligned." },
+        { "name": "Glute Bridge", "sets": 2, "reps": "15", "gif": "/gifs/glutebridge.gif", "tips": "Pause and squeeze at top." }
+      ]
+    },
+    {
+      "day": "Friday",
+      "type": "Push (Shoulders + Triceps)",
+      "exercises": [
+        { "name": "Arnold Press", "sets": 3, "reps": "10", "gif": "/gifs/arnoldpress.gif", "tips": "Smooth rotation, full extension." },
+        { "name": "Upright Row (Cable)", "sets": 3, "reps": "12", "gif": "/gifs/uprightrow.gif", "tips": "Elbows above wrists, no jerking." },
+        { "name": "Skull Crushers", "sets": 3, "reps": "12", "gif": "/gifs/skullcrusher.gif", "tips": "Elbows still, controlled ROM." },
+        { "name": "Triceps Kickback", "sets": 2, "reps": "15", "gif": "/gifs/kickback.gif", "tips": "Small range, lockout at top." }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "type": "Pull (Posterior Chain + Arms)",
+      "exercises": [
+        { "name": "Romanian Deadlift", "sets": 3, "reps": "8", "gif": "/gifs/rdl.gif", "tips": "Hips back, feel stretch in hamstrings." },
+        { "name": "Cable Row (Narrow)", "sets": 3, "reps": "10", "gif": "/gifs/cablerow.gif", "tips": "Squeeze mid-back." },
+        { "name": "Hammer Curl", "sets": 2, "reps": "12", "gif": "/gifs/hammercurl.gif", "tips": "Neutral grip, full ROM." },
+        { "name": "Preacher Curl", "sets": 2, "reps": "12-15", "gif": "/gifs/preachercurl.gif", "tips": "Lock arms, don’t swing." }
+      ]
+    },
+    {
+      "day": "Sunday",
+      "type": "Rest or Active Recovery",
+      "notes": "Foam rolling, stretching or light swimming."
+    }
+  ],
+  "progression_advice": "Every 2-3 weeks, evaluate weights and technique. Introduce advanced techniques like drop sets or tempo changes.",
+  "coach_notes": {
+    "weekly_frequency": "5-6x/week",
+    "recovery_advice": "Respect fatigue. Use rest days for active recovery. Listen to your joints.",
+    "reminder": "Effort is key now. Progressively overload, but prioritize safety and consistency."
+  }
+}

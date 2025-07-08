@@ -1,0 +1,53 @@
+{
+  "filename": "hypertrophyBeginner2.json",
+  "title": "Hypertrophy Beginner - Phase 2",
+  "goal": "Muscle growth & neuromuscular adaptation",
+  "level": "Αρχάριος",
+  "accessTier": "Free",
+  "category": "gym",
+  "description": "3 sessions/week full-body training for neuromuscular adaptation. Ideal for newcomers to resistance training.",
+  "duration": "2 εβδομάδες",
+  "schedule": [
+    {
+      "day": "Monday",
+      "split": "Upper Body",
+      "exercises": [
+        { "name": "Incline Dumbbell Press", "sets": 3, "reps": "10-12", "gif": "/gifs/incline_dumbbell_press.gif" },
+        { "name": "Lat Pulldown", "sets": 3, "reps": "10-12", "gif": "/gifs/lat_pulldown.gif" },
+        { "name": "Seated Dumbbell Shoulder Press", "sets": 3, "reps": "10-12", "gif": "/gifs/seated_dumbbell_shoulder_press.gif" },
+        { "name": "Cable Row", "sets": 3, "reps": "10-12", "gif": "/gifs/cable_row.gif" },
+        { "name": "Cable Lateral Raise", "sets": 2, "reps": "12-15", "gif": "/gifs/cable_lateral_raise.gif" }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "split": "Lower Body",
+      "exercises": [
+        { "name": "Goblet Squat", "sets": 3, "reps": "10-12", "gif": "/gifs/goblet_squat.gif" },
+        { "name": "Romanian Deadlift with Dumbbells", "sets": 3, "reps": "10-12", "gif": "/gifs/romanian_deadlift_dumbbell.gif" },
+        { "name": "Leg Press", "sets": 3, "reps": "10-12", "gif": "/gifs/leg_press.gif" },
+        { "name": "Seated Calf Raise", "sets": 2, "reps": "12-15", "gif": "/gifs/seated_calf_raise.gif" }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "split": "Upper Body",
+      "exercises": [
+        { "name": "Flat Barbell Bench Press", "sets": 3, "reps": "8-10", "gif": "/gifs/flat_barbell_bench_press.gif" },
+        { "name": "One-Arm Dumbbell Row", "sets": 3, "reps": "10-12", "gif": "/gifs/one_arm_dumbbell_row.gif" },
+        { "name": "Arnold Press", "sets": 3, "reps": "10-12", "gif": "/gifs/arnold_press.gif" },
+        { "name": "Face Pull", "sets": 2, "reps": "15-20", "gif": "/gifs/face_pull.gif" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Lower Body",
+      "exercises": [
+        { "name": "Barbell Back Squat", "sets": 3, "reps": "8-10", "gif": "/gifs/barbell_back_squat.gif" },
+        { "name": "Hip Thrust", "sets": 3, "reps": "10-12", "gif": "/gifs/hip_thrust.gif" },
+        { "name": "Leg Curl Machine", "sets": 2, "reps": "12-15", "gif": "/gifs/leg_curl_machine.gif" },
+        { "name": "Standing Calf Raise", "sets": 2, "reps": "15-20", "gif": "/gifs/standing_calf_raise.gif" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "filename": "HypertrophyIntermediate1.json",
+  "title": "Hypertrophy Intermediate - Phase 1",
+  "level": "intermediate",
+  "description": "Advanced Push/Pull/Legs rotation with antagonist supersets and progressive overload. Emphasis on volume, TUT and technique refinement.",
+  "accessTier": "Free",
+  "category": "gym",
+  "duration": "6 εβδομάδες",
+  "schedule": [
+    {
+      "day": "Monday",
+      "type": "Push (Chest/Triceps)",
+      "exercises": [
+        { "name": "Incline Barbell Press", "sets": 4, "reps": "6-8", "gif": "/gifs/inclinepress.gif", "tips": "Explosive push, slow return." },
+        { "name": "Dips (Weighted if possible)", "sets": 3, "reps": "10", "gif": "/gifs/dips.gif", "tips": "Chest forward, full depth." },
+        { "name": "Dumbbell Chest Fly", "sets": 3, "reps": "12", "gif": "/gifs/dbfly.gif", "tips": "Stretch with control." },
+        { "name": "Skullcrushers", "sets": 3, "reps": "10-12", "gif": "/gifs/skullcrusher.gif", "tips": "Elbows locked in." }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "type": "Pull (Back/Biceps)",
+      "exercises": [
+        { "name": "Deadlifts", "sets": 4, "reps": "5", "gif": "/gifs/deadlift.gif", "tips": "Hinge from hips, neutral spine." },
+        { "name": "Chin-Ups", "sets": 3, "reps": "Max", "gif": "/gifs/chinup.gif", "tips": "Control descent." },
+        { "name": "Chest Supported Row", "sets": 3, "reps": "10-12", "gif": "/gifs/chestsupportedrow.gif", "tips": "No momentum." },
+        { "name": "EZ Bar Curl", "sets": 3, "reps": "10", "gif": "/gifs/ezcurl.gif", "tips": "Elbows close to torso." }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "type": "Legs (Quad Focus)",
+      "exercises": [
+        { "name": "Front Squat", "sets": 4, "reps": "8", "gif": "/gifs/frontsquat.gif", "tips": "Elbows up, knees forward." },
+        { "name": "Leg Press", "sets": 3, "reps": "10", "gif": "/gifs/legpress.gif", "tips": "Avoid locking knees." },
+        { "name": "Bulgarian Split Squat", "sets": 3, "reps": "10/leg", "gif": "/gifs/bulgarian.gif", "tips": "Upright posture." },
+        { "name": "Standing Calf Raise", "sets": 4, "reps": "15", "gif": "/gifs/calfraise.gif", "tips": "Pause top and bottom." }
+      ]
+    },
+    {
+      "day": "Friday",
+      "type": "Push (Shoulders/Triceps)",
+      "exercises": [
+        { "name": "Seated Overhead Press (Barbell)", "sets": 4, "reps": "6-8", "gif": "/gifs/barbellpress.gif", "tips": "Brace core, no sway." },
+        { "name": "Arnold Press", "sets": 3, "reps": "10", "gif": "/gifs/arnoldpress.gif", "tips": "Rotate fully." },
+        { "name": "Lateral Raises", "sets": 3, "reps": "15", "gif": "/gifs/lateralraise.gif", "tips": "Control swing." },
+        { "name": "Overhead Rope Extension", "sets": 3, "reps": "12", "gif": "/gifs/ropeextension.gif", "tips": "Stretch and squeeze." }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "type": "Pull (Rear Chain)",
+      "exercises": [
+        { "name": "Romanian Deadlift", "sets": 4, "reps": "8", "gif": "/gifs/romaniandeadlift.gif", "tips": "Glutes + hams, no back rounding." },
+        { "name": "Cable Row", "sets": 3, "reps": "12", "gif": "/gifs/cablerow.gif", "tips": "Pinch shoulder blades." },
+        { "name": "Hammer Curl", "sets": 3, "reps": "12", "gif": "/gifs/hammercurl.gif", "tips": "Thumbs up position." },
+        { "name": "Barbell Shrugs", "sets": 3, "reps": "15", "gif": "/gifs/shrugs.gif", "tips": "Squeeze traps up and in." }
+      ]
+    }
+  ],
+  "progression_advice": "Use double progression on compound lifts. Increase training density. Focus on form, avoid junk volume.",
+  "coach_notes": {
+    "weekly_frequency": "5x/week (optional 6th)",
+    "recovery_advice": "1 full rest day minimum. Consider active recovery (swim, mobility, bike).",
+    "reminder": "Intermediate level = smarter not just harder. Prioritize nutrition + sleep."  
+  }
+}

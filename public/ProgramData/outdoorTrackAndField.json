@@ -1,6 +1,8 @@
 {
+  "filename": "outdoorTrackAndField.json",
   "title": "Track & Field Sprint Prep",
   "level": "Athlete",
+  "category": "outdoor",
   "goal": "Speed, Acceleration & Power Development",
   "duration": "3 Weeks",
   "accessTier": "Silver",

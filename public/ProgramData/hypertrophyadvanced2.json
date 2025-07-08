@@ -1,0 +1,53 @@
+{
+    "filename": "hypertrophyadvanced2.json",
+  "title": "Hypertrophy Advanced - Phase 2",
+  "accessTier": "Free",
+  "category": "gym",
+  "duration": "6 εβδομάδες",
+  "level": "advanced",
+  "description": "Periodized hypertrophy with strategic overload and deload cycles. Includes myo-reps, cluster sets, and advanced tempo techniques.",
+  "schedule": [
+    {
+      "day": "Monday",
+      "type": "Push - Strength Focus",
+      "exercises": [
+        { "name": "Barbell Bench Press", "sets": 5, "reps": "5", "gif": "/gifs/benchpress.gif", "tips": "Heavy load, full ROM, braced core." },
+        { "name": "Seated Dumbbell Shoulder Press", "sets": 4, "reps": "6-8", "gif": "/gifs/dbshoulderpress.gif", "tips": "No lockout, slow eccentric." },
+        { "name": "Cable Triceps Pressdown", "sets": 3, "reps": "12-15", "gif": "/gifs/tricepdown.gif", "tips": "Elbows fixed, pump out reps." }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "type": "Pull - Myo-Reps",
+      "exercises": [
+        { "name": "Weighted Pull-ups", "sets": 4, "reps": "6", "gif": "/gifs/pullups.gif", "tips": "Dead hang, controlled tempo." },
+        { "name": "Chest Supported Row", "sets": 4, "reps": "8", "gif": "/gifs/csrow.gif", "tips": "Squeeze shoulder blades." },
+        { "name": "Cable Face Pulls", "sets": 3, "reps": "15", "gif": "/gifs/facepull.gif", "tips": "High pull, external rotation." }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "type": "Legs - Cluster Sets",
+      "exercises": [
+        { "name": "Back Squat (Cluster: 4x4/15s)", "sets": 4, "reps": "4+4+4", "gif": "/gifs/squat.gif", "tips": "Explosive reps, cluster rest 15s." },
+        { "name": "Hack Squat", "sets": 3, "reps": "10-12", "gif": "/gifs/hacksquat.gif", "tips": "Knees forward, heels down." },
+        { "name": "Walking Lunges", "sets": 2, "reps": "20 steps", "gif": "/gifs/walkinglunge.gif", "tips": "Upright chest, smooth stride." }
+      ]
+    },
+    {
+      "day": "Friday",
+      "type": "Mixed Hypertrophy",
+      "exercises": [
+        { "name": "Incline Smith Machine Press", "sets": 4, "reps": "8", "gif": "/gifs/smithincline.gif", "tips": "Constant tension, 3s eccentric." },
+        { "name": "Reverse Pec Deck", "sets": 3, "reps": "12", "gif": "/gifs/reversepec.gif", "tips": "Pause at contraction." },
+        { "name": "Cable Ab Crunches", "sets": 3, "reps": "15-20", "gif": "/gifs/cablecrunch.gif", "tips": "Curl spine, exhale bottom." }
+      ]
+    }
+  ],
+  "progression_advice": "Use RIR tracking. Deload if sleep/HRV drop. Myo-reps optional on last set.",
+  "coach_notes": {
+    "weekly_frequency": "4-5x/week",
+    "recovery_advice": "Deload week optional after 6 weeks. Cold therapy and deload walking recommended.",
+    "reminder": "Manipulate tempo, rep ranges, and overload weekly."
+  }
+}

@@ -1,0 +1,57 @@
+{
+    "filename": "hypertrophyadvanced4.json",
+  "title": "Hypertrophy Advanced - Phase 4",
+  "accessTier": "Free",
+  "category": "gym",
+  "duration": "6 εβδομάδες",
+  "level": "advanced",
+  "description": "Advanced recomposition training with metabolic stress techniques, finishers, and zone 2 options.",
+  "schedule": [
+    {
+      "day": "Monday",
+      "type": "Push Volume + Metabolic Finisher",
+      "exercises": [
+        { "name": "Dumbbell Bench Press", "sets": 4, "reps": "10-12", "gif": "/gifs/dbbench.gif", "tips": "Constant tension, 2s pause at bottom." },
+        { "name": "Incline Cable Press", "sets": 3, "reps": "12-15", "gif": "/gifs/inclinecable.gif", "tips": "Control tempo, avoid lockout." },
+        { "name": "Triceps Dips", "sets": 3, "reps": "Bodyweight to failure", "gif": "/gifs/dips.gif", "tips": "Elbows back, full stretch." },
+        { "name": "Metabolic Finisher: Battle Ropes", "sets": 1, "reps": "45s all-out", "gif": "/gifs/battleropes.gif", "tips": "Explosive effort, controlled breathing." }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "type": "Pull + Loaded Carries",
+      "exercises": [
+        { "name": "Chin-Ups", "sets": 4, "reps": "AMRAP", "gif": "/gifs/chinups.gif", "tips": "Full range, chest to bar." },
+        { "name": "Kroc Rows", "sets": 3, "reps": "20 each arm", "gif": "/gifs/krocrow.gif", "tips": "Heavy and controlled, rest-pause if needed." },
+        { "name": "Cable Rear Delts", "sets": 3, "reps": "15-20", "gif": "/gifs/reardeltcable.gif", "tips": "Strict form, high reps." },
+        { "name": "Farmer Carries", "sets": 2, "reps": "30m", "gif": "/gifs/farmercarry.gif", "tips": "Tight core, tall posture." }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "type": "Legs + Tabata Finisher",
+      "exercises": [
+        { "name": "Front Squat", "sets": 4, "reps": "6-8", "gif": "/gifs/frontsquat.gif", "tips": "Upright torso, elbows high." },
+        { "name": "Romanian Deadlift", "sets": 3, "reps": "10-12", "gif": "/gifs/rdl.gif", "tips": "Hamstring stretch, slow eccentric." },
+        { "name": "Leg Extension", "sets": 3, "reps": "15-20", "gif": "/gifs/legextension.gif", "tips": "Squeeze hard at top." },
+        { "name": "Tabata Kettlebell Swings", "sets": 1, "reps": "20s on / 10s off x8", "gif": "/gifs/kbswing.gif", "tips": "Explosive hips, avoid arms swing." }
+      ]
+    },
+    {
+      "day": "Friday",
+      "type": "Full-Body Pump + Zone 2",
+      "exercises": [
+        { "name": "Landmine Press", "sets": 3, "reps": "12", "gif": "/gifs/landminepress.gif", "tips": "Tight core, arc path." },
+        { "name": "T-Bar Row", "sets": 3, "reps": "10", "gif": "/gifs/tbarrow.gif", "tips": "Controlled squeeze, wide grip." },
+        { "name": "Goblet Squat", "sets": 3, "reps": "15", "gif": "/gifs/gobletsquat.gif", "tips": "Elbows between knees, upright torso." },
+        { "name": "Zone 2 Cardio (Bike or Walk)", "sets": 1, "reps": "30-40 mins", "gif": "/gifs/zone2.gif", "tips": "Steady pace, nasal breathing preferred." }
+      ]
+    }
+  ],
+  "progression_advice": "Use AMRAP on last sets weekly. Adjust RIR if recovery dips.",
+  "coach_notes": {
+    "weekly_frequency": "4x/week",
+    "recovery_advice": "1 active recovery day (walk, stretch). Sleep & nutrition must support volume.",
+    "reminder": "Maintain high effort on metabolic finishers. Don’t skip Zone 2!"
+  }
+}

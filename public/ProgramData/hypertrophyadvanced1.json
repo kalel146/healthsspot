@@ -1,0 +1,57 @@
+{
+    "filename": "hypertrophyadvanced1.json",
+  "title": "Hypertrophy Advanced - Phase 1",
+  "accessTier": "Free",
+  "category": "gym",
+  "duration": "6 εβδομάδες",
+  "level": "advanced",
+  "description": "Polyarhticular dominant split with mechanical tension, metabolic stress and fatigue cycling.",
+  "schedule": [
+    {
+      "day": "Monday",
+      "type": "Push (Strength Emphasis)",
+      "exercises": [
+        { "name": "Barbell Bench Press", "sets": 5, "reps": "5-6", "gif": "/gifs/benchpress.gif", "tips": "Explosive intent, full ROM." },
+        { "name": "Standing Overhead Press", "sets": 4, "reps": "6-8", "gif": "/gifs/overheadpress.gif", "tips": "Neutral spine, bar path straight." },
+        { "name": "Weighted Dips", "sets": 3, "reps": "8", "gif": "/gifs/dips.gif", "tips": "Controlled eccentric." },
+        { "name": "Dumbbell Lateral Raise", "sets": 3, "reps": "12-15", "gif": "/gifs/lateralraise.gif", "tips": "Pause at top." }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "type": "Pull (Metabolic Stress)",
+      "exercises": [
+        { "name": "Chest Supported Row", "sets": 4, "reps": "12", "gif": "/gifs/chestsupportedrow.gif", "tips": "Squeeze peak contraction." },
+        { "name": "Narrow Grip Pulldown", "sets": 3, "reps": "15", "gif": "/gifs/narrowpulldown.gif", "tips": "Stretch fully at top." },
+        { "name": "Reverse Pec Deck", "sets": 3, "reps": "15-20", "gif": "/gifs/reversepecdeck.gif", "tips": "Strict form." },
+        { "name": "Incline Dumbbell Curl", "sets": 3, "reps": "12", "gif": "/gifs/inclinedbcurl.gif", "tips": "Stretch and control." }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "type": "Legs (TUT + Volume)",
+      "exercises": [
+        { "name": "Front Squat", "sets": 4, "reps": "8", "gif": "/gifs/frontsquat.gif", "tips": "Upright torso, heels down." },
+        { "name": "Walking Lunges with Dumbbells", "sets": 3, "reps": "10/leg", "gif": "/gifs/lunges.gif", "tips": "Long stride, tension throughout." },
+        { "name": "Leg Extension", "sets": 3, "reps": "15", "gif": "/gifs/legextension.gif", "tips": "Pause at top." },
+        { "name": "Standing Calf Raise", "sets": 4, "reps": "20", "gif": "/gifs/calfraise.gif", "tips": "Explosive up, slow down." }
+      ]
+    },
+    {
+      "day": "Friday",
+      "type": "Push-Pull Combo (Fatigue Cycling)",
+      "exercises": [
+        { "name": "Incline Machine Press", "sets": 3, "reps": "12", "gif": "/gifs/inclinemachinepress.gif", "tips": "Tension focus." },
+        { "name": "Lat Pullover (Cable)", "sets": 3, "reps": "15", "gif": "/gifs/latpullover.gif", "tips": "Stretch lats under control." },
+        { "name": "Arnold Press", "sets": 3, "reps": "10", "gif": "/gifs/arnoldpress.gif", "tips": "Smooth rotation, don’t rush." },
+        { "name": "Barbell Curl Dropset", "sets": 1, "reps": "10+10+10", "gif": "/gifs/barbellcurl.gif", "tips": "Reduce load after each 10 reps." }
+      ]
+    }
+  ],
+  "progression_advice": "Alternate between high-load and high-volume weeks. Monitor systemic fatigue.",
+  "coach_notes": {
+    "weekly_frequency": "4x/week",
+    "recovery_advice": "Deload if HRV or sleep is disrupted. Use autoregulation for load selection.",
+    "reminder": "Nutrition and peri-workout carbs are essential at this level. Log everything."
+  }
+}

@@ -1,0 +1,52 @@
+{
+    "filename": "hypertrophyadvanced3.json",
+  "title": "Hypertrophy Advanced - Phase 3",
+  "accessTier": "Free",
+  "category": "gym",
+  "duration": "6 εβδομάδες",
+  "level": "advanced",
+  "description": "Body Recomposition focus. Hybrid method combining hypertrophy and fat reduction with volume modulation and metabolic finishers.",
+  "schedule": [
+    {
+      "day": "Monday",
+      "type": "Full-Body Compound Load",
+      "exercises": [
+        { "name": "Deadlift", "sets": 5, "reps": "5", "gif": "/gifs/deadlift.gif", "tips": "Start tight, drive through heels." },
+        { "name": "Dips (Weighted)", "sets": 4, "reps": "8-10", "gif": "/gifs/dips.gif", "tips": "Chest forward, deep range." },
+        { "name": "Goblet Squat + Dumbbell Press (Complex)", "sets": 3, "reps": "10", "gif": "/gifs/gobletpresscombo.gif", "tips": "Explosive press after squat." }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "type": "Push + Core",
+      "exercises": [
+        { "name": "Incline Dumbbell Press", "sets": 4, "reps": "10", "gif": "/gifs/inclinedbpress.gif", "tips": "Touch chest, slight arch." },
+        { "name": "Arnold Press", "sets": 3, "reps": "12", "gif": "/gifs/arnoldpress.gif", "tips": "Full rotation and control." },
+        { "name": "Decline Sit-ups + Twist", "sets": 3, "reps": "20", "gif": "/gifs/declinetwist.gif", "tips": "Rotate torso, slow down." }
+      ]
+    },
+    {
+      "day": "Friday",
+      "type": "Pull + MetCon Finish",
+      "exercises": [
+        { "name": "Barbell Row", "sets": 4, "reps": "8", "gif": "/gifs/barbellrow.gif", "tips": "Flat back, elbows back." },
+        { "name": "Pull-ups", "sets": 3, "reps": "Max", "gif": "/gifs/pullups.gif", "tips": "Controlled tempo, chin above bar." },
+        { "name": "Kettlebell Swing Tabata (20s on/10s off x 4min)", "sets": 1, "reps": "Tabata", "gif": "/gifs/kbswing.gif", "tips": "Hinge, snap hips." }
+      ]
+    },
+    {
+      "day": "Saturday (Optional)",
+      "type": "Zone 2 + Mobility",
+      "exercises": [
+        { "name": "Incline Treadmill Walk", "sets": 1, "reps": "30 min", "gif": "/gifs/inclinetread.gif", "tips": "135-145 HR bpm." },
+        { "name": "Hip Flow Mobility", "sets": 1, "reps": "10 min", "gif": "/gifs/hipmobility.gif", "tips": "Flow, breathe deeply." }
+      ]
+    }
+  ],
+  "progression_advice": "Monitor fat/muscle changes. Alternate intensification with deload weeks as needed.",
+  "coach_notes": {
+    "weekly_frequency": "3-4x/week",
+    "recovery_advice": "Track HRV, favor sleep. Glycogen-depleting finishers need smart recovery.",
+    "reminder": "Prioritize nutrient timing, post-lift refueling essential."
+  }
+}

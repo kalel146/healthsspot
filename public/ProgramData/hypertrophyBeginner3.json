@@ -1,0 +1,58 @@
+{
+  "filename": "hypertrophyBeginner3.json",
+  "title": "Hypertrophy Beginner - Phase 3",
+   "goal": "Muscle growth & neuromuscular adaptation",
+  "level": "Αρχάριος",
+  "accessTier": "Free",
+  "category": "gym",
+  "description": "3 sessions/week full-body training for neuromuscular adaptation. Ideal for newcomers to resistance training.",
+  "duration": "5 εβδομάδες",
+   "schedule": [
+    {
+      "day": "Monday",
+      "type": "Push",
+      "exercises": [
+        { "name": "Barbell Bench Press", "sets": 4, "reps": "8-10", "gif": "/gifs/benchpress.gif", "tips": "Brace core, full range." },
+        { "name": "Seated Dumbbell Shoulder Press", "sets": 3, "reps": "10", "gif": "/gifs/dbshoulderpress.gif", "tips": "Wrist under elbow, no arch." },
+        { "name": "Incline Chest Fly (Cable)", "sets": 2, "reps": "12-15", "gif": "/gifs/inclinefly.gif", "tips": "Control stretch and contraction." },
+        { "name": "Overhead Triceps Extension", "sets": 2, "reps": "12", "gif": "/gifs/tricepsextension.gif", "tips": "Keep elbows stable." }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "type": "Pull",
+      "exercises": [
+        { "name": "Pull-Ups (Assisted if needed)", "sets": 3, "reps": "Max", "gif": "/gifs/pullup.gif", "tips": "Chest to bar, avoid swing." },
+        { "name": "Barbell Row", "sets": 3, "reps": "10", "gif": "/gifs/barbellrow.gif", "tips": "Flat back, squeeze shoulder blades." },
+        { "name": "Face Pulls", "sets": 2, "reps": "15", "gif": "/gifs/facepull.gif", "tips": "Pull to face level, elbows high." },
+        { "name": "Biceps Curl (Cable)", "sets": 2, "reps": "12-15", "gif": "/gifs/cablecurl.gif", "tips": "Keep elbows pinned." }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "type": "Legs",
+      "exercises": [
+        { "name": "Barbell Back Squat", "sets": 4, "reps": "10", "gif": "/gifs/squat.gif", "tips": "Knees out, hips back." },
+        { "name": "Leg Curl Machine", "sets": 3, "reps": "12", "gif": "/gifs/legcurl.gif", "tips": "Slow negative." },
+        { "name": "Walking Lunges", "sets": 2, "reps": "12/leg", "gif": "/gifs/lunges.gif", "tips": "Upright torso, long step." },
+        { "name": "Seated Calf Raise", "sets": 3, "reps": "15", "gif": "/gifs/calfraise.gif", "tips": "Pause at top and bottom." }
+      ]
+    },
+    {
+      "day": "Friday",
+      "type": "Push (Variant)",
+      "exercises": [
+        { "name": "Machine Chest Press", "sets": 3, "reps": "12", "gif": "/gifs/machinechestpress.gif", "tips": "Controlled tempo." },
+        { "name": "Lateral Raise Machine", "sets": 3, "reps": "15", "gif": "/gifs/lateralraise.gif", "tips": "Smooth motion, elbows lead." },
+        { "name": "Triceps Rope Pushdown", "sets": 2, "reps": "15", "gif": "/gifs/ropepushdown.gif", "tips": "Split rope at bottom." },
+        { "name": "Incline Push-Ups", "sets": 2, "reps": "15", "gif": "/gifs/inclinepushup.gif", "tips": "Straight body, controlled." }
+      ]
+    }
+  ],
+  "progression_advice": "Adapt load weekly. Emphasize proper rest and nutrition. Log performance to enable upgrade to intermediate.",
+  "coach_notes": {
+    "weekly_frequency": "4x/week",
+    "recovery_advice": "Prioritize quality sleep and hydration. Include mobility or light cardio on rest days.",
+    "reminder": "Progressive overload matters. Don’t sacrifice form for weight."
+  }
+}

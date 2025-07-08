@@ -1,0 +1,48 @@
+{
+    "filename": "gymHypertrophyBeginner1.json",
+  "title": "Hypertrophy Beginner - Phase 1",
+   "goal": "Muscle growth & neuromuscular adaptation",
+  "level": "Αρχάριος",
+  "accessTier": "Free",
+  "category": "gym",
+  "description": "3 sessions/week full-body training for neuromuscular adaptation. Ideal for newcomers to resistance training.",
+  "duration": "2 εβδομάδες",
+  "schedule": [
+    {
+      "day": "Monday",
+      "type": "Full Body",
+      "exercises": [
+        { "name": "Squat", "sets": 3, "reps": "12-15", "gif": "/gifs/squat.gif", "tips": "Chest up, knees out." },
+        { "name": "Push-Up", "sets": 3, "reps": "10-12", "gif": "/gifs/pushup.gif", "tips": "Keep elbows at 45 degrees." },
+        { "name": "Bent-Over Row", "sets": 3, "reps": "12", "gif": "/gifs/row.gif", "tips": "Flat back, controlled motion." },
+        { "name": "Plank", "sets": 2, "reps": "30-60 sec", "gif": "/gifs/plank.gif", "tips": "Engage your core, don't sag." }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "type": "Full Body",
+      "exercises": [
+        { "name": "Lunges", "sets": 3, "reps": "10/leg", "gif": "/gifs/lunges.gif", "tips": "Keep torso upright." },
+        { "name": "Incline Push-Up", "sets": 3, "reps": "12", "gif": "/gifs/inclinepushup.gif", "tips": "Hands shoulder-width." },
+        { "name": "One-Arm Dumbbell Row", "sets": 3, "reps": "12/arm", "gif": "/gifs/dbrow.gif", "tips": "Neutral spine, pull to ribs." },
+        { "name": "Dead Bug", "sets": 2, "reps": "10/side", "gif": "/gifs/deadbug.gif", "tips": "Core tight, slow motion." }
+      ]
+    },
+    {
+      "day": "Friday",
+      "type": "Full Body",
+      "exercises": [
+        { "name": "Glute Bridge", "sets": 3, "reps": "15", "gif": "/gifs/glutebridge.gif", "tips": "Squeeze glutes at top." },
+        { "name": "Shoulder Tap", "sets": 3, "reps": "20 total", "gif": "/gifs/shouldertap.gif", "tips": "Don't rock hips." },
+        { "name": "Bodyweight Row", "sets": 3, "reps": "10", "gif": "/gifs/invertedrow.gif", "tips": "Full range of motion." },
+        { "name": "Side Plank", "sets": 2, "reps": "30 sec/side", "gif": "/gifs/sideplank.gif", "tips": "Elbow under shoulder." }
+      ]
+    }
+  ],
+  "progression_advice": "After 2 weeks, progress to upper/lower split. Focus on increased load or reps if exercises become too easy.",
+  "coach_notes": {
+    "weekly_frequency": "3x/week",
+    "recovery_advice": "Rest at least 48h between sessions. Optional: light cardio on off-days.",
+    "reminder": "Master form over load. Technique always comes first."
+  }
+}

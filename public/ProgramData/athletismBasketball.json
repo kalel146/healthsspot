@@ -1,6 +1,8 @@
 {
+  "filename": "athletismBasketball.json",
   "title": "Basketball Power & Agility Phase",
   "level": "Advanced",
+  "category": "athletism",
   "goal": "Vertical Jump, Lateral Agility & Explosive First Step",
   "duration": "4 Weeks",
   "accessTier": "Gold",

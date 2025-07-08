@@ -1,21 +1,12 @@
-// ProgramCard.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import SubscriptionGate from "./SubscriptionGate";
 import { useTheme } from "../../ThemeContext";
 
-export default function ProgramCard({ jsonPath, userTier = "Free" }) {
-  const [program, setProgram] = useState(null);
+export default function ProgramCard({ program, userTier = "Free", selectedCategory }) {
   const [expandedDay, setExpandedDay] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const { theme } = useTheme();
-
-  useEffect(() => {
-    fetch(jsonPath)
-      .then((res) => res.json())
-      .then((data) => setProgram(data))
-      .catch((err) => console.error("Failed to load program:", err));
-  }, [jsonPath]);
 
   const toggleDay = (index) => {
     setExpandedDay(expandedDay === index ? null : index);
@@ -26,12 +17,8 @@ export default function ProgramCard({ jsonPath, userTier = "Free" }) {
     return tiers.indexOf(userTier) < tiers.indexOf(tier);
   };
 
-  if (!program) {
-    return (
-      <div className="flex justify-center items-center h-40">
-        <p className="text-sm text-zinc-500">Loading program...</p>
-      </div>
-    );
+  if (!program || (selectedCategory && program.category !== selectedCategory)) {
+    return null;
   }
 
   return (
@@ -51,7 +38,7 @@ export default function ProgramCard({ jsonPath, userTier = "Free" }) {
         <p className={`text-sm ${
           theme === "dark" ? "text-zinc-400" : "text-gray-600"
         }`}>
-          🎯 {program.goal} • 🕒 {program.duration} • ⚡ {program.level}
+          🎯 {program.goal || program.description} • 🕒 {program.duration} • ⚡ {program.level}
         </p>
         {isLocked(program.accessTier) && (
           <div className={`rounded-xl p-4 mt-2 ${
@@ -74,13 +61,13 @@ export default function ProgramCard({ jsonPath, userTier = "Free" }) {
 
       {!isLocked(program.accessTier) && (
         <div className="space-y-4">
-          {program.weeklySplit.map((day, index) => (
+          {program.schedule.map((day, index) => (
             <div key={index}>
               <button
                 onClick={() => toggleDay(index)}
                 className="w-full text-left font-semibold py-2 px-4 bg-indigo-700 text-white rounded-lg hover:bg-indigo-600 transition"
               >
-                {day.day}
+                {day.day} — {day.type}
               </button>
               {expandedDay === index && (
                 <motion.div
@@ -112,7 +99,7 @@ export default function ProgramCard({ jsonPath, userTier = "Free" }) {
           theme === "dark" ? "text-zinc-500" : "text-gray-500"
         }`}
       >
-        📌 {program.notes}
+        📌 {program.notes || program.progression_advice}
       </div>
 
       {showModal && (

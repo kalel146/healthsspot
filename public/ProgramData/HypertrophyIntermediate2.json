@@ -1,0 +1,57 @@
+{
+  "filename": "HypertrophyIntermediate2.json",
+  "title": "Hypertrophy Intermediate - Phase 2",
+  "level": "intermediate",
+  "accessTier": "Free",
+  "category": "gym",
+  "duration": "6 εβδομάδες",
+  "description": "Antagonist/Agonist split for hypertrophy with TUT focus and mixed rep ranges.",
+  "schedule": [
+    {
+      "day": "Monday",
+      "type": "Chest/Back",
+      "exercises": [
+        { "name": "Flat Dumbbell Press", "sets": 4, "reps": "8-10", "gif": "/gifs/dbpress.gif", "tips": "Neutral grip, pause bottom." },
+        { "name": "Lat Pulldown (Wide Grip)", "sets": 4, "reps": "10", "gif": "/gifs/latpulldown.gif", "tips": "Pull to upper chest, control return." },
+        { "name": "Incline Cable Flys", "sets": 3, "reps": "12-15", "gif": "/gifs/inclinecablefly.gif", "tips": "Stretch and squeeze." },
+        { "name": "Seated Cable Row", "sets": 3, "reps": "10", "gif": "/gifs/seatedrow.gif", "tips": "Elbows close, chest up." }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "type": "Quads/Hamstrings",
+      "exercises": [
+        { "name": "Leg Press", "sets": 4, "reps": "12", "gif": "/gifs/legpress.gif", "tips": "Full ROM, feet mid-plate." },
+        { "name": "Romanian Deadlifts", "sets": 4, "reps": "10", "gif": "/gifs/rdl.gif", "tips": "Stretch hams, flat back." },
+        { "name": "Lying Leg Curl", "sets": 3, "reps": "12-15", "gif": "/gifs/lyingcurl.gif", "tips": "No hip lift." },
+        { "name": "Bulgarian Split Squat", "sets": 2, "reps": "10/leg", "gif": "/gifs/bulgariansquat.gif", "tips": "Upright torso." }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "type": "Shoulders/Arms",
+      "exercises": [
+        { "name": "Barbell Overhead Press", "sets": 4, "reps": "8-10", "gif": "/gifs/overheadpress.gif", "tips": "Elbows under, tight core." },
+        { "name": "EZ Bar Curl + Triceps Skullcrusher (Superset)", "sets": 3, "reps": "10+10", "gif": "/gifs/supersetcurlskull.gif", "tips": "No swing. Elbows locked." },
+        { "name": "Cable Lateral Raise", "sets": 3, "reps": "15", "gif": "/gifs/cablelateral.gif", "tips": "Constant tension." },
+        { "name": "Rope Hammer Curl + Overhead Rope Extension (Superset)", "sets": 2, "reps": "12+12", "gif": "/gifs/ropecombo.gif", "tips": "Controlled reps both ways." }
+      ]
+    },
+    {
+      "day": "Friday",
+      "type": "Glutes/Calves/Core",
+      "exercises": [
+        { "name": "Hip Thrusts", "sets": 4, "reps": "12", "gif": "/gifs/hipthrust.gif", "tips": "Pause top, neutral spine." },
+        { "name": "Leg Curl Machine (Glute Focus)", "sets": 3, "reps": "15", "gif": "/gifs/glutecurl.gif", "tips": "Toes pointed out." },
+        { "name": "Donkey Calf Raise", "sets": 3, "reps": "20", "gif": "/gifs/donkeycalf.gif", "tips": "Pause and squeeze." },
+        { "name": "Cable Woodchopper", "sets": 2, "reps": "15/side", "gif": "/gifs/woodchopper.gif", "tips": "Twist through core." }
+      ]
+    }
+  ],
+  "progression_advice": "Monitor volume tolerance. TUT emphasis requires lighter loads but full control.",
+  "coach_notes": {
+    "weekly_frequency": "4x/week",
+    "recovery_advice": "Contrast showers and active recovery days suggested.",
+    "reminder": "Alternate rep tempo styles and intensity methods weekly."
+  }
+}
