@@ -24,7 +24,7 @@ export default function ProgramVault() {
   const [filteredCategory, setFilteredCategory] = useState("gym");
   const [loading, setLoading] = useState(true);
   const { theme } = useTheme();
-  const { tier, isAdmin } = useTierFilter();
+  const { tier, isAdmin, setTier } = useTierFilter();
 
   useEffect(() => {
     const filenames = [
@@ -95,6 +95,24 @@ export default function ProgramVault() {
 
   return (
     <div className="p-4">
+      {/* Tier Debugging Dropdown */}
+      {isAdmin && (
+        <div className="flex justify-center mb-4">
+          <select
+            value={tier}
+            onChange={(e) => setTier(e.target.value)}
+            className="px-3 py-1 border rounded-md text-sm shadow-sm bg-white dark:bg-gray-800 dark:text-white"
+          >
+            <option value="Free">Free</option>
+            <option value="Bronze">Bronze</option>
+            <option value="Silver">Silver</option>
+            <option value="Gold">Gold</option>
+            <option value="Platinum">Platinum</option>
+          </select>
+        </div>
+      )}
+
+      {/* Category Buttons */}
       <div className="mb-6 flex flex-wrap gap-2 justify-center">
         {categories.map((cat) => (
           <motion.button
@@ -117,6 +135,7 @@ export default function ProgramVault() {
         ))}
       </div>
 
+      {/* Subcategory Buttons */}
       {subcategories.length > 0 && (
         <div className="mb-6 flex flex-wrap gap-2 justify-center">
           {subcategories.map((sub) => (
@@ -141,6 +160,7 @@ export default function ProgramVault() {
         </div>
       )}
 
+      {/* Program Grid */}
       {loading ? (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 animate-pulse">
           {Array.from({ length: 6 }).map((_, i) => (
@@ -164,6 +184,7 @@ export default function ProgramVault() {
                 program={program}
                 userTier={tier}
                 selectedCategory={filteredCategory}
+                isAdmin={isAdmin}
               />
             ))}
           </motion.div>

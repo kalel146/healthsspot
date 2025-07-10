@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SubscriptionGate from "./SubscriptionGate";
 import { useTheme } from "../../ThemeContext";
 
-export default function ProgramCard({ program, userTier = "Free", selectedCategory }) {
+export default function ProgramCard({ program, userTier = "Free", selectedCategory, isAdmin = false, debugMode = false }) {
   const [expandedDay, setExpandedDay] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const { theme } = useTheme();
@@ -13,6 +13,7 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
   };
 
   const isLocked = (tier) => {
+    if (isAdmin || debugMode) return false;
     const tiers = ["Free", "Bronze", "Silver", "Gold", "Platinum"];
     return tiers.indexOf(userTier) < tiers.indexOf(tier);
   };
@@ -57,12 +58,22 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
       }`}
     >
       <div className="flex flex-col gap-2 mb-4">
-        <h2 className="text-2xl font-bold text-indigo-500 tracking-tight">
-          {program.title}
-        </h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-bold text-indigo-500 tracking-tight">
+            {program.title}
+          </h2>
+          {isAdmin && (
+            <span className="ml-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full">
+              Admin Preview
+            </span>
+          )}
+        </div>
         <p className={`text-sm ${theme === "dark" ? "text-zinc-400" : "text-gray-600"}`}>
-          🎯 {program.goal || program.description} • 🕒 {program.duration} • ⚡ {program.level}
+          <span title="Επίπεδο πρόσβασης χρήστη">🎯 {program.goal || program.description}</span> • 🕒 {program.duration} • ⚡ {program.level}
         </p>
+        {debugMode && (
+          <p className="text-xs font-mono text-red-500">[Debug] Tier: {program.accessTier} • Filename: {program.filename}</p>
+        )}
         {isLocked(program.accessTier) && (
           <div
             className={`rounded-xl p-4 mt-2 ${
@@ -71,7 +82,10 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
                 : "bg-red-50 border border-red-300"
             }`}
           >
-            <p className="text-red-500 font-medium">
+            <p
+              className="text-red-500 font-medium"
+              title="Αυτό το πρόγραμμα απαιτεί συνδρομή στο επίπεδο ή υψηλότερο για πρόσβαση"
+            >
               🔒 Απαιτεί πακέτο {program.accessTier} ή ανώτερο
             </p>
             <motion.button
