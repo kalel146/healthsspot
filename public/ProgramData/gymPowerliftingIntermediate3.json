@@ -1,0 +1,50 @@
+{
+  "filename": "gymPowerliftingIntermediate3.json",
+  "title": "Powerlifting Intermediate - Phase 3",
+  "level": "Intermediate",
+  "category": "gym",
+  "subcategory": "powerlifting",
+  "goal": "Peaking strength with focus on top singles and fatigue management",
+  "duration": "5 Weeks",
+  "accessTier": "Silver",
+  "description": "Final intermediate block emphasizing intensity over volume. Introduces singles @RPE 8-9, and increased specificity with comp-style lifts. Includes autoregulated backoffs.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "focus": "Competition Squat + Core",
+      "exercises": [
+        { "name": "Back Squat (Single @RPE 8)", "sets": 1, "reps": "1", "gif": "/gifs/squat.gif" },
+        { "name": "Backoff Sets (3x5)", "sets": 3, "reps": "5", "gif": "/gifs/squat.gif" },
+        { "name": "Plank with Plate", "sets": 3, "reps": "45 sec", "gif": "/gifs/plank.gif" }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "focus": "Comp Bench + Pause Work",
+      "exercises": [
+        { "name": "Competition Bench (Single @RPE 8)", "sets": 1, "reps": "1", "gif": "/gifs/benchpress.gif" },
+        { "name": "Pause Bench Press", "sets": 3, "reps": "5", "gif": "/gifs/pausebench.gif" },
+        { "name": "Chest Supported Row", "sets": 3, "reps": "10", "gif": "/gifs/csrow.gif" }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "focus": "Deadlift Top Set + Pull",
+      "exercises": [
+        { "name": "Deadlift (Single @RPE 8-8.5)", "sets": 1, "reps": "1", "gif": "/gifs/deadlift.gif" },
+        { "name": "Backoff Deadlifts", "sets": 3, "reps": "4-5", "gif": "/gifs/deadlift.gif" },
+        { "name": "Barbell Shrugs", "sets": 3, "reps": "12", "gif": "/gifs/shrug.gif" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "focus": "Overhead Strength + Recovery",
+      "exercises": [
+        { "name": "Seated Overhead Press", "sets": 3, "reps": "8", "gif": "/gifs/dbshoulderpress.gif" },
+        { "name": "Lat Pulldown", "sets": 3, "reps": "10", "gif": "/gifs/latpulldown.gif" },
+        { "name": "Light Triceps Pushdowns", "sets": 2, "reps": "15", "gif": "/gifs/tricepdown.gif" }
+      ]
+    }
+  ],
+  "notes": "Monitor bar speed. Use fatigue indicators (HRV, sleep, soreness). Deload mandatory at end. Final week may be mock meet or 1RM testing if readiness is high."
+}

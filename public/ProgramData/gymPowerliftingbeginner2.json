@@ -1,0 +1,50 @@
+{
+  "filename": "gymPowerliftingbeginner2.json",
+  "title": "Powerlifting Beginner - Phase 2",
+  "level": "Beginner",
+  "category": "gym",
+  "subcategory": "powerlifting",
+  "goal": "Progressive overload in the big three lifts with increased training frequency",
+  "duration": "6 Weeks",
+  "accessTier": "Free",
+  "description": "Continued strength development with added volume and technical refinement for squat, bench, and deadlift. Emphasis on progressive overload and recovery.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "focus": "Heavy Squat & Assistance",
+      "exercises": [
+        { "name": "Back Squat", "sets": 5, "reps": "4", "gif": "/gifs/squat.gif", "tips": "Use 80–85% 1RM. Controlled descent." },
+        { "name": "Walking Lunges", "sets": 3, "reps": "20 steps", "gif": "/gifs/walkinglunge.gif" },
+        { "name": "Leg Curl Machine", "sets": 3, "reps": "12", "gif": "/gifs/leg_curl_machine.gif" }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "focus": "Bench Volume & Triceps",
+      "exercises": [
+        { "name": "Barbell Bench Press", "sets": 5, "reps": "5", "gif": "/gifs/benchpress.gif" },
+        { "name": "Dips (Assisted if needed)", "sets": 3, "reps": "10", "gif": "/gifs/dips.gif" },
+        { "name": "Overhead Dumbbell Triceps Extension", "sets": 3, "reps": "12", "gif": "/gifs/db_tricep_extension.gif" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "focus": "Deadlift Emphasis",
+      "exercises": [
+        { "name": "Conventional Deadlift", "sets": 5, "reps": "4", "gif": "/gifs/deadlift.gif", "tips": "Brace hard, reset between reps." },
+        { "name": "Chin-Ups", "sets": 3, "reps": "AMRAP", "gif": "/gifs/chinup.gif" },
+        { "name": "Cable Face Pull", "sets": 3, "reps": "15", "gif": "/gifs/facepull.gif" }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "focus": "Technique & Recovery",
+      "exercises": [
+        { "name": "Paused Squat", "sets": 3, "reps": "5", "gif": "/gifs/squat.gif" },
+        { "name": "Push-Ups", "sets": 3, "reps": "15", "gif": "/gifs/pushup.gif" },
+        { "name": "Plank Hold", "sets": 3, "reps": "45 sec", "gif": "/gifs/plank.gif" }
+      ]
+    }
+  ],
+  "notes": "Increase intensity slowly. Focus on proper rest, nutrition, and bar path control. Technique day is low load, high intent."
+}

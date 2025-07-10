@@ -1,0 +1,41 @@
+{
+  "filename": "gymPowerliftingbeginner1.json",
+  "title": "Powerlifting Beginner - Phase 1",
+  "level": "Beginner",
+  "category": "gym",
+  "subcategory": "powerlifting",
+  "goal": "Foundational strength in squat, bench, and deadlift",
+  "duration": "6 Weeks",
+  "accessTier": "Free",
+  "description": "A beginner-friendly powerlifting routine focused on building technique, strength, and consistency in the big three lifts.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "focus": "Squat Emphasis",
+      "exercises": [
+        { "name": "Back Squat", "sets": 4, "reps": "5", "gif": "/gifs/squat.gif", "tips": "Keep chest up and knees out." },
+        { "name": "Romanian Deadlift", "sets": 3, "reps": "8", "gif": "/gifs/romanian_deadlift_dumbbell.gif" },
+        { "name": "Leg Press", "sets": 3, "reps": "10", "gif": "/gifs/leg_press.gif" }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "focus": "Bench Press Focus",
+      "exercises": [
+        { "name": "Barbell Bench Press", "sets": 4, "reps": "5", "gif": "/gifs/benchpress.gif" },
+        { "name": "Incline Dumbbell Press", "sets": 3, "reps": "8", "gif": "/gifs/incline_dumbbell_press.gif" },
+        { "name": "Cable Triceps Pressdown", "sets": 3, "reps": "12", "gif": "/gifs/tricepdown.gif" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "focus": "Deadlift & Pull",
+      "exercises": [
+        { "name": "Conventional Deadlift", "sets": 4, "reps": "5", "gif": "/gifs/deadlift.gif" },
+        { "name": "Barbell Row", "sets": 3, "reps": "8", "gif": "/gifs/barbell_row.gif" },
+        { "name": "Face Pull", "sets": 3, "reps": "12", "gif": "/gifs/facepull.gif" }
+      ]
+    }
+  ],
+  "notes": "Start week 1 with manageable weights and increase weekly by 2.5–5%. Focus on form over load."
+}

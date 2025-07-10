@@ -1,0 +1,50 @@
+{
+  "filename": "gymPowerliftingbeginner4.json",
+  "title": "Powerlifting Beginner - Phase 4",
+  "level": "Beginner",
+  "category": "gym",
+  "subcategory": "powerlifting",
+  "goal": "Peak beginner phase - taper volume, emphasize intensity & neural efficiency",
+  "duration": "4 Weeks",
+  "accessTier": "Free",
+  "description": "This final beginner block prepares the lifter for intermediate programming. Workloads are heavier, volume is reduced, and technical mastery is key. Ideal before deload or testing maxes.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "focus": "Heavy Squat + Upper Back",
+      "exercises": [
+        { "name": "Back Squat (Top Set + Back-offs)", "sets": 1, "reps": "5 @RPE8", "gif": "/gifs/squat.gif" },
+        { "name": "Back Squat Back-off", "sets": 3, "reps": "6 @70%", "gif": "/gifs/squat.gif" },
+        { "name": "Barbell Row", "sets": 3, "reps": "10", "gif": "/gifs/barbell_row.gif" }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "focus": "Heavy Bench + Triceps",
+      "exercises": [
+        { "name": "Barbell Bench Press (Top Set)", "sets": 1, "reps": "5 @RPE8", "gif": "/gifs/benchpress.gif" },
+        { "name": "Bench Back-off Sets", "sets": 3, "reps": "6 @70%", "gif": "/gifs/benchpress.gif" },
+        { "name": "Overhead Dumbbell Extension", "sets": 3, "reps": "12", "gif": "/gifs/overheadcabletriceps.gif" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "focus": "Heavy Deadlift + Posterior Chain",
+      "exercises": [
+        { "name": "Conventional Deadlift (Top Set)", "sets": 1, "reps": "5 @RPE8", "gif": "/gifs/deadlift.gif" },
+        { "name": "Deadlift Back-off Sets", "sets": 3, "reps": "6 @70%", "gif": "/gifs/deadlift.gif" },
+        { "name": "Glute Ham Raise", "sets": 3, "reps": "10", "gif": "/gifs/gluteham.gif" }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "focus": "Technique, Core & Mobility",
+      "exercises": [
+        { "name": "Paused Front Squat", "sets": 2, "reps": "6", "gif": "/gifs/frontsquat.gif" },
+        { "name": "Cable Face Pull", "sets": 3, "reps": "15", "gif": "/gifs/facepull.gif" },
+        { "name": "Ab Wheel Rollout", "sets": 3, "reps": "10", "gif": "/gifs/abwheel.gif" }
+      ]
+    }
+  ],
+  "notes": "Back-off sets should prioritize bar speed and form. Optional deload week after completion. Great point to test estimated 1RMs or transition to intermediate template."
+}

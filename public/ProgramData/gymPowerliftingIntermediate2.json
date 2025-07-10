@@ -1,0 +1,50 @@
+{
+  "filename": "gymPowerliftingIntermediate2.json",
+  "title": "Powerlifting Intermediate - Phase 2",
+  "level": "Intermediate",
+  "category": "gym",
+  "subcategory": "powerlifting",
+  "goal": "Strength progression with moderate intensity waves",
+  "duration": "6 Weeks",
+  "accessTier": "Silver",
+  "description": "Second intermediate phase focused on increasing intensity while maintaining volume. Incorporates lift variations and top sets for building CNS readiness.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "focus": "Heavy Squat + Posterior Chain",
+      "exercises": [
+        { "name": "Back Squat (Top Set + Backoff)", "sets": 1, "reps": "3-5", "gif": "/gifs/squat.gif" },
+        { "name": "Backoff Squat", "sets": 3, "reps": "6", "gif": "/gifs/squat.gif" },
+        { "name": "Romanian Deadlift", "sets": 3, "reps": "10", "gif": "/gifs/romanian_deadlift_dumbbell.gif" }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "focus": "Pause Bench + Upper Accessories",
+      "exercises": [
+        { "name": "Pause Bench Press", "sets": 4, "reps": "4", "gif": "/gifs/pausebench.gif" },
+        { "name": "Incline Barbell Press", "sets": 3, "reps": "8", "gif": "/gifs/inclinepress.gif" },
+        { "name": "Dumbbell Chest Fly", "sets": 3, "reps": "12", "gif": "/gifs/dbfly.gif" }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "focus": "Deadlift Variation + Back",
+      "exercises": [
+        { "name": "Deficit Deadlift", "sets": 4, "reps": "5", "gif": "/gifs/deficit_deadlift.gif" },
+        { "name": "Snatch-Grip Deadlift", "sets": 3, "reps": "6", "gif": "/gifs/snatchdeadlift.gif" },
+        { "name": "T-Bar Row", "sets": 3, "reps": "10", "gif": "/gifs/tbarrow.gif" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "focus": "Overhead Strength + Arm Work",
+      "exercises": [
+        { "name": "Push Press", "sets": 4, "reps": "6", "gif": "/gifs/pushpress.gif" },
+        { "name": "Dumbbell Hammer Curl", "sets": 3, "reps": "12", "gif": "/gifs/hammercurl.gif" },
+        { "name": "Overhead Triceps Extension", "sets": 3, "reps": "12-15", "gif": "/gifs/overheadcabletriceps.gif" }
+      ]
+    }
+  ],
+  "notes": "Use RPE 7-8 for top sets. Adjust weekly volume by fatigue levels. Optional deload after Week 3 or 6 depending on recovery."
+}

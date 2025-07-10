@@ -1,0 +1,50 @@
+{
+  "filename": "gymPowerliftingIntermediate1.json",
+  "title": "Powerlifting Intermediate - Phase 1",
+  "level": "Intermediate",
+  "category": "gym",
+  "subcategory": "powerlifting",
+  "goal": "Volume-based strength building across competition lifts",
+  "duration": "6 Weeks",
+  "accessTier": "Silver",
+  "description": "A foundational intermediate cycle that introduces greater volume, frequency, and variation across the big three. Targets hypertrophy and skill development with weekly overload.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "focus": "Squat Volume + Accessory",
+      "exercises": [
+        { "name": "Back Squat", "sets": 4, "reps": "6", "gif": "/gifs/squat.gif" },
+        { "name": "Pause Squat", "sets": 3, "reps": "5", "gif": "/gifs/squatpause.gif" },
+        { "name": "Leg Extension", "sets": 3, "reps": "12", "gif": "/gifs/leg_extension.gif" }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "focus": "Bench Technique + Hypertrophy",
+      "exercises": [
+        { "name": "Competition Bench Press", "sets": 5, "reps": "5", "gif": "/gifs/benchpress.gif" },
+        { "name": "Spoto Press", "sets": 3, "reps": "6", "gif": "/gifs/spoto_press.gif" },
+        { "name": "Incline Dumbbell Press", "sets": 3, "reps": "10", "gif": "/gifs/incline_dumbbell_press.gif" }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "focus": "Deadlift Volume + Pulling",
+      "exercises": [
+        { "name": "Deadlift", "sets": 4, "reps": "5", "gif": "/gifs/deadlift.gif" },
+        { "name": "Deficit Deadlift", "sets": 3, "reps": "6", "gif": "/gifs/deficit_deadlift.gif" },
+        { "name": "Barbell Row", "sets": 3, "reps": "10", "gif": "/gifs/barbell_row.gif" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "focus": "Upper Body Assistance",
+      "exercises": [
+        { "name": "Overhead Press", "sets": 3, "reps": "8", "gif": "/gifs/ohp.gif" },
+        { "name": "Dumbbell Lateral Raise", "sets": 3, "reps": "15", "gif": "/gifs/lateralraise.gif" },
+        { "name": "Cable Triceps Pressdown", "sets": 3, "reps": "12", "gif": "/gifs/tricepdown.gif" }
+      ]
+    }
+  ],
+  "notes": "Progress by increasing intensity weekly or adding back-off volume. This phase primes the lifter for peaking cycles or further hypertrophy-specific work."
+}

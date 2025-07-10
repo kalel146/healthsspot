@@ -1,0 +1,50 @@
+{
+  "filename": "gymPowerliftingAdvanced1.json",
+  "title": "Powerlifting Advanced - Phase 1",
+  "level": "Advanced",
+  "category": "gym",
+  "subcategory": "powerlifting",
+  "goal": "High-intensity power development with DUP methodology",
+  "duration": "5 Weeks",
+  "accessTier": "Platinum",
+  "description": "This advanced block implements daily undulating periodization (DUP), alternating intensity and volume sessions across the week. Strong emphasis on CNS adaptation, precision, and autoregulation.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "focus": "Heavy Squat + Bench",
+      "exercises": [
+        { "name": "Back Squat", "sets": 5, "reps": "3 @80-85%", "gif": "/gifs/squat.gif" },
+        { "name": "Competition Bench Press", "sets": 4, "reps": "4", "gif": "/gifs/benchpress.gif" },
+        { "name": "Weighted Plank", "sets": 3, "reps": "45 sec", "gif": "/gifs/plank.gif" }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "focus": "Volume Deadlift + Bench",
+      "exercises": [
+        { "name": "Deadlift", "sets": 4, "reps": "6 @70%", "gif": "/gifs/deadlift.gif" },
+        { "name": "Touch-and-Go Bench", "sets": 4, "reps": "8", "gif": "/gifs/tngbench.gif" },
+        { "name": "Face Pull", "sets": 3, "reps": "15", "gif": "/gifs/facepull.gif" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "focus": "Speed & Technique Work",
+      "exercises": [
+        { "name": "Tempo Squat (3-0-1)", "sets": 3, "reps": "5", "gif": "/gifs/temposquat.gif" },
+        { "name": "Paused Bench Press", "sets": 3, "reps": "4", "gif": "/gifs/pausebench.gif" },
+        { "name": "Barbell Row", "sets": 3, "reps": "10", "gif": "/gifs/barbell_row.gif" }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "focus": "Overhead Press + Upper Volume",
+      "exercises": [
+        { "name": "Strict Press", "sets": 4, "reps": "6", "gif": "/gifs/dbshoulderpress.gif" },
+        { "name": "Incline Dumbbell Press", "sets": 3, "reps": "10", "gif": "/gifs/incline_dumbbell_press.gif" },
+        { "name": "Dumbbell Lateral Raise", "sets": 3, "reps": "12-15", "gif": "/gifs/lateralraise.gif" }
+      ]
+    }
+  ],
+  "notes": "Track bar speed and fatigue. Use RPE or % based on preference. Optional autoregulation for top sets. Deload recommended in Week 6 or transition to peaking block."
+}

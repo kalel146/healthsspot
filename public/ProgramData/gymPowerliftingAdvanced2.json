@@ -1,0 +1,50 @@
+{
+  "filename": "gymPowerliftingAdvanced2.json",
+  "title": "Powerlifting Advanced - Phase 2",
+  "level": "Advanced",
+  "category": "gym",
+  "subcategory": "powerlifting",
+  "goal": "Pre-peaking block with reduced volume and high intensity",
+  "duration": "4 Weeks",
+  "accessTier": "Platinum",
+  "description": "This block prepares the athlete for peaking by lowering volume, increasing specificity, and focusing on explosive execution. Fatigue management is prioritized alongside technical sharpness.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "focus": "Heavy Squat & Low-Volume Bench",
+      "exercises": [
+        { "name": "Back Squat", "sets": 5, "reps": "3 @85%", "gif": "/gifs/squat.gif" },
+        { "name": "Paused Bench Press", "sets": 3, "reps": "3 @80%", "gif": "/gifs/pausebench.gif" },
+        { "name": "Hanging Leg Raise", "sets": 3, "reps": "15", "gif": "/gifs/legraise.gif" }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "focus": "Deadlift Overload",
+      "exercises": [
+        { "name": "Block Pulls", "sets": 4, "reps": "3 @90%", "gif": "/gifs/blockpulls.gif" },
+        { "name": "Touch-and-Go Bench", "sets": 3, "reps": "5", "gif": "/gifs/tngbench.gif" },
+        { "name": "Chest Supported Row", "sets": 3, "reps": "10", "gif": "/gifs/csrow.gif" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "focus": "Technique & Speed",
+      "exercises": [
+        { "name": "Tempo Bench (3-0-1)", "sets": 3, "reps": "4", "gif": "/gifs/temposquat.gif" },
+        { "name": "Barbell Front Squat", "sets": 3, "reps": "6", "gif": "/gifs/frontsquat.gif" },
+        { "name": "Chin-Ups (Weighted Optional)", "sets": 3, "reps": "Max", "gif": "/gifs/chinup.gif" }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "focus": "Pressing Focus & Isolation",
+      "exercises": [
+        { "name": "Overhead Barbell Press", "sets": 4, "reps": "5", "gif": "/gifs/overheadbarbellpress.gif" },
+        { "name": "Incline Machine Press", "sets": 3, "reps": "10", "gif": "/gifs/inclinemachinepress.gif" },
+        { "name": "Dumbbell Rear Delt Fly", "sets": 3, "reps": "15", "gif": "/gifs/reardeltfly.gif" }
+      ]
+    }
+  ],
+  "notes": "Begin monitoring readiness (HRV, sleep). Load increases should follow bar speed and perceived effort. Final week can be a taper with 10–15% drop in total volume."
+}

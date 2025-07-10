@@ -1,0 +1,50 @@
+{
+  "filename": "gymPowerliftingbeginner3.json",
+  "title": "Powerlifting Beginner - Phase 3",
+  "level": "Beginner",
+  "category": "gym",
+  "subcategory": "powerlifting",
+  "goal": "Final beginner phase before transitioning to intermediate; introducing intensity work and paused reps",
+  "duration": "6 Weeks",
+  "accessTier": "Free",
+  "description": "This phase focuses on improving bar speed, control, and strength endurance. Includes paused reps, higher volume accessories, and structured intensity progression.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "focus": "Paused Squats + Accessories",
+      "exercises": [
+        { "name": "Paused Back Squat (2s pause)", "sets": 4, "reps": "4", "gif": "/gifs/squat_paused.gif" },
+        { "name": "Leg Press", "sets": 3, "reps": "10", "gif": "/gifs/leg_press.gif" },
+        { "name": "Bulgarian Split Squats", "sets": 3, "reps": "10/leg", "gif": "/gifs/bulgariansquat.gif" }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "focus": "Paused Bench + Volume",
+      "exercises": [
+        { "name": "Paused Barbell Bench Press", "sets": 4, "reps": "4", "gif": "/gifs/benchpress_paused.gif" },
+        { "name": "Incline Dumbbell Press", "sets": 3, "reps": "10", "gif": "/gifs/incline_dumbbell_press.gif" },
+        { "name": "Triceps Dips (Assisted if needed)", "sets": 3, "reps": "Max", "gif": "/gifs/dips.gif" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "focus": "Deadlift + Posterior Chain",
+      "exercises": [
+        { "name": "Barbell Deadlift", "sets": 4, "reps": "5", "gif": "/gifs/deadlift.gif" },
+        { "name": "Barbell Romanian Deadlift", "sets": 3, "reps": "8", "gif": "/gifs/romanian_deadlift_dumbbell.gif" },
+        { "name": "Seated Cable Row", "sets": 3, "reps": "10", "gif": "/gifs/cablerow.gif" }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "focus": "Technique, Core & Recovery",
+      "exercises": [
+        { "name": "Tempo Goblet Squat (3-1-1)", "sets": 2, "reps": "10", "gif": "/gifs/goblet_squat.gif" },
+        { "name": "Plank Hold", "sets": 3, "reps": "45 sec", "gif": "/gifs/plank.gif" },
+        { "name": "Resistance Band Face Pulls", "sets": 3, "reps": "15", "gif": "/gifs/facepull.gif" }
+      ]
+    }
+  ],
+  "notes": "Emphasize pause technique on squat/bench. Track bar speed and fatigue. Final phase before increasing overall intensity and reducing accessory volume."
+}

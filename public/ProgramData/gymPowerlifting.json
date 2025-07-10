@@ -3,6 +3,7 @@
   "title": "Powerlifting Phase 1",
   "level": "Intermediate",
     "category": "gym",
+  "subcategory": "powerlifting",
   "goal": "Increase Maximum Strength (Squat, Bench, Deadlift)",
   "duration": "6 Weeks",
   "accessTier": "Silver",

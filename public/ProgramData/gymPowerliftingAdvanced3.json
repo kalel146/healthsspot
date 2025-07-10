@@ -1,0 +1,41 @@
+{
+  "filename": "gymPowerliftingAdvanced3.json",
+  "title": "Powerlifting Advanced - Phase 3",
+  "level": "Advanced",
+  "category": "gym",
+  "subcategory": "powerlifting",
+  "goal": "Peaking block and 1RM Testing",
+  "duration": "1 Week",
+  "accessTier": "Platinum",
+  "description": "Final peaking week designed to express strength gains through heavy singles. Fatigue is minimized while neural drive and confidence peak. Ideal for mock meets or real competitions.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "focus": "Squat - Test Day",
+      "exercises": [
+        { "name": "Back Squat", "sets": 3, "reps": "1 @90–95–100%", "gif": "/gifs/squat.gif" },
+        { "name": "Leg Curl (Light)", "sets": 2, "reps": "15", "gif": "/gifs/legcurl.gif" },
+        { "name": "Stretch & Breathe", "sets": 1, "reps": "10 min", "gif": "/gifs/stretch.gif" }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "focus": "Bench Press - Test Day",
+      "exercises": [
+        { "name": "Barbell Bench Press", "sets": 3, "reps": "1 @90–95–100%", "gif": "/gifs/benchpress.gif" },
+        { "name": "Band Pull-Aparts", "sets": 2, "reps": "20", "gif": "/gifs/bandpull.gif" },
+        { "name": "Breathing & Soft Tissue", "sets": 1, "reps": "10 min", "gif": "/gifs/softtissue.gif" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "focus": "Deadlift - Test Day",
+      "exercises": [
+        { "name": "Conventional Deadlift", "sets": 3, "reps": "1 @90–95–100%", "gif": "/gifs/deadlift.gif" },
+        { "name": "Cable Face Pull", "sets": 2, "reps": "15", "gif": "/gifs/facepull.gif" },
+        { "name": "Foam Roll & Stretch", "sets": 1, "reps": "10 min", "gif": "/gifs/foamroll.gif" }
+      ]
+    }
+  ],
+  "notes": "Sleep and nutrition must be dialed in. Use spotters. Focus on bar speed and mental priming. If 100% feels off, stay at 95% and maintain confidence."
+}
