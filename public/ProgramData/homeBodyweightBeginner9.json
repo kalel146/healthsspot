@@ -1,0 +1,51 @@
+{
+  "filename": "homeBodyweightBeginner9.json",
+  "title": "Home Bodyweight Phase 9 – Dynamic Core & Flow",
+  "level": "Beginner",
+  "category": "indoor",
+  "subcategory": "home",
+  "goal": "Core control, mobility flow, body awareness",
+  "duration": "2 Weeks",
+  "accessTier": "Free",
+  "daysPerWeek": 4,
+  "description": "Beginner-friendly dynamic core integration and mobility flow routines. Ideal transition to fluid, full-body movement and awareness.",
+  "weeklySplit": [
+    {
+      "day": "Day 1 – Dynamic Core Activation",
+      "exercises": [
+        { "name": "Bird-Dog Reach & Crunch", "sets": 3, "reps": 12 },
+        { "name": "Dead Bug Hold with Band", "sets": 3, "reps": 10 },
+        { "name": "Side Plank with Arm Sweep", "sets": 3, "reps": "8/side" },
+        { "name": "Toe Reach Crunch", "sets": 3, "reps": 15 }
+      ]
+    },
+    {
+      "day": "Day 2 – Lower Body Flow",
+      "exercises": [
+        { "name": "Deep Lunge to Hamstring Stretch", "sets": 3, "reps": "5/leg" },
+        { "name": "Cossack Squats", "sets": 3, "reps": 8 },
+        { "name": "Wall Sit with Arm Raises", "sets": 3, "reps": 10 },
+        { "name": "Single Leg Glute Bridge Hold", "sets": 3, "reps": "20 sec/leg" }
+      ]
+    },
+    {
+      "day": "Day 3 – Core & Rotation",
+      "exercises": [
+        { "name": "Standing Band Woodchopper", "sets": 3, "reps": "12/side" },
+        { "name": "Superman Reach with Pause", "sets": 3, "reps": 12 },
+        { "name": "Plank with Arm/Leg Lift", "sets": 3, "reps": "6/limb" },
+        { "name": "Side-Lying Leg Raise", "sets": 3, "reps": "10/side" }
+      ]
+    },
+    {
+      "day": "Day 4 – Mobility & Flow",
+      "exercises": [
+        { "name": "Inchworm to Cobra Stretch", "sets": 3, "reps": 8 },
+        { "name": "Downward Dog to Knee Tap", "sets": 3, "reps": 10 },
+        { "name": "Seated Spinal Twist", "sets": 2, "reps": "30 sec/side" },
+        { "name": "Breathwork & Supine Hold", "sets": 1, "reps": "3 min" }
+      ]
+    }
+  ],
+  "notes": "Χτίζουμε κινητική ευφυΐα και ροή. Ενώνουμε τον κορμό με κινητικότητα και έλεγχο αναπνοής."
+}

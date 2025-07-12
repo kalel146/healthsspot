@@ -1,0 +1,51 @@
+{
+  "filename": "homeBodyweightBeginner5.json",
+  "title": "Home Resistance Bands – Beginner Phase 5",
+  "level": "Beginner",
+  "goal": "Split Routine με λάστιχα αντίστασης και Tempo Control",
+  "category": "indoor",
+  "subcategory": "home",
+  "duration": "3 εβδομάδες",
+  "accessTier": "Free",
+  "daysPerWeek": 4,
+  "description": "Band-based push/pull split για αρχάριους με έλεγχο ρυθμού κίνησης. Χτίζει δύναμη και σταθερότητα.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Upper Body Push",
+      "exercises": [
+        { "name": "Band Chest Press", "sets": 3, "reps": "10", "tempo": "311" },
+        { "name": "Overhead Band Press", "sets": 3, "reps": "8", "tempo": "301" },
+        { "name": "Band Triceps Kickbacks", "sets": 2, "reps": "12", "tempo": "212" }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "split": "Lower Body Pull",
+      "exercises": [
+        { "name": "Band Deadlifts", "sets": 3, "reps": "10", "tempo": "311" },
+        { "name": "Band Hamstring Curl (lying)", "sets": 3, "reps": "12", "tempo": "302" },
+        { "name": "Band Calf Raise", "sets": 2, "reps": "15", "tempo": "212" }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "split": "Upper Body Pull",
+      "exercises": [
+        { "name": "Band Row", "sets": 3, "reps": "10", "tempo": "311" },
+        { "name": "Band Face Pulls", "sets": 2, "reps": "15", "tempo": "212" },
+        { "name": "Band Reverse Fly", "sets": 2, "reps": "12", "tempo": "301" }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "split": "Lower Body Push",
+      "exercises": [
+        { "name": "Band Front Squats", "sets": 3, "reps": "10", "tempo": "311" },
+        { "name": "Standing Band Hip Abduction", "sets": 2, "reps": "12/side", "tempo": "212" },
+        { "name": "Glute Bridge with Band", "sets": 2, "reps": "15", "tempo": "212" }
+      ]
+    }
+  ],
+  "notes": "Tempo control αυξάνει το ερέθισμα. Χρησιμοποίησε μεσαία αντίσταση και επίβλεψε την τεχνική."
+}

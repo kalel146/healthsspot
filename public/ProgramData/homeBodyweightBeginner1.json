@@ -1,0 +1,45 @@
+{
+  "filename": "homeBodyweightBeginner1.json",
+  "title": "Bodyweight Home – Beginner Phase 1",
+  "level": "Beginner",
+  "goal": "Muscle Activation & Core Stability",
+  "category": "indoor",
+  "subcategory": "home",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "daysPerWeek": 3,
+  "description": "Απλό πρόγραμμα με σωματικό βάρος για αρχάριους που προπονούνται στο σπίτι. Επικεντρώνεται στην ενεργοποίηση του κορμού, σταθερότητα και βασική κινητικότητα.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Full Body A",
+      "exercises": [
+        { "name": "Wall Sit", "sets": 3, "reps": "30 sec" },
+        { "name": "Glute Bridge", "sets": 3, "reps": "12-15" },
+        { "name": "Incline Push-up (Wall)", "sets": 3, "reps": "10-12" },
+        { "name": "Bird Dog", "sets": 2, "reps": "10/side" }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Core & Mobility",
+      "exercises": [
+        { "name": "Plank", "sets": 3, "reps": "20-30 sec" },
+        { "name": "Dead Bug", "sets": 3, "reps": "10" },
+        { "name": "Standing Knee Hugs", "sets": 2, "reps": "10/leg" },
+        { "name": "Child's Pose", "sets": 2, "reps": "30 sec" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Full Body B",
+      "exercises": [
+        { "name": "Bodyweight Squats", "sets": 3, "reps": "10-15" },
+        { "name": "Wall Push-ups", "sets": 3, "reps": "10-12" },
+        { "name": "Step-ups (on low step)", "sets": 2, "reps": "10/leg" },
+        { "name": "Breath Work", "sets": 1, "reps": "5 min" }
+      ]
+    }
+  ],
+  "notes": "Απλό πρόγραμμα χωρίς εξοπλισμό. Προτείνεται ζέσταμα πριν και διατάσεις μετά. Αν είσαι πιο προχωρημένος, προχώρησε στο Phase 2."
+}

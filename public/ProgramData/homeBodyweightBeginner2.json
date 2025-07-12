@@ -1,0 +1,45 @@
+{
+  "filename": "homeBodyweightBeginner2.json",
+  "title": "Bodyweight Home – Beginner Phase 2",
+  "level": "Beginner",
+  "goal": "Motor Control, Tempo Strength & Range of Motion",
+  "category": "indoor",
+  "subcategory": "home",
+  "duration": "3 εβδομάδες",
+  "accessTier": "Free",
+  "daysPerWeek": 3,
+  "description": "Ενισχυμένη φάση με ασκήσεις που εστιάζουν στον έλεγχο του σώματος, την τεχνική και τη σταθερή ένταση μέσω tempo reps.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Lower Focus",
+      "exercises": [
+        { "name": "Tempo Squats (3-1-3)", "sets": 3, "reps": "8-10" },
+        { "name": "Wall Sit Marches", "sets": 3, "reps": "10/leg" },
+        { "name": "Side-Lying Leg Raises", "sets": 2, "reps": "12-15/side" },
+        { "name": "Glute Bridge Iso Hold", "sets": 2, "reps": "30 sec" }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Core Stability",
+      "exercises": [
+        { "name": "Dead Bug (tempo)", "sets": 3, "reps": "8/side" },
+        { "name": "Bird Dog with Hold", "sets": 2, "reps": "10/side" },
+        { "name": "Front Plank Reach", "sets": 2, "reps": "10" },
+        { "name": "Box Breathing", "sets": 1, "reps": "5 min" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Upper Focus",
+      "exercises": [
+        { "name": "Incline Push-ups (Tempo 3-1-3)", "sets": 3, "reps": "6-8" },
+        { "name": "Wall Y-T-I Raises", "sets": 2, "reps": "6 each" },
+        { "name": "Triceps Dips (on chair)", "sets": 2, "reps": "10" },
+        { "name": "Arm Circles + Squeeze", "sets": 2, "reps": "30 sec" }
+      ]
+    }
+  ],
+  "notes": "Έμφαση στον έλεγχο της κίνησης και σταθερή τεχνική. Ιδανικό ως προετοιμασία για πιο σύνθετα προγράμματα ή χρήση με εξοπλισμό."
+}

@@ -1,0 +1,51 @@
+{
+  "filename": "homeBodyweightBeginner10.json",
+  "title": "Home Bodyweight Phase 10 – Control & Flow Mastery",
+  "level": "Beginner",
+  "category": "indoor",
+  "subcategory": "home",
+  "goal": "Neuromuscular control, active recovery, dynamic mobility",
+  "duration": "2 Weeks",
+  "accessTier": "Free",
+  "daysPerWeek": 4,
+  "description": "A recovery-oriented block focused on dynamic flexibility, breathwork, and full-body neuromuscular awareness. Final beginner cycle before transitioning to intermediate.",
+  "weeklySplit": [
+    {
+      "day": "Day 1 – Active Mobility Flow",
+      "exercises": [
+        { "name": "World's Greatest Stretch", "sets": 2, "reps": "5/side" },
+        { "name": "Spinal Roll Downs", "sets": 2, "reps": 8 },
+        { "name": "Open Book Stretch", "sets": 2, "reps": "5/side" },
+        { "name": "Cat-Cow to Thread the Needle", "sets": 2, "reps": 6 }
+      ]
+    },
+    {
+      "day": "Day 2 – Ground Core + Flow",
+      "exercises": [
+        { "name": "Bird-Dog Elbow-to-Knee", "sets": 3, "reps": 10 },
+        { "name": "Slow Tempo Glute Bridge", "sets": 3, "reps": 10 },
+        { "name": "Side-Lying Windshield Wipers", "sets": 3, "reps": "10/side" },
+        { "name": "Plank Reach with Controlled Breathing", "sets": 3, "reps": 8 }
+      ]
+    },
+    {
+      "day": "Day 3 – Functional Movement + Core",
+      "exercises": [
+        { "name": "Deep Squat Hold with Arm Raise", "sets": 2, "reps": 10 },
+        { "name": "Lunge Reach and Twist", "sets": 2, "reps": "8/side" },
+        { "name": "Hollow Body Rock", "sets": 3, "reps": 10 },
+        { "name": "Breath-Driven Cat-Cow", "sets": 2, "reps": 10 }
+      ]
+    },
+    {
+      "day": "Day 4 – Full Body Flow + Coordination",
+      "exercises": [
+        { "name": "Standing Windmill to Side Bend", "sets": 3, "reps": 10 },
+        { "name": "Quadruped Shoulder Taps with Leg Lift", "sets": 3, "reps": 10 },
+        { "name": "Wall Angels with Breath Hold", "sets": 2, "reps": 10 },
+        { "name": "Supine Hip Circles", "sets": 2, "reps": 8 }
+      ]
+    }
+  ],
+  "notes": "Απαλό κλείσιμο κύκλου – προετοιμασία για τη μετάβαση στο επόμενο επίπεδο. Μάθε να ακούς το σώμα σου, να ρυθμίζεις την αναπνοή σου και να ελέγχεις κάθε κίνηση."
+}

@@ -1,0 +1,51 @@
+{
+  "filename": "homeBodyweightBeginner6.json",
+  "title": "Band Tension Mastery",
+  "level": "Beginner+",
+  "category": "indoor",
+  "subcategory": "home",
+  "goal": "Tension control, isometric strength, and neuromuscular precision",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "daysPerWeek": 4,
+  "description": "Progressive home training using resistance bands to develop deep control and strength under tension. Isometric holds and eccentric control are emphasized.",
+  "weeklySplit": [
+    {
+      "day": "Day 1 - Lower Body Tension",
+      "exercises": [
+        { "name": "Banded Goblet Squat (3s eccentric)", "sets": 3, "reps": "8-10" },
+        { "name": "Banded Glute Bridge Hold (10s hold at top)", "sets": 3, "reps": "10" },
+        { "name": "Split Squat with Band Resistance", "sets": 3, "reps": "8/leg" },
+        { "name": "Wall Sit with Band Around Knees", "sets": 3, "reps": "30 sec" }
+      ]
+    },
+    {
+      "day": "Day 2 - Upper Isometric Focus",
+      "exercises": [
+        { "name": "Push-up Hold (bottom position)", "sets": 3, "reps": "20 sec" },
+        { "name": "Banded Row with 2s hold", "sets": 3, "reps": "12" },
+        { "name": "Front Raise with Mini Band", "sets": 3, "reps": "12" },
+        { "name": "Wall Angel Isometrics", "sets": 2, "reps": "30 sec" }
+      ]
+    },
+    {
+      "day": "Day 3 - Core & Anti-Rotation",
+      "exercises": [
+        { "name": "Dead Bug with Band", "sets": 3, "reps": "10" },
+        { "name": "Bird Dog Hold (5 sec each rep)", "sets": 3, "reps": "6/side" },
+        { "name": "Banded Pallof Press", "sets": 3, "reps": "12/side" },
+        { "name": "Side Plank with Reach-Through", "sets": 2, "reps": "8/side" }
+      ]
+    },
+    {
+      "day": "Day 4 - Full Body Tempo & Pause",
+      "exercises": [
+        { "name": "Banded Tempo Squat (3s down, 1s hold)", "sets": 3, "reps": "10" },
+        { "name": "Push-up to Pike Hold", "sets": 3, "reps": "10" },
+        { "name": "Mini Band Lateral Walk", "sets": 2, "reps": "12/side" },
+        { "name": "Overhead Band Press (slow tempo)", "sets": 3, "reps": "12" }
+      ]
+    }
+  ],
+  "notes": "Focus on slow tempo and isometric holds. This program builds deep strength and control using minimal equipment."
+}

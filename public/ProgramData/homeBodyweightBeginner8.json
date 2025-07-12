@@ -1,0 +1,51 @@
+{
+  "filename": "homeBodyweightBeginner8.json",
+  "title": "Home Bodyweight Phase 8 – Athletic Foundation",
+  "level": "Beginner",
+  "category": "indoor",
+  "subcategory": "home",
+  "goal": "Agility, Balance, Strength-Endurance",
+  "duration": "2 Weeks",
+  "accessTier": "Free",
+  "daysPerWeek": 4,
+  "description": "Agility-focused beginner training with balance drills and controlled movement patterns. Ideal continuation from explosive work.",
+  "weeklySplit": [
+    {
+      "day": "Day 1 – Balance & Stability",
+      "exercises": [
+        { "name": "Single-Leg Glute Bridge", "sets": 3, "reps": "8/leg" },
+        { "name": "Wall Assisted Pistol Squat", "sets": 3, "reps": "6/leg" },
+        { "name": "Bird-Dogs", "sets": 3, "reps": 12 },
+        { "name": "Resistance Band Deadbug", "sets": 3, "reps": 10 }
+      ]
+    },
+    {
+      "day": "Day 2 – Functional Upper Body",
+      "exercises": [
+        { "name": "Push-ups with Reach", "sets": 3, "reps": 10 },
+        { "name": "Resistance Band Lat Row", "sets": 3, "reps": 12 },
+        { "name": "Arm Circles + Band External Rotation", "sets": 3, "reps": "15+15" },
+        { "name": "Plank to Downward Dog", "sets": 3, "reps": 8 }
+      ]
+    },
+    {
+      "day": "Day 3 – Athletic Core",
+      "exercises": [
+        { "name": "Banded Russian Twists", "sets": 3, "reps": "20 total" },
+        { "name": "Hollow Body Hold", "sets": 3, "reps": "30 sec" },
+        { "name": "Side Plank Leg Raise", "sets": 3, "reps": "10/side" },
+        { "name": "Toe Touch Sit-ups", "sets": 3, "reps": 15 }
+      ]
+    },
+    {
+      "day": "Day 4 – Low Impact Plyo + Control",
+      "exercises": [
+        { "name": "Step-Back Lunges with Knee Drive", "sets": 3, "reps": "8/leg" },
+        { "name": "Lateral Line Hops", "sets": 3, "reps": 20 },
+        { "name": "Isometric Wall Push with Calf Raise", "sets": 3, "reps": 12 },
+        { "name": "Quadruped Opposite Arm-Leg Hold", "sets": 3, "reps": "15 sec/side" }
+      ]
+    }
+  ],
+  "notes": "Εστιάζουμε στην αθλητική βάση – ισορροπία, σταθερότητα και ακριβή έλεγχο των κινήσεων."
+}

@@ -1,0 +1,51 @@
+{
+  "filename": "homeBodyweightBeginner7.json",
+  "title": "Home Gains Ignition",
+  "level": "Beginner",
+  "category": "indoor",
+  "subcategory": "home",
+  "goal": "Explosiveness, Stability, Strength",
+  "duration": "2 Weeks",
+  "accessTier": "Free",
+  "daysPerWeek": 4,
+  "description": "A dynamic plan combining explosive patterns and controlled movement for functional strength.",
+  "weeklySplit": [
+    {
+      "day": "Day 1 – Explosive Upper Body",
+      "exercises": [
+        { "name": "Clap Push-ups", "sets": 3, "reps": 5 },
+        { "name": "Pike Push-ups", "sets": 3, "reps": 10 },
+        { "name": "Resistance Band Row", "sets": 3, "reps": 12 },
+        { "name": "Plank Shoulder Taps", "sets": 3, "reps": 20 }
+      ]
+    },
+    {
+      "day": "Day 2 – Dynamic Lower Body",
+      "exercises": [
+        { "name": "Jump Squats", "sets": 3, "reps": 12 },
+        { "name": "Resistance Band Lateral Walks", "sets": 3, "reps": "10/side" },
+        { "name": "Bulgarian Split Squat", "sets": 3, "reps": "8/leg" },
+        { "name": "Wall Sit (Isometric Hold)", "sets": 3, "reps": "30 sec" }
+      ]
+    },
+    {
+      "day": "Day 3 – Core + Stability",
+      "exercises": [
+        { "name": "Band Pallof Press", "sets": 3, "reps": "10/side" },
+        { "name": "Bird-Dog Hold", "sets": 3, "reps": "10 sec x 5" },
+        { "name": "Leg Raises", "sets": 3, "reps": 15 },
+        { "name": "Superman Hold", "sets": 3, "reps": "30 sec" }
+      ]
+    },
+    {
+      "day": "Day 4 – Mixed Tempo Control",
+      "exercises": [
+        { "name": "Slow Tempo Push-up (5-0-5)", "sets": 3, "reps": 6 },
+        { "name": "Band Resisted Squat", "sets": 3, "reps": 10 },
+        { "name": "Slow V-ups", "sets": 3, "reps": 15 },
+        { "name": "Lying Band Abduction", "sets": 3, "reps": 12 }
+      ]
+    }
+  ],
+  "notes": "Χτίζουμε εκρηκτικότητα και έλεγχο. Επικεντρώσου σε σταθερό κορμό και δυναμική ενεργοποίηση."
+}

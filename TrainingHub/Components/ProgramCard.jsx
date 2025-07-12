@@ -69,10 +69,20 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
           )}
         </div>
         <p className={`text-sm ${theme === "dark" ? "text-zinc-400" : "text-gray-600"}`}>
-          <span title="Επίπεδο πρόσβασης χρήστη">🎯 {program.goal || program.description}</span> • 🕒 {program.duration} • ⚡ {program.level}
+          <span title="Επίπεδο πρόσβασης χρήστη">
+            🎯 {program.goal || program.description}
+          </span> • 🕒 {program.duration} • ⚡ {program.level}
         </p>
+        <span
+          className="text-xs italic text-gray-400"
+          title="Επίπεδο πρόσβασης απαιτούμενο για αυτό το πρόγραμμα"
+        >
+          Access Tier: {program.accessTier}
+        </span>
         {debugMode && (
-          <p className="text-xs font-mono text-red-500">[Debug] Tier: {program.accessTier} • Filename: {program.filename}</p>
+          <p className="text-xs font-mono text-red-500">
+            [Debug] Tier: {program.accessTier} • Filename: {program.filename}
+          </p>
         )}
         {isLocked(program.accessTier) && (
           <div
@@ -125,7 +135,7 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
               <AnimatePresence>
                 {expandedDay === index && (
                   <motion.div
-                    key={"details"}
+                    key="details"
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
@@ -137,9 +147,14 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
                   >
                     <ul className="list-disc text-sm space-y-1">
                       {day.exercises?.map((ex, i) => (
-                        <li key={i}>
-                          {ex.name} — {ex.sets}x{ex.reps}
-                          {ex.intensity ? ` @ ${ex.intensity}` : ""}
+                        <li key={i} className="flex items-center gap-2">
+                          {ex.gif && (
+                            <img src={ex.gif} alt={ex.name} className="w-8 h-8 rounded shadow-sm" />
+                          )}
+                          <span>
+                            {ex.name} — {ex.sets}x{ex.reps}
+                            {ex.intensity ? ` @ ${ex.intensity}` : ""}
+                          </span>
                         </li>
                       ))}
                     </ul>

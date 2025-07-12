@@ -1,0 +1,55 @@
+{
+  "filename": "homeBodyweightBeginner4.json",
+  "title": "Home Band Training – Beginner Phase 4",
+  "level": "Beginner",
+  "goal": "Progressive Overload with Resistance Bands",
+  "category": "indoor",
+  "subcategory": "home",
+  "duration": "3 εβδομάδες",
+  "accessTier": "Free",
+  "daysPerWeek": 4,
+  "description": "Εισαγωγή σε λάστιχα αντίστασης για ασφαλή, προοδευτική επιβάρυνση στο σπίτι. Ιδανικό για μετάβαση από bodyweight σε ενδυνάμωση.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Upper Body – Band Activation",
+      "exercises": [
+        { "name": "Band Chest Press", "sets": 3, "reps": "10-12" },
+        { "name": "Band Row", "sets": 3, "reps": "12" },
+        { "name": "Overhead Band Press", "sets": 2, "reps": "10" },
+        { "name": "Band Pull Aparts", "sets": 2, "reps": "15" }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "split": "Lower Body – Band Strength",
+      "exercises": [
+        { "name": "Band Squat", "sets": 3, "reps": "12-15" },
+        { "name": "Band Deadlift", "sets": 3, "reps": "10" },
+        { "name": "Standing Band Glute Kickbacks", "sets": 2, "reps": "12/leg" },
+        { "name": "Band Calf Raise", "sets": 2, "reps": "15" }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "split": "Core & Rotation",
+      "exercises": [
+        { "name": "Band Pallof Press", "sets": 3, "reps": "10/side" },
+        { "name": "Band Woodchopper", "sets": 2, "reps": "12/side" },
+        { "name": "Dead Bug with Band", "sets": 2, "reps": "10" },
+        { "name": "Side Plank", "sets": 2, "reps": "30 sec/side" }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "split": "Full Body Conditioning",
+      "exercises": [
+        { "name": "Air Squat to Band Row", "sets": 3, "reps": "12" },
+        { "name": "Mountain Climbers", "sets": 3, "reps": "30 sec" },
+        { "name": "Band Shadow Punches", "sets": 3, "reps": "45 sec" },
+        { "name": "Band Overhead Hold", "sets": 2, "reps": "30 sec" }
+      ]
+    }
+  ],
+  "notes": "Χρησιμοποίησε λάστιχο μέσης αντίστασης. Εστίασε στον έλεγχο της κίνησης και σταθερότητα."
+}

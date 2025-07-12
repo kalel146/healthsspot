@@ -1,0 +1,55 @@
+{
+  "filename": "homeBodyweightBeginner3.json",
+  "title": "Bodyweight Home – Beginner Phase 3",
+  "level": "Beginner",
+  "goal": "Strength Endurance, Stability, and Movement Flow",
+  "category": "indoor",
+  "subcategory": "home",
+  "duration": "3 εβδομάδες",
+  "accessTier": "Free",
+  "daysPerWeek": 4,
+  "description": "Φάση που ενισχύει τη μυϊκή αντοχή και την ικανότητα συνεχόμενης κίνησης με έλεγχο. Έμφαση σε ροή ασκήσεων, σταθερότητα και σωστή αναπνοή.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Lower + Core",
+      "exercises": [
+        { "name": "Step-Back Lunges", "sets": 3, "reps": "12/leg" },
+        { "name": "Wall Sit Reach", "sets": 3, "reps": "10" },
+        { "name": "Side Plank Dips", "sets": 2, "reps": "10/side" },
+        { "name": "Slow Tempo Glute Bridge", "sets": 3, "reps": "12" }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "split": "Upper Flow",
+      "exercises": [
+        { "name": "Push-up to Downward Dog", "sets": 3, "reps": "6-8" },
+        { "name": "Wall Slides", "sets": 2, "reps": "10" },
+        { "name": "Superman Pull", "sets": 2, "reps": "12" },
+        { "name": "Arm Circles + Hold", "sets": 2, "reps": "30 sec" }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "split": "Mobility + Core",
+      "exercises": [
+        { "name": "90/90 Transitions", "sets": 3, "reps": "8/side" },
+        { "name": "Beast Crawl", "sets": 3, "reps": "10 steps" },
+        { "name": "Plank with Reach", "sets": 2, "reps": "10" },
+        { "name": "Slow Dead Bug", "sets": 2, "reps": "8/side" }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "split": "Full Body Conditioning",
+      "exercises": [
+        { "name": "Jumping Jacks", "sets": 3, "reps": "30 sec" },
+        { "name": "Air Squats", "sets": 3, "reps": "15" },
+        { "name": "Modified Burpees", "sets": 3, "reps": "6" },
+        { "name": "Shadow Boxing", "sets": 3, "reps": "1 min" }
+      ]
+    }
+  ],
+  "notes": "Αύξησε τη ροή μεταξύ των ασκήσεων. Η εστίαση είναι στην αντοχή και στην ορθοσωμία. Προαιρετική χρήση yoga mat ή πετσέτας για άνεση."
+}
