@@ -1,0 +1,53 @@
+{
+  "filename": "gymFitnessBeginner3.json",
+  "title": "Cardio-Strength Synergy",
+  "level": "Beginner",
+  "duration": "2 εβδομάδες",
+  "frequency": "4x/εβδομάδα",
+  "equipment": "Στατικό ποδήλατο, λάστιχα, dumbbells",
+  "accessTier": "Free",
+  "category": "gym",
+  "subcategory": "fitness",
+  "description": "Ενίσχυση καρδιοαναπνευστικής ικανότητας και δύναμης μέσα από κυκλικά functional sessions και HIIT protocols.",
+  "days": [
+    {
+      "name": "Day 1 – Cardio Kickoff",
+      "exercises": [
+        "Bike Intervals – 30s Sprint / 90s Easy x8",
+        "Band Chest Press – 3x15",
+        "Bodyweight Rows – 3x12",
+        "Wall Sit – 3x45 sec"
+      ]
+    },
+    {
+      "name": "Day 2 – Functional Core & Balance",
+      "exercises": [
+        "Bird-Dog – 3x10/side",
+        "Dumbbell Side Bends – 3x15/side",
+        "Resistance Band Pallof Press – 3x10/side",
+        "Plank March – 3x20 total"
+      ]
+    },
+    {
+      "name": "Day 3 – Total Body Tabata",
+      "exercises": [
+        "TABATA (20s/10s) x4 sets:",
+        "• Jump Squats",
+        "• Push-up to Downward Dog",
+        "• Dumbbell Snatch (alternating)",
+        "• High Knees"
+      ]
+    },
+    {
+      "name": "Day 4 – Hybrid Strength Ladder",
+      "exercises": [
+        "Ladder Set (10-8-6 reps):",
+        "• Dumbbell Romanian Deadlift",
+        "• Shoulder Press",
+        "• Goblet Lunge",
+        "• Plank to Push-up"
+      ]
+    }
+  ],
+  "notes": "Κλιμάκωση έντασης για αύξηση αντοχής και ελέγχου κινήσεων. Συνδυάζει μεθόδους που εναλλάσσουν καρδιοαναπνευστικό φορτίο και σταθερότητα."
+}

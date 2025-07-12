@@ -47,11 +47,25 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
     ? program.weeklySplit
     : [];
 
+  const phaseBadge = program.phase
+    ? `Phase ${program.phase}`
+    : null;
+
+  const badgeColor = (tier) => {
+    switch (tier) {
+      case "Bronze": return "bg-amber-400 text-white";
+      case "Silver": return "bg-gray-300 text-black";
+      case "Gold": return "bg-yellow-400 text-white";
+      case "Platinum": return "bg-gradient-to-r from-gray-500 to-white text-black";
+      default: return "bg-gray-200 text-gray-700";
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`rounded-3xl shadow-lg p-6 w-full max-w-3xl mx-auto border-2 ${borderColor} transition-colors duration-300 ${
+      className={`relative rounded-3xl shadow-lg p-6 w-full max-w-3xl mx-auto border-2 ${borderColor} transition-colors duration-300 ${
         theme === "dark"
           ? "bg-zinc-900 border-zinc-700 text-white"
           : "bg-white border-gray-200 text-black"
@@ -62,23 +76,35 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
           <h2 className="text-2xl font-bold text-indigo-500 tracking-tight">
             {program.title}
           </h2>
-          {isAdmin && (
-            <span className="ml-2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full">
-              Admin Preview
-            </span>
-          )}
+          <div className="flex gap-2 items-center">
+            {phaseBadge && (
+              <span
+                className="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2 py-0.5 rounded-full dark:bg-indigo-800 dark:text-white"
+                title={`Training Phase: ${program.phase}`}
+              >
+                {phaseBadge}
+              </span>
+            )}
+            {program.accessTier && (
+              <span
+                className={`text-xs font-semibold px-2 py-0.5 rounded-full ${badgeColor(program.accessTier)}`}
+                title={`Απαιτεί πακέτο ${program.accessTier}`}
+              >
+                {program.accessTier} Tier
+              </span>
+            )}
+            {isAdmin && (
+              <span className="bg-yellow-400 text-black text-xs font-bold px-2 py-0.5 rounded-full">
+                Admin Preview
+              </span>
+            )}
+          </div>
         </div>
         <p className={`text-sm ${theme === "dark" ? "text-zinc-400" : "text-gray-600"}`}>
           <span title="Επίπεδο πρόσβασης χρήστη">
             🎯 {program.goal || program.description}
           </span> • 🕒 {program.duration} • ⚡ {program.level}
         </p>
-        <span
-          className="text-xs italic text-gray-400"
-          title="Επίπεδο πρόσβασης απαιτούμενο για αυτό το πρόγραμμα"
-        >
-          Access Tier: {program.accessTier}
-        </span>
         {debugMode && (
           <p className="text-xs font-mono text-red-500">
             [Debug] Tier: {program.accessTier} • Filename: {program.filename}
@@ -94,7 +120,7 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
           >
             <p
               className="text-red-500 font-medium"
-              title="Αυτό το πρόγραμμα απαιτεί συνδρομή στο επίπεδο ή υψηλότερο για πρόσβαση"
+              title={`Αυτό το πρόγραμμα απαιτεί πακέτο ${program.accessTier}`}
             >
               🔒 Απαιτεί πακέτο {program.accessTier} ή ανώτερο
             </p>

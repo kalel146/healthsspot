@@ -1,0 +1,51 @@
+{
+  "filename": "gymFitnessBeginner6.json",
+  "title": "Endurance & Flow",
+  "level": "Beginner",
+  "duration": "2 εβδομάδες",
+  "frequency": "4x/εβδομάδα",
+  "equipment": "Ελλειπτικό, dumbbells, λάστιχα, yoga mat",
+  "accessTier": "Free",
+  "category": "gym",
+  "subcategory": "fitness",
+  "description": "Αναμειγνύει cardio αντοχής, ενεργητική αποκατάσταση και σταθεροποίηση. Ιδανικό για ενίσχυση καρδιοαναπνευστικής βάσης.",
+  "days": [
+    {
+      "name": "Day 1 – Cardio Endurance Ride",
+      "exercises": [
+        "Elliptical or Bike – 25 min (moderate pace)",
+        "Push-ups – 3x12",
+        "Bodyweight Squats – 3x15",
+        "Plank – 3x30 sec"
+      ]
+    },
+    {
+      "name": "Day 2 – Core & Control",
+      "exercises": [
+        "Dead Bug – 3x15",
+        "Bird-Dog Hold – 3x20 sec",
+        "Glute Bridge – 3x12",
+        "Slow-Motion Mountain Climbers – 3x30 sec"
+      ]
+    },
+    {
+      "name": "Day 3 – Flow Mobility",
+      "exercises": [
+        "Dynamic Stretch Series – 10 min",
+        "Yoga Sun Salutations – 3x",
+        "Foam Rolling – 10 min",
+        "Breathing & Diaphragmatic Control – 5 min"
+      ]
+    },
+    {
+      "name": "Day 4 – Mixed Conditioning",
+      "exercises": [
+        "Bike Intervals (2 min ON / 1 min OFF) x4",
+        "Band Pull-Aparts – 3x15",
+        "Step-Up to Knee Drive – 3x10/leg",
+        "Side Plank – 2x30 sec each side"
+      ]
+    }
+  ],
+  "notes": "Αύξηση αναπνευστικής απόδοσης, σταθεροποίηση κορμού και ήπια λειτουργική αποκατάσταση. Χαμηλή επιβάρυνση, ιδανική για προσαρμογές."
+}

@@ -39,6 +39,16 @@ export default function ProgramVault() {
       "hypertrophyadvanced2.json",
       "hypertrophyadvanced3.json",
       "hypertrophyadvanced4.json",
+      "gymFitnessBeginner1.json",
+      "gymFitnessBeginner2.json",
+      "gymFitnessBeginner3.json",
+      "gymFitnessBeginner4.json",
+      "gymFitnessBeginner5.json",
+      "gymFitnessBeginner6.json",
+      "gymFitnessBeginner7.json",
+      "gymFitnessBeginner8.json",
+      "gymFitnessBeginner9.json",
+      "gymFitnessBeginner10.json",
       "gymPowerlifting.json",
       "gymPowerliftingbeginner1.json",
       "gymPowerliftingbeginner2.json",
@@ -51,15 +61,15 @@ export default function ProgramVault() {
       "gymPowerliftingAdvanced2.json",
       "gymPowerliftingAdvanced3.json",
       "homeBodyweightBeginner1.json",
-"homeBodyweightBeginner2.json",
-"homeBodyweightBeginner3.json",
-"homeBodyweightBeginner4.json",
-"homeBodyweightBeginner5.json",
-"homeBodyweightBeginner6.json",
-"homeBodyweightBeginner7.json",
-"homeBodyweightBeginner8.json",
-"homeBodyweightBeginner9.json",
-"homeBodyweightBeginner10.json",
+      "homeBodyweightBeginner2.json",
+      "homeBodyweightBeginner3.json",
+      "homeBodyweightBeginner4.json",
+      "homeBodyweightBeginner5.json",
+      "homeBodyweightBeginner6.json",
+      "homeBodyweightBeginner7.json",
+      "homeBodyweightBeginner8.json",
+      "homeBodyweightBeginner9.json",
+      "homeBodyweightBeginner10.json",
       "indoorHomeBeginner.json",
       "mobilityStretching.json",
       "outdoorTrackAndField.json"
@@ -107,7 +117,8 @@ export default function ProgramVault() {
     <div className="p-4">
       {/* Tier Debugging Dropdown */}
       {isAdmin && (
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-4 gap-2 items-center">
+          <label className="text-sm text-gray-500 dark:text-gray-300">Tier Preview:</label>
           <select
             value={tier}
             onChange={(e) => setTier(e.target.value)}
@@ -139,6 +150,7 @@ export default function ProgramVault() {
               setFilteredCategory(cat);
               setFilteredSubcategory(null);
             }}
+            title={`Φίλτρο για κατηγορία: ${cat}`}
           >
             {cat.charAt(0).toUpperCase() + cat.slice(1)}
           </motion.button>
@@ -160,6 +172,7 @@ export default function ProgramVault() {
                     : "bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 border-gray-300"
                 }`}
               onClick={() => setFilteredSubcategory(sub)}
+              title={`Φίλτρο για υποκατηγορία: ${sub}`}
             >
               <span className="relative z-10">{sub.charAt(0).toUpperCase() + sub.slice(1)}</span>
               {filteredSubcategory !== sub && (
@@ -195,6 +208,7 @@ export default function ProgramVault() {
                 userTier={tier}
                 selectedCategory={filteredCategory}
                 isAdmin={isAdmin}
+                debugMode={isAdmin}
               />
             ))}
           </motion.div>

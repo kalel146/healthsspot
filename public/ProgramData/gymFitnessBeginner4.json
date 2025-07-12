@@ -1,0 +1,52 @@
+{
+  "filename": "gymFitnessBeginner4.json",
+  "title": "Endurance Engine",
+  "level": "Beginner",
+  "duration": "2 εβδομάδες",
+  "frequency": "4x/εβδομάδα",
+  "equipment": "Διάδρομος, λάστιχα, dumbbells, TRX (optional)",
+  "accessTier": "Free",
+  "category": "gym",
+  "subcategory": "fitness",
+  "description": "Αντοχή, μυϊκή επιμονή και ενεργοποίηση σταθεροποιητών με συνδυασμό steady-state cardio, tempo lifts και TRX.",
+  "days": [
+    {
+      "name": "Day 1 – Tempo Strength",
+      "exercises": [
+        "Tempo Squats (3-1-3) – 3x8",
+        "Dumbbell Chest Press – 3x10",
+        "Band Pull-aparts – 3x15",
+        "TRX Row (or Bodyweight) – 3x10"
+      ]
+    },
+    {
+      "name": "Day 2 – Steady-State + Core",
+      "exercises": [
+        "Treadmill Jog – 20 min @ steady pace",
+        "Dead Bug – 3x10/side",
+        "Side Plank – 3x30 sec/side",
+        "Glute Bridge March – 3x12"
+      ]
+    },
+    {
+      "name": "Day 3 – Circuit Training",
+      "exercises": [
+        "Complete 3 Rounds:",
+        "• Dumbbell Thrusters – 12 reps",
+        "• Jump Rope – 1 min",
+        "• Band Lat Pulldown – 15 reps",
+        "• Plank with Reach – 10 reps/side"
+      ]
+    },
+    {
+      "name": "Day 4 – TRX & Mobility Mix",
+      "exercises": [
+        "TRX Squat to Row – 3x12",
+        "TRX Hamstring Curl – 3x10",
+        "Foam Rolling (Quads, Hamstrings, Upper Back) – 10 min",
+        "Stretch Flow (Down Dog, Cobra, Pigeon Pose) – 8 min"
+      ]
+    }
+  ],
+  "notes": "Χτίζουμε βάση για σταθερή πρόοδο. Το πρόγραμμα μπορεί να τροποποιηθεί πλήρως για όσους δεν έχουν TRX."
+}

@@ -1,0 +1,42 @@
+{
+  "filename": "gymFitnessBeginner1.json",
+  "title": "Cardiometabolic Start",
+  "level": "Beginner",
+  "subcategory": "fitness",
+  "category": "gym",
+  "goal": "Aerobic base building, light resistance intro",
+  "duration": "2 εβδομάδες",
+  "daysPerWeek": 3,
+  "accessTier": "Free",
+  "description": "A blend of light cardio and beginner resistance work using machines and bodyweight to kickstart conditioning.",
+  "weeklySplit": [
+    {
+      "day": "Day 1 - Treadmill & Push",
+      "exercises": [
+        { "name": "Treadmill Walk (Incline 5%)", "sets": 1, "reps": "20 min", "gif": "/gifs/treadmill_walk.gif" },
+        { "name": "Chest Press Machine", "sets": 3, "reps": 12, "gif": "/gifs/chest_press_machine.gif" },
+        { "name": "Triceps Pushdown", "sets": 3, "reps": 12, "gif": "/gifs/triceps_pushdown.gif" },
+        { "name": "Plank Hold", "sets": 2, "reps": "30 sec", "gif": "/gifs/plank_hold.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Elliptical & Pull",
+      "exercises": [
+        { "name": "Elliptical Moderate Pace", "sets": 1, "reps": "15 min", "gif": "/gifs/elliptical.gif" },
+        { "name": "Lat Pulldown", "sets": 3, "reps": 12, "gif": "/gifs/lat_pulldown.gif" },
+        { "name": "Dumbbell Row", "sets": 3, "reps": 10, "gif": "/gifs/dumbbell_row.gif" },
+        { "name": "Bird Dog", "sets": 2, "reps": 10, "gif": "/gifs/bird_dog.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Cycle & Core",
+      "exercises": [
+        { "name": "Stationary Bike Intervals (30s fast / 1min slow)", "sets": 1, "reps": "15 min", "gif": "/gifs/stationary_bike.gif" },
+        { "name": "Leg Raise", "sets": 3, "reps": 15, "gif": "/gifs/leg_raise.gif" },
+        { "name": "Glute Bridge", "sets": 3, "reps": 12, "gif": "/gifs/glute_bridge.gif" },
+        { "name": "Side Plank", "sets": 2, "reps": "20 sec/side", "gif": "/gifs/side_plank.gif" }
+      ]
+    }
+  ],
+  "notes": "Focus on smooth movement, maintain steady heart rate zones, and familiarize yourself with machines."
+}

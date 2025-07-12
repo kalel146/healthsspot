@@ -1,0 +1,54 @@
+{
+ "filename": "gymFitnessBeginner2.json",
+  "title": "Hybrid Fitness Boost",
+  "level": "Beginner",
+  "duration": "2 εβδομάδες",
+  "frequency": "4x/εβδομάδα",
+  "equipment": "Μικρά βάρη, λάστιχα, διάδρομος ή ελλειπτικό",
+  "accessTier": "Free",
+  "category": "gym",
+  "subcategory": "fitness",
+  "description": "Συνδυαστική εκγύμναση με cardio, βάρη και ασκήσεις M.O.M., TABATA και functional κινήσεις για ολόσωμη ενεργοποίηση.",
+  "days": [
+    {
+      "name": "Day 1 – Metabolic M.O.M. (Cardio + Strength)",
+      "exercises": [
+        "Treadmill Jog – 6min warmup",
+        "M.O.M. Circuit x4 rounds:",
+        "• Kettlebell Goblet Squats – 12 reps",
+        "• Push-ups – 10 reps",
+        "• Band Rows – 12 reps",
+        "• Jumping Jacks – 30 sec"
+      ]
+    },
+    {
+      "name": "Day 2 – Functional TABATA",
+      "exercises": [
+        "TABATA x 4 (20s work / 10s rest):",
+        "• Dumbbell Thrusters",
+        "• Jump Rope",
+        "• Sit-ups",
+        "• Bodyweight Lunges"
+      ]
+    },
+    {
+      "name": "Day 3 – Recovery & Light Mobility",
+      "exercises": [
+        "Foam Rolling – 10 min",
+        "Dynamic Stretching – 10 min",
+        "Light Elliptical – 15 min",
+        "Bodyweight Core Routine (Plank, Dead Bug, Side Plank) – 3x30 sec"
+      ]
+    },
+    {
+      "name": "Day 4 – Strength + HIIT",
+      "exercises": [
+        "Goblet Squat – 3x12",
+        "Incline Dumbbell Press – 3x10",
+        "Resistance Band Deadlift – 3x15",
+        "HIIT Finisher (Bike Sprint 30s ON / 30s OFF) x6"
+      ]
+    }
+  ],
+  "notes": "Ιδανικό για αρχάριους που θέλουν να χτίσουν αντοχή, συντονισμό και δύναμη ταυτόχρονα. Οι ασκήσεις μπορούν να γίνουν σε γυμναστήριο ή στο σπίτι με εξοπλισμό."
+}

@@ -1,0 +1,54 @@
+{
+  "filename": "gymFitnessBeginner8.json",
+  "title": "Agility & Explosive Circuit Phase",
+  "level": "Beginner",
+  "duration": "2 εβδομάδες",
+  "frequency": "4x/εβδομάδα",
+  "equipment": "Μικρά βάρη, λάστιχα, step, agility ladder ή κώνοι",
+  "accessTier": "Free",
+  "category": "gym",
+  "subcategory": "fitness",
+  "description": "Εκρηκτικότητα, νευρομυϊκή συναρμογή, σταθερότητα και ευκινησία με χρήση agility και functional circuit προπόνησης.",
+  "days": [
+    {
+      "name": "Day 1 – Agility + Strength",
+      "exercises": [
+        "Ladder Drills – 4x (fast feet, in-in-out, lateral hops)",
+        "Dumbbell Step-ups – 3x10/πόδι",
+        "Push Press με αλτήρες – 3x12",
+        "Side Plank with Reach Through – 3x10/πλευρά"
+      ]
+    },
+    {
+      "name": "Day 2 – Bodyweight Explosive HIIT",
+      "exercises": [
+        "Jump Squats – 3x12",
+        "Plyo Push-ups (ή Incline για αρχάριους) – 3x8",
+        "Burpees – 3x10",
+        "High Knees – 30 sec x3",
+        "Mountain Climbers – 30 sec x3"
+      ]
+    },
+    {
+      "name": "Day 3 – Light Recovery & Core Stability",
+      "exercises": [
+        "Foam Rolling – 5 min",
+        "Resistance Band Pallof Press – 3x10/πλευρά",
+        "Bird-Dog Hold – 3x30 sec",
+        "Supine Toe Taps – 3x15",
+        "Deep Breathing – 5 min"
+      ]
+    },
+    {
+      "name": "Day 4 – Full-Body Functional Circuit",
+      "exercises": [
+        "DB Thrusters – 3x12",
+        "Resistance Band Rows – 3x15",
+        "Kettlebell Swings – 3x15",
+        "Plank Walkouts – 3x10",
+        "Jumping Jacks – 30 sec x3"
+      ]
+    }
+  ],
+  "notes": "Εκρηκτικότητα με έλεγχο. Δουλεύουμε το agility και τον έλεγχο του κορμού, χτίζοντας δύναμη και ταχύτητα με ασφάλεια."
+}

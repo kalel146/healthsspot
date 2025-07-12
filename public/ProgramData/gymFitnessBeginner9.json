@@ -1,0 +1,55 @@
+{
+  "filename": "gymFitnessBeginner9.json",
+  "title": "Extended Endurance + Stability Blend",
+  "level": "Beginner",
+  "duration": "2 εβδομάδες",
+  "frequency": "4x/εβδομάδα",
+  "equipment": "Τρέξιμο/διάδρομος, λάστιχα, dumbbells, step box",
+  "accessTier": "Free",
+  "category": "gym",
+  "subcategory": "fitness",
+  "description": "Συνδυαστικό πρόγραμμα ενδυνάμωσης και καρδιοαναπνευστικής βελτίωσης με extended μορφή συνεδριών. Έμφαση στη διάρκεια, σταθερότητα και σταδιακή αύξηση αντοχής.",
+  "days": [
+    {
+      "name": "Day 1 – Endurance Progression",
+      "exercises": [
+        "Power Walk – 10 min",
+        "Jog – 20 min",
+        "Circuit x5 rounds:",
+        "• Push-ups – 12 reps",
+        "• Step-ups – 12/leg",
+        "• Band Rows – 15 reps"
+      ]
+    },
+    {
+      "name": "Day 2 – Strength + Stability Flow",
+      "exercises": [
+        "Dumbbell Goblet Squat – 3x15",
+        "Standing Band Chest Press – 3x12",
+        "Lying Leg Raises – 3x15",
+        "Bird-Dog Hold – 3x30 sec"
+      ]
+    },
+    {
+      "name": "Day 3 – Light Cardio & Mobility Recovery",
+      "exercises": [
+        "Elliptical or Bike – 10 min",
+        "Dynamic Stretching – 10 min",
+        "Wall Sits – 3x45 sec",
+        "Glute Bridge – 3x20"
+      ]
+    },
+    {
+      "name": "Day 4 – Long HIIT Endurance",
+      "exercises": [
+        "4 Rounds (40s ON / 20s OFF):",
+        "• Jump Rope",
+        "• Dumbbell Squat to Press",
+        "• High Knees",
+        "• Plank Jacks",
+        "Cool down jog – 5 min"
+      ]
+    }
+  ],
+  "notes": "Στόχος είναι η επιμήκυνση της διάρκειας προπόνησης και η σταθερή πρόοδος σε σταθερότητα και καρδιοαναπνευστική λειτουργία."
+}

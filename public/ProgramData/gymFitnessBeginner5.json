@@ -1,0 +1,53 @@
+{
+  "filename": "gymFitnessBeginner5.json",
+  "title": "Hybrid Heat",
+  "level": "Beginner",
+  "duration": "2 εβδομάδες",
+  "frequency": "4x/εβδομάδα",
+  "equipment": "Διάδρομος ή ποδήλατο, dumbbells, λάστιχα, step box (optional)",
+  "accessTier": "Free",
+  "category": "gym",
+  "subcategory": "fitness",
+  "description": "Προπόνηση σε λειτουργικά patterns και ικανότητα ανάκαμψης. Μείγμα HIIT, Cross Training και βασικής δύναμης.",
+  "days": [
+    {
+      "name": "Day 1 – Cross Mix Circuit",
+      "exercises": [
+        "Complete 4 Rounds:",
+        "• Dumbbell Clean & Press – 8 reps",
+        "• Jump Squats – 12 reps",
+        "• Band Rows – 15 reps",
+        "• Step Box Burpees – 6 reps"
+      ]
+    },
+    {
+      "name": "Day 2 – HIIT Power Intervals",
+      "exercises": [
+        "Bike Sprints (30s ON / 30s OFF) x8",
+        "Dumbbell Reverse Lunges – 3x12",
+        "Push-up to Down Dog – 3x10",
+        "Dead Bug – 3x15"
+      ]
+    },
+    {
+      "name": "Day 3 – Recovery Flow & Core",
+      "exercises": [
+        "Foam Rolling – 5 min",
+        "Stretch Series – 10 min",
+        "Plank Variations (Front, Side, Dynamic) – 3x30 sec each",
+        "Band Pallof Press – 3x10/side"
+      ]
+    },
+    {
+      "name": "Day 4 – Strength + EMOM Challenge",
+      "exercises": [
+        "Dumbbell Squat + Press – 3x10",
+        "Band Face Pulls – 3x15",
+        "EMOM x10 min:",
+        "• Minute 1: 8 Jumping Lunges",
+        "• Minute 2: 8 Push-ups"
+      ]
+    }
+  ],
+  "notes": "Μείνε σε έλεγχο και εστίασε στην ποιότητα κινήσεων. Το πρόγραμμα δοκιμάζει την καρδιο-αναπνευστική σου ανάκαμψη σε συνδυασμό με τοπική κόπωση."
+}

@@ -1,0 +1,60 @@
+{
+  "filename": "gymFitnessBeginner10.json",
+  "title": "Performance Shaper",
+  "level": "Beginner",
+  "duration": "2 εβδομάδες",
+  "frequency": "5x/εβδομάδα",
+  "equipment": "TRX, medicine ball, dumbbells, rower or treadmill",
+  "accessTier": "Free",
+  "category": "gym",
+  "subcategory": "fitness",
+  "description": "Πρόγραμμα με έμφαση στη σωματική απόδοση: ισχύ, σταθερότητα, ταχύτητα αντίδρασης και τεχνική. Συνδυάζει HIIT, functional sets και core work.",
+  "days": [
+    {
+      "name": "Day 1 – TRX Stability & Strength",
+      "exercises": [
+        "TRX Rows – 3x12",
+        "TRX Chest Press – 3x10",
+        "TRX Reverse Lunges – 3x10/leg",
+        "TRX Plank Hold – 3x30 sec"
+      ]
+    },
+    {
+      "name": "Day 2 – Speed & Reactive Drills",
+      "exercises": [
+        "Treadmill Sprint Intervals (20s ON / 40s OFF) x8",
+        "Medicine Ball Slams – 3x10",
+        "Agility Ladder Drills – 3 sets",
+        "High Knees – 3x30 sec"
+      ]
+    },
+    {
+      "name": "Day 3 – Functional Strength + Core",
+      "exercises": [
+        "Kettlebell Swings – 3x15",
+        "Goblet Squat – 3x12",
+        "Plank Reach Outs – 3x20",
+        "Dead Bug – 3x10/side"
+      ]
+    },
+    {
+      "name": "Day 4 – Low Impact Conditioning",
+      "exercises": [
+        "Elliptical – 20min steady pace",
+        "Banded Pull-aparts – 3x20",
+        "Wall Sit – 3x30 sec",
+        "Stretching & Foam Rolling – 10min"
+      ]
+    },
+    {
+      "name": "Day 5 – Mixed HIIT Finisher",
+      "exercises": [
+        "Dumbbell Snatch (alt arms) – 3x12",
+        "Burpees – 3x10",
+        "Bike Sprint 15s ON / 45s OFF x6",
+        "Side Plank (with Reach) – 3x30 sec/side"
+      ]
+    }
+  ],
+  "notes": "Συνδυαστικό πρόγραμμα για γενική αθλητική ετοιμότητα. Ιδανικό για άτομα που ολοκλήρωσαν τις αρχικές φάσεις και θέλουν να προσεγγίσουν πιο απαιτητική φυσική κατάσταση."
+}
