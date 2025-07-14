@@ -1,0 +1,45 @@
+{
+  "filename": "indoorPilatesBeginner7.json",
+  "title": "Pilates Beginner: Focus & Flow",
+  "level": "Beginner",
+  "phase": 7,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "Pilates",
+  "goal": "Βελτίωση ελέγχου και εστίασης μέσω ροής ασκήσεων, προώθηση ελέγχου της αναπνοής.",
+  "schedule": [
+    {
+      "day": "Day 1",
+      "type": "Conscious Flow",
+      "exercises": [
+        { "name": "Roll-Up", "sets": 2, "reps": 8, "gif": "/gifs/roll_up.gif" },
+        { "name": "Spine Twist", "sets": 2, "reps": 10, "gif": "/gifs/spine_twist.gif" },
+        { "name": "Single Leg Stretch", "sets": 2, "reps": 12, "gif": "/gifs/single_leg_stretch.gif" },
+        { "name": "Pelvic Curl", "sets": 2, "reps": 10, "gif": "/gifs/pelvic_curl.gif" }
+      ]
+    },
+    {
+      "day": "Day 2",
+      "type": "Mind-Body Link",
+      "exercises": [
+        { "name": "Swan Dive Prep", "sets": 2, "reps": 8, "gif": "/gifs/swan_dive_prep.gif" },
+        { "name": "Roll Like a Ball", "sets": 2, "reps": 10, "gif": "/gifs/roll_like_a_ball.gif" },
+        { "name": "Side Kick Series", "sets": 2, "reps": 10, "gif": "/gifs/side_kick_series.gif" },
+        { "name": "Seated Forward Fold", "sets": 1, "reps": 1, "gif": "/gifs/seated_forward_fold.gif" }
+      ]
+    },
+    {
+      "day": "Day 3",
+      "type": "Stretch + Flow",
+      "exercises": [
+        { "name": "Mermaid Stretch", "sets": 2, "reps": 1, "gif": "/gifs/mermaid_stretch.gif" },
+        { "name": "Leg Circles", "sets": 2, "reps": 8, "gif": "/gifs/leg_circles.gif" },
+        { "name": "Open Leg Rocker (modified)", "sets": 2, "reps": 6, "gif": "/gifs/open_leg_rocker.gif" },
+        { "name": "Breathing + Relaxation", "sets": 1, "reps": 5, "gif": "/gifs/relax_breath.gif" }
+      ]
+    }
+  ],
+  "notes": "Η Phase 7 επικεντρώνεται στην αίσθηση ροής και στον συγχρονισμό αναπνοής – κίνησης."
+}
+

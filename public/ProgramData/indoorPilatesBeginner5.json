@@ -1,0 +1,44 @@
+{
+  "filename": "indoorPilatesBeginner5.json",
+  "title": "Pilates Beginner: Stability & Breath Integration",
+  "level": "Beginner",
+  "phase": 5,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "Pilates",
+  "goal": "Σταθερότητα σε μεταβατικές κινήσεις, έλεγχος αναπνοής και βαθιά ενεργοποίηση πυρήνα.",
+  "schedule": [
+    {
+      "day": "Day 1",
+      "type": "Dynamic Flow",
+      "exercises": [
+        { "name": "Half Roll Down with Twist", "sets": 2, "reps": 8, "gif": "/gifs/half_roll_twist.gif" },
+        { "name": "Leg Circles (Single Leg)", "sets": 2, "reps": 10, "gif": "/gifs/leg_circles_single.gif" },
+        { "name": "Spine Stretch Forward", "sets": 2, "reps": 8, "gif": "/gifs/spine_stretch.gif" },
+        { "name": "Plank to Pike", "sets": 2, "reps": 6, "gif": "/gifs/plank_to_pike.gif" }
+      ]
+    },
+    {
+      "day": "Day 2",
+      "type": "Grounded Core Work",
+      "exercises": [
+        { "name": "Toe Taps", "sets": 3, "reps": 10, "gif": "/gifs/toe_taps.gif" },
+        { "name": "Leg Pull Front (modified)", "sets": 2, "reps": 10, "gif": "/gifs/leg_pull_front.gif" },
+        { "name": "Curl Up with Reach", "sets": 2, "reps": 12, "gif": "/gifs/curl_up_reach.gif" },
+        { "name": "Restorative Breathing", "sets": 1, "reps": 5, "gif": "/gifs/breathing_focus.gif" }
+      ]
+    },
+    {
+      "day": "Day 3",
+      "type": "Balance & Control",
+      "exercises": [
+        { "name": "Side Plank (Knees)", "sets": 2, "reps": "30 sec/side", "gif": "/gifs/side_plank_knees.gif" },
+        { "name": "Leg Reach & Pulse", "sets": 2, "reps": 12, "gif": "/gifs/leg_reach_pulse.gif" },
+        { "name": "Wall Roll Down", "sets": 2, "reps": 8, "gif": "/gifs/wall_roll_down.gif" },
+        { "name": "Breath Work Focus", "sets": 1, "reps": 5, "gif": "/gifs/breathing_focus.gif" }
+      ]
+    }
+  ],
+  "notes": "Χτίζουμε σταδιακή αντοχή και έλεγχο στο έδαφος με έμφαση στη ροή και στην αναπνευστική επίγνωση."
+}

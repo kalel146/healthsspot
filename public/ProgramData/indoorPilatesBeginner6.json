@@ -1,0 +1,44 @@
+{
+  "filename": "indoorPilatesBeginner6.json",
+  "title": "Pilates Beginner: Mobility Flow & Core Reset",
+  "level": "Beginner",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "Pilates",
+  "goal": "Βελτίωση της σπονδυλικής κινητικότητας, απελευθέρωση του stress και επαναφορά ελέγχου στον πυρήνα.",
+  "schedule": [
+    {
+      "day": "Day 1",
+      "type": "Spinal Mobility & Flow",
+      "exercises": [
+        { "name": "Roll Up", "sets": 2, "reps": 10, "gif": "/gifs/roll_up.gif" },
+        { "name": "Spine Twist", "sets": 2, "reps": 10, "gif": "/gifs/spine_twist.gif" },
+        { "name": "Saw", "sets": 2, "reps": 8, "gif": "/gifs/saw.gif" },
+        { "name": "Child’s Pose with Reach", "sets": 1, "reps": 1, "gif": "/gifs/child_pose_reach.gif" }
+      ]
+    },
+    {
+      "day": "Day 2",
+      "type": "Core Reset & Pelvic Stability",
+      "exercises": [
+        { "name": "Dead Bug", "sets": 3, "reps": 10, "gif": "/gifs/dead_bug.gif" },
+        { "name": "Heel Slide with Engagement", "sets": 2, "reps": 10, "gif": "/gifs/heel_slide.gif" },
+        { "name": "Shoulder Bridge March", "sets": 2, "reps": 10, "gif": "/gifs/bridge_march.gif" },
+        { "name": "Breath Work", "sets": 1, "reps": 5, "gif": "/gifs/breathing_focus.gif" }
+      ]
+    },
+    {
+      "day": "Day 3",
+      "type": "Length & Strength",
+      "exercises": [
+        { "name": "Swan Dive Prep", "sets": 2, "reps": 10, "gif": "/gifs/swan_prep.gif" },
+        { "name": "Leg Pull Front (Knees Down)", "sets": 2, "reps": 8, "gif": "/gifs/leg_pull_front_knees.gif" },
+        { "name": "Pilates Swimming", "sets": 2, "reps": 20, "gif": "/gifs/pilates_swimming.gif" },
+        { "name": "Restorative Breathing", "sets": 1, "reps": 5, "gif": "/gifs/breathing_focus.gif" }
+      ]
+    }
+  ],
+  "notes": "Επαναπροσδιορίζουμε τη ροή της αναπνοής με έμφαση στον κινητικό έλεγχο και την ευλυγισία."
+}

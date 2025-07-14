@@ -1,0 +1,44 @@
+{
+  "filename": "indoorPilatesBeginner8.json",
+  "title": "Pilates Beginner: Flow Integration Mastery",
+  "level": "Beginner",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "Pilates",
+  "goal": "Ολοκληρωμένη ενοποίηση κινητικότητας, ενδυνάμωσης και αναπνοής με έμφαση στη ροή και την ακρίβεια.",
+  "schedule": [
+    {
+      "day": "Day 1",
+      "type": "Integrated Core + Breath",
+      "exercises": [
+        { "name": "Hundred with Legs Lowering", "sets": 2, "reps": 10, "gif": "/gifs/hundred_leg_lowering.gif" },
+        { "name": "Single Straight Leg Stretch", "sets": 2, "reps": 10, "gif": "/gifs/single_straight_leg_stretch.gif" },
+        { "name": "Plank to Pike", "sets": 2, "reps": 8, "gif": "/gifs/plank_to_pike.gif" },
+        { "name": "Rolling Like a Ball", "sets": 2, "reps": 10, "gif": "/gifs/rolling_like_a_ball.gif" }
+      ]
+    },
+    {
+      "day": "Day 2",
+      "type": "Strength + Flex Flow",
+      "exercises": [
+        { "name": "Leg Pull Front (modified)", "sets": 2, "reps": 6, "gif": "/gifs/leg_pull_front.gif" },
+        { "name": "Side Kick Series", "sets": 2, "reps": 10, "gif": "/gifs/side_kick_series.gif" },
+        { "name": "Mermaid Stretch", "sets": 1, "reps": 2, "gif": "/gifs/mermaid_stretch.gif" },
+        { "name": "Spine Twist", "sets": 2, "reps": 10, "gif": "/gifs/spine_twist.gif" }
+      ]
+    },
+    {
+      "day": "Day 3",
+      "type": "Dynamic Integration",
+      "exercises": [
+        { "name": "Saw to Roll-up", "sets": 2, "reps": 6, "gif": "/gifs/saw_to_rollup.gif" },
+        { "name": "Bridge with Leg Extension", "sets": 2, "reps": 10, "gif": "/gifs/bridge_leg_extension.gif" },
+        { "name": "Criss Cross Slow Tempo", "sets": 2, "reps": 8, "gif": "/gifs/criss_cross_slow.gif" },
+        { "name": "Diaphragmatic Breath Work", "sets": 1, "reps": 5, "gif": "/gifs/breathing_focus.gif" }
+      ]
+    }
+  ],
+  "notes": "Προτείνεται αργή, ελεγχόμενη εκτέλεση με συνεχή ροή και επίγνωση αναπνοής. Τελική φάση ενοποίησης βασικών μοτίβων."
+}

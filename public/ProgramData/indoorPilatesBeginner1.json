@@ -1,0 +1,44 @@
+{
+      "filename": "indoorPilatesBeginner1.json",
+  "title": "Pilates Beginner: Core Foundation",
+  "level": "Beginner",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "Pilates",
+  "goal": "Ενεργοποίηση και ενδυνάμωση του πυρήνα, σταθερότητα και ευλυγισία.",
+  "schedule": [
+    {
+      "day": "Day 1",
+      "type": "Core Activation",
+      "exercises": [
+        { "name": "Pelvic Curl", "sets": 2, "reps": 10, "gif": "/gifs/pelvic_curl.gif" },
+        { "name": "Chest Lift", "sets": 2, "reps": 12, "gif": "/gifs/chest_lift.gif" },
+        { "name": "Hundred (modified)", "sets": 1, "reps": 60, "gif": "/gifs/hundred.gif" },
+        { "name": "Leg Slides", "sets": 2, "reps": 10, "gif": "/gifs/leg_slides.gif" }
+      ]
+    },
+    {
+      "day": "Day 2",
+      "type": "Flexibility + Breathing",
+      "exercises": [
+        { "name": "Spine Twist", "sets": 2, "reps": 10, "gif": "/gifs/spine_twist.gif" },
+        { "name": "Chest Expansion", "sets": 2, "reps": 12, "gif": "/gifs/chest_expansion.gif" },
+        { "name": "Mermaid Stretch", "sets": 1, "reps": 8, "gif": "/gifs/mermaid_stretch.gif" },
+        { "name": "Breathing Focus (supine)", "sets": 1, "reps": 5, "gif": "/gifs/breathing_focus.gif" }
+      ]
+    },
+    {
+      "day": "Day 3",
+      "type": "Beginner Flow",
+      "exercises": [
+        { "name": "Roll Down", "sets": 2, "reps": 10, "gif": "/gifs/roll_down.gif" },
+        { "name": "Toe Taps", "sets": 2, "reps": 12, "gif": "/gifs/toe_taps.gif" },
+        { "name": "Bridge with Marching", "sets": 2, "reps": 10, "gif": "/gifs/bridge_march.gif" },
+        { "name": "Child’s Pose (cooldown)", "sets": 1, "reps": 1, "gif": "/gifs/child_pose.gif" }
+      ]
+    }
+  ],
+  "notes": "Πρώτη επαφή με Pilates — Επικεντρώσου στην αναπνοή και τον έλεγχο του κορμού."
+}

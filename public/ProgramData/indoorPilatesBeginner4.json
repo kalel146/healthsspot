@@ -1,0 +1,44 @@
+{
+  "filename": "indoorPilatesBeginner4.json",
+  "title": "Pilates Beginner: Posture & Flow Mastery",
+  "level": "Beginner",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "Pilates",
+  "goal": "Βελτίωση της στάσης, ελέγχου αναπνοής και ανάπτυξη συνεχούς ροής στην κίνηση.",
+  "schedule": [
+    {
+      "day": "Day 1",
+      "type": "Postural Control",
+      "exercises": [
+        { "name": "Wall Roll Down", "sets": 2, "reps": 10, "gif": "/gifs/wall_roll_down.gif" },
+        { "name": "Shoulder Blade Squeeze", "sets": 2, "reps": 12, "gif": "/gifs/shoulder_squeeze.gif" },
+        { "name": "Single Leg Stretch", "sets": 2, "reps": 10, "gif": "/gifs/single_leg_stretch.gif" },
+        { "name": "Obliques with Reach", "sets": 2, "reps": 12, "gif": "/gifs/oblique_reach.gif" }
+      ]
+    },
+    {
+      "day": "Day 2",
+      "type": "Fluid Motion",
+      "exercises": [
+        { "name": "Rolling Like a Ball", "sets": 2, "reps": 8, "gif": "/gifs/rolling_ball.gif" },
+        { "name": "Spine Stretch Forward", "sets": 2, "reps": 10, "gif": "/gifs/spine_stretch_forward.gif" },
+        { "name": "Modified Teaser", "sets": 2, "reps": 6, "gif": "/gifs/teaser_prep.gif" },
+        { "name": "Cat-Cow Flow", "sets": 2, "reps": 10, "gif": "/gifs/cat_cow.gif" }
+      ]
+    },
+    {
+      "day": "Day 3",
+      "type": "Balance & Integration",
+      "exercises": [
+        { "name": "Side Plank (modified)", "sets": 2, "reps": 30, "gif": "/gifs/side_plank_modified.gif" },
+        { "name": "Standing Roll Up", "sets": 2, "reps": 10, "gif": "/gifs/standing_rollup.gif" },
+        { "name": "Spinal Rotation with Band", "sets": 2, "reps": 8, "gif": "/gifs/spinal_band_rotation.gif" },
+        { "name": "Meditative Breathing", "sets": 1, "reps": 5, "gif": "/gifs/meditative_breathing.gif" }
+      ]
+    }
+  ],
+  "notes": "Η έμφαση δίνεται στη στάση σώματος, στη σταθερή αναπνοή και στην ανάπτυξη φυσικής ροής της κίνησης."
+}

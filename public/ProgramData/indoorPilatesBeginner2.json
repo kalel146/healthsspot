@@ -1,0 +1,44 @@
+{
+      "filename": "indoorPilatesBeginner2.json",
+  "title": "Pilates Beginner: Balance & Flow",
+  "level": "Beginner",
+  "phase": 2,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "Pilates",
+  "goal": "Ανάπτυξη ισορροπίας, συντονισμού και ροής κινήσεων.",
+  "schedule": [
+    {
+      "day": "Day 1",
+      "type": "Balance Challenge",
+      "exercises": [
+        { "name": "Single Leg Stretch", "sets": 2, "reps": 12, "gif": "/gifs/single_leg_stretch.gif" },
+        { "name": "Side Kick Series", "sets": 2, "reps": 10, "gif": "/gifs/side_kick.gif" },
+        { "name": "Swimming (modified)", "sets": 2, "reps": 20, "gif": "/gifs/swimming.gif" },
+        { "name": "Standing Leg Circles", "sets": 2, "reps": 10, "gif": "/gifs/standing_leg_circles.gif" }
+      ]
+    },
+    {
+      "day": "Day 2",
+      "type": "Core + Flex",
+      "exercises": [
+        { "name": "Double Leg Stretch", "sets": 2, "reps": 10, "gif": "/gifs/double_leg_stretch.gif" },
+        { "name": "Saw", "sets": 2, "reps": 10, "gif": "/gifs/saw.gif" },
+        { "name": "Bridge Hold", "sets": 2, "reps": "30 sec", "gif": "/gifs/bridge_hold.gif" },
+        { "name": "Hamstring Stretch", "sets": 2, "reps": "30 sec", "gif": "/gifs/hamstring_stretch.gif" }
+      ]
+    },
+    {
+      "day": "Day 3",
+      "type": "Flow & Coordination",
+      "exercises": [
+        { "name": "Roll-Up", "sets": 2, "reps": 8, "gif": "/gifs/roll_up.gif" },
+        { "name": "Leg Pull Front (modified)", "sets": 2, "reps": 10, "gif": "/gifs/leg_pull_front.gif" },
+        { "name": "Open Leg Rocker Prep", "sets": 2, "reps": 6, "gif": "/gifs/open_leg_rocker.gif" },
+        { "name": "Spine Stretch Forward", "sets": 2, "reps": 8, "gif": "/gifs/spine_stretch_forward.gif" }
+      ]
+    }
+  ],
+  "notes": "Αυξάνεται η πρόκληση με ασκήσεις ισορροπίας και ροής. Διατήρησε τη συγκέντρωση στον ρυθμό της αναπνοής."
+}

@@ -1,0 +1,44 @@
+{
+  "filename": "indoorPilatesBeginner3.json",
+  "title": "Pilates Beginner: Controlled Core Challenge",
+  "level": "Beginner",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "Pilates",
+  "goal": "Ενδυνάμωση κορμού με έλεγχο, σταθερότητα και ενεργοποίηση βαθιών μυών.",
+  "schedule": [
+    {
+      "day": "Day 1",
+      "type": "Precision Core",
+      "exercises": [
+        { "name": "Double Leg Stretch", "sets": 2, "reps": 10, "gif": "/gifs/double_leg_stretch.gif" },
+        { "name": "Scissors (modified)", "sets": 2, "reps": 10, "gif": "/gifs/scissors_modified.gif" },
+        { "name": "Shoulder Bridge", "sets": 2, "reps": 10, "gif": "/gifs/shoulder_bridge.gif" },
+        { "name": "Side Leg Lift Series", "sets": 2, "reps": 12, "gif": "/gifs/side_leg_lift.gif" }
+      ]
+    },
+    {
+      "day": "Day 2",
+      "type": "Flow + Flexibility",
+      "exercises": [
+        { "name": "Swan Prep", "sets": 2, "reps": 8, "gif": "/gifs/swan_prep.gif" },
+        { "name": "Child’s Pose", "sets": 1, "reps": 1, "gif": "/gifs/child_pose.gif" },
+        { "name": "Saw", "sets": 2, "reps": 10, "gif": "/gifs/saw.gif" },
+        { "name": "Neck Pull (modified)", "sets": 1, "reps": 6, "gif": "/gifs/neck_pull.gif" }
+      ]
+    },
+    {
+      "day": "Day 3",
+      "type": "Endurance Flow",
+      "exercises": [
+        { "name": "Pilates Swimming", "sets": 2, "reps": 20, "gif": "/gifs/pilates_swimming.gif" },
+        { "name": "Criss Cross", "sets": 2, "reps": 12, "gif": "/gifs/criss_cross.gif" },
+        { "name": "Teaser Prep", "sets": 2, "reps": 8, "gif": "/gifs/teaser_prep.gif" },
+        { "name": "Restorative Breathing", "sets": 1, "reps": 5, "gif": "/gifs/breathing_focus.gif" }
+      ]
+    }
+  ],
+  "notes": "Ανάπτυξη ελέγχου με προχωρημένες ασκήσεις και σταθερό ρυθμό." 
+}

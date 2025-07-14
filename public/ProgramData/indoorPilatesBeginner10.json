@@ -1,0 +1,44 @@
+{
+  "filename": "indoorPilatesBeginner10.json",
+  "title": "Pilates Beginner: Complete Cycle Fusion",
+  "level": "Beginner",
+  "phase": 10,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "Pilates",
+  "goal": "Συνδυαστική επανάληψη όλων των βασικών μοτίβων Pilates με πρόκληση ελέγχου, ροής και ευλυγισίας σε απαιτητικότερο ρυθμό.",
+  "schedule": [
+    {
+      "day": "Day 1",
+      "type": "Core Mastery & Flow",
+      "exercises": [
+        { "name": "Hundred with Arm Circles", "sets": 2, "reps": 10, "gif": "/gifs/hundred_arm_circles.gif" },
+        { "name": "Single Leg Teaser", "sets": 2, "reps": 8, "gif": "/gifs/single_leg_teaser.gif" },
+        { "name": "Side Plank Rotation", "sets": 2, "reps": "6/side", "gif": "/gifs/side_plank_rotation.gif" },
+        { "name": "Seal Roll", "sets": 2, "reps": 8, "gif": "/gifs/seal_roll.gif" }
+      ]
+    },
+    {
+      "day": "Day 2",
+      "type": "Strength Endurance",
+      "exercises": [
+        { "name": "Leg Pull Front Full", "sets": 3, "reps": 8, "gif": "/gifs/leg_pull_front_full.gif" },
+        { "name": "Criss Cross Dynamic", "sets": 3, "reps": 12, "gif": "/gifs/criss_cross_dynamic.gif" },
+        { "name": "Bridge with Marching", "sets": 2, "reps": 10, "gif": "/gifs/bridge_marching.gif" },
+        { "name": "Pilates Swimming", "sets": 2, "reps": "30 sec", "gif": "/gifs/pilates_swimming.gif" }
+      ]
+    },
+    {
+      "day": "Day 3",
+      "type": "Full Body Flow Challenge",
+      "exercises": [
+        { "name": "Plank to Side Kick Combo", "sets": 2, "reps": 6, "gif": "/gifs/plank_side_kick_combo.gif" },
+        { "name": "Spine Twist to Saw", "sets": 2, "reps": 6, "gif": "/gifs/spine_twist_to_saw.gif" },
+        { "name": "Full Roll-Up to Bridge", "sets": 2, "reps": 6, "gif": "/gifs/full_rollup_to_bridge.gif" },
+        { "name": "Breath Sync Stretching", "sets": 1, "reps": 5, "gif": "/gifs/breath_sync_stretch.gif" }
+      ]
+    }
+  ],
+  "notes": "Η τελική φάση του κύκλου: έλεγχος, δύναμη και ροή σε μια ενιαία εμπειρία. Εκτελέστε με ακρίβεια και πλήρη αναπνευστική συνείδηση."
+}
