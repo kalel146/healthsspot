@@ -1,0 +1,40 @@
+{
+  "filename": "indoorYogaBeginner9.json",
+  "title": "Mindful Strength & Flow",
+  "level": "Beginner",
+  "phase": 9,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "yoga",
+  "goal": "Συνδυασμός ήπιας ενδυνάμωσης και mindfulness με ροές που αυξάνουν την εσωτερική σταθερότητα και τη συγκέντρωση.",
+  "schedule": [
+    {
+      "day": "Day 1 - Mindful Strength",
+      "exercises": [
+        { "name": "Chair Pose (Utkatasana)", "sets": 2, "reps": "40 δευτερόλεπτα", "gif": "/gifs/yoga_chair_pose.gif" },
+        { "name": "Crescent Lunge", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_crescent_lunge.gif" },
+        { "name": "Plank Pose", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_plank_pose.gif" },
+        { "name": "Locust Pose (Salabhasana)", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_locust_pose.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Flow & Breath",
+      "exercises": [
+        { "name": "Sun Salutation A (Surya Namaskar A)", "sets": 3, "reps": "1 ροή", "gif": "/gifs/yoga_sun_salutation_a.gif" },
+        { "name": "Warrior Flow (I → II → Reverse)", "sets": 2, "reps": "1 λεπτό/πλευρά", "gif": "/gifs/yoga_warrior_flow.gif" },
+        { "name": "Standing Forward Fold (Uttanasana)", "sets": 2, "reps": "45 δευτερόλεπτα", "gif": "/gifs/yoga_forward_fold.gif" },
+        { "name": "Camel Pose (Ustrasana)", "sets": 1, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_camel_pose.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Grounding & Relaxation",
+      "exercises": [
+        { "name": "Child’s Pose (Balasana)", "sets": 1, "reps": "2 λεπτά", "gif": "/gifs/yoga_child_pose.gif" },
+        { "name": "Seated Side Bend", "sets": 1, "reps": "1 λεπτό/πλευρά", "gif": "/gifs/yoga_seated_side_bend.gif" },
+        { "name": "Supine Twist", "sets": 1, "reps": "1 λεπτό/πλευρά", "gif": "/gifs/yoga_supine_twist.gif" },
+        { "name": "Shavasana (Final Relaxation)", "sets": 1, "reps": "5 λεπτά", "gif": "/gifs/yoga_shavasana.gif" }
+      ]
+    }
+  ]
+}

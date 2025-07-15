@@ -1,0 +1,40 @@
+{
+  "filename": "indoorYogaBeginner6.json",
+  "title": "Energy & Flow Expansion",
+  "level": "Beginner",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "yoga",
+  "goal": "Ενίσχυση της ροής, περισσότερη δυναμική στα transitions και βελτίωση της αντοχής στην πρακτική.",
+  "schedule": [
+    {
+      "day": "Day 1 - Energizing Flow",
+      "exercises": [
+        { "name": "Sun Salutation B (Surya Namaskar B)", "sets": 3, "reps": "3 κύκλοι", "gif": "/gifs/yoga_sun_salutation_b.gif" },
+        { "name": "Warrior I (Virabhadrasana I)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_warrior1.gif" },
+        { "name": "Twisted Crescent Lunge", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_twisted_crescent_lunge.gif" },
+        { "name": "Side Angle Pose (Utthita Parsvakonasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_side_angle.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Core & Stability Flow",
+      "exercises": [
+        { "name": "Plank to Downward Dog Flow", "sets": 3, "reps": "5 κύκλοι", "gif": "/gifs/yoga_plank_to_downdog.gif" },
+        { "name": "Chair Twist (Parivrtta Utkatasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_chair_twist.gif" },
+        { "name": "Boat Pose Variations", "sets": 3, "reps": "20 δευτερόλεπτα", "gif": "/gifs/yoga_boat_variation.gif" },
+        { "name": "Locust Pose (Salabhasana)", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_locust_pose.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Flexibility & Recovery",
+      "exercises": [
+        { "name": "Seated Forward Fold (Paschimottanasana)", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_seated_forward_fold.gif" },
+        { "name": "Supine Bound Angle Pose (Supta Baddha Konasana)", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_bound_angle.gif" },
+        { "name": "Thread the Needle Pose", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_thread_needle.gif" },
+        { "name": "Shavasana (Final Relaxation)", "sets": 1, "reps": "5 λεπτά", "gif": "/gifs/yoga_shavasana.gif" }
+      ]
+    }
+  ]
+}

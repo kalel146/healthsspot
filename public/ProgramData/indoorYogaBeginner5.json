@@ -1,0 +1,40 @@
+{
+  "filename": "indoorYogaBeginner5.json",
+  "title": "Flow & Stability Essentials",
+  "level": "Beginner",
+  "phase": 5,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "yoga",
+  "goal": "Σταθερότητα, έλεγχος αναπνοής και εισαγωγή σε πιο δυναμικές ροές για καλύτερη σωματική συνειδητότητα.",
+  "schedule": [
+    {
+      "day": "Day 1 - Dynamic Warm Flow",
+      "exercises": [
+        { "name": "Sun Salutation A (Surya Namaskar A)", "sets": 3, "reps": "3 κύκλοι", "gif": "/gifs/yoga_sun_salutation_a.gif" },
+        { "name": "Chair Pose (Utkatasana)", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_chair_pose.gif" },
+        { "name": "Low Lunge Twist", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_low_lunge_twist.gif" },
+        { "name": "Crescent Lunge", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_crescent_lunge.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Strength & Balance",
+      "exercises": [
+        { "name": "Warrior III", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_warrior3.gif" },
+        { "name": "Half Moon Pose (Ardha Chandrasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_half_moon.gif" },
+        { "name": "Boat Pose (Navasana)", "sets": 3, "reps": "20 δευτερόλεπτα", "gif": "/gifs/yoga_boat_pose.gif" },
+        { "name": "Bridge Pose (Setu Bandha Sarvangasana)", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_bridge_pose.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Recovery & Mobility",
+      "exercises": [
+        { "name": "Wide-Legged Forward Fold", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_wide_leg_fold.gif" },
+        { "name": "Reclined Spinal Twist", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_reclined_spinal_twist.gif" },
+        { "name": "Pigeon Pose (Eka Pada Rajakapotasana)", "sets": 1, "reps": "1 λεπτό/πλευρά", "gif": "/gifs/yoga_pigeon_pose.gif" },
+        { "name": "Shavasana (Final Relaxation)", "sets": 1, "reps": "5 λεπτά", "gif": "/gifs/yoga_shavasana.gif" }
+      ]
+    }
+  ]
+}

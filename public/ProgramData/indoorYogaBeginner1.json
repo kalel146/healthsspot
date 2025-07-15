@@ -1,0 +1,40 @@
+{
+  "filename": "indoorYogaBeginner1.json",
+  "title": "Gentle Yoga Foundation",
+  "level": "Beginner",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "yoga",
+  "goal": "Βασική κινητικότητα, χαλάρωση, αναπνοή και προσαρμογή σε στάσεις yoga.",
+  "schedule": [
+    {
+      "day": "Day 1 - Breath & Gentle Flow",
+      "exercises": [
+        { "name": "Seated Breath Awareness", "sets": 1, "reps": "3 λεπτά", "gif": "/gifs/yoga_breath_awareness.gif" },
+        { "name": "Cat-Cow Flow", "sets": 3, "reps": 6, "gif": "/gifs/yoga_cat_cow.gif" },
+        { "name": "Child’s Pose", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_child_pose.gif" },
+        { "name": "Supine Twist", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_supine_twist.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Standing Basics",
+      "exercises": [
+        { "name": "Mountain Pose (Tadasana)", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_mountain_pose.gif" },
+        { "name": "Half Forward Fold", "sets": 2, "reps": 5, "gif": "/gifs/yoga_half_forward_fold.gif" },
+        { "name": "Standing Side Stretch", "sets": 2, "reps": "5/πλευρά", "gif": "/gifs/yoga_side_stretch.gif" },
+        { "name": "Warrior I Prep", "sets": 2, "reps": "20 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_warrior1_prep.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Relax & Recovery",
+      "exercises": [
+        { "name": "Legs Up The Wall Pose", "sets": 1, "reps": "3 λεπτά", "gif": "/gifs/yoga_legs_up_wall.gif" },
+        { "name": "Seated Forward Fold", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_forward_fold_seated.gif" },
+        { "name": "Supported Bridge", "sets": 2, "reps": "20 δευτερόλεπτα", "gif": "/gifs/yoga_supported_bridge.gif" },
+        { "name": "Corpse Pose (Savasana)", "sets": 1, "reps": "5 λεπτά", "gif": "/gifs/yoga_savasana.gif" }
+      ]
+    }
+  ]
+}

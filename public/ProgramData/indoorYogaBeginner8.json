@@ -1,0 +1,40 @@
+{
+  "filename": "indoorYogaBeginner8.json",
+  "title": "Balance & Flexibility Flow",
+  "level": "Beginner",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "yoga",
+  "goal": "Ενίσχυση ισορροπίας, ευλυγισίας και ήρεμης αναπνοής μέσω προχωρημένων διατάσεων και στατικών θέσεων.",
+  "schedule": [
+    {
+      "day": "Day 1 - Balance & Control",
+      "exercises": [
+        { "name": "Tree Pose (Vrksasana)", "sets": 2, "reps": "40 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_tree_pose.gif" },
+        { "name": "Eagle Pose (Garudasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_eagle_pose.gif" },
+        { "name": "Warrior III Hold", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_warrior3.gif" },
+        { "name": "Half Lotus Forward Bend", "sets": 2, "reps": "40 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_half_lotus_forward.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Flexibility & Deep Stretch",
+      "exercises": [
+        { "name": "Seated Forward Fold (Paschimottanasana)", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_forward_fold_seated.gif" },
+        { "name": "Revolved Head-to-Knee Pose", "sets": 2, "reps": "40 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_revolved_head_to_knee.gif" },
+        { "name": "Bound Angle Pose (Baddha Konasana)", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_bound_angle.gif" },
+        { "name": "Bridge Pose (Setu Bandhasana)", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_bridge_pose.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Restorative Flow",
+      "exercises": [
+        { "name": "Legs-Up-The-Wall Pose (Viparita Karani)", "sets": 1, "reps": "3 λεπτά", "gif": "/gifs/yoga_legs_up_wall.gif" },
+        { "name": "Supine Butterfly Pose", "sets": 1, "reps": "2 λεπτά", "gif": "/gifs/yoga_supine_butterfly.gif" },
+        { "name": "Reclined Spinal Twist", "sets": 1, "reps": "1 λεπτό/πλευρά", "gif": "/gifs/yoga_reclined_spinal_twist.gif" },
+        { "name": "Shavasana (Final Relaxation)", "sets": 1, "reps": "5 λεπτά", "gif": "/gifs/yoga_shavasana.gif" }
+      ]
+    }
+  ]
+}

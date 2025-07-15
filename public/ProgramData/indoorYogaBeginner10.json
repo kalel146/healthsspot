@@ -1,0 +1,40 @@
+{
+  "filename": "indoorYogaBeginner10.json",
+  "title": "Ultimate Beginner Flow & Balance",
+  "level": "Beginner",
+  "phase": 10,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "yoga",
+  "goal": "Ολοκληρωτική προσέγγιση για ισορροπία, ευλυγισία και συνειδητή αναπνοή. Συνδυάζει δυναμικές και στατικές στάσεις για μέγιστο αποτέλεσμα.",
+  "schedule": [
+    {
+      "day": "Day 1 - Full Body Flow",
+      "exercises": [
+        { "name": "Sun Salutation B (Surya Namaskar B)", "sets": 3, "reps": "1 ροή", "gif": "/gifs/yoga_sun_salutation_b.gif" },
+        { "name": "Warrior III (Virabhadrasana III)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_warrior_iii.gif" },
+        { "name": "Half Moon Pose (Ardha Chandrasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_half_moon_pose.gif" },
+        { "name": "Boat Pose (Navasana)", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_boat_pose.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Balance & Core",
+      "exercises": [
+        { "name": "Tree Pose (Vrksasana)", "sets": 2, "reps": "40 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_tree_pose.gif" },
+        { "name": "Eagle Pose (Garudasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_eagle_pose.gif" },
+        { "name": "Crow Pose (Bakasana - Optional)", "sets": 2, "reps": "20 δευτερόλεπτα", "gif": "/gifs/yoga_crow_pose.gif" },
+        { "name": "Plank to Down Dog Flow", "sets": 3, "reps": "6 ροές", "gif": "/gifs/yoga_plank_to_down_dog.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Deep Stretch & Relax",
+      "exercises": [
+        { "name": "Pigeon Pose (Eka Pada Rajakapotasana)", "sets": 1, "reps": "1 λεπτό/πλευρά", "gif": "/gifs/yoga_pigeon_pose.gif" },
+        { "name": "Seated Forward Fold (Paschimottanasana)", "sets": 1, "reps": "1 λεπτό", "gif": "/gifs/yoga_forward_fold_seated.gif" },
+        { "name": "Reclined Bound Angle Pose (Supta Baddha Konasana)", "sets": 1, "reps": "2 λεπτά", "gif": "/gifs/yoga_reclined_bound_angle.gif" },
+        { "name": "Shavasana (Final Relaxation)", "sets": 1, "reps": "6 λεπτά", "gif": "/gifs/yoga_shavasana.gif" }
+      ]
+    }
+  ]
+}

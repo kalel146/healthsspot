@@ -1,0 +1,40 @@
+{
+  "filename": "indoorYogaBeginner7.json",
+  "title": "Strength & Flow Harmony",
+  "level": "Beginner",
+  "phase": 7,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "yoga",
+  "goal": "Ενίσχυση μυϊκής αντοχής, συνδυασμός δυναμικής ροής και στατικών κρατημάτων για μεγαλύτερη σταθερότητα.",
+  "schedule": [
+    {
+      "day": "Day 1 - Dynamic Power Flow",
+      "exercises": [
+        { "name": "Sun Salutation C (Surya Namaskar C)", "sets": 3, "reps": "3 κύκλοι", "gif": "/gifs/yoga_sun_salutation_c.gif" },
+        { "name": "Warrior III (Virabhadrasana III)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_warrior3.gif" },
+        { "name": "Half Moon Pose (Ardha Chandrasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_half_moon.gif" },
+        { "name": "Standing Split Pose", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_standing_split.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Stability & Core Flow",
+      "exercises": [
+        { "name": "Plank to Side Plank Flow", "sets": 3, "reps": "5 κύκλοι", "gif": "/gifs/yoga_plank_sideplank.gif" },
+        { "name": "Extended Side Angle Twist", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_extended_twist.gif" },
+        { "name": "Forearm Plank Hold", "sets": 3, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_forearm_plank.gif" },
+        { "name": "Bow Pose (Dhanurasana)", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_bow_pose.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Deep Stretch & Recovery",
+      "exercises": [
+        { "name": "Wide-Legged Forward Fold (Prasarita Padottanasana)", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_wide_forward_fold.gif" },
+        { "name": "Pigeon Pose (Eka Pada Rajakapotasana)", "sets": 2, "reps": "1 λεπτό/πλευρά", "gif": "/gifs/yoga_pigeon_pose.gif" },
+        { "name": "Supine Twist (Supta Matsyendrasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_supine_twist.gif" },
+        { "name": "Shavasana (Final Relaxation)", "sets": 1, "reps": "5 λεπτά", "gif": "/gifs/yoga_shavasana.gif" }
+      ]
+    }
+  ]
+}

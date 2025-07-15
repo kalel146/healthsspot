@@ -1,0 +1,40 @@
+{
+  "filename": "indoorYogaBeginner3.json",
+  "title": "Beginner Balance & Flow",
+  "level": "Beginner",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "yoga",
+  "goal": "Ανάπτυξη ισορροπίας, απαλή ενδυνάμωση και βελτίωση ροής αναπνοής-κίνησης.",
+  "schedule": [
+    {
+      "day": "Day 1 - Balance & Core Activation",
+      "exercises": [
+        { "name": "Mountain Pose (Tadasana)", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_mountain_pose.gif" },
+        { "name": "Tree Pose (Vrksasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_tree_pose.gif" },
+        { "name": "Boat Pose (Navasana)", "sets": 2, "reps": "20 δευτερόλεπτα", "gif": "/gifs/yoga_boat_pose.gif" },
+        { "name": "Seated Forward Bend", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_seated_forward_bend.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Gentle Flow & Twists",
+      "exercises": [
+        { "name": "Cat-Cow Flow", "sets": 3, "reps": "5 αναπνοές", "gif": "/gifs/yoga_cat_cow.gif" },
+        { "name": "Thread the Needle Twist", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_thread_needle.gif" },
+        { "name": "Seated Side Stretch", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_seated_side_stretch.gif" },
+        { "name": "Legs Up the Wall Pose", "sets": 1, "reps": "3 λεπτά", "gif": "/gifs/yoga_legs_up_wall.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Standing Strength & Mobility",
+      "exercises": [
+        { "name": "Crescent Lunge", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_crescent_lunge.gif" },
+        { "name": "Warrior I", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_warrior1.gif" },
+        { "name": "Standing Side Bend", "sets": 2, "reps": "20 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_standing_side_bend.gif" },
+        { "name": "Forward Fold with Shoulder Opener", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_forward_fold_shoulder.gif" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "filename": "indoorYogaBeginner4.json",
+  "title": "Calm Flow & Gentle Strength",
+  "level": "Beginner",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "yoga",
+  "goal": "Χαλάρωση, βελτίωση ευλυγισίας και ήπια ενδυνάμωση με ομαλή ροή κινήσεων.",
+  "schedule": [
+    {
+      "day": "Day 1 - Gentle Flow & Grounding",
+      "exercises": [
+        { "name": "Child’s Pose (Balasana)", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_child_pose.gif" },
+        { "name": "Seated Twist (Ardha Matsyendrasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_seated_twist.gif" },
+        { "name": "Cat-Cow Flow", "sets": 3, "reps": "5 αναπνοές", "gif": "/gifs/yoga_cat_cow.gif" },
+        { "name": "Supine Bound Angle Pose", "sets": 1, "reps": "2 λεπτά", "gif": "/gifs/yoga_supine_bound_angle.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Balance & Standing Poses",
+      "exercises": [
+        { "name": "Mountain Pose (Tadasana)", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_mountain_pose.gif" },
+        { "name": "Tree Pose (Vrksasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_tree_pose.gif" },
+        { "name": "Warrior II", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_warrior2.gif" },
+        { "name": "Triangle Pose (Trikonasana)", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_triangle_pose.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Flexibility & Recovery",
+      "exercises": [
+        { "name": "Seated Forward Bend (Paschimottanasana)", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_seated_forward_bend.gif" },
+        { "name": "Happy Baby Pose", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_happy_baby.gif" },
+        { "name": "Legs Up the Wall Pose", "sets": 1, "reps": "3 λεπτά", "gif": "/gifs/yoga_legs_up_wall.gif" },
+        { "name": "Shavasana (Final Relaxation)", "sets": 1, "reps": "5 λεπτά", "gif": "/gifs/yoga_shavasana.gif" }
+      ]
+    }
+  ]
+}

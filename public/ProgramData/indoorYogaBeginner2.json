@@ -1,0 +1,40 @@
+{
+  "filename": "indoorYogaBeginner2.json",
+  "title": "Gentle Yoga Flow Expansion",
+  "level": "Beginner",
+  "phase": 2,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "indoor",
+  "subcategory": "yoga",
+  "goal": "Ενίσχυση ευλυγισίας, βασικές ροές και απαλή ενεργοποίηση του κορμού.",
+  "schedule": [
+    {
+      "day": "Day 1 - Flow & Open Hips",
+      "exercises": [
+        { "name": "Easy Seated Twist", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_seated_twist.gif" },
+        { "name": "Butterfly Pose", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_butterfly_pose.gif" },
+        { "name": "Low Lunge", "sets": 2, "reps": "30 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_low_lunge.gif" },
+        { "name": "Wide Child’s Pose", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/yoga_wide_child_pose.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Gentle Standing Flow",
+      "exercises": [
+        { "name": "Chair Pose (Utkatasana)", "sets": 2, "reps": "20 δευτερόλεπτα", "gif": "/gifs/yoga_chair_pose.gif" },
+        { "name": "Warrior II Prep", "sets": 2, "reps": "20 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_warrior2_prep.gif" },
+        { "name": "Triangle Pose", "sets": 2, "reps": "20 δευτερόλεπτα/πλευρά", "gif": "/gifs/yoga_triangle_pose.gif" },
+        { "name": "Standing Forward Fold", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_forward_fold.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Restorative",
+      "exercises": [
+        { "name": "Reclined Bound Angle Pose", "sets": 1, "reps": "3 λεπτά", "gif": "/gifs/yoga_reclined_bound_angle.gif" },
+        { "name": "Happy Baby Pose", "sets": 2, "reps": "30 δευτερόλεπτα", "gif": "/gifs/yoga_happy_baby.gif" },
+        { "name": "Supported Fish Pose", "sets": 1, "reps": "2 λεπτά", "gif": "/gifs/yoga_supported_fish.gif" },
+        { "name": "Corpse Pose (Savasana)", "sets": 1, "reps": "5 λεπτά", "gif": "/gifs/yoga_savasana.gif" }
+      ]
+    }
+  ]
+}
