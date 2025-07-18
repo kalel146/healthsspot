@@ -1,0 +1,49 @@
+{
+  "filename": "outdoorWoodWheelsAxeHammer10.json",
+  "title": "Primal Outdoor Strength & Power - Phase 10 (Final Peak)",
+  "level": "Legendary",
+  "phase": 10,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "WoodWheelsAxeHammer",
+  "goal": "Το απόλυτο φινάλε – τεστ σωματικής και ψυχικής αντοχής. Προσομοίωση αγώνων strongman & survival challenge.",
+  "schedule": [
+    {
+      "day": "Day 1 - Ultimate Load & Carry Gauntlet",
+      "exercises": [
+        { "name": "Atlas Stones to High Platform (Max Weight)", "sets": 6, "reps": "1-3", "gif": "/gifs/atlas_stones_high_platform.gif" },
+        { "name": "Yoke Carry Medley (Heavy + Sprint)", "sets": 4, "reps": "30m heavy + 30m sprint", "gif": "/gifs/yoke_carry_medley.gif" },
+        { "name": "Sandbag Toss over Bar", "sets": 4, "reps": "6-8 επαναλήψεις", "gif": "/gifs/sandbag_toss_bar.gif" },
+        { "name": "Farmer’s Walk Max Hold at Finish Line", "sets": 3, "reps": "hold to failure", "gif": "/gifs/farmers_walk_hold.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Savage Hybrid Challenge",
+      "exercises": [
+        { "name": "Tire Flip → Sled Push → Rope Climb Combo", "sets": 4, "reps": "1 complex round", "gif": "/gifs/tire_sled_rope_combo.gif" },
+        { "name": "Barrel Carry + Box Jump Circuit", "sets": 4, "reps": "10 jumps + 20m carry", "gif": "/gifs/barrel_carry_boxjump.gif" },
+        { "name": "Axe Wood Chop Flow (Heavy Log)", "sets": 4, "reps": "20 chops", "gif": "/gifs/axe_woodchop_flow.gif" },
+        { "name": "Sledgehammer Chaos Marathon", "sets": 3, "reps": "50 swings", "gif": "/gifs/sledgehammer_marathon.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Peak Grip & Endurance",
+      "exercises": [
+        { "name": "Thick Bar Farmers Hold & Walk Combo", "sets": 4, "reps": "20m + max hold", "gif": "/gifs/thickbar_farmer_hold.gif" },
+        { "name": "Hercules Hold Test", "sets": 3, "reps": "as long as possible", "gif": "/gifs/hercules_hold.gif" },
+        { "name": "Weighted Pull-up to Axle Hang Superset", "sets": 4, "reps": "5 pull-ups + 20s hang", "gif": "/gifs/weighted_pullup_axlehang.gif" },
+        { "name": "Bearhug Sandbag Carry (Max Distance)", "sets": 3, "reps": "1 max distance attempt", "gif": "/gifs/bearhug_sandbag_carry.gif" }
+      ]
+    },
+    {
+      "day": "Day 4 - Final Recovery & Mental Reset",
+      "exercises": [
+        { "name": "Deep Primal Stretch & Mobility Flow", "sets": 2, "reps": "20 λεπτά continuous", "gif": "/gifs/primal_mobility_flow.gif" },
+        { "name": "Sandbag Release & Trigger Point Work", "sets": 2, "reps": "1 λεπτό/περιοχή", "gif": "/gifs/sandbag_trigger_release.gif" },
+        { "name": "Guided Breathing & Visualization", "sets": 1, "reps": "20 λεπτά", "gif": "/gifs/guided_breathing_visual.gif" },
+        { "name": "Cold Exposure Simulation (Optional)", "sets": 1, "reps": "5-10 λεπτά", "gif": "/gifs/cold_exposure_sim.gif" }
+      ]
+    }
+  ]
+}

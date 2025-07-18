@@ -1,0 +1,49 @@
+{
+  "filename": "outdoorWoodWheelsAxeHammer1.json",
+  "title": "Primal Outdoor Strength & Power - Phase 1",
+  "level": "Intermediate",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "outdoor",
+  "subcategory": "WoodWheelsAxeHammer",
+  "goal": "Πρωτόγονο brutal functional training με έμφαση στη δύναμη, την εκρηκτικότητα και την αντοχή υπό συνθήκες εξωτερικού χώρου.",
+  "schedule": [
+    {
+      "day": "Day 1 - Power & Carries",
+      "exercises": [
+        { "name": "Farmer's Walk with Sandbags", "sets": 4, "reps": "30m", "gif": "/gifs/farmers_walk_sandbags.gif" },
+        { "name": "Tire Flip (Tractor Tire)", "sets": 4, "reps": 8, "gif": "/gifs/tire_flip.gif" },
+        { "name": "Overhead Log Press", "sets": 3, "reps": 6, "gif": "/gifs/log_press.gif" },
+        { "name": "Sledgehammer Slams on Tire", "sets": 3, "reps": 20, "gif": "/gifs/sledgehammer_slams.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Conditioning & Grip Strength",
+      "exercises": [
+        { "name": "Rope Climbs or Rope Pulls", "sets": 4, "reps": "Max distance", "gif": "/gifs/rope_climb.gif" },
+        { "name": "Stone Lifts (Atlas Stones or Boulders)", "sets": 4, "reps": 5, "gif": "/gifs/stone_lift.gif" },
+        { "name": "Sandbag Over Shoulder Toss", "sets": 3, "reps": 10, "gif": "/gifs/sandbag_toss.gif" },
+        { "name": "Bear Crawl with Chain Drag", "sets": 3, "reps": "20m", "gif": "/gifs/bear_crawl_chain.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Explosive & Functional Agility",
+      "exercises": [
+        { "name": "Box Jumps on Outdoor Platforms", "sets": 4, "reps": 8, "gif": "/gifs/box_jumps.gif" },
+        { "name": "Battle Rope Alternating Waves", "sets": 3, "reps": "30s", "gif": "/gifs/battle_ropes.gif" },
+        { "name": "Log Carry Sprint (50m)", "sets": 4, "reps": 50, "gif": "/gifs/log_carry_sprint.gif" },
+        { "name": "Pull-Ups on Outdoor Bar/Tree", "sets": 3, "reps": "Max", "gif": "/gifs/outdoor_pullups.gif" }
+      ]
+    },
+    {
+      "day": "Day 4 - Recovery & Mobility",
+      "exercises": [
+        { "name": "Mobility Flow with Bands", "sets": 2, "reps": "5 λεπτά", "gif": "/gifs/mobility_band_flow.gif" },
+        { "name": "Deep Squat Hold with Rock", "sets": 2, "reps": "2 λεπτά", "gif": "/gifs/deep_squat_hold.gif" },
+        { "name": "Hanging Shoulder Opener", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/hanging_shoulder_opener.gif" },
+        { "name": "Breathing & Relaxation Outdoors", "sets": 1, "reps": "5 λεπτά", "gif": "/gifs/outdoor_breathing.gif" }
+      ]
+    }
+  ]
+}

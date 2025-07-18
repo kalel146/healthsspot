@@ -1,0 +1,49 @@
+{
+  "filename": "outdoorWoodWheelsAxeHammer4.json",
+  "title": "Primal Outdoor Strength & Power - Phase 4",
+  "level": "Advanced",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "WoodWheelsAxeHammer",
+  "goal": "Ακόμα πιο σκληρή προπόνηση με έμφαση στην ωμή δύναμη, την εκρηκτική ισχύ και την αντοχή σε fatigue, σε ακραίες συνθήκες.",
+  "schedule": [
+    {
+      "day": "Day 1 - Brutal Max Load & Carries",
+      "exercises": [
+        { "name": "Super Yoke Carry Max Distance", "sets": 5, "reps": "40m", "gif": "/gifs/super_yoke_carry.gif" },
+        { "name": "Sandbag Carry & Load Ladder", "sets": 4, "reps": "ascending weights", "gif": "/gifs/sandbag_carry_ladder.gif" },
+        { "name": "Log Press Max Reps in 60s", "sets": 3, "reps": "AMRAP 60s", "gif": "/gifs/log_press_maxreps.gif" },
+        { "name": "Farmer's Hold + Trap Bar Shrugs", "sets": 3, "reps": "30s hold + 12 shrugs", "gif": "/gifs/farmer_hold_shrugs.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Explosive Complex & Conditioning",
+      "exercises": [
+        { "name": "Keg Over Bar Speed Throws", "sets": 5, "reps": 3, "gif": "/gifs/keg_over_bar.gif" },
+        { "name": "Tire Flip to Sprint Combo", "sets": 4, "reps": "5 flips + 30m sprint", "gif": "/gifs/tireflip_sprint.gif" },
+        { "name": "Sledgehammer Alternating Strikes", "sets": 4, "reps": "20 slams", "gif": "/gifs/sledgehammer_alt.gif" },
+        { "name": "Battle Rope Tsunami Waves", "sets": 3, "reps": "40s", "gif": "/gifs/battlerope_tsunami.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Grip & Core Hell",
+      "exercises": [
+        { "name": "One Arm Dead Hang with Weight", "sets": 4, "reps": "max hold", "gif": "/gifs/weighted_dead_hang.gif" },
+        { "name": "Rope Pull Heavy Sled", "sets": 3, "reps": "15m", "gif": "/gifs/rope_pull_sled.gif" },
+        { "name": "Zercher Sandbag March", "sets": 3, "reps": "25m", "gif": "/gifs/zercher_sandbag_march.gif" },
+        { "name": "Hanging Leg Raise with Chains", "sets": 3, "reps": 12, "gif": "/gifs/hanging_leg_raise_chain.gif" }
+      ]
+    },
+    {
+      "day": "Day 4 - Active Recovery & Mobility",
+      "exercises": [
+        { "name": "Animal Flow Ground Transition", "sets": 2, "reps": "8 λεπτά", "gif": "/gifs/animal_flow_transition.gif" },
+        { "name": "Deep Lunge Rotation Stretch", "sets": 2, "reps": "1 λεπτό/side", "gif": "/gifs/lunge_rotation_stretch.gif" },
+        { "name": "Band Assisted Thoracic Opener", "sets": 2, "reps": "1.5 λεπτά/side", "gif": "/gifs/band_thoracic_opener.gif" },
+        { "name": "Outdoor Breathwork Flow", "sets": 1, "reps": "10 λεπτά", "gif": "/gifs/outdoor_breathwork.gif" }
+      ]
+    }
+  ]
+}

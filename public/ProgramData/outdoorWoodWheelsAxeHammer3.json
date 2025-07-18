@@ -1,0 +1,49 @@
+{
+  "filename": "outdoorWoodWheelsAxeHammer3.json",
+  "title": "Primal Outdoor Strength & Power - Phase 3",
+  "level": "Advanced",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "outdoor",
+  "subcategory": "WoodWheelsAxeHammer",
+  "goal": "Συνδυασμός μέγιστης δύναμης, εκρηκτικότητας και αντοχής ισχύος σε απαιτητικό outdoor strongman περιβάλλον.",
+  "schedule": [
+    {
+      "day": "Day 1 - Max Effort & Heavy Carries",
+      "exercises": [
+        { "name": "Atlas Stone Load to Platform", "sets": 5, "reps": 3, "gif": "/gifs/atlas_stone_load.gif" },
+        { "name": "Farmer's Carry with Thick Handles", "sets": 4, "reps": "50m", "gif": "/gifs/farmer_carry.gif" },
+        { "name": "Log Press (Clean Once, Multiple Presses)", "sets": 4, "reps": 5, "gif": "/gifs/log_clean_multi_press.gif" },
+        { "name": "Yoke Zercher Carry", "sets": 3, "reps": "30m", "gif": "/gifs/yoke_zercher_carry.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Explosive Power Circuit",
+      "exercises": [
+        { "name": "Keg Throw for Distance", "sets": 4, "reps": 4, "gif": "/gifs/keg_throw_distance.gif" },
+        { "name": "Sledgehammer Tire Slam Complex", "sets": 4, "reps": "20 slams", "gif": "/gifs/sledgehammer_tire.gif" },
+        { "name": "Log Clean & Push Press into Sprint", "sets": 3, "reps": "4 reps + 20m sprint", "gif": "/gifs/log_clean_sprint.gif" },
+        { "name": "Sandbag Over Shoulder Rapid Load", "sets": 3, "reps": 8, "gif": "/gifs/sandbag_over_shoulder.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Odd Object Endurance & Grip Torture",
+      "exercises": [
+        { "name": "Rope Climb Max Height", "sets": 4, "reps": 1, "gif": "/gifs/rope_climb_max.gif" },
+        { "name": "Steel Beam Hold (Timed)", "sets": 3, "reps": "45s hold", "gif": "/gifs/steel_beam_hold.gif" },
+        { "name": "Tire Drag Backwards Uphill", "sets": 3, "reps": "20m", "gif": "/gifs/tire_drag_uphill.gif" },
+        { "name": "Weighted Pull-Ups with Chain", "sets": 3, "reps": 6, "gif": "/gifs/chain_pullups.gif" }
+      ]
+    },
+    {
+      "day": "Day 4 - Mobility & Recovery Blast",
+      "exercises": [
+        { "name": "Animal Flow Chain Outdoors", "sets": 2, "reps": "8 λεπτά", "gif": "/gifs/animal_flow_chain.gif" },
+        { "name": "Deep Thoracic Rotation Stretch", "sets": 2, "reps": "1 λεπτό/side", "gif": "/gifs/thoracic_rotation.gif" },
+        { "name": "Hip Flexor Mobility with Band", "sets": 2, "reps": "1.5 λεπτά/side", "gif": "/gifs/hip_flexor_band.gif" },
+        { "name": "Breathing Meditation in Nature", "sets": 1, "reps": "10 λεπτά", "gif": "/gifs/nature_meditation.gif" }
+      ]
+    }
+  ]
+}

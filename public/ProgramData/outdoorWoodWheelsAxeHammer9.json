@@ -1,0 +1,49 @@
+{
+  "filename": "outdoorWoodWheelsAxeHammer9.json",
+  "title": "Primal Outdoor Strength & Power - Phase 9",
+  "level": "Elite+",
+  "phase": 9,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "WoodWheelsAxeHammer",
+  "goal": "Η απόλυτη κορύφωση – τεστ ψυχικής αντοχής, ωμής δύναμης και explosive power. Προσομοιώνει extreme strongman αγώνες σε φάση peaking.",
+  "schedule": [
+    {
+      "day": "Day 1 - Monster Log & Stone Challenge",
+      "exercises": [
+        { "name": "Monster Log Clean & Circus Press", "sets": 6, "reps": "3-4", "gif": "/gifs/monster_log_circus_press.gif" },
+        { "name": "Max Sandbag Carry & Load to Platform", "sets": 5, "reps": "4-5 γύροι", "gif": "/gifs/max_sandbag_load.gif" },
+        { "name": "Axle Bar Continental Deadlift", "sets": 5, "reps": "5 επαναλήψεις", "gif": "/gifs/axlebar_continental_deadlift.gif" },
+        { "name": "Farmer’s Walk Marathon (Heavy)", "sets": 3, "reps": "40m ανά γύρο", "gif": "/gifs/farmers_walk_marathon.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Savage Conditioning Rampage",
+      "exercises": [
+        { "name": "Giant Tire Flip Gauntlet + Rope Pull", "sets": 6, "reps": "5 flips + 1 heavy rope pull", "gif": "/gifs/tire_flip_ropepull.gif" },
+        { "name": "Sandbag Sprint Ladder", "sets": 4, "reps": "20m + 40m + 60m", "gif": "/gifs/sandbag_sprint_ladder.gif" },
+        { "name": "Sledgehammer Chaos Flow", "sets": 4, "reps": "40 εναλλαγές", "gif": "/gifs/sledgehammer_chaos.gif" },
+        { "name": "Plyo Box Jump with Weighted Vest", "sets": 3, "reps": "12 επαναλήψεις", "gif": "/gifs/plyo_box_jump_vest.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Grip & Core Apocalypse",
+      "exercises": [
+        { "name": "Rope Climb to Axle Hold Superset", "sets": 4, "reps": "2 climbs + 20s hold", "gif": "/gifs/ropeclimb_axlehold.gif" },
+        { "name": "Hanging Leg Raise Windshield Wipers", "sets": 4, "reps": "12 επαναλήψεις", "gif": "/gifs/hanging_wipers_advanced.gif" },
+        { "name": "Thick Bar Hold for Max Time", "sets": 3, "reps": "as long as possible", "gif": "/gifs/thickbar_maxtime.gif" },
+        { "name": "Weighted Bear Crawl Drag", "sets": 3, "reps": "15m drag crawl", "gif": "/gifs/bearcrawl_drag.gif" }
+      ]
+    },
+    {
+      "day": "Day 4 - Peak Recovery Ritual",
+      "exercises": [
+        { "name": "Primal Flow & Mobility Reset", "sets": 2, "reps": "15 λεπτά continuous", "gif": "/gifs/primalflow_reset.gif" },
+        { "name": "Deep Tissue Sandbag Release", "sets": 2, "reps": "1 λεπτό/περιοχή", "gif": "/gifs/deep_sandbag_release.gif" },
+        { "name": "Full Body Banded Stretching", "sets": 2, "reps": "20 επαναλήψεις", "gif": "/gifs/fullband_stretch.gif" },
+        { "name": "Mental Breathing & Focus", "sets": 1, "reps": "30 λεπτά", "gif": "/gifs/mental_focus_breathing.gif" }
+      ]
+    }
+  ]
+}

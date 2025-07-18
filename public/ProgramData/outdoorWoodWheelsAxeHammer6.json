@@ -1,0 +1,49 @@
+{
+  "filename": "outdoorWoodWheelsAxeHammer6.json",
+  "title": "Primal Outdoor Strength & Power - Phase 6",
+  "level": "Elite",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "WoodWheelsAxeHammer",
+  "goal": "Τελική δοκιμασία σωματικής και ψυχικής αντοχής με συνδυασμό όλων των primal patterns και προπονητική υπό συνθήκες fatigue.",
+  "schedule": [
+    {
+      "day": "Day 1 - Brutal Complex & Max Effort",
+      "exercises": [
+        { "name": "Stone to Shoulder to Carry Combo", "sets": 5, "reps": "3 + 30m carry", "gif": "/gifs/stone_shoulder_carry_combo.gif" },
+        { "name": "Log Press Ladder (Ascending Weight)", "sets": 4, "reps": "3-2-1-1", "gif": "/gifs/log_press_ladder.gif" },
+        { "name": "Sandbag Clean, Squat & Toss Combo", "sets": 4, "reps": "5 tosses", "gif": "/gifs/sandbag_clean_toss.gif" },
+        { "name": "Farmer’s Carry Suicide Sprints", "sets": 4, "reps": "3 x 20m", "gif": "/gifs/farmers_suicide_sprints.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Hybrid Explosive Circuits",
+      "exercises": [
+        { "name": "Keg Throw + Tire Flip + Burpee Combo", "sets": 5, "reps": "3 cycles", "gif": "/gifs/keg_tireflip_burpee_combo.gif" },
+        { "name": "Hammer Strike Pyramid (L/R)", "sets": 4, "reps": "10-8-6-4", "gif": "/gifs/sledgehammer_pyramid.gif" },
+        { "name": "Battle Rope Slam + Box Jump + Sprint", "sets": 4, "reps": "10 slams + 5 jumps + 15m sprint", "gif": "/gifs/battlerope_jump_sprint.gif" },
+        { "name": "Weighted Vest Bear Crawl Relays", "sets": 4, "reps": "20m crawl", "gif": "/gifs/vest_bear_crawl.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Grip Hell & Climbing Flow",
+      "exercises": [
+        { "name": "Rope Climb + Axle Bar Deadlift Hold Superset", "sets": 4, "reps": "1 climb + 20s hold", "gif": "/gifs/rope_axle_superset.gif" },
+        { "name": "Weighted Pull-up + Sandbag Carry", "sets": 4, "reps": "6 pull-ups + 40m carry", "gif": "/gifs/pullup_sandbag_carry.gif" },
+        { "name": "Hanging L-Sit Hold to Windshield Wipers", "sets": 3, "reps": "10 wipers", "gif": "/gifs/lsit_wipers.gif" },
+        { "name": "Thick Grip Farmer’s Hold Challenge", "sets": 3, "reps": "max hold", "gif": "/gifs/thickgrip_farmers_hold.gif" }
+      ]
+    },
+    {
+      "day": "Day 4 - Recovery Ritual & Mental Conditioning",
+      "exercises": [
+        { "name": "Animal Flow Advanced Transition Series", "sets": 2, "reps": "10 λεπτά continuous flow", "gif": "/gifs/animalflow_advanced.gif" },
+        { "name": "Deep Lunge with Thoracic Rotation", "sets": 2, "reps": "30s hold/side", "gif": "/gifs/lunge_thoracic_rotation.gif" },
+        { "name": "Banded Shoulder & Hip Reset", "sets": 2, "reps": "12 αργές επαναλήψεις", "gif": "/gifs/band_shoulder_hip_reset.gif" },
+        { "name": "Breathwork Under Fatigue Simulation", "sets": 1, "reps": "15 λεπτά", "gif": "/gifs/breathwork_fatigue.gif" }
+      ]
+    }
+  ]
+}

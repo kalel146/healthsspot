@@ -1,0 +1,49 @@
+{
+  "filename": "outdoorWoodWheelsAxeHammer8.json",
+  "title": "Primal Outdoor Strength & Power - Phase 8",
+  "level": "Elite",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "WoodWheelsAxeHammer",
+  "goal": "Απόλυτη κλιμάκωση έντασης με τεχνικές peak performance, συνδυασμό εκρηκτικών lifts, φοβερής αντοχής και ψυχικής ανθεκτικότητας.",
+  "schedule": [
+    {
+      "day": "Day 1 - Ultimate Strongman Circuit",
+      "exercises": [
+        { "name": "Max Atlas Stone Carry + Over Bar", "sets": 6, "reps": "4 carries + 4 tosses", "gif": "/gifs/atlas_stone_carry_bar.gif" },
+        { "name": "Double Log Clean & Push Press", "sets": 5, "reps": "6 επαναλήψεις", "gif": "/gifs/double_log_clean_press.gif" },
+        { "name": "Yoke Run + Farmer’s Hold Combo", "sets": 4, "reps": "30m run + 20s hold", "gif": "/gifs/yoke_run_farmers_hold.gif" },
+        { "name": "Heavy Sandbag to Shoulder Ladder", "sets": 4, "reps": "12-10-8-6", "gif": "/gifs/heavy_sandbag_ladder.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Brutal Conditioning Arena",
+      "exercises": [
+        { "name": "Giant Tire Flip + Sprint Gauntlet", "sets": 5, "reps": "5 flips + 50m sprint", "gif": "/gifs/giant_tire_flip_sprint.gif" },
+        { "name": "Keg Carry + Burpee Box Jump Combo", "sets": 4, "reps": "20m carry + 8 burpees", "gif": "/gifs/kegcarry_burpeebox.gif" },
+        { "name": "Sledgehammer Fury Challenge", "sets": 4, "reps": "30 εναλλασσόμενα χτυπήματα", "gif": "/gifs/sledgehammer_fury.gif" },
+        { "name": "Battle Rope Hell Flow", "sets": 3, "reps": "60s μέγιστης δύναμης", "gif": "/gifs/battlerope_hell.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Core & Grip Destruction",
+      "exercises": [
+        { "name": "Rope Climb Triple Marathon", "sets": 4, "reps": "3 συνεχόμενες αναρριχήσεις", "gif": "/gifs/ropeclimb_triple.gif" },
+        { "name": "Thick Axle Bar Hold + Deadlift", "sets": 4, "reps": "10 reps + 20s hold", "gif": "/gifs/thick_axle_deadlift_hold.gif" },
+        { "name": "Hanging Leg Twist Wipers", "sets": 3, "reps": "15 αργές επαναλήψεις", "gif": "/gifs/hanging_leg_twist_wipers.gif" },
+        { "name": "Weighted Bear Crawl Challenge", "sets": 3, "reps": "20m crawl", "gif": "/gifs/weighted_bear_crawl.gif" }
+      ]
+    },
+    {
+      "day": "Day 4 - Recovery Flow & Peak Reset",
+      "exercises": [
+        { "name": "Advanced Animal Flow Fury", "sets": 2, "reps": "15 λεπτά continuous", "gif": "/gifs/animalflow_fury.gif" },
+        { "name": "Deep Fascial Release Flow", "sets": 2, "reps": "1 λεπτό/περιοχή", "gif": "/gifs/fascial_release_flow.gif" },
+        { "name": "Banded Extreme Mobility Reset", "sets": 2, "reps": "20 επαναλήψεις", "gif": "/gifs/extreme_mobility_reset.gif" },
+        { "name": "Breathwork & Mental Fortitude", "sets": 1, "reps": "25 λεπτά", "gif": "/gifs/breathwork_fortitude.gif" }
+      ]
+    }
+  ]
+}

@@ -92,6 +92,16 @@ export default function ProgramVault() {
       "indoorYogaBeginner10.json",
       "indoorHomeBeginner.json",
       "mobilityStretching.json",
+      "outdoorWoodWheelsAxeHammer1.json",
+      "outdoorWoodWheelsAxeHammer2.json",
+      "outdoorWoodWheelsAxeHammer3.json",
+      "outdoorWoodWheelsAxeHammer4.json",
+      "outdoorWoodWheelsAxeHammer5.json",
+      "outdoorWoodWheelsAxeHammer6.json",
+      "outdoorWoodWheelsAxeHammer7.json",
+      "outdoorWoodWheelsAxeHammer8.json",
+      "outdoorWoodWheelsAxeHammer9.json",
+      "outdoorWoodWheelsAxeHammer10.json",
       "outdoorTrackAndField.json"
     ];
 

@@ -1,0 +1,49 @@
+{
+  "filename": "outdoorWoodWheelsAxeHammer2.json",
+  "title": "Primal Outdoor Strength & Power - Phase 2",
+  "level": "Intermediate",
+  "phase": 2,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "outdoor",
+  "subcategory": "WoodWheelsAxeHammer",
+  "goal": "Ανεβάζουμε ένταση με μεγαλύτερο όγκο εργασίας, αυξημένο conditioning και έμφαση σε functional strongman μοτίβα εξωτερικού χώρου.",
+  "schedule": [
+    {
+      "day": "Day 1 - Heavy Carries & Throws",
+      "exercises": [
+        { "name": "Yoke Carry (Improvised Log/Bar)", "sets": 5, "reps": "40m", "gif": "/gifs/yoke_carry.gif" },
+        { "name": "Keg Toss for Height", "sets": 4, "reps": 6, "gif": "/gifs/keg_toss.gif" },
+        { "name": "Sandbag Clean to Shoulder", "sets": 4, "reps": 8, "gif": "/gifs/sandbag_clean.gif" },
+        { "name": "Sledgehammer Overhead Strikes", "sets": 3, "reps": 15, "gif": "/gifs/sledgehammer_overhead.gif" }
+      ]
+    },
+    {
+      "day": "Day 2 - Explosive Strongman Conditioning",
+      "exercises": [
+        { "name": "Tire Flip Sprint Complex", "sets": 4, "reps": "6 flips + 20m sprint", "gif": "/gifs/tire_flip_sprint.gif" },
+        { "name": "Log Press Clean & Press", "sets": 4, "reps": 6, "gif": "/gifs/log_clean_press.gif" },
+        { "name": "Battle Ropes with Burpees", "sets": 3, "reps": "30s ropes + 5 burpees", "gif": "/gifs/battle_rope_burpee.gif" },
+        { "name": "Weighted Sled Drag", "sets": 3, "reps": "25m", "gif": "/gifs/sled_drag.gif" }
+      ]
+    },
+    {
+      "day": "Day 3 - Grip & Odd Object Mastery",
+      "exercises": [
+        { "name": "Rope Climb to Log Traverse", "sets": 4, "reps": "1 climb + 5m traverse", "gif": "/gifs/rope_climb_traverse.gif" },
+        { "name": "Stone Shoulder Holds", "sets": 3, "reps": "30s/side", "gif": "/gifs/stone_hold.gif" },
+        { "name": "Heavy Bag Carry Zig-Zag", "sets": 4, "reps": "30m", "gif": "/gifs/sandbag_zigzag.gif" },
+        { "name": "Pull-Ups with Towel Grip", "sets": 3, "reps": "Max", "gif": "/gifs/towel_pullups.gif" }
+      ]
+    },
+    {
+      "day": "Day 4 - Recovery Flow",
+      "exercises": [
+        { "name": "Outdoor Animal Flow (Beast, Ape, Crab)", "sets": 2, "reps": "5 λεπτά", "gif": "/gifs/animal_flow.gif" },
+        { "name": "Deep Hip Mobility with Bands", "sets": 2, "reps": "2 λεπτά/side", "gif": "/gifs/hip_mobility_band.gif" },
+        { "name": "Wall Facing Squat Stretch", "sets": 2, "reps": "1 λεπτό", "gif": "/gifs/wall_squat_stretch.gif" },
+        { "name": "Outdoor Breathing Meditation", "sets": 1, "reps": "5 λεπτά", "gif": "/gifs/outdoor_meditation.gif" }
+      ]
+    }
+  ]
+}
