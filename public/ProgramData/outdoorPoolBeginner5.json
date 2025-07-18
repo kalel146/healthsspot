@@ -1,0 +1,61 @@
+{
+  "filename": "outdoorPoolBeginner5.json",
+  "title": "Outdoor Pool Swimming Beginner – Phase 5",
+  "level": "Beginner",
+  "phase": 5,
+  "duration": "5 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "pool",
+  "goal": "Συνδυασμός τεχνικών ελεύθερου, ύπτιου και πρόσθιου με μεγαλύτερη αερόβια διάρκεια και εισαγωγή βασικής τεχνικής πεταλούδας.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "8’ dryland core & shoulder activation",
+        "4 x 25m ύπτιο με έλεγχο περιστροφής ισχίων"
+      ],
+      "main": [
+        "6 x 50m μεικτό drill (ελεύθερο + ύπτιο) interval 1’30’’",
+        "4 x 25m butterfly kick με σανίδα",
+        "2 x 50m πρόσθιο με έμφαση στο glide"
+      ],
+      "cooldown": [
+        "2 x 50m χαλαρό μεικτό (ελεύθερο + ύπτιο)",
+        "Διατάσεις αυχένα και σπονδυλικής στήλης"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "5’ breathing + sculling drills εκτός νερού",
+        "3 x 50m χαλαρό ύπτιο"
+      ],
+      "main": [
+        "4 x 75m μεικτό (25m ύπτιο + 25m πρόσθιο + 25m ελεύθερο) interval 2’20’’",
+        "4 x 25m υποβρύχιο dolphin kick για core control",
+        "2 x 50m butterfly bodywave χωρίς χέρια"
+      ],
+      "cooldown": [
+        "50m ύπτιο χαλαρό + 25m υποβρύχιο glide",
+        "Αποθεραπεία με deep breathing και shoulder mobility"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "6’ yoga mobility για ισχία & ώμους",
+        "3 x 25m χαλαρό μεικτό"
+      ],
+      "main": [
+        "4 x 100m μεικτό (25m κάθε στυλ) interval 4’00’’",
+        "4 x 50m progressive pace ελεύθερο",
+        "4 x 25m breath control (ανά 7 strokes)"
+      ],
+      "cooldown": [
+        "50m πρόσθιο χαλαρό",
+        "Stretching ώμων, θώρακα και κορμού"
+      ]
+    }
+  ]
+}

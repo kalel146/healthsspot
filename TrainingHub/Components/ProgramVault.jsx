@@ -102,7 +102,27 @@ export default function ProgramVault() {
       "outdoorWoodWheelsAxeHammer8.json",
       "outdoorWoodWheelsAxeHammer9.json",
       "outdoorWoodWheelsAxeHammer10.json",
-      "outdoorTrackAndField.json"
+      "outdoorTrackAndField.json",
+      "outdoorPoolBeginner1.json",
+      "outdoorPoolBeginner2.json",
+      "outdoorPoolBeginner3.json",
+      "outdoorPoolBeginner4.json",
+      "outdoorPoolBeginner5.json",
+      "outdoorPoolBeginner6.json",
+      "outdoorPoolBeginner7.json",
+      "outdoorPoolBeginner8.json",
+      "outdoorPoolBeginner9.json",
+      "outdoorPoolBeginner10.json",
+      "outdoorRunningBeginner1.json",
+      "outdoorRunningBeginner2.json",
+      "outdoorRunningBeginner3.json",
+      "outdoorRunningBeginner4.json",
+      "outdoorRunningBeginner5.json",
+      "outdoorRunningBeginner6.json",
+      "outdoorRunningBeginner7.json",
+      "outdoorRunningBeginner8.json",
+      "outdoorRunningBeginner9.json",
+      "outdoorRunningBeginner10.json"
     ];
 
     Promise.all(

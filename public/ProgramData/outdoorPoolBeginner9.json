@@ -1,0 +1,61 @@
+{
+  "filename": "outdoorPoolBeginner9.json",
+  "title": "Outdoor Pool Swimming Beginner – Phase 9",
+  "level": "Beginner",
+  "phase": 9,
+  "duration": "6 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "pool",
+  "goal": "Τελική φάση βελτίωσης τεχνικής, ενίσχυσης αντοχής και εισαγωγής σε αγωνιστικά κομμάτια με μεγαλύτερη ένταση.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "12’ dryland stability + core activation",
+        "4 x 50m μεικτό χαλαρό (τεχνική έμφαση)"
+      ],
+      "main": [
+        "6 x 100m μεικτό πλήρες (interval 3’)",
+        "4 x 50m sprint ελεύθερο (interval 1’)",
+        "2 x 200m steady pace πρόσθιο για αντοχή"
+      ],
+      "cooldown": [
+        "2 x 50m ύπτιο recovery",
+        "Διατάσεις ώμων + diaphragmatic breathing"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "8’ mobility flow εκτός νερού",
+        "4 x 25m ελεύθερο με progressive breathing"
+      ],
+      "main": [
+        "4 x 150m μεικτό με αυξημένο ρυθμό (interval 3’45’’)",
+        "4 x 50m butterfly sprint με υποβρύχια φάση",
+        "4 x 25m hypoxic drill (αναπνοή ανά 9 strokes)"
+      ],
+      "cooldown": [
+        "100m χαλαρό μεικτό",
+        "Foam rolling + stretching ώμων"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "10’ dynamic yoga flow για ώμους και κορμό",
+        "4 x 25m μεικτό αργό για τεχνική"
+      ],
+      "main": [
+        "4 x 100m butterfly + πρόσθιο (50m butterfly + 50m πρόσθιο) interval 2’50’’",
+        "4 x 75m progressive pace ύπτιο",
+        "4 x 25m sprint kick με σανίδα"
+      ],
+      "cooldown": [
+        "50m ύπτιο + 50m ελεύθερο χαλαρά",
+        "Stretching + αναπνοές αποκατάστασης"
+      ]
+    }
+  ]
+}

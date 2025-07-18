@@ -1,0 +1,61 @@
+{
+  "filename": "outdoorPoolBeginner10.json",
+  "title": "Outdoor Pool Swimming Beginner – Phase 10",
+  "level": "Beginner",
+  "phase": 10,
+  "duration": "7 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "pool",
+  "goal": "Τελική αγωνιστική προσομοίωση με υψηλή ένταση, hypoxic αντοχή και μίξη όλων των στυλ σε μεγάλα κομμάτια.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "15’ dryland activation + core stability",
+        "6 x 50m μεικτό με progressive pace"
+      ],
+      "main": [
+        "3 x 200m μεικτό πλήρες (interval 4’30’’)",
+        "4 x 50m sprint butterfly (interval 1’10’’)",
+        "2 x 300m steady freestyle for aerobic endurance"
+      ],
+      "cooldown": [
+        "100m ύπτιο recovery",
+        "Διατάσεις θώρακα + diaphragmatic breathing"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "12’ mobility flow εκτός νερού",
+        "6 x 25m drill (catch-up + fingertip drag)"
+      ],
+      "main": [
+        "4 x 150m μεικτό με αγωνιστικό ρυθμό (interval 3’30’’)",
+        "6 x 50m hypoxic sprint (αναπνοή ανά 7 strokes)",
+        "2 x 100m kick μόνο με σανίδα (progressive pace)"
+      ],
+      "cooldown": [
+        "50m πρόσθιο + 50m ύπτιο χαλαρά",
+        "Foam rolling + full body stretching"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "10’ dynamic yoga flow για ώμους, κορμό, ισχία",
+        "4 x 50m μεικτό easy pace"
+      ],
+      "main": [
+        "3 x 200m ladder set: 50m sprint + 50m steady + 100m progressive",
+        "4 x 75m μεικτό alternating strokes (interval 2’15’’)",
+        "4 x 25m explosive start + underwater dolphin kicks"
+      ],
+      "cooldown": [
+        "100m μεικτό recovery",
+        "Stretching + αναπνοές για αποκατάσταση"
+      ]
+    }
+  ]
+}

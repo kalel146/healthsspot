@@ -1,0 +1,61 @@
+{
+  "filename": "outdoorPoolBeginner4.json",
+  "title": "Outdoor Pool Swimming Beginner – Phase 4",
+  "level": "Beginner",
+  "phase": 4,
+  "duration": "5 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "pool",
+  "goal": "Σταθεροποίηση τεχνικής ύπτιου + ελεύθερου, εισαγωγή βασικής τεχνικής πρόσθιου, βελτίωση αερόβιας αντοχής.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "8’ dryland ασκήσεις για κινητικότητα ώμων και core stability",
+        "4 x 25m ύπτιο με χαλαρή έμφαση στη θέση κεφαλιού"
+      ],
+      "main": [
+        "4 x 50m ελεύθερο drill catch-up (interval 1’30’’)",
+        "4 x 50m ύπτιο σε steady pace",
+        "2 x 50m πρόσθιο με focus στο timing χεριών-ποδιών"
+      ],
+      "cooldown": [
+        "2 x 50m μεικτό χαλαρό (ελεύθερο + ύπτιο)",
+        "Διατάσεις θώρακα και αυχένα"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "5’ breathing drills εκτός νερού",
+        "3 x 50m χαλαρή κολύμβηση με σανίδα"
+      ],
+      "main": [
+        "4 x 75m (25m ελεύθερο + 25m ύπτιο + 25m πρόσθιο) interval 2’30’’",
+        "4 x 25m dolphin kick υποβρύχιο για core control",
+        "4 x 50m steady pace ύπτιο"
+      ],
+      "cooldown": [
+        "25m υποβρύχιο glide + 25m χαλαρό πρόσθιο",
+        "Αποθεραπεία με deep breathing + shoulder stretches"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "6’ core activation + hip mobility drills",
+        "3 x 25m χαλαρό μεικτό"
+      ],
+      "main": [
+        "4 x 100m (50m ύπτιο + 50m πρόσθιο) interval 3’30’’",
+        "4 x 50m ελεύθερο progressive pace",
+        "4 x 25m breathing control (ανά 5 strokes)"
+      ],
+      "cooldown": [
+        "50m ύπτιο χαλαρό",
+        "Stretching ισχίων, ώμων και πλάτης"
+      ]
+    }
+  ]
+}

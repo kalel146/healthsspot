@@ -1,0 +1,59 @@
+{
+  "filename": "outdoorRunningBeginner6.json",
+  "title": "Outdoor Running Beginner – Phase 6",
+  "level": "Beginner",
+  "phase": 6,
+  "duration": "4 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "running",
+  "goal": "Προοδευτική αύξηση απόστασης, αντοχή στο ρυθμό και εισαγωγή μεγαλύτερων συνεχόμενων τμημάτων τρεξίματος.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "15’ brisk walk",
+        "Dynamic drills: leg swings, lunges, inchworms",
+        "4 x 100m strides με σταδιακή αύξηση έντασης"
+      ],
+      "main": [
+        "2 x 15’ steady aerobic run με 3’ περπάτημα ανάμεσα",
+        "1 x 20’ continuous tempo jog"
+      ],
+      "cooldown": [
+        "10’ easy walk",
+        "Static stretches: calves, quads, hip flexors"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "12’ easy jog",
+        "Running form drills (A-skips, high knees, carioca)"
+      ],
+      "main": [
+        "6 x 4’ tempo run + 90’’ jog recovery",
+        "10 x 40’’ strides στο 85% + 50’’ walk recovery"
+      ],
+      "cooldown": [
+        "8’ slow jog",
+        "Foam rolling + deep hip openers"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "10’ brisk walk",
+        "Dynamic yoga flow για δρομείς"
+      ],
+      "main": [
+        "Fartlek: 3’ fast + 90’’ easy x 6 rounds",
+        "Long aerobic block: 22’ continuous steady run"
+      ],
+      "cooldown": [
+        "12’ relaxed walk",
+        "Yoga-inspired stretches για ισχία, ραχιαίους"
+      ]
+    }
+  ]
+}

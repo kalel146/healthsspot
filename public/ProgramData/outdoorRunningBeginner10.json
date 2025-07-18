@@ -1,0 +1,59 @@
+{
+  "filename": "outdoorRunningBeginner10.json",
+  "title": "Outdoor Running Beginner – Phase 10",
+  "level": "Beginner",
+  "phase": 10,
+  "duration": "6 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "running",
+  "goal": "Ολοκλήρωση κύκλου αρχαρίων με έμφαση σε μεγαλύτερη διάρκεια, σταθερό ρυθμό και τεχνική σπριντ.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "15’ easy jog",
+        "Running drills: B-skips, butt kicks, carioca",
+        "4 x 120m strides στο 85%"
+      ],
+      "main": [
+        "3 x 10’ tempo run + 3’ jog recovery",
+        "20’ steady aerobic run με έλεγχο αναπνοής"
+      ],
+      "cooldown": [
+        "12’ slow jog",
+        "Static stretches hamstrings, quads, hip flexors"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "12’ brisk walk/jog",
+        "Mobility flow: hip swings, calf raises, dynamic lunges"
+      ],
+      "main": [
+        "10 x 90’’ fast run + 90’’ jog recovery",
+        "8 x 120m uphill sprints + walk back recovery"
+      ],
+      "cooldown": [
+        "10’ easy jog",
+        "Foam rolling + long static stretches"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "10’ relaxed jog",
+        "Dynamic yoga flow focusing on ankles & spine"
+      ],
+      "main": [
+        "Fartlek: 5’ fast + 3’ easy x 5 rounds",
+        "50’ long endurance steady run"
+      ],
+      "cooldown": [
+        "15’ relaxed walk",
+        "Deep static stretches for glutes & lower back"
+      ]
+    }
+  ]
+}

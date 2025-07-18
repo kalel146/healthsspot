@@ -1,0 +1,59 @@
+{
+  "filename": "outdoorRunningBeginner3.json",
+  "title": "Outdoor Running Beginner – Phase 3",
+  "level": "Beginner",
+  "phase": 3,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "running",
+  "goal": "Ανάπτυξη ρυθμού, καλύτερη ανοχή στο γαλακτικό και σταδιακή αύξηση συνολικής απόστασης.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "8’ brisk walk",
+        "Dynamic stretches (leg swings, lunges with twist)",
+        "3 x 60m drill jogs"
+      ],
+      "main": [
+        "4 x 5’ steady jog / 90’’ walk",
+        "1 x 8’ continuous jog focusing on breathing rhythm"
+      ],
+      "cooldown": [
+        "8’ easy walk",
+        "Static calf, hamstring & hip stretches"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "8’ brisk walk",
+        "Running drills (high knees, A-skips, bounding)"
+      ],
+      "main": [
+        "3 x 4’ tempo run + 2’ jog",
+        "4 x 45’’ faster bursts + 90’’ jog"
+      ],
+      "cooldown": [
+        "8’ slow walk",
+        "Foam roll quads & glutes"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "8’ brisk walk",
+        "Mobility drills for hips & ankles"
+      ],
+      "main": [
+        "Progressive Fartlek: 1’ fast + 1’ easy x 10 rounds",
+        "1 x 10’ steady endurance jog"
+      ],
+      "cooldown": [
+        "8’ easy walk",
+        "Breathing control & static stretches"
+      ]
+    }
+  ]
+}

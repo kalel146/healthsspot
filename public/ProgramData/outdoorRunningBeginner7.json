@@ -1,0 +1,59 @@
+{
+  "filename": "outdoorRunningBeginner7.json",
+  "title": "Outdoor Running Beginner – Phase 7",
+  "level": "Beginner",
+  "phase": 7,
+  "duration": "4 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "running",
+  "goal": "Προετοιμασία για μεγαλύτερες αποστάσεις, σταθεροποίηση τεχνικής και ανάπτυξη γαλακτικής αντοχής.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "15’ brisk walk",
+        "Dynamic mobility: lunges with twist, leg swings, inchworms",
+        "4 x 120m strides στο 70-80% έντασης"
+      ],
+      "main": [
+        "2 x 18’ steady run με 3’ recovery jog",
+        "1 x 25’ continuous tempo jog"
+      ],
+      "cooldown": [
+        "12’ easy walk",
+        "Static stretches: calves, hamstrings, glutes"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "12’ light jog",
+        "Running drills: A-skips, B-skips, bounding"
+      ],
+      "main": [
+        "8 x 3’ tempo run + 90’’ jog recovery",
+        "12 x 40’’ strides στο 85-90% + 40’’ walk recovery"
+      ],
+      "cooldown": [
+        "10’ slow jog",
+        "Foam rolling + hip opener stretches"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "12’ brisk walk",
+        "Dynamic yoga flow για δρομείς"
+      ],
+      "main": [
+        "Fartlek: 4’ fast + 90’’ easy x 6 rounds",
+        "Long aerobic block: 25’ continuous steady run"
+      ],
+      "cooldown": [
+        "12’ relaxed walk",
+        "Yoga-inspired deep stretches για κορμό και ισχία"
+      ]
+    }
+  ]
+}

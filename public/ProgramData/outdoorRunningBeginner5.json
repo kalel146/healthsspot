@@ -1,0 +1,60 @@
+{
+  "filename": "outdoorRunningBeginner5.json",
+  "title": "Outdoor Running Beginner – Phase 5",
+  "level": "Beginner",
+  "phase": 5,
+  "duration": "4 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "running",
+  "goal": "Μετάβαση σε μεγαλύτερη αερόβια βάση και βελτίωση ρυθμού για μεγαλύτερες αποστάσεις.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "12’ brisk walk",
+        "Dynamic mobility drills (leg swings, hip openers, lunges)",
+        "4 x 80m progressive strides"
+      ],
+      "main": [
+        "2 x 10’ steady aerobic run / 2’ walk",
+        "1 x 15’ continuous tempo jog"
+      ],
+      "cooldown": [
+        "10’ easy walk",
+        "Static stretches for calves, hamstrings, glutes"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "10’ easy jog",
+        "Running form drills (high knees, B-skips, straight-leg bounds)"
+      ],
+      "main": [
+        "5 x 5’ tempo run + 90’’ jog recovery",
+        "8 x 45’’ fast strides + 60’’ walk recovery"
+      ],
+      "cooldown": [
+        "8’ slow jog",
+        "Foam rolling + diaphragmatic breathing"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "12’ brisk walk",
+        "Dynamic yoga flow for runners"
+      ],
+      "main": [
+        "Fartlek: 2’ fast + 1’ easy x 6 rounds",
+        "Endurance block: 18’ continuous steady run"
+      ],
+      "cooldown": [
+        "10’ relaxed walk",
+        "Yoga-inspired stretches for lower back & hips"
+      ]
+    }
+  ]
+}
+

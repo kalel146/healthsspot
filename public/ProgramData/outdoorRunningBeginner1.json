@@ -1,0 +1,59 @@
+{
+  "filename": "outdoorRunningBeginner1.json",
+  "title": "Outdoor Running Beginner – Phase 1",
+  "level": "Beginner",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "running",
+  "goal": "Εκμάθηση σωστής τεχνικής τρεξίματος, βασική αντοχή και προσαρμογή στις αερόβιες απαιτήσεις.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "5’ brisk walk",
+        "Dynamic stretches (leg swings, arm circles)",
+        "2 x 50m easy jog drills"
+      ],
+      "main": [
+        "4 x 2’ easy jog / 2’ walk",
+        "Focus on posture & breathing"
+      ],
+      "cooldown": [
+        "5’ slow walk",
+        "Static calf & hamstring stretches"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "5’ brisk walk",
+        "3 x 30m running drills (high knees, butt kicks)"
+      ],
+      "main": [
+        "3 x 3’ light jog / 2’ walk",
+        "1 x 5’ continuous jog"
+      ],
+      "cooldown": [
+        "5’ easy walk",
+        "Hip flexor & quad stretches"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "5’ brisk walk",
+        "Mobility routine (ankle, hips)"
+      ],
+      "main": [
+        "Fartlek intro: 6 x 1’ faster pace + 2’ easy jog",
+        "Focus on relaxed shoulders"
+      ],
+      "cooldown": [
+        "6’ slow walk",
+        "Foam rolling calves & glutes"
+      ]
+    }
+  ]
+}

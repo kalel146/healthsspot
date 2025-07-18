@@ -1,0 +1,59 @@
+{
+  "filename": "outdoorRunningBeginner4.json",
+  "title": "Outdoor Running Beginner – Phase 4",
+  "level": "Beginner",
+  "phase": 4,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "running",
+  "goal": "Ενίσχυση αντοχής, βελτίωση τεχνικής και μεγαλύτερη διάρκεια σε tempo ρυθμό.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "10’ brisk walk",
+        "Dynamic stretches (leg swings, hip openers)",
+        "4 x 60m build-up strides"
+      ],
+      "main": [
+        "3 x 7’ steady jog / 2’ walk",
+        "1 x 12’ continuous jog με σταθερή αναπνοή"
+      ],
+      "cooldown": [
+        "8’ easy walk",
+        "Static stretches for calves, quads, hips"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "10’ brisk walk",
+        "Running drills (high knees, A-skips, carioca)"
+      ],
+      "main": [
+        "4 x 4’ tempo run + 90’’ jog",
+        "6 x 40’’ fast strides + 60’’ walk recovery"
+      ],
+      "cooldown": [
+        "8’ slow walk",
+        "Foam rolling + deep breathing"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "10’ brisk walk",
+        "Mobility for hips, ankles, thoracic spine"
+      ],
+      "main": [
+        "Fartlek ladder: 1’ fast + 1’ easy, 2’ fast + 2’ easy, 3’ fast + 3’ easy (repeat)",
+        "1 x 12’ steady endurance jog"
+      ],
+      "cooldown": [
+        "8’ easy walk",
+        "Yoga-inspired stretches for hamstrings & back"
+      ]
+    }
+  ]
+}

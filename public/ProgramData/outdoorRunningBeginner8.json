@@ -1,0 +1,59 @@
+{
+  "filename": "outdoorRunningBeginner8.json",
+  "title": "Outdoor Running Beginner – Phase 8",
+  "level": "Beginner",
+  "phase": 8,
+  "duration": "5 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "running",
+  "goal": "Αύξηση αντοχής σε μεσαίες αποστάσεις, ένταξη μεγαλύτερων διαλειμματικών κομματιών και σταθερό ρυθμό αναπνοής.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "15’ brisk walk",
+        "Mobility drills: hip circles, ankle rolls, trunk rotations",
+        "4 x 150m strides στο 70-80% έντασης"
+      ],
+      "main": [
+        "3 x 12’ steady run με 2’ recovery jog",
+        "30’ continuous tempo run"
+      ],
+      "cooldown": [
+        "10’ easy walk",
+        "Static stretches: quads, hamstrings, lower back"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "12’ light jog",
+        "Running drills: high knees, butt kicks, carioca"
+      ],
+      "main": [
+        "10 x 2’ fast run + 1’ jog recovery",
+        "8 x 1’ uphill sprints + walk down recovery"
+      ],
+      "cooldown": [
+        "12’ slow jog",
+        "Foam rolling + pigeon stretch"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "10’ brisk walk",
+        "Dynamic yoga flow για άνοιγμα ισχίων και ώμων"
+      ],
+      "main": [
+        "Fartlek: 5’ fast + 2’ easy x 5 rounds",
+        "Long aerobic block: 35’ steady endurance run"
+      ],
+      "cooldown": [
+        "15’ relaxed walk",
+        "Deep stretches focusing on calves, hips and IT band"
+      ]
+    }
+  ]
+}

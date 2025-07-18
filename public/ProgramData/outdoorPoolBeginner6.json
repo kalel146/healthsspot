@@ -1,0 +1,61 @@
+{
+  "filename": "outdoorPoolBeginner6.json",
+  "title": "Outdoor Pool Swimming Beginner – Phase 6",
+  "level": "Beginner",
+  "phase": 6,
+  "duration": "5 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "pool",
+  "goal": "Ενοποίηση τεχνικών ύπτιου, ελεύθερου, πρόσθιου και εισαγωγή βασικής πεταλούδας. Βελτίωση γαλακτικής αντοχής και ρυθμικού ελέγχου.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "8’ dryland core + shoulder stability",
+        "4 x 25m μεικτό χαλαρό για ενεργοποίηση"
+      ],
+      "main": [
+        "4 x 50m drill sculling για αίσθηση νερού (interval 1’30’’)",
+        "4 x 75m (25m ύπτιο + 25m πρόσθιο + 25m ελεύθερο)",
+        "2 x 25m basic butterfly kick με σανίδα"
+      ],
+      "cooldown": [
+        "2 x 50m ελεύθερο χαλαρό",
+        "Διατάσεις θώρακα, ισχίων και αυχένα"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "5’ breathing drills εκτός νερού",
+        "4 x 25m ελεύθερο με έλεγχο ρυθμού"
+      ],
+      "main": [
+        "3 x 100m μεικτό (25m ύπτιο + 25m πρόσθιο + 25m ελεύθερο + 25m πεταλούδα) interval 4’",
+        "4 x 50m steady pace ελεύθερο",
+        "4 x 25m υποβρύχιο dolphin kick για core control"
+      ],
+      "cooldown": [
+        "50m ύπτιο χαλαρό",
+        "Αποθεραπεία με deep breathing + shoulder stretches"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "6’ hip mobility + thoracic rotations",
+        "3 x 25m χαλαρή μεικτή κολύμβηση"
+      ],
+      "main": [
+        "4 x 75m (50m πρόσθιο + 25m πεταλούδα) interval 2’30’’",
+        "4 x 50m progressive pace ύπτιο",
+        "4 x 25m breathing control ανά 7 strokes"
+      ],
+      "cooldown": [
+        "25m πεταλούδα χαλαρά + 25m ύπτιο",
+        "Stretching ώμων και ισχίων"
+      ]
+    }
+  ]
+}
