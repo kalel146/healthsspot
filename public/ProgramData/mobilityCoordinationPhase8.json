@@ -1,0 +1,78 @@
+{
+  "filename": "mobilityCoordinationPhase8.json",
+  "title": "Coordination – Phase 8: Complex Dual‑Task",
+  "level": "Advanced",
+  "goal": "Σύνθετες γνωστικο‑κινητικές απαιτήσεις και ταχύτητα απόφασης",
+  "category": "mobility",
+  "subcategory": "coordination",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "daysPerWeek": 3,
+  "description": "Δύσκολα διπλά tasks, αλλαγές ρυθμού και εναλλαγές αισθητηριακών ερεθισμάτων.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Cognitive Mix",
+      "exercises": [
+        {
+          "name": "Walk & N‑Back (2‑back)",
+          "sets": 3,
+          "reps": "60''"
+        },
+        {
+          "name": "Color → Direction React",
+          "sets": 3,
+          "reps": "30–40''"
+        },
+        {
+          "name": "Single‑Leg Balance + Word List Recall",
+          "sets": 3,
+          "reps": "8 λέξεις"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Foot‑Hand Sync",
+      "exercises": [
+        {
+          "name": "Ladder: Icky Shuffle / Ali Shuffle",
+          "sets": 4,
+          "reps": "15–20''"
+        },
+        {
+          "name": "Two‑Ball Juggle (τοίχος)",
+          "sets": 3,
+          "reps": "10 σερί"
+        },
+        {
+          "name": "Catch → Immediate COD",
+          "sets": 3,
+          "reps": "1 κύκλος"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Sensory Switch",
+      "exercises": [
+        {
+          "name": "Eyes‑Closed Balance (ασφαλές περιβάλλον)",
+          "sets": 3,
+          "reps": "15–20''"
+        },
+        {
+          "name": "Auditory Cues Shuttle",
+          "sets": 3,
+          "reps": "2 γύροι"
+        },
+        {
+          "name": "Random Pattern Call",
+          "sets": 2,
+          "reps": "40''"
+        }
+      ]
+    }
+  ],
+  "notes": "Αθλητές: time‑cap. Υπερήλικες: αποφύγετε κλειστά μάτια αν αβέβαιο. Παιδιά: κάντε το σαν treasure hunt."
+}

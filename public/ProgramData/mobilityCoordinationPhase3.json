@@ -1,0 +1,78 @@
+{
+  "filename": "mobilityCoordinationPhase3.json",
+  "title": "Coordination – Phase 3: Cross‑Patterns",
+  "level": "Beginner",
+  "goal": "Διασταυρούμενα μοτίβα, συγχρονισμός ρυθμού και αλλαγές κατεύθυνσης",
+  "category": "mobility",
+  "subcategory": "coordination",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "daysPerWeek": 3,
+  "description": "Εμπέδωση cross‑crawl και εισαγωγή σε ελεγχόμενες αλλαγές κατεύθυνσης.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Cross‑Crawl Flow",
+      "exercises": [
+        {
+          "name": "Quadruped Opposite Reach",
+          "sets": 3,
+          "reps": "8/πλευρά"
+        },
+        {
+          "name": "Cross‑Crawl High‑Knee March",
+          "sets": 3,
+          "reps": "20 βήματα"
+        },
+        {
+          "name": "Figure‑8 Dribble (μαλακή μπάλα)",
+          "sets": 3,
+          "reps": "30–40''"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Change of Direction (COD)",
+      "exercises": [
+        {
+          "name": "5‑10‑5 Mini (μικρές αποστάσεις)",
+          "sets": 4,
+          "reps": "1 γύρος"
+        },
+        {
+          "name": "Cone Weave (3 κώνοι)",
+          "sets": 3,
+          "reps": "3 γύροι"
+        },
+        {
+          "name": "Partner Toss (σήματα L/R)",
+          "sets": 3,
+          "reps": "10/πλευρά"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Dual‑Task Plus",
+      "exercises": [
+        {
+          "name": "Walk & Subtract 7s",
+          "sets": 3,
+          "reps": "45''"
+        },
+        {
+          "name": "Single‑Leg Balance + Ball Bounce",
+          "sets": 3,
+          "reps": "10/πόδι"
+        },
+        {
+          "name": "Reaction Claps (οπτικό σήμα)",
+          "sets": 2,
+          "reps": "20"
+        }
+      ]
+    }
+  ],
+  "notes": "Tier Bronze για ελαφρύ gating. Υπερήλικες: μικρές αποστάσεις. Παιδιά: μετατρέψτε το σε σκυταλοδρομία."
+}

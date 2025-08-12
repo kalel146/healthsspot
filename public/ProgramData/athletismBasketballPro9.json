@@ -1,0 +1,69 @@
+{
+  "filename": "athletismBasketballPro9.json",
+  "title": "Basketball Pro – Phase 9 (Pre-Season Peak Performance)",
+  "level": "Pro/Advanced",
+  "phase": 9,
+  "duration": "6 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "basketball",
+  "goal": "Μέγιστη απόδοση πριν την έναρξη της σεζόν, εστίαση σε εκρηκτικότητα, ταχύτητα αντίδρασης, αντοχή αγώνα και αγωνιστικές καταστάσεις υψηλής πίεσης.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "type": "Max Power & Speed",
+      "warmup": [
+        "5’ jog + ball handling",
+        "Dynamic mobility (hips, ankles, shoulders)",
+        "Short sprints 4x15m"
+      ],
+      "main": [
+        "Power cleans 5x3 (85% 1RM)",
+        "Depth jumps 4x6",
+        "Sled sprints 6x20m (moderate-heavy)",
+        "Contrast training: Squat jumps 4x8 after light squats"
+      ],
+      "cooldown": [
+        "Foam roll quads, calves",
+        "Static hip flexor & hamstring stretches"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "type": "High-Intensity Basketball Conditioning",
+      "warmup": [
+        "Defensive slides & closeouts 5’",
+        "Layup & dunk series 5’"
+      ],
+      "main": [
+        "Full-court HIIT: 10x20’’ sprint / 40’’ rest",
+        "Half-court 3-on-3 continuous 6’",
+        "Pressure shooting drill (miss = sprint) 5’",
+        "Fast break transition drill 6x down-and-back"
+      ],
+      "cooldown": [
+        "Light shooting 5’",
+        "Full body static stretching"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "type": "Agility, Plyometrics & Core",
+      "warmup": [
+        "Skipping rope 3’",
+        "Hurdle hop mobility 5’"
+      ],
+      "main": [
+        "Lateral bounds to sprint 5x each side",
+        "Agility ladder complex 5’",
+        "Medicine ball rotational slams 4x12",
+        "Plank to sprint start 6x10m"
+      ],
+      "cooldown": [
+        "Foam roll lower back, glutes",
+        "Static stretches for quads, calves, shoulders"
+      ]
+    }
+  ],
+  "notes": "Η φάση αυτή φέρνει τον αθλητή στο αποκορύφωμα, προσομοιώνοντας αγωνιστική ένταση και ταχύτητα λήψης αποφάσεων. Συνδυάζει φυσική κατάσταση με καθαρά μπασκετικές καταστάσεις για μέγιστη απόδοση."
+}

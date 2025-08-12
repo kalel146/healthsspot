@@ -1,0 +1,65 @@
+{
+  "filename": "basketballProPhase10.json",
+  "title": "Basketball Pro – Phase 10",
+  "level": "Professional",
+  "phase": 10,
+  "duration": "8 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "basketball",
+  "goal": "Τελική αγωνιστική προετοιμασία με έμφαση στην αντοχή, την εκρηκτικότητα και τη λήψη αποφάσεων υπό ακραία πίεση.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "warmup": [
+        "Dynamic mobility drills με μπάλα",
+        "Shooting warmup από διάφορες αποστάσεις",
+        "Footwork ladder + sprints"
+      ],
+      "main": [
+        "4 x 5’ full-court high-intensity scrimmage με στόχους (π.χ. μόνο drive & kick)",
+        "Plyometric box jumps – 4 x 10",
+        "Medicine ball chest passes – 3 x 15"
+      ],
+      "cooldown": [
+        "Static stretching για κάτω άκρα",
+        "Foam rolling γλουτούς, τετρακέφαλους"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "warmup": [
+        "Light jog γύρω από το γήπεδο",
+        "Dynamic stretches (hips, calves)",
+        "Ball handling drills 5’"
+      ],
+      "main": [
+        "HIIT: 30’’ sprint – 30’’ jog για 12 λεπτά",
+        "Agility drills με cones (change of direction) – 5 x 20m",
+        "Weighted squats – 4 x 6 (85% 1RM)"
+      ],
+      "cooldown": [
+        "Slow jog 3’",
+        "Hip flexor stretches",
+        "Breathing drills"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "warmup": [
+        "Dribble relays",
+        "Close-range shooting drills",
+        "Dynamic hamstring sweeps"
+      ],
+      "main": [
+        "Simulated last 2 minutes game scenario με έντονη πίεση",
+        "3-point shooting under fatigue – 5 x 10",
+        "Defensive slides – 4 x 20m"
+      ],
+      "cooldown": [
+        "Static calf & quad stretches",
+        "Meditation 5’ για συγκέντρωση"
+      ]
+    }
+  ]
+}

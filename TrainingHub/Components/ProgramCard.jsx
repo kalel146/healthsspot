@@ -90,8 +90,14 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
           <p className="text-xs font-mono text-red-500">[Debug] Tier: {program.accessTier} • Filename: {program.filename}</p>
         )}
         {isLocked(program.accessTier) && (
-          <div className={`${theme === "dark" ? "bg-zinc-800 border border-red-500" : "bg-red-50 border border-red-300"} rounded-xl p-4 mt-2`}>
-            <p className="text-red-500 font-medium">🔒 Απαιτεί πακέτο {program.accessTier} ή ανώτερο</p>
+          <div className={`${theme === "dark" ? "bg-zinc-800 border border-red-500" : "bg-red-50 border border-red-300"} rounded-xl p-4 mt-2 flex items-center justify-between gap-3`}>
+            <p className="text-red-500 font-medium m-0">🔒 Απαιτεί πακέτο {program.accessTier} ή ανώτερο</p>
+            <button
+              onClick={() => setShowModal(true)}
+              className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-1 rounded-full text-sm font-semibold shadow"
+            >
+              Αναβάθμιση σε {program.accessTier}
+            </button>
           </div>
         )}
       </div>
@@ -103,17 +109,28 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
             const hasExercises = Array.isArray(day?.exercises);
             const hasBlocks = Array.isArray(day?.warmup) || Array.isArray(day?.main) || Array.isArray(day?.cooldown);
 
+            const summaryInfo = hasExercises
+              ? `${day.exercises.length} ασκήσεις`
+              : hasBlocks
+              ? [day.warmup?.length || 0, day.main?.length || 0, day.cooldown?.length || 0].reduce((a,b)=>a+b,0) + " στοιχεία"
+              : null;
+
             return (
               <motion.div key={index} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: index * 0.05 }}>
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => toggleDay(index)}
-                  className={`w-full text-left font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out ${
+                  className={`w-full text-left font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out flex justify-between items-center ${
                     expandedDay === index ? "bg-indigo-500 text-white shadow-inner" : "bg-indigo-700 text-white hover:bg-indigo-600"
                   }`}
                 >
-                  {getEmoji(day.type || day.split)} {day.day || day.type || `Session ${index + 1}`}
+                  <span>{getEmoji(day.type || day.split)} {day.day || day.type || `Session ${index + 1}`} { (hasExercises || hasBlocks) && (
+                    <span className="opacity-80 text-xs ml-2">
+                      • {hasExercises ? `${day.exercises.length} drills` : `${(Array.isArray(day.warmup)?day.warmup.length:0) + (Array.isArray(day.main)?day.main.length:0) + (Array.isArray(day.cooldown)?day.cooldown.length:0)} items`}
+                    </span>
+                  ) }</span>
+                  {summaryInfo && <span className="text-xs opacity-80">{summaryInfo}</span>}
                 </motion.button>
 
                 <AnimatePresence initial={false}>
@@ -127,7 +144,6 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
                         theme === "dark" ? "border-indigo-400 text-zinc-300" : "border-indigo-500 text-gray-700"
                       }`}
                     >
-                      {/* Format A: exercises */}
                       {hasExercises && (
                         <div className="space-y-2">
                           <div className="font-medium mb-1">Exercises</div>
@@ -151,7 +167,6 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
                         </div>
                       )}
 
-                      {/* Format B: warmup/main/cooldown */}
                       {hasBlocks && (
                         <div className="space-y-3 text-sm">
                           {Array.isArray(day.warmup) && (

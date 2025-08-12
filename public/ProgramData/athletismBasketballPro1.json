@@ -1,0 +1,88 @@
+{
+  "filename": "athletismBasketballPro1.json",
+  "title": "Basketball Pro – Phase 1 (Preseason Performance Boost)",
+  "level": "Pro/Advanced",
+  "phase": 1,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "athletism",
+  "subcategory": "basketball",
+  "goal": "Explosive first step, agility, anaerobic capacity, change of direction & game-specific conditioning.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "type": "Court Conditioning + Agility",
+      "warmup": [
+        "8’ easy jog γύρω από το γήπεδο",
+        "Dynamic: leg swings, open/close gate, arm circles",
+        "Activation: mini-band lateral walk 2x15/side"
+      ],
+      "main": [
+        "COD Drills: Pro-Agility 5-10-5 x 6 reps, 60’’ rest",
+        "Shuttle Runs: 10-20-30m x 5 sets, 90’’ rest",
+        "Lane Slides: 4x30’’ (defensive stance), 45’’ rest",
+        "Closeout + Backpedal: 6x20m, 45’’ rest"
+      ],
+      "cooldown": [
+        "5’ easy jog/walk",
+        "Static stretch: calves, quads, hip flexors, adductors"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "type": "Plyometrics + Power",
+      "warmup": [
+        "Foam roll 5’ (quads, calves, glutes)",
+        "Mobility flow: ankle rocks, hip openers, T-spine",
+        "Primer: pogo jumps 2x20, skater hops 2x10/side"
+      ],
+      "main": [
+        "Depth Jumps 4x4 (box 30–45cm), 90’’ rest",
+        "Broad Jump 5x3, full reset",
+        "Single-Leg Box Jumps 4x3/leg, 90’’ rest",
+        "Med Ball Scoop Toss 5x3/side (power emphasis)"
+      ],
+      "cooldown": [
+        "Breathing reset 2’ (box breathing 4-4-4-4)",
+        "Long calf/hamstring stretch 90’’/side"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "type": "Anaerobic Intervals + Shooting Under Fatigue",
+      "warmup": [
+        "Dynamic run-throughs: A-skips, butt-kicks, karaoke",
+        "2x(Baseline to Baseline progressive) με τεχνική χεριών"
+      ],
+      "main": [
+        "Suicides x 4, 2’ rest (clock strict)",
+        "30’’ on / 30’’ off × 10 (half-court shuttles)",
+        "Shooting Circuit (fatigue):\n- 5 spots x 8 σουτ (catch & shoot)\n- 5 spots x 6 σουτ (one-dribble pull-up)\n- FT: 2x10 με ποινή 1 suicide για <7/10"
+      ],
+      "cooldown": [
+        "Walk + stretch 6’",
+        "T-spine openers, hip flexors, adductors"
+      ]
+    },
+    {
+      "day": "Session 4",
+      "type": "Strength Maintenance (Total Body)",
+      "warmup": [
+        "RAMP: Raise-Activate-Mobilize-Potentiate 8’",
+        "Mini-band series για ώμους 2x12"
+      ],
+      "main": [
+        "Trap Bar Deadlift 4x4 @RPE7",
+        "DB Bench Press 4x6 @RPE7",
+        "Chin-Ups 4xAMRAP (leave 1–2 reps in tank)",
+        "Rear-Delt Fly 3x12",
+        "Copenhagen Plank 3x20’’/side"
+      ],
+      "cooldown": [
+        "Light bike 5’",
+        "Static stretch: lats, pecs, hip rotators"
+      ]
+    }
+  ],
+  "notes": "Δούλεψε ποιοτικά, όχι ‘ήρωας’. Αν HRV/ύπνος πέσουν, μείωσε 1 σετ από κάθε block. Κράτα τεχνική σε άμυνα/closeouts, όχι μόνο ένταση."
+}

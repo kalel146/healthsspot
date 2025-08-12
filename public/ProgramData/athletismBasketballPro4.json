@@ -1,0 +1,70 @@
+{
+  "filename": "athletismBasketballPro4.json",
+  "title": "Basketball Pro – Phase 4 (Explosive Transition & Game Simulation)",
+  "level": "Pro/Advanced",
+  "phase": 4,
+  "duration": "4 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "basketball",
+  "goal": "Μετάβαση από προπονητική αιχμή σε πλήρη προσομοίωση αγώνων, με έμφαση στην εκρηκτική μετάβαση και την αντοχή στο γήπεδο.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "type": "Explosive Transition & Conditioning",
+      "warmup": [
+        "5’ progressive jog",
+        "Dynamic stretches (hips, ankles, shoulders)",
+        "Defensive shuffle activation 2x15m"
+      ],
+      "main": [
+        "Full-court sprint to pull-up 8x",
+        "Transition defense-to-offense drill 6x30’’",
+        "3-man weave into layup/3pt shot 12 reps",
+        "Plyo push-up to sprint 4x5"
+      ],
+      "cooldown": [
+        "Light jog 3’",
+        "Hip flexor & calf stretches"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "type": "Game Pace Simulation",
+      "warmup": [
+        "Foam rolling (quads, glutes)",
+        "Close-out drills 2x10",
+        "Free-throw warmup set"
+      ],
+      "main": [
+        "5x5 half-court scrimmage (4’ high pace / 1’ rest)",
+        "Pick-and-roll situational plays 10’",
+        "Full-court press simulation 6x40’’",
+        "Medicine ball rotational slams 3x8"
+      ],
+      "cooldown": [
+        "Walking recovery 4’",
+        "Static hamstring & T-spine stretches"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "type": "Reactive Agility & Endurance",
+      "warmup": [
+        "Agility ladder reaction cues",
+        "Ball handling with vision restriction 2x1’"
+      ],
+      "main": [
+        "Mirror shuffle with live ball 6x20’’",
+        "Suicides: 5 sets with 1’ rest",
+        "Close-out to block shot drill 5x5",
+        "Isometric lunge hold with pass 3x20’’ each leg"
+      ],
+      "cooldown": [
+        "Breathing drills 2’",
+        "Foam roll calves & quads"
+      ]
+    }
+  ],
+  "notes": "Αυτή η φάση λειτουργεί ως γέφυρα για την πλήρη αγωνιστική περίοδο. Στόχος η μέγιστη απόδοση σε συνθήκες πίεσης και ταχύτητας, με ελάχιστη απώλεια τεχνικής ακρίβειας."
+}

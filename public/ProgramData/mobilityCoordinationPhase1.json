@@ -1,0 +1,93 @@
+{
+  "filename": "mobilityCoordinationPhase1.json",
+  "title": "Coordination – Phase 1: Foundational Control",
+  "level": "Beginner",
+  "goal": "Βασικός νευρομυϊκός έλεγχος, ισορροπία και ρυθμός",
+  "category": "mobility",
+  "subcategory": "coordination",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "daysPerWeek": 3,
+  "description": "Επαναφορά βασικών κινητικών προτύπων με ασφαλή ισορροπία και απλό hand–eye coordination.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Balance & Control",
+      "exercises": [
+        {
+          "name": "Tandem Walk (σε γραμμή)",
+          "sets": 3,
+          "reps": "10m"
+        },
+        {
+          "name": "Single‑Leg Balance (σταθερό έδαφος)",
+          "sets": 3,
+          "reps": "20–30''/πόδι"
+        },
+        {
+          "name": "Ball Toss & Catch (2 χέρια)",
+          "sets": 3,
+          "reps": "12–15"
+        },
+        {
+          "name": "Cross‑Crawl Standing",
+          "sets": 2,
+          "reps": "12/πλευρά"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Rhythm & Footwork",
+      "exercises": [
+        {
+          "name": "Step Touch (με μετρονόμο)",
+          "sets": 3,
+          "reps": "60''"
+        },
+        {
+          "name": "Figure‑8 Walk γύρω από 2 κώνους",
+          "sets": 3,
+          "reps": "6 γύροι"
+        },
+        {
+          "name": "Balloon Tap (εναλλαγή χεριών)",
+          "sets": 2,
+          "reps": "20 taps"
+        },
+        {
+          "name": "Breathing Reset",
+          "sets": 1,
+          "reps": "3'"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Dual‑Task Intro",
+      "exercises": [
+        {
+          "name": "Walk & Count (1–30 προς τα πίσω)",
+          "sets": 3,
+          "reps": "30–45''"
+        },
+        {
+          "name": "Heel‑Toe Rock",
+          "sets": 3,
+          "reps": "12–15"
+        },
+        {
+          "name": "Seated Ball Pass (wall)",
+          "sets": 3,
+          "reps": "12–15"
+        },
+        {
+          "name": "Eye–Head Coordination (saccades)",
+          "sets": 2,
+          "reps": "8 κατευθύνσεις"
+        }
+      ]
+    }
+  ],
+  "notes": "Αθλητές: κρατήστε τις παύσεις σύντομες. Υπερήλικες: κρατήστε στήριξη κοντά. Παιδιά: κάντε τα με παιχνίδι/μπαλόνι."
+}

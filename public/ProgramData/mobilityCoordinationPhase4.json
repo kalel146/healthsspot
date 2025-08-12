@@ -1,0 +1,78 @@
+{
+  "filename": "mobilityCoordinationPhase4.json",
+  "title": "Coordination – Phase 4: Ladder & Reaction",
+  "level": "Intermediate",
+  "goal": "Ενίσχυση footwork με ladder patterns και άμεση αντίδραση",
+  "category": "mobility",
+  "subcategory": "coordination",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "daysPerWeek": 3,
+  "description": "Προοδευτικά πρότυπα σκάλας, αντιδράσεις σε ακουστικά/οπτικά ερεθίσματα και χειρισμός μπάλας.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Ladder Day",
+      "exercises": [
+        {
+          "name": "Ladder: 1‑in / 2‑in / Lateral",
+          "sets": 4,
+          "reps": "15–20''"
+        },
+        {
+          "name": "Quick Feet on Line",
+          "sets": 3,
+          "reps": "3x20''"
+        },
+        {
+          "name": "Chest Pass to Wall (γρήγορος ρυθμός)",
+          "sets": 3,
+          "reps": "12–15"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Reaction",
+      "exercises": [
+        {
+          "name": "Coach Call (αριθμοί → κατεύθυνση)",
+          "sets": 4,
+          "reps": "20''"
+        },
+        {
+          "name": "Mirror Drill (partner)",
+          "sets": 3,
+          "reps": "30''"
+        },
+        {
+          "name": "Ball Drop Reaction",
+          "sets": 3,
+          "reps": "10/πλευρά"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Balance + Dual",
+      "exercises": [
+        {
+          "name": "Single‑Leg Balance on Foam",
+          "sets": 3,
+          "reps": "20''/πόδι"
+        },
+        {
+          "name": "Tandem Walk & Spell",
+          "sets": 3,
+          "reps": "45''"
+        },
+        {
+          "name": "Figure‑8 Toss While Walking",
+          "sets": 2,
+          "reps": "12/κατεύθυνση"
+        }
+      ]
+    }
+  ],
+  "notes": "Αθλητές: αυξήστε ταχύτητα. Υπερήλικες: αντικαταστήστε foam με σταθερό έδαφος. Παιδιά: παιχνίδι ‘Simon Says’."
+}

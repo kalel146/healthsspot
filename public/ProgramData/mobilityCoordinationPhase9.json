@@ -1,0 +1,78 @@
+{
+  "filename": "mobilityCoordinationPhase9.json",
+  "title": "Coordination – Phase 9: Game‑Speed",
+  "level": "Advanced",
+  "goal": "Game‑speed ρυθμός, ταχεία λήψη απόφασης και σύνθετη αλληλουχία",
+  "category": "mobility",
+  "subcategory": "coordination",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "daysPerWeek": 3,
+  "description": "Υψηλής ταχύτητας συνδυασμοί με περιορισμένο χρόνο αντίδρασης.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Speed React",
+      "exercises": [
+        {
+          "name": "Shuttle w/ Random Calls",
+          "sets": 4,
+          "reps": "1 γύρος"
+        },
+        {
+          "name": "Skater Hops to Catch",
+          "sets": 3,
+          "reps": "8/πλευρά"
+        },
+        {
+          "name": "Dribble + Head‑Up Decisions",
+          "sets": 3,
+          "reps": "45''"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Chaos Ladder",
+      "exercises": [
+        {
+          "name": "Ladder: Random Insertions",
+          "sets": 4,
+          "reps": "15–20''"
+        },
+        {
+          "name": "Partner Mirror + Ball Drop",
+          "sets": 3,
+          "reps": "30–40''"
+        },
+        {
+          "name": "Catch → Sprint → COD",
+          "sets": 3,
+          "reps": "1 κύκλος"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Dual‑Task Max",
+      "exercises": [
+        {
+          "name": "N‑Back 3 + Shuttle",
+          "sets": 3,
+          "reps": "60''"
+        },
+        {
+          "name": "Two‑Ball Juggle on the Move",
+          "sets": 3,
+          "reps": "8 σερί"
+        },
+        {
+          "name": "Random Pattern Memory Recall",
+          "sets": 2,
+          "reps": "40''"
+        }
+      ]
+    }
+  ],
+  "notes": "Platinum gating. Υπερήλικες: μη συνίσταται. Παιδιά: απλοποιημένη εκδοχή με time bonus."
+}

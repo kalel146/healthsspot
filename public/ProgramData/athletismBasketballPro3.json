@@ -1,0 +1,70 @@
+ {
+ "filename": "athletismBasketballPro3.json",
+  "title": "Basketball Pro – Phase 3 (Playoff Peak & Skill Density)",
+  "level": "Pro/Advanced",
+  "phase": 3,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "basketball",
+  "goal": "Μέγιστη εκρηκτικότητα, ταχύτητα αντίδρασης και πυκνότητα δεξιοτήτων για Playoffs.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "type": "Speed & First Step Dominance",
+      "warmup": [
+        "5’ progressive jog",
+        "Dynamic mobility flow",
+        "Mini hurdle quick-steps 3x5"
+      ],
+      "main": [
+        "Flying 20s: 6x20m @ full intent, walk back recovery",
+        "First step jab-drive drill 5x5/side",
+        "Defensive reaction mirror drill 6x15’’",
+        "Drop lunge med ball slam 3x6"
+      ],
+      "cooldown": [
+        "Walk 3’",
+        "Adductors & hip flexors stretch"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "type": "High-Intensity Skill Blocks",
+      "warmup": [
+        "Foam roll glutes/hips",
+        "Band-resisted shuffles 2x10m",
+        "Shooting ladder warmup"
+      ],
+      "main": [
+        "Full-court transition shooting 8’",
+        "Pick-and-roll decision drills (live D) 12’",
+        "3x3 half-court high-pace scrimmage 3x4’",
+        "Core: Anti-extension rollout 3x10"
+      ],
+      "cooldown": [
+        "Light jog 5’",
+        "Calves & hamstrings static"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "type": "Reactive Agility & Conditioning",
+      "warmup": [
+        "Agility ladder patterns",
+        "Med ball chest pass & catch under movement 2x10"
+      ],
+      "main": [
+        "Y-reactive drill 6x20’’",
+        "Shuttle sprints 15’’ on / 15’’ off × 12",
+        "Close-out + contest shot drill 5x5",
+        "Isometric split squat hold 3x20’’"
+      ],
+      "cooldown": [
+        "Breathing reset 2’",
+        "T-spine openers"
+      ]
+    }
+  ],
+  "notes": "Διατήρησε ποιότητα και ένταση. Στόχος να φτάσεις στα Playoffs με peak ταχύτητας και αυτοματισμών. Ελαχιστοποίησε περιττό φορτίο εκτός γηπέδου."
+}

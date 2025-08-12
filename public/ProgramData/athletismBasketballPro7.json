@@ -1,0 +1,68 @@
+{
+  "filename": "athletismBasketballPro7.json",
+  "title": "Basketball Pro – Phase 7 (Post-Season Recovery & Rebuild)",
+  "level": "Pro/Advanced",
+  "phase": 7,
+  "duration": "4 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "basketball",
+  "goal": "Αποκατάσταση μετά τη σεζόν, σταδιακή επαναφορά στη φυσική κατάσταση και ενίσχυση μυοσκελετικής ισορροπίας πριν την επόμενη περίοδο προετοιμασίας.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "type": "Mobility & Light Strength",
+      "warmup": [
+        "5’ light cycling or brisk walk",
+        "Dynamic stretches for hips, shoulders",
+        "Foam rolling full body"
+      ],
+      "main": [
+        "Goblet squat 3x12",
+        "Single-arm dumbbell press 3x10 each side",
+        "Band pull-aparts 3x15",
+        "Light ball handling drills 3x1’"
+      ],
+      "cooldown": [
+        "Static stretches for hamstrings, calves, chest",
+        "Breathing reset drills 2’"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "type": "Low-Impact Conditioning & Core",
+      "warmup": [
+        "5’ rowing or swimming",
+        "Hip mobility routine 5’"
+      ],
+      "main": [
+        "Stationary bike intervals 8x30’’ on / 90’’ off",
+        "Plank variations 3x45’’",
+        "Pallof press 3x12 each side",
+        "Balance board single-leg hold 3x30’’"
+      ],
+      "cooldown": [
+        "Foam roll lower back, glutes, calves",
+        "Static quad & lat stretches"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "type": "Yoga & Recovery",
+      "warmup": [
+        "Breathing & mindfulness 3’",
+        "Cat-cow and spinal mobility flow 5’"
+      ],
+      "main": [
+        "Yoga sequence for athletes (sun salutations, warrior poses) 20’",
+        "Gentle partner stretching 10’",
+        "Light shooting drills 10’"
+      ],
+      "cooldown": [
+        "Guided relaxation 5’",
+        "Foam rolling optional"
+      ]
+    }
+  ],
+  "notes": "Η φάση αυτή στοχεύει στη σωματική και ψυχική αποφόρτιση, μειώνοντας το ρίσκο υπερκόπωσης και προετοιμάζοντας το σώμα για το επόμενο training camp."
+}

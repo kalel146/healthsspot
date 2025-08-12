@@ -1,0 +1,78 @@
+{
+  "filename": "mobilityCoordinationPhase7.json",
+  "title": "Coordination – Phase 7: Plyo‑Coordination",
+  "level": "Advanced",
+  "goal": "Συντονισμός με πλειομετρικά χαμηλής έως μέτριας έντασης",
+  "category": "mobility",
+  "subcategory": "coordination",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "daysPerWeek": 3,
+  "description": "Συνδυασμός ρυθμού, αλμάτων και χειρισμού αντικειμένων σε ρεαλιστικές ακολουθίες.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Plyo Flow",
+      "exercises": [
+        {
+          "name": "Pogo Jumps (ρυθμικά)",
+          "sets": 4,
+          "reps": "12–15"
+        },
+        {
+          "name": "Lateral Skater Steps/Hops",
+          "sets": 3,
+          "reps": "8–10/πλευρά"
+        },
+        {
+          "name": "Med‑Ball Chest Pass on Move",
+          "sets": 3,
+          "reps": "10"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "COD + React",
+      "exercises": [
+        {
+          "name": "5‑10‑5 (μέτριες αποστάσεις)",
+          "sets": 4,
+          "reps": "1 γύρος"
+        },
+        {
+          "name": "Mirror Cone Chase",
+          "sets": 3,
+          "reps": "30–40''"
+        },
+        {
+          "name": "Single‑Leg Stick & Toss",
+          "sets": 3,
+          "reps": "8/πόδι"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Dual‑Task Sporty",
+      "exercises": [
+        {
+          "name": "Shuttle with Calls (χρόνος)",
+          "sets": 3,
+          "reps": "2 γύροι"
+        },
+        {
+          "name": "Dribble & Look‑Up Cues",
+          "sets": 3,
+          "reps": "45''"
+        },
+        {
+          "name": "Balloon → Ball Transition",
+          "sets": 2,
+          "reps": "30''"
+        }
+      ]
+    }
+  ],
+  "notes": "Gold gating. Υπερήλικες: μείνετε σε steps αντί hops. Παιδιά: μικρή μπάλα/μπαλόνι."
+}

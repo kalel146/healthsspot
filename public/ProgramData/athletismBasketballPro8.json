@@ -1,0 +1,70 @@
+{
+  "filename": "athletismBasketballPro8.json",
+  "title": "Basketball Pro – Phase 8 (Pre-Season Performance Ramp-Up)",
+  "level": "Pro/Advanced",
+  "phase": 8,
+  "duration": "5 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "basketball",
+  "goal": "Αύξηση έντασης και ειδικής φυσικής κατάστασης ενόψει προετοιμασίας, ενίσχυση δύναμης, εκρηκτικότητας και τεχνικών δεξιοτήτων μπασκετ.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "type": "Strength & Power",
+      "warmup": [
+        "5’ light jog",
+        "Dynamic stretches (hips, quads, shoulders)",
+        "Ladder drills 2x30’’"
+      ],
+      "main": [
+        "Barbell back squat 4x6 (80% 1RM)",
+        "Dumbbell bench press 4x8",
+        "Pull-ups weighted 4x6",
+        "Medicine ball chest pass 4x10"
+      ],
+      "cooldown": [
+        "Foam roll quads, hamstrings, lats",
+        "Static calf & hip flexor stretches"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "type": "Basketball Conditioning & Skills",
+      "warmup": [
+        "5’ dribbling variations",
+        "Defensive slides 3x20m",
+        "Closeout drills 3x5 reps"
+      ],
+      "main": [
+        "Full-court suicides 6x (work:rest 1:2)",
+        "3-point shooting under fatigue 5x5",
+        "Pick-and-roll live reps 5’",
+        "1-on-1 full court 6x30’’"
+      ],
+      "cooldown": [
+        "Light shooting 5’",
+        "Stretching for lower body"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "type": "Plyometrics & Agility",
+      "warmup": [
+        "Skipping rope 3’",
+        "Hurdle mobility drills 5’"
+      ],
+      "main": [
+        "Box jumps 4x8",
+        "Lateral bounds 4x10 each side",
+        "Agility ladder complex 4’",
+        "Sled pushes 5x20m (heavy)"
+      ],
+      "cooldown": [
+        "Foam roll calves, adductors",
+        "Static hamstring & glute stretches"
+      ]
+    }
+  ],
+  "notes": "Η φάση αυτή ανεβάζει ρυθμούς, συνδυάζοντας υψηλής έντασης φυσική προπόνηση με προσομοίωση πραγματικών καταστάσεων αγώνα."
+}

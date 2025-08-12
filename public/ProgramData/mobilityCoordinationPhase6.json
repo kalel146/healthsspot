@@ -1,0 +1,78 @@
+{
+  "filename": "mobilityCoordinationPhase6.json",
+  "title": "Coordination – Phase 6: Perturb & React",
+  "level": "Intermediate",
+  "goal": "Εξωτερικές διαταράξεις, γρήγορη ανάκτηση ισορροπίας και αντιδράσεις",
+  "category": "mobility",
+  "subcategory": "coordination",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "daysPerWeek": 3,
+  "description": "Στοχευμένες ‘ενοχλήσεις’ (perturbations) και αντιδράσεις, με ασφαλή πρωτόκολλα.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Perturbations",
+      "exercises": [
+        {
+          "name": "Partner Nudge (ώμοι/γοφοί, ήπιο)",
+          "sets": 3,
+          "reps": "6/κατεύθυνση"
+        },
+        {
+          "name": "Single‑Leg Reach (3 κατευθύνσεις)",
+          "sets": 3,
+          "reps": "3 γύροι/πόδι"
+        },
+        {
+          "name": "Ball Drop to Catch (αντίδραση)",
+          "sets": 3,
+          "reps": "10"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Agility & Catch",
+      "exercises": [
+        {
+          "name": "Shuffle → Catch → Backpedal",
+          "sets": 4,
+          "reps": "1 κύκλος"
+        },
+        {
+          "name": "Cone Call (χρώματα/αριθμοί)",
+          "sets": 3,
+          "reps": "30''"
+        },
+        {
+          "name": "Figure‑8 Single‑Leg Balance Toss",
+          "sets": 3,
+          "reps": "8/πόδι"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Dual‑Task Advanced",
+      "exercises": [
+        {
+          "name": "Walk & Dual Cognitive (π.χ. 7s + χρώματα)",
+          "sets": 3,
+          "reps": "60''"
+        },
+        {
+          "name": "Carioca (μέτριο)",
+          "sets": 3,
+          "reps": "2x12m"
+        },
+        {
+          "name": "Reaction Claps Random",
+          "sets": 2,
+          "reps": "25"
+        }
+      ]
+    }
+  ],
+  "notes": "Αθλητές: περισσότερη ένταση/ταχύτητα. Υπερήλικες: partner με έμπειρο χειριστή. Παιδιά: κάντε το relay."
+}

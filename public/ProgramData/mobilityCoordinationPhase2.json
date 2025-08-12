@@ -1,0 +1,83 @@
+{
+  "filename": "mobilityCoordinationPhase2.json",
+  "title": "Coordination – Phase 2: Stable → Dynamic",
+  "level": "Beginner",
+  "goal": "Μετάβαση από σταθερή σε ήπια δυναμική ισορροπία",
+  "category": "mobility",
+  "subcategory": "coordination",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "daysPerWeek": 3,
+  "description": "Προοδευτική πρόκληση με ήπια μετατοπίσεις κέντρου βάρους και συγχρονισμό άνω–κάτω άκρων.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Footwork + Hand‑Eye",
+      "exercises": [
+        {
+          "name": "Ladder (in‑out) χωρίς σκάλα – ζωγραφισμένα κουτιά",
+          "sets": 4,
+          "reps": "15–20''"
+        },
+        {
+          "name": "Side Step Over Low Line",
+          "sets": 3,
+          "reps": "12/πλευρά"
+        },
+        {
+          "name": "Bounce Pass (2 χέρια)",
+          "sets": 3,
+          "reps": "12–15"
+        },
+        {
+          "name": "Cross‑Crawl March",
+          "sets": 2,
+          "reps": "20 βήματα"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Dynamic Balance",
+      "exercises": [
+        {
+          "name": "Single‑Leg Balance + Head Turns",
+          "sets": 3,
+          "reps": "20''/πόδι"
+        },
+        {
+          "name": "Tandem Stance Toss (μαλακή μπάλα)",
+          "sets": 3,
+          "reps": "10/κατεύθυνση"
+        },
+        {
+          "name": "Clock Reach (3–6–9–12)",
+          "sets": 2,
+          "reps": "2 κύκλοι/πόδι"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Dual‑Task",
+      "exercises": [
+        {
+          "name": "Walk & Spell (λέξεις 4–5 γραμμάτων)",
+          "sets": 3,
+          "reps": "45''"
+        },
+        {
+          "name": "Carioca (χαλαρά)",
+          "sets": 3,
+          "reps": "2x10m"
+        },
+        {
+          "name": "Balloon Juggle (2 μπαλόνια)",
+          "sets": 2,
+          "reps": "30–40 taps"
+        }
+      ]
+    }
+  ],
+  "notes": "Scale: Αθλητές → ταχύτερος ρυθμός. Υπερήλικες → κράτημα κοντά σε τοίχο. Παιδιά → στόχοι/πόντοι."
+}

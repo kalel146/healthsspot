@@ -1,10 +1,11 @@
+// Διορθωμένος κώδικας ProgramVault.jsx με fixes για Phase 1, content-type guard και ταξινόμηση phases
+
 import React, { useEffect, useState } from "react";
 import ProgramCard from "./ProgramCard";
 import { useTheme } from "../../ThemeContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
-/* -------------------- helpers -------------------- */
 const useTierFilter = (defaultTier = "Free") => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -18,7 +19,6 @@ const useTierFilter = (defaultTier = "Free") => {
   return { tier, setTier, isAdmin };
 };
 
-/* -------------------- main component -------------------- */
 export default function ProgramVault() {
   const [programs, setPrograms] = useState([]);
   const [filteredCategory, setFilteredCategory] = useState("gym");
@@ -27,8 +27,10 @@ export default function ProgramVault() {
   const { tier, isAdmin, setTier } = useTierFilter();
 
   useEffect(() => {
+    const proFiles = Array.from({ length: 10 }, (_, i) => `athletismBasketballPro${i + 1}.json`);
+
     const filenames = [
-      "athletismBasketball.json",
+      ...proFiles,
       "gymHypertrophyBeginner1.json",
       "hypertrophyBeginner2.json",
       "hypertrophyBeginner3.json",
@@ -92,6 +94,16 @@ export default function ProgramVault() {
       "indoorYogaBeginner10.json",
       "indoorHomeBeginner.json",
       "mobilityStretching.json",
+      "mobilityCoordinationPhase1.json",
+      "mobilityCoordinationPhase2.json",
+      "mobilityCoordinationPhase3.json",
+      "mobilityCoordinationPhase4.json",
+      "mobilityCoordinationPhase5.json",
+      "mobilityCoordinationPhase6.json",
+      "mobilityCoordinationPhase7.json",
+      "mobilityCoordinationPhase8.json",
+      "mobilityCoordinationPhase9.json",
+      "mobilityCoordinationPhase10.json",
       "outdoorWoodWheelsAxeHammer1.json",
       "outdoorWoodWheelsAxeHammer2.json",
       "outdoorWoodWheelsAxeHammer3.json",
@@ -130,7 +142,7 @@ export default function ProgramVault() {
         fetch(`/ProgramData/${f}`)
           .then((res) => {
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            const type = res.headers.get("content-type");
+            const type = res.headers.get("content-type") || "";
             if (!type.includes("application/json")) {
               throw new Error(`Invalid content-type: ${type}`);
             }
@@ -144,7 +156,13 @@ export default function ProgramVault() {
     )
       .then((data) => {
         const validPrograms = data.filter((p) => p && p.category);
-        setPrograms(validPrograms);
+        // Dedupe by filename or fallback key
+        const deduped = Array.from(
+          new Map(
+            validPrograms.map((p) => [p.filename || `${p.category}-${p.title}`, p])
+          ).values()
+        );
+        setPrograms(deduped);
         if (validPrograms.length > 0) {
           setFilteredCategory("gym");
         }
@@ -163,9 +181,12 @@ export default function ProgramVault() {
       (isAdmin || p.accessTier === tier || p.accessTier === "Free")
   );
 
+  const sortedPrograms = filteredPrograms
+    .slice()
+    .sort((a, b) => (a.phase ?? 0) - (b.phase ?? 0) || (a.title || "").localeCompare(b.title || ""));
+
   return (
     <div className="p-4">
-      {/* Tier Debugging Dropdown */}
       {isAdmin && (
         <div className="flex justify-center mb-4 gap-2 items-center">
           <label className="text-sm text-gray-500 dark:text-gray-300">Tier Preview:</label>
@@ -183,7 +204,6 @@ export default function ProgramVault() {
         </div>
       )}
 
-      {/* Category Buttons */}
       <div className="mb-6 flex flex-wrap gap-2 justify-center">
         {categories.map((cat) => (
           <motion.button
@@ -200,14 +220,12 @@ export default function ProgramVault() {
               setFilteredCategory(cat);
               setFilteredSubcategory(null);
             }}
-            title={`Φίλτρο για κατηγορία: ${cat}`}
           >
             {cat.charAt(0).toUpperCase() + cat.slice(1)}
           </motion.button>
         ))}
       </div>
 
-      {/* Subcategory Buttons */}
       {subcategories.length > 0 && (
         <div className="mb-6 flex flex-wrap gap-2 justify-center">
           {subcategories.map((sub) => (
@@ -222,7 +240,6 @@ export default function ProgramVault() {
                     : "bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 border-gray-300"
                 }`}
               onClick={() => setFilteredSubcategory(sub)}
-              title={`Φίλτρο για υποκατηγορία: ${sub}`}
             >
               <span className="relative z-10">{sub.charAt(0).toUpperCase() + sub.slice(1)}</span>
               {filteredSubcategory !== sub && (
@@ -233,7 +250,6 @@ export default function ProgramVault() {
         </div>
       )}
 
-      {/* Program Grid */}
       {loading ? (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 animate-pulse">
           {Array.from({ length: 6 }).map((_, i) => (
@@ -251,7 +267,7 @@ export default function ProgramVault() {
             exit={{ opacity: 0, y: -20 }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
           >
-            {filteredPrograms.map((program, index) => (
+            {sortedPrograms.map((program, index) => (
               <ProgramCard
                 key={index}
                 program={program}

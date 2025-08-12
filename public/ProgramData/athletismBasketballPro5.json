@@ -1,0 +1,70 @@
+{
+  "filename": "athletismBasketballPro5.json",
+  "title": "Basketball Pro – Phase 5 (Pre-Season Peak Performance)",
+  "level": "Pro/Advanced",
+  "phase": 5,
+  "duration": "4 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "basketball",
+  "goal": "Τελική προετοιμασία πριν την αγωνιστική περίοδο με στόχο την κορύφωση της φυσικής κατάστασης, της εκρηκτικότητας και της απόδοσης υπό υψηλή πίεση.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "type": "Max Intensity Conditioning & Skill Integration",
+      "warmup": [
+        "6’ progressive run with defensive shuffles",
+        "Dynamic mobility (hips, ankles, shoulders)",
+        "2x20m high-knee sprints"
+      ],
+      "main": [
+        "Full-court sprint to dunk/3pt shot 10x",
+        "Transition offense-defense 8x40’’",
+        "Pick-and-pop shooting under fatigue 5x8",
+        "Plyometric depth jumps 4x6"
+      ],
+      "cooldown": [
+        "Light jog 3’",
+        "Static quad, calf & hip stretches"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "type": "Competitive Game Simulation",
+      "warmup": [
+        "Foam roll full lower body",
+        "Close-out drills 2x12",
+        "Free-throw accuracy challenge"
+      ],
+      "main": [
+        "5x5 full-court scrimmage (5’ high pace / 1’ rest)",
+        "Half-court set plays under 24’’ clock 12’",
+        "Press break simulation 8x40’’",
+        "Medicine ball slam + sprint combo 3x8"
+      ],
+      "cooldown": [
+        "Walking recovery 4’",
+        "Static hamstring & adductor stretches"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "type": "Explosive Agility & Endurance Peak",
+      "warmup": [
+        "Agility ladder with random cues",
+        "Ball handling with resistance bands 2x1’"
+      ],
+      "main": [
+        "Reactive cone drills 8x15’’",
+        "Suicides: 6 sets with 45’’ rest",
+        "Close-out to rebound & outlet pass drill 5x5",
+        "Lateral bound with ball pass 3x12 each side"
+      ],
+      "cooldown": [
+        "Breathing reset drills 2’",
+        "Foam roll calves, quads & glutes"
+      ]
+    }
+  ],
+  "notes": "Η φάση αυτή φέρνει τον αθλητή στην κορυφή της απόδοσης πριν την έναρξη της σεζόν, με προσομοιώσεις αγώνα και ενσωμάτωση δεξιοτήτων σε συνθήκες κόπωσης."
+}

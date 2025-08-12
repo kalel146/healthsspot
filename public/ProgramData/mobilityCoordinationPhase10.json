@@ -1,0 +1,78 @@
+{
+  "filename": "mobilityCoordinationPhase10.json",
+  "title": "Coordination – Phase 10: Integration & Test",
+  "level": "Advanced",
+  "goal": "Ολοκλήρωση: σύνθεση δεξιοτήτων και απλό τεστ προόδου",
+  "category": "mobility",
+  "subcategory": "coordination",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "daysPerWeek": 3,
+  "description": "Συνθετικές ακολουθίες και απλό battery για έλεγχο βελτίωσης.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "Integration",
+      "exercises": [
+        {
+          "name": "Combo: Ladder → Catch → COD",
+          "sets": 4,
+          "reps": "1 κύκλος"
+        },
+        {
+          "name": "Single‑Leg Stick → Toss",
+          "sets": 3,
+          "reps": "8/πόδι"
+        },
+        {
+          "name": "Walk & Dual Cognitive (αριθμοί+λέξεις)",
+          "sets": 2,
+          "reps": "60''"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Test Day A",
+      "exercises": [
+        {
+          "name": "Tandem Walk 10m (χρόνος)",
+          "sets": 1,
+          "reps": "1 προσπάθεια"
+        },
+        {
+          "name": "5‑10‑5 COD (χρόνος)",
+          "sets": 1,
+          "reps": "1 προσπάθεια"
+        },
+        {
+          "name": "Ball Toss 30'' (μετρήσεις)",
+          "sets": 1,
+          "reps": "σύνολο catches"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Test Day B",
+      "exercises": [
+        {
+          "name": "Single‑Leg Balance (μάξιμουμ)",
+          "sets": 1,
+          "reps": "L/R"
+        },
+        {
+          "name": "Two‑Ball Juggle (σερί)",
+          "sets": 1,
+          "reps": "μέγιστο"
+        },
+        {
+          "name": "Walk & N‑Back 2 (σωστές απαντήσεις)",
+          "sets": 1,
+          "reps": "σκορ"
+        }
+      ]
+    }
+  ],
+  "notes": "Καταγράψτε χρόνους/σκορ πριν–μετά. Υπερήλικες: κρατήστε μόνο Test A. Παιδιά: μετατρέψτε το σε ‘challenge day’."
+}

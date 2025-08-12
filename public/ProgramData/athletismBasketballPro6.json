@@ -1,0 +1,70 @@
+{
+  "filename": "athletismBasketballPro6.json",
+  "title": "Basketball Pro – Phase 6 (In-Season Maintenance & Performance)",
+  "level": "Pro/Advanced",
+  "phase": 6,
+  "duration": "4 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "basketball",
+  "goal": "Διατήρηση υψηλής απόδοσης κατά τη διάρκεια της σεζόν, με έμφαση στην πρόληψη τραυματισμών, τη διατήρηση δύναμης και την εκρηκτικότητα σε πραγματικές αγωνιστικές συνθήκες.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "type": "Strength Maintenance & Court Skills",
+      "warmup": [
+        "5’ light jog & dynamic stretches",
+        "Defensive slides 2x20m",
+        "3x15 medicine ball chest passes"
+      ],
+      "main": [
+        "Trap bar deadlift 3x5 @80% 1RM",
+        "Push press 3x6",
+        "Full-court layup drills under 15’’ clock 6x",
+        "Pick-and-roll shooting 5x6"
+      ],
+      "cooldown": [
+        "Light jog 3’",
+        "Static stretches for hamstrings, quads, shoulders"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "type": "Game Simulation & Conditioning",
+      "warmup": [
+        "Foam roll full lower body",
+        "Ball handling speed ladder 3x30’’",
+        "Spot shooting from 5 positions 3x5"
+      ],
+      "main": [
+        "4x4 half-court scrimmage (6’ high intensity / 1’ rest)",
+        "Full-court fast break execution 6x",
+        "Defensive press simulation 5x40’’",
+        "Plyometric push-ups 3x10"
+      ],
+      "cooldown": [
+        "Walking recovery 4’",
+        "Static hip flexor & adductor stretches"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "type": "Explosive Agility & Recovery Focus",
+      "warmup": [
+        "Agility ladder with ball control 3x20’’",
+        "Resistance band lateral walks 3x12 each side"
+      ],
+      "main": [
+        "Reactive sprints 8x15’’",
+        "Lateral bounds to jump shot 5x5",
+        "Rebound & outlet pass drill 4x8",
+        "Core stability circuit 3 rounds"
+      ],
+      "cooldown": [
+        "Breathing reset drills 2’",
+        "Foam roll calves, quads, glutes, lats"
+      ]
+    }
+  ],
+  "notes": "Η φάση αυτή ενσωματώνει χαμηλότερο όγκο αλλά υψηλή ένταση, ώστε ο αθλητής να παραμένει φρέσκος και σε αγωνιστική φόρμα καθ’ όλη τη διάρκεια της σεζόν."
+}

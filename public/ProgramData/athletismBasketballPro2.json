@@ -1,0 +1,86 @@
+{
+  "filename": "athletismBasketballPro2.json",
+  "title": "Basketball Pro – Phase 2 (In-Season Power & RSA)",
+  "level": "Pro/Advanced",
+  "phase": 2,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "athletism",
+  "subcategory": "basketball",
+  "goal": "Διατήρηση/ενίσχυση εκρηκτικής δύναμης και Repeat Sprint Ability κατά τη σεζόν, με έλεγχο κόπωσης.",
+  "schedule": [
+    {
+      "day": "Session 1",
+      "type": "RSA + COD under fatigue",
+      "warmup": [
+        "6’ easy jog γύρω από το γήπεδο",
+        "Dynamic: leg swings, open/close gate, ankle rocks",
+        "Primer: mini-band lateral walk 2x12/side"
+      ],
+      "main": [
+        "RSA: 2x(6 x 30m) sprints, 20’’ rest μεταξύ επαναλήψεων, 3’ μεταξύ σετ",
+        "COD: 5-10-5 Pro Agility x 6, 60’’ rest",
+        "Defensive slides: 4x30’’ (full stance), 45’’ rest"
+      ],
+      "cooldown": [
+        "Walk 4’",
+        "Static stretch: calves, hamstrings, adductors"
+      ]
+    },
+    {
+      "day": "Session 2",
+      "type": "Power Maintenance (Contrast)",
+      "warmup": [
+        "Foam roll 4’ (quads, calves, glutes)",
+        "Mobility flow: hips/ankles/T-spine",
+        "Pogo jumps 2x20"
+      ],
+      "main": [
+        "Trap Bar Deadlift 3x3 @RPE7",
+        "Contrast: Box Jumps 3x4 (60–75cm), 90’’ rest",
+        "DB Split Squat 3x5/leg @RPE7",
+        "MB Chest Pass to wall 4x5 (max intent)"
+      ],
+      "cooldown": [
+        "Bike 5’ easy",
+        "Long hip flexor & calf stretch 60’’/side"
+      ]
+    },
+    {
+      "day": "Session 3",
+      "type": "Court Conditioning + Shooting Under Fatigue",
+      "warmup": [
+        "A-skips, butt kicks, karaoke (2x court length)",
+        "2x baseline-to-baseline progressive (technique focus)"
+      ],
+      "main": [
+        "Shuttles: 30’’ on / 30’’ off × 10 (half-court)",
+        "Shooting circuit under fatigue:\n- 5 spots x 6 catch-and-shoot\n- 5 spots x 4 one-dribble pull-up\n- FT test: 2x10, ποινή 1 suicide αν <7/10"
+      ],
+      "cooldown": [
+        "Walk 5’ + diaphragmatic breathing",
+        "T-spine openers, adductors, hip ER stretch"
+      ]
+    },
+    {
+      "day": "Session 4",
+      "type": "Decel & Landing Mechanics + Core",
+      "warmup": [
+        "Hip airplanes 2x6/side",
+        "Ankle stiffness drills 2x20",
+        "Skater hops 2x10/side"
+      ],
+      "main": [
+        "Deceleration: Sprint 10m → stick land (single-leg) 5x3/leg",
+        "Lateral bound → stick 4x4/side",
+        "Anti-rotation: Pallof press 3x10/side",
+        "Copenhagen plank 3x20’’/side"
+      ],
+      "cooldown": [
+        "Hamstrings, calves, glutes static 60’’/area",
+        "Box breathing 2’"
+      ]
+    }
+  ],
+  "notes": "Διατήρησε ποιότητα/ταχύτητα. Αν HRV/ύπνος πέσουν, κράτα τα σετ αλλά μείωσε ένταση (-1 RPE) ή αφαίρεσε 1 block conditioning. Προτεραιότητα στις προπονήσεις ομάδας."
+}

@@ -1,0 +1,78 @@
+{
+  "filename": "mobilityCoordinationPhase5.json",
+  "title": "Coordination – Phase 5: Multi‑Direction",
+  "level": "Intermediate",
+  "goal": "Πολυκατευθυντικότητα, ρυθμός και χειρισμός αντικειμένων",
+  "category": "mobility",
+  "subcategory": "coordination",
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "daysPerWeek": 3,
+  "description": "Συνδυαστικές αλληλουχίες με αλλαγές ρυθμού, ρίψεις/πιάσιμο και ελεγχόμενα άλματα χαμηλής πρόσκρουσης.",
+  "weeklySplit": [
+    {
+      "day": "Monday",
+      "split": "COD & Rhythm",
+      "exercises": [
+        {
+          "name": "Zig‑Zag Cones (4–6 κώνοι)",
+          "sets": 4,
+          "reps": "2 γύροι"
+        },
+        {
+          "name": "Rhythm Steps (με μετρονόμο)",
+          "sets": 3,
+          "reps": "60''"
+        },
+        {
+          "name": "Wall Toss (μονό χέρι)",
+          "sets": 3,
+          "reps": "10/χέρι"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "split": "Low‑Impact Jumps",
+      "exercises": [
+        {
+          "name": "Line Hops Fwd/Bwd",
+          "sets": 3,
+          "reps": "10–12"
+        },
+        {
+          "name": "Lateral Step‑Over (χαμηλό εμπόδιο)",
+          "sets": 3,
+          "reps": "10/πλευρά"
+        },
+        {
+          "name": "Catch & Balance (single‑leg)",
+          "sets": 3,
+          "reps": "8/πόδι"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "split": "Dual‑Task Games",
+      "exercises": [
+        {
+          "name": "Number Call & Direction",
+          "sets": 3,
+          "reps": "30–40''"
+        },
+        {
+          "name": "Balloon Juggle (2–3 μπαλόνια)",
+          "sets": 2,
+          "reps": "40–60 taps"
+        },
+        {
+          "name": "Walk & Memory (σειρές 4–6)",
+          "sets": 2,
+          "reps": "45''"
+        }
+      ]
+    }
+  ],
+  "notes": "Silver gating. Υπερήλικες: χαμηλότερο εμπόδιο/χωρίς άλματα. Παιδιά: πόντοι/χρόνος."
+}
