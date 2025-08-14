@@ -1,0 +1,68 @@
+{
+  "filename": "gymPowerPro1.json",
+  "title": "Power – Pro Phase 1 (Complexes & Elastic Emphasis)",
+  "level": "Pro",
+  "phase": 8,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "gym",
+  "subcategory": "power",
+  "daysPerWeek": 3,
+  "goal": "Σύνθετα complexes με ελαστικά/αλυσίδες και έμφαση σε elastic recoil.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Lower Chains",
+      "warmup": [
+        "Bike 5’",
+        "Dynamic"
+      ],
+      "preset": [
+        "Depth Jumps 3x3"
+      ],
+      "main": [
+        "Back Squat + Bands 5x2 @85% bar + bands",
+        "RDL 4x3 @85%"
+      ],
+      "cooldown": [
+        "Stretch"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Upper Chains",
+      "warmup": [
+        "Row 5’",
+        "Shoulder prep"
+      ],
+      "preset": [
+        "MB Chest Pass 4x5"
+      ],
+      "main": [
+        "Bench + Chains 5x2 @85% bar + chains",
+        "Weighted Pull-up 5x3"
+      ],
+      "cooldown": [
+        "Mobility"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Full Elastic",
+      "warmup": [
+        "Dynamic 6’"
+      ],
+      "preset": [
+        "Jerk 4x2 @80%"
+      ],
+      "main": [
+        "Front Squat + Bands 4x2 @85% bar + bands",
+        "Row 4x3 @85%"
+      ],
+      "cooldown": [
+        "Global mobility"
+      ]
+    }
+  ],
+  "notes": "Απαιτεί εμπειρία με accommodating resistance. Διατήρησε σταθερή γραμμή μπάρας."
+}

@@ -1,0 +1,66 @@
+{
+  "filename": "gymPowerPro2.json",
+  "title": "Power – Pro Phase 2 (Contrast Complex Peaking)",
+  "level": "Pro",
+  "phase": 9,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "gym",
+  "subcategory": "power",
+  "daysPerWeek": 3,
+  "goal": "Προηγμένα contrast complexes για peak ισχύος.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Lower Contrast Complex",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "Depth Jumps 3x2"
+      ],
+      "main": [
+        "(A) Back Squat 3x1 @92.5% → (B) Jump Squat (light) 3x3 → (C) Sprint 2x20m",
+        "RDL 3x2 @87.5%"
+      ],
+      "cooldown": [
+        "Stretch"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Upper Contrast Complex",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "MB Chest Pass 3x4"
+      ],
+      "main": [
+        "(A) Bench 3x1 @92.5% → (B) Plyo Push-ups 3x4 → (C) MB Chest Pass 3x4",
+        "Weighted Pull-up 4x2"
+      ],
+      "cooldown": [
+        "Mobility"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Full Complex",
+      "warmup": [
+        "Dynamic 6’"
+      ],
+      "preset": [
+        "Jerk 3x2 @85%"
+      ],
+      "main": [
+        "(A) Front Squat 3x1 @90% → (B) Broad Jump 3x3 → (C) MB Slam 3x5",
+        "Row 3x2 @87.5%"
+      ],
+      "cooldown": [
+        "Global mobility"
+      ]
+    }
+  ],
+  "notes": "Αναρρώσεις 4–5’. Διακοπή αν πέσει η εκρηκτικότητα."
+}

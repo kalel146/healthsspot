@@ -1,0 +1,68 @@
+{
+  "filename": "gymPowerIntermediate4.json",
+  "title": "Power – Intermediate Phase 4 (Contrast & PAP)",
+  "level": "Intermediate",
+  "phase": 4,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "gym",
+  "subcategory": "power",
+  "daysPerWeek": 3,
+  "goal": "Contrast training & Post-Activation Potentiation (PAP) για έξτρα νευρικό ερέθισμα.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Lower Contrast",
+      "warmup": [
+        "Bike 5’",
+        "Dynamic lower"
+      ],
+      "preset": [
+        "Depth Jumps 3x3"
+      ],
+      "main": [
+        "(A1) Back Squat 3x2 @90% | (A2) Box Jump 3x3",
+        "(B1) RDL 3x3 @80% | (B2) Broad Jump 3x3"
+      ],
+      "cooldown": [
+        "Stretch hamstrings/glutes"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Upper Contrast",
+      "warmup": [
+        "Row 5’",
+        "Shoulder prep"
+      ],
+      "preset": [
+        "MB Chest Pass 3x6"
+      ],
+      "main": [
+        "(A1) Bench 3x2 @90% | (A2) Plyo Push-ups 3x5",
+        "(B1) Weighted Pull-up 3x3 | (B2) Explosive Band Row 3x6"
+      ],
+      "cooldown": [
+        "Pecs/lats stretch"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Full Contrast",
+      "warmup": [
+        "Dynamic 6’"
+      ],
+      "preset": [
+        "Jerk Skill 3x2 @70%"
+      ],
+      "main": [
+        "(A1) Front Squat 3x2 @85% | (A2) Jump Squat (light) 3x5",
+        "(B1) Barbell Row 3x3 @80% | (B2) MB Slam 3x6"
+      ],
+      "cooldown": [
+        "Full body mobility"
+      ]
+    }
+  ],
+  "notes": "Διαλείμματα 3–5’. Σειρές A1→A2 εκτελούνται ως contrast pair με πλήρη τεχνική."
+}

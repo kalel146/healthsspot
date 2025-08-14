@@ -1,0 +1,72 @@
+{
+  "filename": "gymPowerIntermediate3.json",
+  "title": "Power – Intermediate Phase 3 (Strength-Speed)",
+  "level": "Intermediate",
+  "phase": 3,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "gym",
+  "subcategory": "power",
+  "daysPerWeek": 3,
+  "goal": "Μετατόπιση προς υψηλότερα ποσοστά 1RM διατηρώντας εκρηκτικότητα.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Lower",
+      "warmup": [
+        "5’ bike",
+        "Dynamic lower"
+      ],
+      "preset": [
+        "Box Jumps 4x4",
+        "Power Clean 4x2 @70%"
+      ],
+      "main": [
+        "Back Squat 6x2 @87.5%",
+        "RDL 3x4 @77.5%"
+      ],
+      "cooldown": [
+        "Stretch posterior chain"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Upper",
+      "warmup": [
+        "Row 5’",
+        "Shoulder prep"
+      ],
+      "preset": [
+        "MB Chest Pass 4x6",
+        "Push Press 4x2 @70%"
+      ],
+      "main": [
+        "Bench Press 6x2 @87.5%",
+        "Weighted Pull-up 4x4 (heavier)"
+      ],
+      "cooldown": [
+        "Pecs/lats stretch"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Full Body",
+      "warmup": [
+        "Dynamic 6’",
+        "KB swings 2x15"
+      ],
+      "preset": [
+        "Broad Jumps 4x4",
+        "Jerk 4x2 @70%"
+      ],
+      "main": [
+        "Front Squat 5x2 @82.5%",
+        "Row 4x4 @77.5%"
+      ],
+      "cooldown": [
+        "Mobility flow"
+      ]
+    }
+  ],
+  "notes": "RPE 8–9 στα κύρια διπλά. Προσοχή στην τεχνική, zero grind."
+}

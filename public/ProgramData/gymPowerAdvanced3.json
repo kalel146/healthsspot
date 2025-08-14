@@ -1,0 +1,67 @@
+{
+  "filename": "gymPowerAdvanced3.json",
+  "title": "Power – Advanced Phase 3 (Peaking Power)",
+  "level": "Advanced",
+  "phase": 7,
+  "duration": "2–3 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "gym",
+  "subcategory": "power",
+  "daysPerWeek": 3,
+  "goal": "Peaking ισχύος με ελάχιστο όγκο και μέγιστη ποιότητα/ταχύτητα.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Lower Peak",
+      "warmup": [
+        "Bike 5’",
+        "Dynamic"
+      ],
+      "preset": [
+        "Depth Jumps 3x2"
+      ],
+      "main": [
+        "Back Squat 5x1 @92.5–95%",
+        "RDL 3x2 @87.5%"
+      ],
+      "cooldown": [
+        "Stretch"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Upper Peak",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "MB Chest Pass 3x4"
+      ],
+      "main": [
+        "Bench 5x1 @92.5–95%",
+        "Weighted Pull-up 4x2"
+      ],
+      "cooldown": [
+        "Pecs/Lats stretch"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Full Peak",
+      "warmup": [
+        "Dynamic 6’"
+      ],
+      "preset": [
+        "Jerk 3x2 @80%"
+      ],
+      "main": [
+        "Front Squat 4x1 @90–92.5%",
+        "Row 3x2 @87.5%"
+      ],
+      "cooldown": [
+        "Mobility"
+      ]
+    }
+  ],
+  "notes": "Διαλείμματα 4–5’. Καθόλου grinding. Αν νιώσεις βάρος, κόψε ένα single."
+}
