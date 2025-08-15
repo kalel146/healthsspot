@@ -1,0 +1,115 @@
+{
+  "filename": "gymBodybuildingIntermediate1.json",
+  "title": "Bodybuilding – Intermediate Phase 3 (Intro PPL)",
+  "level": "Intermediate",
+  "phase": 3,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "gym",
+  "subcategory": "bodybuilding",
+  "daysPerWeek": 5,
+  "goal": "Μετάβαση σε Push/Pull/Legs με έλεγχο κόπωσης (RIR 2).",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Push",
+      "warmup": [
+        "Row 5’",
+        "Shoulder prep"
+      ],
+      "preset": [
+        "Pec deck 2x20 (light)",
+        "Lateral 2x20"
+      ],
+      "main": [
+        "Bench 3x6–8 @RIR2",
+        "DB Incline 3x8–10",
+        "Seated DB Press 3x8–10"
+      ],
+      "accessory": [
+        "Cable Fly 2x15",
+        "Lateral Raise 3x15",
+        "Rope Pressdown 3x12"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Pull",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "SA Pulldown 2x15"
+      ],
+      "main": [
+        "Weighted Row 3x6–8",
+        "Lat Pulldown 3x10",
+        "Chest-Supported Row 3x10"
+      ],
+      "accessory": [
+        "Rear Delt 3x15",
+        "EZ Curl 3x10",
+        "Incline Curl 2x12"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Legs (quads)",
+      "warmup": [
+        "Walk 5’",
+        "Hip/ankle"
+      ],
+      "preset": [
+        "Leg Ext 2x20"
+      ],
+      "main": [
+        "Back Squat 4x6–8",
+        "Leg Press 3x12"
+      ],
+      "accessory": [
+        "Leg Ext 3x15",
+        "Standing Calf 4x12–15",
+        "Abs 3x12"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Upper pump",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Cuff Lateral 2x20"
+      ],
+      "main": [
+        "Machine Press 3x10–12",
+        "Machine Row 3x10–12"
+      ],
+      "accessory": [
+        "Cable Fly 3x15",
+        "Rear Delt 3x15",
+        "Alternating Curl 2x12",
+        "Overhead Rope Ext 2x12"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Legs (posterior)",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "Hip hinge 2x15"
+      ],
+      "main": [
+        "RDL 4x6–8",
+        "Front Squat 3x8–10"
+      ],
+      "accessory": [
+        "Seated Curl 3x12",
+        "Calf Raise 4x12–15"
+      ]
+    }
+  ],
+  "notes": "RIR ~2 στα compounds, ~1 στις isolation. Διαχείριση κόπωσης με σταθερό ρυθμό."
+}

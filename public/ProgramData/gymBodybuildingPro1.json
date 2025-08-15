@@ -1,0 +1,123 @@
+{
+  "filename": "gymBodybuildingPro1.json",
+  "title": "Bodybuilding – Pro Phase 9 (Cutting/Definition – Supersets)",
+  "level": "Pro",
+  "phase": 9,
+  "duration": "6 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "gym",
+  "subcategory": "bodybuilding",
+  "daysPerWeek": 6,
+  "goal": "Έμφαση σε γράμμωση: supersets/short rest, υψηλά reps/metabolite.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Push (supersets)",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Cuff lateral 2x20"
+      ],
+      "main": [
+        "(SS) DB Press 4x12–15 ↔ Cable Fly 4x15",
+        "(SS) Incline Machine 3x15 ↔ Lateral 3x20"
+      ],
+      "accessory": [
+        "Rope Pressdown 3x15–20"
+      ],
+      "rest": "45–75’’"
+    },
+    {
+      "day": "Day 2",
+      "split": "Pull (supersets)",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "Rear delt 2x20"
+      ],
+      "main": [
+        "(SS) Pulldown 4x12–15 ↔ Rear Delt 4x20",
+        "(SS) Seated Row 3x12–15 ↔ Face-pull 3x20"
+      ],
+      "accessory": [
+        "Cable Curl 4x12–15"
+      ],
+      "rest": "45–75’’"
+    },
+    {
+      "day": "Day 3",
+      "split": "Legs (quads focus)",
+      "warmup": [
+        "Walk 5’"
+      ],
+      "preset": [
+        "Leg ext 2x25"
+      ],
+      "main": [
+        "Hack Squat 4x10–12",
+        "Leg Press 4x15"
+      ],
+      "accessory": [
+        "Leg Ext 3x20 (drop)",
+        "Calf 5x15"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Push (pump)",
+      "warmup": [
+        "Bands"
+      ],
+      "preset": [
+        "Pec deck 2x20"
+      ],
+      "main": [
+        "Machine Press 4x15",
+        "Cable Press 3x15–20"
+      ],
+      "accessory": [
+        "Lateral 5x20",
+        "Overhead Rope 3x15–20"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Pull (pump)",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Straight-arm PD 2x20"
+      ],
+      "main": [
+        "Machine Row 4x15",
+        "Pulldown 3x15–20"
+      ],
+      "accessory": [
+        "Rear Delt 5x20",
+        "EZ Curl 3x12–15"
+      ]
+    },
+    {
+      "day": "Day 6",
+      "split": "Legs (posterior)",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "Hip hinge"
+      ],
+      "main": [
+        "RDL 4x10–12",
+        "Good Morning 3x12"
+      ],
+      "accessory": [
+        "Seated Curl 4x15–20",
+        "Calf 5x15"
+      ]
+    }
+  ],
+  "notes": "Διαχείριση κόπωσης: χαμηλότερα διαλείμματα, παρακολούθηση απόδοσης/ύπνου. Διατροφή σε έλλειμμα."
+}

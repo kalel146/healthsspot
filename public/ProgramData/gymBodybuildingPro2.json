@@ -1,0 +1,122 @@
+{
+  "filename": "gymBodybuildingPro2.json",
+  "title": "Bodybuilding – Pro Phase 10 (Peak & Posing)",
+  "level": "Pro",
+  "phase": 10,
+  "duration": "8 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "gym",
+  "subcategory": "bodybuilding",
+  "daysPerWeek": 5,
+  "goal": "Metabolite/pump, χαμηλή κόπωση, τεχνική πόζας, λεπτομέρεια.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Upper Pump + Posing",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Cuff lateral 2x20"
+      ],
+      "main": [
+        "Machine Chest Press 3x15–20",
+        "Seated Row 3x15–20"
+      ],
+      "accessory": [
+        "Cable Fly 3x20",
+        "Rear Delt 3x20",
+        "Lateral 3x20"
+      ],
+      "finisher": [
+        "Vacuum + front/side chest poses 10’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Legs Pump",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "Leg ext 2x25"
+      ],
+      "main": [
+        "Leg Press 4x15–20",
+        "Hack Squat 3x12–15 (controlled)"
+      ],
+      "accessory": [
+        "Seated Curl 3x15–20",
+        "Calf 5x15"
+      ],
+      "finisher": [
+        "Quad/ham pose holds 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Delts/Arms Detail",
+      "warmup": [
+        "Bands"
+      ],
+      "preset": [
+        "Cuff lateral 2x20"
+      ],
+      "main": [
+        "Seated DB Press 3x12–15",
+        "EZ Curl 3x12–15",
+        "Cable Pressdown 3x12–15"
+      ],
+      "accessory": [
+        "Cable Curl 3x15–20",
+        "Overhead Rope 3x15–20",
+        "Rear Delt 3x20"
+      ],
+      "finisher": [
+        "Arm/delt poses 8’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Upper Pump + Posing 2",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Pec deck 2x20"
+      ],
+      "main": [
+        "Incline Machine 3x15–20",
+        "Pulldown 3x15–20"
+      ],
+      "accessory": [
+        "Cable Fly 3x20",
+        "Rear Delt 3x20",
+        "Lateral 3x20"
+      ],
+      "finisher": [
+        "Routine run-through 10’"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Full Pump + Mobility",
+      "warmup": [
+        "Walk 5’"
+      ],
+      "preset": [
+        "Global mobility 5’"
+      ],
+      "main": [
+        "Machine circuits x3 rounds (upper/lower)"
+      ],
+      "accessory": [
+        "Core/poses 10’"
+      ],
+      "cooldown": [
+        "Breathing drills 5’"
+      ]
+    }
+  ],
+  "notes": "Όχι failure. Στόχος εμφάνιση/vascularity, όχι PR. Διατήρησε υγρά/ηλεκτρολύτες."
+}

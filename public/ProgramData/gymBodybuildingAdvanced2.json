@@ -1,0 +1,126 @@
+{
+  "filename": "gymBodybuildingAdvanced2.json",
+  "title": "Bodybuilding – Advanced Phase 6 (Specialization B)",
+  "level": "Advanced",
+  "phase": 6,
+  "duration": "4 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "gym",
+  "subcategory": "bodybuilding",
+  "daysPerWeek": 6,
+  "goal": "Συνέχιση εξειδίκευσης με rest-pause σε απομονωτικές και top-set/back-off στα compounds.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Push (top set)",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Pec deck 2x20"
+      ],
+      "main": [
+        "Bench: top set 1x6–8 @RIR1 + back-off 2x10",
+        "DB Incline 3x8–10",
+        "OHP 3x6–8"
+      ],
+      "accessory": [
+        "Cable Fly 3x15 (rest-pause)",
+        "Lateral 4x15"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Pull (top set)",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "SA Pulldown 2x20"
+      ],
+      "main": [
+        "Row: top set 1x6–8 + back-off 2x10",
+        "Lat Pulldown 3x10"
+      ],
+      "accessory": [
+        "Rear Delt 4x15 (rest-pause)",
+        "EZ Curl 3x10",
+        "Incline Curl 2x12"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Legs (quads)",
+      "warmup": [
+        "Walk 5’"
+      ],
+      "preset": [
+        "Leg ext 2x20"
+      ],
+      "main": [
+        "Back Squat top 1x5–6 + back-off 2x8",
+        "Leg Press 3x12"
+      ],
+      "accessory": [
+        "Leg Ext 3x15 (rest-pause)",
+        "Calf 4x12–15"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Push (pump)",
+      "warmup": [
+        "Bands"
+      ],
+      "preset": [
+        "Cuff lateral 2x20"
+      ],
+      "main": [
+        "Machine Press 3x10–12",
+        "Incline Machine 3x12"
+      ],
+      "accessory": [
+        "Cable Fly 3x15",
+        "Lateral 4x15",
+        "Rope Pressdown 3x12"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Pull (pump)",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Rear delt 2x20"
+      ],
+      "main": [
+        "Machine Row 3x10–12",
+        "Cable Row 3x12"
+      ],
+      "accessory": [
+        "Rear Delt 4x15",
+        "Hammer Curl 3x12"
+      ]
+    },
+    {
+      "day": "Day 6",
+      "split": "Legs (posterior)",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "Hip hinge"
+      ],
+      "main": [
+        "RDL 4x6–8",
+        "Hack Squat 3x10–12"
+      ],
+      "accessory": [
+        "Seated Curl 3x12–15",
+        "Calf 4x15"
+      ]
+    }
+  ],
+  "notes": "Rest-pause μόνο σε isolation (1–2 mini-sets). Failure επιτρέπεται μόνο στις τελευταίες isolation."
+}

@@ -1,0 +1,115 @@
+{
+  "filename": "gymBodybuildingBeginner2.json",
+  "title": "Bodybuilding – Beginner Phase 2 (Volume Builder Upper/Lower)",
+  "level": "Beginner+",
+  "phase": 2,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Free",
+  "category": "gym",
+  "subcategory": "bodybuilding",
+  "daysPerWeek": 5,
+  "goal": "Ήπια αύξηση όγκου/συχνότητας, περισσότερη δουλειά σε ώμους/μπράτσα.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Upper (chest/back)",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Pec deck 2x15"
+      ],
+      "main": [
+        "Bench 4x8 @RIR2",
+        "Chest-Supported Row 4x10"
+      ],
+      "accessory": [
+        "Incline DB 3x10",
+        "Lat Pulldown 3x12",
+        "Lateral Raise 3x15"
+      ],
+      "cooldown": [
+        "Pecs/lats stretch"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Lower (quads)",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "Leg ext 2x20 (primer)"
+      ],
+      "main": [
+        "Back Squat 4x8",
+        "Leg Press 4x12"
+      ],
+      "accessory": [
+        "Leg Ext 3x15",
+        "Standing Calf 4x12–15",
+        "Ab Wheel 3x10"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Arms/Delts",
+      "warmup": [
+        "Bands 3’"
+      ],
+      "preset": [
+        "Lateral 2x20"
+      ],
+      "main": [
+        "Close-Grip Bench 3x8",
+        "EZ Curl 3x10",
+        "Seated DB Press 3x10"
+      ],
+      "accessory": [
+        "Incline Curl 2x12",
+        "Rope Pushdown 2x12",
+        "Rear Delt Fly 3x15"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Lower (posterior)",
+      "warmup": [
+        "Walk 5’"
+      ],
+      "preset": [
+        "Hip hinge drill 2x12"
+      ],
+      "main": [
+        "Romanian Deadlift 4x8",
+        "Front Squat 3x8"
+      ],
+      "accessory": [
+        "Seated Leg Curl 3x12",
+        "Donkey Calf 4x15",
+        "Cable Crunch 3x12"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Upper (shoulders emphasis)",
+      "warmup": [
+        "Shoulder prep"
+      ],
+      "preset": [
+        "Face-pull 3x15"
+      ],
+      "main": [
+        "DB Press 4x8",
+        "Pull-down 3x10"
+      ],
+      "accessory": [
+        "Lateral Raise 4x15",
+        "Cable Upright Row 3x12",
+        "Hammer Curl 2x12",
+        "Overhead Rope Ext 2x12"
+      ]
+    }
+  ],
+  "notes": "Στόχευσε 10–15 σετ/μυϊκή ομάδα/εβδ. Προοδευτικότητα με +1 rep όπου γίνεται."
+}

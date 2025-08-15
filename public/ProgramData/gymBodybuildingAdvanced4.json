@@ -1,0 +1,109 @@
+{
+  "filename": "gymBodybuildingAdvanced4.json",
+  "title": "Bodybuilding – Advanced Phase 8 (Strength-Hypertrophy Bridge)",
+  "level": "Advanced",
+  "phase": 8,
+  "duration": "4 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "gym",
+  "subcategory": "bodybuilding",
+  "daysPerWeek": 5,
+  "goal": "Γέφυρα δύναμης-υπερτροφίας: compounds 5–8 reps, isolation 10–15 reps.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Upper (strength bias)",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Face-pull 2x20"
+      ],
+      "main": [
+        "Bench 4x5–6 @RIR1–2",
+        "Weighted Row 4x5–6"
+      ],
+      "accessory": [
+        "Incline DB 3x8–10",
+        "Lat Pulldown 3x10–12",
+        "Lateral 3x15"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Lower (strength bias)",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "Leg ext 2x20"
+      ],
+      "main": [
+        "Back Squat 4x5–6",
+        "RDL 4x6"
+      ],
+      "accessory": [
+        "Leg Press 3x10–12",
+        "Calf 4x12–15"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Arms/Delts (pump)",
+      "warmup": [
+        "Bands"
+      ],
+      "preset": [
+        "Cuff lateral 2x20"
+      ],
+      "main": [
+        "Seated DB Press 3x8–10",
+        "EZ Curl 3x8–10",
+        "Close-Grip Bench 3x8–10"
+      ],
+      "accessory": [
+        "Cable Curl 3x12–15",
+        "Rope Pressdown 3x12–15",
+        "Rear Delt 3x15"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Upper (hypertrophy)",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Pec deck 2x20"
+      ],
+      "main": [
+        "DB Press 3x8–10",
+        "Machine Row 3x8–10"
+      ],
+      "accessory": [
+        "Cable Fly 3x12–15",
+        "Lat Pulldown 3x12–15",
+        "Lateral 3x15"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Lower (hypertrophy)",
+      "warmup": [
+        "Walk 5’"
+      ],
+      "preset": [
+        "Leg ext 2x20"
+      ],
+      "main": [
+        "Hack Squat 3x8–10",
+        "Leg Press 3x12"
+      ],
+      "accessory": [
+        "Seated Curl 3x12–15",
+        "Calf 4x15"
+      ]
+    }
+  ],
+  "notes": "Στόχος: ποιότητα επανάληψης, σταθερή ταχύτητα, όχι failure στα compounds."
+}

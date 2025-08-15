@@ -1,0 +1,107 @@
+{
+  "filename": "gymBodybuildingAdvanced1.json",
+  "title": "Bodybuilding – Advanced Phase 5 (Specialization A)",
+  "level": "Advanced",
+  "phase": 5,
+  "duration": "3 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "gym",
+  "subcategory": "bodybuilding",
+  "daysPerWeek": 5,
+  "goal": "Εξειδίκευση σε αδύναμο σημείο (π.χ. στήθος ή πλάτη). Περισσότερα set στο target.",
+  "specialization": "chest_or_back",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Target Focus (Heavy)",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Cuff fly 2x20"
+      ],
+      "main": [
+        "Incline Press 4x6–8 @RIR1",
+        "Weighted Row 4x6–8"
+      ],
+      "accessory": [
+        "Cable Fly 3x15",
+        "Rear Delt 3x15",
+        "Lateral 3x15"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Legs (quads)",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "Leg ext 2x20"
+      ],
+      "main": [
+        "Back Squat 4x6–8",
+        "Leg Press 3x10"
+      ],
+      "accessory": [
+        "Leg Ext 3x15",
+        "Calf 4x12–15"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Push (support)",
+      "warmup": [
+        "Bands"
+      ],
+      "preset": [
+        "Lateral 2x20"
+      ],
+      "main": [
+        "DB Press 3x8–10",
+        "Cable Press 3x12"
+      ],
+      "accessory": [
+        "Lateral 4x15",
+        "Rope Pressdown 3x12"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Pull (support)",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Rear delt 2x20"
+      ],
+      "main": [
+        "Chest-Supported Row 3x8–10",
+        "Lat Pulldown 3x10–12"
+      ],
+      "accessory": [
+        "Rear Delt 3x15",
+        "EZ Curl 3x10"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Legs (posterior)",
+      "warmup": [
+        "Walk 5’"
+      ],
+      "preset": [
+        "Hip hinge drill"
+      ],
+      "main": [
+        "RDL 4x6–8",
+        "Hack Squat 3x10–12"
+      ],
+      "accessory": [
+        "Seated Curl 3x12–15",
+        "Calf 4x15"
+      ]
+    }
+  ],
+  "notes": "Target muscle +5–8 set/εβδ επιπλέον. Διατήρησε RIR 1–2, όχι failure στα compounds."
+}

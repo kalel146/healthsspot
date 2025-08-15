@@ -1,0 +1,128 @@
+{
+  "filename": "gymBodybuildingAdvanced3.json",
+  "title": "Bodybuilding – Advanced Phase 7 (Volume Peak)",
+  "level": "Advanced",
+  "phase": 7,
+  "duration": "4 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "gym",
+  "subcategory": "bodybuilding",
+  "daysPerWeek": 6,
+  "goal": "Peak όγκου (12–20 σετ/μυϊκή/εβδ) με myo-reps, drop sets, υψηλή μεταβολική κόπωση.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Push (volume)",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Cuff lateral 2x20"
+      ],
+      "main": [
+        "DB Press 4x10–12",
+        "Incline Press 4x10–12",
+        "Machine Press 3x12–15"
+      ],
+      "accessory": [
+        "Cable Fly 3x15 (drop set)",
+        "Lateral 5x15 (myo-reps)",
+        "Rope Pressdown 4x12–15"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Pull (volume)",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "Rear delt 2x20"
+      ],
+      "main": [
+        "Chest-Supported Row 4x10–12",
+        "Lat Pulldown 4x10–12",
+        "Cable Row 3x12–15"
+      ],
+      "accessory": [
+        "Rear Delt 5x15 (myo)",
+        "EZ Curl 4x10–12",
+        "Cable Curl 3x15 (drop)"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Legs (quads)",
+      "warmup": [
+        "Walk 5’"
+      ],
+      "preset": [
+        "Leg ext 2x20"
+      ],
+      "main": [
+        "Hack Squat 4x8–10",
+        "Leg Press 4x12–15"
+      ],
+      "accessory": [
+        "Leg Ext 4x15 (myo)",
+        "Calf 5x12–15"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Push (pump)",
+      "warmup": [
+        "Bands"
+      ],
+      "preset": [
+        "Pec deck 2x20"
+      ],
+      "main": [
+        "Machine Press 4x12–15",
+        "Cable Press 3x15"
+      ],
+      "accessory": [
+        "Lateral 5x20",
+        "Overhead Rope Ext 4x12–15"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Pull (pump)",
+      "warmup": [
+        "Row 5’"
+      ],
+      "preset": [
+        "Straight-arm PD 2x20"
+      ],
+      "main": [
+        "Machine Row 4x12–15",
+        "Pulldown 3x15"
+      ],
+      "accessory": [
+        "Rear Delt 5x20",
+        "Incline Curl 4x12–15",
+        "Hammer Curl 3x12–15"
+      ]
+    },
+    {
+      "day": "Day 6",
+      "split": "Legs (posterior)",
+      "warmup": [
+        "Bike 5’"
+      ],
+      "preset": [
+        "Hip hinge"
+      ],
+      "main": [
+        "RDL 4x8–10",
+        "Good Morning 3x10"
+      ],
+      "accessory": [
+        "Seated Curl 4x12–15",
+        "Calf 5x15"
+      ]
+    }
+  ],
+  "notes": "Υψηλή κόπωση: ύπνος/διατροφή άψογα. Αν δείκτες κόπωσης ψηλά, μείωσε 1 σετ/άσκηση."
+}
