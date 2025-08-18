@@ -1,0 +1,74 @@
+{
+  "filename": "outdoorBeachAdvanced1.json",
+  "title": "Beach – Advanced Phase 7 (Speed & Plyo Consolidation)",
+  "level": "Advanced",
+  "phase": 7,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "outdoor",
+  "subcategory": "beach",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Άμμος",
+    "Θάλασσα"
+  ],
+  "goal": "Εδραίωση υψηλότερων ταχυτήτων στην άμμο, ποιοτική πλειομετρία, στοχευμένο θαλάσσιο aer.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Speed Accel",
+      "warmup": [
+        "Jog 10’ + drills + 3x60m strides"
+      ],
+      "technique": [
+        "Falling/3-point starts 6x20m"
+      ],
+      "main": [
+        "Sand sprints 6x40m @90–95%",
+        "Hops (single/double) 4x12"
+      ],
+      "finisher": [
+        "Core medley 3x (plank 30’’ + side 20’’)"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Sea Tempo",
+      "main": [
+        "Aqua tempo 4x3’ @RPE6 με 1’ off"
+      ],
+      "cooldown": [
+        "Πλεύση 3’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Plyo & Bounds",
+      "warmup": [
+        "Mobility 8’"
+      ],
+      "main": [
+        "Bounds 5x8",
+        "Drop jumps στην άμμο 4x6 (χαμηλό ύψος)"
+      ],
+      "finisher": [
+        "Easy sand run 10’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Sand Circuit Strength",
+      "main": [
+        "Circuit x5: 15 push-ups, 20 walking lunges, 20m crawl, 80m run"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Recovery Sea",
+      "main": [
+        "Aqua jog 15’ + mobility 6’"
+      ]
+    }
+  ],
+  "notes": "Πλήρης ανάπαυση 2–3’ μεταξύ γρήγορων σπριντ."
+}

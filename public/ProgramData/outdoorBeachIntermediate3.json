@@ -1,0 +1,88 @@
+{
+  "filename": "outdoorBeachIntermediate3.json",
+  "title": "Beach – Intermediate+ Phase 6 (Resisted Water + Power)",
+  "level": "Intermediate+",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "outdoor",
+  "subcategory": "beach",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Άμμος",
+    "Θάλασσα"
+  ],
+  "goal": "Αντίσταση νερού για τεχνική/δύναμη κορμού + πιο απαιτητικά σπριντ στην άμμο.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Water Resistance",
+      "warmup": [
+        "Water walk 6’"
+      ],
+      "technique": [
+        "High-knee water runs 4x30’’"
+      ],
+      "main": [
+        "Aqua intervals 12x30’’ hard / 30’’ easy"
+      ],
+      "finisher": [
+        "Vertical kicks 4x20’’"
+      ],
+      "cooldown": [
+        "Πλεύση 3’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Sand Power",
+      "warmup": [
+        "Jog 10’ + drills"
+      ],
+      "technique": [
+        "3-point starts 5x20m"
+      ],
+      "main": [
+        "Sand sprints 8x30m @90%",
+        "Broad jumps 5x6"
+      ],
+      "finisher": [
+        "Core carry: sandbag carry substitute (γεμάτος σάκος/πετσέτα) 3x40m"
+      ],
+      "cooldown": [
+        "Hips/hams 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Sea Steady",
+      "main": [
+        "Aqua jog 18’ continuous"
+      ],
+      "cooldown": [
+        "Mobility 6’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Sand Circuit",
+      "warmup": [
+        "Mobility 6’"
+      ],
+      "main": [
+        "Circuit x5: 10 push-ups, 14 split squats/πόδι, 20m crawl, 60m run"
+      ],
+      "cooldown": [
+        "Stretch 6’"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Recovery",
+      "main": [
+        "Water walk 10’ + breathing 3’ + easy swim 5’"
+      ]
+    }
+  ],
+  "notes": "Απέφυγε σπριντ σε ανώμαλες επιφάνειες με λακούβες/κοχύλια."
+}

@@ -1,0 +1,73 @@
+{
+  "filename": "outdoorBeachIntermediate2.json",
+  "title": "Beach – Intermediate Phase 5 (Power + Aerobic Mix)",
+  "level": "Intermediate",
+  "phase": 5,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "outdoor",
+  "subcategory": "beach",
+  "daysPerWeek": 4,
+  "equipment": [
+    "Άμμος",
+    "Θάλασσα"
+  ],
+  "goal": "Συνδυασμός εκρηκτικών κομματιών (σπριντ/άλματα) με παρατεταμένο αερόβιο στη θάλασσα.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Accel + Short Hills (Dunes)",
+      "warmup": [
+        "Jog 8’",
+        "Drills",
+        "Strides 3x60m"
+      ],
+      "technique": [
+        "Hill starts 5x12m"
+      ],
+      "main": [
+        "Dune sprints 6x15–20m",
+        "Sand bounds 4x8"
+      ],
+      "finisher": [
+        "Core: plank series 3x (front 30’’ + side 20’’/πλευρά)"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Sea Steady + Tempo",
+      "warmup": [
+        "Water walk 5’"
+      ],
+      "main": [
+        "Aqua jog 14’ steady + 6x30’’ fast / 30’’ easy"
+      ],
+      "cooldown": [
+        "Πλεύση 3’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Sand Strength Circuit",
+      "warmup": [
+        "Mobility 6’"
+      ],
+      "main": [
+        "Circuit x4: 12 push-ups, 16 walking lunges, 20m bear crawl, 40m run"
+      ],
+      "finisher": [
+        "Easy jog 6’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Recovery (Sea/Mobility)",
+      "main": [
+        "Aqua mobility 10’",
+        "Breathing 3’",
+        "Stretch 6’"
+      ]
+    }
+  ],
+  "notes": "Όλα τα σπριντ με πλήρη τεχνική, όχι ‘βουτιά’ μπροστά. Πάτα κοντά στο νερό (συμπαγής άμμος)."
+}

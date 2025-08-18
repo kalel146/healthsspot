@@ -1,0 +1,81 @@
+{
+  "filename": "outdoorBeachBeginner2.json",
+  "title": "Beach – Beginner Phase 2 (Sand Volume + Water Jog)",
+  "level": "Beginner",
+  "phase": 2,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "beach",
+  "daysPerWeek": 3,
+  "equipment": [
+    "Άμμος",
+    "Θάλασσα"
+  ],
+  "goal": "Ήπια αύξηση όγκου, καλύτερος έλεγχος σε ασταθές έδαφος, χαμηλής πρόσκρουσης αερόβιο στο νερό.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Sand Intervals",
+      "warmup": [
+        "10’ περπάτημα + δυναμικές διατάσεις"
+      ],
+      "technique": [
+        "A/B skips 3x20m"
+      ],
+      "main": [
+        "Run: 8x45’’ on / 45’’ walk",
+        "Sand squats 3x15",
+        "Push-ups kneeling 3x12"
+      ],
+      "finisher": [
+        "Side shuffle στην άμμο 4x20m"
+      ],
+      "cooldown": [
+        "Πελματιαία/γάμπες 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Water Aerobic",
+      "warmup": [
+        "5’ water walk"
+      ],
+      "technique": [
+        "Balance drills στο νερό 3x30’’"
+      ],
+      "main": [
+        "Aqua jogging 8x1’ on / 1’ off",
+        "Backstroke kicks 4x20m"
+      ],
+      "finisher": [
+        "Treading water 3x30’’"
+      ],
+      "cooldown": [
+        "Ήπια πλεύση 3’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Sand Strength + Core",
+      "warmup": [
+        "8’ walk"
+      ],
+      "technique": [
+        "Ankle hops 3x10"
+      ],
+      "main": [
+        "Reverse lunges 4x12/πόδι",
+        "Bear crawl 4x25m",
+        "Plank reach 3x10/πλευρά"
+      ],
+      "finisher": [
+        "Easy jog στην ακτή 8’"
+      ],
+      "cooldown": [
+        "Διατάσεις ισχ/οπίσθιων 5’"
+      ]
+    }
+  ],
+  "notes": "Αν πονά ο αχίλλειος, μείωσε άλματα, δώσε έμφαση στο νερό."
+}

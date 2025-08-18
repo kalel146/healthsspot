@@ -1,0 +1,87 @@
+{
+  "filename": "outdoorPlaygroundBeginner1.json",
+  "title": "Playground – Beginner Phase 1 (Foundations)",
+  "level": "Beginner",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "playground",
+  "daysPerWeek": 3,
+  "equipment": [
+    "Μονόζυγο",
+    "Λάστιχο υποβοήθησης",
+    "Λαβές κάμψεων"
+  ],
+  "goal": "Βασική δύναμη κορμού/ώμων, πρώτη επαφή με έλξεις/βυθίσεις μέσω υποβοήθησης.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Pull/Push Basics",
+      "warmup": [
+        "5’ ελαφρύ τρέξιμο",
+        "Shoulder CARs",
+        "Scap pulls 2x8"
+      ],
+      "skill": [
+        "Hollow/Arch drill 3x20’’"
+      ],
+      "main": [
+        "Assisted Chin-ups 4x5–6",
+        "Incline Push-ups 4x8–10",
+        "Australian Rows (low bar) 3x10"
+      ],
+      "finisher": [
+        "Dead Hang 3x20’’",
+        "Plank 3x30’’"
+      ],
+      "cooldown": [
+        "Διατάσεις ώμων/αγκώνα 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Lower/Core",
+      "warmup": [
+        "Dynamic hips/ankles 4’"
+      ],
+      "skill": [
+        "Box Step-ups 2x12/side"
+      ],
+      "main": [
+        "Assisted Squats 4x12",
+        "Hip Hinge (band) 3x12",
+        "Hanging Knee Raises 3x8"
+      ],
+      "finisher": [
+        "Calf Raises 3x15",
+        "Side Plank 2x20’’/side"
+      ],
+      "cooldown": [
+        "Hamstrings/hips 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Push/Pull Technique",
+      "warmup": [
+        "Scap circles 2x10"
+      ],
+      "skill": [
+        "Scapular Push-ups 2x12"
+      ],
+      "main": [
+        "Band-assisted Dips (parallel bars) 4x6",
+        "Band-assisted Pull-ups 4x5",
+        "Bar Support Hold 3x20’’"
+      ],
+      "finisher": [
+        "Farmer hold (bands/handles) 3x20’’"
+      ],
+      "cooldown": [
+        "Pecs/lats 5’"
+      ]
+    }
+  ],
+  "notes": "Κράτα 1–3 RIR. Προτεραιότητα στον έλεγχο ωμοπλάτης (scap)."
+}

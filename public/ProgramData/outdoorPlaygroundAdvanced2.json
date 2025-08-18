@@ -1,0 +1,122 @@
+{
+  "filename": "outdoorPlaygroundAdvanced2.json",
+  "title": "Playground – Advanced Phase 8 (MU & Levers Prep)",
+  "level": "Advanced",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "outdoor",
+  "subcategory": "playground",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Μονόζυγο",
+    "Δίζυγο",
+    "Λάστιχα"
+  ],
+  "goal": "Προετοιμασία για muscle-up και front lever (tuck).",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "MU Pull Mechanics",
+      "warmup": [
+        "Scap + mobility"
+      ],
+      "skill": [
+        "MU transition (band) 5x2"
+      ],
+      "main": [
+        "Chest-to-bar Pull-ups 6x2",
+        "Eccentric MU 4x1 (ελεγχόμενα)"
+      ],
+      "finisher": [
+        "Bar hang 3x45’’"
+      ],
+      "cooldown": [
+        "Lats/bis 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Dip Strength",
+      "warmup": [
+        "Band prep"
+      ],
+      "skill": [
+        "Deep support holds 4x20’’"
+      ],
+      "main": [
+        "Dips 6x3 (βαρύ)",
+        "Straight Bar Dips 3x4"
+      ],
+      "finisher": [
+        "L-sit (tuck-adv) 4x12’’"
+      ],
+      "cooldown": [
+        "Chest/delts 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Front Lever Prep",
+      "warmup": [
+        "Scap + core"
+      ],
+      "skill": [
+        "FL tuck holds 6x8–10’’"
+      ],
+      "main": [
+        "FL Tuck Rows 5x4",
+        "Scapular Pulls 4x8"
+      ],
+      "finisher": [
+        "Hollow 3x40’’"
+      ],
+      "cooldown": [
+        "Shoulders 5’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Lower/Core",
+      "warmup": [
+        "Hips"
+      ],
+      "skill": [
+        "Pistol (assist) 3x5/side"
+      ],
+      "main": [
+        "Pistol Squat 4x4/side (assist)",
+        "Nordic (band) 3x5"
+      ],
+      "finisher": [
+        "Calf 4x15",
+        "Hanging Leg Raises 3x10"
+      ],
+      "cooldown": [
+        "Hips 5’"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Mixed Skills",
+      "warmup": [
+        "Mobility"
+      ],
+      "skill": [
+        "Arch/Hollow swings 3x6"
+      ],
+      "main": [
+        "Pull-ups 5x3",
+        "Dips 5x3",
+        "Archer Rows 3x8/side"
+      ],
+      "finisher": [
+        "Grip hangs 3x45’’"
+      ],
+      "cooldown": [
+        "Full body 5’"
+      ]
+    }
+  ],
+  "notes": "Δεν κυνηγάς ρεκόρ σε MU eccentrics — ποιότητα > ποσότητα."
+}

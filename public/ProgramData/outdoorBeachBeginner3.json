@@ -1,0 +1,97 @@
+{
+  "filename": "outdoorBeachBeginner3.json",
+  "title": "Beach – Beginner+ Phase 3 (Intro Sprints & Bounds)",
+  "level": "Beginner+",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "outdoor",
+  "subcategory": "beach",
+  "daysPerWeek": 4,
+  "equipment": [
+    "Άμμος",
+    "Θάλασσα"
+  ],
+  "goal": "Πρώτη επαφή με μικρά σπριντ στην άμμο και ήπια plyometrics.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Acceleration Drills",
+      "warmup": [
+        "10’ walk+jog",
+        "Drills A/B/C"
+      ],
+      "technique": [
+        "Wall drills 3x6”",
+        "Falling starts 4x10m"
+      ],
+      "main": [
+        "Sand sprints 6x20m @85%",
+        "Walking lunges 3x16 steps"
+      ],
+      "finisher": [
+        "Core circuit: plank 30’’ + dead bug 10/πλευρά x2"
+      ],
+      "cooldown": [
+        "Hamstrings/hips 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Water Conditioning",
+      "warmup": [
+        "5’ water walk"
+      ],
+      "technique": [
+        "Marching in water 3x40’’"
+      ],
+      "main": [
+        "Aqua intervals 10x45’’ on / 45’’ off"
+      ],
+      "finisher": [
+        "Breaststroke kicks 4x20m"
+      ],
+      "cooldown": [
+        "Ήπια πλεύση 3’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Sand Strength",
+      "warmup": [
+        "Mobility 6’"
+      ],
+      "technique": [
+        "Ankle pops 3x12"
+      ],
+      "main": [
+        "Split squats 4x10/πόδι",
+        "Push-ups 4x12",
+        "Bear crawl 4x25m"
+      ],
+      "finisher": [
+        "Sand strides 4x60m"
+      ],
+      "cooldown": [
+        "Αναπνοές 3’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Active Recovery (Sea)",
+      "warmup": [
+        "Ήπιο περπάτημα 8’"
+      ],
+      "technique": [
+        "Mobility flow 5’"
+      ],
+      "main": [
+        "Water jog continuous 12–15’"
+      ],
+      "cooldown": [
+        "Stretch 5’"
+      ]
+    }
+  ],
+  "notes": "Σπριντ μόνο σε επίπεδη συμπαγή άμμο κοντά στο νερό."
+}

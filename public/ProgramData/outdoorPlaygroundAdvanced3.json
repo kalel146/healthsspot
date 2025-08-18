@@ -1,0 +1,123 @@
+{
+  "filename": "outdoorPlaygroundAdvanced3.json",
+  "title": "Playground – Advanced Phase 9 (Strict 8s & Lever Tuck)",
+  "level": "Advanced+",
+  "phase": 9,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "playground",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Μονόζυγο",
+    "Δίζυγο"
+  ],
+  "goal": "Στόχος 8 αυστηρές έλξεις/βυθίσεις, σταθερό FL tuck.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Pull 8s",
+      "warmup": [
+        "Scap pulls 2x12"
+      ],
+      "skill": [
+        "Top hold 3x20’’"
+      ],
+      "main": [
+        "Strict Pull-ups 5x5–6",
+        "Chest-to-bar Pull-ups 3x3",
+        "Australian Rows 4x12"
+      ],
+      "finisher": [
+        "Grip holds 3x50’’"
+      ],
+      "cooldown": [
+        "Lats 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Push 8s",
+      "warmup": [
+        "Band prep"
+      ],
+      "skill": [
+        "Deep support 3x25’’"
+      ],
+      "main": [
+        "Dips 5x5–6",
+        "Straight Bar Dips 3x4",
+        "Explosive Push-ups 4x8"
+      ],
+      "finisher": [
+        "L-sit 4x12–15’’"
+      ],
+      "cooldown": [
+        "Chest/delts 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Front Lever Tuck",
+      "warmup": [
+        "Scap + core"
+      ],
+      "skill": [
+        "FL tuck holds 6x10–12’’"
+      ],
+      "main": [
+        "FL Tuck Rows 5x5",
+        "Scap Depressions 4x10"
+      ],
+      "finisher": [
+        "Hollow 3x45’’"
+      ],
+      "cooldown": [
+        "Shoulders 5’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Lower/Core",
+      "warmup": [
+        "Hips"
+      ],
+      "skill": [
+        "Pistol 3x5/side"
+      ],
+      "main": [
+        "Pistol Squat 4x5/side (assist as needed)",
+        "Nordic (band) 3x5"
+      ],
+      "finisher": [
+        "Calf 4x15",
+        "Hanging Leg Raises 4x10"
+      ],
+      "cooldown": [
+        "Hips 5’"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Mixed Skills",
+      "warmup": [
+        "Mobility"
+      ],
+      "skill": [
+        "Skin-the-cat 4x2 (assist)"
+      ],
+      "main": [
+        "Pull-ups 4x5",
+        "Dips 4x5",
+        "Archer Push-ups 3x12/side"
+      ],
+      "finisher": [
+        "Grip hangs 3x50’’"
+      ],
+      "cooldown": [
+        "Full body 5’"
+      ]
+    }
+  ],
+  "notes": "Αν οι 8 αυστηρές είναι σταθερές, είσαι κοντά στο MU."
+}

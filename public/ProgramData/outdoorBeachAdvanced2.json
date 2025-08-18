@@ -1,0 +1,67 @@
+{
+  "filename": "outdoorBeachAdvanced2.json",
+  "title": "Beach – Advanced Phase 8 (Speed-Endurance)",
+  "level": "Advanced",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "outdoor",
+  "subcategory": "beach",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Άμμος",
+    "Θάλασσα"
+  ],
+  "goal": "Ανάπτυξη αντοχής ταχύτητας στην άμμο + σταθερό αερόβιο στη θάλασσα.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Speed-Endurance Reps",
+      "warmup": [
+        "Jog 10’",
+        "Drills",
+        "Strides 4x60m"
+      ],
+      "main": [
+        "Sand repeats 5x120m @RPE8 με 2’ rest",
+        "Jumps 4x8"
+      ],
+      "finisher": [
+        "Core carry substitute 4x40m"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Sea Intervals",
+      "main": [
+        "Aqua 8x1’ hard / 1’ easy"
+      ],
+      "cooldown": [
+        "Πλεύση 3’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Plyo + Strength",
+      "main": [
+        "Circuit x4: 12 push-ups, 16 lunges/πόδι, 30m crawl, 100m run"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Speed Accel",
+      "main": [
+        "Sand sprints 8x30m @95%",
+        "Bounds 4x10"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Recovery (Sea/Mobility)",
+      "main": [
+        "Aqua jog 12’ + mobility 8’"
+      ]
+    }
+  ],
+  "notes": "Σε πολύ μαλακή άμμο, μείωσε αποστάσεις σπριντ 15–20%."
+}

@@ -1,0 +1,123 @@
+{
+  "filename": "outdoorPlaygroundAdvanced1.json",
+  "title": "Playground – Advanced Phase 7 (Strength Skills Intro)",
+  "level": "Advanced",
+  "phase": 7,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "outdoor",
+  "subcategory": "playground",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Μονόζυγο",
+    "Δίζυγο",
+    "Λάστιχα"
+  ],
+  "goal": "Εισαγωγή σε progressions: L-sit, skin-the-cat, αρχικές προσεγγίσεις muscle-up.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Pull Power",
+      "warmup": [
+        "Scap + mobility 6’"
+      ],
+      "skill": [
+        "High Pulls (band assist) 4x3"
+      ],
+      "main": [
+        "Weighted/Slow Pull-ups 5x3",
+        "Australian Rows feet-elev 4x12"
+      ],
+      "finisher": [
+        "Bar Hang 3x40’’"
+      ],
+      "cooldown": [
+        "Lats/forearms 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Push Power",
+      "warmup": [
+        "Band prep"
+      ],
+      "skill": [
+        "Dip transition drill 4x3"
+      ],
+      "main": [
+        "Dips 5x3 (add small load if 5+ reps)",
+        "Explosive Push-ups 4x6"
+      ],
+      "finisher": [
+        "Support hold 3x40’’",
+        "L-sit (tuck) 3x10’’"
+      ],
+      "cooldown": [
+        "Chest/delts 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Mobility/Skill",
+      "warmup": [
+        "Global mobility"
+      ],
+      "skill": [
+        "Skin-the-cat (band) 4x2"
+      ],
+      "main": [
+        "Active Hang to Hollow beats 4x6",
+        "Scap Depressions 3x10"
+      ],
+      "finisher": [
+        "Breathing/core 5’"
+      ],
+      "cooldown": [
+        "Shoulders 5’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Lower/Core",
+      "warmup": [
+        "Hips 5’"
+      ],
+      "skill": [
+        "Pistol to box 3x6/side"
+      ],
+      "main": [
+        "Pistol Squat (assist) 4x5/side",
+        "Nordic beginner (band) 3x5"
+      ],
+      "finisher": [
+        "Calf 4x15",
+        "Hanging Knee Raises 3x10"
+      ],
+      "cooldown": [
+        "Hips 5’"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Mixed Skills",
+      "warmup": [
+        "Mobility 5’"
+      ],
+      "skill": [
+        "L-sit (tuck) 4x10’’"
+      ],
+      "main": [
+        "Pull-ups 4x4",
+        "Dips 4x4",
+        "Archer Push-ups 3x10/side"
+      ],
+      "finisher": [
+        "Grip hangs 3x40’’"
+      ],
+      "cooldown": [
+        "Full body 5’"
+      ]
+    }
+  ],
+  "notes": "Δούλεψε καθαρά. Προτεραιότητα σε ωμοπλάτη/ώμους — όχι βιασύνη για MU."
+}

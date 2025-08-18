@@ -1,0 +1,94 @@
+{
+  "filename": "outdoorBeachIntermediate1.json",
+  "title": "Beach – Intermediate Phase 4 (Power Prep)",
+  "level": "Intermediate",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "outdoor",
+  "subcategory": "beach",
+  "daysPerWeek": 4,
+  "equipment": [
+    "Άμμος",
+    "Θάλασσα"
+  ],
+  "goal": "Εδραίωση τεχνικής sprint + βασικά άλματα, συνδυασμός με θαλάσσιο conditioning.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Sprint Mechanics",
+      "warmup": [
+        "10’ jog",
+        "Drills A/B/C",
+        "Strides 4x40m"
+      ],
+      "technique": [
+        "3-point starts 5x20m"
+      ],
+      "main": [
+        "Sand sprints 6x30m @85–90%",
+        "Broad jumps στην άμμο 4x6"
+      ],
+      "finisher": [
+        "Core: side plank 3x25’’/πλευρά"
+      ],
+      "cooldown": [
+        "Hip flexors/hams 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Sea Intervals",
+      "warmup": [
+        "Water walk/jog 6’"
+      ],
+      "technique": [
+        "Kick technique 3x20m"
+      ],
+      "main": [
+        "Aqua fartlek 3x(2’ steady + 45’’ hard)"
+      ],
+      "finisher": [
+        "Backstroke kicks 4x25m"
+      ],
+      "cooldown": [
+        "Πλεύση 3’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Sand Strength + Bounds",
+      "warmup": [
+        "Mobility 6’"
+      ],
+      "technique": [
+        "Bounds μικρής απόστασης 3x8"
+      ],
+      "main": [
+        "Walking lunges 4x20 steps",
+        "Push-ups 4x15",
+        "Bear crawl 4x30m"
+      ],
+      "finisher": [
+        "Sand run 10’ easy"
+      ],
+      "cooldown": [
+        "Διατάσεις 5’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Recovery (Sea)",
+      "warmup": [
+        "Light walk 8’"
+      ],
+      "main": [
+        "Aqua jog 12’ continuous"
+      ],
+      "cooldown": [
+        "Mobility 6’"
+      ]
+    }
+  ],
+  "notes": "Σε δυνατούς ανέμους/καύσωνα, μείωσε το έντονο κομμάτι κατά 20–30%."
+}

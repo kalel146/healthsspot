@@ -1,0 +1,107 @@
+{
+  "filename": "outdoorPlaygroundBeginner3.json",
+  "title": "Playground – Beginner Phase 3 (Negatives & Holds)",
+  "level": "Beginner+",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "outdoor",
+  "subcategory": "playground",
+  "daysPerWeek": 4,
+  "equipment": [
+    "Μονόζυγο",
+    "Δίζυγο",
+    "Λάστιχα"
+  ],
+  "goal": "Έλεγχος αρνητικής φάσης και ισομετρικών θέσεων σε έλξεις/βυθίσεις.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Pull Negatives",
+      "warmup": [
+        "Scap pulls 2x8",
+        "Band rows 2x15"
+      ],
+      "skill": [
+        "Top hold (chin over bar) 4x10’’"
+      ],
+      "main": [
+        "Pull-up Negatives 5x3 (3–4’’ κάτω)",
+        "Australian Rows 4x10–12",
+        "Banded FacePull 3x15"
+      ],
+      "finisher": [
+        "Bar Hang 3x30’’",
+        "Hollow 3x20’’"
+      ],
+      "cooldown": [
+        "Lats/bis 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Push Negatives",
+      "warmup": [
+        "Scap push-ups 2x12"
+      ],
+      "skill": [
+        "Dip support hold 4x15’’"
+      ],
+      "main": [
+        "Dip Negatives (band) 5x3 (3’’ κάτω)",
+        "Incline Push-ups 4x12",
+        "Band Y-Raise 3x12"
+      ],
+      "finisher": [
+        "Triceps band ext 2x15"
+      ],
+      "cooldown": [
+        "Chest/shoulders 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Lower/Core",
+      "warmup": [
+        "Dynamic hips 4’"
+      ],
+      "skill": [
+        "Assisted Pistol to box 3x5/side"
+      ],
+      "main": [
+        "Goblet Squat (band/KB) 4x10",
+        "Hip Thrust 3x12",
+        "Hanging Knee Raises 4x10"
+      ],
+      "finisher": [
+        "Calf Raises 4x15",
+        "Side Plank 3x30’’/side"
+      ],
+      "cooldown": [
+        "Hips 5’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Mixed Technique",
+      "warmup": [
+        "Mobility 5’"
+      ],
+      "skill": [
+        "Hollow to Arch swings 3x6"
+      ],
+      "main": [
+        "Band-assisted Pull-ups 4x6",
+        "Band-assisted Dips 4x6",
+        "Push-ups 3x12"
+      ],
+      "finisher": [
+        "Grip holds 3x25’’"
+      ],
+      "cooldown": [
+        "Full body 5’"
+      ]
+    }
+  ],
+  "notes": "Στα negatives μέτρα αργά. Στόχος έλεγχος, όχι failure."
+}

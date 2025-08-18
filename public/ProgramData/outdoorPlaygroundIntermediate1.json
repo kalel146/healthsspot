@@ -1,0 +1,104 @@
+{
+  "filename": "outdoorPlaygroundIntermediate1.json",
+  "title": "Playground – Intermediate Phase 4 (First Strict Reps)",
+  "level": "Intermediate",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "outdoor",
+  "subcategory": "playground",
+  "daysPerWeek": 4,
+  "equipment": [
+    "Μονόζυγο",
+    "Δίζυγο",
+    "Λάστιχα"
+  ],
+  "goal": "Πρώτες αυστηρές έλξεις/βυθίσεις, σταδιακή μείωση υποβοήθησης.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Strict Pull Focus",
+      "warmup": [
+        "Scap pulls 2x10"
+      ],
+      "skill": [
+        "Top hold 3x15’’"
+      ],
+      "main": [
+        "Strict Pull-ups 5x3 (ή AMRAP 6’ συνολικά)",
+        "Australian Rows 4x10",
+        "Face Pull 3x15"
+      ],
+      "finisher": [
+        "Hollow 3x25’’"
+      ],
+      "cooldown": [
+        "Lats 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Strict Dip Focus",
+      "warmup": [
+        "Band shoulder prep 4’"
+      ],
+      "skill": [
+        "Dip support 3x20’’"
+      ],
+      "main": [
+        "Strict Dips 5x3 (ή AMRAP 6’)",
+        "Push-ups 4x12",
+        "Scap push-ups 3x15"
+      ],
+      "finisher": [
+        "Triceps band ext 2x15"
+      ],
+      "cooldown": [
+        "Chest/shoulders 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Lower/Core",
+      "warmup": [
+        "Dynamic hips 5’"
+      ],
+      "skill": [
+        "Assisted Pistol 3x6/side"
+      ],
+      "main": [
+        "Split Squat 4x10/side",
+        "Hip Hinge (band) 4x12",
+        "Toes-to-Bar (tuck) 3x6"
+      ],
+      "finisher": [
+        "Calf Raises 4x15"
+      ],
+      "cooldown": [
+        "Hips 5’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Mixed Volume",
+      "warmup": [
+        "Mobility 5’"
+      ],
+      "skill": [
+        "Hollow/Arch 3x20’’"
+      ],
+      "main": [
+        "Strict Pull-ups 4x3",
+        "Strict Dips 4x3",
+        "Push-ups 3x15"
+      ],
+      "finisher": [
+        "Grip holds 3x30’’"
+      ],
+      "cooldown": [
+        "Full body 5’"
+      ]
+    }
+  ],
+  "notes": "Αν κολλάς στις 2 επαναλήψεις, βάλε ελαφρύ λάστιχο για να φτάσεις 3–4."
+}

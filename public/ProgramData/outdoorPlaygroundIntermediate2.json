@@ -1,0 +1,104 @@
+{
+  "filename": "outdoorPlaygroundIntermediate2.json",
+  "title": "Playground – Intermediate Phase 5 (Volume & Eccentric Control)",
+  "level": "Intermediate",
+  "phase": 5,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "outdoor",
+  "subcategory": "playground",
+  "daysPerWeek": 4,
+  "equipment": [
+    "Μονόζυγο",
+    "Δίζυγο",
+    "Λάστιχα"
+  ],
+  "goal": "Περισσότερος όγκος, ελεγχόμενα εκκεντρικά και αρχή για archer variations.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Pull Volume",
+      "warmup": [
+        "Scap pulls 2x12"
+      ],
+      "skill": [
+        "Top hold 3x20’’"
+      ],
+      "main": [
+        "Strict Pull-ups 6x3",
+        "Eccentric Pull-ups 3x3 (4’’)",
+        "Australian Rows 4x12"
+      ],
+      "finisher": [
+        "Hollow 3x30’’"
+      ],
+      "cooldown": [
+        "Lats 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Push Volume",
+      "warmup": [
+        "Band shoulder prep"
+      ],
+      "skill": [
+        "Dip support 3x25’’"
+      ],
+      "main": [
+        "Strict Dips 6x3",
+        "Eccentric Dips 3x3 (3’’)",
+        "Push-ups 4x15"
+      ],
+      "finisher": [
+        "Triceps band ext 3x15"
+      ],
+      "cooldown": [
+        "Chest/delts 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Lower/Core",
+      "warmup": [
+        "Hips/ankles 5’"
+      ],
+      "skill": [
+        "Pistol to box 3x6/side"
+      ],
+      "main": [
+        "Step-downs 3x10/side",
+        "Hip Thrust 4x12",
+        "Hanging Leg Raises (tuck) 3x6–8"
+      ],
+      "finisher": [
+        "Calf 4x15"
+      ],
+      "cooldown": [
+        "Hips 5’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Archer Intro",
+      "warmup": [
+        "Mobility 5’"
+      ],
+      "skill": [
+        "Archer Row drill 3x6/side"
+      ],
+      "main": [
+        "Band-assisted Archer Pull-ups 4x3/side",
+        "Archer Push-ups 4x6/side",
+        "Support hold 3x30’’"
+      ],
+      "finisher": [
+        "Grip hangs 3x30’’"
+      ],
+      "cooldown": [
+        "Full body 5’"
+      ]
+    }
+  ],
+  "notes": "Στόχευσε ομαλές καταβάσεις 3–4’’ στα eccentric."
+}

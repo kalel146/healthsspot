@@ -1,0 +1,54 @@
+{
+  "filename": "outdoorBeachPro2.json",
+  "title": "Beach – Pro Phase 11 (Maintenance/Travel Mode)",
+  "level": "Pro",
+  "phase": 11,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "beach",
+  "daysPerWeek": 4,
+  "equipment": [
+    "Άμμος",
+    "Θάλασσα"
+  ],
+  "goal": "Συντήρηση υψηλού επιπέδου στις διακοπές: γρήγορα sessions, χαμηλή φθορά.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Speed Micro",
+      "warmup": [
+        "Quick mobility 6’"
+      ],
+      "main": [
+        "Starts 6x20m",
+        "Sand sprints 6x30m @90–95%"
+      ],
+      "cooldown": [
+        "Stretch 6’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Sea Continuous",
+      "main": [
+        "Aqua jog 18–20’ continuous"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Power Micro-Circuit",
+      "main": [
+        "3–4 γύροι: 12 push-ups, 16 lunges/πόδι, 25m crawl, 80m run"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Recovery/Swim",
+      "main": [
+        "Easy swim 10’ + mobility 10’"
+      ]
+    }
+  ],
+  "notes": "Ιδανικό όταν ο χρόνος είναι περιορισμένος: 25–40’ συνεδρία. Διατήρηση, όχι ‘ξεζούμισμα’."
+}

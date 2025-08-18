@@ -1,0 +1,83 @@
+{
+  "filename": "outdoorBeachBeginner1.json",
+  "title": "Beach – Beginner Phase 1 (Sand Fundamentals)",
+  "level": "Beginner",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "beach",
+  "daysPerWeek": 3,
+  "equipment": [
+    "Άμμος",
+    "Θάλασσα"
+  ],
+  "goal": "Ασφαλής προσαρμογή σε άμμο: σταθεροποίηση ποδοκνημικής/ισχίου, βασική αερόβια βάση.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Sand Conditioning + Core",
+      "warmup": [
+        "10’ περπάτημα στην ακτογραμμή",
+        "Mobility: αστράγαλος/ισχίο/σπονδυλική"
+      ],
+      "technique": [
+        "Drills: high-knees, butt-kicks στην άμμο 3x20m"
+      ],
+      "main": [
+        "Shuttle walk-runs 6x1’ on / 1’ off",
+        "Sand lunges 3x12/πόδι",
+        "Push-ups στην άμμο 3x10"
+      ],
+      "finisher": [
+        "Plank 3x30’’",
+        "Side plank 2x20’’/πλευρά"
+      ],
+      "cooldown": [
+        "Διατάσεις γαστροκνημίου/ισχ/οπίσθιων 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Water Low Impact",
+      "warmup": [
+        "5’ εύκολη βάδιση στο νερό ως το γόνατο"
+      ],
+      "technique": [
+        "Water marching 3x40’’"
+      ],
+      "main": [
+        "Water jogging (μέχρι μέση) 6x1’ on / 1’ off",
+        "Leg swings στο νερό 2x15/πόδι"
+      ],
+      "finisher": [
+        "Breaststroke kicks κρατώντας αναπνοή 3x20m"
+      ],
+      "cooldown": [
+        "Ήπια πλεύση 3’ + διατάσεις ώμων"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Mixed Sand Strength",
+      "warmup": [
+        "8’ περπάτημα στην άμμο"
+      ],
+      "technique": [
+        "Foot intrinsic: toe splay 2x20"
+      ],
+      "main": [
+        "Squat to sand-sit 4x10",
+        "Glute bridge στην άμμο 3x12",
+        "Bear crawl 4x20m"
+      ],
+      "finisher": [
+        "Easy sand run 6’ συνεχόμενο"
+      ],
+      "cooldown": [
+        "Αναπνοές/διατάσεις 5’"
+      ]
+    }
+  ],
+  "notes": "Παπούτσι με καλή στήριξη στην αρχή. Προοδευτικά μπορείς και ξυπόλυτα αν δεν υπάρχουν ερεθισμοί πέλματος."
+}

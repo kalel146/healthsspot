@@ -1,0 +1,122 @@
+{
+  "filename": "outdoorPlaygroundIntermediate3.json",
+  "title": "Playground – Intermediate Phase 6 (Strict 5s Goals)",
+  "level": "Intermediate+",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "outdoor",
+  "subcategory": "playground",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Μονόζυγο",
+    "Δίζυγο"
+  ],
+  "goal": "Στόχος 5 αυστηρές έλξεις/βυθίσεις, ενίσχυση λαβής/κορμού.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Pull Strength",
+      "warmup": [
+        "Scap pulls 2x12"
+      ],
+      "skill": [
+        "Top hold 3x20’’"
+      ],
+      "main": [
+        "Strict Pull-ups 5x4",
+        "Australian Rows feet-elevated 4x10",
+        "Chin-over-bar hold 3x15’’"
+      ],
+      "finisher": [
+        "Hollow 3x35’’"
+      ],
+      "cooldown": [
+        "Lats 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Push Strength",
+      "warmup": [
+        "Band prep shoulders"
+      ],
+      "skill": [
+        "Support 3x30’’"
+      ],
+      "main": [
+        "Strict Dips 5x4",
+        "Decline Push-ups 4x12",
+        "Ring Support (αν υπάρχει) 3x20’’"
+      ],
+      "finisher": [
+        "Triceps ext 3x15"
+      ],
+      "cooldown": [
+        "Chest/delts 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Lower/Core",
+      "warmup": [
+        "Hips 5’"
+      ],
+      "skill": [
+        "Pistol to bench 3x6/side"
+      ],
+      "main": [
+        "Split Squat 4x10/side",
+        "Hip Hinge 4x12",
+        "Hanging Leg Raises 4x8"
+      ],
+      "finisher": [
+        "Calf 4x15"
+      ],
+      "cooldown": [
+        "Hips 5’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Mixed Volume",
+      "warmup": [
+        "Mobility"
+      ],
+      "skill": [
+        "Hollow/Arch 3x25’’"
+      ],
+      "main": [
+        "Strict Pull-ups 4x4",
+        "Strict Dips 4x4",
+        "Archer Push-ups 3x8/side"
+      ],
+      "finisher": [
+        "Grip hangs 3x35’’"
+      ],
+      "cooldown": [
+        "Full body 5’"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Active Recovery",
+      "warmup": [
+        "Light jog 10’"
+      ],
+      "skill": [
+        "Scap mobility 5’"
+      ],
+      "main": [
+        "Easy circuit x3: incline push-ups 12, rows 12, squats 15"
+      ],
+      "finisher": [
+        "Breathing 3’"
+      ],
+      "cooldown": [
+        "Stretch 5’"
+      ]
+    }
+  ],
+  "notes": "Αν έφτασες 5×5 strict, πέρασε νωρίτερα στην επόμενη φάση."
+}

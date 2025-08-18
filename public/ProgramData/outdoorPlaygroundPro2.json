@@ -1,0 +1,121 @@
+{
+  "filename": "outdoorPlaygroundPro2.json",
+  "title": "Playground – Pro Phase 11 (Strict MU / Lever Endurance)",
+  "level": "Pro",
+  "phase": 11,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "playground",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Μονόζυγο",
+    "Δίζυγο"
+  ],
+  "goal": "Εδραίωση strict MU (μονόζυγο/ευθεία μπάρα) και μεγαλύτερες διάρκειες σε lever holds.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Strict MU Work",
+      "warmup": [
+        "Scap + mobility"
+      ],
+      "skill": [
+        "Strict MU transitions 5x2"
+      ],
+      "main": [
+        "Strict MU singles 6x1 (ελεγχόμενο)",
+        "Chest-to-bar 4x3"
+      ],
+      "finisher": [
+        "Grip hangs 3x60’’"
+      ],
+      "cooldown": [
+        "Lats 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Dip Strength",
+      "warmup": [
+        "Band prep"
+      ],
+      "skill": [
+        "Deep support 4x30’’"
+      ],
+      "main": [
+        "Dips 6x4–5",
+        "Straight Bar Dips 4x3"
+      ],
+      "finisher": [
+        "L-sit 4x15–20’’"
+      ],
+      "cooldown": [
+        "Chest/delts 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Front Lever Adv Tuck+",
+      "warmup": [
+        "Scap + core"
+      ],
+      "skill": [
+        "FL adv tuck holds 6x12–15’’"
+      ],
+      "main": [
+        "FL Adv Tuck Rows 5x5",
+        "Scap Depressions 4x12"
+      ],
+      "finisher": [
+        "Hollow 4x50’’"
+      ],
+      "cooldown": [
+        "Shoulders 5’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Lower/Core",
+      "warmup": [
+        "Hips"
+      ],
+      "skill": [
+        "Pistol 3x6/side"
+      ],
+      "main": [
+        "Pistol Squat 4x6/side",
+        "Nordic (bodyweight) 3x5"
+      ],
+      "finisher": [
+        "Calf 4x15",
+        "Hanging Leg Raises 4x12"
+      ],
+      "cooldown": [
+        "Hips 5’"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Mixed Strict Volume",
+      "warmup": [
+        "Mobility"
+      ],
+      "skill": [
+        "Skin-the-cat 4x3"
+      ],
+      "main": [
+        "Pull-ups 5x5",
+        "Dips 5x5",
+        "Archer Rows 4x10/side"
+      ],
+      "finisher": [
+        "Grip hangs 3x60’’"
+      ],
+      "cooldown": [
+        "Full body 5’"
+      ]
+    }
+  ],
+  "notes": "Ελάχιστο swing, αυστηρές γραμμές. Αν ο ώμος ‘μιλήσει’, σταμάτα."
+}

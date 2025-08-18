@@ -1,0 +1,65 @@
+{
+  "filename": "outdoorBeachAdvanced3.json",
+  "title": "Beach – Advanced+ Phase 9 (Power Complex)",
+  "level": "Advanced+",
+  "phase": 9,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "beach",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Άμμος",
+    "Θάλασσα"
+  ],
+  "goal": "Σύνθετα power κομμάτια: σπριντ + bounds + κυκλική δύναμη στην άμμο, έξυπνη ανάπαυση.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Power Complex A",
+      "warmup": [
+        "Jog 10’ + drills"
+      ],
+      "main": [
+        "Complex x5: 30m sprint → 6 bounds → 20m crawl → 60m run (2’ rest)"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Sea Tempo",
+      "main": [
+        "Aqua tempo 5x3’ @RPE6–7"
+      ],
+      "cooldown": [
+        "Πλεύση 3’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Speed",
+      "main": [
+        "Starts 6x20m",
+        "Sand sprints 6x40m @95%"
+      ],
+      "finisher": [
+        "Core: plank medley 3x"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Plyo Focus",
+      "main": [
+        "Bounds 5x10",
+        "Drop jumps 4x6 (χαμηλό ύψος)"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Recovery Sea/Mobility",
+      "main": [
+        "Aqua jog 15’ + mobility 8’"
+      ]
+    }
+  ],
+  "notes": "Αν κουράζεται ο αχίλλειος, κόψε τα bounds για 1 εβδομάδα και κράτα μόνο tempo/θάλασσα."
+}

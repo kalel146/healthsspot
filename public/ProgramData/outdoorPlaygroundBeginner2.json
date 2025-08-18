@@ -1,0 +1,87 @@
+{
+  "filename": "outdoorPlaygroundBeginner2.json",
+  "title": "Playground – Beginner Phase 2 (Assisted Volume)",
+  "level": "Beginner",
+  "phase": 2,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "playground",
+  "daysPerWeek": 3,
+  "equipment": [
+    "Μονόζυγο",
+    "Δίζυγο",
+    "Λάστιχα"
+  ],
+  "goal": "Αύξηση όγκου με ασφαλείς υποβοηθούμενες επαναλήψεις.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Pull Emphasis",
+      "warmup": [
+        "Jumping jacks 2’",
+        "Scap pulls 2x10"
+      ],
+      "skill": [
+        "Hollow 3x20’’"
+      ],
+      "main": [
+        "Band-assisted Pull-ups 5x5–6",
+        "Australian Rows 4x10–12",
+        "Bar Hang Shrugs 3x8"
+      ],
+      "finisher": [
+        "Bar Hang 3x25’’",
+        "Deadbug 3x10/side"
+      ],
+      "cooldown": [
+        "Lats/biceps 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Push Emphasis",
+      "warmup": [
+        "Arm circles 2x15"
+      ],
+      "skill": [
+        "Scap push-ups 2x15"
+      ],
+      "main": [
+        "Knee Push-ups 4x12–15",
+        "Band-assisted Dips 4x6–8",
+        "Bar Support Hold 3x25’’"
+      ],
+      "finisher": [
+        "Banded Triceps Pressdowns 2x15",
+        "Forearm stretch 2’"
+      ],
+      "cooldown": [
+        "Chest/shoulders 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Lower/Core",
+      "warmup": [
+        "Mobility flow 5’"
+      ],
+      "skill": [
+        "Assisted Single-leg Squat to box 3x6/side"
+      ],
+      "main": [
+        "Step-ups 3x12/side",
+        "Hip Thrust (bar/bench) 3x12",
+        "Hanging Knee Raises 4x8–10"
+      ],
+      "finisher": [
+        "Calf Raises 4x15",
+        "Side Plank 3x25’’/side"
+      ],
+      "cooldown": [
+        "Hips/ankles 5’"
+      ]
+    }
+  ],
+  "notes": "Αν ‘σπάει’ η τεχνική, ρίξε βοήθεια (πιο δυνατό λάστιχο)."
+}

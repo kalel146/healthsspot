@@ -1,0 +1,123 @@
+{
+  "filename": "outdoorPlaygroundPro1.json",
+  "title": "Playground – Pro Phase 10 (Muscle-up & Lever Builder)",
+  "level": "Pro",
+  "phase": 10,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "playground",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Μονόζυγο",
+    "Δίζυγο",
+    "Λάστιχα"
+  ],
+  "goal": "Σταθεροποίηση muscle-up (band/strict) και front lever tuck-advanced.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "MU Technique",
+      "warmup": [
+        "Scap + mobility"
+      ],
+      "skill": [
+        "MU transition 5x3 (band/low)",
+        "High Pulls 5x2"
+      ],
+      "main": [
+        "Assisted MU 6x1–2",
+        "Chest-to-bar 4x3"
+      ],
+      "finisher": [
+        "Bar hang 3x50’’"
+      ],
+      "cooldown": [
+        "Lats 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Dip Strength + L-sit",
+      "warmup": [
+        "Band prep"
+      ],
+      "skill": [
+        "Deep support 4x25’’"
+      ],
+      "main": [
+        "Dips 6x4 (βαρύ)",
+        "Straight Bar Dips 4x3"
+      ],
+      "finisher": [
+        "L-sit (tuck-adv) 4x15’’"
+      ],
+      "cooldown": [
+        "Chest/delts 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Front Lever Adv Tuck",
+      "warmup": [
+        "Scap + core"
+      ],
+      "skill": [
+        "FL adv tuck holds 6x10–12’’"
+      ],
+      "main": [
+        "FL Adv Tuck Rows 5x4",
+        "Scap Depressions 4x10"
+      ],
+      "finisher": [
+        "Hollow 4x45’’"
+      ],
+      "cooldown": [
+        "Shoulders 5’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Lower/Core",
+      "warmup": [
+        "Hips"
+      ],
+      "skill": [
+        "Pistol 3x6/side"
+      ],
+      "main": [
+        "Pistol Squat 4x6/side",
+        "Nordic (band/light) 3x5"
+      ],
+      "finisher": [
+        "Calf 4x15",
+        "Hanging Leg Raises 4x12"
+      ],
+      "cooldown": [
+        "Hips 5’"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Mixed Skills/Flow",
+      "warmup": [
+        "Mobility 5’"
+      ],
+      "skill": [
+        "Skin-the-cat 4x3 (control)"
+      ],
+      "main": [
+        "Pull-ups 5x4",
+        "Dips 5x4",
+        "Archer Push-ups 4x10/side"
+      ],
+      "finisher": [
+        "Grip hangs 3x55’’"
+      ],
+      "cooldown": [
+        "Full body 5’"
+      ]
+    }
+  ],
+  "notes": "Ποιότητα στις μεταβάσεις MU. Μην κυνηγάς ρέκορ, κυνήγα τεχνική."
+}

@@ -1,0 +1,61 @@
+{
+  "filename": "outdoorBeachPro1.json",
+  "title": "Beach – Pro Phase 10 (Speed-Power Peak)",
+  "level": "Pro",
+  "phase": 10,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "beach",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Άμμος",
+    "Θάλασσα"
+  ],
+  "goal": "Κορύφωση ταχύτητας/ισχύος σε άμμο με ελεγχόμενη κόπωση, λεπτομέρεια τεχνικής.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Speed Peak",
+      "warmup": [
+        "Jog 10’ + drills + 4x60m strides"
+      ],
+      "main": [
+        "Sand sprints 5x60m @95–97% (3’ rest)",
+        "Jumps 4x8"
+      ],
+      "cooldown": [
+        "Mobility 8’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Sea Easy/Recovery",
+      "main": [
+        "Aqua jog 15’ + light swim 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Power Circuit",
+      "main": [
+        "Circuit x4: 12 push-ups, 20 lunges/πόδι, 30m crawl, 120m run"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Speed-Endurance",
+      "main": [
+        "Sand repeats 4x150m @RPE8 (3’ rest)"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Sea Tempo/Mobility",
+      "main": [
+        "Aqua tempo 4x4’ @RPE6 + mobility 10’"
+      ]
+    }
+  ],
+  "notes": "Ποιότητα > ποσότητα. Σπριντ μόνο φρέσκος, χωρίς μυϊκό πόνο."
+}
