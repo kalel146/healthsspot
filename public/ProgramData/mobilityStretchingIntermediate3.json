@@ -1,0 +1,21 @@
+{
+  "filename": "mobilityStretchingIntermediate3.json",
+  "title": "Stretching – Intermediate+ Phase 6 (End‑Range Comfort)",
+  "level": "Intermediate+",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "mobility",
+  "subcategory": "stretching",
+  "daysPerWeek": 5,
+  "equipment": ["Στρώμα", "Ιμάντας", "Blocks"],
+  "goal": "Άνεση κοντά στο άκρο εύρους με ασφαλή έλεγχο αναπνοής.",
+  "weeklySplit": [
+    {"day": "Day 1", "split": "Posterior Chain 50’’", "main": ["Hamstring long‑lever 4x50’’/πόδι", "Calf wall/soleus 4x50’’/παραλλαγή/πόδι"]},
+    {"day": "Day 2", "split": "Anterior Chain 50’’", "main": ["Couch stretch 4x50’’/πόδι", "Quad prone strap 4x50’’/πόδι"]},
+    {"day": "Day 3", "split": "Hips/Adductors 50’’", "main": ["Frog 4x50’’", "Pigeon (ήπιο) 3x50’’/πόδι"]},
+    {"day": "Day 4", "split": "Shoulders/Lats 50’’", "main": ["Pec doorway high/low 4x50’’/θέση", "Lat bench 4x50’’/πλευρά"]},
+    {"day": "Day 5", "split": "T‑spine/Neck 40–50’’", "main": ["T‑spine over block 4x50’’", "Upper trap/levator 3x40’’/πλευρά"]}
+  ],
+  "notes": "Αν ‘μπλοκάρει’ η αναπνοή, μείωσε το εύρος. Ποτέ ballistic."
+}

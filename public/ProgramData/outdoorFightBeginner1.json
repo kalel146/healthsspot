@@ -1,0 +1,73 @@
+{
+  "filename": "outdoorFightBeginner1.json",
+  "title": "Fight Conditioning – Beginner Phase 1 (Foundations)",
+  "level": "Beginner",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "fight",
+  "daysPerWeek": 3,
+  "equipment": [
+    "Σώμα",
+    "Λάστιχα",
+    "Λαβές κάμψεων"
+  ],
+  "goal": "Βασική αερόβια βάση, footwork, κορμός· ασφαλής εισαγωγή σε διαλειμματική επιβάρυνση.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Footwork + Core",
+      "warmup": [
+        "Jog 8’",
+        "Mobility: ισχία/αστράγαλοι/ώμοι"
+      ],
+      "technique": [
+        "Shadowboxing 6x1’ (τεχνική, χαμηλή ένταση)"
+      ],
+      "main": [
+        "Circuit x3: 12 push-ups, 20 walking lunges, 30’’ mountain climbers, 30’’ plank"
+      ],
+      "finisher": [
+        "Shadowboxing 3x1’ @RPE6"
+      ],
+      "cooldown": [
+        "Διατάσεις 5’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Intervals (Run + Drills)",
+      "warmup": [
+        "Walk→jog 10’"
+      ],
+      "main": [
+        "6x30’’ run / 60’’ walk",
+        "Sprawls 4x10",
+        "Bear crawl 3x20m"
+      ],
+      "finisher": [
+        "Breathing 3’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Band Upper + Core",
+      "warmup": [
+        "Mobility 6’"
+      ],
+      "main": [
+        "Band punches 4x30’’",
+        "Band rows 4x12",
+        "Push-ups με λαβές 3x10"
+      ],
+      "finisher": [
+        "Side plank 3x20’’/πλευρά"
+      ],
+      "cooldown": [
+        "Ώμοι/θωρακικοί 5’"
+      ]
+    }
+  ],
+  "notes": "RPE 5–6. Διαλείμματα 60–90’’. Εστίασε σε τεχνική στο shadowboxing."
+}

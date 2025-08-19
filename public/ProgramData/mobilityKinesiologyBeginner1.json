@@ -1,0 +1,19 @@
+{
+  "filename": "mobilityKinesiologyBeginner1.json",
+  "title": "Kinesiology – Beginner Phase 1 (Intro)",
+  "level": "Beginner",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "mobility",
+  "subcategory": "kinesiology",
+  "daysPerWeek": 3,
+  "equipment": ["Στρώμα"],
+  "goal": "Βασική εισαγωγή σε κινητικά patterns και proprioception.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Cat-Cow 3x8", "Arm circles 3x10/πλευρά", "Hip circles 3x8"]},
+    {"day": "Day 2", "main": ["Dynamic hamstring sweep 3x10/πόδι", "Walking lunge reach 3x8/πόδι", "Ankle mobility rock 3x12"]},
+    {"day": "Day 3", "main": ["T-spine rotations 3x8/πλευρά", "Scapular push-ups 3x10", "Balance hold single-leg 3x20’’/πόδι"]}
+  ],
+  "notes": "Εκτέλεση αργή, έλεγχος κίνησης, ήπια αναπνοή."
+}

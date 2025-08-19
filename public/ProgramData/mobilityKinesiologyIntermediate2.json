@@ -1,0 +1,20 @@
+{
+  "filename": "mobilityKinesiologyIntermediate2.json",
+  "title": "Kinesiology – Intermediate Phase 5 (Mobility Strength)",
+  "level": "Intermediate",
+  "phase": 5,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "mobility",
+  "subcategory": "kinesiology",
+  "daysPerWeek": 4,
+  "equipment": ["Στρώμα", "Bands", "Stick"],
+  "goal": "Ανάπτυξη δύναμης στις τελικές θέσεις κίνησης.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Cossack squat hold 3x20’’/πλευρά", "Hip 90-90 lift 3x6/πλευρά", "Shoulder external rotation band 3x12"]},
+    {"day": "Day 2", "main": ["Ankle dorsiflexion lift 3x8/πόδι", "Scapular pull-ups 3x8", "Cat-cow resisted 3x8"]},
+    {"day": "Day 3", "main": ["Pigeon lift-offs 3x6/πόδι", "Shoulder CARs 3x6/πλευρά", "Dynamic thoracic bridge 3x8"]},
+    {"day": "Day 4", "main": ["Reverse lunge reach 3x10/πόδι", "Balance airplane 3x8/πόδι", "Neck controlled rotation 3x6"]}
+  ],
+  "notes": "Ελαφριά αντίσταση, έλεγχος κίνησης."
+}

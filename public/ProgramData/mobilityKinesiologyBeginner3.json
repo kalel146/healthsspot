@@ -1,0 +1,20 @@
+{
+  "filename": "mobilityKinesiologyBeginner3.json",
+  "title": "Kinesiology – Beginner+ Phase 3 (Coordination)",
+  "level": "Beginner+",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "mobility",
+  "subcategory": "kinesiology",
+  "daysPerWeek": 4,
+  "equipment": ["Στρώμα", "Mini band"],
+  "goal": "Ανάπτυξη βασικού συντονισμού και έλεγχου κίνησης.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Banded monster walk 3x12/πλευρά", "Hip airplane 3x6/πόδι", "Dynamic calf stretch 3x12"]},
+    {"day": "Day 2", "main": ["Shoulder CARs 3x6/πλευρά", "T-spine open book 3x10/πλευρά", "Bear hold shoulder taps 3x20’’"]},
+    {"day": "Day 3", "main": ["Walking lunge twist 3x10/πόδι", "Single-leg RDL reach 3x8/πόδι", "Ankle mobility step 3x12"]},
+    {"day": "Day 4", "main": ["Side plank with reach 3x8/πλευρά", "Cat-cow to child’s pose 3x6", "Balance Y-T-A arms 3x6"]}
+  ],
+  "notes": "Σταθερότητα κορμού κατά τις δυναμικές κινήσεις."
+}

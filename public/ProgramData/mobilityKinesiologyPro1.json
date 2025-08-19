@@ -1,0 +1,22 @@
+{
+  "filename": "mobilityKinesiologyPro1.json",
+  "title": "Kinesiology – Pro Phase 9 (High Complexity)",
+  "level": "Pro",
+  "phase": 9,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "mobility",
+  "subcategory": "kinesiology",
+  "daysPerWeek": 6,
+  "equipment": ["Στρώμα", "Bands", "DB", "Stick"],
+  "goal": "Υψηλή πολυπλοκότητα και συνδυασμοί κινητικότητας.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Cossack squat to press DB 3x10/πλευρά", "Hip airplane weighted 3x8/πόδι", "Scapular pull-up 3x10"]},
+    {"day": "Day 2", "main": ["Walking lunge DB twist 3x10/πόδι", "Thoracic bridge reach DB 3x8", "Balance airplane weighted 3x8"]},
+    {"day": "Day 3", "main": ["Pigeon lift-off DB 3x8/πόδι", "Cat-cow weighted 3x8", "Child’s pose lift 3x8"]},
+    {"day": "Day 4", "main": ["Bear crawl DB row 3x12m", "Single-leg RDL reach DB 3x8/πόδι", "Neck resistance band 3x8"]},
+    {"day": "Day 5", "main": ["Dynamic adductor lunge DB 3x8", "Inchworm push-up cobra DB 3x8", "Scapular wall walk 3x8"]},
+    {"day": "Day 6", "main": ["Global mobility"]}
+    ],
+  "notes": "Εστίασε στην τεχνική και την ακρίβεια κινήσεων. Χρησιμοποίησε ελαφριά βάρη για έλεγχο και αποφυγή τραυματισμών."
+}

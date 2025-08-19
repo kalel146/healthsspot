@@ -1,0 +1,21 @@
+{
+  "filename": "mobilityKinesiologyAdvanced2.json",
+  "title": "Kinesiology – Advanced Phase 8 (Complex Patterns)",
+  "level": "Advanced",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "mobility",
+  "subcategory": "kinesiology",
+  "daysPerWeek": 5,
+  "equipment": ["Στρώμα", "Bands", "Stick", "Light DB"],
+  "goal": "Σύνθετα κινητικά patterns και proprioception.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Cossack squat to press 3x8/πλευρά", "Hip airplane with reach 3x8/πόδι", "Scapular pull-up 3x8"]},
+    {"day": "Day 2", "main": ["Walking lunge DB rotation 3x10/πόδι", "Thoracic bridge with reach 3x8", "Balance airplane DB 3x8"]},
+    {"day": "Day 3", "main": ["Pigeon lift-off DB 3x8/πόδι", "Child’s pose weighted 3x8", "Cat-cow resisted 3x10"]},
+    {"day": "Day 4", "main": ["Bear crawl row with DB 3x12m", "Single-leg RDL reach DB 3x8/πόδι", "Neck resistance band 3x10"]},
+    {"day": "Day 5", "main": ["Dynamic adductor lunge 3x10", "Inchworm push-up cobra DB 3x8", "Scapular wall walk 3x8"]}
+  ],
+  "notes": "Διατήρησε τεχνική ακρίβεια σε όλα τα patterns."
+}

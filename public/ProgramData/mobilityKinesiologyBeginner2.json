@@ -1,0 +1,19 @@
+{
+  "filename": "mobilityKinesiologyBeginner2.json",
+  "title": "Kinesiology – Beginner Phase 2 (Flow)",
+  "level": "Beginner",
+  "phase": 2,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "mobility",
+  "subcategory": "kinesiology",
+  "daysPerWeek": 3,
+  "equipment": ["Στρώμα", "Ιμάντας"],
+  "goal": "Ενσωμάτωση κινητικών flows σε ρουτίνα.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["World’s greatest stretch 3x6/πλευρά", "Scapular wall slides 3x10", "Ankle dorsiflexion with strap 3x10"]},
+    {"day": "Day 2", "main": ["Dynamic quad stretch walk 3x12/πόδι", "Hip flexor swing 3x12/πόδι", "C-spine controlled circles 3x6"]},
+    {"day": "Day 3", "main": ["Bear crawl 3x15m", "Inchworm to cobra 3x8", "Single-leg balance reach 3x8/πόδι"]}
+  ],
+  "notes": "Κράτα έλεγχο και ομαλές μεταβάσεις."
+}

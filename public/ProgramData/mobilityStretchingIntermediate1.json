@@ -1,0 +1,21 @@
+{
+  "filename": "mobilityStretchingIntermediate1.json",
+  "title": "Stretching – Intermediate Phase 4 (Structured Blocks)",
+  "level": "Intermediate",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "mobility",
+  "subcategory": "stretching",
+  "daysPerWeek": 5,
+  "equipment": ["Στρώμα", "Ιμάντας", "Blocks"],
+  "goal": "Πλήρης κάλυψη σώματος σε 5ήμερο block με 40’’ κρατήματα.",
+  "weeklySplit": [
+    {"day": "Day 1", "split": "Posterior Chain", "main": ["Calf wall + soleus 3x40’’/παραλλαγή/πόδι", "Hamstring strap 4x40’’/πόδι", "Glute figure‑4 3x40’’/πόδι"]},
+    {"day": "Day 2", "split": "Anterior Chain", "main": ["Hip flexor couch 4x40’’/πόδι", "Quad prone strap 3x40’’/πόδι"]},
+    {"day": "Day 3", "split": "Adductors + Hips", "main": ["Frog stretch 4x40’’", "Butterfly 3x40’’", "Pigeon (ήπιο) 3x40’’/πόδι"]},
+    {"day": "Day 4", "split": "Shoulders/Pecs", "main": ["Pec doorway high/low 3x40’’/θέση", "Lat bench 4x40’’/πλευρά"]},
+    {"day": "Day 5", "split": "T‑spine/Neck + Reset", "main": ["T‑spine extension over block 4x40’’", "Upper trap/levator 3x30’’/πλευρά", "Child’s pose 3x40’’"]}
+  ],
+  "notes": "Διαλείμματα 20–30’’ μεταξύ θέσεων. Μην ‘πιέζεις’ στο τέλος του χρόνου."
+}

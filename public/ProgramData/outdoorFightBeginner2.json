@@ -1,0 +1,65 @@
+{
+  "filename": "outdoorFightBeginner2.json",
+  "title": "Fight Conditioning – Beginner Phase 2 (Assisted Volume)",
+  "level": "Beginner",
+  "phase": 2,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "outdoor",
+  "subcategory": "fight",
+  "daysPerWeek": 3,
+  "equipment": [
+    "Σώμα",
+    "Λάστιχα",
+    "TRX"
+  ],
+  "goal": "Ήπια αύξηση όγκου· βελτίωση καρδιοαναπνευστικής ικανότητας και σταθερότητας ώμου/κορμού.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Shadowboxing Intervals",
+      "warmup": [
+        "Jog 8’ + mobility"
+      ],
+      "main": [
+        "8x1’ shadowboxing / 1’ rest (τεχνική+ελαφριά έκρηξη)",
+        "TRX row 4x10",
+        "Glute bridge 3x15"
+      ],
+      "finisher": [
+        "Plank 3x30’’"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Run Tempo + Drills",
+      "warmup": [
+        "Walk→jog 8’"
+      ],
+      "main": [
+        "Run 12’ steady @RPE6",
+        "Sprawls 5x8",
+        "Bear crawl 3x25m"
+      ],
+      "cooldown": [
+        "Stretch 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Band Strength",
+      "warmup": [
+        "Mobility 6’"
+      ],
+      "main": [
+        "Band punches 5x30’’",
+        "Band face-pulls 4x12",
+        "Push-ups 4x12"
+      ],
+      "finisher": [
+        "Hollow hold 3x20’’"
+      ]
+    }
+  ],
+  "notes": "RPE 6. Αν ο ώμος ‘μιλάει’, μείωσε ένταση στα band punches."
+}

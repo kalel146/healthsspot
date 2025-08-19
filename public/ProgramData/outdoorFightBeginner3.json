@@ -1,0 +1,72 @@
+{
+  "filename": "outdoorFightBeginner3.json",
+  "title": "Fight Conditioning – Beginner+ Phase 3 (Intro Power)",
+  "level": "Beginner+",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "outdoor",
+  "subcategory": "fight",
+  "daysPerWeek": 4,
+  "equipment": [
+    "Σώμα",
+    "Λάστιχα",
+    "TRX",
+    "Kettlebell 4–6kg"
+  ],
+  "goal": "Ελεγχόμενη εισαγωγή σε εκρηκτικά ερεθίσματα (χαμηλά άλματα/σπριντ, ελαφρύ KB).",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Power Basics",
+      "warmup": [
+        "Jog 8’ + δυναμικές"
+      ],
+      "main": [
+        "Low pogo jumps 4x15’’, 45’’ rest",
+        "KB swings (ελαφρύ) 4x12",
+        "Push-ups με λαβές 4x10"
+      ],
+      "finisher": [
+        "Shadowboxing 4x1’ @RPE7"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Intervals Run",
+      "warmup": [
+        "Jog 8’"
+      ],
+      "main": [
+        "10x30’’ run / 45’’ walk",
+        "Sprawls 5x8"
+      ],
+      "cooldown": [
+        "Mobility 5’"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "TRX Pull + Core",
+      "warmup": [
+        "Mobility 6’"
+      ],
+      "main": [
+        "TRX row 5x10",
+        "Band punches 5x30’’",
+        "Side plank 3x25’’/πλευρά"
+      ],
+      "finisher": [
+        "Breathing 3’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Shadowboxing Tech",
+      "main": [
+        "6x2’ shadowboxing / 1’ rest (τεχνική+footwork)"
+      ]
+    }
+  ],
+  "notes": "Άλματα χαμηλού ύψους, όχι ‘βαθιά’ προσγείωση. RPE 6–7."
+}

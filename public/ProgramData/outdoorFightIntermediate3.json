@@ -1,0 +1,62 @@
+{
+  "filename": "outdoorFightIntermediate3.json",
+  "title": "Fight Conditioning – Intermediate+ Phase 6 (Speed-Endurance)",
+  "level": "Intermediate+",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "outdoor",
+  "subcategory": "fight",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Σώμα",
+    "Λάστιχα",
+    "TRX",
+    "Kettlebell 4–6kg"
+  ],
+  "goal": "Αντοχή ταχύτητας με εναλλαγή διαλειμμάτων τύπου γύρου και power circuits.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Rounds Intervals",
+      "warmup": [
+        "Jog 10’ + mobility"
+      ],
+      "main": [
+        "4 γύροι: 3’ shadowboxing @RPE7 → 1’ push-ups+mountain climbers → 1’ rest"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Run Repeat 200s",
+      "main": [
+        "6x200m @RPE8 (2’ rest)",
+        "Sprawls 5x10"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Power Circuit",
+      "main": [
+        "5 γύροι: 12 KB swings, 12 TRX rows, 12 goblet squats, 60m bear crawl (90’’ rest)"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Band Power + Core",
+      "main": [
+        "Band punches 8x30’’",
+        "Face pulls 4x12",
+        "Hollow hold 4x25’’"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Active Recovery",
+      "main": [
+        "Walk 30’ ή εύκολο jog 15’ + mobility 10’"
+      ]
+    }
+  ],
+  "notes": "Στόχος: σταθερός ρυθμός στα 3’ γύρου, όχι ‘έκρηξη-νεκρός’."
+}

@@ -1,0 +1,62 @@
+{
+  "filename": "outdoorFightAdvanced2.json",
+  "title": "Fight Conditioning – Advanced Phase 8 (Speed-Endurance Builder)",
+  "level": "Advanced",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "outdoor",
+  "subcategory": "fight",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Σώμα",
+    "Λάστιχα",
+    "TRX",
+    "Kettlebell 4–6kg"
+  ],
+  "goal": "Αντοχή ταχύτητας και ικανότητα να ‘κρατάς’ εκρήξεις πολλαπλών γύρων.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "SE Repeats",
+      "warmup": [
+        "Jog 10’ + drills"
+      ],
+      "main": [
+        "5x300m @RPE8–8.5 με 2–3’ rest",
+        "Sprawls 5x12"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Rounds (2’ ON)",
+      "main": [
+        "6 γύροι: 2’ shadowboxing @RPE7–8 → 1’ rest"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Power Circuit B",
+      "main": [
+        "5 γύροι: 30’’ KB swings, 12 TRX rows, 12 push-ups handles, 60m bear crawl (90’’ rest)"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Band Power + Core",
+      "main": [
+        "Band punches 10x30’’",
+        "Face pulls 5x12",
+        "Hollow hold 4x30’’"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Recovery Run",
+      "main": [
+        "Jog 25’ @RPE5–6 + mobility 10’"
+      ]
+    }
+  ],
+  "notes": "Μείωσε 10–15% την ένταση αν έχεις διπλές προπονήσεις (σπάρινγκ)."
+}

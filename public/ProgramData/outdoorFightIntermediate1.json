@@ -1,0 +1,58 @@
+{
+  "filename": "outdoorFightIntermediate1.json",
+  "title": "Fight Conditioning – Intermediate Phase 4 (Strength-Endurance)",
+  "level": "Intermediate",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "outdoor",
+  "subcategory": "fight",
+  "daysPerWeek": 4,
+  "equipment": [
+    "Σώμα",
+    "Λάστιχα",
+    "TRX",
+    "Kettlebell 4–6kg"
+  ],
+  "goal": "Συνδυασμός κυκλικής δύναμης/αντοχής με τεχνικά διαλείμματα shadowboxing.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Circuit A",
+      "warmup": [
+        "Jog 8’ + mobility"
+      ],
+      "main": [
+        "4 γύροι: 12 KB swings, 12 TRX rows, 10 push-ups, 30’’ mountain climbers (60’’ rest)"
+      ],
+      "finisher": [
+        "Shadowboxing 4x1’ @RPE7"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Tempo Run + Drills",
+      "main": [
+        "Run 15’ steady @RPE6–7",
+        "Sprawls 6x8"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Band Power",
+      "main": [
+        "Band punches 6x30’’ (ισχύς)",
+        "Face pulls 4x12",
+        "Hollow hold 3x25’’"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Circuit B",
+      "main": [
+        "3 γύροι: 12 goblet squats (KB), 12 TRX knee tucks, 12 push-ups handles, 40m bear crawl"
+      ]
+    }
+  ],
+  "notes": "RPE 7. Αν αισθάνεσαι βαρύς, κόψε 1 γύρο από το circuit."
+}

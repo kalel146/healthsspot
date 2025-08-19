@@ -1,0 +1,21 @@
+{
+  "filename": "mobilityStretchingIntermediate2.json",
+  "title": "Stretching – Intermediate Phase 5 (Progressive Holds)",
+  "level": "Intermediate",
+  "phase": 5,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "mobility",
+  "subcategory": "stretching",
+  "daysPerWeek": 5,
+  "equipment": ["Στρώμα", "Ιμάντας", "Blocks"],
+  "goal": "Κρατήματα 45–50’’ σε μεγάλες μυϊκές ομάδες, έμφαση ισχία/ώμοι.",
+  "weeklySplit": [
+    {"day": "Day 1", "split": "Hamstrings/Calves", "main": ["Hamstring long‑lever 4x45’’/πόδι", "Calf step drop 4x45’’/πόδι"]},
+    {"day": "Day 2", "split": "Hip Flexors/Quads", "main": ["Couch stretch 4x45’’/πόδι", "Quad prone strap 4x45’’/πόδι"]},
+    {"day": "Day 3", "split": "Adductors/Glutes", "main": ["Frog 4x45’’", "Butterfly 3x45’’", "Figure‑4 3x45’’/πόδι"]},
+    {"day": "Day 4", "split": "Shoulders/Pecs", "main": ["Pec doorway (διαφορετικές γωνίες) 4x45’’/πλευρά", "Lat bench 4x45’’/πλευρά"]},
+    {"day": "Day 5", "split": "T‑spine/Reset", "main": ["T‑spine over block 4x45’’", "Child’s pose 3x45’’", "Breathing reset 2’"]}
+  ],
+  "notes": "Κράτα ουδέτερη λεκάνη στα ισχία· απόφυγε υπερέκταση στην οσφύ."
+}

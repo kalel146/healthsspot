@@ -1,0 +1,62 @@
+{
+  "filename": "outdoorFightAdvanced1.json",
+  "title": "Fight Conditioning – Advanced Phase 7 (Power Consolidation)",
+  "level": "Advanced",
+  "phase": 7,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "outdoor",
+  "subcategory": "fight",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Σώμα",
+    "Λάστιχα",
+    "TRX",
+    "Kettlebell 4–6kg"
+  ],
+  "goal": "Εδραίωση εκρηκτικής ισχύος και οικονομίας κίνησης σε ‘γύρους’.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Rounds: Power Mix",
+      "warmup": [
+        "Jog 10’ + δυναμικές"
+      ],
+      "main": [
+        "5 γύροι: 2’ shadowboxing (power entries) → 30’’ KB swings → 30’’ TRX rows → 1’ rest"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Speed Run",
+      "main": [
+        "10x150m @RPE8 (90’’ rest)"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Strength Circuit",
+      "main": [
+        "4 γύροι: 14 goblet squats, 14 push-ups handles, 40–60m bear crawl, 12 TRX row"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Band Power",
+      "main": [
+        "Band punches 10x30’’",
+        "Face pulls 5x12",
+        "Side plank 3x35’’/πλευρά"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Recovery + Tech",
+      "main": [
+        "Shadowboxing 6x2’ τεχνική",
+        "Mobility 10’"
+      ]
+    }
+  ],
+  "notes": "RPE 7–8. Διαχείριση ανάπαυσης: 60–90’’ στα circuits, 90’’–120’’ στα runs."
+}

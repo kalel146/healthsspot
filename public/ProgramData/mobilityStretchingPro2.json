@@ -1,0 +1,22 @@
+{
+  "filename": "mobilityStretchingPro2.json",
+  "title": "Stretching – Pro Phase 10 (Sport‑Specific Tapers)",
+  "level": "Pro",
+  "phase": 10,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "mobility",
+  "subcategory": "stretching",
+  "daysPerWeek": 6,
+  "equipment": ["Στρώμα", "Ιμάντας", "Blocks"],
+  "goal": "Λεπτομερής στόχευση ανά άθλημα (runner, swimmer, lifter) χωρίς δυναμικό loading.",
+  "weeklySplit": [
+    {"day": "Day 1", "split": "Runner Bias", "main": ["Calf wall/soleus 4x60’’/πόδι", "Hamstring long‑lever 4x55’’/πόδι", "Hip flexor couch 4x55’’/πόδι"]},
+    {"day": "Day 2", "split": "Swimmer Bias", "main": ["Pec doorway (3 γωνίες) 3x60’’/θέση", "Lat bench 4x60’’/πλευρά", "T‑spine over block 4x55’’"]},
+    {"day": "Day 3", "split": "Lifter Bias", "main": ["Hip flexor couch 4x60’’/πόδι", "Adductors frog 4x55’’", "Hamstring long‑lever 3x60’’/πόδι"]},
+    {"day": "Day 4", "split": "Neck/Scap Support", "main": ["Upper trap/levator 3x45’’/πλευρά", "Pec minor (doorway low) 3x55’’/πλευρά"]},
+    {"day": "Day 5", "split": "Global 55–60’’", "main": ["Child’s pose 3x60’’", "Breathing reset 3’"]},
+    {"day": "Day 6", "split": "Light Reset", "main": ["Επαναλήψεις θέσεων με 10–15% μικρότερη διάρκεια"]}
+  ],
+  "notes": "Μείωσε χρόνους 24–48 ώρες πριν από αγώνα ή μέγιστη προσπάθεια."
+}

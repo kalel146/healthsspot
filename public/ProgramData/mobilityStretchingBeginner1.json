@@ -1,0 +1,52 @@
+{
+  "filename": "mobilityStretchingBeginner1.json",
+  "title": "Stretching – Beginner Phase 1 (Foundations)",
+  "level": "Beginner",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "mobility",
+  "subcategory": "stretching",
+  "daysPerWeek": 3,
+  "equipment": ["Στρώμα", "Ιμάντας/Πετσέτα (optional)", "Yoga block (optional)"],
+  "goal": "Ήπια βελτίωση διατατικότητας, εκμάθηση σωστών θέσεων και αναπνοής.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Lower Body Focus",
+      "warmup": ["5’ χαλαρό περπάτημα ή bike"],
+      "main": [
+        "Calf stretch στον τοίχο 3x30’’/πόδι",
+        "Hamstring strap stretch (ύπτια) 3x30’’/πόδι",
+        "Hip flexor half‑kneeling 3x30’’/πόδι",
+        "Adductor (butterfly) 3x30’’"
+      ],
+      "cooldown": ["Ήρεμες αναπνοές 2’"]
+    },
+    {
+      "day": "Day 2",
+      "split": "Upper + T‑spine",
+      "warmup": ["5’ χαλαρή κίνηση ώμων/αγκώνα"],
+      "main": [
+        "Pec doorway stretch 3x30’’/πλευρά",
+        "Lat stretch σε πάγκο 3x30’’/πλευρά",
+        "Upper trap stretch 2x30’’/πλευρά",
+        "T‑spine extension over foam/rolled towel 3x30’’"
+      ],
+      "cooldown": ["Διαφραγματική αναπνοή 2’"]
+    },
+    {
+      "day": "Day 3",
+      "split": "Full Body Easy",
+      "warmup": ["3’ περπάτημα"],
+      "main": [
+        "Figure‑4 (piriformis) 3x30’’/πόδι",
+        "Quad stretch (standing) 3x30’’/πόδι",
+        "Child’s pose 3x30’’",
+        "Chest opener lying 2x30’’/πλευρά"
+      ],
+      "cooldown": ["Ελαφρύ shake‑out 1’"]
+    }
+  ],
+  "notes": "Ένταση ‘ήπιο τράβηγμα’, όχι πόνος. Σταθερή αναπνοή 4–6s in/out."
+}

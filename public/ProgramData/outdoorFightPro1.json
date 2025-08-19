@@ -1,0 +1,62 @@
+{
+  "filename": "outdoorFightPro1.json",
+  "title": "Fight Conditioning – Pro Phase 10 (Race-Ready)",
+  "level": "Pro",
+  "phase": 10,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "fight",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Σώμα",
+    "Λάστιχα",
+    "TRX",
+    "Kettlebell 4–6kg"
+  ],
+  "goal": "Ψηλή ετοιμότητα μάχης ερασιτέχνη: ταχύτητα, power, αντοχή γύρου, διαχείριση κόπωσης.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Power-Repeat B",
+      "warmup": [
+        "Jog 10’ + drills"
+      ],
+      "main": [
+        "10 γύροι: 10’’ bounds → 20’’ KB swings → 30’’ shadowboxing @RPE8–9 → 60–75’’ rest"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "SE Long",
+      "main": [
+        "4x400m @RPE8–8.5 (3’ rest)"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Strength Circuit C",
+      "main": [
+        "4 γύροι: 16 goblet squats, 14 TRX rows, 14 push-ups handles, 100m bear crawl"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Band Power + Core",
+      "main": [
+        "Band punches 12x30’’",
+        "Face pulls 5x12",
+        "Hollow hold 4x35’’"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Recovery/Tech",
+      "main": [
+        "Shadowboxing 10x2’ τεχνική",
+        "Mobility 12’"
+      ]
+    }
+  ],
+  "notes": "Στόχος: σταθερά split times στα runs, όχι ‘ξεπέτα’ στον 1ο γύρο."
+}

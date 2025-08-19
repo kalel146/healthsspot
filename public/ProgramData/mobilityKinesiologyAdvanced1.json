@@ -1,0 +1,21 @@
+{
+  "filename": "mobilityKinesiologyAdvanced1.json",
+  "title": "Kinesiology – Advanced Phase 7 (Dynamic Strength)",
+  "level": "Advanced",
+  "phase": 7,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "mobility",
+  "subcategory": "kinesiology",
+  "daysPerWeek": 5,
+  "equipment": ["Στρώμα", "Bands", "Stick", "Light DB"],
+  "goal": "Δύναμη και κινητικότητα σε δυναμικές ακολουθίες.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Cossack squat with DB 3x8/πλευρά", "Hip airplane hold 3x8/πόδι", "Shoulder banded rotation 3x12"]},
+    {"day": "Day 2", "main": ["Walking lunge rotation DB 3x10/πόδι", "Scapular push-up plus 3x12", "Dynamic adductor lunge 3x8"]},
+    {"day": "Day 3", "main": ["Pigeon lift-off weighted 3x6/πόδι", "Thoracic bridge with reach 3x8", "Balance airplane hold 3x15’’"]},
+    {"day": "Day 4", "main": ["Bear crawl row 3x15m", "Inchworm push-up cobra 3x10", "Neck resistance band 3x8"]},
+    {"day": "Day 5", "main": ["Single-leg RDL reach DB 3x8/πόδι", "Child’s pose lift-off 3x8", "Cat-cow banded 3x10"]}
+  ],
+  "notes": "Ελαφρά βάρη, έλεγχος κινήσεων."
+}

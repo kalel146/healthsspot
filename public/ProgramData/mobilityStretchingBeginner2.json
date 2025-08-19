@@ -1,0 +1,20 @@
+{
+  "filename": "mobilityStretchingBeginner2.json",
+  "title": "Stretching – Beginner Phase 2 (Consistency)",
+  "level": "Beginner",
+  "phase": 2,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "mobility",
+  "subcategory": "stretching",
+  "daysPerWeek": 4,
+  "equipment": ["Στρώμα", "Ιμάντας", "Yoga block (optional)"],
+  "goal": "Σταθεροποίηση ρουτίνας, ελαφρώς μεγαλύτερες διάρκειες/σετ.",
+  "weeklySplit": [
+    {"day": "Day 1", "split": "Posterior Chain", "main": ["Calf wall 3x35’’/πόδι", "Hamstring strap 3x35’’/πόδι", "Glute figure‑4 3x35’’/πόδι"]},
+    {"day": "Day 2", "split": "Anterior + Shoulders", "main": ["Hip flexor half‑kneel 3x35’’/πόδι", "Quad standing 3x35’’/πόδι", "Pec doorway 3x35’’/πλευρά"]},
+    {"day": "Day 3", "split": "T‑spine + Lats", "main": ["Lat bench stretch 3x35’’/πλευρά", "Child’s pose 3x35’’", "T‑spine extension 3x35’’"]},
+    {"day": "Day 4", "split": "Full Body", "main": ["Adductor butterfly 3x35’’", "Calf soleus (λυγισμένο γόνατο) 3x35’’/πόδι", "Upper trap 2x35’’/πλευρά"]}
+  ],
+  "notes": "Μείνε στο εύρος χωρίς αναπήδηση. Ίδια ένταση σε αμφότερες πλευρές."
+}

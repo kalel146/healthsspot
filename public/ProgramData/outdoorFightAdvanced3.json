@@ -1,0 +1,62 @@
+{
+  "filename": "outdoorFightAdvanced3.json",
+  "title": "Fight Conditioning – Advanced+ Phase 9 (Power-Repeat)",
+  "level": "Advanced+",
+  "phase": 9,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "outdoor",
+  "subcategory": "fight",
+  "daysPerWeek": 5,
+  "equipment": [
+    "Σώμα",
+    "Λάστιχα",
+    "TRX",
+    "Kettlebell 4–6kg"
+  ],
+  "goal": "Ικανότητα να επαναλαμβάνεις υψηλή ισχύ σε σύντομες εκρήξεις με σύντομα διαλείμματα.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Power-Repeat A",
+      "warmup": [
+        "Jog 10’ + δυναμικές"
+      ],
+      "main": [
+        "8 γύροι: 15’’ pogo/bounds → 15’’ KB swings → 30’’ shadowboxing power → 60’’ rest"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "SE Run",
+      "main": [
+        "6x200m @RPE9 με 2’ rest"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Circuit Strength/Grip",
+      "main": [
+        "4 γύροι: 14 goblet squats, 14 TRX rows, 20–30s hand gripper holds/πλευρά, 80m bear crawl"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Band Power",
+      "main": [
+        "Band punches 12x30’’",
+        "Face pulls 5x12",
+        "Side plank 3x40’’/πλευρά"
+      ]
+    },
+    {
+      "day": "Day 5",
+      "split": "Recovery + Tech",
+      "main": [
+        "Shadowboxing 8x2’ τεχνική @RPE6",
+        "Mobility 10’"
+      ]
+    }
+  ],
+  "notes": "Κράτα ποιότητα κίνησης. Αν χαλάσει τεχνική, αύξησε το διάλειμμα."
+}

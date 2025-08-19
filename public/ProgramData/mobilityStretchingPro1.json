@@ -1,0 +1,22 @@
+{
+  "filename": "mobilityStretchingPro1.json",
+  "title": "Stretching – Pro Phase 9 (High Compliance)",
+  "level": "Pro",
+  "phase": 9,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "mobility",
+  "subcategory": "stretching",
+  "daysPerWeek": 6,
+  "equipment": ["Στρώμα", "Ιμάντας", "Blocks"],
+  "goal": "Υψηλή συμμόρφωση (6/7), λεπτομέρεια θέσεων, έλεγχος λεκάνης/ωμοπλάτης.",
+  "weeklySplit": [
+    {"day": "Day 1", "split": "Posterior 60’’", "main": ["Hamstring long‑lever 4x60’’/πόδι", "Calf step drop 4x60’’/πόδι"]},
+    {"day": "Day 2", "split": "Anterior 60’’", "main": ["Couch stretch 4x60’’/πόδι", "Quad prone strap 4x60’’/πόδι"]},
+    {"day": "Day 3", "split": "Hips/Adductors 60’’", "main": ["Frog 4x60’’", "Pigeon (ήπιο) 3x60’’/πόδι"]},
+    {"day": "Day 4", "split": "Shoulders/Lats 60’’", "main": ["Pec doorway (3 γωνίες) 3x60’’/θέση", "Lat bench 4x60’’/πλευρά"]},
+    {"day": "Day 5", "split": "T‑spine/Neck", "main": ["T‑spine over block 4x60’’", "Upper trap/levator 3x45’’/πλευρά"]},
+    {"day": "Day 6", "split": "Global Reset", "main": ["Child’s pose 3x60’’", "Breathing reset 3’"]}
+  ],
+  "notes": "Στόχευσε συμμετρία L/R < 10%. Κράτα σημειώσεις για αισθητή βελτίωση εύρους."
+}

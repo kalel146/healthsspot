@@ -1,0 +1,20 @@
+{
+  "filename": "mobilityStretchingBeginner3.json",
+  "title": "Stretching – Beginner+ Phase 3 (Time‑Under‑Stretch)",
+  "level": "Beginner+",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "mobility",
+  "subcategory": "stretching",
+  "daysPerWeek": 4,
+  "equipment": ["Στρώμα", "Ιμάντας", "2 x Yoga blocks"],
+  "goal": "Μεγαλύτερα κρατήματα και οργάνωση ανά ζώνη.",
+  "weeklySplit": [
+    {"day": "Day 1", "split": "Hamstrings + Calves", "main": ["Hamstring elevated heel 4x35–40’’/πόδι", "Calf step drop 4x35–40’’/πόδι"]},
+    {"day": "Day 2", "split": "Hip Flexors + Quads", "main": ["Couch stretch 4x35–40’’/πόδι", "Quad prone (strap) 3x40’’/πόδι"]},
+    {"day": "Day 3", "split": "Glutes + Adductors", "main": ["Figure‑4 4x35–40’’/πόδι", "Frog stretch (ήπιο) 3x40’’"]},
+    {"day": "Day 4", "split": "Shoulders + T‑spine", "main": ["Pec doorway 4x35–40’’/πλευρά", "Lat bench 4x35’’/πλευρά", "T‑spine over block 3x40’’"]}
+  ],
+  "notes": "Διατηρείς χαλαρό πρόσωπο/σώμα. Σταμάτα αν ‘καίει’ άρθρωση."
+}

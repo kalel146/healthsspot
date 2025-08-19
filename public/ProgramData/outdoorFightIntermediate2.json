@@ -1,0 +1,60 @@
+{
+  "filename": "outdoorFightIntermediate2.json",
+  "title": "Fight Conditioning – Intermediate Phase 5 (Power + Aerobic Mix)",
+  "level": "Intermediate",
+  "phase": 5,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "outdoor",
+  "subcategory": "fight",
+  "daysPerWeek": 4,
+  "equipment": [
+    "Σώμα",
+    "Λάστιχα",
+    "TRX",
+    "Kettlebell 4–6kg"
+  ],
+  "goal": "Πιο εκρηκτικά κομμάτια με ελεγχόμενο αερόβιο υπόβαθρο.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "split": "Power + Shadows",
+      "warmup": [
+        "Jog 8’ + δυναμικές"
+      ],
+      "main": [
+        "Pogo→bounds 5x12m",
+        "KB swings 5x12",
+        "TRX row 4x12"
+      ],
+      "finisher": [
+        "Shadowboxing 4x2’ @RPE7"
+      ]
+    },
+    {
+      "day": "Day 2",
+      "split": "Intervals",
+      "main": [
+        "12x30’’ run / 30’’ walk",
+        "Sprawls 6x10"
+      ]
+    },
+    {
+      "day": "Day 3",
+      "split": "Band/Push",
+      "main": [
+        "Band punches 6x30’’",
+        "Push-ups handles 5x12",
+        "Side plank 3x30’’/πλευρά"
+      ]
+    },
+    {
+      "day": "Day 4",
+      "split": "Circuit Conditioning",
+      "main": [
+        "4 γύροι: 14 goblet squats, 12 TRX rows, 12 push-ups, 40m bear crawl (60–75’’ rest)"
+      ]
+    }
+  ],
+  "notes": "Κράτα εκρηκτικό ρυθμό στα πρώτα 10–15’’ κάθε διαστήματος."
+}

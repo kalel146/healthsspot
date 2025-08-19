@@ -1,0 +1,21 @@
+{
+  "filename": "mobilityKinesiologyIntermediate3.json",
+  "title": "Kinesiology – Intermediate+ Phase 6 (End-Range Strength)",
+  "level": "Intermediate+",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "mobility",
+  "subcategory": "kinesiology",
+  "daysPerWeek": 5,
+  "equipment": ["Στρώμα", "Bands", "Stick"],
+  "goal": "Ενδυνάμωση άκρων εύρους και proprioception.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Cossack squat hold with lift 3x20’’/πλευρά", "Hip CARs 3x6/πλευρά", "Shoulder external rotation lift 3x10"]},
+    {"day": "Day 2", "main": ["Ankle mobility lift with weight 3x10/πόδι", "Thoracic bridge dynamic 3x8", "Balance airplane reach 3x8"]},
+    {"day": "Day 3", "main": ["Pigeon isometric 3x15’’/πόδι", "Scapular wall walk 3x8", "Cat-cow resisted band 3x10"]},
+    {"day": "Day 4", "main": ["Reverse lunge rotation 3x10/πόδι", "Neck isometric holds 3x15’’/θέση", "Single-leg Y-balance 3x6"]},
+    {"day": "Day 5", "main": ["Bear crawl with band 3x15m", "Inchworm push-up cobra 3x8", "Child’s pose lift 3x8"]}
+  ],
+  "notes": "Ενεργοποίηση σε άκρες θέσεις, χωρίς πόνο."
+}

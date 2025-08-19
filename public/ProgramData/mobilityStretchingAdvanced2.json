@@ -1,0 +1,21 @@
+{
+  "filename": "mobilityStretchingAdvanced2.json",
+  "title": "Stretching – Advanced Phase 8 (Targeted Bias)",
+  "level": "Advanced",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "mobility",
+  "subcategory": "stretching",
+  "daysPerWeek": 5,
+  "equipment": ["Στρώμα", "Ιμάντας", "Blocks"],
+  "goal": "Στοχευμένη έμφαση σε αδύναμες ζώνες (bias days) κρατώντας ολοκληρωμένη κάλυψη.",
+  "weeklySplit": [
+    {"day": "Day 1", "split": "Hamstrings Bias", "main": ["Hamstring long‑lever 5x55’’/πόδι", "Calf wall 3x55’’/πόδι"]},
+    {"day": "Day 2", "split": "Hip Flexors Bias", "main": ["Couch stretch 5x55’’/πόδι", "Quad prone strap 3x55’’/πόδι"]},
+    {"day": "Day 3", "split": "Shoulders/Pecs Bias", "main": ["Pec doorway high/low 5x55’’/θέση", "Lat bench 3x55’’/πλευρά"]},
+    {"day": "Day 4", "split": "Adductors/Glutes", "main": ["Frog 4x55’’", "Figure‑4 4x55’’/πόδι"]},
+    {"day": "Day 5", "split": "T‑spine + Global", "main": ["T‑spine over block 4x55’’", "Child’s pose 3x60’’"]}
+  ],
+  "notes": "Στις bias μέρες, κάνε μικρά ‘λιώματα’ χρόνου, όχι βαθύτερο εύρος με πόνο."
+}

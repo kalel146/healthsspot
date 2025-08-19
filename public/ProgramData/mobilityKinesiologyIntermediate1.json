@@ -1,0 +1,20 @@
+{
+  "filename": "mobilityKinesiologyIntermediate1.json",
+  "title": "Kinesiology – Intermediate Phase 4 (Dynamic Control)",
+  "level": "Intermediate",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "mobility",
+  "subcategory": "kinesiology",
+  "daysPerWeek": 4,
+  "equipment": ["Στρώμα", "Ιμάντας", "Mini band"],
+  "goal": "Βελτίωση κινητικού ελέγχου με μεγαλύτερη ένταση.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Lateral lunge mobility 3x10/πόδι", "Hip 90-90 transitions 3x8/πλευρά", "Scap push-ups 3x12"]},
+    {"day": "Day 2", "main": ["Dynamic adductor rock 3x12/πλευρά", "World’s greatest stretch with rotation 3x8/πλευρά", "Neck isometrics 3x20’’"]},
+    {"day": "Day 3", "main": ["Banded shoulder dislocates 3x10", "Hip airplane 3x8/πόδι", "Dynamic calf stretch on step 3x12"]},
+    {"day": "Day 4", "main": ["Cossack squat mobility 3x8/πλευρά", "Inchworm push-up cobra 3x8", "Single-leg balance reach 3x10"]}
+  ],
+  "notes": "Αποφυγή υπερέκτασης οσφύος – διατήρηση ουδέτερης σπονδυλικής."
+}
