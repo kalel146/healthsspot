@@ -1,0 +1,22 @@
+{
+  "filename": "athletismSoccerElite7.json",
+  "title": "Soccer Elite – Phase 7 (Power-Endurance Integration)",
+  "level": "Elite",
+  "phase": 7,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "soccer",
+  "daysPerWeek": 6,
+  "equipment": ["Barbell", "Γήπεδο"],
+  "goal": "Συνδυασμός ισχύος με αντοχή σε αγωνιστικό ρυθμό.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Complex training (Squat + Jump) 4x6"]},
+    {"day": "Day 2", "main": ["Sprint intervals 12x150m"]},
+    {"day": "Day 3", "main": ["Strength: Bench 3x5, RDL 3x6"]},
+    {"day": "Day 4", "main": ["Cone agility + sprints 10x20m"]},
+    {"day": "Day 5", "main": ["Mixed intervals (200m run + 10 push-ups) x10"]},
+    {"day": "Day 6", "main": ["Mobility & Recovery"]}
+  ],
+  "notes": "Blend of power + endurance."
+}

@@ -1,0 +1,21 @@
+{
+  "filename": "mobilityInjuryManagementAdvanced2.json",
+  "title": "Injury Management – Advanced Phase 8 (Load Integration)",
+  "level": "Advanced",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "mobility",
+  "subcategory": "injury_management",
+  "daysPerWeek": 5,
+  "equipment": ["Mini band", "Light DB/Kettlebell"],
+  "goal": "Ένταξη ελαφρού φορτίου σε ασφαλές εύρος κίνησης.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Reverse lunge to step-up 3x8/πόδι", "Ankle dorsiflexion με KB stretch 3x8", "Scapular pull-aparts 3x12"]},
+    {"day": "Day 2", "main": ["Cossack με KB 3x8/πλευρά", "Hamstring slider 3x8 (αν δικέφαλος ok)", "Pallof press 3x10"]},
+    {"day": "Day 3", "main": ["Hip hinge KB 3x8 (ήπιο)", "Row moderate 3x10", "Bird-dog 3x10/πλευρά"]},
+    {"day": "Day 4", "main": ["Step-down μεσαίο 3x8/πόδι", "Shoulder ER/IR band 3x12", "Neck isometrics 3x20’’"]},
+    {"day": "Day 5", "main": ["Global mobility 15’"]}
+  ],
+  "notes": "Πρόοδος φορτίου μόνο χωρίς συμπτωματολογία την επόμενη μέρα."
+}

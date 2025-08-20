@@ -1,0 +1,21 @@
+{
+  "filename": "mobilityInjuryManagementIntermediate3.json",
+  "title": "Injury Management – Intermediate+ Phase 6 (End-Range Control)",
+  "level": "Intermediate+",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "mobility",
+  "subcategory": "injury_management",
+  "daysPerWeek": 5,
+  "equipment": ["Mini band", "Light DB"],
+  "goal": "Έλεγχος στα τελικά εύρη και πρόπλασμα λειτουργικών φορτίων.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Hip 90/90 lift-offs 3x6/πλευρά", "Ankle closed-chain dorsiflexion 3x10", "Scap wall walk 3x8"]},
+    {"day": "Day 2", "main": ["Step-down μικρό 3x8/πόδι", "Row light/ER 3x12 (ώμος)", "Dead bug 3x10"]},
+    {"day": "Day 3", "main": ["Lateral lunge partial 3x8/πλευρά", "Heel-to-toe walk 3x15m", "Neck isometric holds 3x20’’"]},
+    {"day": "Day 4", "main": ["Thoracic bridge με reach 3x8", "Hamstring slider partial 2x8 (αν δικέφαλος ok)", "Bird-dog 3x8/πλευρά"]},
+    {"day": "Day 5", "main": ["Global mobility 15’"]}
+  ],
+  "notes": "Κράτα RPE χαμηλά–μέτρια. Στόχος ομαλό pattern, όχι ένταση."
+}

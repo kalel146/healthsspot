@@ -1,0 +1,21 @@
+{
+  "filename": "athletismSoccerElite1.json",
+  "title": "Soccer Elite – Phase 1 (Neuromuscular Foundation)",
+  "level": "Elite",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "soccer",
+  "daysPerWeek": 5,
+  "equipment": ["Γήπεδο", "Στρώμα", "DB", "Bands"],
+  "goal": "Νευρομυϊκή ενεργοποίηση – core stability – injury prevention.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Glute activation 3x12", "Single-leg balance drills 3x30''/πόδι", "Short sprints 8x15m"]},
+    {"day": "Day 2", "main": ["Core anti-rotation drills 3x12", "Deceleration mechanics 6x20m", "Lateral shuffle 3x20m"]},
+    {"day": "Day 3", "main": ["Strength (DL, Squat, Bench) 4x6 μέτριο βάρος"]},
+    {"day": "Day 4", "main": ["Agility ladder 4x20’’, Cone drills 6x20m"]},
+    {"day": "Day 5", "main": ["Interval runs 8x100m σε 70%", "Mobility flow 15’"]}
+  ],
+  "notes": "Στόχος: solid base, injury-free build up."
+}

@@ -1,0 +1,20 @@
+{
+  "filename": "athletismSoccerElite10.json",
+  "title": "Soccer Elite – Phase 10 (In-Season Maintenance)",
+  "level": "Elite",
+  "phase": 10,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "soccer",
+  "daysPerWeek": 4,
+  "equipment": ["Γήπεδο", "Light weights"],
+  "goal": "Διατήρηση απόδοσης – injury prevention in-season.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Strength maintenance 2x5"]},
+    {"day": "Day 2", "main": ["Sprint 6x20m"]},
+    {"day": "Day 3", "main": ["Agility + ball drills"]},
+    {"day": "Day 4", "main": ["Mobility & Recovery"]}
+  ],
+  "notes": "Συντήρηση – focus στα matches."
+}

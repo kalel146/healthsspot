@@ -1,0 +1,22 @@
+{
+  "filename": "athletismSoccerElite5.json",
+  "title": "Soccer Elite – Phase 5 (Anaerobic Conditioning)",
+  "level": "Elite",
+  "phase": 5,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "soccer",
+  "daysPerWeek": 6,
+  "equipment": ["Γήπεδο", "RowErg", "BikeErg"],
+  "goal": "Βελτίωση anaerobic threshold και lactate clearance.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["4x4min @90% VO2max, rest 3’"]},
+    {"day": "Day 2", "main": ["Strength 3x5 στα βασικά lifts"]},
+    {"day": "Day 3", "main": ["Sprint intervals 12x200m"]},
+    {"day": "Day 4", "main": ["BikeErg sprints 10x20’’"]},
+    {"day": "Day 5", "main": ["RowErg intervals 6x500m"]},
+    {"day": "Day 6", "main": ["Agility + Ball drills"]}
+  ],
+  "notes": "Conditioning με βάση game demands."
+}

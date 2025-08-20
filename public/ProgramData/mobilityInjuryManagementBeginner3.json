@@ -1,0 +1,20 @@
+{
+  "filename": "mobilityInjuryManagementBeginner3.json",
+  "title": "Injury Management – Beginner+ Phase 3 (Assisted Mobility)",
+  "level": "Beginner+",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "mobility",
+  "subcategory": "injury_management",
+  "daysPerWeek": 4,
+  "equipment": ["Στρώμα", "Ιμάντας", "Mini band", "Blocks"],
+  "goal": "Βελτίωση AROM με υποβοήθηση και έναρξη proprioception.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Assisted AROM 3x10 στην άρθρωση στόχο", "Ankle/hip/knee step-ups χαμηλά 2x8/πόδι (αν επιτρεπτό)", "Scapula clocks 3x8"]},
+    {"day": "Day 2", "main": ["90/90 hip transitions 3x6/πλευρά", "Pelvic tilts + cat-cow 3x8", "Neck isometrics 3x15’’"]},
+    {"day": "Day 3", "main": ["Banded gentle rows 2x12 (αν ώμος/δικέφαλος)", "Heel raises 2x12 (αν ποδοκνημική)", "Terminal knee ext με band 2x12 (αν γόνατο)"]},
+    {"day": "Day 4", "main": ["Global mobility flow χαμηλής έντασης 12’"]}
+  ],
+  "notes": "Απόφυγε συμπτώματα >3/10. Διατήρησε συμμετρία όπου είναι ασφαλές."
+}

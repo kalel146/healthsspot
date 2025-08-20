@@ -1,0 +1,22 @@
+{
+  "filename": "mobilityInjuryManagementPro2.json",
+  "title": "Injury Management – Pro Phase 10 (Return-to-Play Prep)",
+  "level": "Pro",
+  "phase": 10,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "mobility",
+  "subcategory": "injury_management",
+  "daysPerWeek": 6,
+  "equipment": ["Mini band", "KB/DB"],
+  "goal": "Τελική προετοιμασία κινητικότητας/ελέγχου πριν από υψηλότερες απαιτήσεις.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Split squat σε πλήρες ανώδυνο εύρος 3x10/πόδι", "Hip airplane 3x8/πόδι", "Scap pull-up 3x8"]},
+    {"day": "Day 2", "main": ["Cossack πλήρες 3x8/πλευρά", "Single-leg heel raise 3x12", "Dead bug reach 3x12"]},
+    {"day": "Day 3", "main": ["Step-down ελεγχόμενο 3x10/πόδι", "Row moderate 3x12", "Side plank 3x30’’"]},
+    {"day": "Day 4", "main": ["Lateral lunge πλήρες 3x10/πλευρά", "Thoracic bridge 3x10", "Neck rotations 3x8"]},
+    {"day": "Day 5", "main": ["Hip hinge KB 3x10", "Ankle dorsiflexion loaded 3x10", "Pallof press 3x12"]},
+    {"day": "Day 6", "main": ["Global mobility 15’"]}
+  ],
+  "notes": "Κριτήρια μετάβασης: πόνος ≤2/10, μη επιδείνωση 24h, συμμετρικά patterns. Τελική έγκριση θεραπευτή."
+}

@@ -1,0 +1,20 @@
+{
+  "filename": "mobilityInjuryManagementIntermediate2.json",
+  "title": "Injury Management – Intermediate Phase 5 (Strengthened Mobility)",
+  "level": "Intermediate",
+  "phase": 5,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Silver",
+  "category": "mobility",
+  "subcategory": "injury_management",
+  "daysPerWeek": 4,
+  "equipment": ["Mini band", "Light DB/Kettlebell", "Stick"],
+  "goal": "Συνδυασμός ελεγχόμενης κινητικότητας με ελαφριά ενδυνάμωση.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Reverse lunge to knee drive 3x8/πόδι (αν γόνατο/ισχίο ok)", "Ankle dorsiflexion lift 3x8", "Scap push-up plus 3x12"]},
+    {"day": "Day 2", "main": ["Hip airplane υποβοηθ. 3x6/πόδι", "Row light 2x12 (αν ώμος/δικέφαλος ok)", "Side plank knees 3x20’’"]},
+    {"day": "Day 3", "main": ["Cossack partial 3x8/πλευρά", "Heel raise single 3x10 (ποδοκνημική)", "Pallof press light 2x12"]},
+    {"day": "Day 4", "main": ["Global controlled flow 15’"]}
+  ],
+  "notes": "Αποφυγή κόπωσης που αλλάζει κίνηση. Προτεραιότητα τεχνική."
+}

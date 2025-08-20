@@ -1,0 +1,22 @@
+{
+  "filename": "athletismSoccerElite8.json",
+  "title": "Soccer Elite – Phase 8 (Game Speed Specificity)",
+  "level": "Elite",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "soccer",
+  "daysPerWeek": 6,
+  "equipment": ["Γήπεδο", "Ball", "Cones"],
+  "goal": "Απόλυτη εξειδίκευση στο game speed και tactical fitness.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Sprint + ball pass 12x20m"]},
+    {"day": "Day 2", "main": ["Agility cone + shot 10x"]},
+    {"day": "Day 3", "main": ["Strength maintenance 3x5"]},
+    {"day": "Day 4", "main": ["Shuttle + dribble 8x20m"]},
+    {"day": "Day 5", "main": ["High-intensity game simulation 2x15min"]},
+    {"day": "Day 6", "main": ["Active recovery"]}
+  ],
+  "notes": "Game-like training emphasis."
+}

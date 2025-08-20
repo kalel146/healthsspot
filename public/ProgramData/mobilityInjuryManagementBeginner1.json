@@ -1,0 +1,32 @@
+{
+  "filename": "mobilityInjuryManagementBeginner1.json",
+  "title": "Injury Management – Beginner Phase 1 (Tissue Tolerance Intro)",
+  "level": "Beginner",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Free",
+  "category": "mobility",
+  "subcategory": "injury_management",
+  "daysPerWeek": 3,
+  "equipment": ["Στρώμα", "Ιμάντας/Πετσέτα", "Μαλακό block"],
+  "goal": "Ήπια επαναφορά ανοχής ιστών και αρθρικού εύρους χωρίς πόνο.",
+  "weeklySplit": [
+    {
+      "day": "Day 1",
+      "warmup": ["Αναπνοή 90/90 2’", "Περπάτημα 5’–χωρίς πόνο"],
+      "main": [
+        "Αν ποδοκνημική: ankle pumps 3x15/πόδι",
+        "Αν γόνατο: heel slides 3x12/πόδι",
+        "Αν ισχίο: hip ER/IR σε κάθισμα 3x10/πλευρά",
+        "Αν ώμος: scapular clocks (στον τοίχο) 3x8",
+        "Αν δικέφαλος: wrist/elbow gentle flex-ext 3x10",
+        "Αν μέση: pelvic tilts 3x10",
+        "Αν αυχένας: chin tucks 3x8"
+      ],
+      "cooldown": ["Ήπια διατάσεις πόνου ≤2/10: 2x20’’/θέση"]
+    },
+    {"day": "Day 2", "warmup": ["Κύκλοι αρθρώσεων 3’"], "main": ["Isometrics χαμηλής έντασης στην περιοχή 3x10’’", "Απαλές ολισθήσεις νεύρων (νευροδυναμική) 2x6"], "cooldown": ["Αναπνοή 2’"]},
+    {"day": "Day 3", "warmup": ["Περπάτημα 5’"], "main": ["Global mobility: cat-cow 3x6, open book 3x6/πλευρά, ankle rocks 3x10"], "cooldown": ["Ήπιο stretching 10’ σύνολο"]}
+  ],
+  "notes": "Σταμάτα οποιαδήποτε άσκηση που αυξάνει συμπτώματα. Επικύρωση από θεραπευτή πριν από αύξηση φόρτου."
+}

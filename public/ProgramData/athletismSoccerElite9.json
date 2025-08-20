@@ -1,0 +1,21 @@
+{
+  "filename": "athletismSoccerElite9.json",
+  "title": "Soccer Elite – Phase 9 (Peak Performance Taper)",
+  "level": "Elite",
+  "phase": 9,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "soccer",
+  "daysPerWeek": 5,
+  "equipment": ["Γήπεδο", "Barbell"],
+  "goal": "Tapering για peak performance (match ready).",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Squat 3x3 light-moderate"]},
+    {"day": "Day 2", "main": ["Sprint 8x20m @95%"]},
+    {"day": "Day 3", "main": ["Agility + ball drills"]},
+    {"day": "Day 4", "main": ["Light upper body 3x5"]},
+    {"day": "Day 5", "main": ["Short intense game sim 2x10min"]}
+  ],
+  "notes": "Λιγότερος όγκος – υψηλή ποιότητα."
+}

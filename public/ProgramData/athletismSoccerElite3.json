@@ -1,0 +1,21 @@
+{
+  "filename": "athletismSoccerElite3.json",
+  "title": "Soccer Elite – Phase 3 (Explosive Power)",
+  "level": "Elite",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "soccer",
+  "daysPerWeek": 5,
+  "equipment": ["Barbell", "Boxes", "Γήπεδο"],
+  "goal": "Ανάπτυξη εκρηκτικής δύναμης – vertical & horizontal.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Power clean 5x3", "Broad jumps 5x5", "Acceleration sprints 8x20m"]},
+    {"day": "Day 2", "main": ["Plyometric lunges 4x8", "Cone shuttle 6x20m"]},
+    {"day": "Day 3", "main": ["Front squat 4x6", "Push press 4x6"]},
+    {"day": "Day 4", "main": ["Resisted sprints 8x20m", "Agility ladder 6x20’’"]},
+    {"day": "Day 5", "main": ["Tempo intervals 8x150m"]}
+  ],
+  "notes": "Εκρηκτικότητα → agility → game speed."
+}

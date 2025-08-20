@@ -1,0 +1,20 @@
+{
+  "filename": "mobilityInjuryManagementIntermediate1.json",
+  "title": "Injury Management – Intermediate Phase 4 (Neuromuscular Control)",
+  "level": "Intermediate",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Bronze",
+  "category": "mobility",
+  "subcategory": "injury_management",
+  "daysPerWeek": 4,
+  "equipment": ["Στρώμα", "Mini band", "Stick"],
+  "goal": "Ενίσχυση ελέγχου και σταθεροποίησης σε λειτουργικά μοτίβα.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Split-stance weight shift 3x8/πόδι", "Hip hinge με stick 3x10", "Scapular wall slides 3x10"]},
+    {"day": "Day 2", "main": ["Step-up χαμηλό 3x8/πόδι (αν επιτρεπτό)", "Banded ER/IR 3x12 (ώμος)", "McGill curl-up 3x8 (μέση)"]},
+    {"day": "Day 3", "main": ["Cossack easy 2x8/πλευρά (αν ισχίο/γόνατο ok)", "Heel-to-toe balance 3x20’’/πόδι", "Neck controlled rotations 3x6"]},
+    {"day": "Day 4", "main": ["Global mobility 15’ με έμφαση στο πάσχον σύστημα"]}
+  ],
+  "notes": "Πρόοδος μόνο με καλό control και σταθερά χαμηλό πόνο."
+}

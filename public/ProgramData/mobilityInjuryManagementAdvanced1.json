@@ -1,0 +1,21 @@
+{
+  "filename": "mobilityInjuryManagementAdvanced1.json",
+  "title": "Injury Management – Advanced Phase 7 (Functional Mobility)",
+  "level": "Advanced",
+  "phase": 7,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Gold",
+  "category": "mobility",
+  "subcategory": "injury_management",
+  "daysPerWeek": 5,
+  "equipment": ["Mini band", "Light DB/Kettlebell"],
+  "goal": "Λειτουργικά μοτίβα με έλεγχο—προετοιμασία επανένταξης.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Split squat partial 3x8/πόδι", "Hip airplane 3x6/πόδι", "Scap push-up plus 3x12"]},
+    {"day": "Day 2", "main": ["Cossack to stand 3x6/πλευρά", "Single-leg heel raise 3x10", "Dead bug reach 3x10"]},
+    {"day": "Day 3", "main": ["Step-up μεσαίο 3x8/πόδι", "Row moderate 3x10 (αν ώμος ok)", "Side plank 3x25’’"]},
+    {"day": "Day 4", "main": ["Lateral lunge 3x8/πλευρά", "Thoracic bridge 3x8", "Neck controlled rotations 3x6"]},
+    {"day": "Day 5", "main": ["Global mobility 15’"]}
+  ],
+  "notes": "Συνεχής αξιολόγηση συμπτωμάτων πριν/μετά. Προσαρμογή όγκου."
+}

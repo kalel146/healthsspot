@@ -1,0 +1,22 @@
+{
+  "filename": "mobilityInjuryManagementPro1.json",
+  "title": "Injury Management – Pro Phase 9 (Return-to-Train Control)",
+  "level": "Pro",
+  "phase": 9,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "mobility",
+  "subcategory": "injury_management",
+  "daysPerWeek": 6,
+  "equipment": ["Mini band", "KB/DB"],
+  "goal": "Υψηλή συμμόρφωση και έλεγχος κινητικότητας πριν την επανένταξη.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Split squat 3x10/πόδι", "Hip airplane 3x8/πόδι", "Scapular wall walk 3x8"]},
+    {"day": "Day 2", "main": ["Cossack 3x8/πλευρά", "Single-leg heel raise 3x12", "Dead bug 3x12"]},
+    {"day": "Day 3", "main": ["Step-up υψηλότερο 3x8/πόδι", "Row moderate 3x12", "Side plank 3x30’’"]},
+    {"day": "Day 4", "main": ["Lateral lunge 3x10/πλευρά", "Thoracic bridge reach 3x10", "Neck rotations 3x8"]},
+    {"day": "Day 5", "main": ["Hip hinge KB 3x10", "Ankle dorsiflexion loaded 3x10", "Pallof press 3x12"]},
+    {"day": "Day 6", "main": ["Global mobility 15’"]}
+  ],
+  "notes": "Συνεργασία με φυσιοθεραπευτή για πράσινο φως προπόνησης."
+}

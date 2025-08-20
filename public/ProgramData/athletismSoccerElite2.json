@@ -1,0 +1,21 @@
+{
+  "filename": "athletismSoccerElite2.json",
+  "title": "Soccer Elite – Phase 2 (Strength & Stability)",
+  "level": "Elite",
+  "phase": 2,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "soccer",
+  "daysPerWeek": 5,
+  "equipment": ["Barbell", "DB", "Kettlebell", "Γήπεδο"],
+  "goal": "Ανάπτυξη βασικής δύναμης και σταθερότητας.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Back squat 5x5", "Hip thrust 4x8", "Nordic curls 3x6"]},
+    {"day": "Day 2", "main": ["Change of direction 6x20m", "Plyo push-ups 4x8"]},
+    {"day": "Day 3", "main": ["Deadlift 5x5", "Bulgarian split squat 3x8/πόδι"]},
+    {"day": "Day 4", "main": ["Cone agility drills 8x20m", "Core carries 3x30m"]},
+    {"day": "Day 5", "main": ["Tempo runs 10x200m @75%"]}
+  ],
+  "notes": "Επικέντρωση σε posterior chain + injury prevention."
+}

@@ -1,0 +1,22 @@
+{
+  "filename": "athletismSoccerElite4.json",
+  "title": "Soccer Elite – Phase 4 (Speed Endurance)",
+  "level": "Elite",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "soccer",
+  "daysPerWeek": 6,
+  "equipment": ["Γήπεδο", "Sled"],
+  "goal": "Αντοχή στην ταχύτητα και recovery efficiency.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Sprint 10x30m @95%", "Walk back recovery"]},
+    {"day": "Day 2", "main": ["Strength maintenance: Squat 3x5, Bench 3x5"]},
+    {"day": "Day 3", "main": ["Sprint repeat 12x40m @90%"]},
+    {"day": "Day 4", "main": ["Agility cone drills 8x20m"]},
+    {"day": "Day 5", "main": ["Sled pushes 8x20m"]},
+    {"day": "Day 6", "main": ["Tempo runs 12x100m"]}
+  ],
+  "notes": "Βελτίωση high-intensity repeatability."
+}

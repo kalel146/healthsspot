@@ -1,0 +1,22 @@
+{
+  "filename": "athletismSoccerElite6.json",
+  "title": "Soccer Elite – Phase 6 (High-Intensity Agility)",
+  "level": "Elite",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "soccer",
+  "daysPerWeek": 6,
+  "equipment": ["Γήπεδο", "Agility ladder", "Cones"],
+  "goal": "Agility σε υψηλή ένταση με μπάλα & αλλαγές κατεύθυνσης.",
+  "weeklySplit": [
+    {"day": "Day 1", "main": ["Agility ladder 10x20’’", "Cone weave 6x20m"]},
+    {"day": "Day 2", "main": ["Sprint 8x40m + Ball control"]},
+    {"day": "Day 3", "main": ["Strength: Deadlift 3x5, Split squat 3x6"]},
+    {"day": "Day 4", "main": ["Agility reaction drills (partner) 10x15s"]},
+    {"day": "Day 5", "main": ["Shuttle runs 12x20m"]},
+    {"day": "Day 6", "main": ["Ball dribble drills high speed"]}
+  ],
+  "notes": "Agility + sport-specific skill integration."
+}
