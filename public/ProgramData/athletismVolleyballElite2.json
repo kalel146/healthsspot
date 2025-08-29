@@ -1,0 +1,22 @@
+{
+  "filename": "athletismVolleyballElite2.json",
+  "title": "Volleyball Elite – Phase 2 (Accel Approach & Strength)",
+  "level": "Elite/Pro",
+  "phase": 2,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "volleyball",
+  "daysPerWeek": 6,
+  "equipment": ["Barbell", "Court", "Bands", "Med‑ball"],
+  "goal": "Ταχύτερη προσέγγιση, σταθερό plant, αύξηση δύναμης.",
+  "schedule": [
+    {"day": "Session 1", "type": "Track/Court – Approach Speed", "warmup": ["Wickets 2x20m", "A‑switch 2x20m"], "main": ["3‑step approach to submax jump 6x", "Approach sprints 8x15m", "Decel to plant 6x10m"], "cooldown": ["HS/calf 2x40’’"]},
+    {"day": "Session 2", "type": "Gym – Max Strength", "warmup": ["RAMP 8’"], "main": ["Back Squat 5x3 @RPE8", "Bench Press 4x4", "Weighted pull‑ups 4x4", "Nordic 3x3"], "cooldown": ["Breathing 2’"]},
+    {"day": "Session 3", "type": "Court – Blocking Footwork", "warmup": ["Mini‑hurdles 2x10"], "main": ["Crossover‑shuffle block 6x5 reps", "Close‑out hands timing 6x5", "Short COD 4x(5‑10‑5)"] , "cooldown": ["Quads/hip flexor 2x40’’"]},
+    {"day": "Session 4", "type": "Gym – Posterior/Shoulder", "warmup": ["Scap activation 2x12"], "main": ["RDL 4x5", "Single‑leg press 3x6/πόδι", "Face pulls 3x12", "Serratus wall slide 3x10"], "cooldown": ["T‑spine 2x8"]},
+    {"day": "Session 5", "type": "Recovery", "warmup": ["Mobility 8’"], "main": ["Pool/bike 20’", "Breath 5’"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 6", "type": "Tech – Serve/Set", "warmup": ["Dynamic 6’"], "main": ["Serve zones 5x10", "Setter footwork 5x30’’"], "cooldown": ["Walk 5’"]}
+  ],
+  "notes": "Φόρτιση σε ώμο προοδευτικά, χωρίς συμπτώματα."
+}

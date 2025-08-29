@@ -1,0 +1,22 @@
+{
+  "filename": "athletismVolleyballElite7.json",
+  "title": "Volleyball Elite – Phase 7 (Speed‑Strength Blend)",
+  "level": "Elite/Pro",
+  "phase": 7,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "volleyball",
+  "daysPerWeek": 6,
+  "equipment": ["Track/Court", "Barbell", "Med‑ball"],
+  "goal": "Συνδυασμός ταχύτητας και δύναμης για κορυφαίο νευρομυϊκό output.",
+  "schedule": [
+    {"day": "Session 1", "type": "Track – Speed/Approach", "warmup": ["Drills 8’"], "main": ["Approach acceleration 3x20m + jump 2 reps", "Sprint‑float‑sprint 4x40m"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 2", "type": "Gym – Heavy Singles (tech)", "warmup": ["RAMP 8’"], "main": ["Back Squat 5x1 @85–90% (perf form)", "Nordic 4x2", "Pull‑ups 4x4"], "cooldown": ["Breathing 2’"]},
+    {"day": "Session 3", "type": "Court – RSA Mixed", "warmup": ["Dynamic 8’"], "main": ["RSA ladder: 10’’/20’’ x6 + 15’’/15’’ x6 – jumps/shuffles", "Serve‑receive constraints 4x3’"], "cooldown": ["Jog 6’"]},
+    {"day": "Session 4", "type": "Gym – Reactive Plyo", "warmup": ["Ankling 2x20m"], "main": ["Depth jumps 5x3", "Bounds 4x20m", "MB overhead 4x4"], "cooldown": ["Calf/hip 2x40’’"]},
+    {"day": "Session 5", "type": "Recovery", "warmup": ["Mobility 8’"], "main": ["Pool/bike 20’ Z1"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 6", "type": "Tech – Finishing", "warmup": ["Dynamic 6’"], "main": ["Serve under pressure 20’", "Attack variations 20’"], "cooldown": ["Easy jog 6’"]}
+  ],
+  "notes": "Heavy day 48–72h από match day."
+}

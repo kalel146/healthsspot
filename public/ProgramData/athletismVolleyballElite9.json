@@ -1,0 +1,21 @@
+{
+  "filename": "athletismVolleyballElite9.json",
+  "title": "Volleyball Elite – Phase 9 (Taper & Freshness)",
+  "level": "Elite/Pro",
+  "phase": 9,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "volleyball",
+  "daysPerWeek": 5,
+  "equipment": ["Court", "Trap Bar", "Med‑ball"],
+  "goal": "Μείωση όγκου, διατήρηση έντασης–ταχύτητας, αιχμή φρεσκάδας πριν από κρίσιμα ματς.",
+  "schedule": [
+    {"day": "Session 1", "type": "Court – Speed Microdose", "warmup": ["Drills 6’"], "main": ["Approach jump 3x2 (full)", "Shuffle sprints 3x15m"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 2", "type": "Gym – Neural Potentiation", "warmup": ["Pogo 2x15"], "main": ["Trap Bar Jump 4x3 @30%", "Bench throw (Smith) 3x3", "Nordic 2x2"], "cooldown": ["Breath 2’"]},
+    {"day": "Session 3", "type": "Court – Light SSG", "warmup": ["Dynamic 6’"], "main": ["4v4 3x3’", "Serve automation 20’"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 4", "type": "Recovery/Prep", "warmup": ["Mobility 8’"], "main": ["Pool/bike 15’ Z1", "Breathing/visualization 5’"], "cooldown": ["Easy stretch"]},
+    {"day": "Session 5", "type": "Match‑day ‑1", "warmup": ["Dynamic 10’"], "main": ["Openers (2x approach jump)", "Serve sharp 10’"], "cooldown": ["Walk 5’"]}
+  ],
+  "notes": "Στόχος αίσθηση ‘springy legs’. Καμία βαριά φόρτιση."
+}

@@ -1,0 +1,22 @@
+{
+  "filename": "athletismNFLAmericanFootballElite2.json",
+  "title": "NFL American Football Elite – Phase 2 (Max Strength & Plant Mechanics)",
+  "level": "Elite/Pro",
+  "phase": 2,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "nfl_american_football",
+  "daysPerWeek": 6,
+  "equipment": ["Field", "Barbell", "Trap Bar", "Bands", "Med‑ball", "Moderate sled"],
+  "goal": "Ανάπτυξη μέγιστης δύναμης, plant mechanics πριν από αλλαγή κατεύθυνσης, κορμός/αυχένας.",
+  "schedule": [
+    {"day": "Session 1", "type": "Gym – Max Strength", "warmup": ["RAMP 10’"], "main": ["Back Squat 5x3 @RPE8", "Trap Bar DL 4x3 @RPE8", "Bench Press 4x4", "Weighted Pull‑ups 4x4", "Nordic 3x3"], "cooldown": ["Breathing 2’"]},
+    {"day": "Session 2", "type": "Field – Accel/Decel", "warmup": ["A‑skip 2x20m"], "main": ["Sled pushes 8x20m (light‑mod.)", "Acceleration 6x20m", "Decel to plant 6x10m"], "cooldown": ["HS/hip 2x40’’"]},
+    {"day": "Session 3", "type": "Gym – Upper Robustness", "warmup": ["Scap series 2x12"], "main": ["Landmine press 3x6/πλευρά", "Row 3x8", "Face pull 3x12", "Neck flex/ext iso 3x8"], "cooldown": ["T‑spine 2x8"]},
+    {"day": "Session 4", "type": "Field – COD", "warmup": ["Mini‑hurdles 2x10"], "main": ["5‑10‑5 x6 @90%", "L‑drill 6x", "Lateral shuffle → burst 6x15m"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 5", "type": "Gym – Posterior Chain", "warmup": ["Glute act 2x12"], "main": ["RDL 4x5", "Hip Thrust 3x6", "Copenhagen plank 3x25’’/πλευρά", "Anti‑extension rollouts 3x8"], "cooldown": ["HS/adductor 2x45’’"]},
+    {"day": "Session 6", "type": "Recovery", "warmup": ["Mobility 8’"], "main": ["Bike 20’ Z1"], "cooldown": ["Stretch 6’"]}
+  ],
+  "notes": "Απόσταση 48–72h ανάμεσα σε βαριές συνεδρίες."
+}

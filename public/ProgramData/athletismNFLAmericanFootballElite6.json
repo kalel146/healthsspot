@@ -1,0 +1,22 @@
+{
+  "filename": "athletismNFLAmericanFootballElite6.json",
+  "title": "NFL American Football Elite – Phase 6 (Power‑Speed Integration)",
+  "level": "Elite/Pro",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "nfl_american_football",
+  "daysPerWeek": 6,
+  "equipment": ["Field", "Track", "Barbell", "Trap Bar", "Med‑ball"],
+  "goal": "Συνδυασμός ισχύος/ταχύτητας με πλήρη μεταφορά σε game speed – αλλαγές ρυθμού & γραμμής.",
+  "schedule": [
+    {"day": "Session 1", "type": "Track – Speed", "warmup": ["Drills 10’"], "main": ["Fly‑in 20→30m x6 @95–98%", "Sprint‑float‑sprint 4x50m"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 2", "type": "Gym – Heavy Singles (tech)", "warmup": ["RAMP 8’"], "main": ["Trap Bar DL 5x1 @85–90%", "Bench 4x2 @85%", "Nordic 3x2"], "cooldown": ["Breath 2’"]},
+    {"day": "Session 3", "type": "Field – RSA Mixed", "warmup": ["Dynamic 8’"], "main": ["10’’/20’’ x6 + 15’’/15’’ x6 – shuttles + COD", "Burst → decel 6x15m"], "cooldown": ["Jog 6’"]},
+    {"day": "Session 4", "type": "Gym – Reactive Plyo/Contrast", "warmup": ["Pogo 2x20"], "main": ["Depth jump 5x3", "Trap Bar Jump 4x3 @30%", "MB overhead throw 4x4"], "cooldown": ["Calf/hip 2x40’’"]},
+    {"day": "Session 5", "type": "Field – Positionless Skills", "warmup": ["Dynamic 8’"], "main": ["Open‑field cuts 6x (coach cue)", "Pursuit angles 6x20–30m"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 6", "type": "Recovery", "warmup": ["Mobility 8’"], "main": ["Bike/pool 20’ Z1"], "cooldown": ["Breath 3’"]}
+  ],
+  "notes": "Βαριά ημέρα ≥48h μακριά από simulation."
+}

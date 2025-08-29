@@ -1,0 +1,22 @@
+{
+  "filename": "athletismVolleyballElite1.json",
+  "title": "Volleyball Elite – Phase 1 (Robustness & Foundations)",
+  "level": "Elite/Pro",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "volleyball",
+  "daysPerWeek": 6,
+  "equipment": ["Barbell", "DB/KB", "Med‑ball", "Court", "Bands"],
+  "goal": "Θεμέλια δύναμης/σταθερότητας, μηχανική προσέγγισης, προσγείωση με ασφάλεια, προενεργοποίηση ώμου.",
+  "schedule": [
+    {"day": "Session 1", "type": "Gym – Strength Base", "warmup": ["RAMP 10’", "Hips/ankles CARs 2x6"], "main": ["Back Squat 4x5 @RPE7", "RDL 3x6", "DB Bench 3x6", "Chin‑ups 3xAMRAP", "Pallof press 3x10/πλευρά"], "cooldown": ["Posterior chain stretch 2x40’’"]},
+    {"day": "Session 2", "type": "Court – Approach Mechanics", "warmup": ["A‑skips 2x20m", "Mini‑hurdles 2x10"], "main": ["3‑step approach drills 8x (submax)", "Landing mechanics drop 4x4 (30–45cm)", "Lateral shuffle footwork 6x15m"], "cooldown": ["Calf/quad stretch 2x40’’"]},
+    {"day": "Session 3", "type": "Gym – Shoulder Prep", "warmup": ["Scapular series bands 2x12"], "main": ["Landmine press 3x8", "Face pull 3x12", "YTWL 2x10", "Nordic hamstrings 3x4"], "cooldown": ["T‑spine openers 2x8"]},
+    {"day": "Session 4", "type": "Court – Jump Technique", "warmup": ["Ankling 2x20m"], "main": ["CMJ tech 5x3 (submax)", "Block footwork (shuffle‑plant) 6x5 reps", "Short COD 5‑5‑5 x6"], "cooldown": ["Box breathing 2’"]},
+    {"day": "Session 5", "type": "Recovery", "warmup": ["Mobility 10’"], "main": ["Bike/pool 20’ Z1", "Breath work 5’"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 6", "type": "Tech – Serve/Pass", "warmup": ["Dynamic 6’"], "main": ["Serve accuracy 6x10", "Receive footwork 6x30’’"], "cooldown": ["Easy jog 6’"]}
+  ],
+  "notes": "Έμφαση σε τεχνική προσγείωσης (hinge, soft knees, knees track)."
+}

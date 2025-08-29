@@ -1,0 +1,22 @@
+{
+  "filename": "athletismVolleyballElite6.json",
+  "title": "Volleyball Elite – Phase 6 (Loaded/Unloaded Power Overload)",
+  "level": "Elite/Pro",
+  "phase": 6,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "volleyball",
+  "daysPerWeek": 6,
+  "equipment": ["Trap Bar", "Barbell", "Med‑ball", "Court"],
+  "goal": "Υπερφόρτωση ισχύος με contrast (φορτωμένο/άφορτο) και διατήρηση ποιότητας αλμάτων.",
+  "schedule": [
+    {"day": "Session 1", "type": "Gym – Loaded Power", "warmup": ["Pogo 2x20"], "main": ["Trap Bar Jump 6x3 @30%1RM", "Contrast Squat 4x(2@80% + 3 jumps)", "MB scoop 4x4"], "cooldown": ["Breathing 2’"]},
+    {"day": "Session 2", "type": "Court – Approach Max Touch", "warmup": ["Drills 8’"], "main": ["Approach jump 6x2 (full), long rest", "Block touch 6x2"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 3", "type": "Court – COD High Speed", "warmup": ["Mini‑hurdles 2x10"], "main": ["Zig‑zag 5x30m", "90°/180° cuts 4x6", "Shuffle sprints 5x15m"], "cooldown": ["Quads/HS 2x45’’"]},
+    {"day": "Session 4", "type": "Gym – Hamstring/Shoulder Robustness", "warmup": ["Scap/glute act 2x12"], "main": ["RDL 4x5", "Nordic 4x3", "Face pull 3x12", "Serratus press 3x10"], "cooldown": ["HS/adductor 2x45’’"]},
+    {"day": "Session 5", "type": "Recovery", "warmup": ["Mobility 8’"], "main": ["Bike/pool 20’ Z1"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 6", "type": "Tech – Serve/Attack", "warmup": ["Dynamic 6’"], "main": ["Serve power accuracy 6x8", "Attack under pressure 20’"], "cooldown": ["Easy jog 6’"]}
+  ],
+  "notes": "Καμία βαριά plyo κοντά σε αγώνα. Διατήρησε freshness."
+}

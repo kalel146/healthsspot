@@ -1,0 +1,22 @@
+{
+  "filename": "athletismNFLAmericanFootballElite4.json",
+  "title": "NFL American Football Elite – Phase 4 (Max‑V & Braking)",
+  "level": "Elite/Pro",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "nfl_american_football",
+  "daysPerWeek": 6,
+  "equipment": ["Track/Field", "Sled", "Barbell", "Bands"],
+  "goal": "Μέγιστη ταχύτητα (max‑V) και braking ικανότητα σε υψηλή ταχύτητα.",
+  "schedule": [
+    {"day": "Session 1", "type": "Track – Max‑V", "warmup": ["Drills 10’"], "main": ["Fly‑in 20→30m x6 @95–97%", "Sprint‑float‑sprint 4x50m"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 2", "type": "Gym – Eccentric Bias", "warmup": ["RAMP 8’"], "main": ["Back Squat (3’’ down) 4x4", "RDL 4x5", "Nordic 4x3", "Copenhagen 3x25’’/side"], "cooldown": ["Breathing 2’"]},
+    {"day": "Session 3", "type": "Field – High‑speed COD", "warmup": ["Mini‑hurdles 2x10"], "main": ["Zig‑zag 5x30m", "90°/135° cuts 4x6", "Shuffle‑burst 6x15m"], "cooldown": ["Quads/HS 2x45’’"]},
+    {"day": "Session 4", "type": "Gym – Contrast Power", "warmup": ["Pogo 2x20"], "main": ["Trap Bar Jump 5x3 @30%", "Contrast: Squat @80% x2 + Jumps x3 (4 rounds)"], "cooldown": ["HS/adductor 2x45’’"]},
+    {"day": "Session 5", "type": "Field – RSA Mixed", "warmup": ["Dynamic 8’"], "main": ["12x30m @90% (walk back)", "Shuttle 15‑15‑15 x6"], "cooldown": ["Jog 6’"]},
+    {"day": "Session 6", "type": "Recovery", "warmup": ["Mobility 8’"], "main": ["Bike 20’ Z1"], "cooldown": ["Stretch 6’"]}
+  ],
+  "notes": "Drop‑off <3%. Αν αυξηθεί, μείωσε όγκο."
+}

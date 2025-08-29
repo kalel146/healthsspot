@@ -1,0 +1,22 @@
+{
+  "filename": "athletismVolleyballElite3.json",
+  "title": "Volleyball Elite – Phase 3 (Elastic Power & Plyo Base)",
+  "level": "Elite/Pro",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "volleyball",
+  "daysPerWeek": 6,
+  "equipment": ["Boxes", "Court", "Med‑ball", "Bands"],
+  "goal": "Ελαστικότητα/SSC, ρυθμός επαφής, μεταφορά σε προσέγγιση.",
+  "schedule": [
+    {"day": "Session 1", "type": "Gym – Power", "warmup": ["Pogo 2x20", "Med‑ball primer 2x6"], "main": ["Hang Power Clean 6x2 @RPE7", "Box jump 5x3 (45–60cm)", "MB overhead throw 4x4"], "cooldown": ["Breath 2’"]},
+    {"day": "Session 2", "type": "Court – Plyo SSC", "warmup": ["Ankling 2x20m"], "main": ["Low hurdle hops 5x4", "Approach jump submax 6x2", "Landing mechanics 4x4"], "cooldown": ["Calf/quad 2x40’’"]},
+    {"day": "Session 3", "type": "Gym – Strength Maintain", "warmup": ["RAMP 8’"], "main": ["Front Squat 3x4 @RPE7", "RDL 3x5", "DB Rows 3x8", "Nordic 3x3"], "cooldown": ["HS/adductor 2x40’’"]},
+    {"day": "Session 4", "type": "Court – RSA (Jumps)", "warmup": ["Dynamic 8’"], "main": ["10’’ on / 20’’ off ×12: continuous countermovement jumps", "Block close‑outs 6x10’’"], "cooldown": ["Jog 6’"]},
+    {"day": "Session 5", "type": "Recovery", "warmup": ["Mobility 10’"], "main": ["Pool/bike 20’ Z1", "Breath reset 5’"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 6", "type": "Tech – Attack/Serve", "warmup": ["Dynamic 6’"], "main": ["Approach + arm swing timing 6x4", "Serve power 5x8"], "cooldown": ["Easy jog 6’"]}
+  ],
+  "notes": "Ποιότητα επαφών, όχι εξάντληση."
+}

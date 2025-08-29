@@ -1,0 +1,22 @@
+{
+  "filename": "athletismNFLAmericanFootballElite3.json",
+  "title": "NFL American Football Elite – Phase 3 (Explosive Power & Elasticity)",
+  "level": "Elite/Pro",
+  "phase": 3,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "nfl_american_football",
+  "daysPerWeek": 6,
+  "equipment": ["Field", "Barbell", "Boxes", "Med‑ball", "Bands"],
+  "goal": "Ισχύς μέσω ολυμπιακών παραλλαγών/plyo. Μεταφορά σε 1ο βήμα & breakaway speed.",
+  "schedule": [
+    {"day": "Session 1", "type": "Gym – Power", "warmup": ["Pogo 2x20", "MB primer 2x6"], "main": ["Hang Power Clean 6x2 @RPE7", "Box Jump 5x3 (60–75cm)", "MB Scoop Toss 4x4"], "cooldown": ["Breath 2’"]},
+    {"day": "Session 2", "type": "Field – Accel Max", "warmup": ["Ankling 2x20m"], "main": ["Resisted sprints 6x20m", "Free sprints 6x30m @95%"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 3", "type": "Gym – Strength Maintain", "warmup": ["RAMP 8’"], "main": ["Front Squat 3x4 @RPE7", "RDL 3x5", "DB Row 3x8", "Nordic 3x3"], "cooldown": ["HS 2x40’’"]},
+    {"day": "Session 4", "type": "Field – RSA (Short)", "warmup": ["Dynamic 8’"], "main": ["10’’ on / 20’’ off ×12 – 10–20m shuttles", "COD under fatigue 4x (5‑10‑5)"], "cooldown": ["Jog 6’"]},
+    {"day": "Session 5", "type": "Gym – Neck/Shoulder", "warmup": ["Neck iso 2x6"], "main": ["DB Incline 3x6", "Seal row 3x8", "Face pull 3x12", "Serratus wall slide 3x10"], "cooldown": ["T‑spine 2x8"]},
+    {"day": "Session 6", "type": "Recovery", "warmup": ["Mobility 10’"], "main": ["Pool 20’ Z1"], "cooldown": ["Stretch 6’"]}
+  ],
+  "notes": "Χαμηλός χρόνος επαφής – ποιότητα επαφών."
+}

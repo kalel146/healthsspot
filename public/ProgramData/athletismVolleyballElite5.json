@@ -1,0 +1,22 @@
+{
+  "filename": "athletismVolleyballElite5.json",
+  "title": "Volleyball Elite – Phase 5 (RSA Extension – Jumps/Sprints)",
+  "level": "Elite/Pro",
+  "phase": 5,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "volleyball",
+  "daysPerWeek": 6,
+  "equipment": ["Court", "Bands"],
+  "goal": "Repeated‑jump/sprint ability με μεγαλύτερη διάρκεια και μικρότερα διαλείμματα.",
+  "schedule": [
+    {"day": "Session 1", "type": "Court – RSA Long (Jumps)", "warmup": ["Dynamic 8’"], "main": ["15’’ on / 15’’ off x12 – CMJ continuous", "Block close‑outs 8x10’’"], "cooldown": ["Walk 5’", "HS/Calf stretch"]},
+    {"day": "Session 2", "type": "Gym – Maintain Strength", "warmup": ["RAMP 8’"], "main": ["Trap Bar DL 3x4 @RPE7", "Split‑squat 3x6/πόδι", "Pull‑ups 3x5", "Nordic 3x3"], "cooldown": ["Breath 2’"]},
+    {"day": "Session 3", "type": "Court – Transition Speed", "warmup": ["Fwd‑back shuttles 2x10"], "main": ["Shuttle 5‑m repeats 12x (work:rest 1:1)", "Approach to tip 6x"], "cooldown": ["Jog 6’"]},
+    {"day": "Session 4", "type": "Court – Plyo Touch", "warmup": ["Ankling 2x20m"], "main": ["Hurdle hops 5x4", "Approach jumps 6x3"], "cooldown": ["HS floss 2x40’’"]},
+    {"day": "Session 5", "type": "Recovery", "warmup": ["Mobility 10’"], "main": ["Bike/pool 20’ Z1", "Breath reset 5’"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 6", "type": "Tech – Attack/Block", "warmup": ["Dynamic 6’"], "main": ["Serve‑receive→attack patterns 25’", "Double‑block timing 15’"], "cooldown": ["Easy jog 6’"]}
+  ],
+  "notes": "Παρακολούθηση drop‑off (<3%). Αν >3%, κόψε σετ."
+}

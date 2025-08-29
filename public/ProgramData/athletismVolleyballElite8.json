@@ -1,0 +1,22 @@
+{
+  "filename": "athletismVolleyballElite8.json",
+  "title": "Volleyball Elite – Phase 8 (Match Conditioning Peak)",
+  "level": "Elite/Pro",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "volleyball",
+  "daysPerWeek": 6,
+  "equipment": ["Court", "Bands"],
+  "goal": "Κορύφωση αγωνιστικής κατάστασης με παιχνίδια περιορισμών (constraints).",
+  "schedule": [
+    {"day": "Session 1", "type": "Court – SSG Peak", "warmup": ["FIFA 11+ (adapted)"], "main": ["6v6 constraints 4x5’ (2’)", "Transitional drills 3x4’"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 2", "type": "Gym – Maintain Strength", "warmup": ["RAMP 8’"], "main": ["Front Squat 3x3 @RPE7", "RDL 3x5", "Nordic 3x2"], "cooldown": ["Breathing 2’"]},
+    {"day": "Session 3", "type": "Court – Speed Touch", "warmup": ["Wickets 2x20m"], "main": ["Approach jump 4x2", "Shuffle sprints 4x15m"], "cooldown": ["HS floss 2x40’’"]},
+    {"day": "Session 4", "type": "Court – COD Under Fatigue", "warmup": ["Mini‑hurdles 2x10"], "main": ["5‑10‑5 x6", "4v4 4x4’ με pressing rules"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 5", "type": "Recovery", "warmup": ["Mobility 8’"], "main": ["Bike/pool 20’ Z1"], "cooldown": ["Breath reset 3’"]},
+    {"day": "Session 6", "type": "Tech – Serve/Receive", "warmup": ["Dynamic 6’"], "main": ["Serve patterns 30’", "Receive under pressure 15’"], "cooldown": ["Easy jog 6’"]}
+  ],
+  "notes": "Έλεγχος TRIMP/HRV. Αφαίρεσε 1 set αν fatigue υψηλό."
+}

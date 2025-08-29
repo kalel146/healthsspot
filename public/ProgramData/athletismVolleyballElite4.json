@@ -1,0 +1,22 @@
+{
+  "filename": "athletismVolleyballElite4.json",
+  "title": "Volleyball Elite – Phase 4 (COD & Braking for Landing)",
+  "level": "Elite/Pro",
+  "phase": 4,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "volleyball",
+  "daysPerWeek": 6,
+  "equipment": ["Court", "Bands", "Med‑ball"],
+  "goal": "Ικανότητα φρεναρίσματος/αλλαγής κατεύθυνσης και ασφαλείς προσγειώσεις.",
+  "schedule": [
+    {"day": "Session 1", "type": "Court – COD/Decel", "warmup": ["Mini‑hurdles 2x10", "Low pogo 2x20"], "main": ["Y‑drill 6x", "5‑10‑5 x6", "Decel stick 6x8m"], "cooldown": ["Quads/HS 2x45’’"]},
+    {"day": "Session 2", "type": "Gym – Eccentric Bias", "warmup": ["RAMP 8’"], "main": ["Ecc Back Squat 4x4 @3’’down", "RDL 4x5", "Nordic 4x3", "Copenhagen 3x25’’/πλευρά"], "cooldown": ["Breathing 2’"]},
+    {"day": "Session 3", "type": "Court – Blocking Speed", "warmup": ["Dynamic 8’"], "main": ["Shuffle‑crossover‑close 6x5 reps", "Double block coordination 6x5"], "cooldown": ["Jog 6’"]},
+    {"day": "Session 4", "type": "Gym – Reactive Plyo", "warmup": ["Ankling 2x20m"], "main": ["Depth jumps 5x3", "Lateral bounds 4x4/πλευρά", "MB scoop toss 4x4"], "cooldown": ["Calf/hip 2x40’’"]},
+    {"day": "Session 5", "type": "Recovery", "warmup": ["Mobility 8’"], "main": ["Bike/pool 20’ Z1", "Breath 5’"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 6", "type": "Tech – Serve/Receive", "warmup": ["Dynamic 6’"], "main": ["Serve under pressure 5x10", "Receive angles 5x30’’"], "cooldown": ["Walk 5’"]}
+  ],
+  "notes": "Landing cues: hips back, chest tall, knees soft – no valgus."
+}

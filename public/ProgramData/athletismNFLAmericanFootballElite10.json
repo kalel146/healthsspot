@@ -1,0 +1,21 @@
+{
+  "filename": "athletismNFLAmericanFootballElite10.json",
+  "title": "NFL American Football Elite – Phase 10 (In‑Season Maintain/Win)",
+  "level": "Elite/Pro",
+  "phase": 10,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "nfl_american_football",
+  "daysPerWeek": 5,
+  "equipment": ["Field", "Barbell/Trap Bar", "Bands"],
+  "goal": "Συντήρηση ταχύτητας/ισχύος, πρόληψη τραυματισμών (hamstrings/neck/shoulder), μέγιστη απόδοση.",
+  "schedule": [
+    {"day": "Session 1", "type": "Gym – Maintain", "warmup": ["RAMP 8’"], "main": ["Back Squat 3x3 @RPE7", "RDL 3x4", "Nordic 3x2", "Pull‑ups 3x4"], "cooldown": ["Breathing 2’"]},
+    {"day": "Session 2", "type": "Field – Speed Touch", "warmup": ["Drills 6’"], "main": ["Fly‑in 20→30m x3", "Burst 10m x4"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 3", "type": "Field – Tactical/SSG", "warmup": ["Dynamic 6’"], "main": ["Series 3x4’", "Situational football 15’"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 4", "type": "Recovery/Prep", "warmup": ["Mobility 8’"], "main": ["Pool/bike 20’ Z1", "Breath 5’"], "cooldown": ["Easy stretch"]},
+    {"day": "Session 5", "type": "Game‑day ‑1", "warmup": ["Dynamic 10’"], "main": ["Openers (1–2 sprints)", "Ball security 10’"], "cooldown": ["Walk 5’"]}
+  ],
+  "notes": "Μικροδόσεις ταχύτητας όλη τη σεζόν. Hamstring/neck 2x/εβδ."
+}

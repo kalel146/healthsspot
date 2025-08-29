@@ -1,0 +1,22 @@
+{
+  "filename": "athletismNFLAmericanFootballElite8.json",
+  "title": "NFL American Football Elite – Phase 8 (Game Specific Peak)",
+  "level": "Elite/Pro",
+  "phase": 8,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "nfl_american_football",
+  "daysPerWeek": 6,
+  "equipment": ["Field", "Track", "Barbell", "Bands"],
+  "goal": "Κορύφωση ‘game speed’ με προσομοιώσεις drives, ειδικές καταστάσεις και μικροδόσεις νευρικής ισχύος.",
+  "schedule": [
+    {"day": "Session 1", "type": "Field – SSG/Drives", "warmup": ["Dynamic 10’"], "main": ["Series simulation 6x4’ (1:2 rest)", "Hurry‑up offense 4x2’"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 2", "type": "Gym – Neural Potentiation", "warmup": ["Pogo 2x15"], "main": ["Trap Bar Jump 4x3 @30%", "Bench throw (Smith) 3x3", "Nordic 2x2"], "cooldown": ["Breath 2’"]},
+    {"day": "Session 3", "type": "Field – Speed Touch", "warmup": ["Wickets 2x20m"], "main": ["Fly‑in 20→30m x4", "Burst 10m → decel 10m x6"], "cooldown": ["HS floss 2x40’’"]},
+    {"day": "Session 4", "type": "Field – COD Under Fatigue", "warmup": ["Mini‑hurdles 2x10"], "main": ["5‑10‑5 x6", "Pursuit under constraints 4x3’"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 5", "type": "Recovery", "warmup": ["Mobility 8’"], "main": ["Bike/pool 20’ Z1"], "cooldown": ["Breath 3’"]},
+    {"day": "Session 6", "type": "Skills – Positionless", "warmup": ["Dynamic 6’"], "main": ["Routes/reads 20’", "Ball drills 10’"], "cooldown": ["Easy jog 6’"]}
+  ],
+  "notes": "Αποφυγή DOMS. Καμία βαριά φόρτιση 72h πριν από mock game."
+}

@@ -1,0 +1,21 @@
+{
+  "filename": "athletismNFLAmericanFootballElite9.json",
+  "title": "NFL American Football Elite – Phase 9 (Taper & Freshness)",
+  "level": "Elite/Pro",
+  "phase": 9,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "nfl_american_football",
+  "daysPerWeek": 5,
+  "equipment": ["Field", "Trap Bar", "Bands", "Med‑ball"],
+  "goal": "Μείωση όγκου, διατήρηση έντασης/ταχύτητας, κορυφαία φρεσκάδα (match readiness).",
+  "schedule": [
+    {"day": "Session 1", "type": "Field – Speed Microdose", "warmup": ["Drills 6’"], "main": ["Fly‑in 20→30m x3", "Burst 10m x4"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 2", "type": "Gym – Neural", "warmup": ["Pogo 2x12"], "main": ["Trap Bar Jump 3x3 @30%", "Bench throw 3x2", "Nordic 2x2"], "cooldown": ["Breath 2’"]},
+    {"day": "Session 3", "type": "Field – Light SSG", "warmup": ["Dynamic 6’"], "main": ["Short drives 3x3’ (easy)", "Routes timing 15’"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 4", "type": "Recovery/Prep", "warmup": ["Mobility 8’"], "main": ["Pool/bike 15’ Z1", "Breathing/visualization 5’"], "cooldown": ["Easy stretch"]},
+    {"day": "Session 5", "type": "Game‑day ‑1", "warmup": ["Dynamic 10’"], "main": ["Openers (1–2 sprints 20m)", "Ball security 10’"], "cooldown": ["Walk 5’"]}
+  ],
+  "notes": "Στόχος ‘snap’ αίσθηση. Καμία κόπωση."
+}

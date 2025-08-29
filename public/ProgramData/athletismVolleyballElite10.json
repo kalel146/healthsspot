@@ -1,0 +1,21 @@
+{
+  "filename": "athletismVolleyballElite10.json",
+  "title": "Volleyball Elite – Phase 10 (In‑Season Maintain/Win)",
+  "level": "Elite/Pro",
+  "phase": 10,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "volleyball",
+  "daysPerWeek": 5,
+  "equipment": ["Court", "Barbell/Trap Bar", "Bands"],
+  "goal": "Διατήρηση ταχύτητας/ισχύος, πρόληψη τραυματισμών, μέγιστη απόδοση αγώνα.",
+  "schedule": [
+    {"day": "Session 1", "type": "Gym – Maintain", "warmup": ["RAMP 8’"], "main": ["Back Squat 3x3 @RPE7", "RDL 3x4", "Nordic 3x2", "Pull‑ups 3x4"], "cooldown": ["Breathing 2’"]},
+    {"day": "Session 2", "type": "Court – Speed Touch", "warmup": ["Drills 6’"], "main": ["Approach jump 3x2", "Shuffle sprints 3x15m"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 3", "type": "Court – Tactical/SSG", "warmup": ["Dynamic 6’"], "main": ["5v5 3x4’", "Blocking/serve‑receive patterns 20’"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 4", "type": "Recovery/Prep", "warmup": ["Mobility 8’"], "main": ["Pool/bike 20’ Z1", "Breath 5’"], "cooldown": ["Easy stretch"]},
+    {"day": "Session 5", "type": "Match‑day ‑1", "warmup": ["Dynamic 10’"], "main": ["Openers (1–2 approach jumps)", "Serve/set pieces 15’"], "cooldown": ["Walk 5’"]}
+  ],
+  "notes": "Μικρές ‘ενέσεις’ ταχύτητας όλο το χρόνο. Hamstring/shoulder 2x/εβδ."
+}

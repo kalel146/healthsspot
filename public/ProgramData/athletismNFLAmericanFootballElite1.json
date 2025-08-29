@@ -1,0 +1,22 @@
+{
+  "filename": "athletismNFLAmericanFootballElite1.json",
+  "title": "NFL American Football Elite – Phase 1 (Acceleration & Robustness)",
+  "level": "Elite/Pro",
+  "phase": 1,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "nfl_american_football",
+  "daysPerWeek": 6,
+  "equipment": ["Field", "Track", "Barbell", "Trap Bar", "Bands", "Med-ball", "Light sled"],
+  "goal": "Θεμέλια επιτάχυνσης, σταθερότητα κορμού/αυχένα, posterior chain, ασφαλές φρενάρισμα/προσγείωση.",
+  "schedule": [
+    {"day": "Session 1", "type": "Track – Accel", "warmup": ["RAMP 12’", "A‑march/A‑skip 2x20m"], "main": ["Hill sprints 8x20m @90% (walk back)", "Wall drill 3x6/πλευρά", "Low pogo 2x20"], "cooldown": ["HS/hip flexor 2x40’’"]},
+    {"day": "Session 2", "type": "Gym – Strength Base", "warmup": ["Scap/hip activation 2x12"], "main": ["Trap Bar DL 4x5 @RPE7", "Front Squat 3x5", "DB Bench 3x6", "Chin‑ups 3xAMRAP", "Pallof press 3x10/πλευρά"], "cooldown": ["Breathing 2’"]},
+    {"day": "Session 3", "type": "Field – COD/Decel", "warmup": ["Mini‑hurdles 2x10"], "main": ["Y‑drill 6x", "5‑10‑5 x6 (submax)", "Decel stick 6x10m"], "cooldown": ["Calf/quad 2x40’’"]},
+    {"day": "Session 4", "type": "Gym – Hamstring/Neck", "warmup": ["Neck isometrics 2x6 κατευθύνσεις"], "main": ["Nordic 3x4", "RDL 3x6", "Rear‑delt/face pull 3x12", "Anti‑rotation press 3x10"], "cooldown": ["T‑spine openers 2x8"]},
+    {"day": "Session 5", "type": "Field – RSA Intro", "warmup": ["Dynamic 8’"], "main": ["10’’ on / 20’’ off ×10 shuttles 10–20m", "Change of pace cues 6x15m"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 6", "type": "Recovery", "warmup": ["Mobility 10’"], "main": ["Pool/bike 20’ Z1", "Breath reset 5’"], "cooldown": ["Stretch 6’"]}
+  ],
+  "notes": "Τήρησε ποιότητα τεχνικής. Drop‑off <5%."
+}

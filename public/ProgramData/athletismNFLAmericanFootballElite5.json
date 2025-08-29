@@ -1,0 +1,22 @@
+{
+  "filename": "athletismNFLAmericanFootballElite5.json",
+  "title": "NFL American Football Elite – Phase 5 (Contact Prep & Anaerobic Capacity)",
+  "level": "Elite/Pro",
+  "phase": 5,
+  "duration": "2 εβδομάδες",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "nfl_american_football",
+  "daysPerWeek": 6,
+  "equipment": ["Field", "Sled", "Med‑ball", "Barbell", "Bands"],
+  "goal": "Προετοιμασία επαφής (κορμός/λαιμός/ώμοι), ικανότητα επαναλαμβανόμενης υψηλής έντασης.",
+  "schedule": [
+    {"day": "Session 1", "type": "Field – Sled & Accel", "warmup": ["RAMP 10’"], "main": ["Sled push 10x20m (mod.)", "Free accel 6x20m"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 2", "type": "Gym – Contact Robustness", "warmup": ["Neck iso 2x6"], "main": ["Bench Press 5x3 @RPE8", "Row 4x6", "Landmine press 3x6/πλευρά", "Farmer carry 3x30m"], "cooldown": ["Breath 2’"]},
+    {"day": "Session 3", "type": "Field – COD/Decel", "warmup": ["Mini‑hurdles 2x10"], "main": ["5‑10‑5 x8 @95%", "T‑drill 6x", "Decel stick 6x10m"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 4", "type": "Gym – Posterior Chain", "warmup": ["Glute act 2x12"], "main": ["RDL 4x5", "Hip Thrust 4x6", "Nordic 4x3", "Anti‑rotation carries 3x20m"], "cooldown": ["HS/adductor 2x45’’"]},
+    {"day": "Session 5", "type": "Field – RSA Long", "warmup": ["Dynamic 8’"], "main": ["15’’ on / 15’’ off ×12 shuttles 10–30m", "Finisher: MB chest pass 4x6"], "cooldown": ["Jog 6’"]},
+    {"day": "Session 6", "type": "Recovery", "warmup": ["Mobility 10’"], "main": ["Pool/bike 20’ Z1"], "cooldown": ["Breathing 3’"]}
+  ],
+  "notes": "Σταδιακή έκθεση σε επαφή. Καμία ενόχληση στον αυχένα."
+}

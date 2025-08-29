@@ -1,22 +1,22 @@
 {
-  "filename": "athletismSoccerElite7.json",
-  "title": "Soccer Elite – Phase 7 (Power-Endurance Integration)",
-  "level": "Elite",
+  "filename": "athletismNFLAmericanFootballElite7.json",
+  "title": "NFL American Football Elite – Phase 7 (HI Conditioning & Fine Skills)",
+  "level": "Elite/Pro",
   "phase": 7,
   "duration": "2 εβδομάδες",
   "accessTier": "Platinum",
   "category": "athletism",
-  "subcategory": "soccer",
+  "subcategory": "nfl_american_football",
   "daysPerWeek": 6,
-  "equipment": ["Barbell", "Γήπεδο"],
-  "goal": "Συνδυασμός ισχύος με αντοχή σε αγωνιστικό ρυθμό.",
-  "weeklySplit": [
-    {"day": "Day 1", "main": ["Complex training (Squat + Jump) 4x6"]},
-    {"day": "Day 2", "main": ["Sprint intervals 12x150m"]},
-    {"day": "Day 3", "main": ["Strength: Bench 3x5, RDL 3x6"]},
-    {"day": "Day 4", "main": ["Cone agility + sprints 10x20m"]},
-    {"day": "Day 5", "main": ["Mixed intervals (200m run + 10 push-ups) x10"]},
-    {"day": "Day 6", "main": ["Mobility & Recovery"]}
+  "equipment": ["Field", "Track", "Barbell", "Bands", "Med-ball"],
+  "goal": "Υψηλής έντασης conditioning με τεχνική λεπτομέρεια (breaks, pursuit, tackling mechanics).",
+  "schedule": [
+    {"day": "Session 1", "type": "Field – HSR & COD", "warmup": ["Wickets 2x20m"], "main": ["HSR repeats 10x40m @90–92%", "COD 90°/135° 4x6"], "cooldown": ["Walk 5’"]},
+    {"day": "Session 2", "type": "Gym – Strength Maintain", "warmup": ["RAMP 8’"], "main": ["Front Squat 3x3 @RPE7", "RDL 3x4", "Row 3x6", "Nordic 3x2"], "cooldown": ["HS 2x40’’"]},
+    {"day": "Session 3", "type": "Field – RSA Ladder", "warmup": ["Dynamic 8’"], "main": ["10’’/20’’ x6 → 15’’/15’’ x6 → 20’’/20’’ x4", "Finisher: MB scoop 3x6"], "cooldown": ["Jog 6’"]},
+    {"day": "Session 4", "type": "Gym – Neck/Shoulder Robustness", "warmup": ["Neck iso 2x6"], "main": ["Landmine press 3x6/πλευρά", "Pull‑ups 3x4", "Face pulls 3x12", "Farmer carry 3x30m"], "cooldown": ["Breath 2’"]},
+    {"day": "Session 5", "type": "Field – Skills (Non‑contact)", "warmup": ["Dynamic 8’"], "main": ["Routes/footwork 20’", "Pursuit angles 6x20m", "Ball security patterns 10’"], "cooldown": ["Stretch 6’"]},
+    {"day": "Session 6", "type": "Recovery", "warmup": ["Mobility 8’"], "main": ["Pool/bike 20’ Z1"], "cooldown": ["Easy stretch"]}
   ],
-  "notes": "Blend of power + endurance."
+  "notes": "Παρακολούθηση drop‑off <3%. Αν αυξηθεί, κόψε όγκο."
 }
