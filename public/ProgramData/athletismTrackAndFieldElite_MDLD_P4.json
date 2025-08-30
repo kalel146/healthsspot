@@ -1,0 +1,107 @@
+{
+  "filename": "athletismTrackAndFieldElite_MDLD_P4.json",
+  "title": "MD/LD Phase 4 — Race Pace Economy",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "MD/LD (800/1500/5k/10k)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Grass",
+    "Gym",
+    "Hills",
+    "Stopwatch/Timing",
+    "HR monitor"
+  ],
+  "phase": 4,
+  "goal": "Στοχευμένη οικονομία σε ρυθμό αγώνα (800/1500/5k/10k), split-based δουλειά.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Jog 12'",
+        "Drills",
+        "Strides 4x100m"
+      ],
+      "main": [
+        "MD: 3x (600m @1500 pace + 2' + 300m @800 pace) (8')",
+        "LD: 5x1k @5k pace (90'')",
+        "Gym: Squat 3x3 @80%, Calf ISO 3x40''"
+      ],
+      "cooldown": [
+        "Easy 10'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 45–60' (Z2) + strides 6x100m",
+        "Core 12'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Easy 10'"
+      ],
+      "main": [
+        "Hills endurance: 8x45'' @hard (jog down)",
+        "Mobility/feet 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Threshold float: 3x10' @T (2') / LD: 30–35' continuous @T"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Jog 12'"
+      ],
+      "main": [
+        "MD: 12x300m @1500 pace (60'')",
+        "LD: 4x2k @10k pace (2')"
+      ],
+      "cooldown": [
+        "Easy 8'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 35–50' (Z2)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Long run MD 80–95' / LD 100–120'"
+      ],
+      "cooldown": [
+        "Stretch 8'"
+      ]
+    }
+  ],
+  "notes": "Week 2: +1 rep σε 300m/1k/2k ανά κατηγορία. Ελαφρά μείωση γυμναστηρίου αν νιώσεις βαρύτητα."
+}

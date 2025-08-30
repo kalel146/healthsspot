@@ -1,0 +1,125 @@
+{
+  "filename": "athletismTrackAndFieldElite_Throws_P1.json",
+  "title": "Throws Phase 1 — GPP & Tissue Resilience",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Throws (SP/DISC/JAV/HAM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Shot Put (SP)",
+    "Discus (DISC)",
+    "Javelin (JAV)",
+    "Hammer (HAM)",
+    "Circle/Runway",
+    "Gym",
+    "Medball",
+    "Bands/Tubing",
+    "Video/Timing"
+  ],
+  "phase": 1,
+  "goal": "Θεμέλια δύναμης/σταθερότητας, αντοχή τενόντων ώμου/αγκώνα/ισχίων, τεχνική βάσης.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Joint prep 8'",
+        "Scap/rotator activation 10'",
+        "Hips/ankles mobility"
+      ],
+      "main": [
+        "SP: stand throws 12–16 (τεχνική)",
+        "DISC: South African 10–12 (light)",
+        "JAV: cross‑step to impulse 10–12 (ελαφρύ ακόντιο)",
+        "HAM: winds 3x10 + entry drills 8–10",
+        "Gym: Trap Bar DL 4x4 @75%, Bench 4x5 @75%, Row 3x8"
+      ],
+      "cooldown": [
+        "Posterior chain stretch 6'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Mobility full 8'"
+      ],
+      "main": [
+        "Medball throws overhead/back/rotational 4x6",
+        "Core anti‑rotation 3x10/πλ, Pallof 3x12/πλ",
+        "Isometric calf + tib raises 3x12"
+      ],
+      "cooldown": [
+        "Breathing 3'",
+        "Foam roll 6'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Shoulder care 8'",
+        "Hurdle mobility (hips)"
+      ],
+      "main": [
+        "SP: glide/rotation footwork 15' + stand 8–10",
+        "DISC: turns 3x6 (slow)",
+        "JAV: spear alignment drills 12–16 (rubber),",
+        "HAM: turns 3x4 (short wire)",
+        "RDL 3x6 @70%, Split squat 3x6/πλ"
+      ],
+      "cooldown": [
+        "Walk 5'",
+        "Stretch 6'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery bike/grass 20–30' + mobility shoulders/hips 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "A/B-skips (light)",
+        "Scap prep"
+      ],
+      "main": [
+        "SP: standing/half turn 12–16",
+        "DISC: turns to release (easy) 10–12",
+        "JAV: run‑up rhythm 6x30–40m + 6–8 cross‑steps",
+        "HAM: entry + 2 turns 8–10",
+        "Hip Thrust 3x6 @75%"
+      ],
+      "cooldown": [
+        "Sleeve/shoulder stretch 6'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Circuit 20' (core/hips/shoulders) + feet care"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF / Active recovery 20–30'"
+      ],
+      "cooldown": [
+        "Sleep 8–9h"
+      ]
+    }
+  ],
+  "notes": "Week 2: +10–15% τεχνικές επαναλήψεις, βάρη +5%. Διατήρησε RPE 7–8 και καθαρή τεχνική."
+}

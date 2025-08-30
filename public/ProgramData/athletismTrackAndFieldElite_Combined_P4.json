@@ -1,0 +1,102 @@
+{
+  "filename": "athletismTrackAndFieldElite_Combined_P4.json",
+  "title": "Combined Phase 4 — Throws Technical Consolidation",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Combined Events (Decathlon/Heptathlon)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Blocks",
+    "Hurdles",
+    "Sand pit",
+    "High jump bar",
+    "Pole vault poles/standards",
+    "Shot/Discus/Javelin",
+    "Gym",
+    "Medball",
+    "Timing/Video"
+  ],
+  "phase": 4,
+  "goal": "Τεχνικές βάσεις ρίψεων, ρυθμός στροφών/φόρας, μεταφορά ισχύος.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Scap/hip activation"
+      ],
+      "main": [
+        "SP: glide/rot release 10–12",
+        "DISC: full turns 10–12 (submax)",
+        "Power Clean 5x2 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "JAV: approach 5x40–50m + impulse 8–10 (light)",
+        "Medball rotational 4x6/πλ",
+        "Cuff ER/IR 3x12"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Marks"
+      ],
+      "main": [
+        "LJ: short approach 6–8 (διατήρηση τεχνικής)",
+        "400m SE: 3x200m @90–95% (6')"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 25–35' + mobility shoulders/hips 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "DISC/HAM alt: rhythm ladders 4x (3‑4‑5 turns)",
+        "Hip Thrust 3x5 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 30' + strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +10–15% τεχνικές επαναλήψεις εφόσον ποιότητα παραμένει υψηλή. Προστασία ώμου/αγκώνα στο JAV."
+}

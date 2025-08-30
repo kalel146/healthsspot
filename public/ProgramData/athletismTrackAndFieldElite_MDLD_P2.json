@@ -1,0 +1,111 @@
+{
+  "filename": "athletismTrackAndFieldElite_MDLD_P2.json",
+  "title": "MD/LD Phase 2 — Threshold Development",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "MD/LD (800/1500/5k/10k)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Grass",
+    "Gym",
+    "Hills",
+    "Stopwatch/Timing",
+    "HR monitor"
+  ],
+  "phase": 2,
+  "goal": "Αύξηση LT/Τhreshold, σταθεροποίηση καρδιοαναπνευστικού ρυθμού, διατήρηση strides.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Easy 12'",
+        "Mobility 6'",
+        "Drills"
+      ],
+      "main": [
+        "MD: Cruise 5x8' @T pace (2')",
+        "LD: 3x12' @T pace (3')",
+        "Gym: Squat 3x5 @70–75%, Step-up 3x6/πλ"
+      ],
+      "cooldown": [
+        "Easy 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Easy 10'"
+      ],
+      "main": [
+        "Easy 45–60' (Z2) + Strides 6x100m",
+        "Core + calves 12'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Easy 10'",
+        "Drills"
+      ],
+      "main": [
+        "Hills mixed: 8x30'' @hard (jog down) + 6x10'' sprints",
+        "Upper body pull/push 3x6–8"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 35–50' (Z1–Z2)",
+        "Mobility & feet care 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Easy 12'"
+      ],
+      "main": [
+        "MD: 12x400m @3–5k pace (60–75'')",
+        "LD: 5–6x1 mile @HM pace (2')",
+        "Ham ISO 3x40'', Hip thrust 3x5"
+      ],
+      "cooldown": [
+        "Easy 10'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 30–45' + Strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "MD: Long run 75–90'",
+        "LD: Long run 95–115'"
+      ],
+      "cooldown": [
+        "Stretch 8'"
+      ]
+    }
+  ],
+  "notes": "Week 2: +1 επανάληψη στα threshold sets, ή +5''/km πιο γρήγορα αν HR/συλλογή δεδομένων επιτρέπει. Μην σπας τεχνική."
+}

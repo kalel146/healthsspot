@@ -1,0 +1,91 @@
+{
+  "filename": "athletismTrackAndFieldElite_SprintsHurdles_P5.json",
+  "title": "S/H Phase 5 — Special Endurance 150–300m (400H/long sprint bias)",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Sprints/Hurdles",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "phase": 5,
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Timing",
+    "Gym"
+  ],
+  "goal": "Στόχευση SE για 200–400/400H, διατήρηση τεχνικής σε κόπωση.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "SE1: 3x200m @90‑95% (6')",
+        "RDL 3x4 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Tempo 10x120m @65%",
+        "Ham ISO 3x40''"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Wickets/blocks"
+      ],
+      "main": [
+        "SE2: 2x (180m+120m) @race pace (8')",
+        "Bench 3x5 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Hurdle mob"
+      ],
+      "main": [
+        "400H rhythm broken reps (π.χ. 5‑6 hurdles @race)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Drills"
+      ],
+      "main": [
+        "Flying 20s 6x (διατήρηση MaxV)",
+        "Hip Thrust 3x5 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Recovery bike 20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 επανάληψη στο SE1 ή +1 split στην προπόνηση 400H, κράτα τεχνική/επαφή καθαρή."
+}

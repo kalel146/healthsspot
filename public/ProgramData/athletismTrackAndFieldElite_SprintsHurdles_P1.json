@@ -1,0 +1,125 @@
+{
+  "filename": "athletismTrackAndFieldElite_SprintsHurdles_P1.json",
+  "title": "S/H Phase 1 — GPP, Tendon Capacity, Mechanics Base",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Sprints/Hurdles",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "phase": 1,
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Blocks",
+    "Sled (light)",
+    "Gym",
+    "Mini‑hurdles",
+    "Medball"
+  ],
+  "goal": "Θεμελίωση τεχνικής, ανθεκτικότητα τενόντων/κνημών, χαμηλό‑μέτριο νευρικό φορτίο.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Joint prep 8'",
+        "A/B skips 2x20m",
+        "Dribbles 3x20m"
+      ],
+      "main": [
+        "ACC tech: 6x20m build‑ups (95%, full rest)",
+        "Sled march 4x15m (ελαφρύ)",
+        "Gym: Trap Bar DL 4x4 @75%, Split Squat 3x6/πλ, Chin‑ups 3x6"
+      ],
+      "cooldown": [
+        "Mobility posterior 6'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Hurdle mobility 2x8",
+        "Ankling 2x20m"
+      ],
+      "main": [
+        "Circuit general 20' (core/scap/hips)",
+        "Power Clean 5x3 @70%",
+        "Isometric calf 3x40'' mid‑stance"
+      ],
+      "cooldown": [
+        "Breathing 3'",
+        "Foam roll 5'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic 8'",
+        "Wickets 6x10m"
+      ],
+      "main": [
+        "Ext tempo: 10x150m @60‑65% (90'')",
+        "Bench 4x5 @75%",
+        "RDL 3x6 @70%"
+      ],
+      "cooldown": [
+        "Walk 5'",
+        "Stretch 6'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Mini‑hurdles 2x10",
+        "Bands 5'"
+      ],
+      "main": [
+        "Blocks setup: 4x10‑15m (submax)",
+        "Hurd rhythm: 5 hurdles walk‑run (8‑10 strides)",
+        "Hip thrust 3x6 @75%"
+      ],
+      "cooldown": [
+        "Contrast 5' ή cold 5‑7'"
+      ]
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "A‑skips 2x20m",
+        "Wall drills 3x6"
+      ],
+      "main": [
+        "Sled pulls light 6x15m",
+        "Grass tempo 12x100m @65%",
+        "Nordic ecc 3x4"
+      ],
+      "cooldown": [
+        "Calves/hip flexors 6'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "Easy 5'"
+      ],
+      "main": [
+        "Mobility flow 12'",
+        "Massage/flush 10'"
+      ],
+      "cooldown": [
+        "Hydration+protein 25‑35g"
+      ]
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF / Active recovery 20‑30'"
+      ],
+      "cooldown": [
+        "Sleep 8‑9h"
+      ]
+    }
+  ],
+  "notes": "Week 2: +1 σετ στα accelerations, +5% βάρη στα βασικά, tempo ίδιο ή +1 επανάληψη. RPE 7‑8."
+}

@@ -1,0 +1,114 @@
+{
+  "filename": "athletismSwimmingElite_P4.json",
+  "title": "Swimming Phase 4 — Threshold / CSS Development",
+  "category": "athletism",
+  "subcategory": "Swimming",
+  "specialty": "Swimming (Sprint/Mid/Distance/IM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Pool 25/50m",
+    "Starting blocks",
+    "Turn flags",
+    "Paddles",
+    "Pull buoy",
+    "Snorkel",
+    "Fins",
+    "Parachute/Drag socks",
+    "Stretch cords (assisted/resisted)",
+    "Tempo trainer",
+    "Heart-rate monitor",
+    "Gym/Weights",
+    "Video/Underwater camera"
+  ],
+  "phase": 4,
+  "goal": "Ανάπτυξη ρυθμού κατωφλίου (T‑pace / CSS). Σταθερές αποστάσεις, οικονομία τεχνικής.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "WU 800m + 6x50m @:50"
+      ],
+      "main": [
+        "Main: 2x(8x100m @1:20 κρατάς CSS) 3' between",
+        "Kick: 10x50m @:55"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "WU 600m"
+      ],
+      "main": [
+        "Pull/Paddles: 6x300m @4:30 steady DPS",
+        "Gym: Front Squat 4x3 @85%, Row 4x6, Core rollouts 3x10"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "WU 400m + 8x25m UW @:45"
+      ],
+      "main": [
+        "Broken 400s: 4x(200@2:40 + 2x100@1:20) all @T‑pace"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Recovery 1200m easy/snorkel"
+      ],
+      "main": [
+        "Mobility + shoulders 12'"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "WU 600m + 6x50m build"
+      ],
+      "main": [
+        "Main: 10x200m @2:50 T‑ pace (last 3 negative split)",
+        "Gym: Bench 4x4 @80%, Chin‑ups 4x5, Nordics 3x5"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "WU 400m"
+      ],
+      "main": [
+        "Skills: starts/turns 20x rep σε ποιότητα"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: -1\" ανά 100m στο στόχο CSS (ή -5\"/200) αν η τεχνική παραμένει καθαρή."
+}

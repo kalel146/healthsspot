@@ -1,0 +1,109 @@
+{
+  "filename": "athletismTrackAndFieldElite_Throws_P2.json",
+  "title": "Throws Phase 2 — Technical Foundations & Special Strength Intro",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Throws (SP/DISC/JAV/HAM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Shot Put (SP)",
+    "Discus (DISC)",
+    "Javelin (JAV)",
+    "Hammer (HAM)",
+    "Circle/Runway",
+    "Gym",
+    "Medball",
+    "Bands/Tubing",
+    "Video/Timing"
+  ],
+  "phase": 2,
+  "goal": "Εδραίωση βασικών μοτίβων (στάση, στροφές, impulse), εισαγωγή ειδικής δύναμης.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Scap/hip activation",
+        "Dynamic mobility"
+      ],
+      "main": [
+        "SP: glide to power position 10–12 + release 8–10",
+        "DISC: South African 12–16 (με στόχο γωνίες)",
+        "JAV: 3‑5 cross‑steps to impulse 10–12",
+        "HAM: 2‑turn throws 8–10 (light)",
+        "Power Clean 5x3 @70%"
+      ],
+      "cooldown": [
+        "Mobility thoracic/hips 6'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Medball rotational 6x6/πλ",
+        "Hurdle hip mobility 2x8",
+        "Isometric cuff (ER/IR) 3x30''"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Marks & footwork"
+      ],
+      "main": [
+        "Technique: video 15' + focused sets",
+        "SP: half turns 10–12 / DISC: full turns 3x5 (submax)",
+        "JAV: impulse to release 8–10 / HAM: 3‑turn 6–8",
+        "Front Squat 4x4 @75%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery jog 20' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Special strength: heavy medball 4x5 (over/back/rot)",
+        "Hip Thrust 4x5 @80%",
+        "Chins 3x5"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Light technical throws 12–16 (όλων)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 σετ σε τεχνικές ρίψεις αν ποιότητα υψηλή, βάρη σταθερά. Έμφαση σε ισορροπία/χρονισμό."
+}

@@ -1,0 +1,118 @@
+{
+  "filename": "athletismSwimmingElite_P1.json",
+  "title": "Swimming Phase 1 — Technical Reset & Aerobic Base",
+  "category": "athletism",
+  "subcategory": "Swimming",
+  "specialty": "Swimming (Sprint/Mid/Distance/IM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Pool 25/50m",
+    "Starting blocks",
+    "Turn flags",
+    "Paddles",
+    "Pull buoy",
+    "Snorkel",
+    "Fins",
+    "Parachute/Drag socks",
+    "Stretch cords (assisted/resisted)",
+    "Tempo trainer",
+    "Heart-rate monitor",
+    "Gym/Weights",
+    "Video/Underwater camera"
+  ],
+  "phase": 1,
+  "goal": "Επανευθυγράμμιση τεχνικής (DPS, αναπνοές, υποβρύχια) + Aerobic base A1/A2. Ήρεμη, ποιοτική έναρξη.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "WU 800m επιλογής με drills κάθε 4x50 (catch, high elbow)",
+        "6x50m @:55 easy, focus DPS"
+      ],
+      "main": [
+        "Main: 3x(4x100m @1:30 A2 + 4x50m kick @1:00)",
+        "Drills: 8x25m scull @:40"
+      ],
+      "cooldown": [
+        "CD 300m easy back/free",
+        "Mobility shoulders/ankles 10'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "WU 600m + 8x25m underwater dolphin @:45 (≤10m)"
+      ],
+      "main": [
+        "Skills: Starts & Turns 10x (dive to 15m) + 10x (turn to 15m)",
+        "Gym: Trap Bar DL 4x4 @75%, Pull-ups 4x6, Copenhagen plank 3x:30/πλ"
+      ],
+      "cooldown": [
+        "CD 200m easy + breathing reset"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "WU 400m + 6x50m drill/swim"
+      ],
+      "main": [
+        "Main: IM set — 8x200m IM @3:20 A2, build 3–4",
+        "Paddles/Pull: 6x150m @2:15 smooth"
+      ],
+      "cooldown": [
+        "CD 300m choice"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Recovery 1000m continuous @easy (snorkel)"
+      ],
+      "main": [
+        "Mobility 12' + prehab ώμου (ER/IR bands 3x15)"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "WU 600m + 8x25m kick streamline @:50"
+      ],
+      "main": [
+        "Main: 2x(6x100m @1:25 CSS‑5\")",
+        "Gym: Bench 4x5 @75%, Hip Thrust 4x6 @75%"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "Open WU 400m + 8x25m build @:45"
+      ],
+      "main": [
+        "Skills: underwater count set 12x25m @:40 (≤12,5m), pace awareness",
+        "Easy pull 600m"
+      ],
+      "cooldown": [
+        "CD 200m + stretching 8'"
+      ]
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF / Walk 30' / Sleep 8–9h"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +5–10% όγκος στα A2, κράτα HR<150. Γυμναστήριο +5% φορτίο αν RPE≤7."
+}

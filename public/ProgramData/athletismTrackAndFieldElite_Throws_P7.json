@@ -1,0 +1,97 @@
+{
+  "filename": "athletismTrackAndFieldElite_Throws_P7.json",
+  "title": "Throws Phase 7 — Max Strength → Power Transfer",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Throws (SP/DISC/JAV/HAM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Shot Put (SP)",
+    "Discus (DISC)",
+    "Javelin (JAV)",
+    "Hammer (HAM)",
+    "Circle/Runway",
+    "Gym",
+    "Medball",
+    "Bands/Tubing",
+    "Video/Timing"
+  ],
+  "phase": 7,
+  "goal": "Μεταφορά μέγιστης δύναμης σε ταχύτητα ρίψης, διατήρηση τεχνικής σε χαμηλό όγκο.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Joint prep"
+      ],
+      "main": [
+        "Back Squat 5x3 @87–90%",
+        "Bench 5x3 @87%",
+        "Medball shot release 4x5"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Power Clean 6x2 @80% + step throws 4x5"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Full throws 8–10 (competition weight) — quality only"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery + cuff care 12'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Light implements 10–12 (speed focus)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Video review 20' + mental prep 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: ‑1 σετ στα μέγιστα, +1 σετ στα speed throws. Ποτέ failure/τράβηγμα σε αγωνιστικές γωνίες."
+}

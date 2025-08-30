@@ -1,0 +1,102 @@
+{
+  "filename": "athletismTrackAndFieldElite_Jumps_P8.json",
+  "title": "Jumps Phase 8 — Competition Modeling & Attempt Strategy",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Jumps (LJ/TJ/HJ/PV)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Sand pit",
+    "Hurdles (low)",
+    "Boxes",
+    "Wickets",
+    "Mini-hurdles",
+    "Gym",
+    "Medball",
+    "Timing/Video",
+    "Pole (for PV)",
+    "High jump bar/standards"
+  ],
+  "phase": 8,
+  "goal": "Προσομοίωση αγώνα, διαχείριση προσπαθειών, επιλογή υψών/σημαδιών, ψυχολογικό priming.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Drills 8'"
+      ],
+      "main": [
+        "Dress rehearsal: 2 σειρές από 3 προσπάθειες (LJ/TJ) ή step-ups στις μπάρες (HJ/PV)",
+        "Power maintenance: Squat 2x3 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 35–45' + strides 4x80m",
+        "Breathing/focus 5'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Marks"
+      ],
+      "main": [
+        "Event rehearsal submax: 4–6 ποιοτικές προσπάθειες (χαμηλός όγκος)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Gym power maintenance: Bench 3x3 @80% + Plyo low 3x5"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Priming: 3–4 approach runs + 2–3 τεχνικές επαναλήψεις"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF / travel"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Mock meet"
+      ],
+      "cooldown": [
+        "Debrief 10'"
+      ]
+    }
+  ],
+  "notes": "Week 2: -20–30% όγκος, ένταση 90–95%. Εστίαση σε ρουτίνα προσέγγισης/σημαδιών και attempt strategy."
+}

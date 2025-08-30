@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SubscriptionGate from "./SubscriptionGate";
 import { useTheme } from "../../ThemeContext";
@@ -26,6 +26,73 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
     return "📅";
   };
 
+  // -------------------------
+  // NEW: Discipline header & badge chips (auto from subcategory/title/_src/specialty)
+  // -------------------------
+  const discipline = useMemo(() => {
+    const cat = String(program?.category || "").toLowerCase();
+    const sub = String(program?.subcategory || "").toLowerCase();
+    const src = String(program?._src || "");
+    const title = String(program?.title || "").toLowerCase();
+    const spec = String(program?.specialty || "").toLowerCase();
+
+    const chips = new Set();
+    let label = null;
+
+    if (cat === "athletism") {
+      if (sub === "trackandfield") {
+        if (/sprint|sprints|hurdle/i.test(src) || title.includes("sprint") || title.includes("hurdle")) {
+          label = "Track & Field — Sprints/Hurdles";
+          ["100", "200", "400", "110H/100H", "4x1"].forEach((c) => chips.add(c));
+        } else if (/mdld|md_ld|mdld|md|ld|800|1500|5k|10k/i.test(src + title)) {
+          label = "Track & Field — MD/LD";
+          ["800", "1500", "5k", "10k"].forEach((c) => chips.add(c));
+        } else if (/jumps|lj|tj|hj|pv/i.test(src + title)) {
+          label = "Track & Field — Jumps";
+          ["LJ", "TJ", "HJ", "PV"].forEach((c) => chips.add(c));
+        } else if (/throws|sp|disc|jav|ham/i.test(src + title)) {
+          label = "Track & Field — Throws";
+          ["SP", "DISC", "JAV", "HAM"].forEach((c) => chips.add(c));
+        } else if (/combined|deca|hepta/i.test(src + title)) {
+          label = "Track & Field — Combined";
+          ["Decathlon", "Heptathlon"].forEach((c) => chips.add(c));
+        } else {
+          label = "Track & Field";
+        }
+      } else if (sub === "swimming") {
+        label = "Swimming";
+        // Specialty contains the set
+        if (spec.includes("sprint")) chips.add("Sprint");
+        if (spec.includes("mid")) chips.add("Mid");
+        if (spec.includes("distance")) chips.add("Distance");
+        if (spec.includes("im")) chips.add("IM");
+        // Phase-based extra hints
+        const p = Number(program?.phase || 0);
+        if (p >= 5 && p <= 6) chips.add("Race‑Pace");
+        if (p >= 7 && p <= 8) chips.add("Modeling");
+        if (p >= 9) chips.add("Taper");
+      } else if (sub === "gymnastics") {
+        label = "Gymnastics";
+        ["MAG", "WAG"].forEach((c) => chips.add(c));
+        const p = Number(program?.phase || 0);
+        if (p >= 7) chips.add("Routines");
+        if (p >= 9) chips.add("Taper");
+      } else if (/soccer|football/.test(sub)) {
+        label = "Soccer";
+        ["S&C", "Agility", "Speed"].forEach((c) => chips.add(c));
+      } else if (sub === "volleyball") {
+        label = "Volleyball"; ["Jump", "Approach", "S&C"].forEach((c) => chips.add(c));
+      } else if (sub.includes("nfl")) {
+        label = "NFL"; ["Speed", "Power", "S&C"].forEach((c) => chips.add(c));
+      }
+    }
+
+    return { label, chips: Array.from(chips) };
+  }, [program]);
+
+  const chipClasses =
+    "text-[10px] font-semibold px-2 py-0.5 rounded-full border leading-none whitespace-nowrap";
+
   const borderColor =
     program?.category === "gym"
       ? "border-indigo-500"
@@ -33,6 +100,8 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
       ? "border-emerald-500"
       : program?.category === "mobility"
       ? "border-yellow-400"
+      : program?.category === "athletism"
+      ? "border-fuchsia-500"
       : "border-gray-300";
 
   if (!program || (selectedCategory && program.category !== selectedCategory)) return null;
@@ -50,7 +119,7 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
       case "Bronze": return "bg-amber-400 text-white";
       case "Silver": return "bg-gray-300 text-black";
       case "Gold": return "bg-yellow-400 text-white";
-      case "Platinum": return "bg-gradient-to-r from-gray-500 to-white text-black";
+      case "Platinum": return "bg-gradient-to-r from-gray-700 via-gray-200 to-gray-700 text-black";
       default: return "bg-gray-200 text-gray-700";
     }
   };
@@ -64,7 +133,7 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
       }`}
     >
       {/* Header */}
-      <div className="flex flex-col gap-2 mb-4">
+      <div className="flex flex-col gap-2 mb-2">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold text-indigo-500 tracking-tight">{program.title}</h2>
           <div className="flex gap-2 items-center">
@@ -83,19 +152,31 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
             )}
           </div>
         </div>
+
+        {/* NEW: Discipline header line */}
+        {discipline.label && (
+          <div className="flex items-center gap-2">
+            <span className="text-xs uppercase tracking-wide opacity-75">{discipline.label}</span>
+            <div className="flex flex-wrap gap-1">
+              {discipline.chips.map((c) => (
+                <span key={c} className={`${chipClasses} ${theme === "dark" ? "bg-zinc-800 border-zinc-700" : "bg-gray-100 border-gray-300"}`}>
+                  {c}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
         <p className={`text-sm ${theme === "dark" ? "text-zinc-400" : "text-gray-600"}`}>
           🎯 {program.goal || program.description} • 🕒 {program.duration} • ⚡ {program.level}
         </p>
         {debugMode && (
-          <p className="text-xs font-mono text-red-500">[Debug] Tier: {program.accessTier} • Filename: {program.filename}</p>
+          <p className="text-xs font-mono text-red-500">[Debug] Tier: {program.accessTier} • Filename: {program.filename} • _src: {program._src}</p>
         )}
         {isLocked(program.accessTier) && (
           <div className={`${theme === "dark" ? "bg-zinc-800 border border-red-500" : "bg-red-50 border border-red-300"} rounded-xl p-4 mt-2 flex items-center justify-between gap-3`}>
             <p className="text-red-500 font-medium m-0">🔒 Απαιτεί πακέτο {program.accessTier} ή ανώτερο</p>
-            <button
-              onClick={() => setShowModal(true)}
-              className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-1 rounded-full text-sm font-semibold shadow"
-            >
+            <button onClick={() => setShowModal(true)} className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-1 rounded-full text-sm font-semibold shadow">
               Αναβάθμιση σε {program.accessTier}
             </button>
           </div>

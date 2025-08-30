@@ -1,0 +1,104 @@
+{
+  "filename": "athletismTrackAndFieldElite_Combined_P3.json",
+  "title": "Combined Phase 3 — Jumps Technical Consolidation",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Combined Events (Decathlon/Heptathlon)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Blocks",
+    "Hurdles",
+    "Sand pit",
+    "High jump bar",
+    "Pole vault poles/standards",
+    "Shot/Discus/Javelin",
+    "Gym",
+    "Medball",
+    "Timing/Video"
+  ],
+  "phase": 3,
+  "goal": "Σταθερότητα φόρας/σημαδιών, penultimate/plant, bar/pole mechanics.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Wickets",
+        "Dynamic 8'"
+      ],
+      "main": [
+        "LJ: approach 6–8 + pop‑ups 4x",
+        "TJ alt: hop‑step‑pop 5x (short)",
+        "Trap DL 4x3 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Hurdle mob"
+      ],
+      "main": [
+        "HJ: bar progressions 8–10 (χαμηλά)",
+        "PV: short pole plant & take‑off 8–10",
+        "Ham ISO mid 3x30''"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Drills"
+      ],
+      "main": [
+        "Sprints fly‑ins 5x20m (timing)",
+        "SP technique 8–10",
+        "Bench 5x3 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery bike 20' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Marks"
+      ],
+      "main": [
+        "PV/HJ: approach rhythm 6x + 4–6 quality attempts",
+        "Hip Thrust 4x4 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy run 25–35' + strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 quality attempt σε κάθε jump αν RPE≤8 και επαφή γρήγορη."
+}

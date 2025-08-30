@@ -1,0 +1,114 @@
+{
+  "filename": "athletismSwimmingElite_P3.json",
+  "title": "Swimming Phase 3 — Speed & Power Capacity",
+  "category": "athletism",
+  "subcategory": "Swimming",
+  "specialty": "Swimming (Sprint/Mid/Distance/IM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Pool 25/50m",
+    "Starting blocks",
+    "Turn flags",
+    "Paddles",
+    "Pull buoy",
+    "Snorkel",
+    "Fins",
+    "Parachute/Drag socks",
+    "Stretch cords (assisted/resisted)",
+    "Tempo trainer",
+    "Heart-rate monitor",
+    "Gym/Weights",
+    "Video/Underwater camera"
+  ],
+  "phase": 3,
+  "goal": "Νευρομυϊκή ταχύτητα με αντιστάσεις (parachute/cords) και υποβοήθηση (fins). Σύντομες, πλήρως ξεκούραστες επαναλήψεις.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "WU 600m + 6x25m build"
+      ],
+      "main": [
+        "Resisted sprints: 12x25m @1:20 (parachute/cords) all‑out",
+        "Recovery swim 400m"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "WU 500m (snorkel) + 8x25m UW dolphin @:50"
+      ],
+      "main": [
+        "Assisted sprints: fins 8x50m @2:00 (25 fast UW + 25 fast swim)",
+        "Gym: Power Clean 6x2 @75–80%, Split squats 3x6/πλ"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "WU 400m + 8x50m drill/swim @:55"
+      ],
+      "main": [
+        "VO₂ set: 3x(4x100m @1:15 hold 200 pace) 2' easy between blocks"
+      ],
+      "cooldown": [
+        "CD 300m back/free"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Recovery 1000m easy + mobility 10'"
+      ],
+      "main": [
+        "Breath-control: 12x50m @:55 (odd 3‑5, even 5‑7)"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "WU 600m"
+      ],
+      "main": [
+        "Speed play: 16x25m @:40 (odd fast to 15m, even easy)",
+        "Gym: Bench 5x3 @85%, Pull‑ups 5x3, Hip Thrust 4x4 @85%"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "WU 400m"
+      ],
+      "main": [
+        "IM skills: 8x100m IM @1:40 (build 3‑4) + 8x50m kick @:55"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +2x25m σε resisted & assisted αν χρόνοι παραμένουν σταθεροί. VO₂ set ίδιο."
+}

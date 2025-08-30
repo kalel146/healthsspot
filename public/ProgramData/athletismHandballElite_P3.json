@@ -1,0 +1,107 @@
+{
+  "filename": "athletismHandballElite_P3.json",
+  "title": "Handball Phase 3 — Max Strength → Power Base",
+  "category": "athletism",
+  "subcategory": "Handball",
+  "specialty": "Team Handball — Back/Centre/Wing/Pivot/Goalkeeper conditioning",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Handball court & goals",
+    "Official balls (sizes)",
+    "Cones/Agility ladders",
+    "Timing gates",
+    "Gym (barbell, dumbbells, cables)",
+    "Medballs (2–5kg)",
+    "Bands (heavy/light)",
+    "Plyo boxes",
+    "Sleds",
+    "Heart‑rate/IMU GPS (optional)"
+  ],
+  "phase": 3,
+  "goal": "Μέγιστη δύναμη κάτω/πάνω κορμού σε ασφαλείς γωνίες. Μεταφορά σε ισχύ (μην χαλάς την τεχνική ρίψης).",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "Trap Bar DL 5x3 @85%",
+        "Split squat 4x5/πλ",
+        "Medball chest 4x6"
+      ],
+      "cooldown": [
+        "Mobility posterior 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Shoulder prep 8'"
+      ],
+      "main": [
+        "Bench 5x3 @85%",
+        "Row 4x6",
+        "Overhead press 3x5 (EZ)"
+      ],
+      "cooldown": [
+        "Scap raises 3x15"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "ACC warm 6'"
+      ],
+      "main": [
+        "Sprints: 6x20m (95%)",
+        "COD 3‑cone 6x",
+        "Throwing technique (mid) 6x5"
+      ],
+      "cooldown": [
+        "CD 5'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "Recovery 30' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Plyo prep 6'"
+      ],
+      "main": [
+        "Contrast: Back squat 3x3 @85% + Jump squats 3x5",
+        "Medball rotational 4x6/πλ"
+      ],
+      "cooldown": [
+        "Ankles/hip flexors 6'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Aerobic 30–40' Z2"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: Στα βάρη ‑1 σετ αν νευρική κόπωση. Προτίμησε ποιότητα ταχύτητας."
+}

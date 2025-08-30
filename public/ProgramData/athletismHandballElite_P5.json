@@ -1,0 +1,102 @@
+{
+  "filename": "athletismHandballElite_P5.json",
+  "title": "Handball Phase 5 — Anaerobic Capacity & SSG",
+  "category": "athletism",
+  "subcategory": "Handball",
+  "specialty": "Team Handball — Back/Centre/Wing/Pivot/Goalkeeper conditioning",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Handball court & goals",
+    "Official balls (sizes)",
+    "Cones/Agility ladders",
+    "Timing gates",
+    "Gym (barbell, dumbbells, cables)",
+    "Medballs (2–5kg)",
+    "Bands (heavy/light)",
+    "Plyo boxes",
+    "Sleds",
+    "Heart‑rate/IMU GPS (optional)"
+  ],
+  "phase": 5,
+  "goal": "Ικανότητα επαναλαμβανόμενων σπριντ/επαφών. Μικρά παιχνίδια υψηλής έντασης, περιορισμένος χρόνος ανάπαυσης.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "WU 10' + mobility"
+      ],
+      "main": [
+        "RSA: 3x(6x30m @:30) 4' rest",
+        "Sled push 6x20m (mod)"
+      ],
+      "cooldown": [
+        "CD 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Shoulder care 8'"
+      ],
+      "main": [
+        "Throwing under fatigue: 6x(4 throws after 20s shuttle)",
+        "Gym: Hip Thrust 4x4 @85%"
+      ],
+      "cooldown": [
+        "Breathing 3'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "SSG 4v4 6x3' (small court)",
+        "Bench 4x3 @85%, Chin‑ups 4x4"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "Recovery 30' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Plyo prep 6'"
+      ],
+      "main": [
+        "Depth jumps 4x3 + CMJ 4x3",
+        "Change‑of‑pace 10x20m (fast/easy)"
+      ],
+      "cooldown": [
+        "Ankles 3x20"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Aerobic 35–45' Z2"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: Στα RSA ‑5'' ανά κύκλο ή +1 rep αν οι χρόνοι κρατιούνται."
+}

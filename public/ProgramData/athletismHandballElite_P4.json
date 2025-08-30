@@ -1,0 +1,103 @@
+{
+  "filename": "athletismHandballElite_P4.json",
+  "title": "Handball Phase 4 — Upper‑Body Power & Velocity",
+  "category": "athletism",
+  "subcategory": "Handball",
+  "specialty": "Team Handball — Back/Centre/Wing/Pivot/Goalkeeper conditioning",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Handball court & goals",
+    "Official balls (sizes)",
+    "Cones/Agility ladders",
+    "Timing gates",
+    "Gym (barbell, dumbbells, cables)",
+    "Medballs (2–5kg)",
+    "Bands (heavy/light)",
+    "Plyo boxes",
+    "Sleds",
+    "Heart‑rate/IMU GPS (optional)"
+  ],
+  "phase": 4,
+  "goal": "Ισχύς ώμου/κορμού, ρίψεις ταχύτητας με ιατρικές μπάλες και μπάλες handball (light/heavy).",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Shoulder/Scap activation 8'"
+      ],
+      "main": [
+        "Throwing (radar optional): 6x3 fastballs + 6x3 rotational",
+        "Push press 5x3 @80%"
+      ],
+      "cooldown": [
+        "Band care 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "Sprints: flying 20s 6x (30m build)",
+        "Plyo bounds 5x3/πλ"
+      ],
+      "cooldown": [
+        "CD 5'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "SSG positional 3v3 6x2' @RPE7",
+        "Core anti‑rot 3x12/πλ"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "Recovery 25' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Shoulder prep 6'"
+      ],
+      "main": [
+        "Bench 4x4 @80%",
+        "Landmine press 3x6/πλ",
+        "Throw on move 6x4/πλ"
+      ],
+      "cooldown": [
+        "Elbow tendons ISO 3x40''"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Aerobic 30' Z2 + strides 6x40m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 cluster σε push‑press ή +2 ρίψεις/σετ αν η ταχύτητα δεν πέφτει."
+}

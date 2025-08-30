@@ -1,0 +1,99 @@
+{
+  "filename": "athletismTrackAndFieldElite_Combined_P9.json",
+  "title": "Combined Phase 9 — Taper I (Competition Simulation)",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Combined Events (Decathlon/Heptathlon)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Blocks",
+    "Hurdles",
+    "Sand pit",
+    "High jump bar",
+    "Pole vault poles/standards",
+    "Shot/Discus/Javelin",
+    "Gym",
+    "Medball",
+    "Timing/Video"
+  ],
+  "phase": 9,
+  "goal": "Μείωση όγκου, διατήρηση έντασης, προσομοίωση 2‑ημέρου με χαμηλό αριθμό προσπαθειών.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 6'"
+      ],
+      "main": [
+        "Event rehearsal: 4–6 ποιοτικές τεχνικές επαναλήψεις συνολικά (2–3 events)",
+        "Power Clean 3x2 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 30–40' + strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Light drills"
+      ],
+      "main": [
+        "Day‑1 dress rehearsal (μειωμένος όγκος): 3‑4 events μόνο, submax"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 25' + mobility 8'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Day‑2 dress rehearsal (μειωμένος όγκος): υπόλοιπα events, submax"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF / travel"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Comp day (optional)"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: ‑20–30% επιπλέον όγκος. Ποιότητα > ποσότητα. Διατήρηση ρουτίνας προθέρμανσης."
+}

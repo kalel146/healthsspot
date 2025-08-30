@@ -1,0 +1,106 @@
+{
+  "filename": "athletismTrackAndFieldElite_Jumps_P2.json",
+  "title": "Jumps Phase 2 — Approach Rhythm & Penultimate Intro",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Jumps (LJ/TJ/HJ/PV)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Sand pit",
+    "Hurdles (low)",
+    "Boxes",
+    "Wickets",
+    "Mini-hurdles",
+    "Gym",
+    "Medball",
+    "Timing/Video",
+    "Pole (for PV)",
+    "High jump bar/standards"
+  ],
+  "phase": 2,
+  "goal": "Σταθερό μέτρημα/ρυθμός φόρας, εισαγωγή penultimate & plant timing.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Drills 8'",
+        "Wickets 8x10m"
+      ],
+      "main": [
+        "Approach calibration: 6–8 runs @ 6–10 βήματα (σημείωσε μέτρα)",
+        "LJ: penultimate drill 6x / TJ: hop-penultimate 6x / HJ: J-curve marks 6x / PV: pole run + posture 6x",
+        "Power Clean 5x3 @70%"
+      ],
+      "cooldown": [
+        "Mobility 6'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Hurdle mob",
+        "Ankling"
+      ],
+      "main": [
+        "Plyo: hurdle hops low 5x5",
+        "Front Squat 4x4 @75%",
+        "Ham ISO long 3x40''"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "Short approach jumps: LJ 8–10 (6–8 βήματα) / TJ 6–8 (short) / HJ 8–10 scissor/pop-ups / PV plant timing (3–5 lefts) 8–10",
+        "Bench 4x5 @75%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 25–35' + mobility feet 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "A/B-skips"
+      ],
+      "main": [
+        "Bounding short 4x20m",
+        "Hip Thrust 4x5 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Technique video review 20' + core 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1–2 προσπάθειες στις φόρες αν ποιότητα παραμένει υψηλή. Μικρότερο όγκο στα βάρη αν υπάρχει βαρύτητα."
+}

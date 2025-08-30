@@ -1,0 +1,99 @@
+{
+  "filename": "athletismTrackAndFieldElite_Throws_P4.json",
+  "title": "Throws Phase 4 — Power & Speed‑Strength (Contrast)",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Throws (SP/DISC/JAV/HAM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Shot Put (SP)",
+    "Discus (DISC)",
+    "Javelin (JAV)",
+    "Hammer (HAM)",
+    "Circle/Runway",
+    "Gym",
+    "Medball",
+    "Bands/Tubing",
+    "Video/Timing"
+  ],
+  "phase": 4,
+  "goal": "Μεταφορά δύναμης σε ισχύ/ταχύτητα, contrast ζευγάρια, καθαρές εκτελέσεις.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "Contrast: Back Squat 3x3 @85% + jump squats 3x5 (BW)",
+        "SP/DISC/JAV/HAM: 10–12 quality throws"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Scap/hip"
+      ],
+      "main": [
+        "Medball contrast: OH/back 4x5 + rotational 4x5",
+        "Cuff strength 3x12",
+        "Core anti‑rot 3x10/πλ"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Power Clean 5x2 @80–85% + step throws 4x5 (SP/DISC)",
+        "JAV: impulse throws 10–12 / HAM: 4‑turn 6–8"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery jog 20' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Marks"
+      ],
+      "main": [
+        "Speed throws: light implements 12–16 (0.25–0.5kg κάτω από αγωνιστικό)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Video technique + cues 20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 contrast set εφόσον jump quality >8/10. Ταχύτητα ρίψης προτεραιότητα."
+}

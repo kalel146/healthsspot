@@ -1,0 +1,98 @@
+{
+  "filename": "athletismHandballElite_P10.json",
+  "title": "Handball Phase 10 — Peak — Championship",
+  "category": "athletism",
+  "subcategory": "Handball",
+  "specialty": "Team Handball — Back/Centre/Wing/Pivot/Goalkeeper conditioning",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Handball court & goals",
+    "Official balls (sizes)",
+    "Cones/Agility ladders",
+    "Timing gates",
+    "Gym (barbell, dumbbells, cables)",
+    "Medballs (2–5kg)",
+    "Bands (heavy/light)",
+    "Plyo boxes",
+    "Sleds",
+    "Heart‑rate/IMU GPS (optional)"
+  ],
+  "phase": 10,
+  "goal": "Αιχμή απόδοσης: micro‑δόσεις έντασης, νευρικό priming, logistics αγώνα, τίποτα που να ρισκάρει τραυματισμό.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Comp warm‑up 12'"
+      ],
+      "main": [
+        "Priming: 6x15m fast + 6x throws (radar) σε υψηλή ποιότητα"
+      ],
+      "cooldown": [
+        "CD 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [],
+      "main": [
+        "OFF ή easy 15' + mobility 8'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Event rehearsal: 1–2 short SSG μόνο",
+        "Gym: Neural 2x2 @60–70% (optional)"
+      ],
+      "cooldown": [
+        "CD 6'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "OFF / visualization / scouts"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Priming 6'"
+      ],
+      "main": [
+        "Starts/cuts 6x + 6x throws target",
+        "Breathing/HRV check 5'"
+      ],
+      "cooldown": [
+        "CD 6'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "OFF / travel / pre‑match shakeout"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "MATCH DAY — execute plan, minutes/load tracking"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2 (race): -40–60% όγκος. Μόνο micro‑ερεθίσματα. Ανάκτηση/διατροφή/ύπνος στην εντέλεια."
+}

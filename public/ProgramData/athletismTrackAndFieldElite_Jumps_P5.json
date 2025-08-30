@@ -1,0 +1,101 @@
+{
+  "filename": "athletismTrackAndFieldElite_Jumps_P5.json",
+  "title": "Jumps Phase 5 — Max Approach Speed & Take‑off Power",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Jumps (LJ/TJ/HJ/PV)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Sand pit",
+    "Hurdles (low)",
+    "Boxes",
+    "Wickets",
+    "Mini-hurdles",
+    "Gym",
+    "Medball",
+    "Timing/Video",
+    "Pole (for PV)",
+    "High jump bar/standards"
+  ],
+  "phase": 5,
+  "goal": "Αύξηση ταχύτητας φόρας, μεταφορά σε εκρηκτική απογείωση, διατήρηση τεχνικής.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "Approach fast runs: 6–8 @ 8–12 βήματα (timing)",
+        "Take-off power drill: LJ board contacts 6x / TJ step-board 6x / HJ curve-to-TO 6x / PV plant+take-off 6x",
+        "RDL 3x4 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Tempo 10x120m @65%",
+        "Ham ISO 3x40''"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Wickets/marks"
+      ],
+      "main": [
+        "Special strength: jumps on box 4x5, depth to hurdle hop 3x4",
+        "Bench 3x5 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery + mobility 20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Drills"
+      ],
+      "main": [
+        "Quality attempts (moderate): LJ 6–8 / TJ 5–6 / HJ 6–8 / PV 6–8",
+        "Hip Thrust 3x5 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 25–35' + strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 quality attempt σε τεχνική. Πρόσεξε σημάδια φόρας/σταθερότητα ρυθμού."
+}

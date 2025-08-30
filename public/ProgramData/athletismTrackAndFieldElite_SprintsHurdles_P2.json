@@ -1,0 +1,110 @@
+{
+  "filename": "athletismTrackAndFieldElite_SprintsHurdles_P2.json",
+  "title": "S/H Phase 2 — Acceleration (0‑30m) & RFD",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Sprints/Hurdles",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "phase": 2,
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Blocks",
+    "Sled (10–20% BW)",
+    "Gym",
+    "Timing gates"
+  ],
+  "goal": "Εκρηκτική εκκίνηση, 1ο‑2ο βήμα, τοποθέτηση κορμού/κνήμης, RFD.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Drills A/B 2x20m",
+        "Wall drive 3x6/πλ"
+      ],
+      "main": [
+        "Blocks: 6x10–20m (πλήρης ανάπαυση)",
+        "Sled sprints: 5x15m (10–15% BW)",
+        "Power Clean 6x2 @75%"
+      ],
+      "cooldown": [
+        "Glute med 3x15",
+        "Breathing 3'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Hurdle mobility",
+        "Ankling"
+      ],
+      "main": [
+        "Drop jump 5x5 (30–45cm)",
+        "Front Squat 5x3 @80%",
+        "Ham ISO long 3x40''"
+      ],
+      "cooldown": [
+        "Walk 5'",
+        "Stretch 6'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Wickets 8x10m",
+        "A‑skips"
+      ],
+      "main": [
+        "ACC: 5x30m (full rest)",
+        "Hurd rhythm: 5‑6 hurdles @ 8 strides"
+      ],
+      "cooldown": [
+        "Parasym breathing 3'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "General 8'"
+      ],
+      "main": [
+        "Core anti‑rot 3x10/πλ",
+        "Shoulder/scap stability 12'",
+        "Video review 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Drills"
+      ],
+      "main": [
+        "Sled: 6x15m (ελαφρύ)",
+        "Flying 10s 6x (20m build)",
+        "Hip Thrust 4x5 @80%"
+      ],
+      "cooldown": [
+        "Ankles/calf 6'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Recovery: pool/tempo 15‑20' @60%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: blocks +1 επανάληψη, sled +1 σετ, drop jumps ίδια ένταση. 100% ποιότητα στα πρώτα 10m."
+}

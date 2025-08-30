@@ -1,0 +1,112 @@
+{
+  "filename": "athletismSwimmingElite_P5.json",
+  "title": "Swimming Phase 5 — Race‑Pace Density (100/200)",
+  "category": "athletism",
+  "subcategory": "Swimming",
+  "specialty": "Swimming (Sprint/Mid/Distance/IM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Pool 25/50m",
+    "Starting blocks",
+    "Turn flags",
+    "Paddles",
+    "Pull buoy",
+    "Snorkel",
+    "Fins",
+    "Parachute/Drag socks",
+    "Stretch cords (assisted/resisted)",
+    "Tempo trainer",
+    "Heart-rate monitor",
+    "Gym/Weights",
+    "Video/Underwater camera"
+  ],
+  "phase": 5,
+  "goal": "Αύξηση πυκνότητας σε race‑pace για 100/200, ανοχή γαλακτικού για sprinters — διατήρηση τεχνικής.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "WU 600m + 6x50m build"
+      ],
+      "main": [
+        "Race‑pace set: 3x(6x50m @1:10 at 100 RP, hit turns/underwaters) 4' between blocks"
+      ],
+      "cooldown": [
+        "CD 400m easy"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "WU 500m (snorkel)"
+      ],
+      "main": [
+        "Sprinters: 12x25m @2:00 from blocks all‑out (time‑trial)\nMD: 8x100m @2:00 at 200 RP, even negative split",
+        "Gym: Power clean 5x2 @80%, Hip Thrust 4x4 @85%"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "WU 400m + 8x50m drill/swim"
+      ],
+      "main": [
+        "Lactate set: 6x100m @6' all‑out (bloods optional) — ή 8x50m @3' για 50m events"
+      ],
+      "cooldown": [
+        "CD 500m very easy"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Recovery 1200m + mobility 10'"
+      ],
+      "main": [
+        "Breathing ladders 10x50m hypoxic"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "WU 600m"
+      ],
+      "main": [
+        "IM broken: 4x(100 IM broken 50+25+25 with :20 rests) @6' focus skills"
+      ],
+      "cooldown": [
+        "Gym: Bench 4x3 @85%, Pull‑ups 4x4, Core anti‑rot 3x12/πλ"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "WU 400m"
+      ],
+      "main": [
+        "Paddles/Pull 5x400m @6:00 A2 (DPS)"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: Μείωσε recovery ανά block κατά :05–:10, κράτα χρόνους. Lactate set ίδιο σε όγκο."
+}

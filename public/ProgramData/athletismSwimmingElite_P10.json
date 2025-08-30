@@ -1,0 +1,102 @@
+{
+  "filename": "athletismSwimmingElite_P10.json",
+  "title": "Swimming Phase 10 — Peak & Championships",
+  "category": "athletism",
+  "subcategory": "Swimming",
+  "specialty": "Swimming (Sprint/Mid/Distance/IM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Pool 25/50m",
+    "Starting blocks",
+    "Turn flags",
+    "Paddles",
+    "Pull buoy",
+    "Snorkel",
+    "Fins",
+    "Parachute/Drag socks",
+    "Stretch cords (assisted/resisted)",
+    "Tempo trainer",
+    "Heart-rate monitor",
+    "Gym/Weights",
+    "Video/Underwater camera"
+  ],
+  "phase": 10,
+  "goal": "Αιχμή απόδοσης: micro‑δόσεις έντασης, σταθερή ρουτίνα προθέρμανσης, ψυχολογικό priming, logistics αγώνα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "WU 600–800m comp warm‑up"
+      ],
+      "main": [
+        "Priming: 4x25m from dive @3', 2x50m @4' at RP",
+        "Skills: 4x starts + 4x turns"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [],
+      "main": [
+        "OFF ή 800m easy + 4x25m build"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "WU 600m"
+      ],
+      "main": [
+        "Event rehearsal: 1–2 race‑pace reps μόνο",
+        "Gym: Neural 2x2 @60–70% (optional)"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "OFF / Mobility 10' / Visualization 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "WU 500m"
+      ],
+      "main": [
+        "Micro‑dose: 2x25m fast + 1 start/turn",
+        "Breathing 5'"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "OFF / travel / pre‑meet shakeout 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "CHAMPIONSHIP DAY(S) — execute plan, record splits/underwaters"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2 (race): -40–60% όγκος, μόνο υψηλής ποιότητας νευρικά ερεθίσματα. Διατροφή/ύπνος/ενυδάτωση στην εντέλεια."
+}

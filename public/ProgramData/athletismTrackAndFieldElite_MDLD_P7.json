@@ -1,0 +1,103 @@
+{
+  "filename": "athletismTrackAndFieldElite_MDLD_P7.json",
+  "title": "MD/LD Phase 7 — Specific Prep II (Sharpening)",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "MD/LD (800/1500/5k/10k)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Grass",
+    "Gym",
+    "Hills",
+    "Stopwatch/Timing",
+    "HR monitor"
+  ],
+  "phase": 7,
+  "goal": "Όξυνση ρυθμού αγώνα, περιορισμός όγκου, διατήρηση VO₂/T σε μικρές δόσεις.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Jog 10'",
+        "Drills",
+        "Strides 4x100m"
+      ],
+      "main": [
+        "MD: 3x (500m @1500 pace + 300m @800 pace) (8')",
+        "LD: 4x2k @10k pace (2')"
+      ],
+      "cooldown": [
+        "Easy 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 40–55' + strides 6x80m",
+        "Core 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Easy 10'"
+      ],
+      "main": [
+        "MD: 10x300m @1k pace (60'')",
+        "LD: 5x5' @VO₂ (2')"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 30–45' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Jog 10'"
+      ],
+      "main": [
+        "Threshold float: 20' continuous @T + strides 4x150m @90%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 30–45'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Long run MD 75–90' / LD 100–115'"
+      ],
+      "cooldown": [
+        "Stretch 8'"
+      ]
+    }
+  ],
+  "notes": "Week 2: +1 rep στα 300m/2k ανά κατηγορία, κρατάς συνολικό όγκο < προηγούμενες φάσεις. Νευρική φρεσκάδα πρώτα."
+}

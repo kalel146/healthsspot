@@ -1,0 +1,102 @@
+{
+  "filename": "athletismTrackAndFieldElite_Combined_P8.json",
+  "title": "Combined Phase 8 — Race Modeling & Broken Reps",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Combined Events (Decathlon/Heptathlon)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Blocks",
+    "Hurdles",
+    "Sand pit",
+    "High jump bar",
+    "Pole vault poles/standards",
+    "Shot/Discus/Javelin",
+    "Gym",
+    "Medball",
+    "Timing/Video"
+  ],
+  "phase": 8,
+  "goal": "Πιο αιχμηρή προσομοίωση: broken reps για 400/110H/200/800/1500, χαμηλός όγκος τεχνικής.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Drills"
+      ],
+      "main": [
+        "Broken 400: 2x(120+80) @race pace (8')",
+        "Hurdles broken: 2x(5 hurdles @race rhythm)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "SP/DISC: 8–10 quality throws συνολικά",
+        "Medball quick 3x6"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Wickets/marks"
+      ],
+      "main": [
+        "PV: short approach 6–8 + HJ 4–6 (low)",
+        "Strides 4x100m @90%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 30' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Jog 10'"
+      ],
+      "main": [
+        "MD/LD: 3x1k @10k pace (LD) ή 3x600m @3k pace (MD)",
+        "JAV: 6–8 technical (light)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Pre‑meet priming: 2–3 approach runs + 2 τεχνικές επαναλήψεις"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "Mock meet (light)"
+      ],
+      "cooldown": [
+        "Debrief 10'"
+      ]
+    }
+  ],
+  "notes": "Week 2: ‑10–20% όγκος, ένταση 90–95%. Καμία αποτυχία σε βάρη/plyo."
+}

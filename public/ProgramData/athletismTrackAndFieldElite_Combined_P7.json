@@ -1,0 +1,96 @@
+{
+  "filename": "athletismTrackAndFieldElite_Combined_P7.json",
+  "title": "Combined Phase 7 — Specific Prep I (2‑Day Micro‑Comp)",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Combined Events (Decathlon/Heptathlon)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Blocks",
+    "Hurdles",
+    "Sand pit",
+    "High jump bar",
+    "Pole vault poles/standards",
+    "Shot/Discus/Javelin",
+    "Gym",
+    "Medball",
+    "Timing/Video"
+  ],
+  "phase": 7,
+  "goal": "Προσομοίωση 2 ημερών με μειωμένο όγκο/ένταση, ροή αγώνα, logistics/ρουτίνα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "General 8'"
+      ],
+      "main": [
+        "Day‑1 rehearsal (submax): 100m → LJ → SP → HJ → 400m (Deca) / 100H → HJ → SP → 200m (Hepta)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 30–40' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "General 8'"
+      ],
+      "main": [
+        "Day‑2 rehearsal (submax): 110H → DISC → PV → JAV → 1500m (Deca) / LJ → JAV → 800m (Hepta)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF ή easy 20' + drills 5'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Power maintenance: Squat 3x3 @80%, Bench 3x3 @80%, Plyo low 3x5"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Strides 4x80m + 2–3 τεχνικές επαναλήψεις σε 2 events επιλογής"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: μικρή αύξηση έντασης στα rehearsal (+5%) χωρίς αύξηση όγκου. Εστίασε σε ροή και ενέργεια."
+}

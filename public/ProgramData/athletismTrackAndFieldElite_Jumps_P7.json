@@ -1,0 +1,100 @@
+{
+  "filename": "athletismTrackAndFieldElite_Jumps_P7.json",
+  "title": "Jumps Phase 7 — Max Strength → Power Transfer",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Jumps (LJ/TJ/HJ/PV)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Sand pit",
+    "Hurdles (low)",
+    "Boxes",
+    "Wickets",
+    "Mini-hurdles",
+    "Gym",
+    "Medball",
+    "Timing/Video",
+    "Pole (for PV)",
+    "High jump bar/standards"
+  ],
+  "phase": 7,
+  "goal": "Μεταφορά μέγιστης δύναμης σε ισχύ/elastic output διατηρώντας τεχνική.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Joint prep"
+      ],
+      "main": [
+        "Back Squat 5x3 @87–90%",
+        "Bench 5x3 @87%",
+        "Medball rotational/overhead 4x5"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Power Clean 6x2 @80%",
+        "Approach priming runs 4x30–40m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Drills"
+      ],
+      "main": [
+        "Flying approaches 5x",
+        "Hip Thrust 4x4 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Core/shoulders 15' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Marks"
+      ],
+      "main": [
+        "Quality attempts: LJ 6–8 / TJ 5–6 / HJ 6–8 / PV 6–8 (submax)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: ‑1 σετ στα μέγιστα βάρη, +1 σετ στις power/priming δουλειές. Ποιότητα > ποσότητα."
+}

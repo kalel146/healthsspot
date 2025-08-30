@@ -1,0 +1,102 @@
+{
+  "filename": "athletismHandballElite_P6.json",
+  "title": "Handball Phase 6 — Tactical Conditioning (Position‑Specific)",
+  "category": "athletism",
+  "subcategory": "Handball",
+  "specialty": "Team Handball — Back/Centre/Wing/Pivot/Goalkeeper conditioning",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Handball court & goals",
+    "Official balls (sizes)",
+    "Cones/Agility ladders",
+    "Timing gates",
+    "Gym (barbell, dumbbells, cables)",
+    "Medballs (2–5kg)",
+    "Bands (heavy/light)",
+    "Plyo boxes",
+    "Sleds",
+    "Heart‑rate/IMU GPS (optional)"
+  ],
+  "phase": 6,
+  "goal": "Conditioning μέσα από τακτικό πλαίσιο: back/centre/wing/pivot/goalkeeper demands.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "WU 10'"
+      ],
+      "main": [
+        "Backs: 6x (cut → jump shot) / Wings: 6x (wide run → dive) / Pivot: 6x (seal → contact finish)",
+        "Gym: RDL 4x4 @80%"
+      ],
+      "cooldown": [
+        "CD 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Shoulder/ankle care 10'"
+      ],
+      "main": [
+        "Shuttle 15–30m change‑pace 12x (:20/:40)",
+        "Throwing situational 6x4/πλ"
+      ],
+      "cooldown": [
+        "Breathing 3'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Team tactical blocks (off/def) 2x20'",
+        "Bench 4x4 @80%, Row 4x6"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "Recovery swim/bike 25' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Plyo prep 6'"
+      ],
+      "main": [
+        "Hurdle hops 5x4 + bounds 4x3/πλ",
+        "Sprints flying 20s 6x"
+      ],
+      "cooldown": [
+        "Tendons ISO 3x40''"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Aerobic 30–40' Z2"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 σετ ανά θέση, ίδια ποιότητα προσγείωσης/ρίψης."
+}

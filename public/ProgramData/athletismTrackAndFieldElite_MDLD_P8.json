@@ -1,0 +1,100 @@
+{
+  "filename": "athletismTrackAndFieldElite_MDLD_P8.json",
+  "title": "MD/LD Phase 8 — Competition Modeling",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "MD/LD (800/1500/5k/10k)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Grass",
+    "Gym",
+    "Hills",
+    "Stopwatch/Timing",
+    "HR monitor"
+  ],
+  "phase": 8,
+  "goal": "Προσομοιώσεις αγώνα, broken reps, pacing/τακτική, μικρές δόσεις δύναμης.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Drills+strides"
+      ],
+      "main": [
+        "MD: Broken 1500 (π.χ. 600+600+300 @race pace με 2' ανάμεσα)",
+        "LD: 3x3k @10k pace (2') / εναλλακτικά 5x1k @5k pace (90'')",
+        "Power maintenance: Squat 2x3 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 40–55' + strides 6x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "MD: 8x300m @1500 pace (60'') + 4x150m @800 pace (full rest)",
+        "LD: VO₂ 4x5' (2') + strides 4x100m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 30–45' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Threshold float: 18–25' continuous @T",
+        "Feet/calf care 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Pre-meet priming: 3–4x200m @1500 pace (MD) / 6x150m @5k pace (LD)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Mock race ή tune-up meet"
+      ],
+      "cooldown": [
+        "Debrief 10'"
+      ]
+    }
+  ],
+  "notes": "Week 2: -10–20% όγκος, κράτησε ένταση 90–95%. Προτεραιότητα ύπνος/ενέργεια/υγρά."
+}

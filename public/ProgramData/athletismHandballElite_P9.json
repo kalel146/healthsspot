@@ -1,0 +1,97 @@
+{
+  "filename": "athletismHandballElite_P9.json",
+  "title": "Handball Phase 9 — Taper I — Competition Sim",
+  "category": "athletism",
+  "subcategory": "Handball",
+  "specialty": "Team Handball — Back/Centre/Wing/Pivot/Goalkeeper conditioning",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Handball court & goals",
+    "Official balls (sizes)",
+    "Cones/Agility ladders",
+    "Timing gates",
+    "Gym (barbell, dumbbells, cables)",
+    "Medballs (2–5kg)",
+    "Bands (heavy/light)",
+    "Plyo boxes",
+    "Sleds",
+    "Heart‑rate/IMU GPS (optional)"
+  ],
+  "phase": 9,
+  "goal": "Μείωση όγκου 20–30%, διατήρηση νευρικής έντασης. Προσομοίωση αγώνα με χαμηλές προσπάθειες.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "Event rehearsal: 3x short SSG (quality) + 12x20m @:60",
+        "Power clean 3x2 @80%"
+      ],
+      "cooldown": [
+        "CD 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [],
+      "main": [
+        "Recovery 25' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Light drills"
+      ],
+      "main": [
+        "Mock match (μισός όγκος): 2x20'",
+        "Throwing 3x6 fast (full rest)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "OFF ή easy 20' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Priming 6'"
+      ],
+      "main": [
+        "Speed: 8x15m @:60 + 8x throws @target",
+        "Squat 2x2 @70%"
+      ],
+      "cooldown": [
+        "Breathing 5'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "OFF / travel"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "Optional friendly / shakeout 20'"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: -20–30% επιπλέον όγκος. Καμία αποτυχία. Ύπνος/ενυδάτωση άψογα."
+}

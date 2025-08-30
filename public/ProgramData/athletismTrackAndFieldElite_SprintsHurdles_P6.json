@@ -1,0 +1,94 @@
+{
+  "filename": "athletismTrackAndFieldElite_SprintsHurdles_P6.json",
+  "title": "S/H Phase 6 — Hurdles Technical Mastery & Elastic RFD",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Sprints/Hurdles",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "phase": 6,
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Hurdles",
+    "Timing gates",
+    "Gym"
+  ],
+  "goal": "Τελειοποίηση ρυθμού/βηματισμού, καθαρίσματα over/away, RFD σε χαμηλό όγκο.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Hurdle mobility",
+        "Run‑in drills"
+      ],
+      "main": [
+        "Race‑model 8–10 hurdles (submax)",
+        "Front Squat 4x3 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Plyo prep"
+      ],
+      "main": [
+        "Drop jumps 5x5 (30–45cm)",
+        "Bounds 4x20m",
+        "Ham ISO 3x40''"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Wickets"
+      ],
+      "main": [
+        "Fly 20s 6x",
+        "Block starts 4x20m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Video review 20'",
+        "Shoulder/hip stability 15'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "A‑skips"
+      ],
+      "main": [
+        "Hurd race rhythm 6–8 hurdles",
+        "Hip Thrust 4x4 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Recovery pool 15‑20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 set σε hurdles ή fly μόνο αν RPE≤8. Προσοχή σε προσγειώσεις/πρόσθιους μηριαίους."
+}

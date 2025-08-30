@@ -1,0 +1,98 @@
+{
+  "filename": "athletismTrackAndFieldElite_Throws_P9.json",
+  "title": "Throws Phase 9 — Taper I (Competition Simulation)",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Throws (SP/DISC/JAV/HAM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Shot Put (SP)",
+    "Discus (DISC)",
+    "Javelin (JAV)",
+    "Hammer (HAM)",
+    "Circle/Runway",
+    "Gym",
+    "Medball",
+    "Bands/Tubing",
+    "Video/Timing"
+  ],
+  "phase": 9,
+  "goal": "Μείωση όγκου, διατήρηση έντασης/ταχύτητας απελευθέρωσης, προσομοίωση αγώνα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Event rehearsal: 4–6 ποιοτικές τεχνικές προσπάθειες",
+        "Power Clean 3x2 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 30–40' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Priming: 2–3 technical throws (submax) + cues"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Squat 2x2 @80% + Plyo low 3x3"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Priming drills (runway/turns rhythm)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF / travel"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Comp day (optional)"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: -20–30% επιπλέον όγκος. Καμία αποτυχία. Ταχύτητα/ρυθμός πάνω από όλα."
+}

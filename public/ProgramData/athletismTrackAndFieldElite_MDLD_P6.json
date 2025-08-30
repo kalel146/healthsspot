@@ -1,0 +1,101 @@
+{
+  "filename": "athletismTrackAndFieldElite_MDLD_P6.json",
+  "title": "MD/LD Phase 6 — Specific Prep I (Blend)",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "MD/LD (800/1500/5k/10k)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Grass",
+    "Gym",
+    "Hills",
+    "Stopwatch/Timing",
+    "HR monitor"
+  ],
+  "phase": 6,
+  "goal": "Μεικτή προσαρμογή: ταχύτητα-αντοχή για MD, οικονομία/ρυθμός για LD, μειωμένο γυμναστήριο.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Jog 12'",
+        "Drills"
+      ],
+      "main": [
+        "MD: 4x600m @1500 pace (3')",
+        "LD: 5x1200m @10k pace (2')",
+        "Calf ISO 3x40''"
+      ],
+      "cooldown": [
+        "Easy 10'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 45–60' + strides 6x100m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Easy 10'"
+      ],
+      "main": [
+        "VO₂ split: MD 8x300m @1k pace (60'') / LD 5x4' @VO₂ (2')"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 35–50' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Jog 12'"
+      ],
+      "main": [
+        "Threshold float: MD 3x8' @T (2') / LD 25–35' continuous @T"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 35–50' (Z2) + strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Long run MD 80–95' / LD 105–125'"
+      ],
+      "cooldown": [
+        "Stretch 8'"
+      ]
+    }
+  ],
+  "notes": "Week 2: +1 rep στα 600/1200 ή +5' στο T continuous για LD. Γυμναστήριο μόνο συντήρηση."
+}

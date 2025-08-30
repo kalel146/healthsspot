@@ -1,0 +1,102 @@
+{
+  "filename": "athletismHandballElite_P7.json",
+  "title": "Handball Phase 7 — Game Modeling & Load Tolerance",
+  "category": "athletism",
+  "subcategory": "Handball",
+  "specialty": "Team Handball — Back/Centre/Wing/Pivot/Goalkeeper conditioning",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Handball court & goals",
+    "Official balls (sizes)",
+    "Cones/Agility ladders",
+    "Timing gates",
+    "Gym (barbell, dumbbells, cables)",
+    "Medballs (2–5kg)",
+    "Bands (heavy/light)",
+    "Plyo boxes",
+    "Sleds",
+    "Heart‑rate/IMU GPS (optional)"
+  ],
+  "phase": 7,
+  "goal": "Μοντελοποίηση 60' αγώνα: κύματα έντασης, επαφές, ρίψεις σε κόπωση, απόφαση υπό πίεση.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "WU 12'"
+      ],
+      "main": [
+        "Game waves: 4x(6' on / 4' off) με στόχους κατοχών & ρίψεων",
+        "Throwing targets under fatigue 6x4"
+      ],
+      "cooldown": [
+        "CD 10'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Shoulder care 8'"
+      ],
+      "main": [
+        "Strength maintenance: Squat 3x3 @80%, Bench 3x3 @80%",
+        "Core anti‑rot 3x12/πλ"
+      ],
+      "cooldown": [
+        "Mobility 6'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "SSG 5v5 5x5' @RPE8 (rolling subs)",
+        "Sprint repeat 8x30m @:40"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "Recovery 30' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Plyo/landing 6'"
+      ],
+      "main": [
+        "Depth landing + lateral hops 4x4",
+        "Throwing accuracy challenge 20x (target ladders)"
+      ],
+      "cooldown": [
+        "Elbow/shoulder ISO 3x40''"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Aerobic 30' Z2 + strides 6x60m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: -10% όγκος σε SSG, διατήρησε ένταση (RPE 8)."
+}

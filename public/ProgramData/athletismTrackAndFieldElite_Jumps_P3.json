@@ -1,0 +1,103 @@
+{
+  "filename": "athletismTrackAndFieldElite_Jumps_P3.json",
+  "title": "Jumps Phase 3 — Elastic Stiffness & Take‑off Mechanics",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Jumps (LJ/TJ/HJ/PV)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Sand pit",
+    "Hurdles (low)",
+    "Boxes",
+    "Wickets",
+    "Mini-hurdles",
+    "Gym",
+    "Medball",
+    "Timing/Video",
+    "Pole (for PV)",
+    "High jump bar/standards"
+  ],
+  "phase": 3,
+  "goal": "Ελαστική δυσκαμψία, γρήγορη επαφή, μοτίβο ώθησης, γωνίες απογείωσης.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Wickets 8x10m"
+      ],
+      "main": [
+        "Flying approaches: 6x (20–30m build) focus posture",
+        "Take-off drill: LJ/TJ penultimate-to plant 6x / HJ penultimate-to bar 6x / PV plant to take-off 6x",
+        "Trap DL 4x3 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Plyo prep"
+      ],
+      "main": [
+        "Drop jumps 5x5 (30–45cm)",
+        "Bounds 4x20m",
+        "Ham ISO mid 3x30''"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "Short approach jumps quality: LJ 6–8 / TJ 5–6 / HJ 6–8 (bar low) / PV 6–8 (short pole)",
+        "Bench 5x3 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery bike 20' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Drills"
+      ],
+      "main": [
+        "Fly-in 20m 6x timing",
+        "Hip Thrust 4x4 @85%",
+        "Medball overhead/back 4x5"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Massage/flush 15' + feet care"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 σετ σε fly/plyo μόνο αν RPE≤8 και επαφή γρήγορη. Ποιότητα > ποσότητα."
+}

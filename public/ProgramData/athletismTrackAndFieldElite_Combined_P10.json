@@ -1,0 +1,102 @@
+{
+  "filename": "athletismTrackAndFieldElite_Combined_P10.json",
+  "title": "Combined Phase 10 — Peak & Championship Taper",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Combined Events (Decathlon/Heptathlon)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Blocks",
+    "Hurdles",
+    "Sand pit",
+    "High jump bar",
+    "Pole vault poles/standards",
+    "Shot/Discus/Javelin",
+    "Gym",
+    "Medball",
+    "Timing/Video"
+  ],
+  "phase": 10,
+  "goal": "Αιχμή απόδοσης: micro‑δόσεις έντασης, νευρομυϊκό priming, μέγιστη φρεσκάδα για διήμερο.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 6'"
+      ],
+      "main": [
+        "Priming sprints: 3x30–40m @95%",
+        "2–3 τεχνικές επαναλήψεις σε 2 events της επιλογής"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF ή 15' easy + drills 5' + strides 3x60m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Event rehearsal: 1–2 quality attempts μόνο (jump/throw)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF ή mobility 12' + breathing 5'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic 6'"
+      ],
+      "main": [
+        "Micro‑dose power: Squat 2x2 @70%, Bench 2x2 @70%, Plyo low 2x5"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF / travel / pre‑meet shakeout 8–10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "CHAMPIONSHIP — Day 1/Day 2"
+      ],
+      "cooldown": [
+        "Debrief 10'",
+        "Nutrition refeed"
+      ]
+    }
+  ],
+  "notes": "Week 2 (race): -40–60% όγκος, μόνο υψηλής ποιότητας νευρικά ερεθίσματα. Ενέργεια/ύπνος/ενυδάτωση στην εντέλεια."
+}

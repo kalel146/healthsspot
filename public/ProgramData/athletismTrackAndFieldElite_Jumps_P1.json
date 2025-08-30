@@ -1,0 +1,118 @@
+{
+  "filename": "athletismTrackAndFieldElite_Jumps_P1.json",
+  "title": "Jumps Phase 1 — GPP & Tissue Resilience",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Jumps (LJ/TJ/HJ/PV)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Sand pit",
+    "Hurdles (low)",
+    "Boxes",
+    "Wickets",
+    "Mini-hurdles",
+    "Gym",
+    "Medball",
+    "Timing/Video",
+    "Pole (for PV)",
+    "High jump bar/standards"
+  ],
+  "phase": 1,
+  "goal": "Θεμέλια δύναμης/ελαστικότητας, foot/ankle capacity, τεχνική χαμηλής έντασης.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Joint prep 8'",
+        "Dribbles 3x20m",
+        "A/B-skips 2x20m"
+      ],
+      "main": [
+        "Plyo low: pogos 4x20, line hops 3x20",
+        "Approach rhythm: 6x20–30m @submax (wickets)",
+        "Gym: Trap Bar DL 4x4 @75%, Split squat 3x6/πλ, Chins 3x6"
+      ],
+      "cooldown": [
+        "Mobility posterior chain 6'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Hurdle mobility 2x8",
+        "Ankling 2x20m"
+      ],
+      "main": [
+        "Medball throws: overhead/back 4x6",
+        "Isometric calf 3x40'' mid-stance, Tib raises 3x12",
+        "Core anti-rotation 3x10/πλ"
+      ],
+      "cooldown": [
+        "Breathing 3'",
+        "Foam roll 5'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic 8'",
+        "Mini-hurdles 2x10"
+      ],
+      "main": [
+        "Short approach pop-ups: LJ 6x, TJ hop-step-pop 6x, HJ scissor 6x, PV pole runs (no plant) 6x",
+        "RDL 3x6 @70%, Bench 4x5 @75%"
+      ],
+      "cooldown": [
+        "Walk 5'",
+        "Stretch 6'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery run 20–30' (grass) + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Ankling/A-skips"
+      ],
+      "main": [
+        "Bounding in place 3x20, low box jumps 3x6",
+        "Hip thrust 3x6 @75%"
+      ],
+      "cooldown": [
+        "Calves/hip flexors 6'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Circuit 20' (core/hips/shoulders) + feet care"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF / Active recovery 20–30'"
+      ],
+      "cooldown": [
+        "Sleep 8–9h"
+      ]
+    }
+  ],
+  "notes": "Week 2: +1 σετ στα χαμηλά plyos, +5% βάρη. Τήρησε RPE 7–8."
+}

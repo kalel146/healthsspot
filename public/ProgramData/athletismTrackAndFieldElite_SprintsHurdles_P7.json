@@ -1,0 +1,93 @@
+{
+  "filename": "athletismTrackAndFieldElite_SprintsHurdles_P7.json",
+  "title": "S/H Phase 7 — Max Strength → Power Transfer",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Sprints/Hurdles",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "phase": 7,
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Gym",
+    "Medball",
+    "Blocks"
+  ],
+  "goal": "Μεταφορά μέγιστης δύναμης σε ισχύ/ταχύτητα, διατήρηση τεχνικής.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Joint prep"
+      ],
+      "main": [
+        "Back Squat 5x3 @87‑90%",
+        "Bench 5x3 @87%",
+        "Medball overhead/back 4x5"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Power Clean 6x2 @80%",
+        "Priming sprints 4x30m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Drills"
+      ],
+      "main": [
+        "Flying 20s: 5x (30m build)",
+        "Hip Thrust 4x4 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Core anti‑rot 3x10/πλ",
+        "Scap stability 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Blocks"
+      ],
+      "main": [
+        "Blocks 5x20m (quality)",
+        "Low hurdle rhythm 5‑6"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Recovery 20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: ‑1 σετ στα μέγιστα, +1 σετ στα power/priming. Ποιότητα > ποσότητα."
+}

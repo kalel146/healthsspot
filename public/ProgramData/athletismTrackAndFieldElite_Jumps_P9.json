@@ -1,0 +1,99 @@
+{
+  "filename": "athletismTrackAndFieldElite_Jumps_P9.json",
+  "title": "Jumps Phase 9 — Taper I",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Jumps (LJ/TJ/HJ/PV)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Sand pit",
+    "Hurdles (low)",
+    "Boxes",
+    "Wickets",
+    "Mini-hurdles",
+    "Gym",
+    "Medball",
+    "Timing/Video",
+    "Pole (for PV)",
+    "High jump bar/standards"
+  ],
+  "phase": 9,
+  "goal": "Μείωση όγκου, διατήρηση έντασης/ποιότητας, νευρικό priming χωρίς κόπωση.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 6'"
+      ],
+      "main": [
+        "Event rehearsal: 4–6 τεχνικές προσπάθειες (submax)",
+        "Power Clean 3x2 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 30–45' + strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Light drills"
+      ],
+      "main": [
+        "Priming: 3–4 approach runs + 1–2 quality attempts"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Squat 2x2 @80% + Plyo low 3x3"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Priming strides / pole plants / bar touch (ελαφρά)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF / travel"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Comp day (optional)"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: -20–30% επιπλέον όγκος. Καμία αποτυχία, διατήρησε φρεσκάδα."
+}

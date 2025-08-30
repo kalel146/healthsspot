@@ -1,0 +1,109 @@
+{
+  "filename": "athletismTrackAndFieldElite_MDLD_P3.json",
+  "title": "MD/LD Phase 3 — VO₂max Introduction",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "MD/LD (800/1500/5k/10k)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Grass",
+    "Gym",
+    "Hills",
+    "Stopwatch/Timing",
+    "HR monitor"
+  ],
+  "phase": 3,
+  "goal": "Ανάπτυξη VO₂max με ελεγχόμενο όγκο, διατήρηση economy και strength.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Jog 12'",
+        "Drills",
+        "Strides 4x100m"
+      ],
+      "main": [
+        "MD: 6x800m @3k pace (2')",
+        "LD: 5x5' @VO₂ (2')",
+        "Gym: RDL 3x5, Split squat 3x6/πλ"
+      ],
+      "cooldown": [
+        "Easy 10'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Easy 10'"
+      ],
+      "main": [
+        "Recovery 40–55' (Z2)",
+        "Core 12' + mobility"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Easy 12'",
+        "Drills"
+      ],
+      "main": [
+        "Neuromuscular hills: 8x12–15'' (walk back) + 10x100m strides @70–80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Threshold float: 20–30' continuous @T pace",
+        "Feet/calf care 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Jog 12'"
+      ],
+      "main": [
+        "MD: 10x400m @1500–3k pace (60–75'')",
+        "LD: 6x1k @CV (90'')",
+        "Ham ISO 3x40''"
+      ],
+      "cooldown": [
+        "Easy 8'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 30–45' + strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Long run MD 75–90' / LD 95–115'"
+      ],
+      "cooldown": [
+        "Stretch 8'"
+      ]
+    }
+  ],
+  "notes": "Week 2: +1 rep στην VO₂ συνεδρία ή +15–20'' συνολικό χρόνο. Έλεγξε HRV/ύπνο."
+}

@@ -1,0 +1,103 @@
+{
+  "filename": "athletismTrackAndFieldElite_Jumps_P6.json",
+  "title": "Jumps Phase 6 — Bar/Pole Specific & Landing Mechanics",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Jumps (LJ/TJ/HJ/PV)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Sand pit",
+    "Hurdles (low)",
+    "Boxes",
+    "Wickets",
+    "Mini-hurdles",
+    "Gym",
+    "Medball",
+    "Timing/Video",
+    "Pole (for PV)",
+    "High jump bar/standards"
+  ],
+  "phase": 6,
+  "goal": "Εξειδίκευση σε bar (HJ) / pole (PV), προσγειώσεις LJ/TJ σε άμμο με ασφάλεια, χαμηλός όγκος.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Hurdle mobility",
+        "Run-in drills"
+      ],
+      "main": [
+        "HJ: bar clearance progressions 8–10 (ύψη χαμηλά)",
+        "PV: short pole plant & rock-back 8–10 (short approach)",
+        "LJ/TJ: landing mechanics in sand 8–10"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Plyo prep"
+      ],
+      "main": [
+        "Drop jumps 4x5 (30–45cm)",
+        "Bounds 4x20m",
+        "Ham ISO 3x40''"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Approach rhythm 6–8 runs + 4–6 quality attempts (event-specific)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Core + shoulder/hip stability 20'",
+        "Video review 15'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "A-skips"
+      ],
+      "main": [
+        "Power Clean 4x2 @80%",
+        "Hip Thrust 4x4 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery pool/bike 15–20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: ίδια ένταση, +1 σετ μόνο αν RPE≤8. Προτεραιότητα ασφάλεια προσγειώσεων."
+}

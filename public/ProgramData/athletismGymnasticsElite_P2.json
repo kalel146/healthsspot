@@ -1,0 +1,110 @@
+{
+  "filename": "athletismGymnasticsElite_P2.json",
+  "title": "Gymnastics Phase 2 — Swing & Shapes Foundation",
+  "category": "athletism",
+  "subcategory": "Gymnastics",
+  "specialty": "Artistic Gymnastics (MAG/WAG)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Artistic gym apparatus (MAG/WAG): FX, PH, SR, VT, PB, HB, UB, BB",
+    "Pits/Soft mats",
+    "Tramp",
+    "Springboard",
+    "Straps",
+    "Blocks/Parallettes",
+    "Gym (barbell/dumbbells)",
+    "Bands",
+    "Wrist/elbow guards",
+    "Video/Timing"
+  ],
+  "phase": 2,
+  "goal": "Σταθερές κούρμπες (hollow/arch), ρυθμός swing σε UB/HB/SR, βασικές εισαγωγές σε PH/BB.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Hollow/Arch 3x(:20):20",
+        "Wrist prep"
+      ],
+      "main": [
+        "UB/HB strap swings 8x8",
+        "SR swing-to-hold 6x5",
+        "PH circles 8x20''",
+        "BB line work 4x20m"
+      ],
+      "cooldown": [
+        "Mobility shoulders 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "FX: HS walks 6x10m",
+        "VT runway 8x30m"
+      ],
+      "cooldown": [
+        "Hip flexors/HS stretch 6'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Scap + elbows 8'"
+      ],
+      "main": [
+        "Front squat 4x4 @75%",
+        "Bench 4x5 @75%",
+        "Toes-to-bar 4x8"
+      ],
+      "cooldown": [
+        "Breathing 3'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "Recovery + Mobility 30'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Wrist/Hand prep",
+        "HS line"
+      ],
+      "main": [
+        "UB kip mechanics 6x5",
+        "HB tap swing intro 6x5",
+        "PB support swings 6x8"
+      ],
+      "cooldown": [
+        "Shoulder care (ER/IR) 8'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Tramp: shape jumps 6x10 + half turns 6x6"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 σετ σε strap/kip/tap swings αν γραμμή σώματος μένει καθαρή."
+}

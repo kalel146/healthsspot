@@ -1,0 +1,115 @@
+{
+  "filename": "athletismSwimmingElite_P2.json",
+  "title": "Swimming Phase 2 — Skills Intensive + Aerobic Efficiency",
+  "category": "athletism",
+  "subcategory": "Swimming",
+  "specialty": "Swimming (Sprint/Mid/Distance/IM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Pool 25/50m",
+    "Starting blocks",
+    "Turn flags",
+    "Paddles",
+    "Pull buoy",
+    "Snorkel",
+    "Fins",
+    "Parachute/Drag socks",
+    "Stretch cords (assisted/resisted)",
+    "Tempo trainer",
+    "Heart-rate monitor",
+    "Gym/Weights",
+    "Video/Underwater camera"
+  ],
+  "phase": 2,
+  "goal": "Έμφαση σε εκκίνηση/στροφές/υποβρύχια, βελτιστοποίηση DPS & economy. Aerobic steady με snorkel.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "WU 800m (snorkel) + 8x25m kick @:45"
+      ],
+      "main": [
+        "Skills: 12x (start to 15m + swim 35m race form) rest 1:30",
+        "Main: 12x100m @1:25 A2 (paddles/pull every 3rd)"
+      ],
+      "cooldown": [
+        "CD 300m choice"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "WU 500m + 6x50m drill swim"
+      ],
+      "main": [
+        "Turns: 16x15m wall‑to‑15m @:50",
+        "Gym: Front Squat 4x4 @75%, Row 4x6, Pallof 3x12/πλ"
+      ],
+      "cooldown": [
+        "CD 200m + shoulder care bands"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "WU 400m + 8x25m build"
+      ],
+      "main": [
+        "IM aerobic: 6x300m IM @4:50 A2",
+        "Kick set: 10x50m @:55 streamline"
+      ],
+      "cooldown": [
+        "CD 300m back/free"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Recovery 1200m easy continuous"
+      ],
+      "main": [
+        "Mobility 12' + breathing CO2 tolerance 2x(1' hold/2' rest)"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "WU 600m + 8x25m underwater @:45"
+      ],
+      "main": [
+        "Main: 3x(4x50m @:50 drill/swim by stroke + 4x100m @1:20 steady)"
+      ],
+      "cooldown": [
+        "Gym: Bench 4x5 @75%, Chin‑ups 4x6, Nordics 3x5",
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "WU 400m"
+      ],
+      "main": [
+        "Skills relay set: 20x25m @:35 (odd = UW→surface, even = turn focus)"
+      ],
+      "cooldown": [
+        "CD 300m easy"
+      ]
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 σετ στις turns, +4x100m A2 αν η τεχνική μένει καθαρή."
+}

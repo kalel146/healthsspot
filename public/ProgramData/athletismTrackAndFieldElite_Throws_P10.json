@@ -1,0 +1,102 @@
+{
+  "filename": "athletismTrackAndFieldElite_Throws_P10.json",
+  "title": "Throws Phase 10 — Peak & Championship Taper",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Throws (SP/DISC/JAV/HAM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Shot Put (SP)",
+    "Discus (DISC)",
+    "Javelin (JAV)",
+    "Hammer (HAM)",
+    "Circle/Runway",
+    "Gym",
+    "Medball",
+    "Bands/Tubing",
+    "Video/Timing"
+  ],
+  "phase": 10,
+  "goal": "Αιχμή απόδοσης: micro‑δόσεις ισχύος, νευρικό priming, μέγιστη φρεσκάδα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 6'"
+      ],
+      "main": [
+        "Priming: 2–3 τεχνικές επαναλήψεις/όργανο (μόνο cues)",
+        "Power micro‑dose: 2x2 Squat @70%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF ή 15' easy + drills 5'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Event rehearsal: 1–2 attempts μόνο (υψηλή ποιότητα)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF ή mobility 12' + breathing/focus 5'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Micro‑dose: Bench 2x2 @70%, Medball quick 2x5",
+        "Strides 3x80m @90%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF / travel / pre‑meet shakeout 8–10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "CHAMPIONSHIP DAY"
+      ],
+      "cooldown": [
+        "Debrief 10'",
+        "Nutrition refeed"
+      ]
+    }
+  ],
+  "notes": "Week 2 (race): -40–60% όγκος, μόνο ποιοτικά νευρικά ερεθίσματα. Ρουτίνα προθέρμανσης σταθερή."
+}

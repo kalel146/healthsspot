@@ -1,0 +1,111 @@
+{
+  "filename": "athletismHandballElite_P2.json",
+  "title": "Handball Phase 2 — Acceleration & COD + Shoulder Capacity",
+  "category": "athletism",
+  "subcategory": "Handball",
+  "specialty": "Team Handball — Back/Centre/Wing/Pivot/Goalkeeper conditioning",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Handball court & goals",
+    "Official balls (sizes)",
+    "Cones/Agility ladders",
+    "Timing gates",
+    "Gym (barbell, dumbbells, cables)",
+    "Medballs (2–5kg)",
+    "Bands (heavy/light)",
+    "Plyo boxes",
+    "Sleds",
+    "Heart‑rate/IMU GPS (optional)"
+  ],
+  "phase": 2,
+  "goal": "0–20m, πρώτα βήματα, αγκίστρωση ώμου/ωμοπλάτης για ρίψη, ball‑handling υπό κούραση.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Drills A/B, wall drives 3x6/πλ"
+      ],
+      "main": [
+        "Blocks start stance → 6x20m",
+        "COD: 5‑10‑5 6x (full)",
+        "Gym: Power clean 6x2 @75–80%"
+      ],
+      "cooldown": [
+        "Mobility 6'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Shoulder series (band) 10'"
+      ],
+      "main": [
+        "Throwing ladder: 5x (8 wrist + 6 short + 4 mid)",
+        "Medball OH 4x6",
+        "Core anti‑ext 3x10"
+      ],
+      "cooldown": [
+        "CD 5'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "SSG (2v2) 6x2' @RPE7",
+        "Bench 4x5 @75%, Chin‑ups 4x6"
+      ],
+      "cooldown": [
+        "Breathing 3'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery bike 25' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Plyo prep 6'"
+      ],
+      "main": [
+        "Reactive plyo: hurdle hops 5x4",
+        "Sled pull 6x20m (moderate)",
+        "Throwing angles on the move 6x4/πλ"
+      ],
+      "cooldown": [
+        "Ankles/calf ISO 3x40''"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Aerobic 35' Z2 + 6x40m strides"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 προσπάθεια σε sprints/COD. Στις ρίψεις, ίδια ποιότητα — όχι fatigue misses."
+}

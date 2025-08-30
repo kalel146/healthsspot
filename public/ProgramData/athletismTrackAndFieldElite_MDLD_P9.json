@@ -1,0 +1,96 @@
+{
+  "filename": "athletismTrackAndFieldElite_MDLD_P9.json",
+  "title": "MD/LD Phase 9 — Taper I",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "MD/LD (800/1500/5k/10k)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Grass",
+    "Gym",
+    "Hills",
+    "Stopwatch/Timing",
+    "HR monitor"
+  ],
+  "phase": 9,
+  "goal": "Μείωση όγκου, διατήρηση έντασης, αγωνιστικά ερεθίσματα χωρίς συσσώρευση κόπωσης.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "Event rehearsal: MD 2x(500 @1500 pace + 200 @800 pace) (8') / LD 3x2k @10k pace (2')"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 35–45' + strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Light drills"
+      ],
+      "main": [
+        "Priming VO₂: MD 6x200m @1k pace (60'') / LD 3x4' @VO₂ (2')"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 30–40' + mobility 8'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Threshold touch: 12–18' @T (άνετα) + strides 4x100m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF / travel / shakeout 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Race / Simulation"
+      ],
+      "cooldown": [
+        "Debrief 10'"
+      ]
+    }
+  ],
+  "notes": "Week 2: -20–30% επιπλέον όγκος. Καμία αποτυχία σε rep. Φρεσκάδα > όγκος."
+}

@@ -1,0 +1,93 @@
+{
+  "filename": "athletismTrackAndFieldElite_SprintsHurdles_P10.json",
+  "title": "S/H Phase 10 — Peak & Championship Taper",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Sprints/Hurdles",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "phase": 10,
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Gym (minimal)"
+  ],
+  "goal": "Αιχμή απόδοσης: νευρομυϊκό priming, micro‑δόσεις έντασης, μέγιστη φρεσκάδα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 6'"
+      ],
+      "main": [
+        "Priming sprints: 3x30‑40m @95% (full rest)",
+        "Hurdles: 2‑3 ποιοτικές επαναλήψεις"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "OFF ή easy 10‑15' + drills 5'",
+        "Breathing 5'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Drills"
+      ],
+      "main": [
+        "Event rehearsal: 1‑2 attempts μόνο",
+        "Strides 4x60m @90%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "OFF ή 10' easy + 3x30m buildups"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic 6'"
+      ],
+      "main": [
+        "Micro‑dose power: 2x2 Bench 70%, 2x2 jump squats (BW)",
+        "1‑2 τεχνικές επαναλήψεις"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "OFF / travel / shakeout 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "CHAMPIONSHIP DAY"
+      ],
+      "cooldown": [
+        "Debrief 10'",
+        "Nutrition refeed"
+      ]
+    }
+  ],
+  "notes": "Week 2 (race): όγκος ‑40–60%, μόνο υψηλής ποιότητας νευρικά ερεθίσματα. Προτεραιότητα ύπνος/στρες."
+}

@@ -1,0 +1,100 @@
+{
+  "filename": "athletismTrackAndFieldElite_MDLD_P10.json",
+  "title": "MD/LD Phase 10 — Peak & Championship Taper",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "MD/LD (800/1500/5k/10k)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Grass",
+    "Gym",
+    "Hills",
+    "Stopwatch/Timing",
+    "HR monitor"
+  ],
+  "phase": 10,
+  "goal": "Αιχμή απόδοσης: micro‑dose έντασης, νευρομυϊκό priming, πλήρης φρεσκάδα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 6'",
+        "Strides 3x100m"
+      ],
+      "main": [
+        "Priming: MD 3x300m @1500 pace (full rest) / LD 6x150m @5k pace",
+        "Power micro-dose: 2x2 Squat @70%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF ή 20' easy + drills 5'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Race rehearsal: 1–2 quality efforts μόνο (π.χ. 200–400 MD / 1–2k LD)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF ή 10' easy + 3x60m strides"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic 6'"
+      ],
+      "main": [
+        "Micro-dose: 2x2 Bench 70%, 2x6 pogos + 2x6 ankling",
+        "Strides 3x80m @90%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF / travel / pre‑meet shakeout 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "CHAMPIONSHIP DAY"
+      ],
+      "cooldown": [
+        "Debrief 10'",
+        "Nutrition refeed"
+      ]
+    }
+  ],
+  "notes": "Week 2 (race): -40–60% όγκος, μόνο υψηλής ποιότητας νευρικά ερεθίσματα. Ύπνος/στρες πρώτη προτεραιότητα."
+}

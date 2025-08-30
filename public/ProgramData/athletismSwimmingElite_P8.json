@@ -1,0 +1,113 @@
+{
+  "filename": "athletismSwimmingElite_P8.json",
+  "title": "Swimming Phase 8 — Sharpening & Pace Confirmation",
+  "category": "athletism",
+  "subcategory": "Swimming",
+  "specialty": "Swimming (Sprint/Mid/Distance/IM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Pool 25/50m",
+    "Starting blocks",
+    "Turn flags",
+    "Paddles",
+    "Pull buoy",
+    "Snorkel",
+    "Fins",
+    "Parachute/Drag socks",
+    "Stretch cords (assisted/resisted)",
+    "Tempo trainer",
+    "Heart-rate monitor",
+    "Gym/Weights",
+    "Video/Underwater camera"
+  ],
+  "phase": 8,
+  "goal": "Επιβεβαίωση ρυθμών, μικρότερος όγκος, ένταση 90–95%, focus σε νευρική φρεσκάδα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "WU 800m + drills"
+      ],
+      "main": [
+        "Main: 3x(6x50m @1:20 at 100/200 RP) 4' between",
+        "MD/LD: 3x(4x200m @2:45 T‑/RP‑)"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Recovery 1200m easy"
+      ],
+      "main": [
+        "Mobility + band care 12'"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "WU 600m + 6x25m UW"
+      ],
+      "main": [
+        "Speed touch: 12x25m @1:15 from blocks all‑out",
+        "Gym: Power 2x3 (Clean @70–75%, Bench @70%)"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Recovery 1000m"
+      ],
+      "main": [
+        "Breathing ladders 10x50 hypoxic"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "WU 600m"
+      ],
+      "main": [
+        "IM skills 6x200m @3:20 RP‑IM"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "WU 400m"
+      ],
+      "main": [
+        "Starts/turns 8x (quality only)"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: -10% όγκος, ίδια ένταση. Καμία αποτυχία στο γυμναστήριο."
+}

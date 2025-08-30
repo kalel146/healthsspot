@@ -1,0 +1,116 @@
+{
+  "filename": "athletismGymnasticsElite_P1.json",
+  "title": "Gymnastics Phase 1 — GPP & Tissue Resilience",
+  "category": "athletism",
+  "subcategory": "Gymnastics",
+  "specialty": "Artistic Gymnastics (MAG/WAG)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Artistic gym apparatus (MAG/WAG): FX, PH, SR, VT, PB, HB, UB, BB",
+    "Pits/Soft mats",
+    "Tramp",
+    "Springboard",
+    "Straps",
+    "Blocks/Parallettes",
+    "Gym (barbell/dumbbells)",
+    "Bands",
+    "Wrist/elbow guards",
+    "Video/Timing"
+  ],
+  "phase": 1,
+  "goal": "Θεμέλια για καρπούς/ώμους/ισχία-κορμό, βασική ελαστικότητα, swing prep.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Joint prep 10'",
+        "Wrists/Elbows prehab 8'",
+        "Hollow/Arch 3x(:20):20"
+      ],
+      "main": [
+        "Weighted HS hold 5x20''",
+        "L-sit on PB 4x15''",
+        "PH circles mushroom 6x20''",
+        "UB kip swings 6x5"
+      ],
+      "cooldown": [
+        "Mobility shoulders/hips 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Scap activation 6'",
+        "Ankles/hips mobility 6'"
+      ],
+      "main": [
+        "Rings/Straps swing 6x10",
+        "Tramp shapes 6x5",
+        "Trap bar DL 4x4 @70%",
+        "Row 3x8"
+      ],
+      "cooldown": [
+        "Breathing 3'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic 8'",
+        "Handstand line 5'"
+      ],
+      "main": [
+        "FX basics line 4x20m",
+        "VT run-ups 8x30m",
+        "BB walks/shapes 6x20m"
+      ],
+      "cooldown": [
+        "Stretch thoracic/hip flexors 6'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "Active recovery 30' + Mobility 12'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Wrists/Scap prep 8'"
+      ],
+      "main": [
+        "Weighted dips 4x6",
+        "Pull-ups 4x6",
+        "Hip thrust 4x6 @75%",
+        "SR support 5x20''"
+      ],
+      "cooldown": [
+        "Isometrics elbows/shoulders 6'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Tramp + pit drills 20'",
+        "Prehab circuit 12'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 σετ στα swings/HS, βάρη +5%."
+}

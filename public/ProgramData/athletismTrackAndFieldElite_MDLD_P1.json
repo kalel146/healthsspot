@@ -1,0 +1,120 @@
+{
+  "filename": "athletismTrackAndFieldElite_MDLD_P1.json",
+  "title": "MD/LD Phase 1 — Aerobic Foundation & Economy",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "MD/LD (800/1500/5k/10k)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Grass",
+    "Gym",
+    "Hills",
+    "Stopwatch/Timing",
+    "HR monitor"
+  ],
+  "phase": 1,
+  "goal": "Θεμέλιο αερόβιας βάσης, δρομική οικονομία, ήπια νευρομυϊκά ερεθίσματα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Easy jog 10'",
+        "Mobility 6'",
+        "Drills A/B-skips"
+      ],
+      "main": [
+        "MD: Tempo cruise 4x8' @T- pace (2')",
+        "LD: Aerobic intervals 6x1k @CV (90\")",
+        "Strength: Split squat 3x6/πλ, RDL 3x6, Calf ISO 3x40''"
+      ],
+      "cooldown": [
+        "Easy 10'",
+        "Stretch calves/hips 5'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Easy 10'",
+        "Mobility ankles/hips 5'"
+      ],
+      "main": [
+        "Easy run 40–60' (Z2) + Strides 6x100m",
+        "Core circuit 12' (anti-rot/anti-ext)"
+      ],
+      "cooldown": [
+        "Breathing 3'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Easy jog 10'",
+        "Drills 5'"
+      ],
+      "main": [
+        "Hills neuromuscular: 10x12–15'' hill sprints (walk back)",
+        "Gym: Bench 3x6, Row 3x8, Single-leg calf 3x12/πλ"
+      ],
+      "cooldown": [
+        "Walk 5'",
+        "Foam roll 5'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Easy 8'"
+      ],
+      "main": [
+        "Recovery run 35–50' (Z1–Z2)",
+        "Mobility flow 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Easy 10'",
+        "Drills"
+      ],
+      "main": [
+        "MD: Progression run 45' από Z2→Z3 (τελευταία 10' @M pace)",
+        "LD: Tempo continuous 25–35' @T pace",
+        "Strength: Hip thrust 3x6, Chins 3x5, Ham ISO long 3x40''"
+      ],
+      "cooldown": [
+        "Easy 8'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy run 30–45' + Strides 4x80m",
+        "Optional: drills + light plyo (ankling/pogos 3x20)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "MD: Long run 70–85' (Z2)",
+        "LD: Long run 85–110' (Z2)"
+      ],
+      "cooldown": [
+        "Stretching 8'"
+      ]
+    }
+  ],
+  "notes": "Week 2: +5–10' στο long run, +1 επανάληψη σε cruise/CV. RPE 6–7. Προτεραιότητα στην οικονομία κίνησης."
+}

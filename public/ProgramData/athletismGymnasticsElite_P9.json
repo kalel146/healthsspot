@@ -1,0 +1,92 @@
+{
+  "filename": "athletismGymnasticsElite_P9.json",
+  "title": "Gymnastics Phase 9 — Taper I",
+  "category": "athletism",
+  "subcategory": "Gymnastics",
+  "specialty": "Artistic Gymnastics (MAG/WAG)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Artistic gym apparatus (MAG/WAG): FX, PH, SR, VT, PB, HB, UB, BB",
+    "Pits/Soft mats",
+    "Tramp",
+    "Springboard",
+    "Straps",
+    "Blocks/Parallettes",
+    "Gym (barbell/dumbbells)",
+    "Bands",
+    "Wrist/elbow guards",
+    "Video/Timing"
+  ],
+  "phase": 9,
+  "goal": "Μείωση όγκου, διατήρηση έντασης, micro‑δόσεις.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "Event-specific main work"
+      ],
+      "cooldown": [
+        "Recovery 10'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [],
+      "main": [
+        "Accessory/Prehab 20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "HS line"
+      ],
+      "main": [
+        "Secondary apparatus work"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "Recovery 25–35' + Mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Strength/Power maintenance"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Tramp/pit/dis­mount drills 20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: adjust volume ±10–20% με βάση ποιότητα/κούραση."
+}

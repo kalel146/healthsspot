@@ -1,0 +1,96 @@
+{
+  "filename": "athletismHandballElite_P8.json",
+  "title": "Handball Phase 8 — Mock Match & Sharpening",
+  "category": "athletism",
+  "subcategory": "Handball",
+  "specialty": "Team Handball — Back/Centre/Wing/Pivot/Goalkeeper conditioning",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Handball court & goals",
+    "Official balls (sizes)",
+    "Cones/Agility ladders",
+    "Timing gates",
+    "Gym (barbell, dumbbells, cables)",
+    "Medballs (2–5kg)",
+    "Bands (heavy/light)",
+    "Plyo boxes",
+    "Sleds",
+    "Heart‑rate/IMU GPS (optional)"
+  ],
+  "phase": 8,
+  "goal": "Mock match 2x30' με logistics, travel timing, warm‑up ρεαλιστικό. Μείωση όγκου, υψηλή ποιότητα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Comp warm‑up 15'"
+      ],
+      "main": [
+        "Mock match Day‑1: 2x30' (ελεγχόμενη επιβάρυνση), καταγραφή ρίψεων/λαθών/επαφών"
+      ],
+      "cooldown": [
+        "CD 12' + ice/flush"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [],
+      "main": [
+        "Recovery 25–35' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Priming 8'"
+      ],
+      "main": [
+        "Sharpness: 10x20m @:60 (fast) + 10x throws @target",
+        "Gym: Jump squats 3x5 @30% + Bench 2x3 @75%"
+      ],
+      "cooldown": [
+        "CD 8'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [],
+      "main": [
+        "Video review + mental reps 15'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "SSG 3v3 6x2' (quality only)",
+        "Under‑fatigue decisions 4x3'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "OFF / travel / sleep hygiene"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: -10–15% όγκος, κράτα ένταση 90–95%."
+}

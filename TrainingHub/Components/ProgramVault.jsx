@@ -1,35 +1,71 @@
-// Διορθωμένος κώδικας ProgramVault.jsx με fixes για Phase 1, content-type guard και ταξινόμηση phases
+// ProgramVault.jsx — drop-in patched version
+// Fixes:
+// 1) Tier hierarchy (Gold sees Bronze/Silver/etc.)
+// 2) URL sync for category/subcategory (persist across refresh, shareable)
+// 3) Robust dedupe using source filename; keep _src
+// 4) Safer sort: level → phase → title
+// 5) "All" subcategory + toggle to clear filter
+// 6) Optional index.json discovery (if present) else fallback to static list
+// 7) Minor UI polish & guards
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import ProgramCard from "./ProgramCard";
 import { useTheme } from "../../ThemeContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
-const useTierFilter = (defaultTier = "Free") => {
+// -------------------------
+// Tier helpers
+// -------------------------
+const tierRank = (t) => ({ Free: 0, Bronze: 1, Silver: 2, Gold: 3, Platinum: 4 }[t] ?? 0);
+const hasAccess = (userTier, programTier) => tierRank(userTier) >= tierRank(programTier || "Free");
+
+// -------------------------
+// URL query helpers
+// -------------------------
+const useQuery = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const query = new URLSearchParams(location.search);
+  const set = (key, value) => {
+    const q = new URLSearchParams(location.search);
+    if (value === null || value === undefined || value === "") q.delete(key);
+    else q.set(key, value);
+    navigate({ search: q.toString() }, { replace: true });
+  };
+  return { query, set };
+};
+
+const useTierFilter = (defaultTier = "Free") => {
+  const { query, set } = useQuery();
   const tier = query.get("tier") || defaultTier;
   const isAdmin = query.get("admin") === "true";
-  const setTier = (newTier) => {
-    query.set("tier", newTier);
-    navigate({ search: query.toString() }, { replace: true });
-  };
-  return { tier, setTier, isAdmin };
+  const setTier = (newTier) => set("tier", newTier);
+  return { tier, isAdmin, setTier };
+};
+
+const useCatSubFilters = (fallbackCat = "gym") => {
+  const { query, set } = useQuery();
+  const category = query.get("cat") || fallbackCat;
+  const subcategory = query.get("sub") || "";
+  const setCategory = (c) => set("cat", c);
+  const setSubcategory = (s) => set("sub", s || "");
+  return { category, subcategory, setCategory, setSubcategory };
 };
 
 export default function ProgramVault() {
   const [programs, setPrograms] = useState([]);
-  const [filteredCategory, setFilteredCategory] = useState("gym");
   const [loading, setLoading] = useState(true);
-  const { theme } = useTheme();
+  const { theme } = useTheme(); // eslint-disable-line no-unused-vars
   const { tier, isAdmin, setTier } = useTierFilter();
+  const { category, subcategory, setCategory, setSubcategory } = useCatSubFilters("gym");
 
-  useEffect(() => {
+  // --------------
+  // Static fallback list (paste your existing list — kept 1:1)
+  // --------------
+  const STATIC_FILES = useMemo(() => {
     const proFiles = Array.from({ length: 10 }, (_, i) => `athletismBasketballPro${i + 1}.json`);
-
-    const filenames = [
+    return [
       ...proFiles,
       "athletismNFLAmericanFootballElite1.json",
       "athletismNFLAmericanFootballElite2.json",
@@ -62,6 +98,87 @@ export default function ProgramVault() {
       "athletismVolleyballElite8.json",
       "athletismVolleyballElite9.json",
       "athletismVolleyballElite10.json",
+      "athletismTrackAndFieldElite_SprintsHurdles_P1.json",
+      "athletismTrackAndFieldElite_SprintsHurdles_P2.json",
+      "athletismTrackAndFieldElite_SprintsHurdles_P3.json",
+      "athletismTrackAndFieldElite_SprintsHurdles_P4.json",
+      "athletismTrackAndFieldElite_SprintsHurdles_P5.json",
+      "athletismTrackAndFieldElite_SprintsHurdles_P6.json",
+      "athletismTrackAndFieldElite_SprintsHurdles_P7.json",
+      "athletismTrackAndFieldElite_SprintsHurdles_P8.json",
+      "athletismTrackAndFieldElite_SprintsHurdles_P9.json",
+      "athletismTrackAndFieldElite_SprintsHurdles_P10.json",
+      "athletismTrackAndFieldElite_MDLD_P1.json",
+      "athletismTrackAndFieldElite_MDLD_P2.json",
+      "athletismTrackAndFieldElite_MDLD_P3.json",
+      "athletismTrackAndFieldElite_MDLD_P4.json",
+      "athletismTrackAndFieldElite_MDLD_P5.json",
+      "athletismTrackAndFieldElite_MDLD_P6.json",
+      "athletismTrackAndFieldElite_MDLD_P7.json",
+      "athletismTrackAndFieldElite_MDLD_P8.json",
+      "athletismTrackAndFieldElite_MDLD_P9.json",
+      "athletismTrackAndFieldElite_MDLD_P10.json",
+      "athletismTrackAndFieldElite_Jumps_P1.json",
+      "athletismTrackAndFieldElite_Jumps_P2.json",
+      "athletismTrackAndFieldElite_Jumps_P3.json",
+      "athletismTrackAndFieldElite_Jumps_P4.json",
+      "athletismTrackAndFieldElite_Jumps_P5.json",
+      "athletismTrackAndFieldElite_Jumps_P6.json",
+      "athletismTrackAndFieldElite_Jumps_P7.json",
+      "athletismTrackAndFieldElite_Jumps_P8.json",
+      "athletismTrackAndFieldElite_Jumps_P9.json",
+      "athletismTrackAndFieldElite_Jumps_P10.json",
+      "athletismTrackAndFieldElite_Throws_P1.json",
+      "athletismTrackAndFieldElite_Throws_P2.json",
+      "athletismTrackAndFieldElite_Throws_P3.json",
+      "athletismTrackAndFieldElite_Throws_P4.json",
+      "athletismTrackAndFieldElite_Throws_P5.json",
+      "athletismTrackAndFieldElite_Throws_P6.json",
+      "athletismTrackAndFieldElite_Throws_P7.json",
+      "athletismTrackAndFieldElite_Throws_P8.json",
+      "athletismTrackAndFieldElite_Throws_P9.json",
+      "athletismTrackAndFieldElite_Throws_P10.json",
+      "athletismTrackAndFieldElite_Combined_P1.json",
+      "athletismTrackAndFieldElite_Combined_P2.json",
+      "athletismTrackAndFieldElite_Combined_P3.json",
+      "athletismTrackAndFieldElite_Combined_P4.json",
+      "athletismTrackAndFieldElite_Combined_P5.json",
+      "athletismTrackAndFieldElite_Combined_P6.json",
+      "athletismTrackAndFieldElite_Combined_P7.json",
+      "athletismTrackAndFieldElite_Combined_P8.json",
+      "athletismTrackAndFieldElite_Combined_P9.json",
+      "athletismTrackAndFieldElite_Combined_P10.json",
+      "athletismGymnasticsElite_P1.json",
+      "athletismGymnasticsElite_P2.json",
+      "athletismGymnasticsElite_P3.json",
+      "athletismGymnasticsElite_P4.json",
+      "athletismGymnasticsElite_P5.json",
+      "athletismGymnasticsElite_P6.json",
+      "athletismGymnasticsElite_P7.json",
+      "athletismGymnasticsElite_P8.json",
+      "athletismGymnasticsElite_P9.json",
+      "athletismGymnasticsElite_P10.json",
+      "athletismSwimmingElite_P1.json",
+      "athletismSwimmingElite_P2.json",
+      "athletismSwimmingElite_P3.json",
+      "athletismSwimmingElite_P4.json",
+      "athletismSwimmingElite_P5.json",
+      "athletismSwimmingElite_P6.json",
+      "athletismSwimmingElite_P7.json",
+      "athletismSwimmingElite_P8.json",
+      "athletismSwimmingElite_P9.json",
+      "athletismSwimmingElite_P10.json",
+      "athletismHandballElite_P1.json",
+      "athletismHandballElite_P2.json",
+      "athletismHandballElite_P3.json",
+      "athletismHandballElite_P4.json",
+      "athletismHandballElite_P5.json",
+      "athletismHandballElite_P6.json",
+      "athletismHandballElite_P7.json",
+      "athletismHandballElite_P8.json",
+      "athletismHandballElite_P9.json",
+      "athletismHandballElite_P10.json",
+      "hypertrophyBeginner1.json",
       "hypertrophyBeginner2.json",
       "hypertrophyBeginner3.json",
       "HypertrophyBeginner4.json",
@@ -245,56 +362,118 @@ export default function ProgramVault() {
       "outdoorRunningBeginner7.json",
       "outdoorRunningBeginner8.json",
       "outdoorRunningBeginner9.json",
-      "outdoorRunningBeginner10.json"
+      "outdoorRunningBeginner10.json",
     ];
-
-    Promise.all(
-      filenames.map((f) =>
-        fetch(`/ProgramData/${f}`)
-          .then((res) => {
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            const type = res.headers.get("content-type") || "";
-            if (!type.includes("application/json")) {
-              throw new Error(`Invalid content-type: ${type}`);
-            }
-            return res.json();
-          })
-          .catch((e) => {
-            console.error(`❌ Failed to load ${f}:`, e.message);
-            return null;
-          })
-      )
-    )
-      .then((data) => {
-        const validPrograms = data.filter((p) => p && p.category);
-        // Dedupe by filename or fallback key
-        const deduped = Array.from(
-          new Map(
-            validPrograms.map((p) => [p.filename || `${p.category}-${p.title}`, p])
-          ).values()
-        );
-        setPrograms(deduped);
-        if (validPrograms.length > 0) {
-          setFilteredCategory("gym");
-        }
-      })
-      .finally(() => setLoading(false));
   }, []);
 
-  const categories = [...new Set(programs.map((p) => p.category).filter(Boolean))].sort();
-  const subcategories = [...new Set(programs.filter(p => p.category === filteredCategory).map(p => p.subcategory).filter(Boolean))].sort();
-  const [filteredSubcategory, setFilteredSubcategory] = useState(null);
+  // Optional discovery via index.json → then fall back to STATIC_FILES
+  const discoverFiles = async () => {
+    try {
+      const r = await fetch("/ProgramData/index.json", { cache: "no-store" });
+      if (!r.ok) throw new Error("no index");
+      const j = await r.json();
+      const list = [];
+      (j?.categories || []).forEach((cat) => {
+        (cat.subcategories || []).forEach((sub) => {
+          // naive expansion: we don't have actual filenames, so fallback to static when unknown
+          // keep this as a hook to evolve later (server can return explicit files)
+        });
+      });
+      // If index doesn't enumerate explicit files, keep fallback
+      if (!list.length) return STATIC_FILES;
+      return list;
+    } catch (_) {
+      return STATIC_FILES;
+    }
+  };
 
-  const filteredPrograms = programs.filter(
-    (p) =>
-      p.category === filteredCategory &&
-      (!filteredSubcategory || p.subcategory === filteredSubcategory) &&
-      (isAdmin || p.accessTier === tier || p.accessTier === "Free")
-  );
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      setLoading(true);
+      const filenames = await discoverFiles();
+      const results = await Promise.all(
+        filenames.map(async (f) => {
+          try {
+            const res = await fetch(`/ProgramData/${f}`);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const type = res.headers.get("content-type") || "";
+            if (!type.includes("application/json")) throw new Error(`Invalid content-type: ${type}`);
+            const json = await res.json();
+            // attach source for dedupe & debugging
+            return { ...json, _src: f };
+          } catch (e) {
+            console.error(`❌ Failed to load ${f}:`, e.message || e);
+            return null;
+          }
+        })
+      );
+
+      if (!mounted) return;
+      const valid = results.filter((p) => p && p.category);
+      // dedupe strictly by source filename
+      const map = new Map();
+      for (const p of valid) {
+        if (!map.has(p._src)) map.set(p._src, p);
+      }
+      const deduped = Array.from(map.values());
+      setPrograms(deduped);
+      // if URL lacks cat, default to first category present
+      if (!new URLSearchParams(window.location.search).get("cat") && deduped.length) {
+        const firstCat = deduped[0].category?.toLowerCase?.() || "gym";
+        setCategory(firstCat);
+      }
+      setLoading(false);
+    })();
+    return () => {
+      mounted = false;
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Categories/subcategories derived from data
+  const categories = useMemo(() => {
+    return [...new Set(programs.map((p) => String(p.category || "").toLowerCase()))].sort();
+  }, [programs]);
+
+  const subcategories = useMemo(() => {
+    return [...new Set(programs
+      .filter((p) => String(p.category || "").toLowerCase() === category)
+      .map((p) => String(p.subcategory || "").toLowerCase())
+      .filter(Boolean))].sort();
+  }, [programs, category]);
+
+  // Normalize level → rank for better sorting (Beginner < Intermediate < Advanced < Pro < Elite)
+  const levelRank = (lvl) => {
+    const L = String(lvl || "").toLowerCase();
+    if (/(elite|platinum)/.test(L)) return 5;
+    if (/pro/.test(L)) return 4;
+    if (/advanced/.test(L)) return 3;
+    if (/intermediate/.test(L)) return 2;
+    if (/beginner/.test(L)) return 1;
+    return 0;
+  };
+
+  const filteredPrograms = programs.filter((p) => {
+    const catOk = String(p.category || "").toLowerCase() === category;
+    const subOk = !subcategory || String(p.subcategory || "").toLowerCase() === subcategory;
+    const accessOk = isAdmin || hasAccess(tier, p.accessTier || p.tier || "Free");
+    return catOk && subOk && accessOk;
+  });
 
   const sortedPrograms = filteredPrograms
     .slice()
-    .sort((a, b) => (a.phase ?? 0) - (b.phase ?? 0) || (a.title || "").localeCompare(b.title || ""));
+    .sort((a, b) => {
+      const aL = levelRank(a.level);
+      const bL = levelRank(b.level);
+      if (aL !== bL) return aL - bL;
+      const aP = Number(a.phase ?? 0);
+      const bP = Number(b.phase ?? 0);
+      if (aP !== bP) return aP - bP;
+      return String(a.title || "").localeCompare(String(b.title || ""));
+    });
+
+  // Pretty label
+  const labelize = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
 
   return (
     <div className="p-4">
@@ -312,9 +491,11 @@ export default function ProgramVault() {
             <option value="Gold">Gold</option>
             <option value="Platinum">Platinum</option>
           </select>
+          <span className="text-xs opacity-70">(Hierarchy active)</span>
         </div>
       )}
 
+      {/* Category pills */}
       <div className="mb-6 flex flex-wrap gap-2 justify-center">
         {categories.map((cat) => (
           <motion.button
@@ -322,38 +503,45 @@ export default function ProgramVault() {
             whileTap={{ scale: 0.95 }}
             whileHover={{ scale: 1.03 }}
             className={`px-4 py-1.5 rounded-full text-sm font-semibold border shadow-sm transition-all duration-300 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900
-              ${
-                filteredCategory === cat
-                  ? "bg-gradient-to-r from-purple-500 to-indigo-500 text-white border-transparent"
-                  : "bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-300"
-              }`}
-            onClick={() => {
-              setFilteredCategory(cat);
-              setFilteredSubcategory(null);
-            }}
+              ${category === cat
+                ? "bg-gradient-to-r from-purple-500 to-indigo-500 text-white border-transparent"
+                : "bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border-gray-300"}`}
+            onClick={() => setCategory(cat)}
           >
-            {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            {labelize(cat)}
           </motion.button>
         ))}
       </div>
 
+      {/* Subcategory pills */}
       {subcategories.length > 0 && (
         <div className="mb-6 flex flex-wrap gap-2 justify-center">
+          <motion.button
+            key="__all__"
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+            className={`px-3 py-1.5 text-xs font-semibold rounded-full border transition-all duration-300 shadow-sm
+              ${!subcategory
+                ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-transparent"
+                : "bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 border-gray-300"}`}
+            onClick={() => setSubcategory("")}
+          >
+            All
+          </motion.button>
+
           {subcategories.map((sub) => (
             <motion.button
               key={sub}
               whileTap={{ scale: 0.95 }}
               whileHover={{ scale: 1.05 }}
               className={`relative px-3 py-1.5 text-xs font-semibold rounded-full border transition-all duration-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 overflow-hidden
-                ${
-                  filteredSubcategory === sub
-                    ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-transparent"
-                    : "bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 border-gray-300"
-                }`}
-              onClick={() => setFilteredSubcategory(sub)}
+                ${subcategory === sub
+                  ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-transparent"
+                  : "bg-white text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 border-gray-300"}`}
+              onClick={() => setSubcategory(sub)}
             >
-              <span className="relative z-10">{sub.charAt(0).toUpperCase() + sub.slice(1)}</span>
-              {filteredSubcategory !== sub && (
+              <span className="relative z-10">{labelize(sub)}</span>
+              {subcategory !== sub && (
                 <span className="absolute inset-0 bg-gradient-to-br from-indigo-100 to-purple-100 opacity-0 hover:opacity-10 transition-opacity duration-300"></span>
               )}
             </motion.button>
@@ -367,12 +555,12 @@ export default function ProgramVault() {
             <div key={i} className="h-48 bg-gray-200 rounded-xl"></div>
           ))}
         </div>
-      ) : filteredPrograms.length === 0 ? (
-        <div className="text-center text-gray-500 dark:text-gray-400">No programs available for this category.</div>
+      ) : sortedPrograms.length === 0 ? (
+        <div className="text-center text-gray-500 dark:text-gray-400">No programs available for this view.</div>
       ) : (
         <AnimatePresence>
           <motion.div
-            key={filteredCategory + filteredSubcategory}
+            key={category + (subcategory || "")}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -380,10 +568,10 @@ export default function ProgramVault() {
           >
             {sortedPrograms.map((program, index) => (
               <ProgramCard
-                key={index}
+                key={program._src || index}
                 program={program}
                 userTier={tier}
-                selectedCategory={filteredCategory}
+                selectedCategory={category}
                 isAdmin={isAdmin}
                 debugMode={isAdmin}
               />

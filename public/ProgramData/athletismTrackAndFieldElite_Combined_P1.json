@@ -1,0 +1,121 @@
+{
+  "filename": "athletismTrackAndFieldElite_Combined_P1.json",
+  "title": "Combined Phase 1 — GPP & Tissue Resilience (Multi‑Event Base)",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Combined Events (Decathlon/Heptathlon)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Blocks",
+    "Hurdles",
+    "Sand pit",
+    "High jump bar",
+    "Pole vault poles/standards",
+    "Shot/Discus/Javelin",
+    "Gym",
+    "Medball",
+    "Timing/Video"
+  ],
+  "phase": 1,
+  "goal": "Θεμέλια δύναμης/ελαστικότητας, ανθεκτικότητα τενόντων, τεχνική βάσης σε όλα τα events.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "General prep 10'",
+        "A/B‑skips 2x20m",
+        "Hurdle mobility 2x8"
+      ],
+      "main": [
+        "Sprints ACC: 6x20m build‑ups (95%, full rest)",
+        "LJ: pop‑ups 6x + approach rhythm 4x",
+        "Gym: Trap Bar DL 4x4 @75%, Split squat 3x6/πλ, Chins 3x6"
+      ],
+      "cooldown": [
+        "Mobility posterior 6'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Scap/hip activation",
+        "Ankling 2x20m"
+      ],
+      "main": [
+        "SP: stand 12–16 (τεχνική)",
+        "DISC: South African 10–12 (light)",
+        "Core anti‑rot 3x10/πλ, Cuff ER/IR 3x12"
+      ],
+      "cooldown": [
+        "Breathing 3'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic 8'",
+        "Wickets 6x10m"
+      ],
+      "main": [
+        "Hurdles rhythm easy: 5‑6 hurdles walk‑run",
+        "HJ: scissor 6x (low bar)",
+        "RDL 3x6 @70%, Bench 4x5 @75%"
+      ],
+      "cooldown": [
+        "Walk 5'",
+        "Stretch 6'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 25–35' (grass) + mobility flow 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Drills",
+        "Pole run‑ups (no plant) 4x"
+      ],
+      "main": [
+        "PV: short approach pole runs 6–8 (no take‑off)",
+        "JAV: run‑up rhythm 6x30–40m + 6 impulse drills",
+        "Hip Thrust 3x6 @75%"
+      ],
+      "cooldown": [
+        "Calves/hip flexors 6'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy run 30–40' + strides 4x80m",
+        "Feet care + massage 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF / Active recovery 20–30'"
+      ],
+      "cooldown": [
+        "Sleep 8–9h"
+      ]
+    }
+  ],
+  "notes": "Week 2: +1 σετ στα χαμηλά plyos και ACC, +5% βάρη. Διατήρησε τεχνική καθαρή."
+}

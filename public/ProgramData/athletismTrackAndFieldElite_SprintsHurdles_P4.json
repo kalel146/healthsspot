@@ -1,0 +1,92 @@
+{
+  "filename": "athletismTrackAndFieldElite_SprintsHurdles_P4.json",
+  "title": "S/H Phase 4 — Speed Endurance 120–180m & Hurd Rhythm",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Sprints/Hurdles",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "phase": 4,
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Hurdles",
+    "Gym"
+  ],
+  "goal": "Διατήρηση τεχνικής σε SE τμήματα, ειδικός ρυθμός εμποδίων.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Drills 10'"
+      ],
+      "main": [
+        "SE: 2x3x150m @85‑90% (2'/6')",
+        "Front Squat 4x3 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Tempo grass 12x100m @65%",
+        "Ham ISO long 3x40''"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Wickets"
+      ],
+      "main": [
+        "Split 180s: 2x (120m+60m) @race pace (6‑8')",
+        "Bench 4x4 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Hurdle mob"
+      ],
+      "main": [
+        "Hurd rhythm 6‑8 hurdles @race spacing",
+        "Core circuit 15'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "A/B skips"
+      ],
+      "main": [
+        "SE: 4x120m @90‑95% (5‑6')",
+        "Hip Thrust 4x4 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Recovery run 20‑30'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 επανάληψη σε 150m ή 120m. Παρακολούθησε HRV/νευρομυϊκή κόπωση."
+}

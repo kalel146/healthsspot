@@ -1,0 +1,90 @@
+{
+  "filename": "athletismTrackAndFieldElite_SprintsHurdles_P9.json",
+  "title": "S/H Phase 9 — Taper I (Competition Simulation)",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Sprints/Hurdles",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "phase": 9,
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Timing",
+    "Gym (power)"
+  ],
+  "goal": "Μείωση όγκου, διατήρηση έντασης, προσομοίωση αγώνων.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 6'"
+      ],
+      "main": [
+        "Event rehearsal: 4–6 ποιοτικές επαναλήψεις (submax)",
+        "Power Clean 3x2 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Easy run 20' + drills 5'",
+        "Core 8'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Wickets/blocks"
+      ],
+      "main": [
+        "Dress rehearsal: 1 πλήρης προσπάθεια μειωμένου όγκου"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Squat 2x2 @80%",
+        "Plyo low 3x3"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Priming strides 4x40‑60m @90%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "OFF / travel"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "Comp day (optional)"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: ‑20–30% επιπλέον όγκος. Καμία αποτυχία σε σετ. Φρεσκάδα > προπόνηση."
+}

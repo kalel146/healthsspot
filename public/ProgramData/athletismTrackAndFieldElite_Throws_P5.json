@@ -1,0 +1,98 @@
+{
+  "filename": "athletismTrackAndFieldElite_Throws_P5.json",
+  "title": "Throws Phase 5 — Special Strength & Heavy/Light Implements",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Throws (SP/DISC/JAV/HAM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Shot Put (SP)",
+    "Discus (DISC)",
+    "Javelin (JAV)",
+    "Hammer (HAM)",
+    "Circle/Runway",
+    "Gym",
+    "Medball",
+    "Bands/Tubing",
+    "Video/Timing"
+  ],
+  "phase": 5,
+  "goal": "Ειδική δύναμη με παραλλαγμένες μάζες οργάνων, διατήρηση τεχνικής χωρίς υπερφόρτιση.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Heavy implements: SP/DISC +0.5–1kg 8–10 ρίψεις / HAM +1–2kg 6–8 turns / JAV +100–200g 8–10 (προσοχή αγκώνας)",
+        "Front Squat 4x3 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Scap care"
+      ],
+      "main": [
+        "Medball heavy 4x5 + banded throws 3x8/πλ",
+        "Cuff ER/IR 3x12"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Marks"
+      ],
+      "main": [
+        "Technique: full throws competition weight 10–12 (submax focus cues)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery + mobility 20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Light implements: SP/DISC ‑0.5kg 12–16 / HAM ‑1kg 8–10 turns / JAV ‑100g 10–12 (speed)",
+        "Hip Thrust 3x5 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Video review + cues 20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: εναλλαγή heavy↔light μέρες. Προσοχή αγκώνας (JAV) και ώμος. Ποιότητα κίνησης > απόσταση."
+}

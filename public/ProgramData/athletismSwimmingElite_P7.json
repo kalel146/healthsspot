@@ -1,0 +1,113 @@
+{
+  "filename": "athletismSwimmingElite_P7.json",
+  "title": "Swimming Phase 7 — Competition Modeling",
+  "category": "athletism",
+  "subcategory": "Swimming",
+  "specialty": "Swimming (Sprint/Mid/Distance/IM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Pool 25/50m",
+    "Starting blocks",
+    "Turn flags",
+    "Paddles",
+    "Pull buoy",
+    "Snorkel",
+    "Fins",
+    "Parachute/Drag socks",
+    "Stretch cords (assisted/resisted)",
+    "Tempo trainer",
+    "Heart-rate monitor",
+    "Gym/Weights",
+    "Video/Underwater camera"
+  ],
+  "phase": 7,
+  "goal": "Προσομοίωση αγώνα: warm‑up ρεαλιστικό, blocks, call‑room timing, suit‑up optional. Χαμηλός όγκος/υψηλή ποιότητα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "WU αγώνα 1200m standard + pace pickups"
+      ],
+      "main": [
+        "Time‑trial: 2 events επιλογής (100/200/400). 2‑3 προσπάθειες με πλήρη ανάπαυση.",
+        "Skills: starts/turns 8x"
+      ],
+      "cooldown": [
+        "CD 600m very easy"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Recovery 1500m continuous"
+      ],
+      "main": [
+        "Mobility 12' + breathing"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "WU 800m + 6x50m build"
+      ],
+      "main": [
+        "Race‑set: 8x50m @2' at 100 RP (hit tempo/underwater counts)",
+        "MD/LD: 4x400m @6:00 at 800/1500 RP"
+      ],
+      "cooldown": [
+        "CD 300m"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Recovery 1000m easy"
+      ],
+      "main": [
+        "Gym: Micro‑strength 3x3 (Squat/Bench @80%) + Core 3x10"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "WU 600m"
+      ],
+      "main": [
+        "IM broken: 4x100 IM @5' suit‑up optional (race skills)"
+      ],
+      "cooldown": [
+        "CD 400m"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "WU 400m"
+      ],
+      "main": [
+        "Starts 10x + 10x turns σε ποιότητα"
+      ],
+      "cooldown": [
+        "CD 200m"
+      ]
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: -10–15% όγκος, κράτα ένταση/ποιότητα. Καταγραφή χρόνων/counts για feedback."
+}

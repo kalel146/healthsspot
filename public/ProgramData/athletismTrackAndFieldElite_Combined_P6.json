@@ -1,0 +1,106 @@
+{
+  "filename": "athletismTrackAndFieldElite_Combined_P6.json",
+  "title": "Combined Phase 6 — Aerobic/Threshold (1500/800)",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Combined Events (Decathlon/Heptathlon)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Blocks",
+    "Hurdles",
+    "Sand pit",
+    "High jump bar",
+    "Pole vault poles/standards",
+    "Shot/Discus/Javelin",
+    "Gym",
+    "Medball",
+    "Timing/Video"
+  ],
+  "phase": 6,
+  "goal": "Ανάπτυξη αντοχής για 1500 (Deca) / 800 (Hepta), οικονομία, χωρίς να χάνεται ταχύτητα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Easy 12'",
+        "Drills"
+      ],
+      "main": [
+        "Threshold: 3x8' @T (2')",
+        "Strength: Split squat 3x6/πλ, Calf ISO 3x40''"
+      ],
+      "cooldown": [
+        "Easy 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 40–50' (Z2) + strides 6x100m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "ACC maintenance: 6x20m (95%)",
+        "LJ/TJ pop‑ups 4x + HJ scissor 4x"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 30' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Jog 10'"
+      ],
+      "main": [
+        "VO₂ touch: 5x3' @VO₂ (2')",
+        "PV pole runs 6x (no plant)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 30–40' + strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Long run 60–80' (άνετα)"
+      ],
+      "cooldown": [
+        "Stretch 8'"
+      ]
+    }
+  ],
+  "notes": "Week 2: +1 rep στο T ή VO₂, ή +10' στο long run. Μην επηρεαστεί η ποιότητα sprint/jumps."
+}

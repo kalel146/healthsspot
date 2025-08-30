@@ -1,0 +1,101 @@
+{
+  "filename": "athletismTrackAndFieldElite_Throws_P8.json",
+  "title": "Throws Phase 8 — Competition Modeling & Attempt Strategy",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Throws (SP/DISC/JAV/HAM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Shot Put (SP)",
+    "Discus (DISC)",
+    "Javelin (JAV)",
+    "Hammer (HAM)",
+    "Circle/Runway",
+    "Gym",
+    "Medball",
+    "Bands/Tubing",
+    "Video/Timing"
+  ],
+  "phase": 8,
+  "goal": "Προσομοίωση αγώνα, διαχείριση προσπαθειών, επιλογή βημάτων/στροφών, ψυχολογική ρουτίνα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 8'"
+      ],
+      "main": [
+        "Dress rehearsal: 2x(3 προσπάθειες) ανά όργανο (submax, high quality)",
+        "Squat 2x3 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 30–40' + strides 4x80m",
+        "Breathing/focus drills 5'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Marks"
+      ],
+      "main": [
+        "Technical full throws 6–8 (χαμηλός όγκος) — cues μόνο"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Bench 3x3 @80% + Plyo low 3x5"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Priming: 2–3 technical releases/implement"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF / travel"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Mock meet"
+      ],
+      "cooldown": [
+        "Debrief 10'"
+      ]
+    }
+  ],
+  "notes": "Week 2: -20–30% όγκος, ένταση 90–95%. Σταθερή ρουτίνα ζεστάματος/σημαδιών."
+}

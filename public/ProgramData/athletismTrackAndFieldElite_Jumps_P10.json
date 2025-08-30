@@ -1,0 +1,103 @@
+{
+  "filename": "athletismTrackAndFieldElite_Jumps_P10.json",
+  "title": "Jumps Phase 10 — Peak & Championship Taper",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Jumps (LJ/TJ/HJ/PV)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Sand pit",
+    "Hurdles (low)",
+    "Boxes",
+    "Wickets",
+    "Mini-hurdles",
+    "Gym",
+    "Medball",
+    "Timing/Video",
+    "Pole (for PV)",
+    "High jump bar/standards"
+  ],
+  "phase": 10,
+  "goal": "Αιχμή απόδοσης: micro‑δόσεις ισχύος, σταθεροποίηση φόρας/plant, πλήρης φρεσκάδα.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic 6'"
+      ],
+      "main": [
+        "Priming: 2–3 approach runs + 1–2 τεχνικές επαναλήψεις (event-specific)",
+        "Power micro-dose: 2x2 Squat @70%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF ή 15' easy + drills 5' + strides 3x60m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Event rehearsal: 1–2 attempts μόνο"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF ή mobility 12' + breathing 5'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic 6'"
+      ],
+      "main": [
+        "Micro‑dose: Bench 2x2 @70%, Ankling/pogos 2x6",
+        "Strides 3x80m @90%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "OFF / travel / pre‑meet shakeout 8–10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "CHAMPIONSHIP DAY"
+      ],
+      "cooldown": [
+        "Debrief 10'",
+        "Nutrition refeed"
+      ]
+    }
+  ],
+  "notes": "Week 2 (race): -40–60% όγκος, μόνο ποιοτικά νευρικά ερεθίσματα. Ρουτίνα, ύπνος, ενυδάτωση στην εντέλεια."
+}

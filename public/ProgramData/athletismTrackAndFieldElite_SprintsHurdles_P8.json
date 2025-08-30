@@ -1,0 +1,90 @@
+{
+  "filename": "athletismTrackAndFieldElite_SprintsHurdles_P8.json",
+  "title": "S/H Phase 8 — Race Modeling & Broken Reps",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Sprints/Hurdles",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "phase": 8,
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Timing",
+    "Hurdles"
+  ],
+  "goal": "Προσομοίωση αγώνα σε κομμάτια, pacing, διαχείριση νευρικού φορτίου.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Drills 8'"
+      ],
+      "main": [
+        "Broken 100/110H: 3‑4 σετ (20‑30‑50m ή 3‑4‑5 hurdles)",
+        "Power Clean 4x2 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Tempo light 8x100m @60%",
+        "Core 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Wickets/blocks"
+      ],
+      "main": [
+        "Dress rehearsal submax: 120‑150m ή 6‑8 hurdles"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Gym power maintenance: Squat 3x2 @80%, Bench 3x3 @80%",
+        "Plyo low 3x5"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "Priming: strides 4x60m @90% ή 4‑6 τεχνικές επαναλήψεις hurdles"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "OFF / travel"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "Mock meet"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: ‑20–30% όγκος, διατήρησε ένταση 90–95%. Ύπνος/γλυκογόνο/υγρά = προτεραιότητα."
+}

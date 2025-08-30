@@ -1,0 +1,116 @@
+{
+  "filename": "athletismHandballElite_P1.json",
+  "title": "Handball Phase 1 — GPP & Tissue Resilience",
+  "category": "athletism",
+  "subcategory": "Handball",
+  "specialty": "Team Handball — Back/Centre/Wing/Pivot/Goalkeeper conditioning",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Handball court & goals",
+    "Official balls (sizes)",
+    "Cones/Agility ladders",
+    "Timing gates",
+    "Gym (barbell, dumbbells, cables)",
+    "Medballs (2–5kg)",
+    "Bands (heavy/light)",
+    "Plyo boxes",
+    "Sleds",
+    "Heart‑rate/IMU GPS (optional)"
+  ],
+  "phase": 1,
+  "goal": "Θεμέλια ανθεκτικότητας (γόνατο/αχίλλειος/ώμος), βασική επιτάχυνση/φρενάρισμα, τεχνική ρίψης low‑int.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Activation: hips/ankles/shoulders 10'",
+        "COD mechanics A: decel to split‑stance 6x10m"
+      ],
+      "main": [
+        "Sprints ACC: 8x15m (full rest)",
+        "Medball chest/rotational 4x6",
+        "Gym: Trap Bar DL 4x4 @70%"
+      ],
+      "cooldown": [
+        "Mobility posterior 8'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Shoulder prep: cuff ER/IR 3x15",
+        "Scap setting 3x12"
+      ],
+      "main": [
+        "Throwing tech: 6x8 easy throws (varied angles)",
+        "Plyo feet: pogos 4x20",
+        "Core anti‑rot 3x12/πλ"
+      ],
+      "cooldown": [
+        "Breathing 3'"
+      ]
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic 8'",
+        "Ankling 2x20m"
+      ],
+      "main": [
+        "Change of Direction: 6x20m (45–90°) submax",
+        "Gym: Split squat 3x6/πλ, Row 3x8"
+      ],
+      "cooldown": [
+        "Stretch hips 6'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 30' + mobility flow 12'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Landing prep 6'",
+        "Shoulder prep 5'"
+      ],
+      "main": [
+        "Plyo: CMJ 5x3 + box step‑off 4x3",
+        "Sled push 6x15m (light)",
+        "Throwing: 4x10 wrist/flicks"
+      ],
+      "cooldown": [
+        "Calves 3x20",
+        "Elbow isos 3x20''"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Aerobic 30–40' Z2 (grass) + strides 6x60m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF / Sleep 8–9h"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 σετ σε ACC/COD και +5% βάρη αν RPE≤7. Τεχνική ρίψης ήπια."
+}

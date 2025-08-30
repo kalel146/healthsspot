@@ -1,0 +1,98 @@
+{
+  "filename": "athletismTrackAndFieldElite_SprintsHurdles_P3.json",
+  "title": "S/H Phase 3 — Max Velocity & Elastic Stiffness",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Sprints/Hurdles",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "phase": 3,
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Wickets",
+    "Timing gates",
+    "Gym"
+  ],
+  "goal": "Βελτιστοποίηση fly speed, ελαστικότητα, γρήγορη/σύντομη επαφή.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Drills 8'",
+        "Wickets 8x10m"
+      ],
+      "main": [
+        "Flying 20s: 6x (30m build)",
+        "Trap DL 4x3 @85%"
+      ],
+      "cooldown": [
+        "Walk 5'",
+        "Stretch 6'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Hurdle mob",
+        "Ankling"
+      ],
+      "main": [
+        "Hurdle hops 5x5 (χαμηλά)",
+        "Bench 5x3 @85%",
+        "Ham ISO mid 3x30''"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "A/B skips"
+      ],
+      "main": [
+        "Flying 30s: 5x (40m build)",
+        "Hurd rhythm 6 hurdles @ 8 strides"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "Mobility 8'"
+      ],
+      "main": [
+        "Core+shoulders circuit 20'",
+        "Video review 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Drills"
+      ],
+      "main": [
+        "Fly‑in 20m: 6x timing",
+        "Hip Thrust 4x4 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [],
+      "main": [
+        "Recovery bike 20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 σετ στα flying, κράτα πλήρη ξεκούραση (3‑5'). Μείωσε tempo αν νιώθεις stiffness."
+}

@@ -1,0 +1,100 @@
+{
+  "filename": "athletismTrackAndFieldElite_Combined_P5.json",
+  "title": "Combined Phase 5 — Speed Endurance & Hurdles Rhythm",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Combined Events (Decathlon/Heptathlon)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Blocks",
+    "Hurdles",
+    "Sand pit",
+    "High jump bar",
+    "Pole vault poles/standards",
+    "Shot/Discus/Javelin",
+    "Gym",
+    "Medball",
+    "Timing/Video"
+  ],
+  "phase": 5,
+  "goal": "SE για 200/400, ρυθμός 110H/100H, διατήρηση jumps/throws με χαμηλό όγκο.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Drills 10'"
+      ],
+      "main": [
+        "SE: 3x200m @90–95% (6')",
+        "Hurdles broken reps: 2x(5 hurdles) @race spacing"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "SP: 10–12 τεχνικές + Medball OH/back 4x5",
+        "Bench 3x5 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Wickets/marks"
+      ],
+      "main": [
+        "LJ/HJ quality 4–6 attempts (short approach)",
+        "RDL 3x4 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 30' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "400m split session: 2x(120+80) @race pace (8')",
+        "Hip Thrust 3x5 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "Light"
+      ],
+      "main": [
+        "PV short approach 6–8 + JAV 6–8 (light)"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 επανάληψη σε SE ή +1 hurdle set μόνο αν RPE≤8. Διατήρησε jump contacts χαμηλά."
+}

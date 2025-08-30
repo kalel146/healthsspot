@@ -1,0 +1,106 @@
+{
+  "filename": "athletismTrackAndFieldElite_Throws_P3.json",
+  "title": "Throws Phase 3 — Max Strength Development",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Throws (SP/DISC/JAV/HAM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Shot Put (SP)",
+    "Discus (DISC)",
+    "Javelin (JAV)",
+    "Hammer (HAM)",
+    "Circle/Runway",
+    "Gym",
+    "Medball",
+    "Bands/Tubing",
+    "Video/Timing"
+  ],
+  "phase": 3,
+  "goal": "Μέγιστη δύναμη (κάτω/άνω), σταθερότητα κορμού/ώμου, τεχνική διατήρηση χαμηλού όγκου.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Scap prep",
+        "Hip openers"
+      ],
+      "main": [
+        "Back Squat 5x3 @87–90%",
+        "Bench 5x3 @87%",
+        "Accessory Row 3x6",
+        "SP/DISC/JAV/HAM: light technical 8–10"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Mobility"
+      ],
+      "main": [
+        "Medball power 4x5",
+        "Plyo box jumps 4x4 (χαμηλά)",
+        "Cuff ER/IR 3x12"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "SP: glide/rot release 8–10",
+        "DISC: full turns 10–12 (submax)",
+        "JAV: approach rhythm 6x + 6–8 releases (light)",
+        "HAM: 3–4 turns 8–10",
+        "RDL 4x4 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery + mobility 20'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Power Clean 6x2 @80%",
+        "Hip Thrust 4x4 @85%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Technique review + light throws 10–12"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: ‑1 σετ στα μέγιστα αν συσσωρεύεται κόπωση, +10–15% τεχνική ποσότητα εφόσον διατηρείται ποιότητα."
+}

@@ -1,0 +1,108 @@
+{
+  "filename": "athletismTrackAndFieldElite_Combined_P2.json",
+  "title": "Combined Phase 2 — Acceleration & MaxV Foundation",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Combined Events (Decathlon/Heptathlon)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Blocks",
+    "Hurdles",
+    "Sand pit",
+    "High jump bar",
+    "Pole vault poles/standards",
+    "Shot/Discus/Javelin",
+    "Gym",
+    "Medball",
+    "Timing/Video"
+  ],
+  "phase": 2,
+  "goal": "Εκκίνηση, 0–30m, τοποθέτηση κορμού/κνήμης, fly‑ins για MaxV, τεχνικές βάσεις hurdles.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Drills A/B",
+        "Wall drive 3x6/πλ"
+      ],
+      "main": [
+        "Blocks: 6x10–20m (πλήρης ανάπαυση)",
+        "Sled sprints 5x15m (10–15% BW)",
+        "Power Clean 6x2 @75%"
+      ],
+      "cooldown": [
+        "Glute med 3x15"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Hurdle mobility",
+        "Ankling"
+      ],
+      "main": [
+        "Hurdles rhythm: 6‑8 @90% spacing (submax)",
+        "HJ: J‑curve marks 6x",
+        "Front Squat 4x4 @75%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Wickets 8x10m"
+      ],
+      "main": [
+        "Flying 20s: 6x (30m build)",
+        "LJ: penultimate drill 6x / PV plant timing 6x",
+        "Bench 4x5 @75%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 25–35' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Marks"
+      ],
+      "main": [
+        "SP: stand/half‑turn 12–16",
+        "DISC: turns 3x6 submax",
+        "Hip Thrust 4x5 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 30' + strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: blocks +1 επανάληψη, flying +1 σετ, βάρη σταθερά. Ποιότητα πρώτων 10m και γρήγορη επαφή."
+}

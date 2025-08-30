@@ -1,0 +1,100 @@
+{
+  "filename": "athletismTrackAndFieldElite_Throws_P6.json",
+  "title": "Throws Phase 6 — Rhythm & Release Angles",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "Throws (SP/DISC/JAV/HAM)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Shot Put (SP)",
+    "Discus (DISC)",
+    "Javelin (JAV)",
+    "Hammer (HAM)",
+    "Circle/Runway",
+    "Gym",
+    "Medball",
+    "Bands/Tubing",
+    "Video/Timing"
+  ],
+  "phase": 6,
+  "goal": "Ρυθμός στροφών/φόρας, γωνίες απελευθέρωσης, σταθερό πόδι στήριξης, μεταφορά ισχύος.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "DISC/HAM: turns rhythm ladders 4x(3‑4‑5 turns)",
+        "SP: rotation/glide to release 10–12",
+        "JAV: approach 5x40–50m + 8–10 impulse releases",
+        "RDL 3x4 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "Scap/hip"
+      ],
+      "main": [
+        "Medball release angles 4x6 (varied)",
+        "Core anti‑rot 3x10/πλ"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Marks"
+      ],
+      "main": [
+        "Full throws 10–12 (competition weight) — focus rhythm/entry"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 20' + mobility 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Dynamic"
+      ],
+      "main": [
+        "Power Clean 4x2 @80%",
+        "Bench 3x4 @80%"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Light technical 8–10"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [],
+      "main": [
+        "OFF"
+      ],
+      "cooldown": []
+    }
+  ],
+  "notes": "Week 2: +1 σετ στις rhythm ladders μόνο αν δεν διαλύεται ο ρυθμός. Διατηρείς ένταση/ποιότητα."
+}

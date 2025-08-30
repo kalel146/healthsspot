@@ -1,0 +1,110 @@
+{
+  "filename": "athletismTrackAndFieldElite_MDLD_P5.json",
+  "title": "MD/LD Phase 5 — Lactate Shuttle & Critical Velocity",
+  "category": "athletism",
+  "subcategory": "TrackAndField",
+  "specialty": "MD/LD (800/1500/5k/10k)",
+  "accessTier": "Platinum",
+  "level": "Elite",
+  "totalPhases": 10,
+  "duration": "2 εβδομάδες",
+  "equipment": [
+    "Track",
+    "Grass",
+    "Gym",
+    "Hills",
+    "Stopwatch/Timing",
+    "HR monitor"
+  ],
+  "phase": 5,
+  "goal": "Ανοχή γαλακτικού (MD) και CV σταθερότητα (LD), διπλά thresholds όπου ταιριάζει.",
+  "weeklySplit": [
+    {
+      "day": "Δευτέρα",
+      "warmup": [
+        "Easy 12'",
+        "Drills"
+      ],
+      "main": [
+        "Double threshold (προαιρετικά elite): Πρωί 5x2k @T (90'') / Βράδυ 6x1k @T (60'')",
+        "Single option: 6x1k @T (90'')"
+      ],
+      "cooldown": [
+        "Easy 10'"
+      ]
+    },
+    {
+      "day": "Τρίτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 45–60' + strides 6x100m",
+        "Mobility/feet 10'"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Τετάρτη",
+      "warmup": [
+        "Jog 12'",
+        "Strides"
+      ],
+      "main": [
+        "MD: 3x(500m @1k pace + 300m @1500 pace) (6')",
+        "LD: 5x5' @VO₂ (2')",
+        "Gym: RDL 3x4, Split squat 3x5/πλ"
+      ],
+      "cooldown": [
+        "Easy 8'"
+      ]
+    },
+    {
+      "day": "Πέμπτη",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Recovery 35–50' (Z1–Z2)",
+        "Core 10' + mobility"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Παρασκευή",
+      "warmup": [
+        "Easy 12'"
+      ],
+      "main": [
+        "MD: 10x400m @3k pace (60–75'')",
+        "LD: 6x1k @CV (90'')"
+      ],
+      "cooldown": [
+        "Easy 8'"
+      ]
+    },
+    {
+      "day": "Σάββατο",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Easy 30–45' + strides 4x80m"
+      ],
+      "cooldown": []
+    },
+    {
+      "day": "Κυριακή",
+      "warmup": [
+        "—"
+      ],
+      "main": [
+        "Long run MD 80–95' / LD 105–125'"
+      ],
+      "cooldown": [
+        "Stretch 8'"
+      ]
+    }
+  ],
+  "notes": "Week 2: αν κάνεις double T, κράτα συνολικό χρόνο ±10%. Αλλιώς +1 rep στα T/VO₂ σύνολα. Πρόσεχε νευρική κόπωση."
+}
