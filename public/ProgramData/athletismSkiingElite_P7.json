@@ -1,0 +1,50 @@
+{
+  "filename": "athletismSkiingElite_P7.json",
+  "title": "Athletism — Skiing (Elite) — Phase 7: Agility, Edge Control Simulation",
+  "level": "Elite",
+  "phase": 7,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Skiing",
+  "equipment": [
+    "Gym: squat rack, platforms, barbells, dumbbells, cables",
+    "Trap bar, safety bar",
+    "Boxes (plyo), hurdles, bands",
+    "Sled/prowler, harness",
+    "Force plates (optional), timing gates (optional)",
+    "Balance: wobble board, BOSU, slackline (optional)",
+    "Reaction lights (e.g., Blazepod)",
+    "Stationary bike/Wattbike, treadmill (incline), curved sprint track",
+    "Stairs/ramps for eccentrics",
+    "On-snow gates (SL/GS) when available"
+  ],
+  "goal": "Enhance lateral force application, hip‑knee‑ankle synergy, and visual reaction.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10–12' (ankle DF, hips IR/ER, T‑spine)",
+      "Activation 8–10' (glute med, deep core, scapular control)",
+      "Landing mechanics: snap-downs, pogos, lateral snap-downs"
+    ],
+    "main": [
+      "Reactive drills: Blazepod lateral shuffle 6x20–30''",
+      "Cone slalom (S‑patterns) 8–12 runs; emphasize inside‑edge knee drive",
+      "Plyo: skater hops 4x10/side + bounds 3x15m",
+      "Strength (maint.): 3x4 Safety Bar Squat, 3x6 Bench Pull"
+    ],
+    "cooldown": [
+      "Easy bike 8–12' + breathing reset (4‑7‑8)",
+      "Isometric holds calves/quads 2x40–60'' + light stretching"
+    ]
+  },
+  "notes": "Week 1: Slalom ladder patterns + reaction lights. Week 2: tighter spacing & faster cadence."
+}

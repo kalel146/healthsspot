@@ -1,0 +1,49 @@
+{
+  "filename": "athletismClimbingElite_P9.json",
+  "title": "Athletism — Climbing (Elite) — Phase 9: Sharpening & Taper",
+  "level": "Elite",
+  "phase": 9,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Climbing",
+  "equipment": [
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Hangboard / fingerboard, campus board",
+    "Pull‑up bar, rings, TRX",
+    "Treadmill/incline treadmill, stair machine, sled/prowler",
+    "Weighted vest, sandbags, farmer carry handles",
+    "Medicine balls (2–8kg), bands",
+    "Hiking pack (10–25kg), poles",
+    "Rock shoes, approach shoes, helmet, rope (as needed)",
+    "HR monitor, altimeter/GPS (optional)"
+  ],
+  "goal": "Reduce volume 40–50%, keep intensity touch; protect fingers.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (wrists, shoulders, T‑spine, hips, ankles)",
+      "Activation 8' (scap control, deep core, glute med)",
+      "Easy traverse or banded forearm prep 5'"
+    ],
+    "main": [
+      "Primers: 6x10'' easy campus touches / 2' easy",
+      "ARC 1x20' easy; technique drills 20'",
+      "Strength: 2x3 key lifts @~70% (explosive intent)",
+      "Mobility/physio daily 15–20'"
+    ],
+    "cooldown": [
+      "Easy walk/bike 8–12' + breathing reset",
+      "Forearm/shoulder stretching 8–10'"
+    ]
+  },
+  "notes": "Week 1: −30–35% volume; Week 2: −45–55%; no DOMS work."
+}

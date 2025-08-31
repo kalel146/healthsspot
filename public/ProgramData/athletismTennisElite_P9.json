@@ -1,0 +1,50 @@
+{
+  "filename": "athletismTennisElite_P9.json",
+  "title": "Athletism — Tennis (Elite) — Phase 9: Sharpening & Taper",
+  "level": "Elite",
+  "phase": 9,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Tennis",
+  "equipment": [
+    "Court: hard/clay/grass (as available)",
+    "Rackets/strings (custom tension), balls (new/practice)",
+    "Radar gun / speed app (serve velocity)",
+    "Cones, ladders, mini-hurdles",
+    "Reaction lights (e.g., Blazepod)",
+    "Gym: rack, barbells, dumbbells, cables, landmine",
+    "Plyo boxes, bands, medicine balls (2–6kg)",
+    "Sled/prowler, harness",
+    "Wattbike/Assault bike, curved treadmill",
+    "HRV/wearables (optional)"
+  ],
+  "goal": "Reduce volume 40–50% while preserving speed/precision; no DOMS work.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (ankle DF, hips, T‑spine, shoulder IR/ER)",
+      "Activation 6–8' (glute med, deep core, scapular control)",
+      "Footwork prep: pogos, carioca, lateral skips, crossover steps"
+    ],
+    "main": [
+      "Primers: 6x10'' reactive footwork + 2' easy",
+      "Serve tune: 4x8 serves @95% feel; stop fresh",
+      "Strength: 2x3 key lifts @~70% (explosive intent)",
+      "Mobility/physio: daily 15–20'"
+    ],
+    "cooldown": [
+      "Easy bike/jog 8–12' + breathing reset (nasal)",
+      "Soft-tissue / banded mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: −30–35% volume; Week 2: −45–55%; touch intensity 2–3x/weekly."
+}

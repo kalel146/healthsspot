@@ -1,0 +1,48 @@
+{
+  "filename": "athletismRowingElite_P1.json",
+  "title": "Athletism — Rowing (Elite) — Phase 1: GPP & Technical Reset",
+  "level": "Elite",
+  "phase": 1,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Rowing",
+  "equipment": [
+    "Boat (1x/2x/4x/8+ as available)",
+    "RowErg (Concept2/SkiErg for x-train)",
+    "Rowing tank (tech)",
+    "Wattbike/Assault bike (aerobic dev)",
+    "Track/grass (acceleration strides)",
+    "Sled/harness (acceleration)",
+    "Gym: rack, barbell, dumbbells, cables",
+    "Med balls, bands, boxes"
+  ],
+  "goal": "Restore stroke mechanics, build robust aerobic base, address asymmetries and tissue capacity.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (hips/ankles/T-spine)",
+      "Activation: glutes–scapulae–core (8–12')",
+      "Technical drills: pick drill / pause @ arms-only / legs-only"
+    ],
+    "main": [
+      "UT2 row 3x18' @18 spm, 2' easy; HR Z1–2",
+      "Boat technical: rate-capped 4x12' @18–20 spm, focus on catch timing",
+      "Strength (full-body): 4x6 Back Squat @RPE7, 3x8 RDL, 3x10 Single-leg row",
+      "Core/anti-rotation: 4x45'' Pallof + side planks"
+    ],
+    "cooldown": [
+      "Easy paddle 8–12' + breathing reset",
+      "Light stretching (Posterior chain, lats, hip flexors)"
+    ]
+  },
+  "notes": "Week 1: Volume foundation at low intensity (UT2/Zone 1–2). Week 2: +8–10% volume; technical density ↑ (more drill-to-stroke ratios)."
+}

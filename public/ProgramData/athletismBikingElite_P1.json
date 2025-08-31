@@ -1,0 +1,47 @@
+{
+  "filename": "athletismBikingElite_P1.json",
+  "title": "Athletism — Biking (Elite) — Phase 1: GPP & Aerobic Base",
+  "level": "Elite",
+  "phase": 1,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Biking",
+  "equipment": [
+    "Road bike, track bike, or MTB (depending on discipline)",
+    "Smart trainer / rollers / Wattbike",
+    "Power meter, HR monitor, GPS head unit",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Plyo boxes, resistance bands, medicine balls",
+    "Sled/prowler, harness",
+    "Foam rollers, mobility tools",
+    "Optional: altitude mask/tent, ergogenic aids"
+  ],
+  "goal": "Rebuild aerobic foundation, joint mobility, and tissue capacity.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, T‑spine, shoulders, ankles)",
+      "Activation 6–8' (glutes, hamstrings, scap control)",
+      "Bike: 10' easy spin @50–60% FTP"
+    ],
+    "main": [
+      "Ride: 3x60' Z2 aerobic (60–70% HRmax)",
+      "Strength: Back Squat 4x6, RDL 3x8, Split Squat 3x8/leg",
+      "Core: plank 3x45'', Pallof press 3x12/side"
+    ],
+    "cooldown": [
+      "Easy spin 10' + nasal breathing reset",
+      "Stretching hips/quads/hamstrings 8–10'"
+    ]
+  },
+  "notes": "Week 1: Z2 60' rides 3x. Week 2: +10% volume, add gym eccentrics."
+}

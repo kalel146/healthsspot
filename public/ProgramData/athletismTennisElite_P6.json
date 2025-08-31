@@ -1,0 +1,50 @@
+{
+  "filename": "athletismTennisElite_P6.json",
+  "title": "Athletism — Tennis (Elite) — Phase 6: Reactive Agility & COD",
+  "level": "Elite",
+  "phase": 6,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Tennis",
+  "equipment": [
+    "Court: hard/clay/grass (as available)",
+    "Rackets/strings (custom tension), balls (new/practice)",
+    "Radar gun / speed app (serve velocity)",
+    "Cones, ladders, mini-hurdles",
+    "Reaction lights (e.g., Blazepod)",
+    "Gym: rack, barbells, dumbbells, cables, landmine",
+    "Plyo boxes, bands, medicine balls (2–6kg)",
+    "Sled/prowler, harness",
+    "Wattbike/Assault bike, curved treadmill",
+    "HRV/wearables (optional)"
+  ],
+  "goal": "Improve first‑step quickness, decel brakes, and reactive decision under chaos.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (ankle DF, hips, T‑spine, shoulder IR/ER)",
+      "Activation 6–8' (glute med, deep core, scapular control)",
+      "Footwork prep: pogos, carioca, lateral skips, crossover steps"
+    ],
+    "main": [
+      "Pro‑agility 5‑10‑5 x6; lateral shuffle decel to stick 4x10m",
+      "Reaction lights: 8x20–30'' lateral/random pattern",
+      "On‑court random feed: 8x (1' on / 1' off) high‑tempo",
+      "Isometrics: split‑squat ISO 3x30–40''/leg"
+    ],
+    "cooldown": [
+      "Easy bike/jog 8–12' + breathing reset (nasal)",
+      "Soft-tissue / banded mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: Pre‑planned → reactive. Week 2: shorter cues, higher density."
+}

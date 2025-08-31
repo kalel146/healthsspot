@@ -1,0 +1,49 @@
+{
+  "filename": "athletismClimbingElite_P2.json",
+  "title": "Athletism — Climbing (Elite) — Phase 2: Work Capacity & Antagonist Balance",
+  "level": "Elite",
+  "phase": 2,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Climbing",
+  "equipment": [
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Hangboard / fingerboard, campus board",
+    "Pull‑up bar, rings, TRX",
+    "Treadmill/incline treadmill, stair machine, sled/prowler",
+    "Weighted vest, sandbags, farmer carry handles",
+    "Medicine balls (2–8kg), bands",
+    "Hiking pack (10–25kg), poles",
+    "Rock shoes, approach shoes, helmet, rope (as needed)",
+    "HR monitor, altimeter/GPS (optional)"
+  ],
+  "goal": "Increase repeatability and balance flexors/extensors for elbow/shoulder health.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (wrists, shoulders, T‑spine, hips, ankles)",
+      "Activation 8' (scap control, deep core, glute med)",
+      "Easy traverse or banded forearm prep 5'"
+    ],
+    "main": [
+      "Front Squat 5x5, Hip Thrust 4x8, Bench Pull 4x8",
+      "EMOM: sled push 20m / push‑ups 12 / MB slam 10",
+      "Extensor work: rubber band opens 3x25; wrist eccentrics 3x12",
+      "Hike 60–90' Z2 with 300–500m vert gain"
+    ],
+    "cooldown": [
+      "Easy walk/bike 8–12' + breathing reset",
+      "Forearm/shoulder stretching 8–10'"
+    ]
+  },
+  "notes": "Week 1: EMOM 20'. Week 2: EMOM 24' + easy vert gain hike."
+}

@@ -1,0 +1,50 @@
+{
+  "filename": "athletismSkiingElite_P6.json",
+  "title": "Athletism — Skiing (Elite) — Phase 6: Reactive Plyometrics & Deceleration",
+  "level": "Elite",
+  "phase": 6,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Skiing",
+  "equipment": [
+    "Gym: squat rack, platforms, barbells, dumbbells, cables",
+    "Trap bar, safety bar",
+    "Boxes (plyo), hurdles, bands",
+    "Sled/prowler, harness",
+    "Force plates (optional), timing gates (optional)",
+    "Balance: wobble board, BOSU, slackline (optional)",
+    "Reaction lights (e.g., Blazepod)",
+    "Stationary bike/Wattbike, treadmill (incline), curved sprint track",
+    "Stairs/ramps for eccentrics",
+    "On-snow gates (SL/GS) when available"
+  ],
+  "goal": "Improve braking strength & reacceleration; stiffness where needed.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10–12' (ankle DF, hips IR/ER, T‑spine)",
+      "Activation 8–10' (glute med, deep core, scapular control)",
+      "Landing mechanics: snap-downs, pogos, lateral snap-downs"
+    ],
+    "main": [
+      "Depth drops to stick 3x5 (30–45cm), then rebound hops 3x6",
+      "Lateral bounds 4x10/side with short ground contact",
+      "Sprint: 6x20m hill sprints (emphasis decel mechanics on return)",
+      "Isometric mid‑range: split‑squat ISO 3x30–40''/leg"
+    ],
+    "cooldown": [
+      "Easy bike 8–12' + breathing reset (4‑7‑8)",
+      "Isometric holds calves/quads 2x40–60'' + light stretching"
+    ]
+  },
+  "notes": "Week 1: Depth drops 3x5 + lateral rebound hops 3x8. Week 2: Add reactive bounds 4x8/side."
+}

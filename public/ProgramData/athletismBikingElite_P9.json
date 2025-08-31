@@ -1,0 +1,48 @@
+{
+  "filename": "athletismBikingElite_P9.json",
+  "title": "Athletism — Biking (Elite) — Phase 9: Sharpening & Taper",
+  "level": "Elite",
+  "phase": 9,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Biking",
+  "equipment": [
+    "Road bike, track bike, or MTB (depending on discipline)",
+    "Smart trainer / rollers / Wattbike",
+    "Power meter, HR monitor, GPS head unit",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Plyo boxes, resistance bands, medicine balls",
+    "Sled/prowler, harness",
+    "Foam rollers, mobility tools",
+    "Optional: altitude mask/tent, ergogenic aids"
+  ],
+  "goal": "Reduce volume 40–50%, maintain intensity, freshness ↑.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, T‑spine, shoulders, ankles)",
+      "Activation 6–8' (glutes, hamstrings, scap control)",
+      "Bike: 10' easy spin @50–60% FTP"
+    ],
+    "main": [
+      "Primers: 6x10'' sprints + 2' easy",
+      "Ride: 2x10' tempo @90% FTP",
+      "Strength: 2x3 Squat @70%",
+      "Mobility daily"
+    ],
+    "cooldown": [
+      "Easy spin 10' + nasal breathing reset",
+      "Stretching hips/quads/hamstrings 8–10'"
+    ]
+  },
+  "notes": "Week 1: −30–35% volume. Week 2: −45–55%."
+}

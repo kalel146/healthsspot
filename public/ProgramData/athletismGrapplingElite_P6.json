@@ -1,0 +1,50 @@
+{
+  "filename": "athletismGrapplingElite_P6.json",
+  "title": "Athletism — Grappling (Elite) — Phase 6: Reactive Agility & Scramble Ability",
+  "level": "Elite",
+  "phase": 6,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Grappling",
+  "equipment": [
+    "Mat space (tatami, wrestling mats, grappling dummy)",
+    "Gi/no‑gi apparel (as appropriate)",
+    "Resistance bands, sandbags, Bulgarian bags",
+    "Sled/prowler, battle ropes, medicine balls",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Plyo boxes, pull‑up bars, rings",
+    "Grip tools (fat grips, gi pull‑up handles, towels)",
+    "HR monitor, timer app",
+    "Assault bike/rower/Wattbike",
+    "Neck harness, partner bands"
+  ],
+  "goal": "Improve scramble reactions, hip heist speed, and decel mechanics.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, T‑spine, shoulders, ankles)",
+      "Activation 6–8' (glute med, deep core, scap control)",
+      "Grappling flow drills: hip escapes, bridges, shrimps, rolls"
+    ],
+    "main": [
+      "Cone agility: sprawl‑to‑sprint 8x10m",
+      "Reaction lights: sprawl/roll/shoot cues 10x20''",
+      "Scramble circuits: 4x90'' (hip heist, switch, sit‑out)",
+      "Isometrics: split squat ISO 3x30''/leg"
+    ],
+    "cooldown": [
+      "Easy bike/row 6–10' + breathing reset",
+      "Soft‑tissue / banded mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: Pre‑planned → reactive. Week 2: higher density."
+}

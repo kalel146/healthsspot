@@ -1,0 +1,47 @@
+{
+  "filename": "athletismSurfingElite_P9.json",
+  "title": "Athletism — Surfing (Elite) — Phase 9: Sharpening & Taper",
+  "level": "Elite",
+  "phase": 9,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Surfing",
+  "equipment": [
+    "Surfboards (short/long), leashes, wax",
+    "Pool/ocean access (open water safety protocols)",
+    "Paddling ergometer or swim lanes",
+    "Breath-hold tools (CO2/O2 tables), snorkel (optional)",
+    "Gym: rack, dumbbells, cables, landmine",
+    "Plyo boxes, medicine balls, bands",
+    "Balance boards/BOSU/slackline (optional)",
+    "HR monitor/wearables (optional)"
+  ],
+  "goal": "Reduce volume 40–50%; maintain speed; no DOMS work.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Primers: 6x10'' reactive footwork + 2' easy",
+      "Paddle 20–30' easy; pop‑up technique 10'",
+      "Strength: 2x3 key lifts @~70%"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: −30–35% volume. Week 2: −45–55%."
+}

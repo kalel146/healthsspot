@@ -1,0 +1,45 @@
+{
+  "filename": "athletismHikingElite_P3.json",
+  "title": "Athletism — Hiking (Elite) — Phase 3: Max Strength — Lower/Posterior",
+  "level": "Elite",
+  "phase": 3,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Hiking",
+  "equipment": [
+    "Incline treadmill/stair machine/step-ups box",
+    "Backpack (8–20 kg), trekking poles",
+    "Gym: rack, barbell, dumbbells, kettlebells",
+    "Sled/prowler, sandbags, weighted vest",
+    "HR monitor, GPS/altimeter (optional)",
+    "Mobility tools, bands"
+  ],
+  "goal": "Raise force ceiling; improve stride economy under load.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Back Squat 5x5, Trap Bar Deadlift 5x3",
+      "Single-leg RDL 3x6/leg (slow eccentric)",
+      "Stairs 8x3' brisk with pack (10–12 kg)"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: 5x5; Week 2: 4x4 heavier."
+}

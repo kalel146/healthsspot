@@ -1,0 +1,45 @@
+{
+  "filename": "athletismHikingElite_P5.json",
+  "title": "Athletism — Hiking (Elite) — Phase 5: Strength → Power (RFD) & Poles Rhythm",
+  "level": "Elite",
+  "phase": 5,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Hiking",
+  "equipment": [
+    "Incline treadmill/stair machine/step-ups box",
+    "Backpack (8–20 kg), trekking poles",
+    "Gym: rack, barbell, dumbbells, kettlebells",
+    "Sled/prowler, sandbags, weighted vest",
+    "HR monitor, GPS/altimeter (optional)",
+    "Mobility tools, bands"
+  ],
+  "goal": "Translate strength to brisk hiking power; cadence & pole timing.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Clean pulls 5x3 @60–70%; Jump squats 4x4 (light)",
+      "Contrast: squat 3x3 + box jumps 3x5",
+      "Hike tempo 75' Z2 with surges 10x30'' @Z3 (pack 10–12 kg)"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: light/mod power; Week 2: contrast sets."
+}

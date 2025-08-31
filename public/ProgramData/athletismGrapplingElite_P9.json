@@ -1,0 +1,50 @@
+{
+  "filename": "athletismGrapplingElite_P9.json",
+  "title": "Athletism — Grappling (Elite) — Phase 9: Sharpening & Taper",
+  "level": "Elite",
+  "phase": 9,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Grappling",
+  "equipment": [
+    "Mat space (tatami, wrestling mats, grappling dummy)",
+    "Gi/no‑gi apparel (as appropriate)",
+    "Resistance bands, sandbags, Bulgarian bags",
+    "Sled/prowler, battle ropes, medicine balls",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Plyo boxes, pull‑up bars, rings",
+    "Grip tools (fat grips, gi pull‑up handles, towels)",
+    "HR monitor, timer app",
+    "Assault bike/rower/Wattbike",
+    "Neck harness, partner bands"
+  ],
+  "goal": "Reduce volume 40–50%; preserve speed/precision; fresh for comps.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, T‑spine, shoulders, ankles)",
+      "Activation 6–8' (glute med, deep core, scap control)",
+      "Grappling flow drills: hip escapes, bridges, shrimps, rolls"
+    ],
+    "main": [
+      "Primers: 6x10'' scramble sprints + 2' easy",
+      "Technique: flow roll 20–30' light",
+      "Strength: 2x3 key lifts @70%",
+      "Mobility/physio daily"
+    ],
+    "cooldown": [
+      "Easy bike/row 6–10' + breathing reset",
+      "Soft‑tissue / banded mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: −30–35% volume. Week 2: −45–55%."
+}

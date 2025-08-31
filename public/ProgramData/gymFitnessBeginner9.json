@@ -9,7 +9,7 @@
   "category": "gym",
   "subcategory": "fitness",
   "description": "Συνδυαστικό πρόγραμμα ενδυνάμωσης και καρδιοαναπνευστικής βελτίωσης με extended μορφή συνεδριών. Έμφαση στη διάρκεια, σταθερότητα και σταδιακή αύξηση αντοχής.",
-  "days": [
+  "weeklySplit": [
     {
       "name": "Day 1 – Endurance Progression",
       "exercises": [

@@ -1,0 +1,50 @@
+{
+  "filename": "athletismTennisElite_P1.json",
+  "title": "Athletism — Tennis (Elite) — Phase 1: GPP & Movement Quality",
+  "level": "Elite",
+  "phase": 1,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Tennis",
+  "equipment": [
+    "Court: hard/clay/grass (as available)",
+    "Rackets/strings (custom tension), balls (new/practice)",
+    "Radar gun / speed app (serve velocity)",
+    "Cones, ladders, mini-hurdles",
+    "Reaction lights (e.g., Blazepod)",
+    "Gym: rack, barbells, dumbbells, cables, landmine",
+    "Plyo boxes, bands, medicine balls (2–6kg)",
+    "Sled/prowler, harness",
+    "Wattbike/Assault bike, curved treadmill",
+    "HRV/wearables (optional)"
+  ],
+  "goal": "Restore movement competency, tissue capacity, scapulo‑humeral rhythm; build aerobic base.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (ankle DF, hips, T‑spine, shoulder IR/ER)",
+      "Activation 6–8' (glute med, deep core, scapular control)",
+      "Footwork prep: pogos, carioca, lateral skips, crossover steps"
+    ],
+    "main": [
+      "Strength (full): Back Squat 4x6 @RPE6, RDL 3x8, Split Squat 3x8/leg",
+      "Upper: Landmine press 4x8, Bench Pull 4x10 (scap control)",
+      "Footwork circuit 3x (ladder 20'', cone T‑drill, shuffle 10m x4)",
+      "On‑court easy rally 30–40' (patterned)"
+    ],
+    "cooldown": [
+      "Easy bike/jog 8–12' + breathing reset (nasal)",
+      "Soft-tissue / banded mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: Z2 30–40' x2 + technique volume low. Week 2: +10% general volume; eccentrics 3–4s on key lifts."
+}

@@ -1,0 +1,48 @@
+{
+  "filename": "athletismRowingElite_P4.json",
+  "title": "Athletism — Rowing (Elite) — Phase 4: Strength→Power Conversion (RFD & Rate)",
+  "level": "Elite",
+  "phase": 4,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Rowing",
+  "equipment": [
+    "Boat (1x/2x/4x/8+ as available)",
+    "RowErg (Concept2/SkiErg for x-train)",
+    "Rowing tank (tech)",
+    "Wattbike/Assault bike (aerobic dev)",
+    "Track/grass (acceleration strides)",
+    "Sled/harness (acceleration)",
+    "Gym: rack, barbell, dumbbells, cables",
+    "Med balls, bands, boxes"
+  ],
+  "goal": "Translate force to boat speed; improve rate changes and RFD.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (hips/ankles/T-spine)",
+      "Activation: glutes–scapulae–core (8–12')",
+      "Technical drills: pick drill / pause @ arms-only / legs-only"
+    ],
+    "main": [
+      "Power: Clean pulls 5x3 @60–70%, Jump squats 4x4 (light)",
+      "Erg: 10x1' @28–32 spm / 1' easy (RPE 8)",
+      "Boat: 5x6' @22–24 spm with 10'' bursts to 28 spm each min",
+      "Plyo: 3x8 MB chest throw + OH throw"
+    ],
+    "cooldown": [
+      "Easy paddle 8–12' + breathing reset",
+      "Light stretching (Posterior chain, lats, hip flexors)"
+    ]
+  },
+  "notes": "Week 1: Introduce Olympic-derivative power. Week 2: Slight ↑ in rate (22–26 spm) on pieces."
+}

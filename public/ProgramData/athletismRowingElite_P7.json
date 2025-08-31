@@ -1,0 +1,48 @@
+{
+  "filename": "athletismRowingElite_P7.json",
+  "title": "Athletism — Rowing (Elite) — Phase 7: Speed Endurance & Lactate Tolerance",
+  "level": "Elite",
+  "phase": 7,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Rowing",
+  "equipment": [
+    "Boat (1x/2x/4x/8+ as available)",
+    "RowErg (Concept2/SkiErg for x-train)",
+    "Rowing tank (tech)",
+    "Wattbike/Assault bike (aerobic dev)",
+    "Track/grass (acceleration strides)",
+    "Sled/harness (acceleration)",
+    "Gym: rack, barbell, dumbbells, cables",
+    "Med balls, bands, boxes"
+  ],
+  "goal": "Handle acidosis, maintain form under fatigue, protect technique.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (hips/ankles/T-spine)",
+      "Activation: glutes–scapulae–core (8–12')",
+      "Technical drills: pick drill / pause @ arms-only / legs-only"
+    ],
+    "main": [
+      "Erg: 8–10x500m @2k pace, r:2' (stroke efficiency focus)",
+      "Boat: 4x1000m @race cadence (28–34 spm ladder)",
+      "Starts & finishes: 6 sets; last 250m push practice",
+      "Recovery aerobic 40–60' after speed sessions"
+    ],
+    "cooldown": [
+      "Easy paddle 8–12' + breathing reset",
+      "Light stretching (Posterior chain, lats, hip flexors)"
+    ]
+  },
+  "notes": "Week 1: 8x500m @2k pace, r:2'. Week 2: 10x500m @2k pace, r:2'. Include strict technical cues."
+}

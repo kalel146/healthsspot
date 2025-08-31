@@ -1,0 +1,49 @@
+{
+  "filename": "athletismStrikingElite_P10.json",
+  "title": "Athletism — Striking (Elite) — Phase 10: Peak & Performance Maintenance",
+  "level": "Elite",
+  "phase": 10,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Striking",
+  "equipment": [
+    "Ring/Dojo/Mat space",
+    "Heavy bag, pads, focus mitts, kick shield",
+    "Ropes, ladders, cones",
+    "Plyo boxes, med balls (2–8kg)",
+    "Bands, sled/prowler, harness",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Reaction lights (Blazepod), timer app",
+    "Jump rope, assault bike/erg",
+    "Protective gear (gloves, wraps, shin guards, mouthpiece)"
+  ],
+  "goal": "Micro-dose intensity, CNS freshness, express power.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, ankles)",
+      "Activation 6–8' (glutes, scapulae, core)",
+      "Jump rope 3x2' + shadowboxing 2x2'"
+    ],
+    "main": [
+      "Padwork: 3x90'' explosive combos",
+      "Primer: 4x10'' max flurry + 2' easy",
+      "Strength: 2x2 clean pulls light + MB rotational throw",
+      "Breathing/HRV protocol, sleep optimization"
+    ],
+    "cooldown": [
+      "Breathing reset 5' + light mobility",
+      "Soft tissue release 10' (foam roll, lacrosse ball)"
+    ]
+  },
+  "notes": "Week 1: one rehearsal + one primer. Week 2: fight week taper."
+}

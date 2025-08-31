@@ -1,0 +1,48 @@
+{
+  "filename": "athletismRowingElite_P2.json",
+  "title": "Athletism — Rowing (Elite) — Phase 2: Aerobic Base & Technique Consolidation",
+  "level": "Elite",
+  "phase": 2,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Rowing",
+  "equipment": [
+    "Boat (1x/2x/4x/8+ as available)",
+    "RowErg (Concept2/SkiErg for x-train)",
+    "Rowing tank (tech)",
+    "Wattbike/Assault bike (aerobic dev)",
+    "Track/grass (acceleration strides)",
+    "Sled/harness (acceleration)",
+    "Gym: rack, barbell, dumbbells, cables",
+    "Med balls, bands, boxes"
+  ],
+  "goal": "Extend aerobic capacity and stabilize stroke efficiency under mild load.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (hips/ankles/T-spine)",
+      "Activation: glutes–scapulae–core (8–12')",
+      "Technical drills: pick drill / pause @ arms-only / legs-only"
+    ],
+    "main": [
+      "UT2–UT1 continuous 70–90' @18–20 spm",
+      "RowErg: 4x20' @UT1 (2' easy) — alt. drag factor for feel",
+      "Strength: 5x5 Front Squat @RPE7, 4x6 Bench Pull, 3x8 Hip Thrust",
+      "Boat: rate ladder 16–18–20 spm x3 blocks"
+    ],
+    "cooldown": [
+      "Easy paddle 8–12' + breathing reset",
+      "Light stretching (Posterior chain, lats, hip flexors)"
+    ]
+  },
+  "notes": "Week 1: Steady state density ↑. Week 2: add one threshold touch (20')."
+}

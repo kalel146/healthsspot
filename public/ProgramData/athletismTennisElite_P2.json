@@ -1,0 +1,50 @@
+{
+  "filename": "athletismTennisElite_P2.json",
+  "title": "Athletism — Tennis (Elite) — Phase 2: Work Capacity & Chassis Endurance",
+  "level": "Elite",
+  "phase": 2,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Tennis",
+  "equipment": [
+    "Court: hard/clay/grass (as available)",
+    "Rackets/strings (custom tension), balls (new/practice)",
+    "Radar gun / speed app (serve velocity)",
+    "Cones, ladders, mini-hurdles",
+    "Reaction lights (e.g., Blazepod)",
+    "Gym: rack, barbells, dumbbells, cables, landmine",
+    "Plyo boxes, bands, medicine balls (2–6kg)",
+    "Sled/prowler, harness",
+    "Wattbike/Assault bike, curved treadmill",
+    "HRV/wearables (optional)"
+  ],
+  "goal": "Increase repeatability of points/changes; trunk endurance and shoulder capacity.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (ankle DF, hips, T‑spine, shoulder IR/ER)",
+      "Activation 6–8' (glute med, deep core, scapular control)",
+      "Footwork prep: pogos, carioca, lateral skips, crossover steps"
+    ],
+    "main": [
+      "Front Squat 5x5 @RPE7; Hip Thrust 4x8; Pull‑ups 4x6",
+      "EMOM 20–24': sled push 20m / box step‑downs 8/leg / bear crawl 15m",
+      "Copenhagen plank 3x30–45''/side + dead bug 3x12",
+      "On‑court: basket drills 45–60' @low‑mod intensity"
+    ],
+    "cooldown": [
+      "Easy bike/jog 8–12' + breathing reset (nasal)",
+      "Soft-tissue / banded mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: EMOM 20' circuits. Week 2: EMOM 24' + COD low impact."
+}

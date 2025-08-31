@@ -1,0 +1,48 @@
+{
+  "filename": "athletismPoloElite_P6.json",
+  "title": "Athletism — Polo (Elite) — Phase 6: Reactive Agility & Defensive Skills",
+  "level": "Elite",
+  "phase": 6,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Polo",
+  "equipment": [
+    "Swimming pool (deep water, water polo goals, balls, caps)",
+    "Dryland: gym (rack, barbells, dumbbells, cables, kettlebells)",
+    "Bands, medicine balls (2–6kg), plyo boxes",
+    "Battle ropes, sled/prowler, sandbags",
+    "Reaction lights, cones",
+    "HR monitor, timer app",
+    "Shot clock, tactical boards",
+    "Wearables (optional, HRV/sleep)"
+  ],
+  "goal": "Improve reaction, lateral movement, and defensive positioning.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, T‑spine, ankles)",
+      "Activation 6–8' (glutes, deep core, scap control)",
+      "Water drills: sculling, vertical kick easy 5'"
+    ],
+    "main": [
+      "Water: 12x10m reactive sprints to coach call",
+      "Reaction lights on deck: 10x20'' shuffle cues",
+      "Sparring drill: 6x2' defense vs drive",
+      "Dryland: split squat ISO 3x30''/leg"
+    ],
+    "cooldown": [
+      "200m easy swim + breathing reset",
+      "Stretching shoulders/hips 8–10'"
+    ]
+  },
+  "notes": "Week 1: planned→reactive. Week 2: density ↑."
+}

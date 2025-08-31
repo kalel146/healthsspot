@@ -1,0 +1,48 @@
+{
+  "filename": "athletismPoloElite_P7.json",
+  "title": "Athletism — Polo (Elite) — Phase 7: Anaerobic Power & RSA (Repeat Sprints)",
+  "level": "Elite",
+  "phase": 7,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Polo",
+  "equipment": [
+    "Swimming pool (deep water, water polo goals, balls, caps)",
+    "Dryland: gym (rack, barbells, dumbbells, cables, kettlebells)",
+    "Bands, medicine balls (2–6kg), plyo boxes",
+    "Battle ropes, sled/prowler, sandbags",
+    "Reaction lights, cones",
+    "HR monitor, timer app",
+    "Shot clock, tactical boards",
+    "Wearables (optional, HRV/sleep)"
+  ],
+  "goal": "Boost ability to repeat sprints and shots with minimal decrement.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, T‑spine, ankles)",
+      "Activation 6–8' (glutes, deep core, scap control)",
+      "Water drills: sculling, vertical kick easy 5'"
+    ],
+    "main": [
+      "Swim sprints 8–10x20m / 30'' rest",
+      "Dryland: Assault bike 10x15'' / 45'' easy",
+      "Water: 6x2' situational scrimmage high tempo",
+      "Strength maint.: 3x3 Squat, 3x5 Bench Pull"
+    ],
+    "cooldown": [
+      "200m easy swim + breathing reset",
+      "Stretching shoulders/hips 8–10'"
+    ]
+  },
+  "notes": "Week 1: 8x20m sprints / 30'' rest. Week 2: 10x20m."
+}

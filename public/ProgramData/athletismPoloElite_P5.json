@@ -1,0 +1,48 @@
+{
+  "filename": "athletismPoloElite_P5.json",
+  "title": "Athletism — Polo (Elite) — Phase 5: Strength → Power (RFD) & Shot Speed",
+  "level": "Elite",
+  "phase": 5,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Polo",
+  "equipment": [
+    "Swimming pool (deep water, water polo goals, balls, caps)",
+    "Dryland: gym (rack, barbells, dumbbells, cables, kettlebells)",
+    "Bands, medicine balls (2–6kg), plyo boxes",
+    "Battle ropes, sled/prowler, sandbags",
+    "Reaction lights, cones",
+    "HR monitor, timer app",
+    "Shot clock, tactical boards",
+    "Wearables (optional, HRV/sleep)"
+  ],
+  "goal": "Convert strength to throwing power and leg drive for vertical jumps.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, T‑spine, ankles)",
+      "Activation 6–8' (glutes, deep core, scap control)",
+      "Water drills: sculling, vertical kick easy 5'"
+    ],
+    "main": [
+      "Clean Pulls 5x3, Jump Squats 4x4",
+      "Contrast: Squat 3x3 + vertical jump 3x6",
+      "MB scoop toss 4x5/side",
+      "Water: 10x15m sprints from eggbeater start"
+    ],
+    "cooldown": [
+      "200m easy swim + breathing reset",
+      "Stretching shoulders/hips 8–10'"
+    ]
+  },
+  "notes": "Week 1: Olympic derivatives. Week 2: contrast sets."
+}

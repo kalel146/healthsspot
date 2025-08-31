@@ -1,0 +1,48 @@
+{
+  "filename": "athletismBikingElite_P5.json",
+  "title": "Athletism — Biking (Elite) — Phase 5: Strength → Power (RFD)",
+  "level": "Elite",
+  "phase": 5,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Biking",
+  "equipment": [
+    "Road bike, track bike, or MTB (depending on discipline)",
+    "Smart trainer / rollers / Wattbike",
+    "Power meter, HR monitor, GPS head unit",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Plyo boxes, resistance bands, medicine balls",
+    "Sled/prowler, harness",
+    "Foam rollers, mobility tools",
+    "Optional: altitude mask/tent, ergogenic aids"
+  ],
+  "goal": "Convert gym strength to bike sprint power.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, T‑spine, shoulders, ankles)",
+      "Activation 6–8' (glutes, hamstrings, scap control)",
+      "Bike: 10' easy spin @50–60% FTP"
+    ],
+    "main": [
+      "Clean Pulls 5x3, Jump Squats 4x4",
+      "Contrast: Squat 3x3 + broad jump 3x6",
+      "Sprint: 8x12'' all‑out / 2' rest",
+      "Ride: 90' Z2 aerobic"
+    ],
+    "cooldown": [
+      "Easy spin 10' + nasal breathing reset",
+      "Stretching hips/quads/hamstrings 8–10'"
+    ]
+  },
+  "notes": "Week 1: Olympic lifts light/mod. Week 2: contrast."
+}

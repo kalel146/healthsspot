@@ -1,0 +1,49 @@
+{
+  "filename": "athletismStrikingElite_P6.json",
+  "title": "Athletism — Striking (Elite) — Phase 6: Reactive Speed & Agility",
+  "level": "Elite",
+  "phase": 6,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Striking",
+  "equipment": [
+    "Ring/Dojo/Mat space",
+    "Heavy bag, pads, focus mitts, kick shield",
+    "Ropes, ladders, cones",
+    "Plyo boxes, med balls (2–8kg)",
+    "Bands, sled/prowler, harness",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Reaction lights (Blazepod), timer app",
+    "Jump rope, assault bike/erg",
+    "Protective gear (gloves, wraps, shin guards, mouthpiece)"
+  ],
+  "goal": "Improve first-step reaction, hand speed, visual-motor integration.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, ankles)",
+      "Activation 6–8' (glutes, scapulae, core)",
+      "Jump rope 3x2' + shadowboxing 2x2'"
+    ],
+    "main": [
+      "Reaction drills: Blazepod jab-cross 6x20''",
+      "Footwork sprints: 10x10m with stance switch",
+      "Padwork: coach random call combos 10x2'",
+      "Strength maint.: 3x3 Squat, 3x5 Pull-ups"
+    ],
+    "cooldown": [
+      "Breathing reset 5' + light mobility",
+      "Soft tissue release 10' (foam roll, lacrosse ball)"
+    ]
+  },
+  "notes": "Week 1: Preplanned → reactive. Week 2: faster cues, shorter recovery."
+}

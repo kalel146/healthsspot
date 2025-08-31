@@ -1,0 +1,48 @@
+{
+  "filename": "athletismBikingElite_P10.json",
+  "title": "Athletism — Biking (Elite) — Phase 10: Peak & Maintenance",
+  "level": "Elite",
+  "phase": 10,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Biking",
+  "equipment": [
+    "Road bike, track bike, or MTB (depending on discipline)",
+    "Smart trainer / rollers / Wattbike",
+    "Power meter, HR monitor, GPS head unit",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Plyo boxes, resistance bands, medicine balls",
+    "Sled/prowler, harness",
+    "Foam rollers, mobility tools",
+    "Optional: altitude mask/tent, ergogenic aids"
+  ],
+  "goal": "Race‑week readiness, micro‑dose intensity, CNS sharpness.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, T‑spine, shoulders, ankles)",
+      "Activation 6–8' (glutes, hamstrings, scap control)",
+      "Bike: 10' easy spin @50–60% FTP"
+    ],
+    "main": [
+      "Primer: 3x(30'' sprint / 2' easy)",
+      "Plyo push‑ups 3x5 + MB slams 3x5",
+      "Ride: 2x8' race pace",
+      "Breathing/HRV + sleep protocol"
+    ],
+    "cooldown": [
+      "Easy spin 10' + nasal breathing reset",
+      "Stretching hips/quads/hamstrings 8–10'"
+    ]
+  },
+  "notes": "Week 1: rehearsal + primer. Week 2: taper 48–72h."
+}

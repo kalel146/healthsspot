@@ -1,0 +1,47 @@
+{
+  "filename": "athletismSurfingElite_P5.json",
+  "title": "Athletism — Surfing (Elite) — Phase 5: Strength → Power (RFD) & Pop‑Up Speed",
+  "level": "Elite",
+  "phase": 5,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Surfing",
+  "equipment": [
+    "Surfboards (short/long), leashes, wax",
+    "Pool/ocean access (open water safety protocols)",
+    "Paddling ergometer or swim lanes",
+    "Breath-hold tools (CO2/O2 tables), snorkel (optional)",
+    "Gym: rack, dumbbells, cables, landmine",
+    "Plyo boxes, medicine balls, bands",
+    "Balance boards/BOSU/slackline (optional)",
+    "HR monitor/wearables (optional)"
+  ],
+  "goal": "Convert strength to explosive pop‑up and speed generation.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Clean Pulls 5x3; Jump Squats 4x4 (light)",
+      "Contrast: Trap Bar 3x3 + lateral bound 3x6/side",
+      "MB scoop/overhead toss 4x5 each"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: power derivatives. Week 2: contrast sets."
+}

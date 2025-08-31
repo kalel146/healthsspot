@@ -1,0 +1,50 @@
+{
+  "filename": "athletismTennisElite_P3.json",
+  "title": "Athletism — Tennis (Elite) — Phase 3: Max Strength — Lower & Rotational Base",
+  "level": "Elite",
+  "phase": 3,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Tennis",
+  "equipment": [
+    "Court: hard/clay/grass (as available)",
+    "Rackets/strings (custom tension), balls (new/practice)",
+    "Radar gun / speed app (serve velocity)",
+    "Cones, ladders, mini-hurdles",
+    "Reaction lights (e.g., Blazepod)",
+    "Gym: rack, barbells, dumbbells, cables, landmine",
+    "Plyo boxes, bands, medicine balls (2–6kg)",
+    "Sled/prowler, harness",
+    "Wattbike/Assault bike, curved treadmill",
+    "HRV/wearables (optional)"
+  ],
+  "goal": "Raise force ceiling for explosive first step and stable stroke base.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (ankle DF, hips, T‑spine, shoulder IR/ER)",
+      "Activation 6–8' (glute med, deep core, scapular control)",
+      "Footwork prep: pogos, carioca, lateral skips, crossover steps"
+    ],
+    "main": [
+      "Back Squat 5x5 @RPE7–8; Trap Bar Deadlift 5x3",
+      "Bulgarian Split Squat 4x6/leg (3s eccentric)",
+      "Nordic hamstring 3x5; Tibialis raises 3x15",
+      "MB rotational throw 4x6/side (hip‑lead)"
+    ],
+    "cooldown": [
+      "Easy bike/jog 8–12' + breathing reset (nasal)",
+      "Soft-tissue / banded mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: 5x5; Week 2: 4x4 heavier; include isometric mid‑thigh pulls 3x3 @3–5''."
+}

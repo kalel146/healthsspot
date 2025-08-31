@@ -1,0 +1,47 @@
+{
+  "filename": "athletismSurfingElite_P7.json",
+  "title": "Athletism — Surfing (Elite) — Phase 7: Anaerobic Power & RSA (Repeat Waves)",
+  "level": "Elite",
+  "phase": 7,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Surfing",
+  "equipment": [
+    "Surfboards (short/long), leashes, wax",
+    "Pool/ocean access (open water safety protocols)",
+    "Paddling ergometer or swim lanes",
+    "Breath-hold tools (CO2/O2 tables), snorkel (optional)",
+    "Gym: rack, dumbbells, cables, landmine",
+    "Plyo boxes, medicine balls, bands",
+    "Balance boards/BOSU/slackline (optional)",
+    "HR monitor/wearables (optional)"
+  ],
+  "goal": "Repeat high‑intensity paddles and pop‑ups with minimal drop‑off.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Paddle sprints 10–12x15'' / 45'' easy",
+      "Bike 8x15'' hard / 45'' easy",
+      "Strength maint.: Squat 3x3; Bench Pull 3x5"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: 10x15'' hard / 45'' easy. Week 2: 12x15''."
+}

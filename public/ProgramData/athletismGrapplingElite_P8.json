@@ -1,0 +1,50 @@
+{
+  "filename": "athletismGrapplingElite_P8.json",
+  "title": "Athletism — Grappling (Elite) — Phase 8: Specificity — Positional & Submission Chains",
+  "level": "Elite",
+  "phase": 8,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Grappling",
+  "equipment": [
+    "Mat space (tatami, wrestling mats, grappling dummy)",
+    "Gi/no‑gi apparel (as appropriate)",
+    "Resistance bands, sandbags, Bulgarian bags",
+    "Sled/prowler, battle ropes, medicine balls",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Plyo boxes, pull‑up bars, rings",
+    "Grip tools (fat grips, gi pull‑up handles, towels)",
+    "HR monitor, timer app",
+    "Assault bike/rower/Wattbike",
+    "Neck harness, partner bands"
+  ],
+  "goal": "Integrate positional control, transitions, and submissions under fatigue.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, T‑spine, shoulders, ankles)",
+      "Activation 6–8' (glute med, deep core, scap control)",
+      "Grappling flow drills: hip escapes, bridges, shrimps, rolls"
+    ],
+    "main": [
+      "Positional drills: guard pass to side control to mount 6x90''",
+      "Submission chains: armbar→triangle→omoplata flow 4x5 reps",
+      "Live situational: 6x2' coach‑constrained",
+      "Grip: gi rope climbs 4xAMRAP"
+    ],
+    "cooldown": [
+      "Easy bike/row 6–10' + breathing reset",
+      "Soft‑tissue / banded mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: broken scenarios. Week 2: full situational rounds."
+}

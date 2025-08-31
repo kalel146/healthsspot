@@ -1,0 +1,45 @@
+{
+  "filename": "athletismHikingElite_P1.json",
+  "title": "Athletism — Hiking (Elite) — Phase 1: GPP & Tissue Capacity",
+  "level": "Elite",
+  "phase": 1,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Hiking",
+  "equipment": [
+    "Incline treadmill/stair machine/step-ups box",
+    "Backpack (8–20 kg), trekking poles",
+    "Gym: rack, barbell, dumbbells, kettlebells",
+    "Sled/prowler, sandbags, weighted vest",
+    "HR monitor, GPS/altimeter (optional)",
+    "Mobility tools, bands"
+  ],
+  "goal": "Rebuild aerobic base and chassis capacity for loaded locomotion.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Strength: Back Squat 4x6 @RPE6, RDL 3x8, Split Squat 3x8/leg",
+      "Core: suitcase carry 3x30m/side + Pallof 3x12/side",
+      "Incline walk 30' @5–8% (pack 5–8 kg)"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: Z2 2x45'. Week 2: +10% volume; eccentrics 3–4s on key lifts."
+}

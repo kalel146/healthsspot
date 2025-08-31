@@ -1,0 +1,48 @@
+{
+  "filename": "athletismBikingElite_P2.json",
+  "title": "Athletism — Biking (Elite) — Phase 2: Work Capacity & Endurance",
+  "level": "Elite",
+  "phase": 2,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Biking",
+  "equipment": [
+    "Road bike, track bike, or MTB (depending on discipline)",
+    "Smart trainer / rollers / Wattbike",
+    "Power meter, HR monitor, GPS head unit",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Plyo boxes, resistance bands, medicine balls",
+    "Sled/prowler, harness",
+    "Foam rollers, mobility tools",
+    "Optional: altitude mask/tent, ergogenic aids"
+  ],
+  "goal": "Boost repeatability and chassis durability for longer efforts.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, T‑spine, shoulders, ankles)",
+      "Activation 6–8' (glutes, hamstrings, scap control)",
+      "Bike: 10' easy spin @50–60% FTP"
+    ],
+    "main": [
+      "Ride: 2x20' tempo (75–80% FTP), 5' recovery",
+      "EMOM dryland: sled push 20m / push‑ups 12 / MB slam 10",
+      "Single‑leg balance + RDL 3x8/leg",
+      "Core: Copenhagen plank 3x30–40''/side"
+    ],
+    "cooldown": [
+      "Easy spin 10' + nasal breathing reset",
+      "Stretching hips/quads/hamstrings 8–10'"
+    ]
+  },
+  "notes": "Week 1: EMOM 20'. Week 2: EMOM 24'."
+}

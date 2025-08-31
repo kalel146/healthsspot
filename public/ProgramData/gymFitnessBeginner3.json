@@ -9,7 +9,7 @@
   "category": "gym",
   "subcategory": "fitness",
   "description": "Ενίσχυση καρδιοαναπνευστικής ικανότητας και δύναμης μέσα από κυκλικά functional sessions και HIIT protocols.",
-  "days": [
+  "weeklySplit": [
     {
       "name": "Day 1 – Cardio Kickoff",
       "exercises": [

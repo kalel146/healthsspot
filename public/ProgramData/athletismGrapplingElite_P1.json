@@ -1,0 +1,50 @@
+{
+  "filename": "athletismGrapplingElite_P1.json",
+  "title": "Athletism — Grappling (Elite) — Phase 1: GPP & Movement Quality",
+  "level": "Elite",
+  "phase": 1,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Grappling",
+  "equipment": [
+    "Mat space (tatami, wrestling mats, grappling dummy)",
+    "Gi/no‑gi apparel (as appropriate)",
+    "Resistance bands, sandbags, Bulgarian bags",
+    "Sled/prowler, battle ropes, medicine balls",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Plyo boxes, pull‑up bars, rings",
+    "Grip tools (fat grips, gi pull‑up handles, towels)",
+    "HR monitor, timer app",
+    "Assault bike/rower/Wattbike",
+    "Neck harness, partner bands"
+  ],
+  "goal": "Rebuild base movement patterns, joint capacity, and aerobic foundation.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, T‑spine, shoulders, ankles)",
+      "Activation 6–8' (glute med, deep core, scap control)",
+      "Grappling flow drills: hip escapes, bridges, shrimps, rolls"
+    ],
+    "main": [
+      "Strength (full): Back Squat 4x6, RDL 3x8, Split Squat 3x8/leg",
+      "Pull‑ups 4x8, Landmine press 4x8",
+      "Mat drills: hip escape 4x10m, shoulder rolls 3x10",
+      "Bike/row Z2 30–40'"
+    ],
+    "cooldown": [
+      "Easy bike/row 6–10' + breathing reset",
+      "Soft‑tissue / banded mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: General base, Z2 conditioning. Week 2: +10% volume; add eccentrics."
+}

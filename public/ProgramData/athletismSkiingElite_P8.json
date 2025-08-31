@@ -1,0 +1,50 @@
+{
+  "filename": "athletismSkiingElite_P8.json",
+  "title": "Athletism — Skiing (Elite) — Phase 8: Specificity — GS/SL Modeling",
+  "level": "Elite",
+  "phase": 8,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Skiing",
+  "equipment": [
+    "Gym: squat rack, platforms, barbells, dumbbells, cables",
+    "Trap bar, safety bar",
+    "Boxes (plyo), hurdles, bands",
+    "Sled/prowler, harness",
+    "Force plates (optional), timing gates (optional)",
+    "Balance: wobble board, BOSU, slackline (optional)",
+    "Reaction lights (e.g., Blazepod)",
+    "Stationary bike/Wattbike, treadmill (incline), curved sprint track",
+    "Stairs/ramps for eccentrics",
+    "On-snow gates (SL/GS) when available"
+  ],
+  "goal": "Simulate course demands: starts, rhythm changes, long vs short turns.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10–12' (ankle DF, hips IR/ER, T‑spine)",
+      "Activation 8–10' (glute med, deep core, scapular control)",
+      "Landing mechanics: snap-downs, pogos, lateral snap-downs"
+    ],
+    "main": [
+      "On‑snow (if available): 4–6 sections (8–15 gates) @90–95% with full recovery",
+      "Dryland model: curved sprints 6x60m + cone rhythm changes",
+      "Strength (power): 3x2 Trap Bar Jump + MB rotational throws 4x6/side",
+      "Vision: saccades/vergence 8' + vestibular balance 6'"
+    ],
+    "cooldown": [
+      "Easy bike 8–12' + breathing reset (4‑7‑8)",
+      "Isometric holds calves/quads 2x40–60'' + light stretching"
+    ]
+  },
+  "notes": "Week 1: Broken runs (sections). Week 2: Full‑run simulations with timing where possible."
+}

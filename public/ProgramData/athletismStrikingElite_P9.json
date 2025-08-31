@@ -1,0 +1,49 @@
+{
+  "filename": "athletismStrikingElite_P9.json",
+  "title": "Athletism — Striking (Elite) — Phase 9: Sharpening & Taper",
+  "level": "Elite",
+  "phase": 9,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Striking",
+  "equipment": [
+    "Ring/Dojo/Mat space",
+    "Heavy bag, pads, focus mitts, kick shield",
+    "Ropes, ladders, cones",
+    "Plyo boxes, med balls (2–8kg)",
+    "Bands, sled/prowler, harness",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Reaction lights (Blazepod), timer app",
+    "Jump rope, assault bike/erg",
+    "Protective gear (gloves, wraps, shin guards, mouthpiece)"
+  ],
+  "goal": "Reduce volume 40–50%, maintain sharpness. No DOMS work.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, ankles)",
+      "Activation 6–8' (glutes, scapulae, core)",
+      "Jump rope 3x2' + shadowboxing 2x2'"
+    ],
+    "main": [
+      "Padwork: 4x2' sharp, fresh",
+      "Bag: 6x1' max intent, 1' rest",
+      "Strength: 2x3 main lifts @70%",
+      "Mobility/physio daily"
+    ],
+    "cooldown": [
+      "Breathing reset 5' + light mobility",
+      "Soft tissue release 10' (foam roll, lacrosse ball)"
+    ]
+  },
+  "notes": "Week 1: −30%. Week 2: −50%."
+}

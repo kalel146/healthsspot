@@ -1,0 +1,50 @@
+{
+  "filename": "athletismGrapplingElite_P4.json",
+  "title": "Athletism — Grappling (Elite) — Phase 4: Max Strength — Upper/Pulling",
+  "level": "Elite",
+  "phase": 4,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Grappling",
+  "equipment": [
+    "Mat space (tatami, wrestling mats, grappling dummy)",
+    "Gi/no‑gi apparel (as appropriate)",
+    "Resistance bands, sandbags, Bulgarian bags",
+    "Sled/prowler, battle ropes, medicine balls",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Plyo boxes, pull‑up bars, rings",
+    "Grip tools (fat grips, gi pull‑up handles, towels)",
+    "HR monitor, timer app",
+    "Assault bike/rower/Wattbike",
+    "Neck harness, partner bands"
+  ],
+  "goal": "Upper body force for clinch, pulls, and control; scap rhythm.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, T‑spine, shoulders, ankles)",
+      "Activation 6–8' (glute med, deep core, scap control)",
+      "Grappling flow drills: hip escapes, bridges, shrimps, rolls"
+    ],
+    "main": [
+      "Weighted Pull‑ups 5x3, Bench Press 5x3",
+      "Seated Row 4x6, Face Pull 3x12",
+      "Sandbag bear hug carries 4x20m",
+      "Mat: partner handfight drill 6x30''"
+    ],
+    "cooldown": [
+      "Easy bike/row 6–10' + breathing reset",
+      "Soft‑tissue / banded mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: 4x4 heavy. Week 2: 5x3."
+}

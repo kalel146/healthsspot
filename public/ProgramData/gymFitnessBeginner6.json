@@ -9,7 +9,7 @@
   "category": "gym",
   "subcategory": "fitness",
   "description": "Αναμειγνύει cardio αντοχής, ενεργητική αποκατάσταση και σταθεροποίηση. Ιδανικό για ενίσχυση καρδιοαναπνευστικής βάσης.",
-  "days": [
+  "weeklySplit": [
     {
       "name": "Day 1 – Cardio Endurance Ride",
       "exercises": [

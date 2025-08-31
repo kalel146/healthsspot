@@ -1,0 +1,48 @@
+{
+  "filename": "athletismPoloElite_P1.json",
+  "title": "Athletism — Polo (Elite) — Phase 1: GPP & Technical Reset",
+  "level": "Elite",
+  "phase": 1,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Polo",
+  "equipment": [
+    "Swimming pool (deep water, water polo goals, balls, caps)",
+    "Dryland: gym (rack, barbells, dumbbells, cables, kettlebells)",
+    "Bands, medicine balls (2–6kg), plyo boxes",
+    "Battle ropes, sled/prowler, sandbags",
+    "Reaction lights, cones",
+    "HR monitor, timer app",
+    "Shot clock, tactical boards",
+    "Wearables (optional, HRV/sleep)"
+  ],
+  "goal": "Restore base aerobic fitness, mobility, and technical efficiency in water skills.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, T‑spine, ankles)",
+      "Activation 6–8' (glutes, deep core, scap control)",
+      "Water drills: sculling, vertical kick easy 5'"
+    ],
+    "main": [
+      "Swim aerobic 8x200m @Z2, 30'' rest",
+      "Vertical kick 6x30'' / 30'' rest",
+      "Dryland: Back Squat 4x6, Pull‑ups 4x8, Landmine press 4x8",
+      "Med ball slams 3x10"
+    ],
+    "cooldown": [
+      "200m easy swim + breathing reset",
+      "Stretching shoulders/hips 8–10'"
+    ]
+  },
+  "notes": "Week 1: 2x swim Z2 30–40'. Week 2: +10% volume, add eccentrics on dryland."
+}

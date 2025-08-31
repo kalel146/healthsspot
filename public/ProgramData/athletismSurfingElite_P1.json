@@ -1,0 +1,47 @@
+{
+  "filename": "athletismSurfingElite_P1.json",
+  "title": "Athletism — Surfing (Elite) — Phase 1: GPP & Shoulder/Spine Prep",
+  "level": "Elite",
+  "phase": 1,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Surfing",
+  "equipment": [
+    "Surfboards (short/long), leashes, wax",
+    "Pool/ocean access (open water safety protocols)",
+    "Paddling ergometer or swim lanes",
+    "Breath-hold tools (CO2/O2 tables), snorkel (optional)",
+    "Gym: rack, dumbbells, cables, landmine",
+    "Plyo boxes, medicine balls, bands",
+    "Balance boards/BOSU/slackline (optional)",
+    "HR monitor/wearables (optional)"
+  ],
+  "goal": "Rebuild paddling base; shoulder/scap rhythm; spine mobility.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Swim/paddle Z2 30–40' focus technique",
+      "Strength: RDL 3x8, Split Squat 3x8/leg, Bench Row 4x10",
+      "Scap control: Ys‑Ts‑Ws 3x12, ER band 3x15"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: Z2 swim/paddle 2x30–40'. Week 2: +10% volume; controlled eccentrics."
+}

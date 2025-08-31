@@ -1,0 +1,47 @@
+{
+  "filename": "athletismSurfingElite_P3.json",
+  "title": "Athletism — Surfing (Elite) — Phase 3: Max Strength — Lower/Posterior",
+  "level": "Elite",
+  "phase": 3,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Surfing",
+  "equipment": [
+    "Surfboards (short/long), leashes, wax",
+    "Pool/ocean access (open water safety protocols)",
+    "Paddling ergometer or swim lanes",
+    "Breath-hold tools (CO2/O2 tables), snorkel (optional)",
+    "Gym: rack, dumbbells, cables, landmine",
+    "Plyo boxes, medicine balls, bands",
+    "Balance boards/BOSU/slackline (optional)",
+    "HR monitor/wearables (optional)"
+  ],
+  "goal": "Stable base for pop‑up and landing mechanics.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Back Squat 5x5, Hip Thrust 4x8",
+      "Nordic hamstrings 3x5, Tibialis raises 3x15",
+      "Surf stance isometrics 3x30''/side"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: 5x5. Week 2: 4x4 heavier."
+}

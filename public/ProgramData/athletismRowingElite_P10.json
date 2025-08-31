@@ -1,0 +1,48 @@
+{
+  "filename": "athletismRowingElite_P10.json",
+  "title": "Athletism — Rowing (Elite) — Phase 10: Peak & Performance Maintenance",
+  "level": "Elite",
+  "phase": 10,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Rowing",
+  "equipment": [
+    "Boat (1x/2x/4x/8+ as available)",
+    "RowErg (Concept2/SkiErg for x-train)",
+    "Rowing tank (tech)",
+    "Wattbike/Assault bike (aerobic dev)",
+    "Track/grass (acceleration strides)",
+    "Sled/harness (acceleration)",
+    "Gym: rack, barbell, dumbbells, cables",
+    "Med balls, bands, boxes"
+  ],
+  "goal": "Express fitness; micro-dose intensity; keep neuromuscular sharpness.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (hips/ankles/T-spine)",
+      "Activation: glutes–scapulae–core (8–12')",
+      "Technical drills: pick drill / pause @ arms-only / legs-only"
+    ],
+    "main": [
+      "Primers: 3x(1' @race rate / 2' easy) + 4x10 strokes starts",
+      "Boat: 2–3 short pieces 250–500m @race feel, full recovery",
+      "Erg: 20–30' easy + 6x20'' @36 spm (not to failure)",
+      "Strength: 2x2 light power pulls + MB throws"
+    ],
+    "cooldown": [
+      "Easy paddle 8–12' + breathing reset",
+      "Light stretching (Posterior chain, lats, hip flexors)"
+    ]
+  },
+  "notes": "Week 1: One race rehearsal + one speed tune-up. Week 2: Race week micro-taper (48–72h light)."
+}

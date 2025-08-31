@@ -1,0 +1,47 @@
+{
+  "filename": "athletismSurfingElite_P10.json",
+  "title": "Athletism — Surfing (Elite) — Phase 10: Peak & Maintenance",
+  "level": "Elite",
+  "phase": 10,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Surfing",
+  "equipment": [
+    "Surfboards (short/long), leashes, wax",
+    "Pool/ocean access (open water safety protocols)",
+    "Paddling ergometer or swim lanes",
+    "Breath-hold tools (CO2/O2 tables), snorkel (optional)",
+    "Gym: rack, dumbbells, cables, landmine",
+    "Plyo boxes, medicine balls, bands",
+    "Balance boards/BOSU/slackline (optional)",
+    "HR monitor/wearables (optional)"
+  ],
+  "goal": "Session‑week readiness; micro‑dose intensity; CNS sharpness.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Primer: 3x(45'' high‑tempo footwork / 2' easy) + 3x5 MB throws",
+      "Short power: 3x2 clean pulls (light) + jump squats 3x3",
+      "Surf day: 1–2 short sets at match pace; stop fresh"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: rehearsal + primer. Week 2: 48–72 h taper."
+}

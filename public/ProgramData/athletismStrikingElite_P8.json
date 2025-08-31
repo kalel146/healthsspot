@@ -1,0 +1,49 @@
+{
+  "filename": "athletismStrikingElite_P8.json",
+  "title": "Athletism — Striking (Elite) — Phase 8: Specific Sparring & Scenarios",
+  "level": "Elite",
+  "phase": 8,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Striking",
+  "equipment": [
+    "Ring/Dojo/Mat space",
+    "Heavy bag, pads, focus mitts, kick shield",
+    "Ropes, ladders, cones",
+    "Plyo boxes, med balls (2–8kg)",
+    "Bands, sled/prowler, harness",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Reaction lights (Blazepod), timer app",
+    "Jump rope, assault bike/erg",
+    "Protective gear (gloves, wraps, shin guards, mouthpiece)"
+  ],
+  "goal": "Integrate technical-tactical work at fight pace.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, ankles)",
+      "Activation 6–8' (glutes, scapulae, core)",
+      "Jump rope 3x2' + shadowboxing 2x2'"
+    ],
+    "main": [
+      "Sparring: 6x3' situational, 2' rest",
+      "Padwork: 8x2' fight-pace combos",
+      "Strength: 3x2 Deadlift, 3x3 Push Press (explosive)",
+      "Agility: cone slalom 6x20m"
+    ],
+    "cooldown": [
+      "Breathing reset 5' + light mobility",
+      "Soft tissue release 10' (foam roll, lacrosse ball)"
+    ]
+  },
+  "notes": "Week 1: scenario sparring (cage/corner). Week 2: full sparring blocks."
+}

@@ -1,0 +1,49 @@
+{
+  "filename": "athletismClimbingElite_P5.json",
+  "title": "Athletism — Climbing (Elite) — Phase 5: Strength → Power (RFD) & Contact Time",
+  "level": "Elite",
+  "phase": 5,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Climbing",
+  "equipment": [
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Hangboard / fingerboard, campus board",
+    "Pull‑up bar, rings, TRX",
+    "Treadmill/incline treadmill, stair machine, sled/prowler",
+    "Weighted vest, sandbags, farmer carry handles",
+    "Medicine balls (2–8kg), bands",
+    "Hiking pack (10–25kg), poles",
+    "Rock shoes, approach shoes, helmet, rope (as needed)",
+    "HR monitor, altimeter/GPS (optional)"
+  ],
+  "goal": "Convert strength to faster contact, dynamic movement confidence.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (wrists, shoulders, T‑spine, hips, ankles)",
+      "Activation 8' (scap control, deep core, glute med)",
+      "Easy traverse or banded forearm prep 5'"
+    ],
+    "main": [
+      "Clean Pulls 5x3 @60–70%; Jump Squats 4x4 (light)",
+      "Campus (intro): 6x low rung ladder (controlled, no max throw)",
+      "Dyno practice 6x6 attempts on easy problems",
+      "Hike tempo 60' with 10–12kg"
+    ],
+    "cooldown": [
+      "Easy walk/bike 8–12' + breathing reset",
+      "Forearm/shoulder stretching 8–10'"
+    ]
+  },
+  "notes": "Week 1: light/mod Olympic derivatives. Week 2: add campus intro (controlled)."
+}

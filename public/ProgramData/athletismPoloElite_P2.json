@@ -1,0 +1,48 @@
+{
+  "filename": "athletismPoloElite_P2.json",
+  "title": "Athletism — Polo (Elite) — Phase 2: Work Capacity & Core/Shoulder Base",
+  "level": "Elite",
+  "phase": 2,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Polo",
+  "equipment": [
+    "Swimming pool (deep water, water polo goals, balls, caps)",
+    "Dryland: gym (rack, barbells, dumbbells, cables, kettlebells)",
+    "Bands, medicine balls (2–6kg), plyo boxes",
+    "Battle ropes, sled/prowler, sandbags",
+    "Reaction lights, cones",
+    "HR monitor, timer app",
+    "Shot clock, tactical boards",
+    "Wearables (optional, HRV/sleep)"
+  ],
+  "goal": "Increase repeatability of sprints and trunk/shoulder endurance.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, T‑spine, ankles)",
+      "Activation 6–8' (glutes, deep core, scap control)",
+      "Water drills: sculling, vertical kick easy 5'"
+    ],
+    "main": [
+      "Swim: 12x50m @85%, 30'' rest",
+      "Dryland EMOM: sled push 20m / push‑ups 12 / MB rotational throw 8/side",
+      "Shoulder: Ys‑Ts‑Ws 3x12, ER band 3x15",
+      "Core: Copenhagen plank 3x30–40''/side"
+    ],
+    "cooldown": [
+      "200m easy swim + breathing reset",
+      "Stretching shoulders/hips 8–10'"
+    ]
+  },
+  "notes": "Week 1: EMOM 20'. Week 2: EMOM 24'."
+}

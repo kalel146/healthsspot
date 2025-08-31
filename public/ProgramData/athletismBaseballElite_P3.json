@@ -1,0 +1,49 @@
+{
+  "filename": "athletismBaseballElite_P3.json",
+  "title": "Athletism — Baseball (Elite) — Phase 3: Max Strength — Lower/Posterior",
+  "level": "Elite",
+  "phase": 3,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Baseball",
+  "equipment": [
+    "Baseball field (batting cage, pitching mound, bases, gloves, bats, balls)",
+    "Radar gun, pitching nets, tee, resistance cords",
+    "Gym: rack, barbells, dumbbells, cables, kettlebells",
+    "Plyo balls, weighted bats, medicine balls (2–6kg)",
+    "Bands, sled/prowler, harness",
+    "Agility ladders, cones, hurdles",
+    "Grip tools, forearm rollers",
+    "HR monitor, timer app",
+    "Wearables (optional: HRV, sleep)"
+  ],
+  "goal": "Raise force ceiling for batting and throwing base.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, T‑spine, ankles)",
+      "Activation 6–8' (glutes, scap control, rotator cuff)",
+      "Throwing progression (band work, plyo ball series, easy tosses)"
+    ],
+    "main": [
+      "Back Squat 5x5, Trap Bar Deadlift 5x3",
+      "Nordic curls 3x5, Glute bridges 3x12",
+      "Sprint 6x20m (focus start)",
+      "Grip: fat bar holds 3x20''"
+    ],
+    "cooldown": [
+      "Easy jog/bike 8–12' + breathing reset",
+      "Soft‑tissue / banded shoulder mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: 5x5. Week 2: 4x4 heavier."
+}

@@ -1,0 +1,48 @@
+{
+  "filename": "athletismPoloElite_P10.json",
+  "title": "Athletism — Polo (Elite) — Phase 10: Peak & Maintenance",
+  "level": "Elite",
+  "phase": 10,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Polo",
+  "equipment": [
+    "Swimming pool (deep water, water polo goals, balls, caps)",
+    "Dryland: gym (rack, barbells, dumbbells, cables, kettlebells)",
+    "Bands, medicine balls (2–6kg), plyo boxes",
+    "Battle ropes, sled/prowler, sandbags",
+    "Reaction lights, cones",
+    "HR monitor, timer app",
+    "Shot clock, tactical boards",
+    "Wearables (optional, HRV/sleep)"
+  ],
+  "goal": "Express fitness on game week; micro‑dose intensity; taper sharpness.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, T‑spine, ankles)",
+      "Activation 6–8' (glutes, deep core, scap control)",
+      "Water drills: sculling, vertical kick easy 5'"
+    ],
+    "main": [
+      "Primer: 3x(30'' high‑tempo swim sprint / 2' easy)",
+      "MB slams 3x5 + plyo push‑ups 3x5",
+      "Water: 2–3 short scrimmage runs; stop fresh",
+      "Breathing/HRV + sleep protocol"
+    ],
+    "cooldown": [
+      "200m easy swim + breathing reset",
+      "Stretching shoulders/hips 8–10'"
+    ]
+  },
+  "notes": "Week 1: rehearsal + primer. Week 2: 48–72h taper."
+}

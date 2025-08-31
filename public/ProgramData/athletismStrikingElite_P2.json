@@ -1,0 +1,49 @@
+{
+  "filename": "athletismStrikingElite_P2.json",
+  "title": "Athletism — Striking (Elite) — Phase 2: Work Capacity & Chassis",
+  "level": "Elite",
+  "phase": 2,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Striking",
+  "equipment": [
+    "Ring/Dojo/Mat space",
+    "Heavy bag, pads, focus mitts, kick shield",
+    "Ropes, ladders, cones",
+    "Plyo boxes, med balls (2–8kg)",
+    "Bands, sled/prowler, harness",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Reaction lights (Blazepod), timer app",
+    "Jump rope, assault bike/erg",
+    "Protective gear (gloves, wraps, shin guards, mouthpiece)"
+  ],
+  "goal": "Build repeatability for sparring, trunk endurance, shoulder capacity.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, ankles)",
+      "Activation 6–8' (glutes, scapulae, core)",
+      "Jump rope 3x2' + shadowboxing 2x2'"
+    ],
+    "main": [
+      "Strength: Front Squat 5x5, Bench Pull 4x8, RDL 4x8",
+      "Circuit EMOM: sled push 20m / med ball slam 8 / burpee 6",
+      "Padwork 8x2' (low tempo)",
+      "Copenhagen plank 3x30''/side"
+    ],
+    "cooldown": [
+      "Breathing reset 5' + light mobility",
+      "Soft tissue release 10' (foam roll, lacrosse ball)"
+    ]
+  },
+  "notes": "Week 1: EMOM 20'. Week 2: EMOM 24' + light padwork."
+}

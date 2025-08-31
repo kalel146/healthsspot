@@ -1,0 +1,45 @@
+{
+  "filename": "athletismHikingElite_P6.json",
+  "title": "Athletism — Hiking (Elite) — Phase 6: Anaerobic Capacity — Steep Climbs",
+  "level": "Elite",
+  "phase": 6,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Hiking",
+  "equipment": [
+    "Incline treadmill/stair machine/step-ups box",
+    "Backpack (8–20 kg), trekking poles",
+    "Gym: rack, barbell, dumbbells, kettlebells",
+    "Sled/prowler, sandbags, weighted vest",
+    "HR monitor, GPS/altimeter (optional)",
+    "Mobility tools, bands"
+  ],
+  "goal": "Short steep efforts tolerance without form collapse.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Hill repeats or incline 10–12%: 8–10x2' hard / 2' easy",
+      "Strength maint.: squat 3x3, bench pull 3x5",
+      "Core: anti-rotation 3x12/side"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: 8x2' @Z4 hill / 2' easy. Week 2: 10x2'."
+}

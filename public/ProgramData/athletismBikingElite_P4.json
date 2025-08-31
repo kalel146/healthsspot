@@ -1,0 +1,48 @@
+{
+  "filename": "athletismBikingElite_P4.json",
+  "title": "Athletism — Biking (Elite) — Phase 4: Max Strength — Upper/Support",
+  "level": "Elite",
+  "phase": 4,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Biking",
+  "equipment": [
+    "Road bike, track bike, or MTB (depending on discipline)",
+    "Smart trainer / rollers / Wattbike",
+    "Power meter, HR monitor, GPS head unit",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Plyo boxes, resistance bands, medicine balls",
+    "Sled/prowler, harness",
+    "Foam rollers, mobility tools",
+    "Optional: altitude mask/tent, ergogenic aids"
+  ],
+  "goal": "Upper stability for bike handling, scap rhythm, shoulder endurance.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, T‑spine, shoulders, ankles)",
+      "Activation 6–8' (glutes, hamstrings, scap control)",
+      "Bike: 10' easy spin @50–60% FTP"
+    ],
+    "main": [
+      "Bench Press 5x3, Weighted Pull‑ups 5x3",
+      "Seated Row 4x6, Face Pull 3x12",
+      "Grip: fat bar holds 3x20''",
+      "Ride: 2x15' Z3 tempo in aero position"
+    ],
+    "cooldown": [
+      "Easy spin 10' + nasal breathing reset",
+      "Stretching hips/quads/hamstrings 8–10'"
+    ]
+  },
+  "notes": "Week 1: 4x4. Week 2: 5x3."
+}

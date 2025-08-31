@@ -1,0 +1,48 @@
+{
+  "filename": "athletismRowingElite_P5.json",
+  "title": "Athletism — Rowing (Elite) — Phase 5: Threshold / Lactate Turnpoint",
+  "level": "Elite",
+  "phase": 5,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Rowing",
+  "equipment": [
+    "Boat (1x/2x/4x/8+ as available)",
+    "RowErg (Concept2/SkiErg for x-train)",
+    "Rowing tank (tech)",
+    "Wattbike/Assault bike (aerobic dev)",
+    "Track/grass (acceleration strides)",
+    "Sled/harness (acceleration)",
+    "Gym: rack, barbell, dumbbells, cables",
+    "Med balls, bands, boxes"
+  ],
+  "goal": "Elevate LT/MLSS; sustain higher boat speeds aerobically.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (hips/ankles/T-spine)",
+      "Activation: glutes–scapulae–core (8–12')",
+      "Technical drills: pick drill / pause @ arms-only / legs-only"
+    ],
+    "main": [
+      "Erg: 3x15' @~LT- (rate 22–24) / 3' easy",
+      "Boat: 5x8' @24 spm (negative split)",
+      "Strength (maintenance): 3x4 Squat @RPE7, 3x4 Bench Pull, 3x6 RDL",
+      "Technique: pause @1/4 slide + pick drill (10')"
+    ],
+    "cooldown": [
+      "Easy paddle 8–12' + breathing reset",
+      "Light stretching (Posterior chain, lats, hip flexors)"
+    ]
+  },
+  "notes": "Week 1: 3x15' @UT1/low-Threshold. Week 2: 4x12' @Threshold; strict cap on HR/lactate."
+}

@@ -1,0 +1,50 @@
+{
+  "filename": "athletismSkiingElite_P9.json",
+  "title": "Athletism — Skiing (Elite) — Phase 9: Sharpening & Taper",
+  "level": "Elite",
+  "phase": 9,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Skiing",
+  "equipment": [
+    "Gym: squat rack, platforms, barbells, dumbbells, cables",
+    "Trap bar, safety bar",
+    "Boxes (plyo), hurdles, bands",
+    "Sled/prowler, harness",
+    "Force plates (optional), timing gates (optional)",
+    "Balance: wobble board, BOSU, slackline (optional)",
+    "Reaction lights (e.g., Blazepod)",
+    "Stationary bike/Wattbike, treadmill (incline), curved sprint track",
+    "Stairs/ramps for eccentrics",
+    "On-snow gates (SL/GS) when available"
+  ],
+  "goal": "Reduce volume 40–50%; keep intensity; prioritize freshness & coordination.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10–12' (ankle DF, hips IR/ER, T‑spine)",
+      "Activation 8–10' (glute med, deep core, scapular control)",
+      "Landing mechanics: snap-downs, pogos, lateral snap-downs"
+    ],
+    "main": [
+      "Primers: 4x20'' high‑rate lateral hops / 2' easy between",
+      "On‑snow: 2–3 controlled full runs @race feel (long recovery)",
+      "Strength: 2x3 key lifts @~70% with explosive intent",
+      "Mobility/physio daily 15–20'"
+    ],
+    "cooldown": [
+      "Easy bike 8–12' + breathing reset (4‑7‑8)",
+      "Isometric holds calves/quads 2x40–60'' + light stretching"
+    ]
+  },
+  "notes": "Week 1: Volume −30–35%. Week 2: Volume −45–55%. No DOMS‑inducing work."
+}

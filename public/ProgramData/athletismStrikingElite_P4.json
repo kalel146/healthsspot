@@ -1,0 +1,49 @@
+{
+  "filename": "athletismStrikingElite_P4.json",
+  "title": "Athletism — Striking (Elite) — Phase 4: Max Strength — Intensification",
+  "level": "Elite",
+  "phase": 4,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Striking",
+  "equipment": [
+    "Ring/Dojo/Mat space",
+    "Heavy bag, pads, focus mitts, kick shield",
+    "Ropes, ladders, cones",
+    "Plyo boxes, med balls (2–8kg)",
+    "Bands, sled/prowler, harness",
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Reaction lights (Blazepod), timer app",
+    "Jump rope, assault bike/erg",
+    "Protective gear (gloves, wraps, shin guards, mouthpiece)"
+  ],
+  "goal": "Heavier loads, fewer reps, eccentric control. Maintain technique.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, ankles)",
+      "Activation 6–8' (glutes, scapulae, core)",
+      "Jump rope 3x2' + shadowboxing 2x2'"
+    ],
+    "main": [
+      "Trap Bar Deadlift 5x3, Push Press 4x4",
+      "Eccentric pull-ups 3x5, Landmine press 3x8",
+      "Bag: 8x90'' @moderate power, 30'' rest",
+      "Core: Rollouts 3x12"
+    ],
+    "cooldown": [
+      "Breathing reset 5' + light mobility",
+      "Soft tissue release 10' (foam roll, lacrosse ball)"
+    ]
+  },
+  "notes": "Week 1: 4x4. Week 2: 5x3 heavy. Add bag intervals."
+}

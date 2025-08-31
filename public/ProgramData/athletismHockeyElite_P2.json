@@ -1,0 +1,50 @@
+{
+  "filename": "athletismHockeyElite_P2.json",
+  "title": "Athletism — Hockey (Elite) — Phase 2: Work Capacity & Trunk/Groin Endurance",
+  "level": "Elite",
+  "phase": 2,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Hockey",
+  "equipment": [
+    "Ice rink (team practice), off-ice synthetic ice (optional)",
+    "Stick, pucks, shooting pads, nets",
+    "Skating treadmill (optional), slide boards",
+    "Gym: rack, barbells, dumbbells, cables, kettlebells",
+    "Plyo boxes, bands, medicine balls (2–8kg)",
+    "Sled/prowler, harness, weighted vests",
+    "Assault bike/Wattbike/rower",
+    "Reaction lights, agility ladders, cones",
+    "Neck harness, grip tools",
+    "Protective gear (skates, helmet, gloves, pads)"
+  ],
+  "goal": "Conditioning for repeatability of shifts; trunk/groin durability.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, groin, T‑spine, ankles)",
+      "Activation 6–8' (glutes, adductors, core, scap control)",
+      "Skating prep: slideboard 3x1', crossover drills"
+    ],
+    "main": [
+      "Front Squat 5x5, Hip Thrust 4x8, Bench Pull 4x8",
+      "EMOM: sled push 20m / lateral bounds 8/side / med‑ball slam 10",
+      "Grip: fat bar holds 3x20''; Copenhagen plank 3x30–40''",
+      "Bike tempo 3x10' (2' rest)"
+    ],
+    "cooldown": [
+      "Bike 8–12' Z1 + breathing reset",
+      "Foam roll / banded mobility 8–10'"
+    ]
+  },
+  "notes": "Week 1: EMOM 20'. Week 2: EMOM 24'."
+}

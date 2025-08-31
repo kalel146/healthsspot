@@ -1,0 +1,48 @@
+{
+  "filename": "athletismPoloElite_P3.json",
+  "title": "Athletism — Polo (Elite) — Phase 3: Max Strength — Lower/Posterior",
+  "level": "Elite",
+  "phase": 3,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Polo",
+  "equipment": [
+    "Swimming pool (deep water, water polo goals, balls, caps)",
+    "Dryland: gym (rack, barbells, dumbbells, cables, kettlebells)",
+    "Bands, medicine balls (2–6kg), plyo boxes",
+    "Battle ropes, sled/prowler, sandbags",
+    "Reaction lights, cones",
+    "HR monitor, timer app",
+    "Shot clock, tactical boards",
+    "Wearables (optional, HRV/sleep)"
+  ],
+  "goal": "Raise force ceiling for verticality, legs under pressure, shot base.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–10' (hips, shoulders, T‑spine, ankles)",
+      "Activation 6–8' (glutes, deep core, scap control)",
+      "Water drills: sculling, vertical kick easy 5'"
+    ],
+    "main": [
+      "Back Squat 5x5, Trap Bar Deadlift 5x3",
+      "Hip Thrust 4x8, Nordic curls 3x5",
+      "Water: eggbeater 6x30'' resisted (band)",
+      "Core: rollouts 3x12"
+    ],
+    "cooldown": [
+      "200m easy swim + breathing reset",
+      "Stretching shoulders/hips 8–10'"
+    ]
+  },
+  "notes": "Week 1: 5x5. Week 2: 4x4."
+}

@@ -9,7 +9,7 @@
   "category": "gym",
   "subcategory": "fitness",
   "description": "Εκρηκτικότητα, νευρομυϊκή συναρμογή, σταθερότητα και ευκινησία με χρήση agility και functional circuit προπόνησης.",
-  "days": [
+  "weeklySplit": [
     {
       "name": "Day 1 – Agility + Strength",
       "exercises": [

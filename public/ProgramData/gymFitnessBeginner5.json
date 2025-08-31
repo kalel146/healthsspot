@@ -9,7 +9,7 @@
   "category": "gym",
   "subcategory": "fitness",
   "description": "Προπόνηση σε λειτουργικά patterns και ικανότητα ανάκαμψης. Μείγμα HIIT, Cross Training και βασικής δύναμης.",
-  "days": [
+ "weeklySplit": [
     {
       "name": "Day 1 – Cross Mix Circuit",
       "exercises": [

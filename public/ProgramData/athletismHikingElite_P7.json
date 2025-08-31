@@ -1,0 +1,45 @@
+{
+  "filename": "athletismHikingElite_P7.json",
+  "title": "Athletism — Hiking (Elite) — Phase 7: Aerobic Power — Long Endurance",
+  "level": "Elite",
+  "phase": 7,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Hiking",
+  "equipment": [
+    "Incline treadmill/stair machine/step-ups box",
+    "Backpack (8–20 kg), trekking poles",
+    "Gym: rack, barbell, dumbbells, kettlebells",
+    "Sled/prowler, sandbags, weighted vest",
+    "HR monitor, GPS/altimeter (optional)",
+    "Mobility tools, bands"
+  ],
+  "goal": "Extend time-on-feet; fueling/hydration rehearsal.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Long hike 2–4 h Z2 (pack 8–12 kg)",
+      "Step-ups EMOM 10' (6/leg each min) easy",
+      "Mobility maintenance 15'"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: 2–3 h Z2 long hike. Week 2: 3–4 h with steady vert."
+}

@@ -1,0 +1,48 @@
+{
+  "filename": "athletismRowingElite_P3.json",
+  "title": "Athletism — Rowing (Elite) — Phase 3: Max Strength Development",
+  "level": "Elite",
+  "phase": 3,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Rowing",
+  "equipment": [
+    "Boat (1x/2x/4x/8+ as available)",
+    "RowErg (Concept2/SkiErg for x-train)",
+    "Rowing tank (tech)",
+    "Wattbike/Assault bike (aerobic dev)",
+    "Track/grass (acceleration strides)",
+    "Sled/harness (acceleration)",
+    "Gym: rack, barbell, dumbbells, cables",
+    "Med balls, bands, boxes"
+  ],
+  "goal": "Increase force production for longer effective drive with stable posture.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (hips/ankles/T-spine)",
+      "Activation: glutes–scapulae–core (8–12')",
+      "Technical drills: pick drill / pause @ arms-only / legs-only"
+    ],
+    "main": [
+      "Strength: Back Squat 5x5, Deadlift 5x3 @RPE7–8, Bench Pull 5x5",
+      "Accessory: Nordic curls 3x6, Chin-ups 4xAMRAP strict",
+      "UT1 steady 60' @20 spm; include 10' technique drill mid-piece",
+      "Boat: 6x6' @20 spm, power on drives (force curve smooth)"
+    ],
+    "cooldown": [
+      "Easy paddle 8–12' + breathing reset",
+      "Light stretching (Posterior chain, lats, hip flexors)"
+    ]
+  },
+  "notes": "Week 1: 5x5 strength focus. Week 2: 4x4 @↑load; maintain two aerobic steady sessions."
+}

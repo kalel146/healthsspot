@@ -1,0 +1,45 @@
+{
+  "filename": "athletismHikingElite_P2.json",
+  "title": "Athletism — Hiking (Elite) — Phase 2: Work Capacity & Chassis Endurance",
+  "level": "Elite",
+  "phase": 2,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Hiking",
+  "equipment": [
+    "Incline treadmill/stair machine/step-ups box",
+    "Backpack (8–20 kg), trekking poles",
+    "Gym: rack, barbell, dumbbells, kettlebells",
+    "Sled/prowler, sandbags, weighted vest",
+    "HR monitor, GPS/altimeter (optional)",
+    "Mobility tools, bands"
+  ],
+  "goal": "Increase repeatability and trunk endurance for long days.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 8–12' (ankles/hips/T-spine/shoulders)",
+      "Activation 6–8' (glutes, deep core, scapular control)",
+      "Movement prep: low amplitude pogo/crawl/hinge patterns"
+    ],
+    "main": [
+      "Front Squat 5x5, Hip Thrust 4x8",
+      "EMOM: step-ups 10/leg / sled push 20m / sandbag bear-hug 20m",
+      "Hike 60–90' Z2 with 300–500 m vert (pack 8–10 kg)"
+    ],
+    "cooldown": [
+      "Easy cardio 8–12' + nasal breathing reset",
+      "Light stretching / tissue care 8–10'"
+    ]
+  },
+  "notes": "Week 1: EMOM 20'. Week 2: EMOM 24' + vert gain hike."
+}

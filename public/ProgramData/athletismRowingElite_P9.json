@@ -1,0 +1,48 @@
+{
+  "filename": "athletismRowingElite_P9.json",
+  "title": "Athletism — Rowing (Elite) — Phase 9: Sharpening & Taper",
+  "level": "Elite",
+  "phase": 9,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Rowing",
+  "equipment": [
+    "Boat (1x/2x/4x/8+ as available)",
+    "RowErg (Concept2/SkiErg for x-train)",
+    "Rowing tank (tech)",
+    "Wattbike/Assault bike (aerobic dev)",
+    "Track/grass (acceleration strides)",
+    "Sled/harness (acceleration)",
+    "Gym: rack, barbell, dumbbells, cables",
+    "Med balls, bands, boxes"
+  ],
+  "goal": "Maintain freshness, keep touch with pace, reduce volume ~40–50%, preserve intensity.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (hips/ankles/T-spine)",
+      "Activation: glutes–scapulae–core (8–12')",
+      "Technical drills: pick drill / pause @ arms-only / legs-only"
+    ],
+    "main": [
+      "Erg: 6x250m @2k– pace, r:3–4' (stop fresh)",
+      "Boat: 3x6' @24–28 spm with final 2' race cadence",
+      "Strength: 2x3 key lifts @~70%, explosive intent",
+      "Mobility/physio: daily 15–20'"
+    ],
+    "cooldown": [
+      "Easy paddle 8–12' + breathing reset",
+      "Light stretching (Posterior chain, lats, hip flexors)"
+    ]
+  },
+  "notes": "Week 1: Volume ↓30–35%. Week 2: Volume ↓45–55%. Two quality sessions/weekly; no DOMS work."
+}

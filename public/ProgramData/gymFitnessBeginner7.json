@@ -9,7 +9,7 @@
   "category": "gym",
   "subcategory": "fitness",
   "description": "Χτίζουμε ολική ικανότητα – αερόβια ισχύ, μυϊκή αντίσταση, εκρηκτικότητα και κινητικό έλεγχο με μεταβλητά formats.",
-  "days": [
+  "weeklySplit": [
     {
       "name": "Day 1 – Power Endurance Circuit",
       "exercises": [

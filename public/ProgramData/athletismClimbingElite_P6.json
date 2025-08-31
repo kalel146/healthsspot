@@ -1,0 +1,49 @@
+{
+  "filename": "athletismClimbingElite_P6.json",
+  "title": "Athletism — Climbing (Elite) — Phase 6: Power Endurance (Anaerobic Capacity)",
+  "level": "Elite",
+  "phase": 6,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Climbing",
+  "equipment": [
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Hangboard / fingerboard, campus board",
+    "Pull‑up bar, rings, TRX",
+    "Treadmill/incline treadmill, stair machine, sled/prowler",
+    "Weighted vest, sandbags, farmer carry handles",
+    "Medicine balls (2–8kg), bands",
+    "Hiking pack (10–25kg), poles",
+    "Rock shoes, approach shoes, helmet, rope (as needed)",
+    "HR monitor, altimeter/GPS (optional)"
+  ],
+  "goal": "Sustain repeated crux efforts without form collapse.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (wrists, shoulders, T‑spine, hips, ankles)",
+      "Activation 8' (scap control, deep core, glute med)",
+      "Easy traverse or banded forearm prep 5'"
+    ],
+    "main": [
+      "PE circuits: 4–5x4' continuous moderate problems / 4' rest",
+      "Hangboard repeaters: 7x7''/3'' x3 grips",
+      "Strength maint.: Squat 3x3, Bench Pull 3x5",
+      "Stair machine 3x8' Z3"
+    ],
+    "cooldown": [
+      "Easy walk/bike 8–12' + breathing reset",
+      "Forearm/shoulder stretching 8–10'"
+    ]
+  },
+  "notes": "Week 1: 4x4' on / 4' off circuits. Week 2: 5x4'."
+}

@@ -9,7 +9,7 @@
   "category": "gym",
   "subcategory": "fitness",
   "description": "Συνδυαστική εκγύμναση με cardio, βάρη και ασκήσεις M.O.M., TABATA και functional κινήσεις για ολόσωμη ενεργοποίηση.",
-  "days": [
+  "weeklySplit": [
     {
       "name": "Day 1 – Metabolic M.O.M. (Cardio + Strength)",
       "exercises": [

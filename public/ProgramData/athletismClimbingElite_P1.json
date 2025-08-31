@@ -1,0 +1,49 @@
+{
+  "filename": "athletismClimbingElite_P1.json",
+  "title": "Athletism — Climbing (Elite) — Phase 1: GPP & Tissue Capacity",
+  "level": "Elite",
+  "phase": 1,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Climbing",
+  "equipment": [
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Hangboard / fingerboard, campus board",
+    "Pull‑up bar, rings, TRX",
+    "Treadmill/incline treadmill, stair machine, sled/prowler",
+    "Weighted vest, sandbags, farmer carry handles",
+    "Medicine balls (2–8kg), bands",
+    "Hiking pack (10–25kg), poles",
+    "Rock shoes, approach shoes, helmet, rope (as needed)",
+    "HR monitor, altimeter/GPS (optional)"
+  ],
+  "goal": "Rebuild aerobic base, tendon/ligament capacity and movement quality.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (wrists, shoulders, T‑spine, hips, ankles)",
+      "Activation 8' (scap control, deep core, glute med)",
+      "Easy traverse or banded forearm prep 5'"
+    ],
+    "main": [
+      "Strength (full): Back Squat 4x6 @RPE6, RDL 3x8, Split Squat 3x8/leg",
+      "Pull‑ups 4x6 (tempo 3‑1‑1), Ring rows 3x10",
+      "Hangboard easy repeaters: 6x7'' on/3'' off x3 grips",
+      "Pack walk 45' @5–10kg (flat)"
+    ],
+    "cooldown": [
+      "Easy walk/bike 8–12' + breathing reset",
+      "Forearm/shoulder stretching 8–10'"
+    ]
+  },
+  "notes": "Week 1: Z2 2x40–50'. Week 2: +10% volume; controlled eccentrics 3–4s on key lifts."
+}

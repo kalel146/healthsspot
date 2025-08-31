@@ -9,7 +9,7 @@
   "category": "gym",
   "subcategory": "fitness",
   "description": "Πρόγραμμα με έμφαση στη σωματική απόδοση: ισχύ, σταθερότητα, ταχύτητα αντίδρασης και τεχνική. Συνδυάζει HIIT, functional sets και core work.",
-  "days": [
+  "weeklySplit": [
     {
       "name": "Day 1 – TRX Stability & Strength",
       "exercises": [

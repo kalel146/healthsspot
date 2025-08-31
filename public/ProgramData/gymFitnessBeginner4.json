@@ -9,7 +9,7 @@
   "category": "gym",
   "subcategory": "fitness",
   "description": "Αντοχή, μυϊκή επιμονή και ενεργοποίηση σταθεροποιητών με συνδυασμό steady-state cardio, tempo lifts και TRX.",
-  "days": [
+  "weeklySplit": [
     {
       "name": "Day 1 – Tempo Strength",
       "exercises": [

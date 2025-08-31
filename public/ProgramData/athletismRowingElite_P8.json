@@ -1,0 +1,48 @@
+{
+  "filename": "athletismRowingElite_P8.json",
+  "title": "Athletism — Rowing (Elite) — Phase 8: Competition Modeling",
+  "level": "Elite",
+  "phase": 8,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Rowing",
+  "equipment": [
+    "Boat (1x/2x/4x/8+ as available)",
+    "RowErg (Concept2/SkiErg for x-train)",
+    "Rowing tank (tech)",
+    "Wattbike/Assault bike (aerobic dev)",
+    "Track/grass (acceleration strides)",
+    "Sled/harness (acceleration)",
+    "Gym: rack, barbell, dumbbells, cables",
+    "Med balls, bands, boxes"
+  ],
+  "goal": "Rehearse race segments, pacing, and decision points; simulate regatta workflow.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (hips/ankles/T-spine)",
+      "Activation: glutes–scapulae–core (8–12')",
+      "Technical drills: pick drill / pause @ arms-only / legs-only"
+    ],
+    "main": [
+      "Model: (250 hard start + 1000 settle + 500 push + 250 sprint) as broken pieces",
+      "Erg/Boat: 3x(750m @race pace) r:6' (tech + breathing cues)",
+      "Strength (neuromuscular): 3x2 Squat @~80%, 4x3 Bench Pull (explosive)",
+      "Priming day: 30' easy + 6x10'' @34–36 spm"
+    ],
+    "cooldown": [
+      "Easy paddle 8–12' + breathing reset",
+      "Light stretching (Posterior chain, lats, hip flexors)"
+    ]
+  },
+  "notes": "Week 1: 2k simulations broken (e.g., 4x500m). Week 2: full 2k test or on-water TT if safe."
+}

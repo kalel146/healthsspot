@@ -1,0 +1,49 @@
+{
+  "filename": "athletismClimbingElite_P8.json",
+  "title": "Athletism — Climbing (Elite) — Phase 8: Specificity — Route/Alpine Simulation",
+  "level": "Elite",
+  "phase": 8,
+  "duration": "2 weeks",
+  "accessTier": "Platinum",
+  "category": "athletism",
+  "subcategory": "Climbing",
+  "equipment": [
+    "Gym: rack, barbells, dumbbells, kettlebells, cables",
+    "Hangboard / fingerboard, campus board",
+    "Pull‑up bar, rings, TRX",
+    "Treadmill/incline treadmill, stair machine, sled/prowler",
+    "Weighted vest, sandbags, farmer carry handles",
+    "Medicine balls (2–8kg), bands",
+    "Hiking pack (10–25kg), poles",
+    "Rock shoes, approach shoes, helmet, rope (as needed)",
+    "HR monitor, altimeter/GPS (optional)"
+  ],
+  "goal": "Simulate target route: pacing, fueling, gear handling, exposure tolerance.",
+  "weeklySplit": [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+  ],
+  "schedule": {
+    "warmup": [
+      "Mobility 10' (wrists, shoulders, T‑spine, hips, ankles)",
+      "Activation 8' (scap control, deep core, glute med)",
+      "Easy traverse or banded forearm prep 5'"
+    ],
+    "main": [
+      "Sim day: 3–4 blocks x30' climb/scramble + 10' transitions (rope/gear)",
+      "Technical practice: anchors, down‑climb technique 30'",
+      "Strength (power): 3x2 trap bar jump + MB throws 4x6",
+      "Nutrition rehearsal: fluids/electrolytes/carbs as race day"
+    ],
+    "cooldown": [
+      "Easy walk/bike 8–12' + breathing reset",
+      "Forearm/shoulder stretching 8–10'"
+    ]
+  },
+  "notes": "Week 1: broken simulations; Week 2: full simulation (safety first)."
+}
