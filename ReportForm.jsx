@@ -2,12 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 import { useUser } from "@clerk/clerk-react";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "./supabaseClient";
 
-const supabase = createClient(
-  "https://your-project-id.supabase.co", // REPLACE with your Supabase URL
-  "your-public-anon-key" // REPLACE with your Supabase anon key
-);
 
 export default function ReportForm() {
   const { user } = useUser();

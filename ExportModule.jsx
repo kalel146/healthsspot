@@ -5,13 +5,10 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "./supabaseClient";
 import { useUser } from "@clerk/clerk-react";
 
-const supabase = createClient(
-  "https://lfhnlalktlcjyhelblci.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxmaG5sYWxrdGxjanloZWxibGNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc4NDI4MjEsImV4cCI6MjA2MzQxODgyMX0.qxOxqg2ObJBUJF5vKcQclIHgJa_1wYGrmWtxSU4Amvg"
-);
+
 
 export default function ExportModule() {
   const [selected, setSelected] = useState({
