@@ -1,19 +1,32 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useTheme } from "./ThemeContext";
 
-const CollapsibleSection = ({ title, children }) => {
-  const [isOpen, setIsOpen] = useState(true);
+export default function CollapsibleSection({
+  title,
+  children,
+  defaultOpen = true,
+  className = "",
+}) {
+  const { theme } = useTheme();
+  const panel =
+    theme === "dark"
+      ? "bg-zinc-900/95 border border-zinc-800 text-zinc-100"
+      : "bg-white/95 border border-zinc-200 text-zinc-900";
+
+  const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <section className="border border-yellow-300 rounded bg-yellow-50 dark:bg-gray-800 p-4 mb-4">
-      <header className="flex items-center justify-between cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-        <h2 className="text-lg font-semibold text-yellow-700 dark:text-yellow-300">{title}</h2>
-        <span className="text-2xl">
-          {isOpen ? "🔽" : "▶️"}
-        </span>
-      </header>
-      {isOpen && <div className="mt-4">{children}</div>}
+    <section className={`rounded-2xl shadow-sm ${panel} ${className}`}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between px-4 py-3"
+      >
+        <h2 className="text-lg font-semibold">{title}</h2>
+        <span className="text-xl">{open ? "▾" : "▸"}</span>
+      </button>
+
+      {open && <div className="px-4 pb-4">{children}</div>}
     </section>
   );
-};
-
-export default CollapsibleSection;
+}

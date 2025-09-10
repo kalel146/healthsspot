@@ -18,6 +18,7 @@ import {
   arrayMove,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+import { CartesianGrid, Legend, ReferenceLine } from "recharts";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { supabase } from "./supabaseClient";
@@ -70,6 +71,10 @@ export default function NutritionModule() {
   const [simpleView, setSimpleView] = useState(false);
   const [weeklyPlan, setWeeklyPlan] = useState({});
   const [foodSearch, setFoodSearch] = useState("");
+// --- ΝΕΑ STATES --- //
+const [intakeKcal, setIntakeKcal] = useState("");
+const [macrosText, setMacrosText] = useState(""); // π.χ. "140/50/200"
+const [newFood, setNewFood] = useState({ name: "", protein: "", fat: "", carbs: "" });
 
   const [weight, setWeight] = useState(70);
   const [height, setHeight] = useState(175);
@@ -267,6 +272,27 @@ export default function NutritionModule() {
     const gCarbs = Math.max(0, remainingKcal / 4);
     setCarbs(Number(gCarbs.toFixed(1)));
   };
+
+  const toNum = (v) => {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : 0;
+};
+const fmtG = (v) => (Number.isFinite(v) ? `${v}g` : "—");
+const kcalOf = (it) => {
+  const p = toNum(it.protein);
+  const f = toNum(it.fat);
+  const c = toNum(it.carbs);
+  const kcal = p * 4 + f * 9 + c * 4;
+  return Number.isFinite(kcal) ? `${kcal} kcal` : "—";
+};
+
+const isValidFood = (it) =>
+  Number.isFinite(toNum(it.protein)) &&
+  Number.isFinite(toNum(it.fat)) &&
+  Number.isFinite(toNum(it.carbs));
+const filteredFoodsSafe = filteredFoods.filter(isValidFood);
+const userFoodsSafe = userFoods.filter(isValidFood);
+
 
   // -------------------------
   // Supabase sync & history
@@ -713,10 +739,27 @@ export default function NutritionModule() {
     { label: "Πλάνο", protein: totalMacros.protein, fat: totalMacros.fat, carbs: totalMacros.carbs },
   ];
 
-  const inputStyle =
-    "w-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 " +
-    (theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-100 text-black");
-  const sectionStyle = "bg-opacity-30 backdrop-blur-sm p-6 rounded-xl shadow-lg";
+ // ---- THEME TOKENS (Night-mode friendly) ----
+const panelClass =
+  theme === "dark"
+    ? "bg-zinc-900/95 border border-zinc-800 text-zinc-100"
+    : "bg-white/95 border border-zinc-200 text-zinc-900";
+
+const sectionStyle = `rounded-2xl p-5 shadow-sm ${panelClass}`;
+
+const inputStyle =
+  "w-full rounded border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 " +
+  (theme === "dark"
+    ? "bg-zinc-900 text-zinc-100 border-zinc-800 placeholder-zinc-500"
+    : "bg-white text-zinc-900 border-zinc-300 placeholder-zinc-400");
+
+const rowBg = theme === "dark" ? "bg-zinc-900" : "bg-white";
+const rowAltBg = theme === "dark" ? "bg-zinc-950" : "bg-zinc-50";
+const headBg = theme === "dark" ? "bg-zinc-800" : "bg-zinc-200";
+const borderCol = theme === "dark" ? "border-zinc-800" : "border-zinc-300";
+const headText = theme === "dark" ? "text-zinc-100" : "text-zinc-900";
+const cellText = theme === "dark" ? "text-zinc-200" : "text-zinc-800";
+const softText = theme === "dark" ? "text-zinc-400" : "text-zinc-500";
 
   // -------------------------
   // UI
@@ -981,7 +1024,7 @@ export default function NutritionModule() {
                   {(fat * weight).toFixed(0)}g | Υδατάνθρακες:{" "}
                   {Number(carbs).toFixed(0)}g
                 </p>
-                <MacroPieChart pieData={pieData} colors={COLORS} />
+<MacroPieChart pieData={pieData} colors={COLORS} theme={theme === "dark" ? "dark" : "light"} />
               </>
             )}
 
@@ -1060,139 +1103,197 @@ export default function NutritionModule() {
           )}
         </CollapsibleSection>
 
+        <CollapsibleSection title="📆 Καταγραφή Πρόσληψης & Σύγκριση με Στόχους">
+  {tdee && (
+    <div className="space-y-4">
+      <div>
+        <label className="block text-sm font-medium mb-1">Καταγεγραμμένες Θερμίδες (kcal):</label>
+        <input
+          type="number"
+          placeholder="π.χ. 1850"
+          className={inputStyle}
+          value={intakeKcal}
+          onChange={(e) => setIntakeKcal(e.target.value)}
+          onBlur={() => {
+            const intake = parseInt(intakeKcal);
+            if (!isNaN(intake)) {
+              const diff = intake - tdee;
+              alert(`Διαφορά από στόχο: ${diff > 0 ? "+" : ""}${diff} kcal`);
+            }
+          }}
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-1">Macros (π.χ. 140/50/200):</label>
+        <input
+          type="text"
+          placeholder="πρωτεΐνη/λίπος/υδατάνθρακες σε g"
+          className={inputStyle}
+          value={macrosText}
+          onChange={(e) => setMacrosText(e.target.value)}
+        />
+      </div>
+
+      {(() => {
+        const [pStr, fStr, cStr] = (macrosText || "").split("/");
+        const actuals = {
+          protein: parseFloat(pStr) || 0,
+          fat: parseFloat(fStr) || 0,
+          carbs: parseFloat(cStr) || 0,
+        };
+        const targetProtein = protein * weight;
+        const targetFat = fat * weight;
+        const targetCarbs = Number(carbs || 0);
+
+        const deltas = {
+          protein: targetProtein ? ((actuals.protein - targetProtein) / targetProtein) * 100 : 0,
+          fat: targetFat ? ((actuals.fat - targetFat) / targetFat) * 100 : 0,
+          carbs: targetCarbs ? ((actuals.carbs - targetCarbs) / targetCarbs) * 100 : 0,
+        };
+
+        return (
+          <div className="mt-4 p-4 rounded bg-white dark:bg-gray-800 border border-yellow-300 text-sm text-yellow-800 dark:text-yellow-200">
+            {Math.abs(deltas.protein) > 10 && <p>⚠️ Πρωτεΐνη: {deltas.protein.toFixed(1)}% απόκλιση από στόχο.</p>}
+            {Math.abs(deltas.fat) > 10 && <p>⚠️ Λίπος: {deltas.fat.toFixed(1)}% απόκλιση από στόχο.</p>}
+            {Math.abs(deltas.carbs) > 10 && <p>⚠️ Υδατάνθρακες: {deltas.carbs.toFixed(1)}% απόκλιση από στόχο.</p>}
+            {Math.abs(deltas.protein) <= 10 && Math.abs(deltas.fat) <= 10 && Math.abs(deltas.carbs) <= 10 && (
+              <p>✅ Είσαι εντός ±10% σε όλα τα macros.</p>
+            )}
+          </div>
+        );
+      })()}
+    </div>
+  )}
+</CollapsibleSection>
+
+
         {/* Reorder days + per-day plan builder */}
         <CollapsibleSection title="🥗 Προγραμματισμός Γευμάτων ανά Ημέρα">
-          <DndContext
-            collisionDetection={closestCenter}
-            onDragEnd={({ active, over }) => {
-              if (!over || active.id === over.id) return;
-              setDaysOrder((items) => {
-                const oldIndex = items.indexOf(active.id);
-                const newIndex = items.indexOf(over.id);
-                if (oldIndex === -1 || newIndex === -1) return items;
-                return arrayMove(items, oldIndex, newIndex);
-              });
-            }}
-          >
-            <SortableContext items={daysOrder} strategy={verticalListSortingStrategy}>
-              {daysOrder.map((day) => (
-                <SortableItem key={day} id={day}>
-                  <div className="border border-yellow-300 rounded p-3 mt-2">
-                    <p className="font-bold text-yellow-500">📅 {day}</p>
-                    <ul className="list-disc list-inside space-y-1 mt-2">
-                      {["breakfast", "lunch", "snack", "dinner"].map(
-                        (mealType) => {
-                          const emoji =
-                            mealType === "breakfast"
-                              ? "🍽️"
-                              : mealType === "lunch"
-                              ? "🥗"
-                              : mealType === "snack"
-                              ? "🥚"
-                              : "🍝";
-                          const mealKey = `${day}-${mealType}`;
-                          const mealName = customMeals[mealKey] || "";
-                          const food = allFoodsFull.find(
-                            (f) => f.name === mealName
-                          );
+  <DndContext
+    collisionDetection={closestCenter}
+    onDragEnd={({ active, over }) => {
+      if (!over || active.id === over.id) return;
+      setDaysOrder((items) => {
+        const oldIndex = items.indexOf(active.id);
+        const newIndex = items.indexOf(over.id);
+        if (oldIndex === -1 || newIndex === -1) return items;
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }}
+  >
+    <SortableContext items={daysOrder} strategy={verticalListSortingStrategy}>
+      {daysOrder.map((day) => (
+        <SortableItem key={day} id={day}>
+          {/* THEMED panel */}
+          <div className={`rounded-2xl p-3 border ${borderCol} ${theme === "dark" ? "bg-zinc-900/95 text-zinc-100" : "bg-white/95 text-zinc-900"}`}>
+            <p className="font-bold text-yellow-400">📅 {day}</p>
 
-                          return (
-                            <li key={mealKey} className="break-words leading-tight">
-                              {emoji}{" "}
-                              {mealType.charAt(0).toUpperCase() +
-                                mealType.slice(1)}
-                              :
-                              <input
-                                title="Εισαγωγή ή τροποποίηση γεύματος"
-                                className={`w-full p-2 rounded text-sm border mt-1 ${
-                                  theme === "dark"
-                                    ? "bg-gray-800 text-white border-gray-700"
-                                    : "bg-white text-black border-gray-300"
-                                }`}
-                                value={mealName}
-                                onChange={(e) =>
-                                  setCustomMeals((prev) => ({
-                                    ...prev,
-                                    [mealKey]: e.target.value,
-                                  }))
-                                }
-                                placeholder="Πληκτρολόγησε γεύμα ή πάτα Αντικατάσταση"
-                              />
-                              <button
-                                className="ml-2 text-xs bg-blue-500 text-white px-2 py-1 rounded mt-2"
-                                title="Αυτόματη αντικατάσταση από βάση"
-                                onClick={() => handleReplacement(day, mealType)}
-                              >
-                                🔁 Αντικατάσταση
-                              </button>
-                              {food && (
-                                <div className="mt-2 p-2 rounded bg-yellow-100 dark:bg-gray-800 text-xs text-gray-800 dark:text-gray-100">
-                                  <p>
-                                    📊 Μακροθρεπτικά: {food.protein}g P /{" "}
-                                    {food.fat}g F / {food.carbs}g C
-                                  </p>
-                                </div>
-                              )}
+            <ul className="space-y-3 mt-3">
+              {["breakfast", "lunch", "snack", "dinner"].map((mealType, idx) => {
+                const emoji =
+                  mealType === "breakfast" ? "🍽️" :
+                  mealType === "lunch" ? "🥗" :
+                  mealType === "snack" ? "🥚" : "🍝";
 
-                              {/* Σύνολα/Διαφορές από το τρέχον πλάνο */}
-                              {mealType === "dinner" && (
-                                <CollapsibleSection title="📊 Σύνολο Μακροθρεπτικών από Πλάνο">
-                                  {(() => {
-                                    const target = {
-                                      protein: protein * weight,
-                                      fat: fat * weight,
-                                      carbs: Number(carbs || 0),
-                                    };
-                                    const actual = getTotalMacrosFromPlan();
-                                    const delta = {
-                                      protein: actual.protein - target.protein,
-                                      fat: actual.fat - target.fat,
-                                      carbs: actual.carbs - target.carbs,
-                                    };
-                                    return (
-                                      <>
-                                        <div className="text-sm space-y-2">
-                                          <p>
-                                            🎯 Στόχος:{" "}
-                                            {target.protein.toFixed(1)}g
-                                            πρωτεΐνη, {target.fat.toFixed(1)}g
-                                            λίπος, {target.carbs.toFixed(1)}g
-                                            υδατάνθρακες
-                                          </p>
-                                          <p>
-                                            📦 Πλάνο:{" "}
-                                            {actual.protein.toFixed(1)}g P /{" "}
-                                            {actual.fat.toFixed(1)}g F /{" "}
-                                            {actual.carbs.toFixed(1)}g C
-                                          </p>
-                                          <p className="text-yellow-700 dark:text-yellow-300">
-                                            ✏️ Διαφορά:{" "}
-                                            {delta.protein.toFixed(1)} P /{" "}
-                                            {delta.fat.toFixed(1)} F /{" "}
-                                            {delta.carbs.toFixed(1)} C
-                                          </p>
-                                        </div>
-                                        <p className="text-yellow-700 dark:text-yellow-300">
-                                          🔥 Θερμίδες από το πλάνο:{" "}
-                                          {getTotalKcalFromPlan(customMeals)}{" "}
-                                          kcal
-                                        </p>
-                                      </>
-                                    );
-                                  })()}
-                                </CollapsibleSection>
-                              )}
-                            </li>
-                          );
-                        }
+                const label =
+                  mealType === "breakfast" ? "Πρωινό" :
+                  mealType === "lunch" ? "Μεσημεριανό" :
+                  mealType === "snack" ? "Σνακ" : "Βραδινό";
+
+                const mealKey = `${day}-${mealType}`;
+                const mealName = customMeals[mealKey] || "";
+                const food = allFoodsFull.find((f) => f.name === mealName);
+
+                const rowBg = idx % 2 ? (theme === "dark" ? "bg-zinc-950" : "bg-zinc-50") : "";
+
+                return (
+                  <li key={mealKey} className={`rounded-xl px-3 py-3 ${rowBg}`}>
+                    <div className="text-sm font-semibold">
+                      {emoji} {label}
+                    </div>
+
+                    <input
+                      title="Εισαγωγή ή τροποποίηση γεύματος"
+                      className={`w-full mt-2 text-sm rounded px-3 py-2 border ${
+                        theme === "dark"
+                          ? "bg-zinc-900 text-zinc-100 border-zinc-800 placeholder-zinc-500"
+                          : "bg-white text-zinc-900 border-zinc-300 placeholder-zinc-400"
+                      }`}
+                      value={mealName}
+                      onChange={(e) =>
+                        setCustomMeals((prev) => ({ ...prev, [mealKey]: e.target.value }))
+                      }
+                      placeholder="Πληκτρολόγησε γεύμα ή πάτα Αντικατάσταση"
+                    />
+
+                    <div className="flex items-center gap-2 mt-2">
+                      <button
+                        className="text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700"
+                        title="Αυτόματη αντικατάσταση από βάση"
+                        onClick={() => handleReplacement(day, mealType)}
+                      >
+                        🔁 Αντικατάσταση
+                      </button>
+
+                      {food && (
+                        <div
+                          className={`ml-auto text-xs rounded px-2 py-1 ${
+                            theme === "dark" ? "bg-zinc-800 text-zinc-200" : "bg-zinc-100 text-zinc-700"
+                          }`}
+                        >
+                          📊 {Number(food.protein)||0}g P / {Number(food.fat)||0}g F / {Number(food.carbs)||0}g C
+                        </div>
                       )}
-                    </ul>
-                  </div>
-                </SortableItem>
-              ))}
-            </SortableContext>
-          </DndContext>
-        </CollapsibleSection>
+                    </div>
+
+                    {/* Σύνολα/Διαφορές από το τρέχον πλάνο: δείξε τα ΜΟΝΟ στην τελευταία σειρά (dinner) για καθαρό UI */}
+                    {mealType === "dinner" && (
+                      <div className={`mt-3 rounded-xl px-3 py-2 border ${borderCol} ${theme === "dark" ? "bg-zinc-900/80" : "bg-white/80"}`}>
+                        {(() => {
+                          const target = {
+                            protein: protein * weight,
+                            fat: fat * weight,
+                            carbs: Number(carbs || 0),
+                          };
+                          const actual = getTotalMacrosFromPlan();
+                          const delta = {
+                            protein: actual.protein - target.protein,
+                            fat: actual.fat - target.fat,
+                            carbs: actual.carbs - target.carbs,
+                          };
+                          return (
+                            <>
+                              <div className="text-sm space-y-1">
+                                <p>
+                                  🎯 Στόχος: {target.protein.toFixed(1)}g P, {target.fat.toFixed(1)}g F, {target.carbs.toFixed(1)}g C
+                                </p>
+                                <p>
+                                  📦 Πλάνο: {actual.protein.toFixed(1)}g P / {actual.fat.toFixed(1)}g F / {actual.carbs.toFixed(1)}g C
+                                </p>
+                                <p className="text-yellow-400">
+                                  ✏️ Διαφορά: {delta.protein.toFixed(1)} P / {delta.fat.toFixed(1)} F / {delta.carbs.toFixed(1)} C
+                                </p>
+                              </div>
+                              <p className="text-yellow-400 mt-1">
+                                🔥 Θερμίδες από το πλάνο: {getTotalKcalFromPlan(customMeals)} kcal
+                              </p>
+                            </>
+                          );
+                        })()}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </SortableItem>
+      ))}
+    </SortableContext>
+  </DndContext>
+</CollapsibleSection>
+
 
         {/* Summary Tab */}
         <Tabs defaultTab="Σύνολο">
@@ -1369,23 +1470,41 @@ export default function NutritionModule() {
         {/* Intake history chart */}
         {intakeHistory.length > 0 && (
           <CollapsibleSection title="📈 Ιστορικό Θερμίδων">
-            <ResponsiveContainer width="100%" height={250}>
-              <LineChart
-                data={intakeHistory}
-                margin={{ top: 10, right: 20, bottom: 10, left: 0 }}
-              >
-                <XAxis dataKey="date" stroke="#888" tick={{ fontSize: 12 }} />
-                <YAxis stroke="#888" tick={{ fontSize: 12 }} />
-                <Tooltip formatter={(value) => `${value} kcal`} />
-                <Line
-                  type="monotone"
-                  dataKey="kcal"
-                  stroke="#facc15"
-                  strokeWidth={2}
-                  dot={{ r: 4 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+            <ResponsiveContainer width="100%" height={280}>
+  <LineChart data={intakeHistory} margin={{ top: 16, right: 24, bottom: 8, left: 0 }}>
+    <defs>
+      <linearGradient id="kcalFill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#facc15" stopOpacity={0.4} />
+        <stop offset="100%" stopColor="#facc15" stopOpacity={0} />
+      </linearGradient>
+    </defs>
+
+    <CartesianGrid strokeDasharray="3 3" stroke={theme === "dark" ? "#27272a" : "#e5e7eb"} />
+    <XAxis dataKey="date" stroke={theme === "dark" ? "#a1a1aa" : "#4b5563"} tick={{ fontSize: 12 }} />
+    <YAxis stroke={theme === "dark" ? "#a1a1aa" : "#4b5563"} tick={{ fontSize: 12 }} />
+
+    <Tooltip
+      contentStyle={{
+        background: theme === "dark" ? "#18181b" : "#ffffff",
+        border: "1px solid #e5e7eb",
+        borderRadius: 8,
+      }}
+      labelStyle={{ color: theme === "dark" ? "#e4e4e7" : "#111827" }}
+      formatter={(v) => [`${v} kcal`, "Θερμίδες"]}
+    />
+
+    <Line
+      type="monotone"
+      dataKey="kcal"
+      stroke="#facc15"
+      strokeWidth={3}
+      dot={{ r: 3, strokeWidth: 1 }}
+      activeDot={{ r: 5 }}
+      fill="url(#kcalFill)"
+      fillOpacity={1}
+    />
+  </LineChart>
+</ResponsiveContainer>
           </CollapsibleSection>
         )}
 
@@ -1399,18 +1518,53 @@ export default function NutritionModule() {
                 className={`p-2 w-full rounded ${inputStyle}`}
                 onChange={(e) => setFoodSearch(e.target.value)}
               />
-              <div className="grid grid-cols-5 gap-2 text-xs mb-4 mt-2">
-                <input placeholder="Όνομα" className={inputStyle} id="nf" />
-                <input placeholder="P" className={inputStyle} id="np" type="number" />
-                <input placeholder="F" className={inputStyle} id="nfat" type="number" />
-                <input placeholder="C" className={inputStyle} id="nc" type="number" />
-                <button
-                  className="bg-green-500 text-white px-2 py-1 rounded"
-                  onClick={addCustomFood}
-                >
-                  ➕ Προσθήκη
-                </button>
-              </div>
+             <div className="grid grid-cols-5 gap-2 text-xs mb-4 mt-2">
+  <input
+    placeholder="Όνομα"
+    className={inputStyle}
+    value={newFood.name}
+    onChange={(e) => setNewFood((s) => ({ ...s, name: e.target.value }))}
+  />
+  <input
+    placeholder="P"
+    className={inputStyle}
+    type="number"
+    value={newFood.protein}
+    onChange={(e) => setNewFood((s) => ({ ...s, protein: e.target.value }))}
+  />
+  <input
+    placeholder="F"
+    className={inputStyle}
+    type="number"
+    value={newFood.fat}
+    onChange={(e) => setNewFood((s) => ({ ...s, fat: e.target.value }))}
+  />
+  <input
+    placeholder="C"
+    className={inputStyle}
+    type="number"
+    value={newFood.carbs}
+    onChange={(e) => setNewFood((s) => ({ ...s, carbs: e.target.value }))}
+  />
+  <button
+    className="bg-green-500 text-white px-2 py-1 rounded"
+    onClick={() => {
+      const name = newFood.name.trim();
+      const p = parseFloat(newFood.protein);
+      const f = parseFloat(newFood.fat);
+      const c = parseFloat(newFood.carbs);
+      if (!name || isNaN(p) || isNaN(f) || isNaN(c)) {
+        alert("❌ Παρακαλώ συμπλήρωσε όλα τα πεδία σωστά.");
+        return;
+      }
+      setUserFoods((prev) => [...prev, { name, protein: p, fat: f, carbs: c }]);
+      setNewFood({ name: "", protein: "", fat: "", carbs: "" });
+    }}
+  >
+    ➕ Προσθήκη
+  </button>
+</div>
+
             </CollapsibleSection>
 
             <CollapsibleSection title="🗓️ Αντιστοίχιση Γευμάτων">
@@ -1441,133 +1595,137 @@ export default function NutritionModule() {
             </CollapsibleSection>
 
             <CollapsibleSection title="📦 Λίστα Τροφίμων (user + default)">
-              <table className="w-full text-sm border border-gray-300 dark:border-gray-600">
-                <thead className="bg-gray-200 dark:bg-gray-700 sticky top-0 z-10">
-                  <tr>
-                    <th className="p-2">Τρόφιμο</th>
-                    <th className="p-2">Πρωτεΐνη</th>
-                    <th className="p-2">Λίπος</th>
-                    <th className="p-2">Υδατ.</th>
-                    <th className="p-2">Ενέργεια</th>
-                    <th className="p-2">Ενέργειες</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {userFoods.map((item, i) => (
-                    <tr
-                      key={`u-${i}`}
-                      className="text-center border-t dark:border-gray-700 bg-yellow-50 dark:bg-gray-800"
-                    >
-                      <td className="p-2">{item.name}</td>
-                      <td className="p-2">{item.protein}g</td>
-                      <td className="p-2">{item.fat}g</td>
-                      <td className="p-2">{item.carbs}g</td>
-                      <td className="p-2">
-                        {4 * item.protein + 9 * item.fat + 4 * item.carbs} kcal
-                      </td>
-                      <td className="p-2">
-                        <div className="flex gap-1 justify-center">
-                          <button
-                            className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
-                            title="Προσθήκη στο Πλάνο"
-                            onClick={() => {
-                              const mealKey = `${selectedDay}-${selectedMealType}`;
-                              setCustomMeals((prev) => ({
-                                ...prev,
-                                [mealKey]: item.name,
-                              }));
-                            }}
-                          >
-                            ➕ Στο Πλάνο
-                          </button>
-                          <button
-                            className="text-xs bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
-                            title="Επεξεργασία Τροφίμου"
-                            onClick={() => {
-                              const newName = prompt("✏️ Νέο όνομα:", item.name);
-                              const newProtein = prompt("Πρωτεΐνη (g):", item.protein);
-                              const newFat = prompt("Λίπος (g):", item.fat);
-                              const newCarbs = prompt("Υδατάνθρακες (g):", item.carbs);
-                              if (
-                                !newName ||
-                                isNaN(newProtein) ||
-                                isNaN(newFat) ||
-                                isNaN(newCarbs)
-                              )
-                                return;
-                              const updatedFoods = [...userFoods];
-                              updatedFoods[i] = {
-                                name: newName,
-                                protein: parseFloat(newProtein),
-                                fat: parseFloat(newFat),
-                                carbs: parseFloat(newCarbs),
-                              };
-                              setUserFoods(updatedFoods);
-                            }}
-                          >
-                            ✏️
-                          </button>
-                          <button
-                            className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-                            title="Διαγραφή Τροφίμου"
-                            onClick={() => {
-                              const updatedFoods = [...userFoods];
-                              updatedFoods.splice(i, 1);
-                              setUserFoods(updatedFoods);
-                            }}
-                          >
-                            🗑️
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
+  <div className={`${sectionStyle} p-0 overflow-hidden`}>
+    <table className={`w-full text-sm border ${borderCol}`}>
+      <thead className={`${headBg} ${headText} sticky top-0 z-10`}>
+        <tr>
+          <th className="p-2 text-left">Τρόφιμο</th>
+          <th className="p-2 text-right">Πρωτεΐνη</th>
+          <th className="p-2 text-right">Λίπος</th>
+          <th className="p-2 text-right">Υδατ.</th>
+          <th className="p-2 text-right">Ενέργεια</th>
+          <th className="p-2 text-center">Ενέργειες</th>
+        </tr>
+      </thead>
 
-                  {filteredFoods.map((item, i) => (
-                    <tr key={`f-${i}`} className="text-center border-t dark:border-gray-700">
-                      <td className="p-2">{item.name}</td>
-                      <td className="p-2">{item.protein}g</td>
-                      <td className="p-2">{item.fat}g</td>
-                      <td className="p-2">{item.carbs}g</td>
-                      <td className="p-2">
-                        {4 * item.protein + 9 * item.fat + 4 * item.carbs} kcal
-                      </td>
-                      <td className="p-2">
-                        <button
-                          className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
-                          title="Προσθήκη στο Πλάνο"
-                          onClick={() => {
-                            const mealKey = `${selectedDay}-${selectedMealType}`;
-                            setCustomMeals((prev) => ({
-                              ...prev,
-                              [mealKey]: item.name,
-                            }));
-                          }}
-                        >
-                          ➕ Στο Πλάνο
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </CollapsibleSection>
+      <tbody className={`${cellText}`}>
+        {/* USER FOODS */}
+        {userFoods.map((item, i) => {
+          const p = toNum(item.protein);
+          const f = toNum(item.fat);
+          const c = toNum(item.carbs);
+          const odd = i % 2 === 1;
+          return (
+            <tr
+              key={`u-${i}`}
+              className={`${odd ? rowAltBg : rowBg} border-t ${borderCol}`}
+            >
+              <td className="p-2">{item.name}</td>
+              <td className="p-2 text-right">{fmtG(p)}</td>
+              <td className="p-2 text-right">{fmtG(f)}</td>
+              <td className="p-2 text-right">{fmtG(c)}</td>
+              <td className="p-2 text-right">{kcalOf({ protein: p, fat: f, carbs: c })}</td>
+              <td className="p-2">
+                <div className="flex gap-1 justify-center">
+                  <button
+                    className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
+                    title="Προσθήκη στο Πλάνο"
+                    onClick={() => {
+                      const mealKey = `${selectedDay}-${selectedMealType}`;
+                      setCustomMeals((prev) => ({ ...prev, [mealKey]: item.name }));
+                    }}
+                  >
+                    ➕ Στο Πλάνο
+                  </button>
+                  <button
+                    className="text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700"
+                    title="Επεξεργασία Τροφίμου"
+                    onClick={() => {
+                      const newName = prompt("✏️ Νέο όνομα:", item.name);
+                      const newProtein = Number(prompt("Πρωτεΐνη (g):", p));
+                      const newFat = Number(prompt("Λίπος (g):", f));
+                      const newCarbs = Number(prompt("Υδατάνθρακες (g):", c));
+                      if (!newName || !Number.isFinite(newProtein) || !Number.isFinite(newFat) || !Number.isFinite(newCarbs)) return;
+                      const updated = [...userFoods];
+                      updated[i] = { name: newName, protein: newProtein, fat: newFat, carbs: newCarbs };
+                      setUserFoods(updated);
+                    }}
+                  >
+                    ✏️
+                  </button>
+                  <button
+                    className="text-xs bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                    title="Διαγραφή Τροφίμου"
+                    onClick={() => {
+                      const updated = [...userFoods];
+                      updated.splice(i, 1);
+                      setUserFoods(updated);
+                    }}
+                  >
+                    🗑️
+                  </button>
+                </div>
+              </td>
+            </tr>
+          );
+        })}
+
+        {/* DEFAULT + FILTERED FOODS */}
+        {filteredFoods.map((item, i) => {
+          const p = toNum(item.protein);
+          const f = toNum(item.fat);
+          const c = toNum(item.carbs);
+          const odd = (userFoods.length + i) % 2 === 1;
+          return (
+            <tr
+              key={`f-${i}`}
+              className={`${odd ? rowAltBg : rowBg} border-t ${borderCol}`}
+            >
+              <td className="p-2">{item.name}</td>
+              <td className="p-2 text-right">{fmtG(p)}</td>
+              <td className="p-2 text-right">{fmtG(f)}</td>
+              <td className="p-2 text-right">{fmtG(c)}</td>
+              <td className="p-2 text-right">{kcalOf({ protein: p, fat: f, carbs: c })}</td>
+              <td className="p-2 text-center">
+                <button
+                  className="text-xs bg-yellow-400 text-black px-2 py-1 rounded hover:bg-yellow-500"
+                  title="Προσθήκη στο Πλάνο"
+                  onClick={() => {
+                    const mealKey = `${selectedDay}-${selectedMealType}`;
+                    setCustomMeals((prev) => ({ ...prev, [mealKey]: item.name }));
+                  }}
+                >
+                  ➕ Στο Πλάνο
+                </button>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</CollapsibleSection>
+
           </Tab>
         </Tabs>
 
         {/* Comparison charts */}
         <CollapsibleSection title="📊 Σύγκριση Μακροθρεπτικών">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <MacroComparisonChart
-              data={macroComparisonData}
-              colors={COLORS}
-              tooltipFormatter={(value) => `${value}g`}
-            />
-            <MacroBarChart
-              data={macroBarData}
-              colors={COLORS}
-              tooltipFormatter={(value) => `${value}g`}
-            />
+           <MacroComparisonChart
+  data={macroComparisonData}
+  colors={COLORS}
+  tooltipFormatter={(value) => `${value}g`}
+  theme={theme === "dark" ? "dark" : "light"}
+/>
+
+<MacroBarChart
+  data={macroBarData}
+  colors={COLORS}
+  tooltipFormatter={(value) => `${value}g`}
+  theme={theme === "dark" ? "dark" : "light"}
+/>
+
           </div>
         </CollapsibleSection>
       </motion.div>
