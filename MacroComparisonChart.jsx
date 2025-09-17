@@ -1,90 +1,65 @@
-import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  CartesianGrid,
-  Legend,
-} from "recharts";
+// MacroComparisonChart.jsx — safe compat (keys: protein, fat, carbs)
+import React, { useMemo, useId } from "react";
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
-/**
- * Props:
- *  - data: [
- *      { label: "Στόχος", protein: number, fat: number, carbs: number },
- *      { label: "Πλάνο",  protein: number, fat: number, carbs: number }
- *    ]
- *  - colors: string[] (προαιρετικά)
- *  - tooltipFormatter?: (value) => string
- *  - theme?: "light" | "dark"
- */
-export default function MacroComparisonChart({
-  data = [],
-  colors = [],
-  tooltipFormatter = (v) => `${v}g`,
-  theme = "light",
-}) {
-  const axisColor = theme === "dark" ? "#a1a1aa" : "#4b5563";
-  const gridColor = theme === "dark" ? "#27272a" : "#e5e7eb";
-  const tooltipBg = theme === "dark" ? "#18181b" : "#ffffff";
-  const tooltipLabel = theme === "dark" ? "#e4e4e7" : "#111827";
+export default function MacroComparisonChart({ data = [], theme = "light", tooltipFormatter }) {
+  const isDark = theme === "dark";
+  const gid = useId();
 
-  // labels στα ελληνικά (συνεπή με UI)
-  const series = [
-    { key: "protein", label: "Πρωτεΐνη", fill: "#60a5fa" }, // blue-400
-    { key: "fat", label: "Λίπος", fill: "#fda4af" },        // rose-300
-    { key: "carbs", label: "Υδατ.", fill: "#34d399" },      // emerald-400
-  ];
+  const rows = useMemo(() => (Array.isArray(data) ? data : []).map(r => ({
+    label: r?.label ?? "",
+    protein: Number(r?.protein) || 0,
+    fat: Number(r?.fat) || 0,
+    carbs: Number(r?.carbs) || 0,
+  })), [data]);
+
+  if (!rows.length) {
+    return <div className="w-full h-[280px] grid place-items-center text-sm opacity-70">Χωρίς δεδομένα.</div>;
+  }
 
   return (
-    <div style={{ width: "100%", height: 300 }}>
+    <div className="w-full h-[280px]">
       <ResponsiveContainer>
-        <BarChart
-          data={data}
-          margin={{ top: 12, right: 20, bottom: 4, left: 0 }}
-          barCategoryGap={24}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
-          <XAxis
-            dataKey="label"
-            stroke={axisColor}
-            tick={{ fontSize: 12 }}
-            tickLine={false}
-            axisLine={{ stroke: axisColor }}
-          />
-          <YAxis
-            stroke={axisColor}
-            tick={{ fontSize: 12 }}
-            tickLine={false}
-            axisLine={{ stroke: axisColor }}
-          />
+        <BarChart data={rows} margin={{ top: 8, right: 24, left: 0, bottom: 8 }}>
+          <defs>
+            <linearGradient id={`${gid}-prot`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#f59e0b" stopOpacity={0.95} />
+              <stop offset="100%" stopColor="#f59e0b" stopOpacity={0.65} />
+            </linearGradient>
+            <linearGradient id={`${gid}-fat`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#ef4444" stopOpacity={0.95} />
+              <stop offset="100%" stopColor="#ef4444" stopOpacity={0.65} />
+            </linearGradient>
+            <linearGradient id={`${gid}-carb`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#0ea5e9" stopOpacity={0.95} />
+              <stop offset="100%" stopColor="#0ea5e9" stopOpacity={0.65} />
+            </linearGradient>
+          </defs>
+
+          <CartesianGrid strokeDasharray="3 3" stroke={isDark ? "#27272a" : "#e5e7eb"} />
+          <XAxis dataKey="label" stroke={isDark ? "#a1a1aa" : "#4b5563"} tick={{ fontSize: 12 }} />
+          <YAxis stroke={isDark ? "#a1a1aa" : "#4b5563"} tick={{ fontSize: 12 }} />
           <Tooltip
             contentStyle={{
-              background: tooltipBg,
+              background: isDark ? "#0b0b0c" : "#ffffff",
               border: "1px solid #e5e7eb",
               borderRadius: 8,
+              boxShadow: isDark ? "0 6px 24px rgba(0,0,0,0.5)" : "0 6px 24px rgba(0,0,0,0.08)",
             }}
-            labelStyle={{ color: tooltipLabel }}
-            formatter={(v, n) => [tooltipFormatter(v), n]}
+            formatter={(v, n) => [tooltipFormatter ? tooltipFormatter(v) : v, n]}
           />
           <Legend
-            verticalAlign="top"
-            height={24}
-            wrapperStyle={{ fontSize: 12, color: axisColor }}
+            wrapperStyle={{ paddingTop: 4 }}
+            formatter={(v) =>
+              v === "protein" ? "Πρωτεΐνη" :
+              v === "fat" ? "Λίπος" :
+              v === "carbs" ? "Υδατ." : v
+            }
           />
 
-          {series.map((s) => (
-            <Bar
-              key={s.key}
-              dataKey={s.key}
-              name={s.label}
-              fill={s.fill}
-              barSize={22}
-              radius={[8, 8, 0, 0]}
-            />
-          ))}
+          <Bar dataKey="protein" name="Πρωτεΐνη" fill={`url(#${gid}-prot)`} radius={[8,8,0,0]} />
+          <Bar dataKey="fat" name="Λίπος" fill={`url(#${gid}-fat)`} radius={[8,8,0,0]} />
+          <Bar dataKey="carbs" name="Υδατ." fill={`url(#${gid}-carb)`} radius={[8,8,0,0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

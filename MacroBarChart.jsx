@@ -1,83 +1,51 @@
-import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  CartesianGrid,
-  Legend,
-} from "recharts";
+// MacroBarChart.jsx — safe compat (keys: "Στόχος", "Πλάνο")
+import React, { useMemo, useId } from "react";
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
-/**
- * Props:
- *  - data: [{ label: "Πρωτεΐνη", "Στόχος": number, "Πλάνο": number }, ...]
- *  - colors: string[] (θα αγνοηθούν, βάζουμε safe/defaults)
- *  - tooltipFormatter?: (value) => string
- *  - theme?: "light" | "dark"
- */
-export default function MacroBarChart({
-  data = [],
-  colors = [],
-  tooltipFormatter = (v) => `${v}g`,
-  theme = "light",
-}) {
-  const axisColor = theme === "dark" ? "#a1a1aa" : "#4b5563";
-  const gridColor = theme === "dark" ? "#27272a" : "#e5e7eb";
-  const tooltipBg = theme === "dark" ? "#18181b" : "#ffffff";
-  const tooltipLabel = theme === "dark" ? "#e4e4e7" : "#111827";
+export default function MacroBarChart({ data = [], theme = "light", tooltipFormatter }) {
+  const isDark = theme === "dark";
+  const gid = useId();
+
+  const rows = useMemo(() => (Array.isArray(data) ? data : []).map(r => ({
+    label: r?.label ?? "",
+    "Στόχος": Number(r?.["Στόχος"]) || 0,
+    "Πλάνο": Number(r?.["Πλάνο"]) || 0,
+  })), [data]);
+
+  if (!rows.length) {
+    return <div className="w-full h-[280px] grid place-items-center text-sm opacity-70">Χωρίς δεδομένα.</div>;
+  }
 
   return (
-    <div style={{ width: "100%", height: 300 }}>
+    <div className="w-full h-[280px]">
       <ResponsiveContainer>
-        <BarChart
-          data={data}
-          margin={{ top: 12, right: 20, bottom: 4, left: 0 }}
-          barCategoryGap={20}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
-          <XAxis
-            dataKey="label"
-            stroke={axisColor}
-            tick={{ fontSize: 12 }}
-            tickLine={false}
-            axisLine={{ stroke: axisColor }}
-          />
-          <YAxis
-            stroke={axisColor}
-            tick={{ fontSize: 12 }}
-            tickLine={false}
-            axisLine={{ stroke: axisColor }}
-          />
+        <BarChart data={rows} margin={{ top: 8, right: 24, left: 0, bottom: 8 }}>
+          <defs>
+            <linearGradient id={`${gid}-target`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#60a5fa" stopOpacity={0.95} />
+              <stop offset="100%" stopColor="#60a5fa" stopOpacity={0.65} />
+            </linearGradient>
+            <linearGradient id={`${gid}-plan`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#34d399" stopOpacity={0.95} />
+              <stop offset="100%" stopColor="#34d399" stopOpacity={0.65} />
+            </linearGradient>
+          </defs>
+
+          <CartesianGrid strokeDasharray="3 3" stroke={isDark ? "#27272a" : "#e5e7eb"} />
+          <XAxis dataKey="label" stroke={isDark ? "#a1a1aa" : "#4b5563"} tick={{ fontSize: 12 }} />
+          <YAxis stroke={isDark ? "#a1a1aa" : "#4b5563"} tick={{ fontSize: 12 }} />
           <Tooltip
             contentStyle={{
-              background: tooltipBg,
+              background: isDark ? "#0b0b0c" : "#ffffff",
               border: "1px solid #e5e7eb",
               borderRadius: 8,
+              boxShadow: isDark ? "0 6px 24px rgba(0,0,0,0.5)" : "0 6px 24px rgba(0,0,0,0.08)",
             }}
-            labelStyle={{ color: tooltipLabel }}
-            formatter={(v, n) => [tooltipFormatter(v), n]}
-          />
-          <Legend
-            verticalAlign="top"
-            height={24}
-            wrapperStyle={{ fontSize: 12, color: axisColor }}
+            formatter={(v, n) => [tooltipFormatter ? tooltipFormatter(v) : v, n]}
           />
 
-          {/* Χρώματα: διακριτά & ουδέτερα */}
-          <Bar
-            dataKey="Στόχος"
-            fill="#94a3b8" /* slate-400 */
-            barSize={24}
-            radius={[8, 8, 0, 0]}
-          />
-          <Bar
-            dataKey="Πλάνο"
-            fill="#facc15" /* yellow-400 */
-            barSize={24}
-            radius={[8, 8, 0, 0]}
-          />
+          <Bar dataKey="Στόχος" fill={`url(#${gid}-target)`} radius={[8,8,0,0]} />
+          <Bar dataKey="Πλάνο" fill={`url(#${gid}-plan)`} radius={[8,8,0,0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

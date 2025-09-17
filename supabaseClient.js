@@ -1,8 +1,6 @@
+// supabaseClient.js
 import { createClient } from "@supabase/supabase-js";
 
-// ------------------------------------------------------
-// ΑΝΑΓΝΩΣΗ ENV
-// ------------------------------------------------------
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
@@ -10,37 +8,34 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
   throw new Error("❌ Missing Supabase env (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY)");
 }
 
-// ------------------------------------------------------
-// HARDENED SINGLETON (works with Vite HMR / Fast Refresh)
-// ------------------------------------------------------
-const w = typeof window !== "undefined" ? window : globalThis;
-
-// Χρησιμοποίησε ΣΤΑΘΕΡΟ μοναδικό storageKey για όλη την app
+// ΈΝΑΣ client σε όλο το περιβάλλον (παράθυρο + HMR)
 const AUTH_STORAGE_KEY = "hs-auth";
+const g = globalThis;
 
-// Αν υπάρχει ήδη client στο window, χρησιμοποίησέ τον
-if (!w.__hs_supabase_client) {
-  // Αν άλλος client έχει ήδη δεσμεύσει το ίδιο storageKey (π.χ. παλιός κώδικας),
-  // καθάρισε το token για να αποφύγεις διπλά instances
-  try {
-    const existing = localStorage.getItem(`sb-${AUTH_STORAGE_KEY}-auth-token`);
-    if (existing) {
-      // προαιρετικό: κρατάμε το session, αλλά δεν είναι απαραίτητο
-      // Αν βλέπεις ξανά warning, κάνε clear storage μια φορά.
-    }
-  } catch {}
-
-  w.__hs_supabase_client = createClient(SUPABASE_URL, SUPABASE_KEY, {
+// 1) Προτίμησε HMR cache (Vite) — αποτρέπει re-creation σε hot reload
+let supabase = import.meta?.hot?.data?.__hs_supabase_client;
+if (!supabase) {
+  // 2) Αν δεν υπάρχει, δες “παγκόσμιο” singleton (tabs/iframes)
+  supabase = g.__hs_supabase_client ?? createClient(SUPABASE_URL, SUPABASE_KEY, {
     auth: {
-      storageKey: AUTH_STORAGE_KEY,
+      storageKey: AUTH_STORAGE_KEY,       // σταθερό, δικό σου
       autoRefreshToken: true,
       persistSession: true,
       detectSessionInUrl: true,
     },
   });
-  console.log("✅ Supabase client initialized (singleton)");
+
+  // Γράψε το instance σε HMR cache & global singleton
+  if (import.meta?.hot) {
+    import.meta.hot.data.__hs_supabase_client = supabase;
+  }
+  if (!g.__hs_supabase_client) g.__hs_supabase_client = supabase;
+
+  // Προαιρετικό log για debug:
+  // console.log("✅ Supabase client ready (singleton/HMR-safe)");
 } else {
-  console.log("♻️ Reusing existing Supabase client (singleton)");
+  // console.log("♻️ Reusing Supabase client from HMR cache");
 }
 
-export const supabase = w.__hs_supabase_client;
+export { supabase };
+export default supabase;
