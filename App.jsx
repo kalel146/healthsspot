@@ -23,6 +23,8 @@ import AuthPage                  from "./AuthPage";
 // Shell
 import Layout from "./Layout";
 
+
+
 function AppContent() {
   // Clerk
   const { user, isLoaded } = useUser();

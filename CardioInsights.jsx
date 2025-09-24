@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
-import { Bot, BarChart3, AlertTriangle, Eye, EyeOff, Sparkles } from "lucide-react";
+import { Bot, BarChart3, AlertTriangle, Eye, EyeOff, Sparkles, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import {
   ResponsiveContainer,
@@ -34,7 +34,7 @@ export default function CardioInsights({ activity, history }) {
     return `Εβδ ${Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7)}`;
   };
 
-  const average = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+  const average = (arr) => (arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0);
 
   const fetchInsights = async () => {
     const { data } = await supabase
@@ -65,11 +65,11 @@ export default function CardioInsights({ activity, history }) {
           filtered = filtered.filter((entry) => new Date(entry.created_at) >= fromDate);
         }
       }
-       if (selectedDate) {
+
+      if (selectedDate) {
         const day = selectedDate.toDateString();
         filtered = filtered.filter((entry) => new Date(entry.created_at).toDateString() === day);
       }
-
 
       setFilteredHistory(filtered);
 
@@ -87,7 +87,9 @@ export default function CardioInsights({ activity, history }) {
         return { week, avgVO2, totalKcal };
       });
 
-      const best = summary.reduce((best, cur) => cur.avgVO2 > best.avgVO2 ? cur : best, summary[0]);
+      const best = summary.length
+        ? summary.reduce((best, cur) => (cur.avgVO2 > best.avgVO2 ? cur : best), summary[0])
+        : { week: "-", avgVO2: 0, totalKcal: 0 };
 
       const feedback = [];
       for (let i = 2; i < summary.length; i++) {
@@ -107,12 +109,12 @@ export default function CardioInsights({ activity, history }) {
         }
       }
 
-       if (summary.length > 2) {
+      if (summary.length > 2) {
         const latest = summary.at(-1);
         const previous = summary.at(-2);
         setWeeklyDelta({
           deltaVO2: latest.avgVO2 - previous.avgVO2,
-          deltaKcal: latest.totalKcal - previous.totalKcal
+          deltaKcal: latest.totalKcal - previous.totalKcal,
         });
         if (latest.avgVO2 > 45) {
           feedback.push("🚀 Είσαι σε elite επίπεδο VO2max. Σκέψου να δοκιμάσεις προγράμματα με intervals και tapering.");
@@ -124,7 +126,7 @@ export default function CardioInsights({ activity, history }) {
         }
       }
 
-        if (summary.length > 1) {
+      if (summary.length > 1) {
         const current = summary.at(-1);
         const previous = summary.at(-2);
         if (current.avgVO2 > previous.avgVO2 && current.totalKcal > previous.totalKcal) {
@@ -141,9 +143,9 @@ export default function CardioInsights({ activity, history }) {
       const dates = filtered.map((entry) => new Date(entry.created_at));
       setCalendarDates(dates);
 
-        // 🔥 Highlight ημέρας με max VO2
-      const bestVo2Entry = data.reduce((max, entry) =>
-        entry.vo2 && (!max || entry.vo2 > max.vo2) ? entry : max,
+      // 🔥 Highlight ημέρας με max VO2
+      const bestVo2Entry = data.reduce(
+        (max, entry) => (entry.vo2 && (!max || entry.vo2 > max.vo2) ? entry : max),
         null
       );
       if (bestVo2Entry) {
@@ -173,7 +175,8 @@ export default function CardioInsights({ activity, history }) {
 
   useEffect(() => {
     fetchInsights();
-  }, [activity, dateRange]);
+    // also refetch when selectedDate changes
+  }, [activity, dateRange, selectedDate]);
 
   if (filteredHistory.length < 2) {
     return (
@@ -184,22 +187,25 @@ export default function CardioInsights({ activity, history }) {
   }
 
   const avgVO2 = (
-    filteredHistory.reduce((sum, e) => sum + (e.vo2 || 0), 0) / filteredHistory.filter(e => e.vo2).length
+    filteredHistory.reduce((sum, e) => sum + (e.vo2 || 0), 0) /
+    (filteredHistory.filter((e) => e.vo2).length || 1)
   ).toFixed(1);
 
-  const totalKcal = filteredHistory.reduce((sum, e) => sum + (e.kcal || 0), 0).toFixed(0);
+  const totalKcal = filteredHistory
+    .reduce((sum, e) => sum + (e.kcal || 0), 0)
+    .toFixed(0);
 
   const tileClassName = ({ date, view }) => {
-    if (view === 'month') {
-      const isSession = calendarDates.some(d => d.toDateString() === date.toDateString());
+    if (view === "month") {
+      const isSession = calendarDates.some((d) => d.toDateString() === date.toDateString());
       const isBest = highlightedMaxDate && highlightedMaxDate.toDateString() === date.toDateString();
-      if (isBest) return 'bg-purple-500 text-white rounded-full';
-      if (isSession) return 'bg-green-300 dark:bg-green-700 rounded-full';
+      if (isBest) return "bg-purple-500 text-white rounded-full";
+      if (isSession) return "bg-green-300 dark:bg-green-700 rounded-full";
     }
     return null;
   };
 
-return (
+  return (
     <motion.div
       className="p-6 max-w-4xl mx-auto"
       initial={{ opacity: 0, y: 20 }}
@@ -209,13 +215,13 @@ return (
         <BarChart3 className="w-6 h-6" /> Cardio Insights
       </h1>
 
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end mb-4 gap-2">
         <select
           value={dateRange}
           onChange={(e) => setDateRange(e.target.value)}
           className="p-2 rounded bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
         >
-         <option value="Όλα">Όλα</option>
+          <option value="Όλα">Όλα</option>
           <option value="4w">Τελευταίες 4 Εβδομάδες</option>
           <option value="2m">Τελευταίοι 2 Μήνες</option>
           <option value="6m">Τελευταίοι 6 Μήνες</option>
@@ -227,8 +233,7 @@ return (
           Επαναφορά Ημερομηνίας
         </button>
       </div>
-      
-          <div className="p-6 max-w-4xl mx-auto">
+
       {weeklyDelta && (
         <div className="flex justify-center mb-4">
           <div className="flex items-center space-x-2 bg-blue-100 dark:bg-blue-800 text-blue-900 dark:text-white px-4 py-2 rounded-xl shadow-md">
@@ -249,7 +254,9 @@ return (
             {showFeedback ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />} {showFeedback ? "Απόκρυψη" : "Εμφάνιση"} AI Feedback
           </button>
           {showFeedback && aiFeedback.map((line, i) => (
-            <p key={i}><Sparkles className="w-4 h-4 inline-block mr-1" /> {line}</p>
+            <p key={i}>
+              <Sparkles className="w-4 h-4 inline-block mr-1" /> {line}
+            </p>
           ))}
         </div>
       )}
@@ -265,27 +272,22 @@ return (
               <YAxis yAxisId="right" orientation="right" label={{ value: "kcal", angle: 90, position: "insideRight" }} />
               <Tooltip />
               <Legend />
-              <Line yAxisId="left" type="monotone" dataKey="avgVO2" stroke="#6366f1" name="Μέσο VO2max" />
-              <Line yAxisId="right" type="monotone" dataKey="totalKcal" stroke="#10b981" name="Σύνολο kcal" />
+              <Line yAxisId="left" type="monotone" dataKey="avgVO2" name="Μέσο VO2max" />
+              <Line yAxisId="right" type="monotone" dataKey="totalKcal" name="Σύνολο kcal" />
             </LineChart>
           </ResponsiveContainer>
         </div>
       )}
 
-    </div>
+      <div className="space-y-4 mt-6">
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
+          <h2 className="text-lg font-semibold mb-2">📆 Ημερολογιακή Εμφάνιση</h2>
+          <Calendar tileClassName={tileClassName} onClickDay={(value) => setSelectedDate(value)} className="rounded-xl" />
+        </div>
 
-        <div className="space-y-4">
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
-            <h2 className="text-lg font-semibold mb-2">📆 Ημερολογιακή Εμφάνιση</h2>
-            <Calendar
-              tileClassName={tileClassName}
-              onClickDay={(value) => setSelectedDate(value)}
-              className="rounded-xl"
-            />
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
-            <h2 className="text-lg font-semibold mb-2">📈 Εβδομαδιαία Στατιστικά</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
+          <h2 className="text-lg font-semibold mb-2">📈 Εβδομαδιαία Στατιστικά</h2>
+          {insights?.summary?.length ? (
             <ul className="list-disc pl-5 space-y-1">
               {insights.summary.map((entry) => (
                 <li key={entry.week}>
@@ -293,79 +295,91 @@ return (
                 </li>
               ))}
             </ul>
-          </div>
-
-           {activityAverages.length > 1 && (
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
-          <h2 className="text-lg font-semibold mb-2">📊 Σύγκριση Δραστηριοτήτων</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            {activityAverages.map((act, i) => (
-              <li key={i}>
-                <strong>{act.activity}</strong>: VO2avg {act.avgVO2} | Θερμίδες {act.totalKcal} kcal
-              </li>
-            ))}
-          </ul>
+          ) : (
+            <p className="text-sm text-gray-500">Δεν υπάρχουν εβδομαδιαία δεδομένα.</p>
+          )}
         </div>
-      )}
-          <section className="max-w-4xl mx-auto space-y-4 p-6 rounded-xl shadow-xl bg-white dark:bg-gray-900">
-            <h2 className="text-xl font-semibold flex items-center gap-2 text-purple-500">
-              <Bot className="w-5 h-5" /> Insights για {activity}
-            </h2>
-            <p>📈 Μέση VO2max: <strong>{avgVO2} mL/kg/min</strong></p>
-            <p>🔥 Συνολικές θερμίδες: <strong>{totalKcal} kcal</strong></p>
-            <p>
-              💡 Συμβουλή: {avgVO2 < 30
-                ? "Η καρδιοαναπνευστική σου κατάσταση είναι χαμηλή – αύξησε τη διάρκεια ή ένταση."
-                : avgVO2 < 45
-                ? "Καλή VO2max – συνέχισε σταθερά με στόχο τη βελτίωση."
-                : "Εξαιρετική VO2max! Συντήρησε με έξυπνη περιοδικότητα."}
-            </p>
-          </section>
 
+        {activityAverages.length > 1 && (
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
+            <h2 className="text-lg font-semibold mb-2">📊 Σύγκριση Δραστηριοτήτων</h2>
+            <ul className="list-disc pl-5 space-y-1">
+              {activityAverages.map((act, i) => (
+                <li key={i}>
+                  <strong>{act.activity}</strong>: VO2avg {act.avgVO2} | Θερμίδες {act.totalKcal} kcal
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <section className="max-w-4xl mx-auto space-y-2 p-6 rounded-xl shadow-xl bg-white dark:bg-gray-900">
+          <h2 className="text-xl font-semibold flex items-center gap-2 text-purple-500">
+            <Bot className="w-5 h-5" /> Insights για {activity}
+          </h2>
+          <p>
+            📈 Μέση VO2max: <strong>{avgVO2} mL/kg/min</strong>
+          </p>
+          <p>
+            🔥 Συνολικές θερμίδες: <strong>{totalKcal} kcal</strong>
+          </p>
+          <p>
+            💡 Συμβουλή: {avgVO2 < 30
+              ? "Η καρδιοαναπνευστική σου κατάσταση είναι χαμηλή – αύξησε τη διάρκεια ή ένταση."
+              : avgVO2 < 45
+              ? "Καλή VO2max – συνέχισε σταθερά με στόχο τη βελτίωση."
+              : "Εξαιρετική VO2max! Συντήρησε με έξυπνη περιοδικότητα."}
+          </p>
+        </section>
+
+        {insights && (
           <div className="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 p-4 rounded-xl shadow-inner">
             <p className="font-medium flex gap-2 items-center">
               <Bot className="w-4 h-4" /> 🏆 Καλύτερη Εβδομάδα: <strong>{insights.best.week}</strong> με VO2avg {insights.best.avgVO2.toFixed(1)}
             </p>
           </div>
+        )}
 
-          {aiFeedback.length > 0 && (
-            <div className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 p-4 rounded-xl shadow-inner space-y-2">
-              <button
-                onClick={() => setShowFeedback(!showFeedback)}
-                className="text-sm font-semibold underline flex items-center gap-1 text-purple-700 dark:text-purple-200 mb-2"
-              >
-                {showFeedback ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />} {showFeedback ? "Απόκρυψη" : "Εμφάνιση"} AI Feedback
-              </button>
-              {showFeedback && aiFeedback.map((line, i) => (
-                <p key={i}><Sparkles className="w-4 h-4 inline-block mr-1" /> {line}</p>
-              ))}
-            </div>
-          )}
-        </div>
-        
-         {insights && (
-        <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
-          <h2 className="text-lg font-semibold mb-2">📊 Αναλυτικά Εβδομαδιαία Στατιστικά</h2>
-          <table className="w-full text-sm">
-            <thead>
-              <tr>
-                <th className="text-left">Εβδομάδα</th>
-                <th className="text-left">Μέσο VO2max</th>
-                <th className="text-left">Θερμίδες</th>
-              </tr>
-            </thead>
-            <tbody>
-              {insights.summary.map((row, idx) => (
-                <tr key={idx} className="border-t">
-                  <td>{row.week}</td>
-                  <td>{row.avgVO2.toFixed(1)}</td>
-                  <td>{row.totalKcal.toFixed(0)} kcal</td>
+        {aiFeedback.length > 0 && (
+          <div className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 p-4 rounded-xl shadow-inner space-y-2">
+            <button
+              onClick={() => setShowFeedback(!showFeedback)}
+              className="text-sm font-semibold underline flex items-center gap-1 text-purple-700 dark:text-purple-200 mb-2"
+            >
+              {showFeedback ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />} {showFeedback ? "Απόκρυψη" : "Εμφάνιση"} AI Feedback
+            </button>
+            {showFeedback && aiFeedback.map((line, i) => (
+              <p key={i}>
+                <Sparkles className="w-4 h-4 inline-block mr-1" /> {line}
+              </p>
+            ))}
+          </div>
+        )}
+
+        {insights && (
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow">
+            <h2 className="text-lg font-semibold mb-2">📊 Αναλυτικά Εβδομαδιαία Στατιστικά</h2>
+            <table className="w-full text-sm">
+              <thead>
+                <tr>
+                  <th className="text-left">Εβδομάδα</th>
+                  <th className="text-left">Μέσο VO2max</th>
+                  <th className="text-left">Θερμίδες</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-  </motion.div>
+              </thead>
+              <tbody>
+                {insights.summary.map((row, idx) => (
+                  <tr key={idx} className="border-t">
+                    <td>{row.week}</td>
+                    <td>{row.avgVO2.toFixed(1)}</td>
+                    <td>{row.totalKcal.toFixed(0)} kcal</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </motion.div>
   );
- }
+}
