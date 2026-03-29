@@ -4,14 +4,12 @@ import { Helmet } from "react-helmet";
 import { useUser } from "@clerk/clerk-react";
 import { useTheme } from "./ThemeContext";
 import defaultMeals from "./defaultMeals.json";
-import TabsCompo from "./TabsCompo";
 import PlanDayCard from "./PlanDayCard";
 import {
   safeNum,
   round1,
   calculateNutritionSummary,
   createFoodMap,
-  getFoodByName,
   getTotalMacrosFromMeals,
   getTotalKcalFromMeals,
 } from "./utils/nutritionCalculations";
@@ -36,15 +34,14 @@ import MacroGoalsSection from "./components/MacroGoalsSection";
 import MealPlannerSection from "./components/MealPlannerSection";
 import FoodsSection from "./components/FoodsSection";
 import AnalyticsSection from "./components/AnalyticsSection";
+import NutritionStatusBar from "./components/NutritionStatusBar";
+import { getNutritionUiTokens } from "./utils/nutritionUiTokens";
 
 export default function NutritionModule() {
   const { theme, toggleTheme } = useTheme();
   const { user } = useUser();
 
-  const panelClass =
-    theme === "dark"
-      ? "bg-zinc-900/95 border border-zinc-800 text-zinc-100"
-      : "bg-white/95 border border-zinc-200 text-zinc-900";
+  const ui = useMemo(() => getNutritionUiTokens(theme), [theme]);
 
   const [simpleView, setSimpleView] = useState(false);
   const [foodSearch, setFoodSearch] = useState("");
@@ -71,23 +68,10 @@ export default function NutritionModule() {
   });
   const [selectedMealType, setSelectedMealType] = useState("snack");
   const [userFoods, setUserFoods] = useState(() => readStoredJson("userFoods", []));
+  const [localSaveStatus, setLocalSaveStatus] = useState("ready");
+  const [lastLocalSavedAt, setLastLocalSavedAt] = useState(null);
 
   useNutritionPersistence({ protein, fat, carbs, preference, daysOrder, customMeals, userFoods });
-
-  const [userThemeOverride, setUserThemeOverride] = useState(null);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const apply = (isDark) => {
-      if (userThemeOverride != null) return;
-      const shouldBeDark = theme === "dark";
-      if (isDark && !shouldBeDark) toggleTheme();
-      if (!isDark && shouldBeDark) toggleTheme();
-    };
-    apply(mq.matches);
-    const handler = (e) => apply(e.matches);
-    mq.addEventListener?.("change", handler);
-    return () => mq.removeEventListener?.("change", handler);
-  }, [theme, toggleTheme, userThemeOverride]);
 
   const foodDB = useMemo(
     () => [
@@ -104,16 +88,29 @@ export default function NutritionModule() {
     ],
     []
   );
-  const mealOptions = {};
-  const mealOptionsFlat = useMemo(() => Object.values(mealOptions).flat(), [mealOptions]);
-  const allFoods = useMemo(() => [...foodDB, ...defaultMeals, ...userFoods], [foodDB, userFoods]);
-  const allFoodsFull = useMemo(() => [...allFoods, ...mealOptionsFlat], [allFoods, mealOptionsFlat]);
+  const allFoods = useMemo(() => [...foodDB, ...defaultMeals, ...userFoods].filter(isValidFood), [foodDB, userFoods]);
   const filteredFoods = useMemo(
     () => allFoods.filter((item) => item.name.toLowerCase().includes(foodSearch.toLowerCase())),
     [foodSearch, allFoods]
   );
   const filteredFoodsSafe = filteredFoods.filter(isValidFood);
   const userFoodsSafe = userFoods.filter(isValidFood);
+
+  const localSaveReadyRef = useRef(false);
+  useEffect(() => {
+    if (!localSaveReadyRef.current) {
+      localSaveReadyRef.current = true;
+      return;
+    }
+
+    setLocalSaveStatus("saving");
+    const id = setTimeout(() => {
+      setLocalSaveStatus("saved");
+      setLastLocalSavedAt(new Date().toISOString());
+    }, 220);
+
+    return () => clearTimeout(id);
+  }, [protein, fat, carbs, preference, daysOrder, customMeals, userFoods]);
 
   const calculateNutrition = useCallback(() => {
     const summary = calculateNutritionSummary({
@@ -179,8 +176,7 @@ export default function NutritionModule() {
     }
   }, [generateMealPlanFromTargets]);
 
-  const foodByName = useMemo(() => createFoodMap(allFoodsFull), [allFoodsFull]);
-  const getFood = useCallback((name) => getFoodByName(foodByName, name), [foodByName]);
+  const foodByName = useMemo(() => createFoodMap(allFoods), [allFoods]);
 
   const saveMealsToSupabase = useCallback(async () => {
     if (!user?.id) return;
@@ -220,7 +216,7 @@ export default function NutritionModule() {
     }
   }, [user?.id]);
 
-  useNutritionSync({ userId: user?.id, bmr, tdee, protein, fat, carbs, weight, setIntakeHistory });
+  const { syncStatus, lastSyncAt } = useNutritionSync({ userId: user?.id, bmr, tdee, protein, fat, carbs, weight, setIntakeHistory });
 
   const addCustomFood = useCallback(() => {
     if (!canAddFood(newFood)) {
@@ -243,37 +239,17 @@ export default function NutritionModule() {
 
   const totalMacros = useMemo(() => getTotalMacrosFromMeals(customMeals, foodByName), [customMeals, foodByName]);
   const planKcal = useMemo(() => getTotalKcalFromMeals(customMeals, foodByName), [customMeals, foodByName]);
+  const totalMealSlots = (daysOrder?.length || 0) * 4;
+  const filledMeals = useMemo(() => Object.values(customMeals || {}).filter(Boolean).length, [customMeals]);
 
-  const TOKENS = theme === "dark"
-    ? {
-        panel: "bg-zinc-900/95 border border-zinc-800 text-zinc-100",
-        input: "bg-zinc-900 text-zinc-100 border-zinc-800 placeholder-zinc-500",
-        row: "bg-zinc-900",
-        rowAlt: "bg-zinc-950",
-        head: "bg-zinc-800",
-        border: "border-zinc-800",
-        headText: "text-zinc-100",
-        cellText: "text-zinc-200",
-      }
-    : {
-        panel: "bg-white/95 border border-zinc-200 text-zinc-900",
-        input: "bg-white text-zinc-900 border-zinc-300 placeholder-zinc-400",
-        row: "bg-white",
-        rowAlt: "bg-zinc-50",
-        head: "bg-zinc-200",
-        border: "border-zinc-300",
-        headText: "text-zinc-900",
-        cellText: "text-zinc-800",
-      };
-
-  const sectionStyle = `rounded-2xl p-5 shadow-sm ring-1 ${TOKENS.panel} ${theme === "dark" ? "ring-zinc-800 bg-gradient-to-b from-zinc-900/95 to-zinc-900/75" : "ring-zinc-200 bg-gradient-to-b from-white to-zinc-50"}`;
-  const inputStyle = `w-full rounded-md px-3 py-2 border transition-all duration-200 outline-none focus:ring-2 focus:ring-yellow-400 caret-yellow-400 ${theme === "dark" ? "!bg-zinc-900 !text-zinc-100 placeholder:text-zinc-500 border-zinc-800" : "!bg-white !text-zinc-900 placeholder:text-zinc-400 border-zinc-300"}`;
-  const rowBg = TOKENS.row;
-  const rowAltBg = TOKENS.rowAlt;
-  const headBg = TOKENS.head;
-  const borderCol = TOKENS.border;
-  const headText = TOKENS.headText;
-  const cellText = TOKENS.cellText;
+  const sectionStyle = ui.section;
+  const inputStyle = ui.input;
+  const rowBg = ui.row;
+  const rowAltBg = ui.rowAlt;
+  const headBg = ui.head;
+  const borderCol = ui.border;
+  const headText = ui.headText;
+  const cellText = ui.cellText;
 
   const exportToPDF = async () => {
     try {
@@ -310,7 +286,7 @@ export default function NutritionModule() {
 
   const exportToCSV = () => {
     try {
-      const days = ["Δευτέρα", "Τρίτη", "Τετάρτη", "Πέμπτη", "Παρασκευή", "Σάββατο", "Κυριακή"];
+      const days = daysOrder?.length ? daysOrder : DEFAULT_DAYS_ORDER;
       const mealOf = (d, t) => customMeals?.[`${d}-${t}`] ?? "";
       const esc = (v) => {
         const s = String(v ?? "");
@@ -377,11 +353,12 @@ export default function NutritionModule() {
       )}
 
       <motion.div
+        id="nutrition-print"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.5 }}
-        className={`min-h-screen px-6 py-10 space-y-10 transition-colors duration-500 ${theme === "dark" ? "bg-black text-zinc-100" : "bg-white text-zinc-900"}`}
+        className={`nutrition-lab min-h-screen px-6 py-10 space-y-10 transition-colors duration-500 ${theme === "dark" ? "bg-black text-zinc-100" : "bg-white text-zinc-900"}`}
       >
         <Helmet>
           <title>Nutrition Module | Health's Spot</title>
@@ -401,23 +378,22 @@ export default function NutritionModule() {
           </div>
         </div>
 
-        <div className="max-w-xl mx-auto space-y-10">
-          <div className="flex gap-4 items-center">
-            <label className="text-sm font-medium">
-              🎛️ Προτιμήσεις:
-              <span className="ml-1 text-xs text-gray-500" title="Ορίζει το διατροφικό μοτίβο π.χ. vegetarian ή χαμηλό σε υδατάνθρακες">ℹ️</span>
-            </label>
-            <select
-              value={preference}
-              onChange={(e) => setPreference(e.target.value)}
-              className={`p-2 rounded w-full border text-sm ${theme === "dark" ? "bg-gray-800 text-white border-gray-700" : "bg-white text-black border-gray-300"}`}
-            >
-              <option value="default">Κανονικό</option>
-              <option value="vegetarian">Vegetarian</option>
-              <option value="lowcarb">Χαμηλοί Υδατάνθρακες</option>
-            </select>
-          </div>
+        <NutritionStatusBar
+          ui={ui}
+          userId={user?.id}
+          localStatus={localSaveStatus}
+          lastLocalSavedAt={lastLocalSavedAt}
+          cloudStatus={syncStatus}
+          lastCloudSyncAt={lastSyncAt}
+          foodsTotal={allFoods.length}
+          customFoodsCount={userFoodsSafe.length}
+          filledMeals={filledMeals}
+          totalMealSlots={totalMealSlots}
+          planKcal={planKcal}
+          tdee={tdee}
+        />
 
+        <div className="max-w-xl mx-auto space-y-10">
           <div className="flex justify-between items-center">
             <button
               onClick={() => {
@@ -426,6 +402,14 @@ export default function NutritionModule() {
                   setFat(1);
                   setPreference("default");
                   setDaysOrder(DEFAULT_DAYS_ORDER);
+                  setCustomMeals({});
+                  setUserFoods([]);
+                  setFoodSearch("");
+                  setIntakeKcal("");
+                  setMacrosText("");
+                  setNewFood({ name: "", protein: "", fat: "", carbs: "" });
+                  setSelectedDay(DEFAULT_DAYS_ORDER[0]);
+                  setSelectedMealType("snack");
                   setCarbs(null);
                   setWeight(70);
                   setHeight(175);
@@ -434,27 +418,33 @@ export default function NutritionModule() {
                   setActivity(1.55);
                   setBmr(null);
                   setTdee(null);
-                  localStorage.removeItem("protein");
-                  localStorage.removeItem("fat");
-                  localStorage.removeItem("preference");
-                  localStorage.removeItem("daysOrder");
-                  localStorage.removeItem("carbs");
+                  setIntakeHistory([]);
+                  setLocalSaveStatus("saved");
+                  setLastLocalSavedAt(new Date().toISOString());
+                  [
+                    "protein",
+                    "fat",
+                    "preference",
+                    "daysOrder",
+                    "carbs",
+                    "customMeals",
+                    "userFoods",
+                  ].forEach((key) => localStorage.removeItem(key));
                 }
               }}
-              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded text-sm font-medium"
+              className="inline-flex items-center justify-center rounded-xl bg-red-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-red-600"
             >
               🔁 Επαναφορά Όλων
             </button>
 
-            <button onClick={toggleTheme} className="text-2xl hover:text-yellow-400 transition" title="Αλλαγή Θέματος">
+            <button onClick={toggleTheme} className={ui.secondaryButton + " text-2xl px-3 py-1"} title="Αλλαγή Θέματος">
               {theme === "dark" ? "☀" : "🌙"}
             </button>
           </div>
 
           <BmrTdeeSection
-            sectionStyle={sectionStyle}
             theme={theme}
-            inputStyle={inputStyle}
+            ui={ui}
             weight={weight}
             setWeight={setWeight}
             height={height}
@@ -471,8 +461,6 @@ export default function NutritionModule() {
           />
         </div>
 
-        <TabsCompo activeTab="🥗 Γεύματα" tabs={["📊 AI Προτάσεις", "🥗 Γεύματα", "📈 Σύγκριση"]} />
-
         <MacroGoalsSection
           protein={protein}
           setProtein={setProtein}
@@ -488,16 +476,18 @@ export default function NutritionModule() {
           getFatLabel={getFatLabel}
           generateMealPlanFromTargets={generateMealPlanFromTargets}
           handleGenerateAIPlan={handleGenerateAIPlan}
+          ui={ui}
         />
 
-        <div>
-          <PlanDayCard day={daysOrder[0]} customMeals={customMeals} allFoods={allFoodsFull} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            {daysOrder.map((day) => (
-              <PlanDayCard key={day} day={day} customMeals={customMeals} allFoods={allFoodsFull} />
-            ))}
+        {!simpleView && (
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              {daysOrder.map((day) => (
+                <PlanDayCard key={day} day={day} customMeals={customMeals} allFoods={allFoods} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <AnalyticsSection
           tdee={tdee}
@@ -514,7 +504,7 @@ export default function NutritionModule() {
           planKcal={planKcal}
           daysOrder={daysOrder}
           customMeals={customMeals}
-          allFoodsFull={allFoodsFull}
+          allFoodsFull={allFoods}
           saveMealsToSupabase={saveMealsToSupabase}
           loadMealsFromSupabase={loadMealsFromSupabase}
           savePlanToSupabase={savePlanToSupabase}
@@ -525,6 +515,7 @@ export default function NutritionModule() {
           sharePlan={sharePlan}
           intakeHistory={intakeHistory}
           theme={theme}
+          ui={ui}
         />
 
         <MealPlannerSection
@@ -532,11 +523,10 @@ export default function NutritionModule() {
           setDaysOrder={setDaysOrder}
           customMeals={customMeals}
           setCustomMeals={setCustomMeals}
-          allFoodsFull={allFoodsFull}
+          allFoodsFull={allFoods}
           handleReplacement={handleReplacement}
           theme={theme}
-          borderCol={borderCol}
-          panelClass={panelClass}
+          ui={ui}
           protein={protein}
           fat={fat}
           carbs={carbs}
@@ -559,6 +549,7 @@ export default function NutritionModule() {
           selectedMealType={selectedMealType}
           setSelectedMealType={setSelectedMealType}
           daysOrder={daysOrder}
+          foods={filteredFoodsSafe}
           userFoods={userFoodsSafe}
           setUserFoods={setUserFoods}
           setCustomMeals={setCustomMeals}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import {
   SortableContext,
@@ -10,23 +10,16 @@ import { CSS } from "@dnd-kit/utilities";
 import CollapsibleSection from "../CollapsibleSection";
 
 function SortableItem({ id, children }) {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id });
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    marginBottom: "0.5rem",
+    marginBottom: "0.75rem",
   };
 
   return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      className="rounded-2xl"
-      {...attributes}
-      {...listeners}
-    >
+    <div ref={setNodeRef} style={style} className="rounded-2xl" {...attributes} {...listeners}>
       {children}
     </div>
   );
@@ -48,71 +41,94 @@ export default function MealPlannerSection({
   planKcal,
   safeNum,
   round1,
+  ui,
 }) {
+  const forcedFieldStyle = useMemo(
+    () => ({
+      backgroundColor: theme === "dark" ? "#18181b" : "#ffffff",
+      color: theme === "dark" ? "#f4f4f5" : "#18181b",
+      WebkitTextFillColor: theme === "dark" ? "#f4f4f5" : "#18181b",
+      caretColor: "#facc15",
+      borderColor: theme === "dark" ? "#3f3f46" : "#d4d4d8",
+    }),
+    [theme]
+  );
+
   const dayCardClass =
     theme === "dark"
-      ? "bg-zinc-900 border border-zinc-700 text-zinc-100 shadow-sm"
-      : "bg-white border border-zinc-200 text-zinc-900 shadow-sm";
+      ? "rounded-2xl border border-zinc-800 bg-zinc-900/95 p-4 text-zinc-100 shadow-sm"
+      : "rounded-2xl border border-zinc-200 bg-white/95 p-4 text-zinc-900 shadow-sm";
 
   const mealRowClass =
     theme === "dark"
-      ? "bg-zinc-950/70 border border-zinc-800"
-      : "bg-zinc-50 border border-zinc-200";
+      ? "rounded-xl border border-zinc-800 bg-zinc-950/70 px-3 py-3"
+      : "rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-3";
 
   const badgeClass =
     theme === "dark"
-      ? "bg-zinc-800 text-zinc-200 border border-zinc-700"
-      : "bg-white text-zinc-700 border border-zinc-300";
+      ? "inline-flex items-center rounded-full border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-xs font-medium text-zinc-200"
+      : "inline-flex items-center rounded-full border border-zinc-300 bg-white px-2.5 py-1 text-xs font-medium text-zinc-700";
 
-  const summaryBoxClass =
+  const summaryTone =
     theme === "dark"
-      ? "bg-zinc-950 border border-zinc-700 text-zinc-100"
-      : "bg-zinc-50 border border-zinc-200 text-zinc-900";
+      ? "rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 shadow-sm"
+      : "rounded-2xl border border-zinc-200 bg-white/80 p-4 shadow-sm";
 
-  const forcedInputStyle =
-    theme === "dark"
-      ? {
-          backgroundColor: "#18181b",
-          color: "#f4f4f5",
-          WebkitTextFillColor: "#f4f4f5",
-          caretColor: "#facc15",
-          borderColor: "#3f3f46",
-        }
-      : {
-          backgroundColor: "#ffffff",
-          color: "#18181b",
-          WebkitTextFillColor: "#18181b",
-          caretColor: "#facc15",
-          borderColor: "#d4d4d8",
-        };
+  const target = {
+    protein: safeNum(protein) * safeNum(weight),
+    fat: safeNum(fat) * safeNum(weight),
+    carbs: safeNum(carbs),
+  };
+
+  const delta = {
+    protein: round1(safeNum(totalMacros.protein) - target.protein),
+    fat: round1(safeNum(totalMacros.fat) - target.fat),
+    carbs: round1(safeNum(totalMacros.carbs) - target.carbs),
+  };
 
   return (
     <CollapsibleSection title="🍲 Προγραμματισμός Γευμάτων ανά Ημέρα">
-      <DndContext
-        collisionDetection={closestCenter}
-        onDragEnd={({ active, over }) => {
-          if (!over || active.id === over.id) return;
+      <div className="space-y-4">
+        <div className={ui?.summaryBox || summaryTone}>
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <h3 className={ui?.label}>Weekly meal flow</h3>
+              <p className={ui?.mutedText}>
+                Σύρε τις ημέρες για να αλλάξεις σειρά. Κάθε αλλαγή μένει στο local persistence, οπότε δεν χάνεται με ένα refresh σαν να μην έγινε ποτέ.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <span className={ui?.badge}>🎯 {target.protein.toFixed(1)}g P</span>
+              <span className={ui?.badge}>🥑 {target.fat.toFixed(1)}g F</span>
+              <span className={ui?.badge}>🍞 {target.carbs.toFixed(1)}g C</span>
+            </div>
+          </div>
+        </div>
 
-          setDaysOrder((items) => {
-            const oldIndex = items.indexOf(active.id);
-            const newIndex = items.indexOf(over.id);
-            if (oldIndex === -1 || newIndex === -1) return items;
-            return arrayMove(items, oldIndex, newIndex);
-          });
-        }}
-      >
-        <SortableContext
-          items={daysOrder}
-          strategy={verticalListSortingStrategy}
+        <DndContext
+          collisionDetection={closestCenter}
+          onDragEnd={({ active, over }) => {
+            if (!over || active.id === over.id) return;
+
+            setDaysOrder((items) => {
+              const oldIndex = items.indexOf(active.id);
+              const newIndex = items.indexOf(over.id);
+              if (oldIndex === -1 || newIndex === -1) return items;
+              return arrayMove(items, oldIndex, newIndex);
+            });
+          }}
         >
-          {daysOrder.map((day) => (
-            <SortableItem key={day} id={day}>
-              <div className={`rounded-2xl p-4 ${dayCardClass}`}>
-                <p className="font-bold text-yellow-400 mb-3">📅 {day}</p>
+          <SortableContext items={daysOrder} strategy={verticalListSortingStrategy}>
+            {daysOrder.map((day) => (
+              <SortableItem key={day} id={day}>
+                <div className={dayCardClass}>
+                  <div className="mb-3 flex items-center justify-between gap-3">
+                    <p className="font-bold text-yellow-400">📅 {day}</p>
+                    <span className={ui?.helper}>drag & drop σειράς</span>
+                  </div>
 
-                <ul className="space-y-3">
-                  {["breakfast", "lunch", "snack", "dinner"].map(
-                    (mealType) => {
+                  <ul className="space-y-3">
+                    {["breakfast", "lunch", "snack", "dinner"].map((mealType) => {
                       const emoji =
                         mealType === "breakfast"
                           ? "🍽️"
@@ -139,38 +155,17 @@ export default function MealPlannerSection({
                       const f = Number(food?.fat) || 0;
                       const c = Number(food?.carbs) || 0;
 
-                      const target = {
-                        protein: safeNum(protein) * safeNum(weight),
-                        fat: safeNum(fat) * safeNum(weight),
-                        carbs: safeNum(carbs),
-                      };
-
-                      const delta = {
-                        protein: round1(
-                          safeNum(totalMacros.protein) - target.protein
-                        ),
-                        fat: round1(safeNum(totalMacros.fat) - target.fat),
-                        carbs: round1(safeNum(totalMacros.carbs) - target.carbs),
-                      };
-
                       return (
-                        <li
-                          key={mealKey}
-                          className={`rounded-xl px-3 py-3 ${mealRowClass}`}
-                        >
-                          <div className="text-sm font-semibold mb-2">
+                        <li key={mealKey} className={mealRowClass}>
+                          <div className="mb-2 text-sm font-semibold">
                             {emoji} {label}
                           </div>
 
-                          <div className="flex gap-2 items-start">
+                          <div className="flex flex-col gap-2 xl:flex-row xl:items-start">
                             <input
                               title="Εισαγωγή ή τροποποίηση γεύματος"
-                              className={`flex-1 text-sm rounded px-3 py-2 border shadow-sm ${
-                                theme === "dark"
-                                  ? "border-zinc-700 placeholder-zinc-500"
-                                  : "border-zinc-300 placeholder-zinc-400"
-                              }`}
-                              style={forcedInputStyle}
+                              className={`${ui?.input} flex-1 text-sm`}
+                              style={forcedFieldStyle}
                               value={mealName}
                               onChange={(e) =>
                                 setCustomMeals((prev) => ({
@@ -182,78 +177,51 @@ export default function MealPlannerSection({
                             />
 
                             <button
-                              className="shrink-0 text-xs bg-blue-600 text-white px-2 py-2 rounded hover:bg-blue-700 transition"
+                              className={`${ui?.primaryButton} shrink-0 text-sm`}
                               title="Αυτόματη αντικατάσταση από βάση"
                               onClick={() => handleReplacement(day, mealType)}
                             >
                               🔁 Αντικατάσταση
                             </button>
 
-                            {mealName && (p || f || c) ? (
-                              <div
-                                className={`ml-auto text-xs rounded px-2 py-2 whitespace-nowrap ${badgeClass}`}
-                                title="Μακροθρεπτικά του γεύματος"
-                              >
-                                📊 {p}g P / {f}g F / {c}g C
-                              </div>
-                            ) : (
-                              <div
-                                className={`ml-auto text-xs rounded px-2 py-2 whitespace-nowrap opacity-60 ${badgeClass}`}
-                              >
-                                📊 —
-                              </div>
-                            )}
+                            <div className={`${badgeClass} xl:ml-auto`} title="Μακροθρεπτικά του γεύματος">
+                              {mealName && (p || f || c) ? `📊 ${p}g P / ${f}g F / ${c}g C` : "📊 —"}
+                            </div>
                           </div>
 
                           {mealType === "dinner" && (
-                            <div className={`mt-3 rounded-xl px-3 py-3 ${summaryBoxClass}`}>
-                              <div className="text-sm space-y-1">
-                                <p>
-                                  🎯 Στόχος: {target.protein.toFixed(1)}g P,{" "}
-                                  {target.fat.toFixed(1)}g F,{" "}
-                                  {target.carbs.toFixed(1)}g C
-                                </p>
-
-                                <p>
-                                  📦 Πλάνο: {totalMacros.protein.toFixed(1)}g P /{" "}
-                                  {totalMacros.fat.toFixed(1)}g F /{" "}
-                                  {totalMacros.carbs.toFixed(1)}g C
-                                </p>
-
-                                <p
-                                  className={
-                                    theme === "dark"
-                                      ? "text-yellow-300"
-                                      : "text-yellow-700"
-                                  }
-                                >
-                                  ✏️ Διαφορά: {delta.protein.toFixed(1)} P /{" "}
-                                  {delta.fat.toFixed(1)} F /{" "}
-                                  {delta.carbs.toFixed(1)} C
-                                </p>
+                            <div className={`mt-3 ${summaryTone}`}>
+                              <div className="grid gap-3 md:grid-cols-2">
+                                <div>
+                                  <p className={ui?.helper}>Στόχος ημέρας</p>
+                                  <p className="mt-1 font-semibold">
+                                    {target.protein.toFixed(1)}g P · {target.fat.toFixed(1)}g F · {target.carbs.toFixed(1)}g C
+                                  </p>
+                                </div>
+                                <div>
+                                  <p className={ui?.helper}>Σύνολο πλάνου</p>
+                                  <p className="mt-1 font-semibold">
+                                    {totalMacros.protein.toFixed(1)}g P · {totalMacros.fat.toFixed(1)}g F · {totalMacros.carbs.toFixed(1)}g C
+                                  </p>
+                                </div>
                               </div>
 
-                              <p
-                                className={
-                                  theme === "dark"
-                                    ? "text-yellow-300 mt-2"
-                                    : "text-yellow-700 mt-2"
-                                }
-                              >
-                                🔥 Θερμίδες από το πλάνο: {planKcal} kcal
+                              <p className={`mt-3 ${ui?.mutedText}`}>
+                                ✏️ Διαφορά: {delta.protein.toFixed(1)} P / {delta.fat.toFixed(1)} F / {delta.carbs.toFixed(1)} C
                               </p>
+                              <p className="mt-2 text-base font-bold">🔥 Θερμίδες από το πλάνο: {planKcal} kcal</p>
                             </div>
                           )}
                         </li>
                       );
-                    }
-                  )}
-                </ul>
-              </div>
-            </SortableItem>
-          ))}
-        </SortableContext>
-      </DndContext>
+                    })}
+                  </ul>
+                </div>
+              </SortableItem>
+            ))}
+          </SortableContext>
+        </DndContext>
+      </div>
     </CollapsibleSection>
   );
 }

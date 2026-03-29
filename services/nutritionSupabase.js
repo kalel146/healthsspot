@@ -63,7 +63,7 @@ export async function loadPlanFromSupabase({ userId }) {
     .eq("user_id", userId)
     .order("created_at", { ascending: false })
     .limit(1)
-    .single();
+    .maybeSingle();
 
   if (error) throw error;
   return data?.plan_data || EMPTY_MEALS;
