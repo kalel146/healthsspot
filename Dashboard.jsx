@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "./ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
@@ -6,16 +6,16 @@ import { useUser } from "@clerk/clerk-react";
 import logo from "./assets/logo.png";
 import AdvancedMetrics from "./components/AdvancedMetrics";
 import { useSwipeable } from "react-swipeable";
-import { tsParticles } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 import Particles from "react-tsparticles";
-import { Title, Meta } from 'react-head';
 
 function useIsPWA() {
   const [isPWA, setIsPWA] = useState(false);
 
   useEffect(() => {
-    const standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+    const standalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone;
     setIsPWA(standalone);
   }, []);
 
@@ -24,18 +24,30 @@ function useIsPWA() {
 
 function UpgradeModal({ onClose }) {
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
       <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
+        initial={{ scale: 0.92, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.8, opacity: 0 }}
-        className="bg-zinc-900 text-white rounded-xl p-6 w-[90%] max-w-sm shadow-2xl"
+        exit={{ scale: 0.92, opacity: 0 }}
+        className="w-[90%] max-w-sm rounded-2xl border border-yellow-400/30 bg-zinc-900 p-6 text-white shadow-2xl"
       >
-        <h2 className="text-xl font-bold mb-2 text-yellow-400">🚀 Upgrade Required</h2>
-        <p className="text-sm mb-4">Αυτό το feature είναι διαθέσιμο μόνο για PRO ή ELITE μέλη. Αναβάθμισε για να αποκτήσεις πλήρη πρόσβαση.</p>
+        <h2 className="mb-2 text-xl font-bold text-yellow-400">🚀 Upgrade Required</h2>
+        <p className="mb-4 text-sm text-zinc-200">
+          Αυτό το feature είναι διαθέσιμο μόνο για PRO ή ELITE μέλη. Αναβάθμισε για να αποκτήσεις πλήρη πρόσβαση.
+        </p>
         <div className="flex justify-end gap-2">
-          <button onClick={onClose} className="px-3 py-1 text-sm rounded bg-gray-700 hover:bg-gray-600">Άκυρο</button>
-          <button onClick={() => window.open("/upgrade", "_self")} className="px-4 py-1 text-sm rounded bg-yellow-500 text-black font-semibold hover:bg-yellow-400">Αναβάθμιση</button>
+          <button
+            onClick={onClose}
+            className="rounded-lg bg-gray-700 px-3 py-1 text-sm hover:bg-gray-600"
+          >
+            Άκυρο
+          </button>
+          <button
+            onClick={() => window.open("/upgrade", "_self")}
+            className="rounded-lg bg-yellow-500 px-4 py-1 text-sm font-semibold text-black hover:bg-yellow-400"
+          >
+            Αναβάθμιση
+          </button>
         </div>
       </motion.div>
     </div>
@@ -44,10 +56,10 @@ function UpgradeModal({ onClose }) {
 
 function MobileDashboard({ user }) {
   const [activeTab, setActiveTab] = useState("dashboard");
-  const [userLevel, setUserLevel] = useState("basic"); // mock level, change as needed
+  const [userLevel, setUserLevel] = useState("basic");
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
     const level = user?.publicMetadata?.userLevel || "basic";
     setUserLevel(level);
   }, [user]);
@@ -55,9 +67,7 @@ function MobileDashboard({ user }) {
   const tabs = [
     { key: "dashboard", icon: userLevel === "basic" ? "🏠" : "🔥", label: "Home", badge: 0 },
     { key: "metrics", icon: userLevel === "basic" ? "📊" : "🧬", label: "Metrics", badge: 3 },
-    ...(userLevel !== "basic"
-      ? [{ key: "insights", icon: "🧠", label: "Insights", badge: 0 }]
-      : []),
+    ...(userLevel !== "basic" ? [{ key: "insights", icon: "🧠", label: "Insights", badge: 0 }] : []),
     { key: "settings", icon: "⚙️", label: "Settings", badge: 1 },
   ];
 
@@ -83,33 +93,49 @@ function MobileDashboard({ user }) {
   const renderTabContent = () => {
     switch (activeTab) {
       case "dashboard":
-        return <motion.div key="dashboard" variants={tabVariants} initial="initial" animate="animate" exit="exit">🏠 Dashboard view</motion.div>;
+        return (
+          <motion.div key="dashboard" variants={tabVariants} initial="initial" animate="animate" exit="exit">
+            🏠 Dashboard view
+          </motion.div>
+        );
       case "metrics":
-        return <motion.div key="metrics" variants={tabVariants} initial="initial" animate="animate" exit="exit">📊 Metrics view</motion.div>;
+        return (
+          <motion.div key="metrics" variants={tabVariants} initial="initial" animate="animate" exit="exit">
+            📊 Metrics view
+          </motion.div>
+        );
       case "insights":
-        return userLevel === "basic"
-          ? setShowUpgradeModal(true)
-          : <motion.div key="insights" variants={tabVariants} initial="initial" animate="animate" exit="exit">📈 Insights view</motion.div>;
+        return userLevel === "basic" ? (
+          setShowUpgradeModal(true)
+        ) : (
+          <motion.div key="insights" variants={tabVariants} initial="initial" animate="animate" exit="exit">
+            📈 Insights view
+          </motion.div>
+        );
       case "settings":
-        return <motion.div key="settings" variants={tabVariants} initial="initial" animate="animate" exit="exit">⚙️ Settings view</motion.div>;
+        return (
+          <motion.div key="settings" variants={tabVariants} initial="initial" animate="animate" exit="exit">
+            ⚙️ Settings view
+          </motion.div>
+        );
       default:
         return null;
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-gradient-to-br from-zinc-800 via-zinc-900 to-black text-white">
+    <div className="flex min-h-screen flex-col justify-between bg-gradient-to-br from-zinc-800 via-zinc-900 to-black text-white">
       <div className="p-6 text-center text-sm" {...swipeHandlers}>
-        <h1 className="text-xl font-bold mb-2">📱 Mobile App Mode</h1>
-        <p className="mb-4">Welcome to the installed version of <strong>Health's Spot</strong>!</p>
-        <AnimatePresence mode="wait">
-          {renderTabContent()}
-        </AnimatePresence>
+        <h1 className="mb-2 text-xl font-bold">📱 Mobile App Mode</h1>
+        <p className="mb-4">
+          Welcome to the installed version of <strong>Health&apos;s Spot</strong>!
+        </p>
+        <AnimatePresence mode="wait">{renderTabContent()}</AnimatePresence>
       </div>
 
       {showUpgradeModal && <UpgradeModal onClose={() => setShowUpgradeModal(false)} />}
 
-      <nav className="fixed bottom-3 left-1/2 -translate-x-1/2 bg-zinc-900/80 backdrop-blur-xl rounded-full px-4 py-2 shadow-xl flex justify-between w-[90%] max-w-sm z-50">
+      <nav className="fixed bottom-3 left-1/2 z-50 flex w-[90%] max-w-sm -translate-x-1/2 justify-between rounded-full bg-zinc-900/80 px-4 py-2 shadow-xl backdrop-blur-xl">
         {tabs.map((tab) => (
           <button
             key={tab.key}
@@ -120,15 +146,17 @@ function MobileDashboard({ user }) {
                 setActiveTab(tab.key);
               }
             }}
-            className={`relative flex flex-col items-center px-3 py-1 text-xs transition duration-300 ${activeTab === tab.key ? "text-yellow-400 scale-110" : "text-white"}`}
+            className={`relative flex flex-col items-center px-3 py-1 text-xs transition duration-300 ${
+              activeTab === tab.key ? "scale-110 text-yellow-400" : "text-white"
+            }`}
           >
             <span className="text-lg">{tab.icon}</span>
             {tab.badge > 0 && (
-              <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-[10px] rounded-full px-1.5">
+              <span className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600 px-1.5 text-[10px] text-white">
                 {tab.badge}
               </span>
             )}
-            <span className="text-[10px] mt-0.5">{tab.label}</span>
+            <span className="mt-0.5 text-[10px]">{tab.label}</span>
           </button>
         ))}
       </nav>
@@ -136,18 +164,103 @@ function MobileDashboard({ user }) {
   );
 }
 
-export default function Dashboard() {
+function Surface({ theme, children, className = "", accent = false }) {
+  return (
+    <div
+      className={`rounded-[28px] backdrop-blur-sm transition-colors duration-300 ${
+        theme === "dark"
+          ? `border border-white/6 bg-slate-950/72 text-white shadow-[0_20px_60px_rgba(0,0,0,0.22)] ${accent ? "ring-1 ring-yellow-400/8" : ""}`
+          : `border border-slate-200/70 bg-white/84 text-slate-900 shadow-[0_20px_60px_rgba(148,163,184,0.16)] ${accent ? "ring-1 ring-yellow-500/8" : ""}`
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
 
+function Pill({ theme, children }) {
+  return (
+    <span
+      className={`inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${
+        theme === "dark"
+          ? "border-yellow-400/25 bg-yellow-400/10 text-yellow-300"
+          : "border-yellow-500/30 bg-yellow-100 text-yellow-700"
+      }`}
+    >
+      {children}
+    </span>
+  );
+}
+
+function MicroSignal({ theme, label, value, helper }) {
+  return (
+    <div
+      className={`rounded-2xl p-3 ${
+        theme === "dark"
+          ? "bg-white/[0.035] ring-1 ring-inset ring-white/6"
+          : "bg-slate-50/90 ring-1 ring-inset ring-slate-200/70"
+      }`}
+    >
+      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">{label}</div>
+      <div className="mt-2 text-sm font-bold text-yellow-400">{value}</div>
+      <div className={`mt-1 text-[11px] leading-5 ${theme === "dark" ? "text-slate-400" : "text-slate-500"}`}>{helper}</div>
+    </div>
+  );
+}
+
+function StatCard({ title, value, subtitle, theme }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.32 }}
+      className={`rounded-2xl p-4 ${
+        theme === "dark"
+          ? "bg-slate-900/78 ring-1 ring-inset ring-white/6"
+          : "bg-slate-50/92 ring-1 ring-inset ring-slate-200/70"
+      }`}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">{title}</div>
+        <span className={`mt-1 h-2.5 w-2.5 rounded-full ${theme === "dark" ? "bg-yellow-400/90" : "bg-yellow-500"}`} />
+      </div>
+      <div className="mt-3 text-xl font-black text-yellow-400">{value}</div>
+      <div className={`mt-1 text-xs leading-5 ${theme === "dark" ? "text-slate-400" : "text-slate-500"}`}>{subtitle}</div>
+    </motion.div>
+  );
+}
+
+function QuickAction({ label, sublabel, icon, onClick, theme }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`group flex min-h-[88px] items-start gap-3 rounded-2xl p-4 text-left transition duration-200 hover:-translate-y-0.5 ${
+        theme === "dark"
+          ? "bg-slate-900/72 ring-1 ring-inset ring-white/6 hover:ring-yellow-400/16 hover:bg-slate-900/84"
+          : "bg-slate-50/92 ring-1 ring-inset ring-slate-200/70 hover:ring-yellow-500/18 hover:bg-white"
+      }`}
+    >
+      <div className="text-xl leading-none">{icon}</div>
+      <div className="flex-1">
+        <div className="text-sm font-bold">{label}</div>
+        <div className={`mt-1 text-xs leading-5 ${theme === "dark" ? "text-slate-400" : "text-slate-500"}`}>{sublabel}</div>
+      </div>
+      <div className={`text-sm transition group-hover:translate-x-0.5 ${theme === "dark" ? "text-yellow-400" : "text-yellow-600"}`}>→</div>
+    </button>
+  );
+}
+
+function SectionEyebrow({ children }) {
+  return <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{children}</div>;
+}
+
+export default function Dashboard() {
   const navigate = useNavigate();
   const { theme } = useTheme();
   const { user, isLoaded } = useUser();
   const isPWA = useIsPWA();
- 
-    const [showTip, setShowTip] = useState(() => {
-    return localStorage.getItem("hideDashboardTip") !== "true";
-  });
-  const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
-  
+  const [showTip, setShowTip] = useState(() => localStorage.getItem("hideDashboardTip") !== "true");
+
   const particlesInit = async (engine) => {
     await loadFull(engine);
   };
@@ -158,94 +271,127 @@ export default function Dashboard() {
     setShowTip(false);
   };
 
+  useEffect(() => {
+    document.title = "Health's Spot | FIT MENU";
 
- useEffect(() => {
-  document.title = "Health's Spot | Dashboard";
+    const meta = document.createElement("meta");
+    meta.name = "description";
+    meta.content = "FIT MENU dashboard for health metrics, performance and nutrition overview.";
+    document.head.appendChild(meta);
 
-  const meta = document.createElement("meta");
-  meta.name = "description";
-  meta.content = "Welcome to your health dashboard with metrics, insights and progress.";
-
-  document.head.appendChild(meta);
-
-  return () => {
-    document.head.removeChild(meta); // καθαρίζει όταν φεύγεις από τη σελίδα
-  };
-}, []);
-
+    return () => {
+      document.head.removeChild(meta);
+    };
+  }, []);
 
   useEffect(() => {
     if (window.location.pathname === "/dashboard") {
       window.history.replaceState(null, "", "/dashboard");
     }
   }, []);
-  
+
   if (isPWA) {
     return <MobileDashboard user={user} />;
   }
 
   if (!isLoaded) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 text-gray-800">
+      <div className="flex min-h-screen items-center justify-center bg-gray-100 text-gray-800">
         <p>Loading...</p>
       </div>
     );
   }
 
-    if (!user) {
+  if (!user) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex min-h-screen items-center justify-center bg-gray-100">
         <div className="text-center">
-          <img src={logo} alt="Health's Spot Logo" className="w-24 h-24 mb-4" />
-          <h1 className="text-2xl font-bold mb-2">Welcome to Health's Spot</h1>
+          <img src={logo} alt="Health's Spot Logo" className="mx-auto mb-4 h-24 w-24" />
+          <h1 className="mb-2 text-2xl font-bold">Welcome to Health&apos;s Spot</h1>
           <p className="text-gray-600">Please log in to access your dashboard.</p>
-          <button onClick={() => navigate("/sign-in")} className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+          <button
+            onClick={() => navigate("/sign-in")}
+            className="mt-4 rounded bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600"
+          >
             Log In
           </button>
         </div>
       </div>
     );
   }
- const isAdmin = user?.emailAddresses?.[0]?.emailAddress === "giannis@admin.dev";
-  const userLevel = "admin"; // 🔥 Full access always
 
-  // Default Welcome Screen for basic users
+  const isAdmin = user?.emailAddresses?.[0]?.emailAddress === "giannis@admin.dev";
+  const userLevel = "admin";
+
   if (userLevel === "basic") {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50 text-gray-800">
+      <div className="flex min-h-screen items-center justify-center bg-gray-50 text-gray-800">
         <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4">👋 Welcome, {user.firstName || "User"}!</h1>
-          <p className="text-lg">Είσαι έτοιμος να εξερευνήσεις το Health’s Spot. Αναβάθμισε για πλήρη πρόσβαση ή ξεκίνα με βασικές δυνατότητες.</p>
+          <h1 className="mb-4 text-3xl font-bold">👋 Welcome, {user.firstName || "User"}!</h1>
+          <p className="text-lg">
+            Είσαι έτοιμος να εξερευνήσεις το Health’s Spot. Αναβάθμισε για πλήρη πρόσβαση ή ξεκίνα με βασικές δυνατότητες.
+          </p>
           <div className="mt-6 space-x-4">
-            <button onClick={() => navigate("/programs")} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Δες τα Προγράμματα</button>
-            <button onClick={() => navigate("/upgrade")} className="px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-300">Αναβάθμιση</button>
+            <button
+              onClick={() => navigate("/programs")}
+              className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+            >
+              Δες τα Προγράμματα
+            </button>
+            <button
+              onClick={() => navigate("/upgrade")}
+              className="rounded bg-yellow-400 px-4 py-2 text-black hover:bg-yellow-300"
+            >
+              Αναβάθμιση
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    );
+  }
+
+  const summaryCards = useMemo(
+    () => [
+      { title: "BMR / TDEE", value: "2400 kcal", subtitle: "Current daily energy reference" },
+      { title: "1RM (Brzycki)", value: "145 kg", subtitle: "Top strength marker" },
+      { title: "VO₂max", value: "52 ml/kg/min", subtitle: "Cardiorespiratory profile" },
+      { title: "Stress / Recovery", value: "Moderate", subtitle: "Weekly recovery signal" },
+      { title: "Nutrition Target", value: "P180 · C320 · F70", subtitle: "Active macro setup" },
+      { title: "Recent Measurements", value: "5 entries", subtitle: "Latest captured records" },
+    ],
+    []
   );
-}
+
+  const quickActions = [
+    { label: "Nutrition", sublabel: "Macros, targets και meal planning", icon: "🍎", path: "/nutrition" },
+    { label: "Cardio", sublabel: "VO₂, trends και endurance view", icon: "🏃", path: "/cardio" },
+    { label: "Power", sublabel: "Strength markers και loading logic", icon: "🏋️", path: "/power" },
+    { label: "Export", sublabel: "Reports, history και sharing", icon: "📄", path: "/report" },
+  ];
+
+  const microSignals = [
+    { label: "Command", value: "FIT MENU", helper: "One home for performance, recovery and nutrition oversight." },
+    { label: "Workflow", value: "Fast access", helper: "Jump straight into the modules that actually move the numbers." },
+    { label: "Discipline", value: "Weekly logging", helper: "Good dashboard, bad data = expensive decoration. Feed it consistently." },
+  ];
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ type: "spring", stiffness: 80, damping: 20 }}
-      className={`min-h-screen px-2 md:px-4 py-6 flex flex-col items-start gap-8 transition-colors duration-500 ease-in-out relative overflow-visible ${theme === "dark" ? "bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white" : "bg-gradient-to-br from-white via-slate-100 to-gray-200 text-black"}`}
+      className={`relative min-h-screen overflow-x-hidden px-2 py-5 transition-colors duration-500 sm:px-4 md:px-6 xl:px-8 ${
+        theme === "dark"
+          ? "bg-gradient-to-br from-slate-950 via-black to-slate-900 text-white"
+          : "bg-gradient-to-br from-white via-slate-100 to-slate-200 text-black"
+      }`}
     >
-         <div className="text-center mx-auto">
-        <h1 className="text-3xl font-bold text-yellow-400 drop-shadow mb-4">🎉 Welcome to your Dashboard</h1>
-        <p className="text-gray-500 dark:text-gray-300">Here comes your premium view.</p>
-      </div>
- {/* Όλοι βλέπουν το dashboard, αλλά οι μη-admin παίρνουν το upgrade prompt */}
-      {(user?.publicMetadata?.userLevel === "basic" && !isAdmin) && (
-        <UpgradeModal onClose={() => setShowUpgradePrompt(false)} />
-      )}
-   
-      {/* Particle FX */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
+      {user?.publicMetadata?.userLevel === "basic" && !isAdmin && <UpgradeModal onClose={() => null} />}
+
+      <div className="pointer-events-none absolute inset-0 -z-10">
         <Particles
-          id="tsparticles"
+          id="dashboard-particles"
           init={particlesInit}
           options={{
             fullScreen: false,
@@ -254,107 +400,176 @@ export default function Dashboard() {
             interactivity: {
               detectsOn: "canvas",
               events: { onHover: { enable: true, mode: "repulse" }, resize: true },
-              modes: { repulse: { distance: 50, duration: 0.4 } },
+              modes: { repulse: { distance: 36, duration: 0.25 } },
             },
             particles: {
-              number: { value: 120, density: { enable: true, area: 900 } },
-              color: { value: ["#00f6ff", "#f0f0f0", "#f97316"] },
+              number: { value: 34, density: { enable: true, area: 1200 } },
+              color: { value: ["#facc15", "#60a5fa", "#ffffff"] },
               shape: { type: "circle" },
-              opacity: { value: 0.6, random: true, anim: { enable: true, speed: 0.4, opacity_min: 0.1, sync: false } },
-              size: { value: { min: 2, max: 4 }, anim: { enable: true, speed: 1, size_min: 0.3 } },
-              move: { enable: true, speed: 0.3, direction: "none", random: true, outModes: "out" },
+              opacity: { value: 0.14, random: true },
+              size: { value: { min: 1, max: 2.4 } },
+              move: { enable: true, speed: 0.16, direction: "none", random: true, outModes: "out" },
             },
             detectRetina: true,
           }}
         />
       </div>
 
-      {/* Main Content */}
-      <div className="flex-1 w-full max-w-7xl flex flex-col mx-auto items-center">
-        <div className="flex w-full justify-between items-start px-4 md:px-10 lg:px-20 xl:px-32 2xl:px-40 max-w-6xl">
-          <div className="text-left space-y-1">
-            <h1 className="text-2xl font-bold text-yellow-400 drop-shadow-sm">
-              It's ON, {user?.firstName || "Athlete"}, 💯%
-            </h1>
-          </div>
-          <div className="text-right">
-            <span className="text-yellow-400 font-bold text-lg animate-flame">🥇 PLACE</span>
-          </div>
+      <div className="mx-auto flex w-full max-w-[1480px] flex-col gap-5">
+        <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1.55fr_0.95fr]">
+          <Surface theme={theme} accent className="relative overflow-hidden p-6 md:p-8">
+            <div className={`absolute inset-0 opacity-70 ${theme === "dark" ? "bg-[radial-gradient(circle_at_top_left,rgba(250,204,21,0.16),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.14),transparent_34%)]" : "bg-[radial-gradient(circle_at_top_left,rgba(250,204,21,0.12),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.10),transparent_30%)]"}`} />
+            <div className="relative flex flex-col gap-6">
+              <div className="flex flex-wrap items-center gap-2">
+                <Pill theme={theme}>FIT MENU</Pill>
+                <Pill theme={theme}>Premium View</Pill>
+                <Pill theme={theme}>Private Metrics</Pill>
+              </div>
+
+              <div className="max-w-3xl">
+                <h1 className="text-3xl font-black tracking-tight text-yellow-400 md:text-5xl">
+                  It&apos;s ON, {user?.firstName || "Athlete"}
+                </h1>
+                <p className={`mt-3 max-w-2xl text-sm leading-7 md:text-base ${theme === "dark" ? "text-slate-300" : "text-slate-600"}`}>
+                  Το FIT MENU είναι το κεντρικό command room σου για performance markers, nutrition setup,
+                  recovery signal και γρήγορη μετάβαση στα modules χωρίς dashboard-σαλάτα και διακοσμητικές ανοησίες.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <button
+                  onClick={() => navigate("/report")}
+                  className="rounded-xl bg-yellow-500 px-5 py-3 text-sm font-bold text-black transition hover:bg-yellow-400"
+                >
+                  📜 Create Report
+                </button>
+                <button
+                  onClick={() => navigate("/nutrition")}
+                  className={`rounded-xl px-5 py-3 text-sm font-semibold transition ${
+                    theme === "dark"
+                      ? "bg-slate-900/68 text-white ring-1 ring-inset ring-white/8 hover:ring-yellow-400/20"
+                      : "bg-white/82 text-slate-900 ring-1 ring-inset ring-slate-200/80 hover:ring-yellow-500/20"
+                  }`}
+                >
+                  🍎 Open Nutrition
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+                {microSignals.map((item) => (
+                  <MicroSignal
+                    key={item.label}
+                    theme={theme}
+                    label={item.label}
+                    value={item.value}
+                    helper={item.helper}
+                  />
+                ))}
+              </div>
+            </div>
+          </Surface>
+
+          <Surface theme={theme} className="p-5 md:p-6">
+            <div className="flex h-full flex-col gap-4">
+              <div className="grid grid-cols-[1fr_auto] items-start gap-4">
+                <div>
+                  <SectionEyebrow>Readiness</SectionEyebrow>
+                  <div className="mt-2 text-4xl font-black text-yellow-400">100%</div>
+                  <div className={`mt-1 text-xs ${theme === "dark" ? "text-slate-400" : "text-slate-500"}`}>
+                    Premium overview active
+                  </div>
+                </div>
+                <div className={`rounded-2xl px-4 py-3 text-right ${theme === "dark" ? "bg-slate-900/72 ring-1 ring-inset ring-white/6" : "bg-slate-50/90 ring-1 ring-inset ring-slate-200/70"}`}>
+                  <div className="text-[11px] uppercase tracking-[0.18em] text-slate-400">Tier</div>
+                  <div className="mt-1 text-lg font-bold">{isAdmin ? "Admin" : "Pro"}</div>
+                </div>
+              </div>
+
+              <div className={`h-2 w-full overflow-hidden rounded-full ${theme === "dark" ? "bg-slate-800" : "bg-slate-200"}`}>
+                <div className="h-full w-full rounded-full bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-300" />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <MicroSignal theme={theme} label="Status" value="Ready" helper="Modules armed, shortcuts clean, dashboard stable." />
+                <MicroSignal theme={theme} label="Focus" value="Metrics first" helper="Weekly entries decide whether this view helps or lies." />
+              </div>
+
+              {showTip ? (
+                <div className={`rounded-2xl p-4 ${theme === "dark" ? "bg-slate-900/68 ring-1 ring-inset ring-yellow-400/14" : "bg-yellow-50/90 ring-1 ring-inset ring-yellow-500/18"}`}>
+                  <div className="text-sm font-bold text-yellow-400">💡 FIT MENU Tip</div>
+                  <p className={`mt-2 text-xs leading-6 ${theme === "dark" ? "text-slate-300" : "text-slate-600"}`}>
+                    Πρόσθεσε BMR, VO₂max, macros και stress metrics σταθερά. Το dashboard είναι χρήσιμο μόνο όταν το τροφοδοτείς. Άδειο dashboard = ωραίο ψέμα.
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <button
+                      onClick={handleGotIt}
+                      className="rounded-lg bg-yellow-500 px-3 py-1.5 text-xs font-bold text-black hover:bg-yellow-400"
+                    >
+                      ✅ Thanks
+                    </button>
+                    <button
+                      onClick={handleHideForever}
+                      className={`rounded-lg px-3 py-1.5 text-xs font-semibold ${
+                        theme === "dark"
+                          ? "bg-slate-800 text-slate-200 hover:bg-slate-700"
+                          : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+                      }`}
+                    >
+                      ❌ Don&apos;t show again
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className={`rounded-2xl p-4 text-sm ${theme === "dark" ? "bg-slate-900/68 text-slate-300 ring-1 ring-inset ring-white/6" : "bg-slate-50/85 text-slate-600 ring-1 ring-inset ring-slate-200/70"}`}>
+                  Guidance hidden. Καλό σημάδι — σημαίνει ότι δεν χρειάζεσαι training wheels.
+                </div>
+              )}
+            </div>
+          </Surface>
         </div>
 
-        {showTip && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5 }}
-            className={`mt-4 p-3 text-xs rounded-lg shadow-lg border border-yellow-400 max-w-md z-50 relative self-center ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}
-          >
-            <h3 className="text-sm font-bold text-yellow-400 mb-1">💡 Tip</h3>
-            <p className="text-xs">➕ Πρόσθεσε μετρήσεις BMR, VO₂max, macros, stress. 🚀 Δες εβδομαδιαία εξέλιξη στα γραφήματα. 🦖 Τα δεδομένα σου είναι ορατά μόνο σε εσένα.</p>
-            <div className="flex gap-3 mt-3">
-              <button onClick={handleGotIt} className="bg-yellow-500 hover:bg-yellow-600 text-black text-xs font-bold px-2 py-1 rounded z-50">
-                ✅ Thanks
-              </button>
-              <button onClick={handleHideForever} className="bg-gray-700 hover:bg-gray-600 text-white text-xs font-semibold px-2 py-1 rounded z-50">
-                ❌ Don't show this again
-              </button>
-            </div>
-          </motion.div>
-        )}
-
-        <motion.h2
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-3xl font-bold text-yellow-400 drop-shadow mt-6 text-center"
-        >
-          FITNESS MENU
-        </motion.h2>
-
-        <div className="flex flex-col lg:flex-row gap-4 mt-4 justify-center items-start">
-          <div className="flex flex-col gap-3 lg:ml-auto w-[180px]">
-            <AdvancedMetrics compact smallCharts className="w-full" />
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => navigate("/report")}
-              className="bg-yellow-500 hover:bg-yellow-600 text-black text-sm font-bold py-2 px-5 rounded shadow hover:scale-105 transition"
-            >
-              📜 Create Report
-            </motion.button>
-          </div>
-
-          <div className="flex flex-col lg:flex-row gap-4 mt-4 justify-between items-stretch">
-            <div className="flex flex-col gap-6 w-full lg:w-1/3">
-              <Card label="BMR / TDEE" value="2400 kcal" theme={theme} />
-              <Card label="1RM (Brzycki)" value="145 kg" theme={theme} />
-              <Card label="VO2max" value="52 ml/kg/min" theme={theme} />
-              <Card label="Stress / Recovery" value="Moderate" theme={theme} />
-              <Card label="Nutrition Target" value="P:180g | C:320g | F:70g" theme={theme} />
-              <Card label="Τελευταίες 5 Μετρήσεις" value="See history" theme={theme} />
-            </div>
-          </div>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-6">
+          {summaryCards.map((card) => (
+            <StatCard
+              key={card.title}
+              title={card.title}
+              value={card.value}
+              subtitle={card.subtitle}
+              theme={theme}
+            />
+          ))}
         </div>
+
+        <Surface theme={theme} accent className="p-4 md:p-5 xl:p-6">
+          <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1.2fr_0.8fr] xl:items-end">
+            <div>
+              <SectionEyebrow>Performance analytics</SectionEyebrow>
+              <h2 className="mt-1 text-2xl font-black text-yellow-400 md:text-3xl">FIT MENU Metrics Lab</h2>
+              <p className={`mt-2 max-w-3xl text-sm leading-7 ${theme === "dark" ? "text-slate-300" : "text-slate-600"}`}>
+                Εδώ ζει το πραγματικό dashboard: trends, macro profile, stress curve και weekly metric capture.
+                Πρώτα καθαρά δεδομένα, μετά συμπεράσματα. Όχι το ανάποδο σαν τηλεοπτικό πάνελ.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {quickActions.map((action) => (
+                <QuickAction
+                  key={action.label}
+                  label={action.label}
+                  sublabel={action.sublabel}
+                  icon={action.icon}
+                  onClick={() => navigate(action.path)}
+                  theme={theme}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className={`mt-5 rounded-[24px] p-3 md:p-4 ${theme === "dark" ? "bg-black/22 ring-1 ring-inset ring-white/6" : "bg-white/72 ring-1 ring-inset ring-slate-200/70"}`}>
+            <AdvancedMetrics />
+          </div>
+        </Surface>
       </div>
     </motion.div>
   );
-
-function Card({ label, value, theme }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`h-[110px] w-[180px] px-3 py-4 rounded-lg shadow-md flex flex-col items-center justify-center text-center text-xs font-semibold space-y-1 border border-yellow-400/20 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-100 text-black"}`}
-    >
-      <div className="text-[11px] text-center leading-tight text-gray-300 dark:text-gray-200 font-medium break-words">
-        {label}
-      </div>
-      <div className="text-[11px] font-bold tracking-tight text-yellow-300 break-words leading-snug text-center">
-        {value}
-      </div>
-       </motion.div>
-  );
-}
 }
