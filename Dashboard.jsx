@@ -43,7 +43,7 @@ function UpgradeModal({ onClose }) {
             Άκυρο
           </button>
           <button
-            onClick={() => window.open("/upgrade", "_self")}
+            onClick={() => window.open("/pricing", "_self")}
             className="rounded-lg bg-yellow-500 px-4 py-1 text-sm font-semibold text-black hover:bg-yellow-400"
           >
             Αναβάθμιση
@@ -106,7 +106,9 @@ function MobileDashboard({ user }) {
         );
       case "insights":
         return userLevel === "basic" ? (
-          setShowUpgradeModal(true)
+          <motion.div key="insights-locked" variants={tabVariants} initial="initial" animate="animate" exit="exit">
+            🔒 Insights unlocked on paid tiers
+          </motion.div>
         ) : (
           <motion.div key="insights" variants={tabVariants} initial="initial" animate="animate" exit="exit">
             📈 Insights view
@@ -321,9 +323,10 @@ export default function Dashboard() {
   }
 
   const isAdmin = user?.emailAddresses?.[0]?.emailAddress === "giannis@admin.dev";
-  const userLevel = "admin";
+  const userLevel = String(user?.publicMetadata?.userLevel || (isAdmin ? "admin" : "pro")).toLowerCase();
+  const isBasic = userLevel === "basic";
 
-  if (userLevel === "basic") {
+  if (isBasic) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gray-50 text-gray-800">
         <div className="text-center">
@@ -339,7 +342,7 @@ export default function Dashboard() {
               Δες τα Προγράμματα
             </button>
             <button
-              onClick={() => navigate("/upgrade")}
+              onClick={() => navigate("/pricing")}
               className="rounded bg-yellow-400 px-4 py-2 text-black hover:bg-yellow-300"
             >
               Αναβάθμιση
@@ -365,7 +368,7 @@ export default function Dashboard() {
   const quickActions = [
     { label: "Nutrition", sublabel: "Macros, targets και meal planning", icon: "🍎", path: "/nutrition" },
     { label: "Cardio", sublabel: "VO₂, trends και endurance view", icon: "🏃", path: "/cardio" },
-    { label: "Power", sublabel: "Strength markers και loading logic", icon: "🏋️", path: "/power" },
+    { label: "Power", sublabel: "Strength markers και loading logic", icon: "🏋️", path: "/training" },
     { label: "Export", sublabel: "Reports, history και sharing", icon: "📄", path: "/report" },
   ];
 
@@ -387,7 +390,7 @@ export default function Dashboard() {
           : "bg-gradient-to-br from-white via-slate-100 to-slate-200 text-black"
       }`}
     >
-      {user?.publicMetadata?.userLevel === "basic" && !isAdmin && <UpgradeModal onClose={() => null} />}
+      {isBasic && !isAdmin && <UpgradeModal onClose={() => navigate("/pricing")} />}
 
       <div className="pointer-events-none absolute inset-0 -z-10">
         <Particles
