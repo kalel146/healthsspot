@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { useUser } from "@clerk/clerk-react";
-
-const supabase = createClient(
-  "https://lfhnlalktlcjyhelblci.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxmaG5sYWxrdGxjanloZWxibGNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc4NDI4MjEsImV4cCI6MjA2MzQxODgyMX0.qxOxqg2ObJBUJF5vKcQclIHgJa_1wYGrmWtxSU4Amvg"
-);
+import { supabase } from "./supabaseClient";
 
 export default function AdminPanel() {
   const { user } = useUser();

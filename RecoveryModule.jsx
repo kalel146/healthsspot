@@ -1,34 +1,65 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useTheme } from "./ThemeContext";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 
+const defaultInputs = {
+  sleep: 3,
+  energy: 3,
+  pain: 3,
+  mood: 3,
+  stress: 3,
+};
+
+const labels = {
+  sleep: "Ύπνος",
+  energy: "Ενέργεια",
+  pain: "Μυϊκός Πόνος",
+  mood: "Διάθεση",
+  stress: "Στρες",
+};
+
 export default function RecoveryModule() {
-  const [inputs, setInputs] = useState({
-    sleep: 3,
-    energy: 3,
-    pain: 3,
-    mood: 3,
-    stress: 3,
-  });
+  const [inputs, setInputs] = useState(defaultInputs);
   const [score, setScore] = useState(null);
   const { theme, toggleTheme } = useTheme();
 
   const handleChange = (key, value) => {
-    setInputs({ ...inputs, [key]: value });
+    setInputs((prev) => ({ ...prev, [key]: Number(value) }));
+  };
+
+  const handleReset = () => {
+    setInputs(defaultInputs);
+    setScore(null);
   };
 
   const calculateRecovery = () => {
-    const adjustedPain = 6 - parseInt(inputs.pain);
+    const adjustedPain = 6 - Number(inputs.pain);
+    const adjustedStress = 6 - Number(inputs.stress);
+
     const total =
-      parseInt(inputs.sleep) +
-      parseInt(inputs.energy) +
+      Number(inputs.sleep) +
+      Number(inputs.energy) +
       adjustedPain +
-      parseInt(inputs.mood) +
-      (6 - parseInt(inputs.stress));
+      Number(inputs.mood) +
+      adjustedStress;
+
     const avg = total / 5;
     setScore(avg.toFixed(1));
   };
+
+  const scoreMessage = useMemo(() => {
+    if (score === null) return "";
+    const numeric = Number(score);
+
+    if (numeric >= 4.2) {
+      return "✅ Πολύ καλή εικόνα αποκατάστασης.";
+    }
+    if (numeric >= 3.2) {
+      return "🟡 Μέτρια εικόνα αποκατάστασης — παρακολούθησέ το.";
+    }
+    return "🔻 Χαμηλή αποκατάσταση — ίσως χρειάζεται χαμήλωμα έντασης ή περισσότερη ξεκούραση.";
+  }, [score]);
 
   return (
     <motion.div
@@ -60,11 +91,10 @@ export default function RecoveryModule() {
 
       <div className="max-w-xl mx-auto space-y-6">
         <h2 className="text-xl font-semibold">Self-Report Ερωτηματολόγιο</h2>
+
         {Object.entries(inputs).map(([key, val]) => (
           <div key={key} className="space-y-2">
-            <label className="capitalize block font-medium">
-              {key.charAt(0).toUpperCase() + key.slice(1)}
-            </label>
+            <label className="block font-medium">{labels[key]}</label>
             <input
               type="range"
               min="1"
@@ -73,23 +103,33 @@ export default function RecoveryModule() {
               onChange={(e) => handleChange(key, e.target.value)}
               className="w-full accent-blue-500"
             />
-            <div className="text-sm text-gray-400">
-              Τρέχουσα τιμή: {val}
-            </div>
+            <div className="text-sm text-gray-400">Τρέχουσα τιμή: {val}</div>
           </div>
         ))}
 
-        <button
-          onClick={calculateRecovery}
-          className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded"
-        >
-          Υπολόγισε Recovery Score
-        </button>
+        <div className="flex flex-wrap gap-3">
+          <button
+            onClick={calculateRecovery}
+            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white"
+          >
+            Υπολόγισε Recovery Score
+          </button>
+
+          <button
+            onClick={handleReset}
+            className="bg-gray-500 hover:bg-gray-600 px-4 py-2 rounded text-white"
+          >
+            Reset
+          </button>
+        </div>
 
         {score && (
-          <p className="mt-4 text-lg">
-            Recovery Score: <span className="font-bold">{score}</span>
-          </p>
+          <div className="mt-4 space-y-2">
+            <p className="text-lg">
+              Recovery Score: <span className="font-bold">{score}</span>
+            </p>
+            <p className="text-sm text-gray-400">{scoreMessage}</p>
+          </div>
         )}
       </div>
     </motion.div>
