@@ -1,14 +1,9 @@
-// ✅ Cleaned version with fixed JSX structure for PDF export
 import React, { useState, useEffect, useRef } from "react";
 import { useTheme } from "./ThemeContext";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 import { supabase } from "./supabaseClient";
 import { useUser } from "@clerk/clerk-react";
-
-
 
 export default function ExportModule() {
   const [selected, setSelected] = useState({
@@ -18,47 +13,133 @@ export default function ExportModule() {
     recovery: true,
   });
   const [metrics, setMetrics] = useState([]);
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
+  const [isExportingCsv, setIsExportingCsv] = useState(false);
+
   const { theme, toggleTheme } = useTheme();
   const { user } = useUser();
-  const exportRef = useRef();
+  const exportRef = useRef(null);
 
   useEffect(() => {
     if (!user) return;
+
     (async () => {
       const { data, error } = await supabase
         .from("metrics")
         .select("*")
         .eq("user_id", user.id)
         .order("week");
-      if (!error) setMetrics(data);
+
+      if (!error) setMetrics(data || []);
     })();
   }, [user]);
 
   const handlePdfExport = async () => {
+    if (isExportingPdf) return;
+
     try {
+      setIsExportingPdf(true);
+
+      const [{ default: jsPDF }, { default: html2canvas }] = await Promise.all([
+        import("jspdf"),
+        import("html2canvas"),
+      ]);
+
       const chartEl = document.getElementById("chart-section");
       const exportEl = exportRef.current;
-      const chartCanvas = await html2canvas(chartEl, { scale: 2 });
-      const chartImg = chartCanvas.toDataURL("image/png");
-      document.getElementById("chart-image").src = chartImg;
+      const chartImageEl = document.getElementById("chart-image");
+
+      if (!exportEl) {
+        throw new Error("Export content not found.");
+      }
+
+      if (chartEl && chartImageEl) {
+        const chartCanvas = await html2canvas(chartEl, { scale: 2 });
+        const chartImg = chartCanvas.toDataURL("image/png");
+        chartImageEl.src = chartImg;
+      }
 
       await new Promise((resolve) => setTimeout(resolve, 100));
+
       const fullCanvas = await html2canvas(exportEl, { scale: 2 });
       const imgData = fullCanvas.toDataURL("image/png");
+
       const pdf = new jsPDF("p", "mm", "a4");
       const imgProps = pdf.getImageProperties(imgData);
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
       pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
       pdf.save("healths-spot-export.pdf");
     } catch (error) {
       alert("Αποτυχία δημιουργίας PDF. Δοκίμασε ξανά.");
       console.error("PDF Export Error:", error);
+    } finally {
+      setIsExportingPdf(false);
+    }
+  };
+
+  const handleCsvExport = async () => {
+    if (isExportingCsv) return;
+
+    try {
+      setIsExportingCsv(true);
+
+      const headers = [
+        "Week",
+        "BMR",
+        "VO2max",
+        "Protein",
+        "Carbs",
+        "Fat",
+        "Stress_Mon",
+        "Stress_Tue",
+        "Stress_Wed",
+        "Stress_Thu",
+        "Stress_Fri",
+        "Stress_Sat",
+        "Stress_Sun",
+      ];
+
+      const rows = metrics.map((row) => [
+        row.week ?? "",
+        row.bmr ?? "",
+        row.vo2max ?? "",
+        row.protein ?? "",
+        row.carbs ?? "",
+        row.fat ?? "",
+        row.stress_monday ?? "",
+        row.stress_tuesday ?? "",
+        row.stress_wednesday ?? "",
+        row.stress_thursday ?? "",
+        row.stress_friday ?? "",
+        row.stress_saturday ?? "",
+        row.stress_sunday ?? "",
+      ]);
+
+      const csvContent = [headers, ...rows].map((e) => e.join(",")).join("\n");
+      const blob = new Blob([csvContent], {
+        type: "text/csv;charset=utf-8;",
+      });
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "healths-spot-export.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      alert("Αποτυχία εξαγωγής CSV. Δοκίμασε ξανά.");
+      console.error("CSV Export Error:", error);
+    } finally {
+      setIsExportingCsv(false);
     }
   };
 
   const toggleOption = (key) => {
-    setSelected({ ...selected, [key]: !selected[key] });
+    setSelected((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   return (
@@ -73,7 +154,10 @@ export default function ExportModule() {
     >
       <Helmet>
         <title>Export Module | Health's Spot</title>
-        <meta name="description" content="Επιλογές εξαγωγής και διαμοιρασμού δεδομένων στο Health's Spot." />
+        <meta
+          name="description"
+          content="Επιλογές εξαγωγής και διαμοιρασμού δεδομένων στο Health's Spot."
+        />
       </Helmet>
 
       <div className="flex justify-between items-center">
@@ -88,7 +172,10 @@ export default function ExportModule() {
 
       <div className="max-w-4xl mx-auto space-y-6" id="chart-section">
         <section className="bg-opacity-10 border border-yellow-400 p-5 rounded-xl">
-          <h2 className="text-xl font-semibold mb-4 text-yellow-400">Επιλογή Περιεχομένου για Εξαγωγή</h2>
+          <h2 className="text-xl font-semibold mb-4 text-yellow-400">
+            Επιλογή Περιεχομένου για Εξαγωγή
+          </h2>
+
           {Object.keys(selected).map((key) => (
             <div key={key} className="flex items-center space-x-4 mb-2">
               <input
@@ -143,59 +230,21 @@ export default function ExportModule() {
             >
               Φόρτωση Δοκιμαστικών Δεδομένων
             </button>
+
             <button
               onClick={handlePdfExport}
-              className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white font-medium"
+              disabled={isExportingPdf}
+              className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white font-medium disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Λήψη PDF
+              {isExportingPdf ? "Δημιουργία PDF..." : "Λήψη PDF"}
             </button>
+
             <button
-              onClick={() => {
-                const headers = [
-                  "Week",
-                  "BMR",
-                  "VO2max",
-                  "Protein",
-                  "Carbs",
-                  "Fat",
-                  "Stress_Mon",
-                  "Stress_Tue",
-                  "Stress_Wed",
-                  "Stress_Thu",
-                  "Stress_Fri",
-                  "Stress_Sat",
-                  "Stress_Sun",
-                ];
-                const rows = metrics.map((row) => [
-                  row.week,
-                  row.bmr,
-                  row.vo2max,
-                  row.protein,
-                  row.carbs,
-                  row.fat,
-                  row.stress_monday,
-                  row.stress_tuesday,
-                  row.stress_wednesday,
-                  row.stress_thursday,
-                  row.stress_friday,
-                  row.stress_saturday,
-                  row.stress_sunday,
-                ]);
-                const csvContent = [headers, ...rows].map((e) => e.join(",")).join("\n");
-                const blob = new Blob([csvContent], {
-                  type: "text/csv;charset=utf-8;",
-                });
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement("a");
-                link.setAttribute("href", url);
-                link.setAttribute("download", "healths-spot-export.csv");
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
-              className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-white font-medium"
+              onClick={handleCsvExport}
+              disabled={isExportingCsv}
+              className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-white font-medium disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Εξαγωγή CSV
+              {isExportingCsv ? "Εξαγωγή CSV..." : "Εξαγωγή CSV"}
             </button>
           </div>
         </section>
@@ -207,6 +256,7 @@ export default function ExportModule() {
           className="p-6 bg-white text-black w-[210mm]"
         >
           <h1 className="text-2xl font-bold mb-4">Health's Spot - Αναφορά Μετρήσεων</h1>
+
           <table className="w-full text-sm border border-gray-300">
             <thead>
               <tr className="bg-gray-200">
@@ -233,6 +283,7 @@ export default function ExportModule() {
                 )}
               </tr>
             </thead>
+
             <tbody>
               {metrics.map((row) => (
                 <tr key={row.week}>
@@ -265,9 +316,17 @@ export default function ExportModule() {
           <p className="mt-4 text-sm text-gray-700">
             Ημερομηνία εξαγωγής: {new Date().toLocaleDateString()}
           </p>
+
           <div id="chart-snapshot" className="mt-6">
-            <p className="text-sm font-semibold text-gray-800">📸 Επισκόπηση Μετρήσεων (screenshot):</p>
-            <img id="chart-image" src="" alt="chart preview" className="mt-2 max-w-full border border-gray-400" />
+            <p className="text-sm font-semibold text-gray-800">
+              📸 Επισκόπηση Μετρήσεων (screenshot):
+            </p>
+            <img
+              id="chart-image"
+              src=""
+              alt="chart preview"
+              className="mt-2 max-w-full border border-gray-400"
+            />
           </div>
         </div>
       </div>
