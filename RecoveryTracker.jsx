@@ -1,47 +1,83 @@
-import React from "react";
+import React, { useMemo } from "react";
+
+const toDisplayDate = (value) => {
+  if (!value) return "-";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "-";
+  return date.toLocaleDateString("el-GR");
+};
 
 export default function RecoveryTracker({ recoveryData = [] }) {
-  if (!Array.isArray(recoveryData)) {
-  return <p>Δεν υπάρχουν δεδομένα recovery.</p>;
-}
-    const averageRecovery =
-    recoveryData.length > 0
+  const normalizedData = useMemo(() => {
+    if (!Array.isArray(recoveryData)) return [];
+
+    return recoveryData
+      .map((entry, index) => ({
+        id: entry?.id ?? `${entry?.timestamp ?? entry?.date ?? "row"}-${index}`,
+        date: toDisplayDate(entry?.timestamp || entry?.date),
+        score: Number(entry?.recoveryScore ?? entry?.score ?? 0),
+      }))
+      .filter((entry) => entry.score > 0);
+  }, [recoveryData]);
+
+  const averageRecovery =
+    normalizedData.length > 0
       ? (
-          recoveryData.reduce((acc, val) => acc + parseFloat(val.score || 0), 0) /
-          recoveryData.length
+          normalizedData.reduce((acc, val) => acc + val.score, 0) /
+          normalizedData.length
         ).toFixed(1)
-      : 0;
-  return (
-    <div>
-      <h3 className="text-xl font-semibold mb-2">📊 Recovery Score</h3>
-      <p className="text-lg">{averageRecovery}</p>
-    </div>
-  );
+      : null;
+
+  const latestRecovery =
+    normalizedData.length > 0
+      ? normalizedData[normalizedData.length - 1].score.toFixed(1)
+      : null;
+
+  if (!Array.isArray(recoveryData)) {
+    return <p className="text-sm text-zinc-400">Δεν υπάρχουν δεδομένα recovery.</p>;
+  }
 
   return (
-    <div className="bg-zinc-900/30 backdrop-blur-md shadow-md p-4 rounded-xl border border-neutral-700 mt-6">
-      <h2 className="text-xl font-semibold text-sky-400 mb-2">💤 Ανάκαμψη Εβδομάδας</h2>
-      {recoveryData.length === 0 ? (
-        <p className="text-gray-400">Δεν υπάρχουν δεδομένα ακόμα.</p>
+    <div className="space-y-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/10 p-4">
+          <p className="text-xs uppercase tracking-wide text-zinc-400">
+            Μέσο Recovery
+          </p>
+          <p className="mt-2 text-2xl font-bold text-cyan-300">
+            {averageRecovery ? `${averageRecovery}/5` : "--"}
+          </p>
+        </div>
+
+        <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-4">
+          <p className="text-xs uppercase tracking-wide text-zinc-400">
+            Τελευταίο Recovery
+          </p>
+          <p className="mt-2 text-2xl font-bold text-emerald-300">
+            {latestRecovery ? `${latestRecovery}/5` : "--"}
+          </p>
+        </div>
+      </div>
+
+      {normalizedData.length === 0 ? (
+        <p className="text-sm text-zinc-400">Δεν υπάρχουν δεδομένα ακόμα.</p>
       ) : (
-        <div className="text-white space-y-2">
-          {recoveryData.map((entry, idx) => (
+        <div className="space-y-2">
+          {normalizedData.slice(-7).reverse().map((entry) => (
             <div
-              key={idx}
-              className={`p-2 rounded ${
-                entry.score < 3
-                  ? "bg-red-800/50"
-                  : entry.score < 5
-                  ? "bg-yellow-700/50"
-                  : "bg-emerald-700/40"
+              key={entry.id}
+              className={`rounded-xl border p-3 text-sm ${
+                entry.score < 2.5
+                  ? "border-red-500/20 bg-red-500/10 text-red-300"
+                  : entry.score < 4
+                  ? "border-yellow-500/20 bg-yellow-500/10 text-yellow-300"
+                  : "border-emerald-500/20 bg-emerald-500/10 text-emerald-300"
               }`}
             >
-              {entry.date}: Recovery Score {entry.score}
+              <span className="font-medium">{entry.date}</span> — Recovery Score{" "}
+              <strong>{entry.score.toFixed(1)}</strong>/5
             </div>
           ))}
-          <p className="mt-3 font-medium text-sky-300">
-            🧠 Μέσος Όρος: {averageRecovery}/10
-          </p>
         </div>
       )}
     </div>

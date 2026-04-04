@@ -1,4 +1,3 @@
-// vite.config.js
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { VitePWA } from "vite-plugin-pwa";
@@ -7,6 +6,7 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 const isDev = process.env.NODE_ENV !== "production";
 const isVercel = process.env.VERCEL === "1";
 
@@ -15,7 +15,8 @@ export default defineConfig({
     react({
       fastRefresh: isDev && !isVercel,
     }),
-    ...(isDev && !isVercel
+
+    ...(!isDev
       ? [
           VitePWA({
             registerType: "autoUpdate",
@@ -27,12 +28,17 @@ export default defineConfig({
               background_color: "#000000",
               theme_color: "#f97316",
               icons: [
-                { src: "/logo-192.png", sizes: "192x192", type: "image/png" },
-                { src: "/logo-512.png", sizes: "512x512", type: "image/png" },
+                {
+                  src: "/logo-192.png",
+                  sizes: "192x192",
+                  type: "image/png",
+                },
+                {
+                  src: "/logo-512.png",
+                  sizes: "512x512",
+                  type: "image/png",
+                },
               ],
-            },
-            devOptions: {
-              navigateFallback: "/",
             },
             workbox: {
               maximumFileSizeToCacheInBytes: 5000000,
@@ -41,21 +47,21 @@ export default defineConfig({
         ]
       : []),
   ],
-  build: {
-    
-  },
+
+  build: {},
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./"),
     },
   },
+
   server: {
     port: 5173,
     strictPort: true,
     fs: { strict: false },
-    historyApiFallback: true,
     proxy: {
-      "/api": "http://localhost:3001"
-    }
+      "/api": "http://localhost:3001",
+    },
   },
 });

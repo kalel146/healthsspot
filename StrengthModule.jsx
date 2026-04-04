@@ -67,9 +67,9 @@ export default function StrengthModule() {
   const [isExportingAllLogsPdf, setIsExportingAllLogsPdf] = useState(false);
   const [isExportingCyclePdf, setIsExportingCyclePdf] = useState(false);
 
-  const pushNotification = (text) => {
+  const pushNotification = useCallback((text) => {
     setNotifications((prev) => [...prev, { id: Date.now() + Math.random(), text }]);
-  };
+  }, []);
 
   const dismissNotification = useCallback((id) => {
     setNotifications((prev) => prev.filter((n) => n.id !== id));
@@ -92,10 +92,11 @@ export default function StrengthModule() {
     const strengthEntries = logs.filter(
       (entry) =>
         entry.type !== "Recovery" &&
-        (entry.maxOneRM !== null ||
-          entry.maxOneRM !== undefined ||
+        (
+          (entry.maxOneRM !== null && entry.maxOneRM !== undefined) ||
           entry.type === "Strength" ||
-          entry.type === "1RM")
+          entry.type === "1RM"
+        )
     );
 
     const recoveryEntries = logs.filter((entry) => entry.type === "Recovery");
@@ -155,7 +156,7 @@ export default function StrengthModule() {
     if (recoveryScore && recoveryScore < 2.5) {
       pushNotification("🛑 Πολύ χαμηλό Recovery — Deload προτείνεται.");
     }
-  }, [prMessage, recoveryScore]);
+  }, [prMessage, recoveryScore, pushNotification]);
 
   useEffect(() => {
     if (logData.length >= 3) {
@@ -187,7 +188,7 @@ export default function StrengthModule() {
         );
       }
     }
-  }, [logData, recoveryLogs]);
+  }, [logData, recoveryLogs, pushNotification]);
 
   useEffect(() => {
     if (maxOneRM && rpe && rir) {
@@ -272,8 +273,7 @@ export default function StrengthModule() {
       );
 
       const recoveryEntry = recoveryLogs.find(
-        (r) =>
-          new Date(r.timestamp).toLocaleDateString("el-GR") === entryDate
+        (r) => new Date(r.timestamp).toLocaleDateString("el-GR") === entryDate
       );
 
       return {
@@ -672,6 +672,68 @@ export default function StrengthModule() {
     }
   };
 
+  const panelClass = `rounded-2xl border shadow-lg backdrop-blur-sm p-5 md:p-6 ${
+    theme === "dark"
+      ? "bg-zinc-950/80 border-zinc-800 text-white"
+      : "bg-white border-zinc-200 text-black"
+  }`;
+
+  const statCardClass = `rounded-2xl border p-4 ${
+    theme === "dark"
+      ? "bg-zinc-950/70 border-zinc-800"
+      : "bg-zinc-50 border-zinc-200"
+  }`;
+
+  const inputClass = `w-full rounded-xl border px-3 py-2.5 outline-none transition ${
+    theme === "dark"
+      ? "bg-zinc-900 text-white border-zinc-700 placeholder:text-zinc-500"
+      : "bg-white text-black border-zinc-300 placeholder:text-zinc-400"
+  }`;
+
+  const labelClass = `block mb-1 text-sm font-medium ${
+    theme === "dark" ? "text-zinc-300" : "text-zinc-700"
+  }`;
+
+  const mutedTextClass = theme === "dark" ? "text-zinc-400" : "text-zinc-600";
+
+  const latestStrengthValue =
+    logData.length > 0
+      ? parseFloat(logData[logData.length - 1]?.maxOneRM || 0)
+      : null;
+
+  const latestRecoveryValue =
+    recoveryLogs.length > 0
+      ? parseFloat(recoveryLogs[recoveryLogs.length - 1]?.recoveryScore || 0)
+      : null;
+
+  const averageRecoveryValue =
+    recoveryLogs.length > 0
+      ? (
+          recoveryLogs.reduce(
+            (acc, item) => acc + parseFloat(item.recoveryScore || 0),
+            0
+          ) / recoveryLogs.length
+        ).toFixed(1)
+      : null;
+
+  const handleReset = () => {
+    setWeight(0);
+    setReps(1);
+    setRpe("7");
+    setRir("3");
+    setStressData(defaultStressData);
+    setMaxOneRM(null);
+    setRecoveryScore(null);
+    setAiSuggestions("");
+    setAutoAdaptiveMessage("");
+    setCoachAdvice("");
+    setCyclePlan("");
+    setCycleOutput("");
+    setError("");
+    setRpeError("");
+    localStorage.removeItem("strengthModuleData");
+  };
+
   return (
     <motion.div
       initial="initial"
@@ -679,8 +741,8 @@ export default function StrengthModule() {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      className={`min-h-screen px-4 py-10 flex justify-center items-start ${
-        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+      className={`min-h-screen px-4 py-8 md:px-6 xl:px-8 ${
+        theme === "dark" ? "bg-black text-white" : "bg-zinc-50 text-black"
       }`}
     >
       <Helmet>
@@ -692,545 +754,634 @@ export default function StrengthModule() {
         <link rel="canonical" href="https://healthsspot.vercel.app/training" />
       </Helmet>
 
-      <div className="w-full max-w-screen-sm space-y-6">
-        <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-yellow-400">Strength Lab</h1>
-          <button
-            onClick={toggleTheme}
-            className="text-sm px-3 py-1 rounded bg-yellow-500 text-black hover:bg-yellow-600 font-semibold"
-          >
-            {theme === "dark" ? "☀ Light" : "🌙 Dark"}
-          </button>
-        </div>
-
-        <div className="flex justify-end space-x-3">
-          <button
-            onClick={exportToPDF}
-            disabled={isExportingReportPdf}
-            className="px-4 py-2 rounded bg-red-500 text-white font-semibold hover:bg-red-600 disabled:opacity-60 disabled:cursor-not-allowed"
-          >
-            {isExportingReportPdf ? "Exporting..." : "📄 Εξαγωγή PDF"}
-          </button>
-          <button
-            onClick={exportToCSV}
-            className="px-4 py-2 rounded bg-blue-500 text-white font-semibold hover:bg-blue-600"
-          >
-            📑 Εξαγωγή CSV
-          </button>
-        </div>
-
-        <button
-          onClick={() => {
-            setWeight(0);
-            setReps(1);
-            setRpe("7");
-            setRir("3");
-            setStressData(defaultStressData);
-            setMaxOneRM(null);
-            setRecoveryScore(null);
-            setAiSuggestions("");
-            setAutoAdaptiveMessage("");
-            localStorage.removeItem("strengthModuleData");
-          }}
-          className="px-4 py-2 rounded bg-gray-500 text-white font-semibold hover:bg-gray-600"
-        >
-          ♻ Reset
-        </button>
-
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-xl font-semibold text-yellow-400">
-            Υπολογισμός 1RM (Brzycki)
-          </h2>
-
-          <input
-            type="number"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            placeholder="Βάρος (kg)"
-            className="p-2 rounded w-full bg-gray-100 dark:bg-gray-800 dark:text-white"
-          />
-
-          {prMessage && <p className="text-green-400 font-bold">{prMessage}</p>}
-
-          <input
-            type="number"
-            value={reps}
-            onChange={(e) => setReps(e.target.value)}
-            placeholder="Επαναλήψεις (1-10)"
-            className="p-2 rounded w-full bg-gray-100 dark:bg-gray-800 dark:text-white"
-          />
-
-          {aiSuggestions && (
-            <p className="text-green-500 font-semibold mt-2">{aiSuggestions}</p>
-          )}
-
-          {autoAdaptiveMessage && (
-            <p className="text-cyan-400 font-semibold">{autoAdaptiveMessage}</p>
-          )}
-
-          <button
-            onClick={calculateOneRM}
-            className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-white font-semibold"
-          >
-            Υπολόγισε 1RM
-          </button>
-
-          {error && <p className="text-red-500 font-semibold">{error}</p>}
-          {maxOneRM && <p className="text-lg font-bold">1RM: {maxOneRM} kg</p>}
-        </motion.section>
-
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5, delay: 0.9 }}
-        >
-          <h2 className="text-xl font-semibold text-emerald-400">
-            📊 Strength Comparison Chart
-          </h2>
-
-          {combinedChartData.length === 0 ? (
-            <p className="text-gray-400">Δεν υπάρχουν δεδομένα ακόμα.</p>
-          ) : (
-            <ResponsiveContainer width="100%" height={280}>
-              <LineChart data={combinedChartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis domain={["auto", "auto"]} />
-                <Tooltip />
-                <Line
-                  type="monotone"
-                  dataKey="PR"
-                  stroke="#FACC15"
-                  strokeWidth={2}
-                  name="1RM PR"
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Avg"
-                  stroke="#34D399"
-                  strokeWidth={2}
-                  name="Μέσος 1RM"
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Recovery"
-                  stroke="#60A5FA"
-                  strokeWidth={2}
-                  name="Recovery"
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          )}
-
-          <p className="mt-4 text-sm text-amber-400 font-medium">
-            {adaptationSuggestion}
-          </p>
-        </motion.section>
-
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5, delay: 1 }}
-        >
-          <h2 className="text-xl font-semibold text-pink-400">
-            🔁 Πρόγραμμα Εβδομάδας
-          </h2>
-          <button
-            onClick={generateCyclePlan}
-            className="bg-pink-500 hover:bg-pink-600 text-black font-semibold px-4 py-2 rounded mb-2"
-          >
-            Δημιουργία Κύκλου
-          </button>
-
-          {cyclePlan && (
-            <pre className="mt-2 text-pink-200 whitespace-pre-wrap font-mono">
-              {cyclePlan}
-            </pre>
-          )}
-        </motion.section>
-
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <h2 className="text-xl font-semibold text-purple-400 flex items-center gap-2">
-            RPE / RIR Tool
-            <Info
-              className="w-4 h-4 text-purple-300"
-              title="RPE: Εκτιμώμενη αντίληψη δυσκολίας (6–10). RIR: Πόσες επαναλήψεις μένουν πριν την εξάντληση (0–4)."
-            />
-          </h2>
-
+      <div className="mx-auto w-full max-w-7xl space-y-6">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <label className="block font-medium">RPE:</label>
-            <select
-              value={rpe}
-              onChange={(e) => handleRpeRirChange(e.target.value, "rpe")}
-              className="p-2 rounded w-full bg-gray-100 dark:bg-gray-800 dark:text-white"
-            >
-              {[...Array(5)].map((_, i) => (
-                <option key={i} value={i + 6}>
-                  {i + 6}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label className="block font-medium">RIR:</label>
-            <select
-              value={rir}
-              onChange={(e) => handleRpeRirChange(e.target.value, "rir")}
-              className="p-2 rounded w-full bg-gray-100 dark:bg-gray-800 dark:text-white"
-            >
-              {[...Array(5)].map((_, i) => (
-                <option key={i} value={i}>
-                  {i}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {rpeError && <p className="text-red-500 font-semibold">{rpeError}</p>}
-        </motion.section>
-
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <h2 className="text-xl font-semibold text-pink-300">
-            📈 Cycle Generator Pro
-          </h2>
-
-          <div className="mb-3">
-            <label className="block mb-1 font-medium">Καταχώρησε 1RM:</label>
-            <input
-              type="number"
-              value={maxOneRM || ""}
-              onChange={(e) =>
-                setMaxOneRM(e.target.value ? parseFloat(e.target.value) : null)
-              }
-              className="w-full p-2 rounded bg-gray-100 dark:bg-gray-800 dark:text-white"
-              placeholder="π.χ. 100"
-            />
-          </div>
-
-          <div className="mb-3">
-            <label className="block mb-1 font-medium">Επίλεξε Τύπο Κύκλου:</label>
-            <select
-              value={cycleType}
-              onChange={(e) => setCycleType(e.target.value)}
-              className="w-full p-2 rounded bg-gray-100 dark:bg-gray-800 dark:text-white"
-            >
-              <option value="Linear">Linear</option>
-              <option value="Undulating">Undulating</option>
-              <option value="Deload">Deload</option>
-            </select>
-          </div>
-
-          <button
-            onClick={generateCycleTemplate}
-            className="bg-pink-500 hover:bg-pink-600 text-black font-semibold px-4 py-2 rounded mb-2"
-          >
-            Δημιουργία 4-Εβδομαδιαίου Κύκλου
-          </button>
-
-          {cycleOutput && (
-            <>
-              <pre className="mt-2 text-pink-200 whitespace-pre-wrap font-mono">
-                {cycleOutput}
-              </pre>
-              <div className="mt-4 flex space-x-2">
-                <button
-                  onClick={exportCycleToPDF}
-                  disabled={isExportingCyclePdf}
-                  className="px-4 py-2 rounded bg-fuchsia-600 text-white font-semibold hover:bg-fuchsia-700 disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {isExportingCyclePdf ? "Exporting..." : "Export σε PDF"}
-                </button>
-                <button
-                  onClick={exportCycleToCSV}
-                  className="px-4 py-2 rounded bg-indigo-600 text-white font-semibold hover:bg-indigo-700"
-                >
-                  Export σε CSV
-                </button>
-              </div>
-            </>
-          )}
-        </motion.section>
-
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-xl font-semibold text-blue-400">🧘 Recovery Score</h2>
-
-          {["sleep", "energy", "mood", "pain"].map((key) => (
-            <div key={key}>
-              <label className="block font-medium capitalize">{key}</label>
-              <input
-                type="range"
-                min="1"
-                max="5"
-                value={stressData[key]}
-                onChange={(e) =>
-                  setStressData({ ...stressData, [key]: e.target.value })
-                }
-                className="w-full"
-              />
-              <p className="text-sm text-gray-400">
-                Τρέχουσα τιμή: {stressData[key]}
-              </p>
-            </div>
-          ))}
-
-          <button
-            onClick={calculateRecovery}
-            className="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded"
-          >
-            Υπολόγισε Recovery Score
-          </button>
-
-          {recoveryScore && (
-            <p className="mt-2 text-blue-300 font-medium">
-              Recovery Score: {recoveryScore}
+            <h1 className="text-3xl md:text-4xl font-bold text-yellow-400">
+              Strength Lab
+            </h1>
+            <p className={`mt-1 text-sm md:text-base ${mutedTextClass}`}>
+              1RM, fatigue context, recovery tracking και cycle planning χωρίς να
+              μοιάζει με excel που φόρεσε hoodie.
             </p>
-          )}
-        </motion.section>
-
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <h2 className="text-xl font-semibold text-cyan-400">
-            Ιστορικό Recovery Score
-          </h2>
-
-          {recoveryChartData.length === 0 ? (
-            <p className="text-gray-400">Δεν υπάρχουν δεδομένα ακόμα.</p>
-          ) : (
-            <ResponsiveContainer width="100%" height={250}>
-              <LineChart data={recoveryChartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis domain={["auto", "auto"]} />
-                <Tooltip />
-                <Line
-                  type="monotone"
-                  dataKey="recoveryScore"
-                  stroke="#06B6D4"
-                  strokeWidth={3}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          )}
-        </motion.section>
-
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5, delay: 0.8 }}
-        >
-          <h2 className="text-xl font-semibold text-amber-400">🧠 AI Coach</h2>
-
-          <div className="mb-4">
-            <label className="block font-medium text-sm mb-1">
-              🎛 Επιλογή Mode:
-            </label>
-            <select
-              value={userCycleMode}
-              onChange={(e) => setUserCycleMode(e.target.value)}
-              className="p-2 rounded w-full bg-gray-100 dark:bg-gray-800 dark:text-white"
-            >
-              <option value="Auto">🤖 Auto Mode</option>
-              <option value="PR">🏋 PR Week</option>
-              <option value="Deload">🧘 Deload Week</option>
-            </select>
           </div>
 
-          <button
-            onClick={generateCoachAdvice}
-            className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-4 py-2 rounded mb-2"
-          >
-            Προπονητική Συμβουλή
-          </button>
-
-          {coachAdvice && (
-            <p className="mt-2 text-amber-300 font-medium">{coachAdvice}</p>
-          )}
-        </motion.section>
-
-        <RecoveryTracker recoveryData={logData} />
-
-        {coachAdvice && (
-          <div className="mt-2 flex space-x-2 items-center">
+          <div className="flex flex-wrap gap-2">
             <button
-              onClick={exportCoachAdviceToPDF}
-              disabled={isExportingCoachPdf}
-              className="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-3 py-1 rounded disabled:opacity-60 disabled:cursor-not-allowed"
+              onClick={toggleTheme}
+              className="rounded-xl bg-yellow-500 px-4 py-2 text-sm font-semibold text-black hover:bg-yellow-600"
             >
-              {isExportingCoachPdf ? "Exporting..." : "📤 Export Coach σε PDF"}
+              {theme === "dark" ? "☀ Light" : "🌙 Dark"}
             </button>
-            <p className="text-amber-300 font-medium">{coachAdvice}</p>
-          </div>
-        )}
 
-        {allLogs.length > 0 && (
-          <div className="flex justify-end space-x-3">
             <button
-              onClick={exportAllLogsToPDF}
-              disabled={isExportingAllLogsPdf}
-              className="px-4 py-2 rounded bg-fuchsia-600 text-white font-semibold hover:bg-fuchsia-700 disabled:opacity-60 disabled:cursor-not-allowed"
+              onClick={exportToPDF}
+              disabled={isExportingReportPdf}
+              className="rounded-xl bg-red-500 px-4 py-2 text-sm font-semibold text-white hover:bg-red-600 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {isExportingAllLogsPdf ? "Exporting..." : "🧾 Export Όλων (PDF)"}
+              {isExportingReportPdf ? "Exporting..." : "📄 Report PDF"}
             </button>
+
             <button
-              onClick={exportAllLogsToCSV}
-              className="px-4 py-2 rounded bg-indigo-600 text-white font-semibold hover:bg-indigo-700"
+              onClick={exportToCSV}
+              className="rounded-xl bg-blue-500 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-600"
             >
-              📂 Export Όλων (CSV)
+              📑 Report CSV
+            </button>
+
+            <button
+              onClick={handleReset}
+              className="rounded-xl bg-zinc-600 px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-700"
+            >
+              ♻ Reset
             </button>
           </div>
-        )}
+        </div>
 
-        <ExportButtons logData={logData} />
+        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div className={statCardClass}>
+            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
+              Peak 1RM
+            </p>
+            <p className="mt-2 text-2xl font-bold text-yellow-400">
+              {maxOneRM ? `${maxOneRM} kg` : "--"}
+            </p>
+          </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <StrengthForm onNewEntry={handleNewStrengthEntry} />
-        </motion.div>
+          <div className={statCardClass}>
+            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
+              Τελευταίο 1RM
+            </p>
+            <p className="mt-2 text-2xl font-bold text-emerald-400">
+              {latestStrengthValue ? `${latestStrengthValue} kg` : "--"}
+            </p>
+          </div>
 
-        {!logData ? (
-          <p>Φορτώνει δεδομένα...</p>
-        ) : (
-          <motion.section
-            className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-xl font-semibold text-green-400">📈 Εξέλιξη 1RM</h2>
+          <div className={statCardClass}>
+            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
+              Avg Recovery
+            </p>
+            <p className="mt-2 text-2xl font-bold text-cyan-400">
+              {averageRecoveryValue ? `${averageRecoveryValue}/5` : "--"}
+            </p>
+          </div>
 
-            {logData.length > 0 ? (
-              <div>
-                <StrengthChart data={chartData} prValue={maxOneRM} />
+          <div className={statCardClass}>
+            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
+              Sessions
+            </p>
+            <p className="mt-2 text-2xl font-bold text-pink-400">
+              {logData.length}
+            </p>
+          </div>
+        </section>
+
+        <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
+          <div className="space-y-6 xl:col-span-7">
+            <motion.section
+              className={panelClass}
+              variants={sectionVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.4 }}
+            >
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <div>
+                  <h2 className="text-xl font-semibold text-yellow-400">
+                    Υπολογισμός 1RM (Brzycki)
+                  </h2>
+                  <p className={`text-sm ${mutedTextClass}`}>
+                    Βάλε πραγματικό load + reps και πάρε usable baseline, όχι
+                    “κάτι περίπου”.
+                  </p>
+                </div>
                 {prMessage && (
-                  <p className="text-green-400 font-medium mt-2">{prMessage}</p>
-                )}
-
-                {oneRMExtremes?.peak && oneRMExtremes?.dip && (
-                  <ul className="text-sm text-gray-400 mt-3 list-disc ml-5">
-                    <li>
-                      📈 Peak 1RM: {oneRMExtremes.peak.oneRM} kg (
-                      {oneRMExtremes.peak.date})
-                    </li>
-                    <li>
-                      📉 Χαμηλότερο 1RM: {oneRMExtremes.dip.oneRM} kg (
-                      {oneRMExtremes.dip.date})
-                    </li>
-                  </ul>
+                  <span className="rounded-full bg-green-500/15 px-3 py-1 text-xs font-semibold text-green-400">
+                    Νέο PR
+                  </span>
                 )}
               </div>
-            ) : (
-              <p className="text-gray-400">Δεν υπάρχουν δεδομένα για εμφάνιση.</p>
-            )}
-          </motion.section>
-        )}
 
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5, delay: 0.7 }}
-        >
-          <h2 className="text-xl font-semibold text-sky-300">📈 Εξέλιξη 1RM</h2>
-          <p className="text-gray-400">
-            {logData.length === 0
-              ? "Δεν υπάρχουν δεδομένα ακόμα."
-              : `Τελευταίο PR: ${maxOneRM} kg`}
-          </p>
-        </motion.section>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label className={labelClass}>Βάρος (kg)</label>
+                  <input
+                    type="number"
+                    value={weight}
+                    onChange={(e) => setWeight(e.target.value)}
+                    placeholder="π.χ. 100"
+                    className={inputClass}
+                  />
+                </div>
 
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5, delay: 0.8 }}
-        >
-          <h2 className="text-xl font-semibold text-indigo-300">
-            📅 Προγραμματισμός Κύκλου Προπόνησης
-          </h2>
-          <p className="text-white mt-2">📘 Τρέχων Τύπος Εβδομάδας: {userCycleMode}</p>
-          <p className="text-white">📈 PR της εβδομάδας: {maxOneRM || "--"} kg</p>
-          <p className="text-white">💓 Μέσο Recovery: {recoveryScore || "--"}/5</p>
-        </motion.section>
+                <div>
+                  <label className={labelClass}>Επαναλήψεις (1–10)</label>
+                  <input
+                    type="number"
+                    value={reps}
+                    onChange={(e) => setReps(e.target.value)}
+                    placeholder="π.χ. 5"
+                    className={inputClass}
+                  />
+                </div>
+              </div>
 
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5, delay: 0.9 }}
-        >
-          <h2 className="text-xl font-semibold text-emerald-300">🧪 Recovery Score</h2>
-          <p className="text-white text-lg font-bold">{recoveryScore ?? "--"}</p>
-        </motion.section>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <button
+                  onClick={calculateOneRM}
+                  className="rounded-xl bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-700"
+                >
+                  Υπολόγισε 1RM
+                </button>
 
-        <motion.section
-          className="bg-zinc-900/30 backdrop-blur-md shadow-md p-5 rounded-xl border border-neutral-700"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.5, delay: 1.0 }}
-        >
-          <h2 className="text-xl font-semibold text-pink-300">🧠 AI Coach</h2>
-          {coachAdvice ? (
-            <p className="text-white mt-2">{coachAdvice}</p>
-          ) : (
-            <p className="text-gray-400">Δεν υπάρχουν συμβουλές ακόμη.</p>
-          )}
-        </motion.section>
+                {maxOneRM && (
+                  <div className="rounded-xl border border-green-500/30 bg-green-500/10 px-4 py-2 text-sm font-semibold text-green-300">
+                    1RM: {maxOneRM} kg
+                  </div>
+                )}
+              </div>
+
+              {error && <p className="mt-3 text-sm font-semibold text-red-400">{error}</p>}
+
+              {(aiSuggestions || autoAdaptiveMessage) && (
+                <div className="mt-4 grid grid-cols-1 gap-3 lg:grid-cols-2">
+                  {aiSuggestions && (
+                    <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-sm text-emerald-300">
+                      {aiSuggestions}
+                    </div>
+                  )}
+                  {autoAdaptiveMessage && (
+                    <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/10 p-4 text-sm text-cyan-300">
+                      {autoAdaptiveMessage}
+                    </div>
+                  )}
+                </div>
+              )}
+            </motion.section>
+
+            <motion.section
+              className={panelClass}
+              variants={sectionVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.45 }}
+            >
+              <div className="mb-4">
+                <h2 className="text-xl font-semibold text-emerald-400">
+                  📊 Strength vs Recovery
+                </h2>
+                <p className={`text-sm ${mutedTextClass}`}>
+                  Πιο τίμιο chart layout, όχι όλα πεταμένα στο ίδιο scale σαν να
+                  είναι το recovery κιλά μπάρας.
+                </p>
+              </div>
+
+              {combinedChartData.length === 0 ? (
+                <p className={mutedTextClass}>Δεν υπάρχουν δεδομένα ακόμα.</p>
+              ) : (
+                <ResponsiveContainer width="100%" height={340}>
+                  <LineChart data={combinedChartData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis yAxisId="strength" domain={["auto", "auto"]} />
+                    <YAxis
+                      yAxisId="recovery"
+                      orientation="right"
+                      domain={[1, 5]}
+                      allowDecimals={false}
+                    />
+                    <Tooltip />
+                    <Line
+                      yAxisId="strength"
+                      type="monotone"
+                      dataKey="PR"
+                      stroke="#FACC15"
+                      strokeWidth={3}
+                      name="1RM PR"
+                    />
+                    <Line
+                      yAxisId="strength"
+                      type="monotone"
+                      dataKey="Avg"
+                      stroke="#34D399"
+                      strokeWidth={2}
+                      name="Μέσος 1RM"
+                    />
+                    <Line
+                      yAxisId="recovery"
+                      type="monotone"
+                      dataKey="Recovery"
+                      stroke="#60A5FA"
+                      strokeWidth={2}
+                      name="Recovery"
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              )}
+
+              <div className="mt-4 rounded-xl border border-amber-500/20 bg-amber-500/10 p-4 text-sm font-medium text-amber-300">
+                {adaptationSuggestion}
+              </div>
+            </motion.section>
+
+            <motion.section
+              className={panelClass}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.5 }}
+            >
+              <div className="mb-4 flex items-center justify-between">
+                <div>
+                  <h2 className="text-xl font-semibold text-green-400">
+                    📈 Εξέλιξη 1RM
+                  </h2>
+                  <p className={`text-sm ${mutedTextClass}`}>
+                    Καθαρό ιστορικό δύναμης, χωρίς διπλά sections που ξαναλένε τα
+                    ίδια.
+                  </p>
+                </div>
+              </div>
+
+              {logData.length > 0 ? (
+                <div className="space-y-4">
+                  <StrengthChart data={chartData} prValue={maxOneRM} />
+
+                  {oneRMExtremes?.peak && oneRMExtremes?.dip && (
+                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                      <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-sm text-emerald-300">
+                        📈 Peak 1RM: {oneRMExtremes.peak.oneRM} kg (
+                        {oneRMExtremes.peak.date})
+                      </div>
+                      <div className="rounded-xl border border-rose-500/20 bg-rose-500/10 p-4 text-sm text-rose-300">
+                        📉 Χαμηλότερο 1RM: {oneRMExtremes.dip.oneRM} kg (
+                        {oneRMExtremes.dip.date})
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <p className={mutedTextClass}>Δεν υπάρχουν δεδομένα για εμφάνιση.</p>
+              )}
+            </motion.section>
+
+            <motion.section
+              className={panelClass}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.5 }}
+            >
+              <div className="mb-4">
+                <h2 className="text-xl font-semibold text-white">
+                  💪 Καταχώρηση Strength Session
+                </h2>
+                <p className={`text-sm ${mutedTextClass}`}>
+                  Το form μπαίνει σε κανονικό panel, όχι πεταμένο σαν appendix.
+                </p>
+              </div>
+
+              <StrengthForm onNewEntry={handleNewStrengthEntry} />
+            </motion.section>
+          </div>
+
+          <div className="space-y-6 xl:col-span-5">
+            <motion.section
+              className={panelClass}
+              variants={sectionVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.4 }}
+            >
+              <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold text-purple-400">
+                RPE / RIR Tool
+                <Info
+                  className="h-4 w-4 text-purple-300"
+                  title="RPE: Εκτιμώμενη αντίληψη δυσκολίας (6–10). RIR: Πόσες επαναλήψεις απομένουν πριν την εξάντληση (0–4)."
+                />
+              </h2>
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label className={labelClass}>RPE</label>
+                  <select
+                    value={rpe}
+                    onChange={(e) => handleRpeRirChange(e.target.value, "rpe")}
+                    className={inputClass}
+                  >
+                    {[...Array(5)].map((_, i) => (
+                      <option key={i} value={i + 6}>
+                        {i + 6}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className={labelClass}>RIR</label>
+                  <select
+                    value={rir}
+                    onChange={(e) => handleRpeRirChange(e.target.value, "rir")}
+                    className={inputClass}
+                  >
+                    {[...Array(5)].map((_, i) => (
+                      <option key={i} value={i}>
+                        {i}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {rpeError && (
+                <p className="mt-3 text-sm font-semibold text-red-400">{rpeError}</p>
+              )}
+            </motion.section>
+
+            <motion.section
+              className={panelClass}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.45 }}
+            >
+              <div className="mb-4">
+                <h2 className="text-xl font-semibold text-blue-400">
+                  🧘 Recovery Score
+                </h2>
+                <p className={`text-sm ${mutedTextClass}`}>
+                  Recovery panel κανονικού πλάτους, όχι 5 sliders στη μέση του
+                  σύμπαντος.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {["sleep", "energy", "mood", "pain"].map((key) => (
+                  <div key={key}>
+                    <div className="mb-1 flex items-center justify-between">
+                      <label className={labelClass}>
+                        {key === "sleep"
+                          ? "Ύπνος"
+                          : key === "energy"
+                          ? "Ενέργεια"
+                          : key === "mood"
+                          ? "Διάθεση"
+                          : "Πόνος"}
+                      </label>
+                      <span className={`text-sm ${mutedTextClass}`}>
+                        {stressData[key]}
+                      </span>
+                    </div>
+                    <input
+                      type="range"
+                      min="1"
+                      max="5"
+                      value={stressData[key]}
+                      onChange={(e) =>
+                        setStressData({ ...stressData, [key]: e.target.value })
+                      }
+                      className="w-full"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <button
+                  onClick={calculateRecovery}
+                  className="rounded-xl bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
+                >
+                  Υπολόγισε Recovery Score
+                </button>
+
+                <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-sm font-semibold text-cyan-300">
+                  Recovery: {recoveryScore ?? latestRecoveryValue ?? "--"}
+                </div>
+              </div>
+            </motion.section>
+
+            <motion.section
+              className={panelClass}
+              variants={sectionVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.5 }}
+            >
+              <div className="mb-4">
+                <h2 className="text-xl font-semibold text-cyan-400">
+                  Ιστορικό Recovery
+                </h2>
+              </div>
+
+              {recoveryChartData.length === 0 ? (
+                <p className={mutedTextClass}>Δεν υπάρχουν δεδομένα ακόμα.</p>
+              ) : (
+                <ResponsiveContainer width="100%" height={260}>
+                  <LineChart data={recoveryChartData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis domain={[1, 5]} allowDecimals={false} />
+                    <Tooltip />
+                    <Line
+                      type="monotone"
+                      dataKey="recoveryScore"
+                      stroke="#06B6D4"
+                      strokeWidth={3}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              )}
+            </motion.section>
+
+            <motion.section
+              className={panelClass}
+              variants={sectionVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.55 }}
+            >
+              <h2 className="mb-4 text-xl font-semibold text-amber-400">
+                🧠 AI Coach
+              </h2>
+
+              <div className="mb-4">
+                <label className={labelClass}>Mode</label>
+                <select
+                  value={userCycleMode}
+                  onChange={(e) => setUserCycleMode(e.target.value)}
+                  className={inputClass}
+                >
+                  <option value="Auto">🤖 Auto Mode</option>
+                  <option value="PR">🏋 PR Week</option>
+                  <option value="Deload">🧘 Deload Week</option>
+                </select>
+              </div>
+
+              <button
+                onClick={generateCoachAdvice}
+                className="rounded-xl bg-amber-500 px-4 py-2 font-semibold text-black hover:bg-amber-600"
+              >
+                Προπονητική Συμβουλή
+              </button>
+
+              <div className="mt-4 rounded-xl border border-amber-500/20 bg-amber-500/10 p-4 text-sm text-amber-300">
+                {coachAdvice || "Δεν υπάρχουν συμβουλές ακόμη."}
+              </div>
+
+              {coachAdvice && (
+                <div className="mt-4">
+                  <button
+                    onClick={exportCoachAdviceToPDF}
+                    disabled={isExportingCoachPdf}
+                    className="rounded-xl bg-amber-600 px-4 py-2 font-semibold text-white hover:bg-amber-700 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {isExportingCoachPdf ? "Exporting..." : "📤 Export Coach PDF"}
+                  </button>
+                </div>
+              )}
+            </motion.section>
+
+            <motion.section
+              className={panelClass}
+              variants={sectionVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="mb-4 text-xl font-semibold text-pink-300">
+                🔁 Cycle Builder
+              </h2>
+
+              <div className="space-y-4">
+                <div>
+                  <label className={labelClass}>1RM</label>
+                  <input
+                    type="number"
+                    value={maxOneRM || ""}
+                    onChange={(e) =>
+                      setMaxOneRM(e.target.value ? parseFloat(e.target.value) : null)
+                    }
+                    className={inputClass}
+                    placeholder="π.χ. 100"
+                  />
+                </div>
+
+                <div>
+                  <label className={labelClass}>Τύπος Κύκλου</label>
+                  <select
+                    value={cycleType}
+                    onChange={(e) => setCycleType(e.target.value)}
+                    className={inputClass}
+                  >
+                    <option value="Linear">Linear</option>
+                    <option value="Undulating">Undulating</option>
+                    <option value="Deload">Deload</option>
+                  </select>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={generateCyclePlan}
+                    className="rounded-xl bg-pink-500 px-4 py-2 font-semibold text-black hover:bg-pink-600"
+                  >
+                    Εβδομαδιαίο πλάνο
+                  </button>
+
+                  <button
+                    onClick={generateCycleTemplate}
+                    className="rounded-xl bg-fuchsia-600 px-4 py-2 font-semibold text-white hover:bg-fuchsia-700"
+                  >
+                    4-εβδομαδιαίος κύκλος
+                  </button>
+                </div>
+
+                {cyclePlan && (
+                  <pre className="whitespace-pre-wrap rounded-xl border border-pink-500/20 bg-pink-500/10 p-4 text-sm text-pink-200">
+                    {cyclePlan}
+                  </pre>
+                )}
+
+                {cycleOutput && (
+                  <>
+                    <pre className="whitespace-pre-wrap rounded-xl border border-fuchsia-500/20 bg-fuchsia-500/10 p-4 text-sm text-fuchsia-200">
+                      {cycleOutput}
+                    </pre>
+
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        onClick={exportCycleToPDF}
+                        disabled={isExportingCyclePdf}
+                        className="rounded-xl bg-fuchsia-600 px-4 py-2 font-semibold text-white hover:bg-fuchsia-700 disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        {isExportingCyclePdf ? "Exporting..." : "Cycle PDF"}
+                      </button>
+
+                      <button
+                        onClick={exportCycleToCSV}
+                        className="rounded-xl bg-indigo-600 px-4 py-2 font-semibold text-white hover:bg-indigo-700"
+                      >
+                        Cycle CSV
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </motion.section>
+          </div>
+        </div>
+
+        <section className="grid grid-cols-1 gap-6 xl:grid-cols-12">
+          <div className="xl:col-span-7">
+            <div className={panelClass}>
+              <h2 className="mb-4 text-xl font-semibold text-indigo-300">
+                📦 Exports
+              </h2>
+
+              <div className="flex flex-wrap gap-2">
+                {allLogs.length > 0 && (
+                  <>
+                    <button
+                      onClick={exportAllLogsToPDF}
+                      disabled={isExportingAllLogsPdf}
+                      className="rounded-xl bg-fuchsia-600 px-4 py-2 font-semibold text-white hover:bg-fuchsia-700 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {isExportingAllLogsPdf ? "Exporting..." : "🧾 All Logs PDF"}
+                    </button>
+
+                    <button
+                      onClick={exportAllLogsToCSV}
+                      className="rounded-xl bg-indigo-600 px-4 py-2 font-semibold text-white hover:bg-indigo-700"
+                    >
+                      📂 All Logs CSV
+                    </button>
+                  </>
+                )}
+              </div>
+
+              <div className="mt-4">
+                <ExportButtons logData={logData} />
+              </div>
+            </div>
+          </div>
+
+          <div className="xl:col-span-5">
+            <div className={panelClass}>
+              <h2 className="mb-4 text-xl font-semibold text-sky-300">
+                🧪 Recovery Tracker
+              </h2>
+<RecoveryTracker recoveryData={recoveryLogs} />            </div>
+          </div>
+        </section>
 
         {notifications.length > 0 && (
-          <div className="fixed top-2 right-2 space-y-2 z-50">
+          <div className="fixed right-3 top-3 z-50 space-y-2">
             {notifications.map((note) => (
               <div
                 key={note.id}
-                className="bg-yellow-200 border border-yellow-400 text-yellow-900 px-4 py-2 rounded shadow"
+                className="rounded-xl border border-yellow-400 bg-yellow-200 px-4 py-3 text-yellow-900 shadow-lg"
               >
-                <div className="flex justify-between items-center">
-                  <span>{note.text}</span>
+                <div className="flex items-start justify-between gap-3">
+                  <span className="text-sm font-medium">{note.text}</span>
                   <button
                     onClick={() => dismissNotification(note.id)}
-                    className="ml-2 text-sm text-yellow-800"
+                    className="text-sm font-bold text-yellow-800"
                   >
                     ✖
                   </button>
