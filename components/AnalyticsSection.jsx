@@ -20,6 +20,7 @@ const MEAL_TYPES = [
 const num = (value) => Number(value) || 0;
 
 export default function AnalyticsSection({
+  showWeeklyPreview = true,
   tdee,
   protein,
   fat,
@@ -339,8 +340,9 @@ export default function AnalyticsSection({
         </div>
       </CollapsibleSection>
 
-      <CollapsibleSection title="👁️ Προεπισκόπηση Εβδομαδιαίου Πλάνου">
-        <div className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr] items-start">
+      {showWeeklyPreview && (
+        <CollapsibleSection title="👁️ Προεπισκόπηση Εβδομαδιαίου Πλάνου">
+          <div className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr] items-start">
           <div className="space-y-4 text-sm">
             {daysOrder.map((day) => (
               <div key={day} className={ui?.summaryBox || "rounded-2xl border p-4"}>
@@ -385,8 +387,9 @@ export default function AnalyticsSection({
               </div>
             </div>
           </div>
-        </div>
-      </CollapsibleSection>
+          </div>
+        </CollapsibleSection>
+      )}
 
       <CollapsibleSection title="📤 Export & Κοινοποίηση">
         <div className="flex flex-wrap gap-3">

@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
+import { useUser } from "@clerk/clerk-react";
 import {
   CartesianGrid,
   Line,
@@ -41,6 +42,16 @@ const helperText = {
 const safeNumber = (value, fallback = 0) => {
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : fallback;
+};
+
+const isUserIdColumnUnsupported = (error) => {
+  const blob = `${error?.message || ""} ${error?.details || ""} ${error?.hint || ""}`.toLowerCase();
+  return blob.includes("user_id") && (
+    blob.includes("column") ||
+    blob.includes("schema cache") ||
+    blob.includes("does not exist") ||
+    blob.includes("not found")
+  );
 };
 
 const calculateCoreRecoveryScore = (values) => {
@@ -90,8 +101,7 @@ const getRecoveryTone = (score) => {
       label: "Πολύ καλή αποκατάσταση",
       badge: "High readiness",
       message: "Μπορείς να σηκώσεις ένταση χωρίς να παίζεις ρώσικη ρουλέτα με το fatigue.",
-      className:
-        "border-emerald-500/20 bg-emerald-500/10 text-emerald-300",
+      className: "border-emerald-500/20 bg-emerald-500/10 text-emerald-300",
     };
   }
 
@@ -100,8 +110,7 @@ const getRecoveryTone = (score) => {
       label: "Μέτρια αποκατάσταση",
       badge: "Watch volume",
       message: "Το σύστημα στέκεται, αλλά δεν ουρλιάζει και για PR day.",
-      className:
-        "border-amber-500/20 bg-amber-500/10 text-amber-300",
+      className: "border-amber-500/20 bg-amber-500/10 text-amber-300",
     };
   }
 
@@ -109,8 +118,7 @@ const getRecoveryTone = (score) => {
     label: "Χαμηλή αποκατάσταση",
     badge: "Deload / easier day",
     message: "Εδώ δεν θες ηρωισμούς. Θες εξυπνάδα, έλεγχο και λιγότερη ανοησία.",
-    className:
-      "border-rose-500/20 bg-rose-500/10 text-rose-300",
+    className: "border-rose-500/20 bg-rose-500/10 text-rose-300",
   };
 };
 
@@ -119,8 +127,7 @@ const getReadinessPlan = (readiness, stress) => {
     return {
       title: "Push Day",
       description: "Καλή μέρα για ένταση, ποιοτικά main lifts και επιθετικότερη φόρτιση.",
-      className:
-        "border-emerald-500/20 bg-emerald-500/10 text-emerald-300",
+      className: "border-emerald-500/20 bg-emerald-500/10 text-emerald-300",
     };
   }
 
@@ -128,21 +135,20 @@ const getReadinessPlan = (readiness, stress) => {
     return {
       title: "Moderate Day",
       description: "Κράτα ποιότητα, αλλά όχι υπερβολές. Τεχνική, όγκος υπό έλεγχο, λογικά RPE.",
-      className:
-        "border-cyan-500/20 bg-cyan-500/10 text-cyan-300",
+      className: "border-cyan-500/20 bg-cyan-500/10 text-cyan-300",
     };
   }
 
   return {
     title: "Deload / Recovery Bias",
     description: "Προτεραιότητα στην αποκατάσταση, χαμηλότερο volume ή active recovery.",
-    className:
-      "border-rose-500/20 bg-rose-500/10 text-rose-300",
+    className: "border-rose-500/20 bg-rose-500/10 text-rose-300",
   };
 };
 
 export default function RecoveryModule() {
   const { theme, toggleTheme } = useTheme();
+  const { user } = useUser();
 
   const [inputs, setInputs] = useState(defaultInputs);
   const [history, setHistory] = useState([]);
@@ -150,18 +156,37 @@ export default function RecoveryModule() {
   const [isSaving, setIsSaving] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [scopeMode, setScopeMode] = useState("local");
 
+  const skipNextDraftSaveRef = useRef(false);
   const isDark = theme === "dark";
 
-  const pageClass = isDark
-    ? "bg-black text-white"
-    : "bg-zinc-50 text-black";
+  const pageClass = isDark ? "bg-black text-white" : "bg-zinc-50 text-black";
 
   const panelClass = isDark
     ? "rounded-2xl border border-white/10 bg-zinc-900/80 shadow-xl shadow-black/20 backdrop-blur"
     : "rounded-2xl border border-black/5 bg-white shadow-lg shadow-black/5";
 
   const mutedTextClass = isDark ? "text-zinc-400" : "text-zinc-500";
+  const titleClass = isDark ? "text-white" : "text-zinc-900";
+  const softCardClass = isDark
+    ? "rounded-xl border border-white/10 bg-white/5 p-4"
+    : "rounded-xl border border-zinc-200 bg-zinc-50 p-4";
+  const chipClass = isDark
+    ? "rounded-full bg-black/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide"
+    : "rounded-full bg-black/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-zinc-700";
+  const localNoticeClass = isDark
+    ? "rounded-xl border border-yellow-500/20 bg-yellow-500/10 px-4 py-3 text-sm text-yellow-300"
+    : "rounded-xl border border-yellow-200 bg-yellow-50 px-4 py-3 text-sm text-yellow-800";
+  const legacyNoticeClass = isDark
+    ? "rounded-xl border border-amber-500/20 bg-amber-500/10 px-4 py-3 text-sm text-amber-300"
+    : "rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800";
+  const successClass = isDark
+    ? "rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300"
+    : "rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800";
+  const errorClass = isDark
+    ? "rounded-xl border border-rose-500/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-300"
+    : "rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800";
   const inputTrackClass = "w-full accent-cyan-500";
 
   const statCardClass = `${panelClass} p-5`;
@@ -186,18 +211,49 @@ export default function RecoveryModule() {
   }, []);
 
   useEffect(() => {
+    if (skipNextDraftSaveRef.current) {
+      skipNextDraftSaveRef.current = false;
+      return;
+    }
+
     localStorage.setItem("recoveryModuleDraft", JSON.stringify(inputs));
   }, [inputs]);
 
   const fetchRecoveryHistory = useCallback(async () => {
+    if (!user?.id) {
+      setScopeMode("local");
+      setHistory([]);
+      setIsLoadingHistory(false);
+      return;
+    }
+
     setIsLoadingHistory(true);
     setErrorMessage("");
 
-    const { data, error } = await supabase
+    let query = supabase
       .from("strength_logs")
       .select("*")
       .eq("type", "Recovery")
+      .eq("user_id", user.id)
       .order("timestamp", { ascending: true });
+
+    let { data, error } = await query;
+
+    if (error && isUserIdColumnUnsupported(error)) {
+      console.warn("Recovery history fetch falling back to legacy mode without user_id:", error);
+      setScopeMode("legacy");
+
+      const fallback = await supabase
+        .from("strength_logs")
+        .select("*")
+        .eq("type", "Recovery")
+        .order("timestamp", { ascending: true });
+
+      data = fallback.data;
+      error = fallback.error;
+    } else {
+      setScopeMode("scoped");
+    }
 
     if (error) {
       console.error("Recovery history fetch failed:", error);
@@ -209,7 +265,7 @@ export default function RecoveryModule() {
 
     setHistory(Array.isArray(data) ? data : []);
     setIsLoadingHistory(false);
-  }, []);
+  }, [user?.id]);
 
   useEffect(() => {
     fetchRecoveryHistory();
@@ -229,9 +285,7 @@ export default function RecoveryModule() {
             : recoveryScore;
 
         return {
-          id:
-            entry?.id ??
-            `${entry?.timestamp ?? entry?.date ?? "recovery"}-${index}`,
+          id: entry?.id ?? `${entry?.timestamp ?? entry?.date ?? "recovery"}-${index}`,
           timestamp: entry?.timestamp ?? entry?.date ?? null,
           dateLabel: formatDate(entry?.timestamp ?? entry?.date),
           dateTimeLabel: formatDateTime(entry?.timestamp ?? entry?.date),
@@ -247,20 +301,9 @@ export default function RecoveryModule() {
       .filter((entry) => entry.recoveryScore > 0);
   }, [history]);
 
-  const previewScore = useMemo(
-    () => calculateCoreRecoveryScore(inputs),
-    [inputs]
-  );
-
-  const previewReadiness = useMemo(
-    () => calculateReadinessScore(inputs),
-    [inputs]
-  );
-
-  const previewTone = useMemo(
-    () => getRecoveryTone(previewScore),
-    [previewScore]
-  );
+  const previewScore = useMemo(() => calculateCoreRecoveryScore(inputs), [inputs]);
+  const previewReadiness = useMemo(() => calculateReadinessScore(inputs), [inputs]);
+  const previewTone = useMemo(() => getRecoveryTone(previewScore), [previewScore]);
 
   const readinessPlan = useMemo(
     () => getReadinessPlan(previewReadiness, safeNumber(inputs.stress, 3)),
@@ -279,34 +322,19 @@ export default function RecoveryModule() {
     return flags;
   }, [inputs]);
 
-  const latestEntry =
-    normalizedHistory.length > 0
-      ? normalizedHistory[normalizedHistory.length - 1]
-      : null;
-
-  const recentEntries = useMemo(
-    () => normalizedHistory.slice(-8).reverse(),
-    [normalizedHistory]
-  );
-
-  const last7Entries = useMemo(
-    () => normalizedHistory.slice(-7),
-    [normalizedHistory]
-  );
+  const latestEntry = normalizedHistory.length > 0 ? normalizedHistory[normalizedHistory.length - 1] : null;
+  const recentEntries = useMemo(() => normalizedHistory.slice(-8).reverse(), [normalizedHistory]);
+  const last7Entries = useMemo(() => normalizedHistory.slice(-7), [normalizedHistory]);
 
   const averageLast7Recovery = useMemo(() => {
     if (last7Entries.length === 0) return null;
-    const avg =
-      last7Entries.reduce((sum, entry) => sum + entry.recoveryScore, 0) /
-      last7Entries.length;
+    const avg = last7Entries.reduce((sum, entry) => sum + entry.recoveryScore, 0) / last7Entries.length;
     return Number(avg.toFixed(1));
   }, [last7Entries]);
 
   const averageLast7Readiness = useMemo(() => {
     if (last7Entries.length === 0) return null;
-    const avg =
-      last7Entries.reduce((sum, entry) => sum + entry.readinessScore, 0) /
-      last7Entries.length;
+    const avg = last7Entries.reduce((sum, entry) => sum + entry.readinessScore, 0) / last7Entries.length;
     return Number(avg.toFixed(1));
   }, [last7Entries]);
 
@@ -316,10 +344,8 @@ export default function RecoveryModule() {
 
     if (latestThree.length < 3 || previousThree.length < 3) return null;
 
-    const latestAvg =
-      latestThree.reduce((sum, entry) => sum + entry.recoveryScore, 0) / 3;
-    const previousAvg =
-      previousThree.reduce((sum, entry) => sum + entry.recoveryScore, 0) / 3;
+    const latestAvg = latestThree.reduce((sum, entry) => sum + entry.recoveryScore, 0) / 3;
+    const previousAvg = previousThree.reduce((sum, entry) => sum + entry.recoveryScore, 0) / 3;
 
     return Number((latestAvg - previousAvg).toFixed(1));
   }, [normalizedHistory]);
@@ -342,17 +368,31 @@ export default function RecoveryModule() {
   };
 
   const handleReset = () => {
+    skipNextDraftSaveRef.current = true;
+
+    try {
+      localStorage.removeItem("recoveryModuleDraft");
+    } catch (error) {
+      console.error("Recovery draft clear failed:", error);
+    }
+
     setInputs(defaultInputs);
     setStatusMessage("");
     setErrorMessage("");
   };
 
   const handleSaveRecovery = async () => {
+    if (!user?.id) {
+      setErrorMessage("Συνδέσου για να αποθηκεύεται το recovery check-in στο cloud history.");
+      setStatusMessage("");
+      return;
+    }
+
     setIsSaving(true);
     setStatusMessage("");
     setErrorMessage("");
 
-    const payload = {
+    const basePayload = {
       type: "Recovery",
       ...inputs,
       recoveryScore: previewScore,
@@ -360,7 +400,18 @@ export default function RecoveryModule() {
       timestamp: new Date().toISOString(),
     };
 
-    const { error } = await supabase.from("strength_logs").insert([payload]);
+    let payload = { ...basePayload, user_id: user.id };
+    let { error } = await supabase.from("strength_logs").insert([payload]);
+
+    if (error && isUserIdColumnUnsupported(error)) {
+      console.warn("Recovery save falling back to legacy mode without user_id:", error);
+      setScopeMode("legacy");
+      payload = { ...basePayload };
+      const fallback = await supabase.from("strength_logs").insert([payload]);
+      error = fallback.error;
+    } else {
+      setScopeMode("scoped");
+    }
 
     if (error) {
       console.error("Recovery save failed:", error);
@@ -392,14 +443,23 @@ export default function RecoveryModule() {
       </Helmet>
 
       <div className="mx-auto w-full max-w-7xl space-y-6">
+        {!user?.id && (
+          <div className={localNoticeClass}>
+            Δεν έχεις συνδεθεί — το draft των sliders μένει τοπικά, αλλά cloud history και save check-ins θέλουν login.
+          </div>
+        )}
+
+        {user?.id && scopeMode === "legacy" && (
+          <div className={legacyNoticeClass}>
+            Το `strength_logs` φαίνεται να δουλεύει χωρίς `user_id`. Το module συνεχίζει σε legacy mode για να μη νεκρώσει, αλλά αν θες σωστό per-user isolation, θέλει column `user_id` στο table.
+          </div>
+        )}
+
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-yellow-400 md:text-4xl">
-              Recovery Station
-            </h1>
+            <h1 className="text-3xl font-bold text-yellow-400 md:text-4xl">Recovery Station</h1>
             <p className={`mt-1 text-sm md:text-base ${mutedTextClass}`}>
-              Readiness, self-report, trend εικόνα και πραγματικό history — όχι ένα
-              γυμνό form που απλώς σου πετάει έναν αριθμό.
+              Readiness, self-report, trend εικόνα και πραγματικό history — όχι ένα γυμνό form που απλώς σου πετάει έναν αριθμό.
             </p>
           </div>
 
@@ -420,37 +480,28 @@ export default function RecoveryModule() {
 
             <button
               onClick={handleSaveRecovery}
-              disabled={isSaving}
+              disabled={isSaving || !user?.id}
+              title={user?.id ? "Αποθήκευση check-in στο recovery history" : "Συνδέσου για cloud save"}
               className="rounded-xl bg-cyan-600 px-4 py-2 text-sm font-semibold text-white hover:bg-cyan-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {isSaving ? "Saving..." : "💾 Save Check-in"}
+              {isSaving ? "Saving..." : !user?.id ? "🔒 Sign in to Save" : "💾 Save Check-in"}
             </button>
           </div>
         </div>
 
         <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <div className={statCardClass}>
-            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
-              Live Recovery Score
-            </p>
-            <p className="mt-2 text-2xl font-bold text-cyan-400">
-              {previewScore}/5
-            </p>
+            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>Live Recovery Score</p>
+            <p className="mt-2 text-2xl font-bold text-cyan-400">{previewScore}/5</p>
           </div>
 
           <div className={statCardClass}>
-            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
-              Live Readiness
-            </p>
-            <p className="mt-2 text-2xl font-bold text-emerald-400">
-              {previewReadiness}/5
-            </p>
+            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>Live Readiness</p>
+            <p className="mt-2 text-2xl font-bold text-emerald-400">{previewReadiness}/5</p>
           </div>
 
           <div className={statCardClass}>
-            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
-              Τελευταίο Check-in
-            </p>
+            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>Τελευταίο Check-in</p>
             <p className="mt-2 text-2xl font-bold text-yellow-400">
               {latestEntry ? `${latestEntry.recoveryScore}/5` : "--"}
             </p>
@@ -460,28 +511,21 @@ export default function RecoveryModule() {
           </div>
 
           <div className={statCardClass}>
-            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
-              7-day Average
-            </p>
+            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>7-day Average</p>
             <p className="mt-2 text-2xl font-bold text-pink-400">
-              {averageLast7Recovery ? `${averageLast7Recovery}/5` : "--"}
+              {averageLast7Recovery !== null ? `${averageLast7Recovery}/5` : "--"}
             </p>
-            <p className={`mt-1 text-xs ${mutedTextClass}`}>
-              {normalizedHistory.length} συνολικά entries
-            </p>
+            <p className={`mt-1 text-xs ${mutedTextClass}`}>{normalizedHistory.length} συνολικά entries</p>
           </div>
         </section>
 
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
-          <section className={`space-y-6 xl:col-span-7`}>
+          <section className="space-y-6 xl:col-span-7">
             <div className={sectionClass}>
               <div className="mb-5">
-                <h2 className="text-xl font-semibold text-white dark:text-white">
-                  Self-Report Check-in
-                </h2>
+                <h2 className={`text-xl font-semibold ${titleClass}`}>Self-Report Check-in</h2>
                 <p className={`mt-1 text-sm ${mutedTextClass}`}>
-                  Core recovery score συμβατό με το Strength module, με stress να
-                  επηρεάζει το readiness και όχι να χαλάει το shared scoring model.
+                  Core recovery score συμβατό με το Strength module, με stress να επηρεάζει το readiness και όχι να χαλάει το shared scoring model.
                 </p>
               </div>
 
@@ -490,9 +534,7 @@ export default function RecoveryModule() {
                   <div key={key} className="space-y-2">
                     <div className="flex items-center justify-between gap-3">
                       <label className="font-medium">{labels[key]}</label>
-                      <span className={`text-sm font-semibold ${mutedTextClass}`}>
-                        {value}/5
-                      </span>
+                      <span className={`text-sm font-semibold ${mutedTextClass}`}>{value}/5</span>
                     </div>
 
                     <input
@@ -504,38 +546,24 @@ export default function RecoveryModule() {
                       className={inputTrackClass}
                     />
 
-                    <p className={`text-xs ${mutedTextClass}`}>
-                      {helperText[key]}
-                    </p>
+                    <p className={`text-xs ${mutedTextClass}`}>{helperText[key]}</p>
                   </div>
                 ))}
               </div>
 
               {(statusMessage || errorMessage) && (
                 <div className="mt-5 space-y-2">
-                  {statusMessage && (
-                    <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
-                      {statusMessage}
-                    </div>
-                  )}
-
-                  {errorMessage && (
-                    <div className="rounded-xl border border-rose-500/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">
-                      {errorMessage}
-                    </div>
-                  )}
+                  {statusMessage && <div className={successClass}>{statusMessage}</div>}
+                  {errorMessage && <div className={errorClass}>{errorMessage}</div>}
                 </div>
               )}
             </div>
 
             <div className={sectionClass}>
               <div className="mb-4">
-                <h2 className="text-xl font-semibold text-cyan-400">
-                  Recovery Trend
-                </h2>
+                <h2 className="text-xl font-semibold text-cyan-400">Recovery Trend</h2>
                 <p className={`mt-1 text-sm ${mutedTextClass}`}>
-                  Τα τελευταία 14 check-ins για να βλέπεις αν όντως αναρρώνεις ή απλώς
-                  λες στον εαυτό σου ωραία παραμύθια.
+                  Τα τελευταία 14 check-ins για να βλέπεις αν όντως αναρρώνεις ή απλώς λες στον εαυτό σου ωραία παραμύθια.
                 </p>
               </div>
 
@@ -549,11 +577,7 @@ export default function RecoveryModule() {
                     <LineChart data={chartData}>
                       <CartesianGrid strokeDasharray="3 3" stroke={isDark ? "#27272a" : "#e4e4e7"} />
                       <XAxis dataKey="date" stroke={isDark ? "#a1a1aa" : "#71717a"} />
-                      <YAxis
-                        domain={[1, 5]}
-                        allowDecimals={false}
-                        stroke={isDark ? "#a1a1aa" : "#71717a"}
-                      />
+                      <YAxis domain={[1, 5]} allowDecimals={false} stroke={isDark ? "#a1a1aa" : "#71717a"} />
                       <Tooltip
                         contentStyle={{
                           backgroundColor: isDark ? "#09090b" : "#ffffff",
@@ -563,22 +587,8 @@ export default function RecoveryModule() {
                         }}
                       />
                       <ReferenceLine y={3} stroke="#f59e0b" strokeDasharray="4 4" />
-                      <Line
-                        type="monotone"
-                        dataKey="recoveryScore"
-                        name="Recovery"
-                        stroke="#22d3ee"
-                        strokeWidth={3}
-                        dot={{ r: 3 }}
-                      />
-                      <Line
-                        type="monotone"
-                        dataKey="readinessScore"
-                        name="Readiness"
-                        stroke="#34d399"
-                        strokeWidth={2}
-                        dot={false}
-                      />
+                      <Line type="monotone" dataKey="recoveryScore" name="Recovery" stroke="#22d3ee" strokeWidth={3} dot={{ r: 3 }} />
+                      <Line type="monotone" dataKey="readinessScore" name="Readiness" stroke="#34d399" strokeWidth={2} dot={false} />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
@@ -586,12 +596,10 @@ export default function RecoveryModule() {
             </div>
           </section>
 
-          <section className={`space-y-6 xl:col-span-5`}>
+          <section className="space-y-6 xl:col-span-5">
             <div className={sectionClass}>
               <div className="mb-4">
-                <h2 className="text-xl font-semibold text-emerald-400">
-                  Current Interpretation
-                </h2>
+                <h2 className="text-xl font-semibold text-emerald-400">Current Interpretation</h2>
                 <p className={`mt-1 text-sm ${mutedTextClass}`}>
                   Όχι απλώς score. Θέλεις και νόημα, αλλιώς είναι αριθμητική για παρηγοριά.
                 </p>
@@ -600,9 +608,7 @@ export default function RecoveryModule() {
               <div className={`rounded-2xl border p-4 ${previewTone.className}`}>
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <p className="text-lg font-bold">{previewTone.label}</p>
-                  <span className="rounded-full bg-black/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide">
-                    {previewTone.badge}
-                  </span>
+                  <span className={chipClass}>{previewTone.badge}</span>
                 </div>
                 <p className="mt-3 text-sm leading-6">{previewTone.message}</p>
               </div>
@@ -613,28 +619,22 @@ export default function RecoveryModule() {
               </div>
 
               <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                  <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
-                    7-day Avg Recovery
-                  </p>
+                <div className={softCardClass}>
+                  <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>7-day Avg Recovery</p>
                   <p className="mt-2 text-2xl font-bold text-cyan-400">
-                    {averageLast7Recovery ? `${averageLast7Recovery}/5` : "--"}
+                    {averageLast7Recovery !== null ? `${averageLast7Recovery}/5` : "--"}
                   </p>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                  <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
-                    7-day Avg Readiness
-                  </p>
+                <div className={softCardClass}>
+                  <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>7-day Avg Readiness</p>
                   <p className="mt-2 text-2xl font-bold text-emerald-400">
-                    {averageLast7Readiness ? `${averageLast7Readiness}/5` : "--"}
+                    {averageLast7Readiness !== null ? `${averageLast7Readiness}/5` : "--"}
                   </p>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                  <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
-                    Trend Δ
-                  </p>
+                <div className={softCardClass}>
+                  <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>Trend Δ</p>
                   <p
                     className={`mt-2 text-2xl font-bold ${
                       trendDelta === null
@@ -650,10 +650,8 @@ export default function RecoveryModule() {
                   </p>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                  <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>
-                    Weak Links
-                  </p>
+                <div className={softCardClass}>
+                  <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>Weak Links</p>
                   <p className="mt-2 text-sm font-semibold text-yellow-400">
                     {weakLinks.length > 0 ? weakLinks.join(", ") : "Κανένα σοβαρό bottleneck"}
                   </p>
@@ -662,9 +660,7 @@ export default function RecoveryModule() {
             </div>
 
             <div className={sectionClass}>
-              <h2 className="mb-4 text-xl font-semibold text-pink-400">
-                Recent Check-ins
-              </h2>
+              <h2 className="mb-4 text-xl font-semibold text-pink-400">Recent Check-ins</h2>
 
               {isLoadingHistory ? (
                 <p className={mutedTextClass}>Φόρτωση entries...</p>
@@ -676,10 +672,7 @@ export default function RecoveryModule() {
                     const tone = getRecoveryTone(entry.recoveryScore);
 
                     return (
-                      <div
-                        key={entry.id}
-                        className={`rounded-xl border p-4 ${tone.className}`}
-                      >
+                      <div key={entry.id} className={`rounded-xl border p-4 ${tone.className}`}>
                         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                           <div>
                             <p className="font-semibold">{entry.dateTimeLabel}</p>

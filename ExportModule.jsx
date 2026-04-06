@@ -1,3 +1,4 @@
+
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
@@ -114,6 +115,109 @@ const isInRange = (value, rangeKey) => {
   return date >= rangeStart;
 };
 
+const isMissingUserScopeColumnError = (error) => {
+  const text = `${error?.message || ""} ${error?.details || ""} ${error?.hint || ""}`.toLowerCase();
+  return (
+    text.includes("user_id") &&
+    (text.includes("column") || text.includes("schema cache") || text.includes("could not find"))
+  );
+};
+
+const buildScopedQuery = ({
+  table,
+  select,
+  orderColumn,
+  ascending = false,
+  userId,
+  userScoped = false,
+  limit,
+  single = false,
+}) => {
+  let query = supabase.from(table).select(select);
+
+  if (userScoped && userId) {
+    query = query.eq("user_id", userId);
+  }
+
+  if (orderColumn) {
+    query = query.order(orderColumn, { ascending });
+  }
+
+  if (typeof limit === "number") {
+    query = query.limit(limit);
+  }
+
+  if (single) {
+    query = query.maybeSingle();
+  }
+
+  return query;
+};
+
+async function fetchWithOptionalUserScope({
+  table,
+  select,
+  orderColumn,
+  ascending = false,
+  userId,
+  requireUser = false,
+  userScoped = false,
+  allowUnscopedFallback = false,
+  limit,
+  single = false,
+}) {
+  if (requireUser && !userId) {
+    return {
+      data: single ? null : [],
+      error: null,
+      usedFallback: false,
+      skippedForNoUser: true,
+    };
+  }
+
+  let response = await buildScopedQuery({
+    table,
+    select,
+    orderColumn,
+    ascending,
+    userId,
+    userScoped,
+    limit,
+    single,
+  });
+
+  if (
+    response?.error &&
+    userScoped &&
+    userId &&
+    allowUnscopedFallback &&
+    isMissingUserScopeColumnError(response.error)
+  ) {
+    const fallback = await buildScopedQuery({
+      table,
+      select,
+      orderColumn,
+      ascending,
+      userId: null,
+      userScoped: false,
+      limit,
+      single,
+    });
+
+    return {
+      ...fallback,
+      usedFallback: !fallback?.error,
+      skippedForNoUser: false,
+    };
+  }
+
+  return {
+    ...response,
+    usedFallback: false,
+    skippedForNoUser: false,
+  };
+}
+
 export default function ExportModule() {
   const { theme, toggleTheme } = useTheme();
   const { user } = useUser();
@@ -130,6 +234,7 @@ export default function ExportModule() {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
+  const [dataScopeNotice, setDataScopeNotice] = useState("");
   const [isExportingPdf, setIsExportingPdf] = useState(false);
   const [isExportingCsv, setIsExportingCsv] = useState(false);
 
@@ -145,61 +250,78 @@ export default function ExportModule() {
     ? "rounded-2xl border border-white/10 bg-white/5"
     : "rounded-2xl border border-black/5 bg-zinc-50";
 
+  const previewTagClass = isDark
+    ? "rounded-full bg-black/20 px-3 py-1 font-semibold"
+    : "rounded-full bg-zinc-200 px-3 py-1 font-semibold text-zinc-800";
+
   const mutedTextClass = isDark ? "text-zinc-400" : "text-zinc-500";
 
   const fetchAllData = useCallback(async () => {
     setIsLoading(true);
     setErrorMessage("");
+    setDataScopeNotice("");
 
     try {
-      const strengthPromise = supabase
-        .from("strength_logs")
-        .select(
-          "id, type, exercise, weight, reps, sets, rpe, notes, maxOneRM, recoveryScore, sleep, energy, pain, mood, stress, date, timestamp"
-        )
-        .order("timestamp", { ascending: false });
-
-      const cardioPromise = supabase
-        .from("cardio_logs")
-        .select(
-          "id, created_at, vo2, kcal, activity, type, value, test_type, distance, mets, weight, duration"
-        )
-        .order("created_at", { ascending: false });
-
-      const intakePromise = user
-        ? supabase
-            .from("intake_logs")
-            .select("date, kcal, protein, carbs, fat")
-            .eq("user_id", user.id)
-            .order("date", { ascending: false })
-        : Promise.resolve({ data: [], error: null });
-
-      const mealPlanPromise = user
-        ? supabase
-            .from("meal_plans")
-            .select("created_at, plan_data")
-            .eq("user_id", user.id)
-            .order("created_at", { ascending: false })
-            .limit(1)
-            .maybeSingle()
-        : Promise.resolve({ data: null, error: null });
-
-      const metricsPromise = user
-        ? supabase
-            .from("metrics")
-            .select("*")
-            .eq("user_id", user.id)
-            .order("week", { ascending: false })
-        : Promise.resolve({ data: [], error: null });
-
-      const [strengthRes, cardioRes, intakeRes, mealPlanRes, metricsRes] =
-        await Promise.all([
-          strengthPromise,
-          cardioPromise,
-          intakePromise,
-          mealPlanPromise,
-          metricsPromise,
-        ]);
+      const [
+        strengthRes,
+        cardioRes,
+        intakeRes,
+        mealPlanRes,
+        metricsRes,
+      ] = await Promise.all([
+        fetchWithOptionalUserScope({
+          table: "strength_logs",
+          select:
+            "id, user_id, type, exercise, weight, reps, sets, rpe, notes, maxOneRM, recoveryScore, readinessScore, sleep, energy, pain, mood, stress, date, timestamp",
+          orderColumn: "timestamp",
+          ascending: false,
+          userId: user?.id,
+          userScoped: true,
+          allowUnscopedFallback: true,
+        }),
+        fetchWithOptionalUserScope({
+          table: "cardio_logs",
+          select:
+            "id, user_id, created_at, vo2, kcal, activity, type, value, test_type, distance, mets, weight, duration",
+          orderColumn: "created_at",
+          ascending: false,
+          userId: user?.id,
+          userScoped: true,
+          allowUnscopedFallback: true,
+        }),
+        fetchWithOptionalUserScope({
+          table: "intake_logs",
+          select: "date, kcal, protein, carbs, fat",
+          orderColumn: "date",
+          ascending: false,
+          userId: user?.id,
+          requireUser: true,
+          userScoped: true,
+          allowUnscopedFallback: false,
+        }),
+        fetchWithOptionalUserScope({
+          table: "meal_plans",
+          select: "created_at, plan_data",
+          orderColumn: "created_at",
+          ascending: false,
+          userId: user?.id,
+          requireUser: true,
+          userScoped: true,
+          allowUnscopedFallback: false,
+          limit: 1,
+          single: true,
+        }),
+        fetchWithOptionalUserScope({
+          table: "metrics",
+          select: "*",
+          orderColumn: "week",
+          ascending: false,
+          userId: user?.id,
+          requireUser: true,
+          userScoped: true,
+          allowUnscopedFallback: false,
+        }),
+      ]);
 
       const errors = [
         strengthRes.error,
@@ -213,12 +335,32 @@ export default function ExportModule() {
         throw errors[0];
       }
 
+      const notices = [];
+
+      if (!user?.id) {
+        notices.push(
+          "Δεν υπάρχει signed-in user. Nutrition/metrics μένουν κενά και strength/cardio μπορεί να εμφανίζουν μόνο ό,τι επιτρέπει το υπάρχον backend policy."
+        );
+      } else {
+        if (strengthRes.usedFallback) {
+          notices.push(
+            "Το strength_logs δεν φάνηκε να υποστηρίζει user_id filtering, οπότε έγινε fallback χωρίς user scope. Αυτό θέλει backend cleanup, όχι άλλο κραγιόν στο frontend."
+          );
+        }
+        if (cardioRes.usedFallback) {
+          notices.push(
+            "Το cardio_logs δεν φάνηκε να υποστηρίζει user_id filtering, οπότε έγινε fallback χωρίς user scope. Δηλαδή το export δουλεύει, αλλά το schema θέλει νοικοκύρεμα."
+          );
+        }
+      }
+
+      setDataScopeNotice(notices.join(" "));
       setDatasets({
-        strengthLogs: strengthRes.data || [],
-        cardioLogs: cardioRes.data || [],
-        intakeLogs: intakeRes.data || [],
+        strengthLogs: Array.isArray(strengthRes.data) ? strengthRes.data : [],
+        cardioLogs: Array.isArray(cardioRes.data) ? cardioRes.data : [],
+        intakeLogs: Array.isArray(intakeRes.data) ? intakeRes.data : [],
         latestMealPlan: mealPlanRes.data || null,
-        metrics: metricsRes.data || [],
+        metrics: Array.isArray(metricsRes.data) ? metricsRes.data : [],
       });
     } catch (error) {
       console.error("Export module fetch failed:", error);
@@ -228,7 +370,7 @@ export default function ExportModule() {
     } finally {
       setIsLoading(false);
     }
-  }, [user]);
+  }, [user?.id]);
 
   useEffect(() => {
     fetchAllData();
@@ -323,7 +465,7 @@ export default function ExportModule() {
 
     return {
       count: filteredCardioLogs.length,
-      avgVo2: vo2Average ? Number(vo2Average.toFixed(1)) : null,
+      avgVo2: vo2Average !== null ? Number(vo2Average.toFixed(1)) : null,
       kcalTotal: Number(kcalTotal.toFixed(1)),
       latestActivity: latest?.activity || null,
     };
@@ -341,12 +483,13 @@ export default function ExportModule() {
 
     return {
       count: filteredIntakeLogs.length,
-      avgKcal: avgKcal ? Number(avgKcal.toFixed(1)) : null,
+      avgKcal: avgKcal !== null ? Number(avgKcal.toFixed(1)) : null,
       latestKcal: latest ? safeNumber(latest?.kcal, 0) : null,
       latestProtein: latest ? safeNumber(latest?.protein, 0) : null,
       latestCarbs: latest ? safeNumber(latest?.carbs, 0) : null,
       latestFat: latest ? safeNumber(latest?.fat, 0) : null,
       planFilledSlots: latestMealPlanSummary.filledSlots,
+      planCreatedAt: latestMealPlanSummary.createdAt,
     };
   }, [filteredIntakeLogs, latestMealPlanSummary]);
 
@@ -369,9 +512,10 @@ export default function ExportModule() {
 
     return {
       count: filteredRecoveryLogs.length,
-      avgRecovery: avgRecovery ? Number(avgRecovery.toFixed(1)) : null,
-      avgStress: avgStress ? Number(avgStress.toFixed(1)) : null,
+      avgRecovery: avgRecovery !== null ? Number(avgRecovery.toFixed(1)) : null,
+      avgStress: avgStress !== null ? Number(avgStress.toFixed(1)) : null,
       latestRecovery: latest ? safeNumber(latest?.recoveryScore, 0) : null,
+      latestReadiness: latest ? safeNumber(latest?.readinessScore, 0) : null,
     };
   }, [filteredRecoveryLogs]);
 
@@ -385,7 +529,7 @@ export default function ExportModule() {
         summary: [
           `Sessions: ${strengthSummary.count}`,
           `Best 1RM: ${
-            strengthSummary.best1RM ? `${strengthSummary.best1RM} kg` : "-"
+            strengthSummary.best1RM !== null ? `${strengthSummary.best1RM} kg` : "-"
           }`,
           `Exercises: ${strengthSummary.uniqueExercises}`,
         ],
@@ -408,7 +552,7 @@ export default function ExportModule() {
         title: "Cardio Overview",
         summary: [
           `Entries: ${cardioSummary.count}`,
-          `Avg VO₂: ${cardioSummary.avgVo2 ? `${cardioSummary.avgVo2}` : "-"}`,
+          `Avg VO₂: ${cardioSummary.avgVo2 !== null ? `${cardioSummary.avgVo2}` : "-"}`,
           `Kcal total: ${formatNumber(cardioSummary.kcalTotal, 1)}`,
         ],
         rows: filteredCardioLogs.slice(0, 6).map((entry) => ({
@@ -430,9 +574,7 @@ export default function ExportModule() {
         title: "Nutrition Overview",
         summary: [
           `Intake logs: ${nutritionSummary.count}`,
-          `Avg kcal: ${
-            nutritionSummary.avgKcal ? `${nutritionSummary.avgKcal}` : "-"
-          }`,
+          `Avg kcal: ${nutritionSummary.avgKcal !== null ? `${nutritionSummary.avgKcal}` : "-"}`,
           `Filled plan slots: ${nutritionSummary.planFilledSlots}`,
         ],
         rows: filteredIntakeLogs.slice(0, 6).map((entry) => ({
@@ -453,12 +595,12 @@ export default function ExportModule() {
         summary: [
           `Check-ins: ${recoverySummary.count}`,
           `Avg recovery: ${
-            recoverySummary.avgRecovery
+            recoverySummary.avgRecovery !== null
               ? `${recoverySummary.avgRecovery}/5`
               : "-"
           }`,
           `Avg stress: ${
-            recoverySummary.avgStress ? `${recoverySummary.avgStress}/5` : "-"
+            recoverySummary.avgStress !== null ? `${recoverySummary.avgStress}/5` : "-"
           }`,
         ],
         rows: filteredRecoveryLogs.slice(0, 6).map((entry) => ({
@@ -548,10 +690,11 @@ export default function ExportModule() {
     if (selected.recovery) {
       sections.push([
         ["Recovery Logs"],
-        ["Date", "Recovery Score", "Sleep", "Energy", "Mood", "Pain", "Stress"],
+        ["Date", "Recovery Score", "Readiness", "Sleep", "Energy", "Mood", "Pain", "Stress"],
         ...filteredRecoveryLogs.map((entry) => [
           formatDate(entry?.timestamp || entry?.date),
           entry?.recoveryScore ?? "",
+          entry?.readinessScore ?? "",
           entry?.sleep ?? "",
           entry?.energy ?? "",
           entry?.mood ?? "",
@@ -583,7 +726,7 @@ export default function ExportModule() {
         section.map((row) => row.map(toCsvValue).join(",")).join("\n")
       );
 
-      const blob = new Blob([csvBlocks.join("\n\n")], {
+      const blob = new Blob(["\uFEFF" + csvBlocks.join("\n\n")], {
         type: "text/csv;charset=utf-8;",
       });
 
@@ -613,10 +756,15 @@ export default function ExportModule() {
       setStatusMessage("");
       setErrorMessage("");
 
-      const [{ default: jsPDF }, { default: autoTable }] = await Promise.all([
+      const [{ default: jsPDF }, autoTableModule] = await Promise.all([
         import("jspdf"),
         import("jspdf-autotable"),
       ]);
+
+      const autoTable = autoTableModule.default || autoTableModule.autoTable;
+      if (typeof autoTable !== "function") {
+        throw new Error("jspdf-autotable import failed");
+      }
 
       const doc = new jsPDF("p", "mm", "a4");
       const pageWidth = doc.internal.pageSize.getWidth();
@@ -735,10 +883,11 @@ export default function ExportModule() {
         renderSectionTitle("Recovery");
         autoTable(doc, {
           startY: currentY,
-          head: [["Date", "Recovery", "Sleep", "Energy", "Mood", "Pain", "Stress"]],
+          head: [["Date", "Recovery", "Readiness", "Sleep", "Energy", "Mood", "Pain", "Stress"]],
           body: filteredRecoveryLogs.map((entry) => [
             formatDate(entry?.timestamp || entry?.date),
             entry?.recoveryScore ?? "",
+            entry?.readinessScore ?? "",
             entry?.sleep ?? "",
             entry?.energy ?? "",
             entry?.mood ?? "",
@@ -803,33 +952,37 @@ export default function ExportModule() {
       key: "strength",
       title: "Strength logs",
       value: strengthSummary.count,
-      hint: strengthSummary.best1RM
-        ? `Best 1RM ${strengthSummary.best1RM} kg`
-        : "No 1RM yet",
+      hint:
+        strengthSummary.best1RM !== null
+          ? `Best 1RM ${strengthSummary.best1RM} kg`
+          : "No 1RM yet",
     },
     {
       key: "cardio",
       title: "Cardio logs",
       value: cardioSummary.count,
-      hint: cardioSummary.avgVo2
-        ? `Avg VO₂ ${cardioSummary.avgVo2}`
-        : "No VO₂ data yet",
+      hint:
+        cardioSummary.avgVo2 !== null
+          ? `Avg VO₂ ${cardioSummary.avgVo2}`
+          : "No VO₂ data yet",
     },
     {
       key: "nutrition",
       title: "Nutrition logs",
       value: nutritionSummary.count,
-      hint: nutritionSummary.avgKcal
-        ? `Avg kcal ${nutritionSummary.avgKcal}`
-        : "No intake logs yet",
+      hint:
+        nutritionSummary.avgKcal !== null
+          ? `Avg kcal ${nutritionSummary.avgKcal}`
+          : "No intake logs yet",
     },
     {
       key: "recovery",
       title: "Recovery check-ins",
       value: recoverySummary.count,
-      hint: recoverySummary.avgRecovery
-        ? `Avg recovery ${recoverySummary.avgRecovery}/5`
-        : "No recovery history yet",
+      hint:
+        recoverySummary.avgRecovery !== null
+          ? `Avg recovery ${recoverySummary.avgRecovery}/5`
+          : "No recovery history yet",
     },
   ];
 
@@ -1038,11 +1191,22 @@ export default function ExportModule() {
                   • Recovery τραβιέται από τα recovery entries του strength_logs για
                   να μένει συμβατό με το υπόλοιπο app.
                 </p>
-                {!user && (
+                {!user?.id && (
                   <p className="text-amber-400">
                     Δεν υπάρχει signed-in user, οπότε user-scoped nutrition /
-                    metrics data μπορεί να είναι άδεια.
+                    metrics data θα είναι άδεια.
                   </p>
+                )}
+                {dataScopeNotice && (
+                  <div
+                    className={`rounded-xl border px-4 py-3 text-sm ${
+                      isDark
+                        ? "border-amber-500/20 bg-amber-500/10 text-amber-300"
+                        : "border-amber-200 bg-amber-50 text-amber-800"
+                    }`}
+                  >
+                    {dataScopeNotice}
+                  </div>
                 )}
               </div>
             </div>
@@ -1102,10 +1266,7 @@ export default function ExportModule() {
 
                         <div className="flex flex-wrap gap-2 text-xs">
                           {section.summary.map((item) => (
-                            <span
-                              key={item}
-                              className="rounded-full bg-black/20 px-3 py-1 font-semibold"
-                            >
+                            <span key={item} className={previewTagClass}>
                               {item}
                             </span>
                           ))}
@@ -1173,6 +1334,34 @@ export default function ExportModule() {
                               {label}
                             </p>
                             <p className="mt-1 text-lg font-bold">{value ?? "-"}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {selected.nutrition && latestMealPlanSummary.filledSlots > 0 && (
+                    <div className={`${subtlePanelClass} p-4`}>
+                      <h3 className="text-lg font-bold text-emerald-400">
+                        Latest Meal Plan Snapshot
+                      </h3>
+                      <p className={`mt-1 text-sm ${mutedTextClass}`}>
+                        Δημιουργήθηκε: {formatDate(latestMealPlanSummary.createdAt)} • Filled slots:{" "}
+                        {latestMealPlanSummary.filledSlots}/{latestMealPlanSummary.totalSlots}
+                      </p>
+
+                      <div className="mt-4 space-y-3">
+                        {latestMealPlanSummary.sampleMeals.map((item) => (
+                          <div
+                            key={item.slot}
+                            className={`rounded-xl border px-4 py-3 ${
+                              isDark
+                                ? "border-white/10 bg-zinc-950/60"
+                                : "border-black/5 bg-white"
+                            }`}
+                          >
+                            <p className="font-semibold">{item.meal}</p>
+                            <p className={`mt-1 text-sm ${mutedTextClass}`}>{item.slot}</p>
                           </div>
                         ))}
                       </div>
