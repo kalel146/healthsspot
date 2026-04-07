@@ -13,7 +13,14 @@ import {
   getTotalMacrosFromMeals,
 } from "./utils/nutritionCalculations";
 import { getProteinLabel, getFatLabel } from "./utils/nutritionFormatters";
-import { isValidFood, normalizeFood, canAddFood } from "./utils/nutritionValidation";
+import {
+  isValidFood,
+  normalizeFood,
+  canAddFood,
+  sanitizeFoodEntry,
+  sanitizeFoodCollection,
+  SLOT_TAG_MAP,
+} from "./utils/nutritionValidation";
 import {
   saveMealsToSupabase as saveMealsRequest,
   loadMealsFromSupabase as loadMealsRequest,
@@ -144,6 +151,101 @@ const getMealTagScore = (food, mealType) => {
   return patterns.some((rx) => rx.test(text)) ? 45 : 0;
 };
 
+const getSlotMacroBonus = (food, mealType) => {
+  const energy = getFoodEnergy(food);
+  const protein = safeNum(food?.protein);
+  const fat = safeNum(food?.fat);
+  const carbs = safeNum(food?.carbs);
+  const tags = Array.isArray(food?.tags) ? food.tags : [];
+
+  let score = 0;
+
+  if (mealType === "breakfast") {
+    if (protein >= 20) score += 16;
+    if (carbs >= 20 && carbs <= 55) score += 10;
+    if (fat > 25) score -= 12;
+    if (energy >= 250 && energy <= 450) score += 8;
+  }
+
+  if (mealType === "lunch") {
+    if (protein >= 25) score += 16;
+    if (energy >= 320 && energy <= 650) score += 12;
+    if (tags.includes("για ενέργεια")) score += 8;
+  }
+
+  if (mealType === "snack") {
+    if (protein >= 12) score += 12;
+    if (energy >= 140 && energy <= 320) score += 14;
+    if (tags.includes("γρήγορο")) score += 8;
+    if (tags.includes("post-workout")) score += 8;
+    if (fat > 18) score -= 10;
+  }
+
+  if (mealType === "dinner") {
+    if (protein >= 22) score += 16;
+    if (energy >= 240 && energy <= 520) score += 10;
+    if (carbs <= 35) score += 8;
+    if (tags.includes("για δίαιτα")) score += 8;
+    if (tags.includes("lowcarb")) score += 8;
+    if (fat > 28) score -= 12;
+  }
+
+  return score;
+};
+
+const getRecentPenalty = ({
+  food,
+  recentFingerprints = [],
+  recentProteinSources = [],
+}) => {
+  const fingerprint = getMealFingerprint(food);
+  const proteinKey = getProteinSourceKey(food);
+
+  let penalty = 0;
+
+  if (recentFingerprints.slice(-3).includes(fingerprint)) penalty += 120;
+  else if (recentFingerprints.slice(-6).includes(fingerprint)) penalty += 70;
+
+  const proteinHits = recentProteinSources
+    .slice(-5)
+    .filter((key) => key === proteinKey).length;
+
+  if (proteinHits >= 2) penalty += proteinHits * 18;
+
+  return penalty;
+};
+
+const getProjectedDayBalanceScore = ({
+  food,
+  mealType,
+  dayRunningKcal = 0,
+  dayTargetKcal = 0,
+  remainingMealsAfterPick = 0,
+}) => {
+  if (!dayTargetKcal) return 0;
+
+  const energy = getFoodEnergy(food);
+  const projected = dayRunningKcal + energy;
+
+  let score = 0;
+
+  if (remainingMealsAfterPick === 0) {
+    score -= Math.abs(projected - dayTargetKcal) * 0.18;
+    return score;
+  }
+
+  const remainingTarget = dayTargetKcal - projected;
+  const avgRemaining = remainingTarget / Math.max(1, remainingMealsAfterPick);
+
+  if (avgRemaining < 130) score -= 40;
+  if (avgRemaining > 520) score -= 20;
+
+  if (mealType === "breakfast" && projected > dayTargetKcal * 0.45) score -= 30;
+  if (mealType === "snack" && energy > dayTargetKcal * 0.28) score -= 25;
+
+  return score;
+};
+
 const scoreFoodForMeal = ({
   food,
   mealType,
@@ -153,6 +255,11 @@ const scoreFoodForMeal = ({
   targetFat,
   targetCarbs,
   usedCounts,
+  recentFingerprints = [],
+  recentProteinSources = [],
+  dayRunningKcal = 0,
+  dayTargetKcal = 0,
+  remainingMealsAfterPick = 0,
 }) => {
   const energy = getFoodEnergy(food);
   const protein = safeNum(food?.protein);
@@ -182,6 +289,20 @@ const scoreFoodForMeal = ({
   if (preference === "vegetarian" && !matchesPreference(food, preference)) score -= 9999;
 
   score += getMealTagScore(food, mealType);
+  score += getSlotMacroBonus(food, mealType);
+  score += getProjectedDayBalanceScore({
+    food,
+    mealType,
+    dayRunningKcal,
+    dayTargetKcal,
+    remainingMealsAfterPick,
+  });
+
+  score -= getRecentPenalty({
+    food,
+    recentFingerprints,
+    recentProteinSources,
+  });
 
   if (safeNum(food?.protein) >= 25) score += 16;
   if ((food?.tags || []).includes("υψηλή πρωτεΐνη")) score += 10;
@@ -224,10 +345,19 @@ export default function NutritionModule() {
     return arr[0];
   });
   const [selectedMealType, setSelectedMealType] = useState("snack");
-  const [userFoods, setUserFoods] = useState(() => readStoredJson("userFoods", []));
+  const [userFoods, setUserFoods] = useState(() =>
+    sanitizeFoodCollection(readStoredJson("userFoods", []))
+  );
   const [localSaveStatus, setLocalSaveStatus] = useState("ready");
   const [lastLocalSavedAt, setLastLocalSavedAt] = useState(null);
   const [lastGenerationReport, setLastGenerationReport] = useState(null);
+
+  const setUserFoodsSafe = useCallback((updater) => {
+    setUserFoods((prev) => {
+      const next = typeof updater === "function" ? updater(prev) : updater;
+      return sanitizeFoodCollection(Array.isArray(next) ? next : []);
+    });
+  }, []);
 
   useNutritionPersistence({ protein, fat, carbs, preference, daysOrder, customMeals, userFoods });
 
@@ -247,8 +377,12 @@ export default function NutritionModule() {
     []
   );
 
+  const defaultMealsSafe = useMemo(() => sanitizeFoodCollection(defaultMeals), []);
+  const userFoodsSafe = useMemo(() => sanitizeFoodCollection(userFoods), [userFoods]);
+  const foodDBSafe = useMemo(() => sanitizeFoodCollection(foodDB), [foodDB]);
+
   const allFoods = useMemo(() => {
-    const merged = [...foodDB, ...defaultMeals, ...userFoods]
+    const merged = [...foodDBSafe, ...defaultMealsSafe, ...userFoodsSafe]
       .filter(isValidFood)
       .map(normalizeFoodEntry);
 
@@ -263,10 +397,10 @@ export default function NutritionModule() {
     });
 
     return deduped;
-  }, [foodDB, userFoods]);
+  }, [foodDBSafe, defaultMealsSafe, userFoodsSafe]);
 
   const plannerFoods = useMemo(() => {
-    const premiumPool = [...defaultMeals, ...userFoods]
+    const premiumPool = [...defaultMealsSafe, ...userFoodsSafe]
       .filter(isValidFood)
       .map(normalizeFoodEntry)
       .filter((food) => getFoodEnergy(food) >= 180);
@@ -286,15 +420,17 @@ export default function NutritionModule() {
     });
 
     return deduped;
-  }, [allFoods, userFoods]);
+  }, [allFoods, defaultMealsSafe, userFoodsSafe]);
 
   const filteredFoods = useMemo(
     () => allFoods.filter((item) => item.name.toLowerCase().includes(foodSearch.toLowerCase())),
     [foodSearch, allFoods]
   );
 
-  const filteredFoodsSafe = filteredFoods.filter(isValidFood);
-  const userFoodsSafe = userFoods.filter(isValidFood).map(normalizeFoodEntry);
+  const filteredFoodsSafe = useMemo(
+    () => filteredFoods.filter(isValidFood).map(normalizeFoodEntry),
+    [filteredFoods]
+  );
 
   const localSaveReadyRef = useRef(false);
   useEffect(() => {
@@ -350,6 +486,16 @@ export default function NutritionModule() {
     console.log("lastGenerationReport:", lastGenerationReport);
   }, [lastGenerationReport]);
 
+  useEffect(() => {
+    console.log("nutrition dataset audit:", {
+      defaultMealsRaw: Array.isArray(defaultMeals) ? defaultMeals.length : 0,
+      defaultMealsSafe: defaultMealsSafe.length,
+      userFoodsRaw: Array.isArray(userFoods) ? userFoods.length : 0,
+      userFoodsSafe: userFoodsSafe.length,
+      plannerFoods: plannerFoods.length,
+    });
+  }, [defaultMealsSafe.length, userFoods.length, userFoodsSafe.length, plannerFoods.length]);
+
   const getCurrentSummary = useCallback(() => {
     return calculateNutritionSummary({
       weight,
@@ -371,6 +517,11 @@ export default function NutritionModule() {
       previousDayMeals = {},
       mealTypeUsage = new Map(),
       proteinSourceUsage = new Map(),
+      recentFingerprints = [],
+      recentProteinSources = [],
+      dayRunningKcal = 0,
+      dayTargetKcal = 0,
+      remainingMealsAfterPick = 0,
     }) => {
       const summary = getCurrentSummary();
       const ratios = MEAL_TARGET_RATIOS[mealType];
@@ -399,6 +550,11 @@ export default function NutritionModule() {
             targetFat,
             targetCarbs,
             usedCounts,
+            recentFingerprints,
+            recentProteinSources,
+            dayRunningKcal,
+            dayTargetKcal,
+            remainingMealsAfterPick,
           });
 
           if (sameDayRepeat) score -= 220;
@@ -413,7 +569,7 @@ export default function NutritionModule() {
 
       if (!candidates.length) return null;
 
-      const topCandidates = candidates.slice(0, 8);
+      const topCandidates = candidates.slice(0, 12);
       const alternatives = topCandidates.filter((entry) => entry.food.name !== currentMealName);
       const noSameDay = alternatives.filter((entry) => !dayUsedNames.has(entry.fingerprint));
       const noPreviousSameSlot = noSameDay.filter(
@@ -421,9 +577,9 @@ export default function NutritionModule() {
       );
 
       const finalPool =
-        noPreviousSameSlot.length >= 2
+        noPreviousSameSlot.length >= 3
           ? noPreviousSameSlot
-          : noSameDay.length >= 2
+          : noSameDay.length >= 3
           ? noSameDay
           : alternatives.length
           ? alternatives
@@ -479,16 +635,20 @@ export default function NutritionModule() {
     const mealTypeUsage = new Map();
     const proteinSourceUsage = new Map();
     const next = {};
-    const effectiveDays = Array.isArray(daysOrder) && daysOrder.length ? daysOrder : DEFAULT_DAYS_ORDER;
+    const effectiveDays =
+      Array.isArray(daysOrder) && daysOrder.length ? daysOrder : DEFAULT_DAYS_ORDER;
     const totalSlots = effectiveDays.length * MEAL_TYPES.length;
     const generationTrace = [];
     let previousDayMeals = {};
+    const globalRecentFingerprints = [];
+    const globalRecentProteinSources = [];
 
     effectiveDays.forEach((day) => {
       const dayUsedNames = new Set();
       const dayTrace = { day, meals: {} };
+      let dayRunningKcal = 0;
 
-      MEAL_TYPES.forEach((mealType) => {
+      MEAL_TYPES.forEach((mealType, mealIndex) => {
         const picked = pickFoodForMeal({
           mealType,
           usedCounts,
@@ -497,11 +657,18 @@ export default function NutritionModule() {
           previousDayMeals,
           mealTypeUsage,
           proteinSourceUsage,
+          recentFingerprints: globalRecentFingerprints,
+          recentProteinSources: globalRecentProteinSources,
+          dayRunningKcal,
+          dayTargetKcal: safeNum(summary.tdee),
+          remainingMealsAfterPick: MEAL_TYPES.length - mealIndex - 1,
         });
 
         if (picked?.name) {
           const key = `${day}-${mealType}`;
           const fingerprint = getMealFingerprint(picked);
+          const pickedKcal = getFoodEnergy(picked);
+
           next[key] = picked.name;
           dayUsedNames.add(fingerprint);
           usedCounts.set(picked.name, (usedCounts.get(picked.name) || 0) + 1);
@@ -509,8 +676,14 @@ export default function NutritionModule() {
             `${mealType}:${fingerprint}`,
             (mealTypeUsage.get(`${mealType}:${fingerprint}`) || 0) + 1
           );
+
           const proteinKey = getProteinSourceKey(picked);
           proteinSourceUsage.set(proteinKey, (proteinSourceUsage.get(proteinKey) || 0) + 1);
+
+          globalRecentFingerprints.push(fingerprint);
+          globalRecentProteinSources.push(proteinKey);
+
+          dayRunningKcal += pickedKcal;
           dayTrace.meals[mealType] = picked.name;
         }
       });
@@ -535,7 +708,9 @@ export default function NutritionModule() {
 
       effectiveDays.forEach((day) => {
         const dayUsedNames = new Set(
-          MEAL_TYPES.map((mealType) => normalizeMealText(next[`${day}-${mealType}`] || "")).filter(Boolean)
+          MEAL_TYPES.map((mealType) => normalizeMealText(next[`${day}-${mealType}`] || "")).filter(
+            Boolean
+          )
         );
 
         MEAL_TYPES.forEach((mealType) => {
@@ -561,9 +736,11 @@ export default function NutritionModule() {
                   mealType,
                   preference,
                   targetKcal: safeNum(summary.tdee) * (MEAL_TARGET_RATIOS[mealType]?.kcal || 0.25),
-                  targetProtein: safeNum(summary.protein) * (MEAL_TARGET_RATIOS[mealType]?.protein || 0.25),
+                  targetProtein:
+                    safeNum(summary.protein) * (MEAL_TARGET_RATIOS[mealType]?.protein || 0.25),
                   targetFat: safeNum(summary.fat) * (MEAL_TARGET_RATIOS[mealType]?.fat || 0.25),
-                  targetCarbs: safeNum(summary.carbs) * (MEAL_TARGET_RATIOS[mealType]?.carbs || 0.25),
+                  targetCarbs:
+                    safeNum(summary.carbs) * (MEAL_TARGET_RATIOS[mealType]?.carbs || 0.25),
                   usedCounts,
                 }),
               }))
@@ -748,12 +925,22 @@ export default function NutritionModule() {
       return;
     }
 
-    const payload = normalizeFood(newFood);
-    const kcal = round1(payload.protein * 4 + payload.fat * 9 + payload.carbs * 4);
+    const payload = sanitizeFoodEntry(
+      {
+        ...normalizeFood(newFood),
+        tags: ["custom", SLOT_TAG_MAP[selectedMealType]],
+      },
+      { fallbackMealType: selectedMealType }
+    );
 
-    setUserFoods((prev) => [...prev, { ...payload, kcal, tags: ["custom"] }]);
+    if (!payload) {
+      alert("❌ Το custom τρόφιμο δεν ήταν έγκυρο.");
+      return;
+    }
+
+    setUserFoodsSafe((prev) => [...prev, payload]);
     setNewFood({ name: "", protein: "", fat: "", carbs: "" });
-  }, [newFood]);
+  }, [newFood, selectedMealType, setUserFoodsSafe]);
 
   const pieData = useMemo(
     () => [
@@ -1118,7 +1305,7 @@ export default function NutritionModule() {
                     setPreference("default");
                     setDaysOrder(DEFAULT_DAYS_ORDER);
                     setCustomMeals({});
-                    setUserFoods([]);
+                    setUserFoodsSafe([]);
                     setFoodSearch("");
                     setIntakeKcal("");
                     setMacrosText("");
@@ -1288,7 +1475,7 @@ export default function NutritionModule() {
             daysOrder={daysOrder}
             foods={filteredFoodsSafe}
             userFoods={userFoodsSafe}
-            setUserFoods={setUserFoods}
+            setUserFoods={setUserFoodsSafe}
             setCustomMeals={setCustomMeals}
             sectionStyle={sectionStyle}
             borderCol={borderCol}
