@@ -1,74 +1,66 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet";
 import { useTheme } from "./ThemeContext";
+
 const logo = "/logo.jpg";
 
 const quotes = [
-  "🍕\"Rest day. The most powerful day. Enjoy life to the fullest.\"🍷",
-  "🥩\"Strength is earned, not given.\"🔥",
-  "🏉\"Recovery is when the body speaks.\"🏉",
-  "🎣\"Fall Down Seven Times, Stand Up Eight.\"🏇",
+  "🍕 “Rest day. The most powerful day. Enjoy life to the fullest.” 🍷",
+  "🥩 “Strength is earned, not given.” 🔥",
+  "🏉 “Recovery is when the body speaks.” 🏉",
+  "🎣 “Fall down seven times, stand up eight.” 🏇",
 ];
 
-const handleExit = () => {
+function safeExitTab() {
   try {
     window.close();
     setTimeout(() => {
       if (!window.closed) {
-        alert("❌ Δεν υποστηρίζεται το κλείσιμο σε αυτό το περιβάλλον. Κλείσε το tab χειροκύνητα 😓");
+        alert("❌ Δεν υποστηρίζεται το κλείσιμο σε αυτό το περιβάλλον. Κλείσε το tab χειροκίνητα 😓");
       }
     }, 300);
-  } catch (err) {
-    alert("❌ Δεν υποστηρίζεται το κλείσιμο σε αυτό το περιβάλλον. Κλείσε το tab χειροκύνητα 😓");
+  } catch (error) {
+    alert("❌ Δεν υποστηρίζεται το κλείσιμο σε αυτό το περιβάλλον. Κλείσε το tab χειροκίνητα 😓");
   }
-};
+}
 
 export default function LandingPage() {
   const navigate = useNavigate();
+  const { theme } = useTheme();
+
   const [showQuote, setShowQuote] = useState(false);
   const [quote, setQuote] = useState(quotes[0]);
   const [fadeOut, setFadeOut] = useState(false);
   const [shake, setShake] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(1);
-  const { theme } = useTheme();
+  const [volume, setVolume] = useState(0.8);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
   const ambientRef = useRef(null);
+  const onSoundRef = useRef(null);
+  const offSoundRef = useRef(null);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (event) => {
+      event.preventDefault();
+      setDeferredPrompt(event);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    return () => window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+  }, []);
 
   useEffect(() => {
     const ambient = ambientRef.current;
     if (!ambient) return;
 
     ambient.loop = true;
+    ambient.preload = "auto";
     ambient.muted = isMuted;
-    ambient.volume = volume;
-
-    const tryPlay = () => {
-      const playPromise = ambient.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            if (!isMuted && volume < 1) {
-              let v = 0;
-              ambient.volume = v;
-              const fadeInterval = setInterval(() => {
-                if (v < volume) {
-                  v += 0.05;
-                  ambient.volume = Math.min(v, volume);
-                } else {
-                  clearInterval(fadeInterval);
-                }
-              }, 100);
-            }
-          })
-          .catch((e) => {
-            console.warn("Ambient playback failed:", e);
-          });
-      }
-    };
-
-    tryPlay();
-  }, [volume, isMuted]);
+    ambient.volume = isMuted ? 0 : volume;
+  }, [isMuted, volume]);
 
   useEffect(() => {
     if (showQuote) {
@@ -77,178 +69,283 @@ export default function LandingPage() {
     }
   }, [showQuote]);
 
-  const handleOnClick = () => {
-    const sound = new Audio("/beast-on.mp3");
-    sound.volume = volume;
-    sound.muted = isMuted;
-    setFadeOut(true);
-    setShake(true);
-    sound.play()
-      .then(() => {
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, sound.duration * 1000 || 1800);
-      })
-      .catch((e) => {
-        console.error("Audio play failed:", e);
-        navigate("/dashboard");
-      });
+  const syncAudioSettings = (audio) => {
+    if (!audio) return;
+    audio.muted = isMuted;
+    audio.volume = isMuted ? 0 : volume;
+  };
 
-    if (ambientRef.current) {
-      ambientRef.current.currentTime = 0;
-      ambientRef.current.play().catch(() => {});
+  const tryPlay = async (audio, { restart = false } = {}) => {
+    if (!audio) return;
+    syncAudioSettings(audio);
+
+    try {
+      if (restart) audio.currentTime = 0;
+      await audio.play();
+    } catch (error) {
+      console.warn("Audio playback failed:", error);
     }
   };
 
-  const handleOffClick = () => {
-    const sound = new Audio("/beast-off.mp3");
-    sound.volume = volume;
-    sound.muted = isMuted;
-    sound.play().catch((e) => console.error("Audio play failed:", e));
+  const handleOnClick = async () => {
+    setFadeOut(true);
+    setShake(true);
+
+    const onSound = onSoundRef.current;
+    const ambient = ambientRef.current;
+
+    if (ambient) {
+      ambient.pause();
+      ambient.currentTime = 0;
+    }
+
+    await tryPlay(onSound, { restart: true });
+
+    const durationMs =
+      Number.isFinite(onSound?.duration) && onSound.duration > 0
+        ? Math.round(onSound.duration * 1000)
+        : 1800;
+
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, durationMs);
+  };
+
+  const handleOffClick = async () => {
+    const offSound = offSoundRef.current;
+    const ambient = ambientRef.current;
+
+    if (ambient) ambient.pause();
+    await tryPlay(offSound, { restart: true });
+
+    setFadeOut(false);
+    setShake(false);
     setShowQuote(true);
   };
 
-  const handleReturnHome = () => {
+  const handleReturnHome = async () => {
     setShowQuote(false);
     setFadeOut(false);
     setShake(false);
-    if (ambientRef.current) {
-      ambientRef.current.currentTime = 0;
-      ambientRef.current.play().catch(() => {});
-    }
+    await tryPlay(ambientRef.current, { restart: true });
   };
 
-  const handleInstall = () => {
-    alert("📲 Για εγκατάσταση, πάτα ⋮ στον browser και διάλεξε 'Προσθήκη στην αρχική οθόνη'.");
+  const handleInstall = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const choice = await deferredPrompt.userChoice.catch(() => null);
+      if (choice?.outcome === "accepted") {
+        setDeferredPrompt(null);
+      }
+      return;
+    }
+
+    alert("📲 Για εγκατάσταση, άνοιξε το μενού του browser και διάλεξε 'Προσθήκη στην αρχική οθόνη'.");
   };
+
+  const rootBg =
+    theme === "dark"
+      ? "bg-black text-white"
+      : "bg-gradient-to-br from-slate-100 via-white to-slate-200 text-slate-900";
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: fadeOut ? 0 : 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 1.5 }}
-        className={`relative flex flex-col items-center justify-center min-h-screen space-y-8 px-4 text-center bg-black text-white overflow-hidden ${shake ? "animate-shake" : ""}`}
-      >
-        <div className="absolute inset-0 z-0">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <radialGradient id="gradFlame" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#facc15" stopOpacity="0.5" />
-              <stop offset="50%" stopColor="#dc2626" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#000" stopOpacity="0.1" />
-            </radialGradient>
-            <circle cx="50" cy="50" r="50" fill="url(#gradFlame)" className="animate-pulse" />
-          </svg>
-        </div>
+    <>
+      <Helmet>
+        <title>Health&apos;s Spot | Beast Mode</title>
+        <meta
+          name="description"
+          content="Launch screen for Health's Spot with Beast Mode entry and install prompt."
+        />
+      </Helmet>
 
-        <audio ref={ambientRef} src="/ambient-loop.mp3" style={{ display: "none" }} />
-
-        {!showQuote && (
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="relative z-10"
-          >
-            <motion.img
-              src={logo}
-              alt="Health's Spot Logo"
-              style={{ width: "min(90vw, 800px)" }}
-              className="max-w-full cursor-pointer hover:scale-105 transition-transform duration-300 drop-shadow-xl"
-              onClick={handleReturnHome}
-            />
-            <div className="absolute inset-0 rounded-full border-4 border-yellow-400 animate-ping opacity-20"></div>
-          </motion.div>
-        )}
-
-        {!showQuote && (
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2 }}
-            className="text-6xl font-extrabold text-transparent bg-clip-text drop-shadow-lg z-10 animate-shake-slight"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, #facc15, #f97316, #dc2626, #7f1d1d)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            BEAST MODE
-          </motion.h1>
-        )}
-
-        {!showQuote ? (
-          <div className="z-10 flex flex-col items-center space-y-4">
-            <div className="flex justify-center items-center w-full max-w-md space-x-6">
-              <button
-                onClick={handleOnClick}
-                className="bg-green-600 hover:bg-green-700 text-white text-xl font-bold py-3 px-10 rounded"
-              >
-                ON
-              </button>
-              <button
-                onClick={handleOffClick}
-                className="bg-red-600 hover:bg-red-700 text-white text-xl font-bold py-3 px-10 rounded"
-              >
-                OFF
-              </button>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <label className="text-sm text-gray-300">
-                🔊 Volume:
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value={volume}
-                  onChange={(e) => setVolume(parseFloat(e.target.value))}
-                  className="ml-2 w-32"
-                />
-              </label>
-              <button
-                onClick={() => setIsMuted((prev) => !prev)}
-                className="text-sm text-white underline"
-              >
-                {isMuted ? "🔇 Ήχος Off" : "🔊 Ήχος On"}
-              </button>
-            </div>
-
-            <button
-              onClick={handleInstall}
-              className="text-2xl font-extrabold bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 bg-clip-text text-transparent px-6 py-2 rounded-lg tracking-wider shadow-lg hover:scale-105 transition animate-shake-slight"
-            >
-              📲 INSTALL APP
-            </button>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={showQuote ? "quote" : "home"}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: fadeOut ? 0 : 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.8 }}
+          className={`relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 text-center ${rootBg} ${
+            shake ? "animate-shake" : ""
+          }`}
+        >
+          <div className="absolute inset-0 z-0">
+            <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs>
+                <radialGradient id="gradFlame" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#facc15" stopOpacity="0.45" />
+                  <stop offset="50%" stopColor="#dc2626" stopOpacity="0.28" />
+                  <stop offset="100%" stopColor="#000000" stopOpacity="0.08" />
+                </radialGradient>
+              </defs>
+              <circle cx="50" cy="50" r="50" fill="url(#gradFlame)" className="animate-pulse" />
+            </svg>
           </div>
-        ) : (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col items-center justify-center h-screen w-screen bg-black text-white z-10"
-          >
-            <p className="text-3xl font-bold italic px-6 text-center z-10">{quote}</p>
-            <div className="mt-8 flex flex-col space-y-3 z-10">
-              <button
-                onClick={handleReturnHome}
-                className="text-sm text-yellow-400 underline"
+
+          <audio ref={ambientRef} src="/ambient-loop.mp3" preload="auto" className="hidden" />
+          <audio ref={onSoundRef} src="/beast-on.mp3" preload="auto" className="hidden" />
+          <audio ref={offSoundRef} src="/beast-off.mp3" preload="auto" className="hidden" />
+
+          {!showQuote ? (
+            <div className="relative z-10 flex w-full max-w-5xl flex-col items-center gap-6">
+              <div className="absolute right-0 top-0 hidden gap-2 md:flex">
+                <button
+                  onClick={() => navigate("/pricing")}
+                  className={`rounded-full px-4 py-2 text-sm font-semibold ${
+                    theme === "dark"
+                      ? "bg-zinc-900/80 text-white ring-1 ring-inset ring-white/8 hover:ring-yellow-400/18"
+                      : "bg-white/90 text-slate-900 ring-1 ring-inset ring-slate-200 hover:ring-yellow-500/20"
+                  }`}
+                >
+                  Pricing
+                </button>
+                <button
+                  onClick={() => navigate("/sign-in")}
+                  className="rounded-full bg-yellow-500 px-4 py-2 text-sm font-bold text-black hover:bg-yellow-400"
+                >
+                  Sign in
+                </button>
+              </div>
+
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                className="relative"
               >
-                💪 Return to Home
-              </button>
-              <button
-                onClick={handleExit}
-                className="text-sm text-red-400 underline"
+                <motion.img
+                  src={logo}
+                  alt="Health's Spot Logo"
+                  style={{ width: "min(90vw, 800px)" }}
+                  className="max-w-full cursor-pointer drop-shadow-xl transition-transform duration-300 hover:scale-[1.02]"
+                  onClick={handleReturnHome}
+                />
+                <div className="absolute inset-0 rounded-full border-4 border-yellow-400 opacity-20 animate-ping" />
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2 }}
+                className="z-10 bg-clip-text text-5xl font-extrabold text-transparent drop-shadow-lg md:text-7xl"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #facc15, #f97316, #dc2626, #7f1d1d)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
               >
-                🚪 Exit App
-              </button>
+                BEAST MODE
+              </motion.h1>
+
+              <p
+                className={`z-10 max-w-2xl text-sm leading-7 md:text-base ${
+                  theme === "dark" ? "text-zinc-300" : "text-slate-600"
+                }`}
+              >
+                Μπες στο Health&apos;s Spot γρήγορα, καθαρά και χωρίς περιττό θόρυβο.
+              </p>
+
+              <div className="z-10 flex flex-col items-center gap-4">
+                <div className="flex w-full max-w-md items-center justify-center gap-4">
+                  <button
+                    onClick={handleOnClick}
+                    className="rounded-2xl bg-green-600 px-10 py-3 text-xl font-bold text-white transition hover:bg-green-700"
+                  >
+                    ON
+                  </button>
+                  <button
+                    onClick={handleOffClick}
+                    className="rounded-2xl bg-red-600 px-10 py-3 text-xl font-bold text-white transition hover:bg-red-700"
+                  >
+                    OFF
+                  </button>
+                </div>
+
+                <div
+                  className={`flex flex-col items-center gap-3 rounded-2xl px-4 py-3 md:flex-row ${
+                    theme === "dark"
+                      ? "bg-zinc-950/70 ring-1 ring-inset ring-white/8"
+                      : "bg-white/85 ring-1 ring-inset ring-slate-200"
+                  }`}
+                >
+                  <label
+                    className={`text-sm ${
+                      theme === "dark" ? "text-zinc-300" : "text-slate-600"
+                    }`}
+                  >
+                    🔊 Volume:
+                    <input
+                      type="range"
+                      min="0"
+                      max="1"
+                      step="0.05"
+                      value={volume}
+                      onChange={(e) => setVolume(parseFloat(e.target.value))}
+                      className="ml-2 w-32 align-middle"
+                    />
+                  </label>
+
+                  <button
+                    onClick={() => setIsMuted((prev) => !prev)}
+                    className={`text-sm font-semibold underline ${
+                      theme === "dark" ? "text-white" : "text-slate-700"
+                    }`}
+                  >
+                    {isMuted ? "🔇 Ήχος Off" : "🔊 Ήχος On"}
+                  </button>
+                </div>
+
+                <button
+                  onClick={handleInstall}
+                  className="rounded-2xl bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 px-6 py-3 text-base font-extrabold tracking-wide text-black shadow-lg transition hover:scale-[1.02]"
+                >
+                  📲 INSTALL APP
+                </button>
+
+                <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+                  <button
+                    onClick={() => navigate("/pricing")}
+                    className={`rounded-full px-4 py-2 text-xs font-semibold ${
+                      theme === "dark"
+                        ? "bg-zinc-900/80 text-white ring-1 ring-inset ring-white/8 hover:ring-yellow-400/18"
+                        : "bg-white/90 text-slate-900 ring-1 ring-inset ring-slate-200 hover:ring-yellow-500/20"
+                    }`}
+                  >
+                    💳 Pricing
+                  </button>
+                  <button
+                    onClick={() => navigate("/sign-up")}
+                    className="rounded-full bg-yellow-500 px-4 py-2 text-xs font-bold text-black hover:bg-yellow-400"
+                  >
+                    ✨ Start
+                  </button>
+                </div>
+              </div>
             </div>
-          </motion.div>
-        )}
-      </motion.div>
-    </AnimatePresence>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="z-10 flex h-screen w-screen flex-col items-center justify-center px-6 text-center"
+            >
+              <p className="max-w-3xl text-2xl font-bold italic md:text-3xl">{quote}</p>
+              <div className="mt-8 flex flex-col gap-3">
+                <button onClick={handleReturnHome} className="text-sm text-yellow-400 underline">
+                  💪 Return to Home
+                </button>
+                <button onClick={() => navigate("/pricing")} className="text-sm text-white underline">
+                  💳 See Pricing
+                </button>
+                <button onClick={safeExitTab} className="text-sm text-red-400 underline">
+                  🚪 Exit App
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </motion.div>
+      </AnimatePresence>
+    </>
   );
 }
