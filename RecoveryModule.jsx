@@ -15,6 +15,10 @@ import {
 import { useTheme } from "./ThemeContext";
 import { supabase } from "./supabaseClient";
 
+const DRAFT_STORAGE_KEY = "recoveryModuleDraft";
+const LOW_RECOVERY_THRESHOLD = 3.2;
+const LOW_RECOVERY_STREAK_TRIGGER = 4;
+
 const defaultInputs = {
   sleep: 3,
   energy: 3,
@@ -44,14 +48,45 @@ const safeNumber = (value, fallback = 0) => {
   return Number.isFinite(parsed) ? parsed : fallback;
 };
 
+const clampSliderValue = (value, fallback = 3) => {
+  const parsed = safeNumber(value, fallback);
+  return Math.min(5, Math.max(1, parsed));
+};
+
+const safeReadLocalJson = (key, fallback = null) => {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return fallback;
+    return JSON.parse(raw);
+  } catch (error) {
+    console.error(`Failed to read localStorage key: ${key}`, error);
+    return fallback;
+  }
+};
+
+const safeWriteLocalJson = (key, value) => {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.error(`Failed to write localStorage key: ${key}`, error);
+  }
+};
+
+const safeRemoveLocalKey = (key) => {
+  try {
+    localStorage.removeItem(key);
+  } catch (error) {
+    console.error(`Failed to remove localStorage key: ${key}`, error);
+  }
+};
+
 const isUserIdColumnUnsupported = (error) => {
   const blob = `${error?.message || ""} ${error?.details || ""} ${error?.hint || ""}`.toLowerCase();
-  return blob.includes("user_id") && (
-    blob.includes("column") ||
-    blob.includes("schema cache") ||
-    blob.includes("does not exist") ||
-    blob.includes("not found")
-  );
+  return blob.includes("user_id") &&
+    (blob.includes("column") ||
+      blob.includes("schema cache") ||
+      blob.includes("does not exist") ||
+      blob.includes("not found"));
 };
 
 const calculateCoreRecoveryScore = (values) => {
@@ -146,6 +181,43 @@ const getReadinessPlan = (readiness, stress) => {
   };
 };
 
+const getScopeMeta = (scopeMode) => {
+  if (scopeMode === "scoped") {
+    return {
+      label: "Scoped",
+      helper: "Τα entries φορτώνονται με user scope.",
+    };
+  }
+
+  if (scopeMode === "legacy") {
+    return {
+      label: "Legacy",
+      helper: "Fallback mode χωρίς user_id isolation.",
+    };
+  }
+
+  return {
+    label: "Local",
+    helper: "Draft only μέχρι να γίνει login.",
+  };
+};
+
+const getLowRecoveryStreak = (entries) => {
+  let streak = 0;
+
+  for (let i = entries.length - 1; i >= 0; i -= 1) {
+    const entry = entries[i];
+    const isLow =
+      safeNumber(entry?.recoveryScore, 0) < LOW_RECOVERY_THRESHOLD ||
+      safeNumber(entry?.readinessScore, 0) < LOW_RECOVERY_THRESHOLD;
+
+    if (!isLow) break;
+    streak += 1;
+  }
+
+  return streak;
+};
+
 export default function RecoveryModule() {
   const { theme, toggleTheme } = useTheme();
   const { user } = useUser();
@@ -154,6 +226,7 @@ export default function RecoveryModule() {
   const [history, setHistory] = useState([]);
   const [isLoadingHistory, setIsLoadingHistory] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [scopeMode, setScopeMode] = useState("local");
@@ -187,27 +260,25 @@ export default function RecoveryModule() {
   const errorClass = isDark
     ? "rounded-xl border border-rose-500/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-300"
     : "rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800";
+  const infoClass = isDark
+    ? "rounded-xl border border-cyan-500/20 bg-cyan-500/10 px-4 py-3 text-sm text-cyan-300"
+    : "rounded-xl border border-cyan-200 bg-cyan-50 px-4 py-3 text-sm text-cyan-800";
   const inputTrackClass = "w-full accent-cyan-500";
 
   const statCardClass = `${panelClass} p-5`;
   const sectionClass = `${panelClass} p-5 md:p-6`;
 
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem("recoveryModuleDraft");
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        setInputs({
-          sleep: safeNumber(parsed.sleep, 3),
-          energy: safeNumber(parsed.energy, 3),
-          pain: safeNumber(parsed.pain, 3),
-          mood: safeNumber(parsed.mood, 3),
-          stress: safeNumber(parsed.stress, 3),
-        });
-      }
-    } catch (error) {
-      console.error("Recovery draft restore failed:", error);
-    }
+    const saved = safeReadLocalJson(DRAFT_STORAGE_KEY, null);
+    if (!saved) return;
+
+    setInputs({
+      sleep: clampSliderValue(saved.sleep, 3),
+      energy: clampSliderValue(saved.energy, 3),
+      pain: clampSliderValue(saved.pain, 3),
+      mood: clampSliderValue(saved.mood, 3),
+      stress: clampSliderValue(saved.stress, 3),
+    });
   }, []);
 
   useEffect(() => {
@@ -216,56 +287,70 @@ export default function RecoveryModule() {
       return;
     }
 
-    localStorage.setItem("recoveryModuleDraft", JSON.stringify(inputs));
+    safeWriteLocalJson(DRAFT_STORAGE_KEY, inputs);
   }, [inputs]);
 
-  const fetchRecoveryHistory = useCallback(async () => {
-    if (!user?.id) {
-      setScopeMode("local");
-      setHistory([]);
-      setIsLoadingHistory(false);
-      return;
-    }
+  const fetchRecoveryHistory = useCallback(
+    async ({ silent = false } = {}) => {
+      if (!user?.id) {
+        setScopeMode("local");
+        setHistory([]);
+        setIsLoadingHistory(false);
+        setIsRefreshing(false);
+        return;
+      }
 
-    setIsLoadingHistory(true);
-    setErrorMessage("");
+      if (!silent) setIsLoadingHistory(true);
+      setIsRefreshing(silent);
+      setErrorMessage("");
 
-    let query = supabase
-      .from("strength_logs")
-      .select("*")
-      .eq("type", "Recovery")
-      .eq("user_id", user.id)
-      .order("timestamp", { ascending: true });
-
-    let { data, error } = await query;
-
-    if (error && isUserIdColumnUnsupported(error)) {
-      console.warn("Recovery history fetch falling back to legacy mode without user_id:", error);
-      setScopeMode("legacy");
-
-      const fallback = await supabase
+      let query = supabase
         .from("strength_logs")
         .select("*")
         .eq("type", "Recovery")
+        .eq("user_id", user.id)
         .order("timestamp", { ascending: true });
 
-      data = fallback.data;
-      error = fallback.error;
-    } else {
-      setScopeMode("scoped");
-    }
+      let { data, error } = await query;
 
-    if (error) {
-      console.error("Recovery history fetch failed:", error);
-      setErrorMessage("Αποτυχία ανάκτησης recovery history.");
-      setHistory([]);
+      if (error && isUserIdColumnUnsupported(error)) {
+        console.warn("Recovery history fetch falling back to legacy mode without user_id:", error);
+        setScopeMode("legacy");
+
+        const fallback = await supabase
+          .from("strength_logs")
+          .select("*")
+          .eq("type", "Recovery")
+          .order("timestamp", { ascending: true });
+
+        data = fallback.data;
+        error = fallback.error;
+      } else {
+        setScopeMode("scoped");
+      }
+
+      if (error) {
+        console.error("Recovery history fetch failed:", error);
+        setErrorMessage("Αποτυχία ανάκτησης recovery history.");
+        setHistory([]);
+        setIsLoadingHistory(false);
+        setIsRefreshing(false);
+        return;
+      }
+
+      const normalizedData = Array.isArray(data) ? data : [];
+      normalizedData.sort((a, b) => {
+        const left = new Date(a?.timestamp ?? a?.date ?? 0).getTime();
+        const right = new Date(b?.timestamp ?? b?.date ?? 0).getTime();
+        return left - right;
+      });
+
+      setHistory(normalizedData);
       setIsLoadingHistory(false);
-      return;
-    }
-
-    setHistory(Array.isArray(data) ? data : []);
-    setIsLoadingHistory(false);
-  }, [user?.id]);
+      setIsRefreshing(false);
+    },
+    [user?.id]
+  );
 
   useEffect(() => {
     fetchRecoveryHistory();
@@ -360,25 +445,27 @@ export default function RecoveryModule() {
     [normalizedHistory]
   );
 
+  const lowRecoveryStreak = useMemo(() => getLowRecoveryStreak(normalizedHistory), [normalizedHistory]);
+  const shouldSuggestDeload = lowRecoveryStreak >= LOW_RECOVERY_STREAK_TRIGGER;
+  const scopeMeta = useMemo(() => getScopeMeta(scopeMode), [scopeMode]);
+
   const handleChange = (key, value) => {
     setInputs((prev) => ({
       ...prev,
-      [key]: Number(value),
+      [key]: clampSliderValue(value, prev[key]),
     }));
   };
 
   const handleReset = () => {
     skipNextDraftSaveRef.current = true;
-
-    try {
-      localStorage.removeItem("recoveryModuleDraft");
-    } catch (error) {
-      console.error("Recovery draft clear failed:", error);
-    }
-
+    safeRemoveLocalKey(DRAFT_STORAGE_KEY);
     setInputs(defaultInputs);
     setStatusMessage("");
     setErrorMessage("");
+  };
+
+  const handleRefresh = async () => {
+    await fetchRecoveryHistory({ silent: true });
   };
 
   const handleSaveRecovery = async () => {
@@ -422,7 +509,7 @@ export default function RecoveryModule() {
 
     setStatusMessage(`✅ Recovery check-in αποθηκεύτηκε (${previewScore}/5).`);
     setIsSaving(false);
-    await fetchRecoveryHistory();
+    await fetchRecoveryHistory({ silent: true });
   };
 
   return (
@@ -451,7 +538,13 @@ export default function RecoveryModule() {
 
         {user?.id && scopeMode === "legacy" && (
           <div className={legacyNoticeClass}>
-            Το `strength_logs` φαίνεται να δουλεύει χωρίς `user_id`. Το module συνεχίζει σε legacy mode για να μη νεκρώσει, αλλά αν θες σωστό per-user isolation, θέλει column `user_id` στο table.
+            Το <code>strength_logs</code> φαίνεται να δουλεύει χωρίς <code>user_id</code>. Το module συνεχίζει σε legacy mode για να μη νεκρώσει, αλλά αν θες σωστό per-user isolation, θέλει column <code>user_id</code> στο table.
+          </div>
+        )}
+
+        {shouldSuggestDeload && (
+          <div className={errorClass}>
+            Recovery warning: υπάρχουν {lowRecoveryStreak} συνεχόμενα χαμηλά check-ins. Εδώ δεν θες εγωισμό — θες deload bias ή τουλάχιστον πιο μαζεμένο training day.
           </div>
         )}
 
@@ -472,6 +565,14 @@ export default function RecoveryModule() {
             </button>
 
             <button
+              onClick={handleRefresh}
+              disabled={isRefreshing || !user?.id}
+              className="rounded-xl bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-700 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {isRefreshing ? "Refreshing..." : "↻ Refresh"}
+            </button>
+
+            <button
               onClick={handleReset}
               className="rounded-xl bg-zinc-600 px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-700"
             >
@@ -489,7 +590,7 @@ export default function RecoveryModule() {
           </div>
         </div>
 
-        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
           <div className={statCardClass}>
             <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>Live Recovery Score</p>
             <p className="mt-2 text-2xl font-bold text-cyan-400">{previewScore}/5</p>
@@ -516,6 +617,12 @@ export default function RecoveryModule() {
               {averageLast7Recovery !== null ? `${averageLast7Recovery}/5` : "--"}
             </p>
             <p className={`mt-1 text-xs ${mutedTextClass}`}>{normalizedHistory.length} συνολικά entries</p>
+          </div>
+
+          <div className={statCardClass}>
+            <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>Mode</p>
+            <p className="mt-2 text-2xl font-bold text-violet-400">{scopeMeta.label}</p>
+            <p className={`mt-1 text-xs ${mutedTextClass}`}>{scopeMeta.helper}</p>
           </div>
         </section>
 
@@ -560,11 +667,14 @@ export default function RecoveryModule() {
             </div>
 
             <div className={sectionClass}>
-              <div className="mb-4">
-                <h2 className="text-xl font-semibold text-cyan-400">Recovery Trend</h2>
-                <p className={`mt-1 text-sm ${mutedTextClass}`}>
-                  Τα τελευταία 14 check-ins για να βλέπεις αν όντως αναρρώνεις ή απλώς λες στον εαυτό σου ωραία παραμύθια.
-                </p>
+              <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 className="text-xl font-semibold text-cyan-400">Recovery Trend</h2>
+                  <p className={`mt-1 text-sm ${mutedTextClass}`}>
+                    Τα τελευταία 14 check-ins για να βλέπεις αν όντως αναρρώνεις ή απλώς λες στον εαυτό σου ωραία παραμύθια.
+                  </p>
+                </div>
+                <span className={chipClass}>Last 14 entries</span>
               </div>
 
               {isLoadingHistory ? (
@@ -618,6 +728,12 @@ export default function RecoveryModule() {
                 <p className="mt-2 text-sm leading-6">{readinessPlan.description}</p>
               </div>
 
+              {weakLinks.length > 0 && (
+                <div className={`${infoClass} mt-4`}>
+                  Bottlenecks τώρα: <strong>{weakLinks.join(", ")}</strong>. Δεν χρειάζεται μαντική — χρειάζεται να φτιάξεις αυτά πρώτα.
+                </div>
+              )}
+
               <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div className={softCardClass}>
                   <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>7-day Avg Recovery</p>
@@ -651,9 +767,10 @@ export default function RecoveryModule() {
                 </div>
 
                 <div className={softCardClass}>
-                  <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>Weak Links</p>
-                  <p className="mt-2 text-sm font-semibold text-yellow-400">
-                    {weakLinks.length > 0 ? weakLinks.join(", ") : "Κανένα σοβαρό bottleneck"}
+                  <p className={`text-xs uppercase tracking-wide ${mutedTextClass}`}>Low Streak</p>
+                  <p className="mt-2 text-2xl font-bold text-yellow-400">{lowRecoveryStreak}</p>
+                  <p className={`mt-1 text-xs ${mutedTextClass}`}>
+                    {shouldSuggestDeload ? "Deload bias suggested" : "No critical streak right now"}
                   </p>
                 </div>
               </div>

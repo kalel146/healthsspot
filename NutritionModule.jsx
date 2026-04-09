@@ -246,6 +246,114 @@ const getProjectedDayBalanceScore = ({
   return score;
 };
 
+
+const getPlanSlotKey = (day, mealType) => `${day}-${mealType}`;
+
+const getPreviousDayMealsFromPlan = ({ plan, effectiveDays, dayIndex }) => {
+  if (dayIndex <= 0) return {};
+
+  const previousDay = effectiveDays[dayIndex - 1];
+
+  return Object.fromEntries(
+    MEAL_TYPES.map((type) => [
+      type,
+      normalizeMealText(plan?.[getPlanSlotKey(previousDay, type)] || ""),
+    ])
+  );
+};
+
+const collectPlanContextFromPlan = ({
+  plan,
+  effectiveDays,
+  day,
+  mealType,
+  foodLookup,
+  excludeKey = "",
+}) => {
+  const dayIndex = Math.max(0, effectiveDays.indexOf(day));
+  const mealIndex = Math.max(0, MEAL_TYPES.indexOf(mealType));
+
+  const usedCounts = new Map();
+  const mealTypeUsage = new Map();
+  const proteinSourceUsage = new Map();
+  const sameDayProteinUsage = new Map();
+  const recentFingerprints = [];
+  const recentProteinSources = [];
+  const dayUsedNames = new Set();
+
+  let dayRunningKcal = 0;
+
+  effectiveDays.forEach((currentDay, currentDayIndex) => {
+    MEAL_TYPES.forEach((currentMealType, currentMealIndex) => {
+      const key = getPlanSlotKey(currentDay, currentMealType);
+      if (key === excludeKey) return;
+
+      const mealName = plan?.[key];
+      if (!mealName) return;
+
+      const food = foodLookup.get(mealName) || { name: mealName, tags: [] };
+      const fingerprint = getMealFingerprint(food) || normalizeMealText(mealName);
+      const proteinKey = getProteinSourceKey(food);
+
+      usedCounts.set(mealName, (usedCounts.get(mealName) || 0) + 1);
+
+      mealTypeUsage.set(
+        `${currentMealType}:${fingerprint}`,
+        (mealTypeUsage.get(`${currentMealType}:${fingerprint}`) || 0) + 1
+      );
+
+      proteinSourceUsage.set(proteinKey, (proteinSourceUsage.get(proteinKey) || 0) + 1);
+
+      if (currentDay === day) {
+        dayUsedNames.add(fingerprint);
+        sameDayProteinUsage.set(
+          proteinKey,
+          (sameDayProteinUsage.get(proteinKey) || 0) + 1
+        );
+      }
+
+      const isBeforeTargetSlot =
+        currentDayIndex < dayIndex ||
+        (currentDayIndex === dayIndex && currentMealIndex < mealIndex);
+
+      if (isBeforeTargetSlot) {
+        recentFingerprints.push(fingerprint);
+        recentProteinSources.push(proteinKey);
+
+        if (currentDay === day) {
+          dayRunningKcal += getFoodEnergy(food);
+        }
+      }
+    });
+  });
+
+  return {
+    dayIndex,
+    mealIndex,
+    usedCounts,
+    mealTypeUsage,
+    proteinSourceUsage,
+    sameDayProteinUsage,
+    recentFingerprints,
+    recentProteinSources,
+    dayUsedNames,
+    dayRunningKcal,
+    previousDayMeals: getPreviousDayMealsFromPlan({
+      plan,
+      effectiveDays,
+      dayIndex,
+    }),
+  };
+};
+
+const toCandidatePreview = (entries) =>
+  entries.slice(0, 5).map(({ food, score }) => ({
+    name: food.name,
+    score: round1(score),
+    kcal: Math.round(getFoodEnergy(food)),
+    proteinSource: getProteinSourceKey(food),
+  }));
+
 const scoreFoodForMeal = ({
   food,
   mealType,
@@ -517,6 +625,7 @@ export default function NutritionModule() {
       previousDayMeals = {},
       mealTypeUsage = new Map(),
       proteinSourceUsage = new Map(),
+      sameDayProteinUsage = new Map(),
       recentFingerprints = [],
       recentProteinSources = [],
       dayRunningKcal = 0,
@@ -525,6 +634,7 @@ export default function NutritionModule() {
     }) => {
       const summary = getCurrentSummary();
       const ratios = MEAL_TARGET_RATIOS[mealType];
+
       const targetKcal = safeNum(summary.tdee) * ratios.kcal;
       const targetProtein = safeNum(summary.protein) * ratios.protein;
       const targetFat = safeNum(summary.fat) * ratios.fat;
@@ -538,8 +648,10 @@ export default function NutritionModule() {
           const previousSameSlot = previousDayMeals?.[mealType] === fingerprint;
           const previousAnywhere = Object.values(previousDayMeals || {}).includes(fingerprint);
           const slotRepeatCount = mealTypeUsage.get(`${mealType}:${fingerprint}`) || 0;
+
           const proteinKey = getProteinSourceKey(food);
           const proteinRepeatCount = proteinSourceUsage.get(proteinKey) || 0;
+          const sameDayProteinCount = sameDayProteinUsage.get(proteinKey) || 0;
 
           let score = scoreFoodForMeal({
             food,
@@ -563,7 +675,14 @@ export default function NutritionModule() {
           if (slotRepeatCount > 0) score -= slotRepeatCount * 34;
           if (proteinRepeatCount > 2) score -= (proteinRepeatCount - 2) * 14;
 
-          return { food, score, fingerprint };
+          if (sameDayProteinCount > 0) score -= 58 + (sameDayProteinCount - 1) * 22;
+
+          if (!recentFingerprints.slice(-10).includes(fingerprint)) score += 18;
+          if (!recentProteinSources.slice(-6).includes(proteinKey)) score += 12;
+          if (slotRepeatCount === 0) score += 6;
+          if (proteinRepeatCount === 0) score += 8;
+
+          return { food, score, fingerprint, proteinKey };
         })
         .sort((a, b) => b.score - a.score);
 
@@ -575,9 +694,14 @@ export default function NutritionModule() {
       const noPreviousSameSlot = noSameDay.filter(
         (entry) => previousDayMeals?.[mealType] !== entry.fingerprint
       );
+      const sameDayProteinCleanPool = noPreviousSameSlot.filter(
+        (entry) => (sameDayProteinUsage.get(entry.proteinKey) || 0) === 0
+      );
 
       const finalPool =
-        noPreviousSameSlot.length >= 3
+        sameDayProteinCleanPool.length >= 2
+          ? sameDayProteinCleanPool
+          : noPreviousSameSlot.length >= 3
           ? noPreviousSameSlot
           : noSameDay.length >= 3
           ? noSameDay
@@ -585,28 +709,84 @@ export default function NutritionModule() {
           ? alternatives
           : topCandidates;
 
-      return weightedPickFromCandidates(finalPool);
+      const pickedFood = weightedPickFromCandidates(finalPool);
+      if (!pickedFood) return null;
+
+      return {
+        food: pickedFood,
+        trace: {
+          mealType,
+          target: {
+            kcal: Math.round(targetKcal),
+            protein: round1(targetProtein),
+            fat: round1(targetFat),
+            carbs: round1(targetCarbs),
+          },
+          poolSize: candidates.length,
+          topCandidates: toCandidatePreview(topCandidates),
+          finalPool: toCandidatePreview(finalPool),
+        },
+      };
     },
     [plannerFoods, preference, getCurrentSummary]
   );
 
   const handleReplacement = useCallback(
     (day, mealType) => {
-      const mealKey = `${day}-${mealType}`;
-      const currentMealName = customMeals?.[mealKey] || "";
-      const usedCounts = new Map();
+      const effectiveDays =
+        Array.isArray(daysOrder) && daysOrder.length ? daysOrder : DEFAULT_DAYS_ORDER;
 
-      Object.values(customMeals || {}).forEach((name) => {
-        if (!name) return;
-        usedCounts.set(name, (usedCounts.get(name) || 0) + 1);
+      const mealKey = getPlanSlotKey(day, mealType);
+      const currentMealName = customMeals?.[mealKey] || "";
+      const foodLookup = createFoodMap(allFoods);
+      const summary = getCurrentSummary();
+
+      const planContext = collectPlanContextFromPlan({
+        plan: customMeals,
+        effectiveDays,
+        day,
+        mealType,
+        foodLookup,
+        excludeKey: mealKey,
       });
 
-      const picked = pickFoodForMeal({ mealType, usedCounts, currentMealName });
-      if (!picked) return;
+      const pickedResult = pickFoodForMeal({
+        mealType,
+        usedCounts: planContext.usedCounts,
+        currentMealName,
+        dayUsedNames: planContext.dayUsedNames,
+        previousDayMeals: planContext.previousDayMeals,
+        mealTypeUsage: planContext.mealTypeUsage,
+        proteinSourceUsage: planContext.proteinSourceUsage,
+        sameDayProteinUsage: planContext.sameDayProteinUsage,
+        recentFingerprints: planContext.recentFingerprints,
+        recentProteinSources: planContext.recentProteinSources,
+        dayRunningKcal: planContext.dayRunningKcal,
+        dayTargetKcal: safeNum(summary.tdee),
+        remainingMealsAfterPick: Math.max(0, MEAL_TYPES.length - planContext.mealIndex - 1),
+      });
 
-      setCustomMeals((prev) => ({ ...prev, [mealKey]: picked.name }));
+      const picked = pickedResult?.food;
+      if (!picked?.name) return;
+
+      setCustomMeals((prev) => ({
+        ...prev,
+        [mealKey]: picked.name,
+      }));
+
+      setLastGenerationReport((prev) => ({
+        ...(prev || {}),
+        lastReplacement: {
+          replacedAt: new Date().toISOString(),
+          day,
+          mealType,
+          from: currentMealName || null,
+          to: picked.name,
+          trace: pickedResult?.trace || null,
+        },
+      }));
     },
-    [customMeals, pickFoodForMeal]
+    [daysOrder, customMeals, allFoods, getCurrentSummary, pickFoodForMeal]
   );
 
   const generateMealPlanFromTargets = useCallback(() => {
@@ -619,6 +799,7 @@ export default function NutritionModule() {
     const filteredPlannerFoods = plannerFoods.filter((food) =>
       matchesPreference(food, preference)
     );
+
     const currentFoodByName = createFoodMap(allFoods);
 
     if (!filteredPlannerFoods.length) {
@@ -634,22 +815,31 @@ export default function NutritionModule() {
     const usedCounts = new Map();
     const mealTypeUsage = new Map();
     const proteinSourceUsage = new Map();
+
     const next = {};
     const effectiveDays =
       Array.isArray(daysOrder) && daysOrder.length ? daysOrder : DEFAULT_DAYS_ORDER;
+
     const totalSlots = effectiveDays.length * MEAL_TYPES.length;
     const generationTrace = [];
+    const dayTraceMap = new Map();
+
     let previousDayMeals = {};
     const globalRecentFingerprints = [];
     const globalRecentProteinSources = [];
 
     effectiveDays.forEach((day) => {
       const dayUsedNames = new Set();
+      const sameDayProteinUsage = new Map();
       const dayTrace = { day, meals: {} };
+
+      dayTraceMap.set(day, dayTrace);
+      generationTrace.push(dayTrace);
+
       let dayRunningKcal = 0;
 
       MEAL_TYPES.forEach((mealType, mealIndex) => {
-        const picked = pickFoodForMeal({
+        const pickedResult = pickFoodForMeal({
           mealType,
           usedCounts,
           currentMealName: "",
@@ -657,6 +847,7 @@ export default function NutritionModule() {
           previousDayMeals,
           mealTypeUsage,
           proteinSourceUsage,
+          sameDayProteinUsage,
           recentFingerprints: globalRecentFingerprints,
           recentProteinSources: globalRecentProteinSources,
           dayRunningKcal,
@@ -664,35 +855,45 @@ export default function NutritionModule() {
           remainingMealsAfterPick: MEAL_TYPES.length - mealIndex - 1,
         });
 
+        const picked = pickedResult?.food;
+
         if (picked?.name) {
-          const key = `${day}-${mealType}`;
+          const key = getPlanSlotKey(day, mealType);
           const fingerprint = getMealFingerprint(picked);
           const pickedKcal = getFoodEnergy(picked);
+          const proteinKey = getProteinSourceKey(picked);
 
           next[key] = picked.name;
           dayUsedNames.add(fingerprint);
+
           usedCounts.set(picked.name, (usedCounts.get(picked.name) || 0) + 1);
           mealTypeUsage.set(
             `${mealType}:${fingerprint}`,
             (mealTypeUsage.get(`${mealType}:${fingerprint}`) || 0) + 1
           );
-
-          const proteinKey = getProteinSourceKey(picked);
           proteinSourceUsage.set(proteinKey, (proteinSourceUsage.get(proteinKey) || 0) + 1);
+          sameDayProteinUsage.set(proteinKey, (sameDayProteinUsage.get(proteinKey) || 0) + 1);
 
           globalRecentFingerprints.push(fingerprint);
           globalRecentProteinSources.push(proteinKey);
 
           dayRunningKcal += pickedKcal;
-          dayTrace.meals[mealType] = picked.name;
+
+          dayTrace.meals[mealType] = {
+            name: picked.name,
+            kcal: Math.round(pickedKcal),
+            proteinSource: proteinKey,
+            mode: "primary",
+            trace: pickedResult?.trace || null,
+          };
         }
       });
 
-      generationTrace.push(dayTrace);
       previousDayMeals = Object.fromEntries(
-        MEAL_TYPES.map((mealType) => {
-          const pickedName = dayTrace.meals[mealType] || "";
-          return [mealType, normalizeMealText(pickedName)];
+        MEAL_TYPES.map((type) => {
+          const entry = dayTrace.meals[type];
+          const pickedName = typeof entry === "string" ? entry : entry?.name || "";
+          return [type, normalizeMealText(pickedName)];
         })
       );
     });
@@ -700,59 +901,91 @@ export default function NutritionModule() {
     let filledCount = Object.values(next).filter(Boolean).length;
 
     if (filledCount < totalSlots) {
-      console.warn("Meal generator produced partial plan, applying fallback fill", {
+      console.warn("Meal generator produced partial plan, applying context-aware fallback fill", {
         filledCount,
         totalSlots,
         preference,
       });
 
       effectiveDays.forEach((day) => {
-        const dayUsedNames = new Set(
-          MEAL_TYPES.map((mealType) => normalizeMealText(next[`${day}-${mealType}`] || "")).filter(
-            Boolean
-          )
-        );
-
         MEAL_TYPES.forEach((mealType) => {
-          const key = `${day}-${mealType}`;
+          const key = getPlanSlotKey(day, mealType);
           if (next[key]) return;
 
-          const keywords = MEAL_TYPE_FALLBACK_WORDS[mealType] || [];
-
-          const fallbackByTag = filteredPlannerFoods.find((food) => {
-            const text = `${food?.name || ""} ${(food?.tags || []).join(" ")}`.toLowerCase();
-            return (
-              !dayUsedNames.has(getMealFingerprint(food)) &&
-              keywords.some((word) => text.includes(word))
-            );
+          const planContext = collectPlanContextFromPlan({
+            plan: next,
+            effectiveDays,
+            day,
+            mealType,
+            foodLookup: currentFoodByName,
+            excludeKey: key,
           });
 
-          const fallbackByMacros =
-            filteredPlannerFoods
-              .map((food) => ({
-                food,
-                score: scoreFoodForMeal({
-                  food,
-                  mealType,
-                  preference,
-                  targetKcal: safeNum(summary.tdee) * (MEAL_TARGET_RATIOS[mealType]?.kcal || 0.25),
-                  targetProtein:
-                    safeNum(summary.protein) * (MEAL_TARGET_RATIOS[mealType]?.protein || 0.25),
-                  targetFat: safeNum(summary.fat) * (MEAL_TARGET_RATIOS[mealType]?.fat || 0.25),
-                  targetCarbs:
-                    safeNum(summary.carbs) * (MEAL_TARGET_RATIOS[mealType]?.carbs || 0.25),
-                  usedCounts,
-                }),
-              }))
-              .filter((entry) => !dayUsedNames.has(getMealFingerprint(entry.food)))
-              .sort((a, b) => b.score - a.score)[0]?.food || null;
+          const fallbackResult = pickFoodForMeal({
+            mealType,
+            usedCounts: planContext.usedCounts,
+            currentMealName: "",
+            dayUsedNames: planContext.dayUsedNames,
+            previousDayMeals: planContext.previousDayMeals,
+            mealTypeUsage: planContext.mealTypeUsage,
+            proteinSourceUsage: planContext.proteinSourceUsage,
+            sameDayProteinUsage: planContext.sameDayProteinUsage,
+            recentFingerprints: planContext.recentFingerprints,
+            recentProteinSources: planContext.recentProteinSources,
+            dayRunningKcal: planContext.dayRunningKcal,
+            dayTargetKcal: safeNum(summary.tdee),
+            remainingMealsAfterPick: Math.max(0, MEAL_TYPES.length - planContext.mealIndex - 1),
+          });
 
-          const fallback = fallbackByTag || fallbackByMacros || filteredPlannerFoods[0] || null;
+          const picked = fallbackResult?.food;
 
-          if (fallback?.name) {
-            next[key] = fallback.name;
-            dayUsedNames.add(getMealFingerprint(fallback));
-            usedCounts.set(fallback.name, (usedCounts.get(fallback.name) || 0) + 1);
+          if (!picked?.name) {
+            const keywords = MEAL_TYPE_FALLBACK_WORDS[mealType] || [];
+
+            const hardFallback =
+              filteredPlannerFoods.find((food) => {
+                const text = `${food?.name || ""} ${(food?.tags || []).join(" ")}`.toLowerCase();
+                return (
+                  !planContext.dayUsedNames.has(getMealFingerprint(food)) &&
+                  keywords.some((word) => text.includes(word))
+                );
+              }) || filteredPlannerFoods[0];
+
+            if (!hardFallback?.name) return;
+
+            next[key] = hardFallback.name;
+
+            const fallbackKcal = getFoodEnergy(hardFallback);
+            const fallbackProteinKey = getProteinSourceKey(hardFallback);
+
+            const dayTrace = dayTraceMap.get(day);
+            if (dayTrace) {
+              dayTrace.meals[mealType] = {
+                name: hardFallback.name,
+                kcal: Math.round(fallbackKcal),
+                proteinSource: fallbackProteinKey,
+                mode: "hard-fallback",
+                trace: null,
+              };
+            }
+
+            return;
+          }
+
+          next[key] = picked.name;
+
+          const pickedKcal = getFoodEnergy(picked);
+          const proteinKey = getProteinSourceKey(picked);
+
+          const dayTrace = dayTraceMap.get(day);
+          if (dayTrace) {
+            dayTrace.meals[mealType] = {
+              name: picked.name,
+              kcal: Math.round(pickedKcal),
+              proteinSource: proteinKey,
+              mode: "fallback",
+              trace: fallbackResult?.trace || null,
+            };
           }
         });
       });
@@ -774,6 +1007,7 @@ export default function NutritionModule() {
     const finalPlan = { ...next };
 
     const uniqueMeals = new Set(Object.values(finalPlan).filter(Boolean)).size;
+
     const repeatedMeals = Array.from(
       Object.entries(
         Object.values(finalPlan).reduce((acc, mealName) => {
@@ -788,15 +1022,18 @@ export default function NutritionModule() {
 
     const perDayKcal = effectiveDays.map((day) => {
       const kcal = MEAL_TYPES.reduce((sum, mealType) => {
-        const mealName = finalPlan[`${day}-${mealType}`];
+        const mealName = finalPlan[getPlanSlotKey(day, mealType)];
         const food = currentFoodByName.get(mealName);
         return sum + getFoodEnergy(food);
       }, 0);
+
       return { day, kcal: Math.round(kcal) };
     });
 
     const generationReport = {
       generatedAt: new Date().toISOString(),
+      traceVersion: 2,
+      preference,
       totalSlots,
       filledCount,
       uniqueMeals,
