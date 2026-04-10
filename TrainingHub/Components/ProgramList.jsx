@@ -1,6 +1,7 @@
 // ProgramList.jsx
 import React, { useEffect, useState } from "react";
 import ProgramCard from "./ProgramCard";
+import { normalizeProgramTier } from "../../utils/accessControl";
 
 const programFiles = [
   "gymPowerlifting.json",
@@ -15,9 +16,11 @@ export default function ProgramList({ userTier = "Free" }) {
 
   useEffect(() => {
     Promise.all(
-      programFiles.map((file) =>
-        fetch(`/ProgramData/${file}`).then((res) => res.json())
-      )
+      programFiles.map(async (file) => {
+        const res = await fetch(`/ProgramData/${file}`);
+        if (!res.ok) throw new Error(`Failed to load ${file} (${res.status})`);
+        return res.json();
+      })
     )
       .then((data) => {
         setPrograms(data);
@@ -34,7 +37,7 @@ export default function ProgramList({ userTier = "Free" }) {
   return (
     <div className="flex flex-col gap-6 py-8">
       {programs.map((program, index) => (
-        <ProgramCard key={index} program={program} userTier={userTier} />
+        <ProgramCard key={program.filename || index} program={program} userTier={normalizeProgramTier(userTier)} />
       ))}
     </div>
   );

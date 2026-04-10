@@ -3,8 +3,7 @@ import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "./ThemeContext";
-
-const OWNER_ALLOWLIST = ["giannis@admin.dev"];
+import { resolveUserAccess } from "./utils/accessControl";
 
 const steps = [
   {
@@ -30,27 +29,8 @@ const steps = [
   },
 ];
 
-function getResolvedUserLevel(user) {
-  const email = user?.emailAddresses?.[0]?.emailAddress?.toLowerCase?.() || "";
-  const publicRole = String(user?.publicMetadata?.role || "").toLowerCase();
-  const unsafeRole = String(user?.unsafeMetadata?.role || "").toLowerCase();
-  const publicLevel = String(user?.publicMetadata?.userLevel || "").toLowerCase();
-  const unsafeLevel = String(user?.unsafeMetadata?.userLevel || "").toLowerCase();
-
-  if (
-    OWNER_ALLOWLIST.includes(email) ||
-    publicRole === "admin" ||
-    unsafeRole === "admin" ||
-    publicLevel === "admin" ||
-    unsafeLevel === "admin"
-  ) {
-    return "admin";
-  }
-
-  if (publicLevel) return publicLevel;
-  if (unsafeLevel) return unsafeLevel;
-
-  return "basic";
+function getResolvedAccess(user) {
+  return resolveUserAccess(user);
 }
 
 export default function Onboarding() {
@@ -89,16 +69,23 @@ export default function Onboarding() {
     setLoading(true);
     setErrorMessage("");
 
-    const resolvedLevel = getResolvedUserLevel(user);
+    const resolvedAccess = getResolvedAccess(user);
+    const resolvedLevel = resolvedAccess.appLevel;
     const nextUnsafeMetadata = {
       ...(user.unsafeMetadata || {}),
       isOnboarded: true,
       onboardingCompletedAt: new Date().toISOString(),
-      userLevel: resolvedLevel,
+      userLevel: user?.unsafeMetadata?.userLevel || resolvedLevel,
     };
 
     if (resolvedLevel === "admin") {
       nextUnsafeMetadata.role = "admin";
+    }
+
+    if (resolvedAccess.isLifetimeFree) {
+      nextUnsafeMetadata.lifetimeFree = true;
+      nextUnsafeMetadata.accessGrant = "lifetime_free";
+      nextUnsafeMetadata.subscriptionTier = "Platinum";
     }
 
     try {
@@ -239,7 +226,7 @@ export default function Onboarding() {
                 : "bg-zinc-50 text-zinc-600 ring-1 ring-zinc-200"
             }`}
           >
-            Current resolved access after onboarding: <strong className="text-yellow-400">{resolvedLevel}</strong>
+            Current resolved access after onboarding: <strong className="text-yellow-400">{getResolvedAccess(user).isLifetimeFree ? "Gifted" : getResolvedAccess(user).appLevel}</strong>
           </div>
 
           {errorMessage && (

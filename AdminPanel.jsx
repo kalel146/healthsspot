@@ -5,8 +5,7 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { useTheme } from "./ThemeContext";
 import AdminIntakeLogs from "./AdminIntakeLogs";
-
-const ADMIN_EMAIL_ALLOWLIST = ["giannis@admin.dev"];
+import { resolveUserAccess } from "./utils/accessControl";
 
 function PanelCard({ theme, title, subtitle, children }) {
   return (
@@ -54,14 +53,9 @@ export default function AdminPanel() {
   const { user, isLoaded } = useUser();
   const { theme } = useTheme();
 
-  const primaryEmail = user?.emailAddresses?.[0]?.emailAddress?.toLowerCase?.() || "";
-  const role = String(user?.publicMetadata?.role || "").toLowerCase();
-  const userLevel = String(user?.publicMetadata?.userLevel || "").toLowerCase();
-
-  const isAdmin =
-    role === "admin" ||
-    userLevel === "admin" ||
-    ADMIN_EMAIL_ALLOWLIST.includes(primaryEmail);
+  const access = useMemo(() => resolveUserAccess(user), [user]);
+  const primaryEmail = access.email || "";
+  const isAdmin = access.isAdmin;
 
   const adminSummary = useMemo(
     () => [

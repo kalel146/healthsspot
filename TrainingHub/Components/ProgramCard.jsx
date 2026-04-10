@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SubscriptionGate from "./SubscriptionGate";
 import { useTheme } from "../../ThemeContext";
+import { hasProgramTierAccess, normalizeProgramTier } from "../../utils/accessControl";
 
 export default function ProgramCard({ program, userTier = "Free", selectedCategory, isAdmin = false, debugMode = false }) {
   const [expandedDay, setExpandedDay] = useState(null);
@@ -12,8 +13,7 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
 
   const isLocked = (tier) => {
     if (isAdmin || debugMode) return false;
-    const tiers = ["Free", "Bronze", "Silver", "Gold", "Platinum"];
-    return tiers.indexOf(userTier) < tiers.indexOf(tier || "Free");
+    return !hasProgramTierAccess(userTier, normalizeProgramTier(tier || "Free"));
   };
 
   const getEmoji = (type) => {
@@ -104,7 +104,11 @@ export default function ProgramCard({ program, userTier = "Free", selectedCatego
       ? "border-fuchsia-500"
       : "border-gray-300";
 
-  if (!program || (selectedCategory && program.category !== selectedCategory)) return null;
+  if (!program) return null;
+
+  const normalizedCategory = String(program.category || "").toLowerCase();
+  const normalizedSelectedCategory = String(selectedCategory || "").toLowerCase();
+  if (normalizedSelectedCategory && normalizedCategory !== normalizedSelectedCategory) return null;
 
   const schedule = Array.isArray(program.schedule)
     ? program.schedule

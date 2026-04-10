@@ -13,12 +13,14 @@ import ProgramCard from "./ProgramCard";
 import { useTheme } from "../../ThemeContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useUser } from "@clerk/clerk-react";
+import { normalizeProgramTier, resolveUserAccess, hasProgramTierAccess } from "../../utils/accessControl";
 
 // -------------------------
 // Tier helpers
 // -------------------------
-const tierRank = (t) => ({ Free: 0, Bronze: 1, Silver: 2, Gold: 3, Platinum: 4 }[t] ?? 0);
-const hasAccess = (userTier, programTier) => tierRank(userTier) >= tierRank(programTier || "Free");
+const tierRank = (t) => ({ Free: 0, Bronze: 1, Silver: 2, Gold: 3, Platinum: 4 }[normalizeProgramTier(t)] ?? 0);
+const hasAccess = (userTier, programTier) => hasProgramTierAccess(userTier, programTier || "Free");
 
 // -------------------------
 // URL query helpers
@@ -36,12 +38,15 @@ const useQuery = () => {
   return { query, set };
 };
 
-const useTierFilter = (defaultTier = "Free") => {
+const useTierFilter = (defaultTier = "Free", canPreview = false) => {
   const { query, set } = useQuery();
-  const tier = query.get("tier") || defaultTier;
-  const isAdmin = query.get("admin") === "true";
-  const setTier = (newTier) => set("tier", newTier);
-  return { tier, isAdmin, setTier };
+  const previewTier = normalizeProgramTier(query.get("tier") || defaultTier);
+  const isAdminPreview = canPreview && query.get("admin") === "true";
+  const setTier = (newTier) => {
+    if (!canPreview) return;
+    set("tier", normalizeProgramTier(newTier));
+  };
+  return { previewTier, isAdminPreview, setTier };
 };
 
 const useCatSubFilters = (fallbackCat = "gym") => {
@@ -57,7 +62,12 @@ export default function ProgramVault() {
   const [programs, setPrograms] = useState([]);
   const [loading, setLoading] = useState(true);
   const { theme } = useTheme(); // eslint-disable-line no-unused-vars
-  const { tier, isAdmin, setTier } = useTierFilter();
+  const { user } = useUser();
+  const access = useMemo(() => resolveUserAccess(user), [user]);
+  const canPreviewTiers = access.isAdmin || access.isLocalOwnerPreview;
+  const { previewTier, isAdminPreview, setTier } = useTierFilter(access.subscriptionTier, canPreviewTiers);
+  const tier = canPreviewTiers ? previewTier : access.subscriptionTier;
+  const isAdmin = canPreviewTiers && isAdminPreview;
   const { category, subcategory, setCategory, setSubcategory } = useCatSubFilters("gym");
 
   // --------------
@@ -576,7 +586,7 @@ export default function ProgramVault() {
   const filteredPrograms = programs.filter((p) => {
     const catOk = String(p.category || "").toLowerCase() === category;
     const subOk = !subcategory || String(p.subcategory || "").toLowerCase() === subcategory;
-    const accessOk = isAdmin || hasAccess(tier, p.accessTier || p.tier || "Free");
+    const accessOk = canPreviewTiers || hasAccess(tier, p.accessTier || p.tier || "Free");
     return catOk && subOk && accessOk;
   });
 
@@ -597,7 +607,7 @@ export default function ProgramVault() {
 
   return (
     <div className="p-4">
-      {isAdmin && (
+      {canPreviewTiers && (
         <div className="flex justify-center mb-4 gap-2 items-center">
           <label className="text-sm text-gray-500 dark:text-gray-300">Tier Preview:</label>
           <select
@@ -611,7 +621,7 @@ export default function ProgramVault() {
             <option value="Gold">Gold</option>
             <option value="Platinum">Platinum</option>
           </select>
-          <span className="text-xs opacity-70">(Hierarchy active)</span>
+          <span className="text-xs opacity-70">({canPreviewTiers ? "Preview" : "Live"} access)</span>
         </div>
       )}
 
@@ -692,8 +702,8 @@ export default function ProgramVault() {
                 program={program}
                 userTier={tier}
                 selectedCategory={category}
-                isAdmin={isAdmin}
-                debugMode={isAdmin}
+                isAdmin={canPreviewTiers}
+                debugMode={canPreviewTiers}
               />
             ))}
           </motion.div>

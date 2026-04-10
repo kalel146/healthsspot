@@ -1,7 +1,8 @@
 // App.jsx
 import React, { Suspense, lazy, useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
 import { SignedIn, SignedOut, RedirectToSignIn, useUser } from "@clerk/clerk-react";
+import { resolveUserAccess } from "./utils/accessControl";
 
 // Lazy-loaded pages / modules
 const LandingPage = lazy(() => import("./LandingPage"));
@@ -17,8 +18,8 @@ const ExportModule = lazy(() => import("./ExportModule"));
 const CloudBackupIntegration = lazy(() => import("./CloudBackupIntegration"));
 const HistorySystem = lazy(() => import("./HistorySystem"));
 const CardioDraggableHistory = lazy(() => import("./CardioDraggableHistory"));
-const ReportForm = lazy(() => import("./ReportForm"));
 const AuthPage = lazy(() => import("./AuthPage"));
+const AdminPanel = lazy(() => import("./AdminPanel"));
 
 // Shell
 import Layout from "./Layout";
@@ -28,6 +29,17 @@ function RouteFallback() {
     <div className="min-h-screen w-full flex items-center justify-center bg-black text-zinc-300">
       <div className="text-sm tracking-wide">Loading...</div>
     </div>
+  );
+}
+
+function ProtectedRoute({ children }) {
+  return (
+    <>
+      <SignedIn>{children}</SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+    </>
   );
 }
 
@@ -47,47 +59,41 @@ function AppContent() {
   }, []);
 
   useEffect(() => {
-    if (
-      isLoaded &&
-      user &&
-      user.unsafeMetadata?.isOnboarded !== true &&
-      location.pathname !== "/onboarding"
-    ) {
-      navigate("/onboarding");
+    if (!isLoaded || !user) return;
+
+    const access = resolveUserAccess(user);
+    const authRoutes = new Set(["/sign-in", "/sign-up"]);
+    const shouldStayPut = authRoutes.has(location.pathname) || location.pathname === "/onboarding";
+
+    if (!access.isOnboarded && !shouldStayPut) {
+      navigate("/onboarding", { replace: true });
     }
   }, [isLoaded, user, location.pathname, navigate]);
 
   return (
     <Suspense fallback={<RouteFallback />}>
       <Routes>
-        {/* Public auth screens – χωρίς Layout / Navbar */}
         <Route path="/sign-in" element={<AuthPage />} />
         <Route path="/sign-up" element={<AuthPage />} />
         <Route path="/onboarding" element={<Onboarding />} />
 
-        {/* Όλα τα υπόλοιπα περνάνε από το Layout */}
         <Route element={<Layout isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />}>
           <Route index element={<LandingPage />} />
 
           <Route
             path="dashboard"
             element={
-              <>
-                <SignedIn>
-                  <Dashboard />
-                </SignedIn>
-                <SignedOut>
-                  <RedirectToSignIn />
-                </SignedOut>
-              </>
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
             }
           />
 
           <Route path="pricing" element={<PricingPage />} />
-          <Route path="upgrade" element={<PricingPage />} />
-          <Route path="programs" element={<ProgramVault userTier="Free" />} />
+          <Route path="upgrade" element={<Navigate to="/pricing" replace />} />
+          <Route path="programs" element={<ProgramVault />} />
           <Route path="training" element={<StrengthModule />} />
-          <Route path="power" element={<StrengthModule />} />
+          <Route path="power" element={<Navigate to="/training" replace />} />
           <Route path="cardio" element={<CardioModule />} />
           <Route path="cardio-history" element={<CardioDraggableHistory />} />
           <Route path="nutrition" element={<NutritionModule />} />
@@ -95,7 +101,15 @@ function AppContent() {
           <Route path="export" element={<ExportModule />} />
           <Route path="cloud" element={<CloudBackupIntegration />} />
           <Route path="history" element={<HistorySystem />} />
-          <Route path="report" element={<ReportForm />} />
+          <Route
+            path="admin"
+            element={
+              <ProtectedRoute>
+                <AdminPanel />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="report" element={<Navigate to="/export" replace />} />
         </Route>
       </Routes>
     </Suspense>

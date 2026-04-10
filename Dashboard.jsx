@@ -9,8 +9,8 @@ import AdvancedMetrics from "./components/AdvancedMetrics";
 import { useSwipeable } from "react-swipeable";
 import { loadFull } from "tsparticles";
 import Particles from "react-tsparticles";
+import { getDisplayLevel, resolveUserAccess } from "./utils/accessControl";
 
-const ADMIN_EMAIL_ALLOWLIST = ["giannis@admin.dev"];
 
 function useIsPWA() {
   const [isPWA, setIsPWA] = useState(false);
@@ -37,23 +37,7 @@ function useIsPWA() {
 }
 
 function getUserTier(user) {
-  const email = user?.emailAddresses?.[0]?.emailAddress?.toLowerCase?.() || "";
-  const publicRole = String(user?.publicMetadata?.role || "").toLowerCase();
-  const unsafeRole = String(user?.unsafeMetadata?.role || "").toLowerCase();
-  const publicLevel = String(user?.publicMetadata?.userLevel || "").toLowerCase();
-  const unsafeLevel = String(user?.unsafeMetadata?.userLevel || "").toLowerCase();
-
-  if (
-    ADMIN_EMAIL_ALLOWLIST.includes(email) ||
-    publicRole === "admin" ||
-    unsafeRole === "admin" ||
-    publicLevel === "admin" ||
-    unsafeLevel === "admin"
-  ) {
-    return "admin";
-  }
-
-  return publicLevel || unsafeLevel || "basic";
+  return resolveUserAccess(user).appLevel;
 }
 
 function UpgradeModal({ onClose, onUpgrade }) {
@@ -293,7 +277,7 @@ function DashboardAccessGate({ theme, user, onUpgrade, onBrowsePrograms }) {
   );
 }
 
-function MobileDashboard({ user, userLevel }) {
+function MobileDashboard({ user, userLevel, isLifetimeFree = false }) {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("home");
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
@@ -356,7 +340,7 @@ function MobileDashboard({ user, userLevel }) {
                 <div className="rounded-2xl bg-zinc-900/80 p-4 ring-1 ring-inset ring-white/8">
                   <div className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">Tier</div>
                   <div className="mt-2 text-lg font-black text-yellow-400">
-                    {isAdmin ? "Admin" : isBasic ? "Basic" : userLevel.toUpperCase()}
+                    {getDisplayLevel(userLevel, { isLifetimeFree })}
                   </div>
                 </div>
                 <div className="rounded-2xl bg-zinc-900/80 p-4 ring-1 ring-inset ring-white/8">
@@ -501,8 +485,10 @@ export default function Dashboard() {
     return window.localStorage.getItem("hideDashboardTip") !== "true";
   });
 
-  const userLevel = useMemo(() => getUserTier(user), [user]);
-  const isAdmin = userLevel === "admin";
+  const access = useMemo(() => resolveUserAccess(user), [user]);
+  const userLevel = access.appLevel;
+  const isAdmin = access.isAdmin;
+  const isLifetimeFree = access.isLifetimeFree;
   const isBasic = userLevel === "basic";
 
   const particlesInit = async (engine) => {
@@ -592,7 +578,7 @@ export default function Dashboard() {
   }, []);
 
   if (isPWA && user) {
-    return <MobileDashboard user={user} userLevel={userLevel} />;
+    return <MobileDashboard user={user} userLevel={userLevel} isLifetimeFree={isLifetimeFree} />;
   }
 
   if (!isLoaded) {
@@ -694,7 +680,7 @@ export default function Dashboard() {
               <div className="relative flex flex-col gap-6">
                 <div className="flex flex-wrap items-center gap-2">
                   <Pill theme={theme}>FIT MENU</Pill>
-                  <Pill theme={theme}>{isAdmin ? "Admin View" : "Premium View"}</Pill>
+                  <Pill theme={theme}>{isAdmin ? "Admin View" : `${getDisplayLevel(userLevel, { isLifetimeFree })} View`}</Pill>
                   <Pill theme={theme}>Private Metrics</Pill>
                 </div>
 
@@ -757,7 +743,7 @@ export default function Dashboard() {
                         theme === "dark" ? "text-slate-400" : "text-slate-500"
                       }`}
                     >
-                      Dashboard shell active
+                      Dashboard shell active{access.isLocalOwnerPreview ? " • local owner preview" : isLifetimeFree ? " • gifted access" : ""}
                     </div>
                   </div>
 
