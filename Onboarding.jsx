@@ -120,7 +120,8 @@ export default function Onboarding() {
     return null;
   }
 
-  const resolvedLevel = getResolvedUserLevel(user);
+  const resolvedAccess = getResolvedAccess(user);
+  const resolvedLevel = resolvedAccess.isLifetimeFree ? "Gifted" : resolvedAccess.appLevel;
 
   return (
     <div
@@ -226,7 +227,7 @@ export default function Onboarding() {
                 : "bg-zinc-50 text-zinc-600 ring-1 ring-zinc-200"
             }`}
           >
-            Current resolved access after onboarding: <strong className="text-yellow-400">{getResolvedAccess(user).isLifetimeFree ? "Gifted" : getResolvedAccess(user).appLevel}</strong>
+            Current resolved access after onboarding: <strong className="text-yellow-400">{resolvedLevel}</strong>
           </div>
 
           {errorMessage && (
