@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 
 const isDev = process.env.NODE_ENV !== "production";
 const isVercel = process.env.VERCEL === "1";
+const enablePWA = process.env.VITE_ENABLE_PWA === "true";
 
 export default defineConfig({
   plugins: [
@@ -16,7 +17,7 @@ export default defineConfig({
       fastRefresh: isDev && !isVercel,
     }),
 
-    ...(!isDev
+    ...(!isDev && enablePWA
       ? [
           VitePWA({
             registerType: "autoUpdate",
