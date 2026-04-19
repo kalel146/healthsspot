@@ -7,24 +7,11 @@ import { useTheme } from "./ThemeContext";
 const logo = "/logo.jpg";
 
 const quotes = [
-  "🍕 “Rest day. The most powerful day. Enjoy life to the fullest.” 🍷",
-  "🥩 “Strength is earned, not given.” 🔥",
-  "🏉 “Recovery is when the body speaks.” 🏉",
-  "🎣 “Fall down seven times, stand up eight.” 🏇",
+  "Recovery is not weakness. Είναι μέρος της απόδοσης.",
+  "Consistency beats drama. Κάθε φορά.",
+  "Train hard, recover harder, think clearly.",
+  "The goal is not hype. The goal is usable performance.",
 ];
-
-function safeExitTab() {
-  try {
-    window.close();
-    setTimeout(() => {
-      if (!window.closed) {
-        alert("❌ Δεν υποστηρίζεται το κλείσιμο σε αυτό το περιβάλλον. Κλείσε το tab χειροκίνητα 😓");
-      }
-    }, 300);
-  } catch (error) {
-    alert("❌ Δεν υποστηρίζεται το κλείσιμο σε αυτό το περιβάλλον. Κλείσε το tab χειροκίνητα 😓");
-  }
-}
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -104,7 +91,7 @@ export default function LandingPage() {
     const durationMs =
       Number.isFinite(onSound?.duration) && onSound.duration > 0
         ? Math.round(onSound.duration * 1000)
-        : 1800;
+        : 1400;
 
     setTimeout(() => {
       navigate("/dashboard");
@@ -140,7 +127,7 @@ export default function LandingPage() {
       return;
     }
 
-    alert("📲 Για εγκατάσταση, άνοιξε το μενού του browser και διάλεξε 'Προσθήκη στην αρχική οθόνη'.");
+    alert("Για εγκατάσταση, άνοιξε το μενού του browser και διάλεξε 'Προσθήκη στην αρχική οθόνη'.");
   };
 
   const rootBg =
@@ -151,10 +138,10 @@ export default function LandingPage() {
   return (
     <>
       <Helmet>
-        <title>Health&apos;s Spot | Beast Mode</title>
+        <title>Health&apos;s Spot | Performance, tracking and coaching</title>
         <meta
           name="description"
-          content="Launch screen for Health's Spot with Beast Mode entry and install prompt."
+          content="Health's Spot combines training, nutrition, recovery, export and structured performance tracking in one clean platform."
         />
       </Helmet>
 
@@ -187,7 +174,7 @@ export default function LandingPage() {
           <audio ref={offSoundRef} src="/beast-off.mp3" preload="auto" className="hidden" />
 
           {!showQuote ? (
-            <div className="relative z-10 flex w-full max-w-5xl flex-col items-center gap-6">
+            <div className="relative z-10 flex w-full max-w-6xl flex-col items-center gap-6">
               <div className="absolute right-0 top-0 hidden gap-2 md:flex">
                 <button
                   onClick={() => navigate("/pricing")}
@@ -216,7 +203,7 @@ export default function LandingPage() {
                 <motion.img
                   src={logo}
                   alt="Health's Spot Logo"
-                  style={{ width: "min(90vw, 800px)" }}
+                  style={{ width: "min(88vw, 720px)" }}
                   className="max-w-full cursor-pointer drop-shadow-xl transition-transform duration-300 hover:scale-[1.02]"
                   onClick={handleReturnHome}
                 />
@@ -239,12 +226,27 @@ export default function LandingPage() {
               </motion.h1>
 
               <p
-                className={`z-10 max-w-2xl text-sm leading-7 md:text-base ${
+                className={`z-10 max-w-3xl text-sm leading-7 md:text-base ${
                   theme === "dark" ? "text-zinc-300" : "text-slate-600"
                 }`}
               >
-                Μπες στο Health&apos;s Spot γρήγορα, καθαρά και χωρίς περιττό θόρυβο.
+                Training, nutrition, recovery και performance tracking σε μία ενιαία πλατφόρμα, σχεδιασμένη για καθαρή παρακολούθηση, οργάνωση και ουσιαστική πρόοδο.
               </p>
+
+              <div className="grid w-full max-w-4xl grid-cols-1 gap-4 md:grid-cols-3">
+                <div className={`rounded-2xl p-4 ${theme === "dark" ? "bg-zinc-950/70 ring-1 ring-white/8" : "bg-white/85 ring-1 ring-slate-200"}`}>
+                  <div className="text-xs font-black uppercase tracking-[0.18em] text-yellow-400">Track</div>
+                  <div className="mt-2 text-sm leading-6 text-zinc-300 md:text-[15px]">Κατέγραψε προπόνηση, cardio, recovery και ιστορικό με σαφήνεια και συνέπεια.</div>
+                </div>
+                <div className={`rounded-2xl p-4 ${theme === "dark" ? "bg-zinc-950/70 ring-1 ring-white/8" : "bg-white/85 ring-1 ring-slate-200"}`}>
+                  <div className="text-xs font-black uppercase tracking-[0.18em] text-yellow-400">Plan</div>
+                  <div className="mt-2 text-sm leading-6 text-zinc-300 md:text-[15px]">Δομημένα προγράμματα, διατροφική οργάνωση και καθαρή πρόσβαση ανά επίπεδο χρήστη.</div>
+                </div>
+                <div className={`rounded-2xl p-4 ${theme === "dark" ? "bg-zinc-950/70 ring-1 ring-white/8" : "bg-white/85 ring-1 ring-slate-200"}`}>
+                  <div className="text-xs font-black uppercase tracking-[0.18em] text-yellow-400">Export</div>
+                  <div className="mt-2 text-sm leading-6 text-zinc-300 md:text-[15px]">Μετέτρεψε τα δεδομένα σου σε καθαρές, έτοιμες αναφορές για αποθήκευση, παρουσίαση ή αποστολή.</div>
+                </div>
+              </div>
 
               <div className="z-10 flex flex-col items-center gap-4">
                 <div className="flex w-full max-w-md items-center justify-center gap-4">
@@ -296,29 +298,28 @@ export default function LandingPage() {
                   </button>
                 </div>
 
-                <button
-                  onClick={handleInstall}
-                  className="rounded-2xl bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 px-6 py-3 text-base font-extrabold tracking-wide text-black shadow-lg transition hover:scale-[1.02]"
-                >
-                  📲 INSTALL APP
-                </button>
-
-                <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <button
+                    onClick={() => navigate("/sign-up")}
+                    className="rounded-2xl bg-yellow-500 px-6 py-3 text-base font-extrabold tracking-wide text-black shadow-lg transition hover:scale-[1.02] hover:bg-yellow-400"
+                  >
+                    ✨ Start Free
+                  </button>
                   <button
                     onClick={() => navigate("/pricing")}
-                    className={`rounded-full px-4 py-2 text-xs font-semibold ${
+                    className={`rounded-2xl px-6 py-3 text-base font-bold ${
                       theme === "dark"
                         ? "bg-zinc-900/80 text-white ring-1 ring-inset ring-white/8 hover:ring-yellow-400/18"
                         : "bg-white/90 text-slate-900 ring-1 ring-inset ring-slate-200 hover:ring-yellow-500/20"
                     }`}
                   >
-                    💳 Pricing
+                    💳 View Plans
                   </button>
                   <button
-                    onClick={() => navigate("/sign-up")}
-                    className="rounded-full bg-yellow-500 px-4 py-2 text-xs font-bold text-black hover:bg-yellow-400"
+                    onClick={handleInstall}
+                    className="rounded-2xl bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 px-6 py-3 text-base font-extrabold tracking-wide text-black shadow-lg transition hover:scale-[1.02]"
                   >
-                    ✨ Start
+                    📲 Install App
                   </button>
                 </div>
               </div>
@@ -333,13 +334,13 @@ export default function LandingPage() {
               <p className="max-w-3xl text-2xl font-bold italic md:text-3xl">{quote}</p>
               <div className="mt-8 flex flex-col gap-3">
                 <button onClick={handleReturnHome} className="text-sm text-yellow-400 underline">
-                  💪 Return to Home
+                  Return to Home
                 </button>
                 <button onClick={() => navigate("/pricing")} className="text-sm text-white underline">
-                  💳 See Pricing
+                  See Plans
                 </button>
-                <button onClick={safeExitTab} className="text-sm text-red-400 underline">
-                  🚪 Exit App
+                <button onClick={() => navigate("/sign-up")} className="text-sm text-emerald-300 underline">
+                  Start Free
                 </button>
               </div>
             </motion.div>

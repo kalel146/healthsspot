@@ -1,4 +1,5 @@
 import { LIFETIME_FREE_EMAIL_ALLOWLIST, OWNER_EMAIL_ALLOWLIST } from "./accessGrants";
+import { getAppLevelFromPlanKey, getPlanKeyFromTier, getSubscriptionTierFromPlanKey, isSubscriptionStatusActive, normalizeBillingProfile } from "./billingConfig";
 
 function readDelimitedEnvList(key) {
   try {
@@ -140,12 +141,65 @@ function isLifetimeGrantValue(value) {
   return ["lifetime", "lifetime_free", "gifted", "comped", "vip"].includes(safeString(value).toLowerCase());
 }
 
+
+function resolveBillingAccess(profileLike) {
+  const billingProfile = normalizeBillingProfile(profileLike);
+  if (!billingProfile) return null;
+
+  if (billingProfile.isOwner) {
+    return {
+      billingProfile,
+      hasActivePaidAccess: true,
+      appLevel: 'admin',
+      subscriptionTier: 'Platinum',
+      planKey: 'platinum',
+      subscriptionStatus: billingProfile.subscriptionStatus,
+      source: 'billing_profile_owner',
+    };
+  }
+
+  if (billingProfile.isGiftedLifetime) {
+    return {
+      billingProfile,
+      hasActivePaidAccess: true,
+      appLevel: 'elite',
+      subscriptionTier: 'Platinum',
+      planKey: 'platinum',
+      subscriptionStatus: billingProfile.subscriptionStatus || 'gifted_lifetime',
+      source: 'billing_profile_gifted',
+    };
+  }
+
+  if (!isSubscriptionStatusActive(billingProfile.subscriptionStatus)) {
+    return {
+      billingProfile,
+      hasActivePaidAccess: false,
+      appLevel: 'basic',
+      subscriptionTier: 'Free',
+      planKey: 'free',
+      subscriptionStatus: billingProfile.subscriptionStatus,
+      source: 'billing_profile_inactive',
+    };
+  }
+
+  return {
+    billingProfile,
+    hasActivePaidAccess: true,
+    appLevel: getAppLevelFromPlanKey(billingProfile.planKey),
+    subscriptionTier: getSubscriptionTierFromPlanKey(billingProfile.planKey),
+    planKey: billingProfile.planKey,
+    subscriptionStatus: billingProfile.subscriptionStatus,
+    source: 'billing_profile_subscription',
+  };
+}
+
 export function resolveUserAccess(user, options = {}) {
   const ownerAllowlist = getOwnerAllowlist(options);
   const lifetimeFreeAllowlist = getLifetimeFreeAllowlist(options);
   const email = getPrimaryEmail(user);
   const meta = getUserMetadataSnapshot(user);
   const localOwnerPreview = isLocalOwnerPreviewEnabled();
+  const billingAccess = resolveBillingAccess(options.billingProfile);
 
   const isAdminByMetadata =
     meta.publicRole === "admin" ||
@@ -161,13 +215,16 @@ export function resolveUserAccess(user, options = {}) {
     isLifetimeGrantValue(meta.publicAccessGrant) ||
     isLifetimeGrantValue(meta.unsafeAccessGrant);
 
-  const isAdmin = isAdminByMetadata || isOwnerByEmail || localOwnerPreview;
-  const isLifetimeFree = !isAdmin && (isLifetimeFreeByEmail || isLifetimeFreeByMetadata);
+  const isAdmin = isAdminByMetadata || isOwnerByEmail || localOwnerPreview || billingAccess?.source === "billing_profile_owner";
+  const isLifetimeFree = !isAdmin && (isLifetimeFreeByEmail || isLifetimeFreeByMetadata || billingAccess?.source === "billing_profile_gifted");
+  const hasActivePaidBilling = !isAdmin && !isLifetimeFree && Boolean(billingAccess?.hasActivePaidAccess);
 
   const appLevel = isAdmin
     ? "admin"
     : isLifetimeFree
     ? "elite"
+    : hasActivePaidBilling
+    ? billingAccess.appLevel
     : meta.publicLevel !== "basic"
     ? meta.publicLevel
     : meta.unsafeLevel;
@@ -176,6 +233,8 @@ export function resolveUserAccess(user, options = {}) {
     ? "Platinum"
     : isLifetimeFree
     ? "Platinum"
+    : hasActivePaidBilling
+    ? billingAccess.subscriptionTier
     : meta.publicTier !== "Free"
     ? meta.publicTier
     : meta.unsafeTier;
@@ -185,6 +244,7 @@ export function resolveUserAccess(user, options = {}) {
   let grantType = "standard";
   if (isAdmin) grantType = localOwnerPreview && !isOwnerByEmail && !isAdminByMetadata ? "local_preview" : "owner";
   else if (isLifetimeFree) grantType = "lifetime_free";
+  else if (hasActivePaidBilling) grantType = "paid_subscription";
 
   return {
     email,
@@ -194,6 +254,11 @@ export function resolveUserAccess(user, options = {}) {
     isLifetimeFreeByEmail,
     isLifetimeFreeByMetadata,
     isLocalOwnerPreview: localOwnerPreview,
+    hasActivePaidBilling,
+    billingProfile: billingAccess?.billingProfile || null,
+    billingSource: billingAccess?.source || null,
+    billingPlanKey: billingAccess?.planKey || getPlanKeyFromTier(subscriptionTier),
+    billingSubscriptionStatus: billingAccess?.subscriptionStatus || null,
     appLevel: normalizeAppLevel(appLevel),
     subscriptionTier: normalizeProgramTier(subscriptionTier),
     isOnboarded,

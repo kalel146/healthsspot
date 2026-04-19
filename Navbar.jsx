@@ -13,6 +13,7 @@ const modules = [
   { icon: "🏊", name: "Cardio", path: "/cardio", minLevel: "basic" },
   { icon: "🍎", name: "Nutrition", path: "/nutrition", minLevel: "basic" },
   { icon: "🥂", name: "Recovery", path: "/recovery", minLevel: "basic" },
+  { icon: "💳", name: "Plans", path: "/pricing", minLevel: "basic" },
   { icon: "📄", name: "Export", path: "/export", minLevel: "pro" },
   { icon: "🔐", name: "Admin", path: "/admin", minLevel: "admin" },
 ];
@@ -115,6 +116,7 @@ export default function Navbar({ isOpen = false, onClose }) {
 
   const desktopTier = getDisplayLevel(userLevel, { isLifetimeFree: access.isLifetimeFree });
   const accessBadgeText = getAccessBadgeText(access);
+  const showUpgradeCard = !access.isAdmin && !access.isLifetimeFree;
 
   const Brand = (
     <div className="mb-6 flex cursor-pointer items-center gap-3" onClick={() => handleNavigate("/")}>
@@ -122,7 +124,11 @@ export default function Navbar({ isOpen = false, onClose }) {
       <div className="min-w-0">
         <div className="truncate text-lg font-black text-yellow-400">Health&apos;s Spot</div>
         <div className={`truncate text-xs ${brandSubClass}`}>
-          {access.isLocalOwnerPreview ? "Local owner preview active" : access.isLifetimeFree ? "Gifted full access active" : "Performance dashboard, χωρίς σαλάτες"}
+          {access.isLocalOwnerPreview
+            ? "Local owner preview active"
+            : access.isLifetimeFree
+            ? "Gifted lifetime access active"
+            : "Structured performance system"}
         </div>
       </div>
     </div>
@@ -144,6 +150,25 @@ export default function Navbar({ isOpen = false, onClose }) {
       })}
     </div>
   );
+
+  const UpgradeCard = showUpgradeCard ? (
+    <div
+      className={`mt-4 rounded-2xl px-4 py-4 text-sm ${
+        theme === "dark"
+          ? "bg-gradient-to-br from-yellow-500/12 to-orange-500/8 text-zinc-200 ring-1 ring-yellow-500/20"
+          : "bg-gradient-to-br from-yellow-50 to-orange-50 text-zinc-700 ring-1 ring-yellow-200"
+      }`}
+    >
+      <div className="text-xs font-black uppercase tracking-[0.18em] text-yellow-400">Upgrade path</div>
+      <div className="mt-2 text-sm font-semibold">Θες περισσότερα modules, καλύτερο export και premium access;</div>
+      <button
+        onClick={() => handleNavigate("/pricing")}
+        className="mt-3 rounded-xl bg-yellow-500 px-4 py-2 text-sm font-bold text-black transition hover:bg-yellow-400"
+      >
+        View Plans
+      </button>
+    </div>
+  ) : null;
 
   return (
     <>
@@ -183,12 +208,11 @@ export default function Navbar({ isOpen = false, onClose }) {
         >
           <div className="text-[11px] uppercase tracking-[0.18em] text-zinc-400">Access</div>
           <div className="mt-1 text-sm font-bold">{isLoaded ? desktopTier : "Loading..."}</div>
-          <div className="mt-1 text-[11px] opacity-70">
-            {accessBadgeText}
-          </div>
+          <div className="mt-1 text-[11px] opacity-70">{accessBadgeText}</div>
         </div>
 
         {ModuleList}
+        {UpgradeCard}
 
         <button
           onClick={toggleTheme}
@@ -201,6 +225,7 @@ export default function Navbar({ isOpen = false, onClose }) {
       <div className={drawerClasses}>
         {Brand}
         {ModuleList}
+        {UpgradeCard}
 
         <div
           className={`mt-4 rounded-2xl px-4 py-3 text-sm ${
@@ -210,9 +235,7 @@ export default function Navbar({ isOpen = false, onClose }) {
           }`}
         >
           Tier: <strong>{isLoaded ? desktopTier : "Loading..."}</strong>
-          <div className="mt-1 text-[11px] opacity-70">
-            {accessBadgeText}
-          </div>
+          <div className="mt-1 text-[11px] opacity-70">{accessBadgeText}</div>
         </div>
 
         <button
