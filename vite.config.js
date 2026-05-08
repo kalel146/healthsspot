@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import { VitePWA } from "vite-plugin-pwa";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -9,47 +8,24 @@ const __dirname = path.dirname(__filename);
 
 const isDev = process.env.NODE_ENV !== "production";
 const isVercel = process.env.VERCEL === "1";
-const enablePWA = process.env.VITE_ENABLE_PWA === "true";
 
 export default defineConfig({
   plugins: [
     react({
       fastRefresh: isDev && !isVercel,
     }),
-
-    ...(!isDev && enablePWA
-      ? [
-          VitePWA({
-            registerType: "autoUpdate",
-            manifest: {
-              name: "Health's Spot",
-              short_name: "HealthSpot",
-              start_url: "/",
-              display: "standalone",
-              background_color: "#000000",
-              theme_color: "#f97316",
-              icons: [
-                {
-                  src: "/logo-192.png",
-                  sizes: "192x192",
-                  type: "image/png",
-                },
-                {
-                  src: "/logo-512.png",
-                  sizes: "512x512",
-                  type: "image/png",
-                },
-              ],
-            },
-            workbox: {
-              maximumFileSizeToCacheInBytes: 5000000,
-            },
-          }),
-        ]
-      : []),
   ],
 
-  build: {},
+  define: {
+    __HS_BUILD__: JSON.stringify(
+      process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || new Date().toISOString()
+    ),
+  },
+
+  build: {
+    sourcemap: false,
+    manifest: false,
+  },
 
   resolve: {
     alias: {
