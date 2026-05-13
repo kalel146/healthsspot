@@ -24,6 +24,12 @@
       ]
     },
     {
+      "source": "/manifest.webmanifest",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0" }
+      ]
+    },
+    {
       "source": "/logo-192.png",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=300" }
@@ -34,6 +40,16 @@
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=300" }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }

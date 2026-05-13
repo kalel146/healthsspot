@@ -1,7 +1,19 @@
 // App.jsx
 import React, { Suspense, lazy, useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
-import { SignedIn, SignedOut, RedirectToSignIn, useUser } from "@clerk/clerk-react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
+import {
+  SignedIn,
+  SignedOut,
+  RedirectToSignIn,
+  useUser,
+} from "@clerk/clerk-react";
 import { resolveUserAccess } from "./utils/accessControl";
 
 // Lazy-loaded pages / modules
@@ -26,7 +38,7 @@ import Layout from "./Layout";
 
 function RouteFallback() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-black text-zinc-300">
+    <div className="flex min-h-screen w-full items-center justify-center bg-black text-zinc-300">
       <div className="text-sm tracking-wide">Loading...</div>
     </div>
   );
@@ -62,8 +74,13 @@ function AppContent() {
     if (!isLoaded || !user) return;
 
     const access = resolveUserAccess(user);
-    const authRoutes = new Set(["/sign-in", "/sign-up"]);
-    const shouldStayPut = authRoutes.has(location.pathname) || location.pathname === "/onboarding";
+
+    const isAuthRoute =
+      location.pathname.startsWith("/sign-in") ||
+      location.pathname.startsWith("/sign-up");
+
+    const shouldStayPut =
+      isAuthRoute || location.pathname === "/onboarding";
 
     if (!access.isOnboarded && !shouldStayPut) {
       navigate("/onboarding", { replace: true });
@@ -73,11 +90,17 @@ function AppContent() {
   return (
     <Suspense fallback={<RouteFallback />}>
       <Routes>
-        <Route path="/sign-in" element={<AuthPage />} />
-        <Route path="/sign-up" element={<AuthPage />} />
+        {/* Auth */}
+        <Route path="/sign-in/*" element={<AuthPage />} />
+        <Route path="/sign-up/*" element={<AuthPage />} />
         <Route path="/onboarding" element={<Onboarding />} />
 
-        <Route element={<Layout isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />}>
+        {/* Main app inside layout */}
+        <Route
+          element={
+            <Layout isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
+          }
+        >
           <Route index element={<LandingPage />} />
 
           <Route
@@ -101,6 +124,7 @@ function AppContent() {
           <Route path="export" element={<ExportModule />} />
           <Route path="cloud" element={<CloudBackupIntegration />} />
           <Route path="history" element={<HistorySystem />} />
+
           <Route
             path="admin"
             element={
@@ -109,6 +133,7 @@ function AppContent() {
               </ProtectedRoute>
             }
           />
+
           <Route path="report" element={<Navigate to="/export" replace />} />
         </Route>
       </Routes>
